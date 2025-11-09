@@ -1,0 +1,36 @@
+import 'package:get/get.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/auth/bindings/document_verification_bindings.dart';
+import 'package:renter_pay/features/auth/bindings/first_onboarding_bindings.dart';
+import 'package:renter_pay/features/auth/bindings/login_bindings.dart';
+import 'package:renter_pay/features/auth/bindings/onboarding_bindings.dart';
+import 'package:renter_pay/features/auth/bindings/otp_bindings.dart';
+import 'package:renter_pay/features/auth/bindings/signup_option_bindings.dart';
+import 'package:renter_pay/features/auth/bindings/signup_view_bindings.dart';
+import 'package:renter_pay/features/auth/bindings/user_role_binding.dart';
+import 'package:renter_pay/features/auth/views/document_verification.dart';
+import 'package:renter_pay/features/auth/views/login_view.dart';
+import 'package:renter_pay/features/auth/views/onboarding.dart';
+import 'package:renter_pay/features/auth/views/otp_view.dart';
+import 'package:renter_pay/features/auth/views/signup_option.dart';
+import 'package:renter_pay/features/auth/views/signup_view.dart';
+import 'package:renter_pay/features/auth/views/user_role.dart';
+import 'package:renter_pay/features/home/bindings/main_home_bindings.dart';
+import 'package:renter_pay/features/home/views/main_home_view.dart';
+import 'package:renter_pay/features/auth/views/subscription_plan.dart';
+
+final List<GetPage> appRoutes = [
+  GetPage(name: AppRoutes.onboarding, page: () => Onboarding(), bindings:[ OnboardingBindings(),FirstOnboardingBindings()]),
+  GetPage(name: AppRoutes.userRole, page: () => UserRole(), bindings: [UserRoleBinding()]),
+  GetPage(name: AppRoutes.loginView, page: () => LoginView(), bindings: [LoginBindings()]),
+  GetPage(
+    name: AppRoutes.signupOption,
+    page: () => SignupOption(),
+    bindings: [SignupOptionBindings()],
+  ),
+  GetPage(name: AppRoutes.signupView, page: () => SignupView(), bindings: [SignupViewBindings()]),
+  GetPage(name: AppRoutes.otpView, page: () => OtpView(), bindings: [OtpBindings()]),
+  GetPage(name: AppRoutes.mainHome, page: () => MainHomeView(), bindings: [MainHomeBindings()]),
+  GetPage(name: AppRoutes.documentVerification, page: ()=>DocumentVerification(),bindings: [DocumentVerificationBindings(),]),
+  GetPage(name: AppRoutes.subsPlan, page: ()=>SubscriptionPlan()),
+];
