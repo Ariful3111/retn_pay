@@ -63,7 +63,7 @@ class LoginView extends StatelessWidget {
                 title: "Don't have an account?",
                 spantext: " Sign Up",
                 onTap: () {
-                  Get.toNamed(AppRoutes.signupOption);
+                  Get.toNamed(AppRoutes.signupView);
                   
                 },
               ),

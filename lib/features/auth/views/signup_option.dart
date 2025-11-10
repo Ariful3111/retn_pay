@@ -32,7 +32,7 @@ class SignupOption extends StatelessWidget {
           SizedBox(height: 20.h,),
           AuthOption(title: "Continue with Apple", image: IconsPath.apple, onTap: (){}),
           SizedBox(height: 20.h,),
-          AuthOption(title: "Continue with Email/Phone", image: IconsPath.emailPhone, onTap: (){Get.toNamed(AppRoutes.signupView);}),
+          AuthOption(title: "Continue with Email/Phone", image: IconsPath.emailPhone, onTap: (){Get.toNamed(AppRoutes.loginView);}),
           SizedBox(height: 20.h,),
            CustomText.spanText(title: "Don't have an account?", spantext: " Sign Up",onTap: (){Get.toNamed(AppRoutes.signupView);}),
         ],

@@ -27,4 +27,18 @@ class IconsPath {
   static const String filter = 'assets/icons/filter.png';
   static const String favorite = 'assets/icons/favorite.png';
   static const String reset = 'assets/icons/reset.png';
+  static const String profileAgreement = 'assets/icons/profile_agreement.png';
+  static const String profileApplication = 'assets/icons/profile_application.png';
+  static const String profileBlog = 'assets/icons/profile_blog.png';
+  static const String profileContact = 'assets/icons/profile_contact.png';
+  static const String profileDashboard = 'assets/icons/profile_dashboard.png';
+  static const String profileDrawer = 'assets/icons/profile_drawer.png';
+  static const String profileNotification = 'assets/icons/profile_NOTIFICATION.png';
+  static const String profilePayment = 'assets/icons/profile_payment.png';
+  static const String profilePrivacy = 'assets/icons/profile_privacy.png';
+  static const String profileSetting = 'assets/icons/profile_setting.png';
+  static const String profileSupport = 'assets/icons/profile_support.png';
+  static const String profileTerms = 'assets/icons/profile_terms.png';
+  static const String profileWeb = 'assets/icons/profile_web.png';
+
 }

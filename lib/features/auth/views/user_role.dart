@@ -75,7 +75,7 @@ class UserRole extends StatelessWidget {
                   if(userRoleController.selectedIndex.value==-1){
                     errorSnack(message: "Please Select A User Role");
                   }else{
-                    Get.toNamed(AppRoutes.loginView);
+                    Get.toNamed(AppRoutes.signupOption);
                   }
                   
                 },

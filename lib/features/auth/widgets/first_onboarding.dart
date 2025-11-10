@@ -56,15 +56,14 @@ class FirstOnboarding extends StatelessWidget {
       },
       child: SizedBox(
         height: 566.h,
-        width: MediaQuery.widthOf(context),
+        width: MediaQuery.of(context).size.width,
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: List.generate(columns.length, (colIndex) {
-              return Container(
-                padding: EdgeInsets.only(right: 10.w),
+              return SizedBox(
                 width: 150.w,
                 child: ListView.builder(
                   controller:
@@ -85,6 +84,7 @@ class FirstOnboarding extends StatelessWidget {
 
   Widget onboardingContainer(String image) {
     return Container(
+      margin: EdgeInsets.only(right: 10.w,bottom: 10.h),
       height: 200.h,
       width: 150.w,
       decoration: BoxDecoration(

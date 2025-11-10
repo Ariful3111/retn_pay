@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/chat/views/chat_view.dart';
 import 'package:renter_pay/features/dashboard/views/dashboard_view.dart';
 import 'package:renter_pay/features/home/views/home_view.dart';
@@ -18,6 +19,6 @@ class MainHomeController extends GetxController {
     {'icon':IconsPath.rent,'label':'Rent'},
     {'icon':IconsPath.dashboard,'label':'Dashboard'},
     {'icon':IconsPath.chat,'label':'Chat'},
-    {'icon':'profile','label':'Profile'},
+    {'icon':ImagesPath.profile,'label':'Profile'},
   ];
 }

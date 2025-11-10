@@ -33,4 +33,5 @@ class AppColors {
   static const lightBorder = Color(0xFF9D5781);
   static const primaryBorder = Color(0xFFDFE2E6);
   static const secondaryBorder = Color(0xFFE9E9E9);
+  static const filterBorder = Color(0xFFE6E9ED);
 }

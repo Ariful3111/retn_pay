@@ -21,4 +21,6 @@ class ImagesPath {
   static const String onboarding14 = 'assets/images/onboarding1.14.png';
   static const String onboarding15 = 'assets/images/onboarding1.15.png';
   static const String onboarding16 = 'assets/images/onboarding1.16.png';
+  static const String profile = 'assets/images/profile.png';
+  static const String navProfile = 'assets/images/nav_profile.png';
 }

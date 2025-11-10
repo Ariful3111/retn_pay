@@ -11,8 +11,7 @@ class Navbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MainHomeController mainHomeController = Get.find();
-    return Obx(() {
-      return Container(
+    return Container(
         margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 8.h),
         height: 82.h,
         width: MediaQuery.widthOf(context),
@@ -29,33 +28,21 @@ class Navbar extends StatelessWidget {
             final navItem = mainHomeController.navItems[index];
             final navIcon = navItem['icon'];
             final navLabel = navItem['label'];
-            Widget iconWidget = SizedBox.shrink();
-            if (navIcon is String) {
-              iconWidget = Image.asset(
-                navIcon,
-                color: itemCount ? AppColors.primaryColorDark : AppColors.secondaryTextColor,
-                height: 24.h,
-                width: 24.w,
-              );
-            }
-            if (navIcon == 'profile') {
-              iconWidget = Icon(
-                Icons.person,
-                size: 24.sp,
-                color: itemCount ? AppColors.primaryColorDark : AppColors.secondaryTextColor,
-              );
-            } else if (navIcon is Widget) {
-              iconWidget = navIcon;
-            }
+            
             return Padding(
               padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 12.w),
-              child: GestureDetector(
+              child: InkWell(
                 onTap: () {
                   mainHomeController.changeIndex(index);
                 },
                 child: Column(
                   children: [
-                    iconWidget,
+                Image.asset(
+                navIcon,
+                color: itemCount ? AppColors.primaryColorDark : AppColors.secondaryTextColor,
+                height: 24.h,
+                width: 24.w,
+              ),
                     SizedBox(height: 10.h),
                     Text(
                       navLabel,
@@ -74,6 +61,5 @@ class Navbar extends StatelessWidget {
           }),
         ),
       );
-    });
   }
 }

@@ -10,10 +10,12 @@ class Onboarding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: AppColors.whiteColor,
+
+      extendBodyBehindAppBar: true,
         body: ListView(
+          padding: EdgeInsets.zero,
           children: [
             OnboardingPage(),
             SizedBox(height: 48.h),
