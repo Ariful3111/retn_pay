@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/core/utils/snackbar.dart';
 import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/auth/widgets/user_button.dart';
@@ -17,7 +19,9 @@ class UserRole extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UserRoleController userRoleController = Get.find();
+    ThemeController themeController = Get.find();
     return CustomContainer(
+      gradient: themeController.isDarkMode.value?AppColors.darkAuthBG:AppColors.backgroundColor,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 35.w),
           child: Column(
@@ -29,6 +33,7 @@ class UserRole extends StatelessWidget {
               CustomText.primaryText(
                 text: 'Select a role for your account',
                 fontSize: 24.sp,
+                color: themeController.isDarkMode.value?AppColors.darkPrimaryText:AppColors.primaryDarkTextColor,
               ),
               SizedBox(height: 32.h),
               Row(

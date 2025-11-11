@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/auth/widgets/auth_option.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_text.dart';
@@ -13,6 +15,7 @@ class SignupOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController = Get.find();
     return CustomContainer(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
@@ -30,7 +33,7 @@ class SignupOption extends StatelessWidget {
           SizedBox(height: 20.h,),
           AuthOption(title: "Continue with Google", image: IconsPath.google, onTap: (){}),
           SizedBox(height: 20.h,),
-          AuthOption(title: "Continue with Apple", image: IconsPath.apple, onTap: (){}),
+          AuthOption(title: "Continue with Apple", image: IconsPath.apple,imageColor: themeController.isDarkMode.value?AppColors.whiteColor:null, onTap: (){}),
           SizedBox(height: 20.h,),
           AuthOption(title: "Continue with Email/Phone", image: IconsPath.emailPhone, onTap: (){Get.toNamed(AppRoutes.loginView);}),
           SizedBox(height: 20.h,),

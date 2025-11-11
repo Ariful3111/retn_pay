@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text.dart';
 
 class ProfileItems extends StatelessWidget {
@@ -19,6 +21,7 @@ class ProfileItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController = Get.find();
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -26,8 +29,8 @@ class ProfileItems extends StatelessWidget {
         height: height??60.h,
         width: width??MediaQuery.widthOf(context),
         decoration: BoxDecoration(
-          color: AppColors.whiteColor,
-          border: Border.all(width: 1.sp,color: Color(0xFFF2F2F2),),
+          color:themeController.isDarkMode.value?AppColors.darkSecondary :AppColors.whiteColor,
+          border: Border.all(width: 1.sp,color:themeController.isDarkMode.value? AppColors.darkBorderPrimary:Color(0xFFF2F2F2),),
           borderRadius: BorderRadius.circular(12.sp),
         ),
         child: primaryWidget??Row(
@@ -45,7 +48,7 @@ class ProfileItems extends StatelessWidget {
             ),
 
             SizedBox(width: 8.h,),
-            CustomText.primaryText(text: title??'',fontSize: 16.sp,fontWeight: FontWeight.w400),
+            CustomText.primaryText(text: title??'',fontSize: 16.sp,fontWeight: FontWeight.w400,),
             Spacer(),
             ?secondaryWidget,
             SizedBox(width: 18.w,),

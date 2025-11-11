@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -55,6 +57,7 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController = Get.find();
     return TextFormField(
       controller: controller,
       textDirection: textDirection ?? TextDirection.ltr,
@@ -63,7 +66,9 @@ class CustomTextField extends StatelessWidget {
       validator: validator,
       onChanged: onChanged,
       readOnly: readOnly ?? false,
+      style: TextStyle(color: themeController.isDarkMode.value?AppColors.darkPrimaryText:AppColors.primaryDarkTextColor),
       decoration: InputDecoration(
+
         label:
             labelTextWidget ??
             CustomText.secondaryText(
@@ -79,27 +84,24 @@ class CustomTextField extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
         errorText: errorText,
-        hintStyle: GoogleFonts.inter(
-          color: textColor ?? AppColors.secondaryTextColor,
-          fontSize: fontSize ?? 12.sp,
-          fontWeight: fontWeight ?? FontWeight.w400,
-        ),
+        
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
+        
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.r),
-          borderSide: BorderSide(color: Colors.transparent),
+          borderSide: BorderSide(color:themeController.isDarkMode.value?AppColors.darkBorderPrimary :Colors.transparent),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.r),
-          borderSide: BorderSide(color: Colors.transparent),
+          borderSide: BorderSide(color:themeController.isDarkMode.value?AppColors.darkBorderPrimary : Colors.transparent),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.r),
-          borderSide: BorderSide(color: Colors.transparent),
+          borderSide: BorderSide(color:themeController.isDarkMode.value?AppColors.darkBorderPrimary : Colors.transparent),
         ),
         filled: true,
-        fillColor: AppColors.textFieldColor,
+        fillColor:themeController.isDarkMode.value?AppColors.darkPrimary: AppColors.textFieldColor,
       ),
     );
   }

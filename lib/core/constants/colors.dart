@@ -34,4 +34,15 @@ class AppColors {
   static const primaryBorder = Color(0xFFDFE2E6);
   static const secondaryBorder = Color(0xFFE9E9E9);
   static const filterBorder = Color(0xFFE6E9ED);
+  static const darkPrimary = Colors.black;
+  static const darkPrimaryText = Colors.white;
+  static const darkSecondaryText = Color(0xFFC2C7D0);
+  static const darkSecondary = Color(0xFF1A1718);
+  static const darkAppBar = Color(0xFFF0E6EC);
+  static const darkBorderPrimary = Color(0xFF243757);
+  static const darkAuthBG = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    tileMode: TileMode.clamp,
+    colors: [Color(0xFF251621), Color(0xFF42233A)]);
 }

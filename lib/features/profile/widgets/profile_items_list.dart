@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_items.dart';
 import 'package:renter_pay/shared/widgets/custom_text.dart';
 
@@ -9,6 +12,8 @@ class ProfileItemsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ProfileController profileController = Get.find();
+     
     return Column(
       children: [
         ProfileItems(imageHeight: 23.h, imageWidth: 22.w, image: IconsPath.profileNotification, title: 'Notifications',secondaryWidget: Container(
@@ -29,13 +34,47 @@ class ProfileItemsList extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
          children: [
            rowItem(IconsPath.profileDashboard, 'DashBoard', 23.h, 23.w),
-           rowItem(IconsPath.profileBlog, 'Blog', 23.h, 23.w),
+           rowItem(IconsPath.profileBlog, 'DashBoard', 23.h, 23.w),
          ],
-       )
+       ),
+       SizedBox(height: 8.h),
+       Obx((){
+      return  Column(
+        children: [
+          ProfileItems(imageHeight: 21.5.h, imageWidth: 21.5.w, image: IconsPath.profileWeb, title: 'Web Assets',
+           secondaryWidget: GestureDetector(
+            onTap: () {
+               profileController.isWebAsset.value= !profileController.isWebAsset.value;
+            },
+            child: Image.asset(profileController.isWebAsset.value? IconsPath.upArrow:IconsPath.downArrow,height: 7.5.h,width: 15.w,),
+           ),
+            ),
+           profileController.isWebAsset.value? ProfileItems(image: IconsPath.profileApplication,imageHeight: 17.h,imageWidth: 18.w,title: 'Application',):SizedBox(),
+           profileController.isWebAsset.value? ProfileItems(image: IconsPath.profileAgreement,imageHeight: 23.h,imageWidth: 21.w,title: 'Agreement',):SizedBox(),
+        ],
+      );
+       }
+       ),
+        SizedBox(height: 8.h,),
+        ProfileItems(image: IconsPath.profilePayment,imageHeight: 23.h,imageWidth: 21.w,title: 'Payment History',),
+        SizedBox(height: 8.h,),
+        ProfileItems(image: IconsPath.profileSetting,imageHeight: 23.h,imageWidth: 21.w,title: 'Setting',onTap: (){
+          Get.toNamed(AppRoutes.settings);
+        },),
+        SizedBox(height: 8.h,),
+        ProfileItems(image: IconsPath.profileContact,imageHeight: 23.h,imageWidth: 21.w,title: 'Contact Us',),
+        SizedBox(height: 8.h,),
+        ProfileItems(image: IconsPath.profileSupport,imageHeight: 23.h,imageWidth: 21.w,title: 'Support',),
+        SizedBox(height: 8.h,),
+        ProfileItems(image: IconsPath.profilePrivacy,imageHeight: 23.h,imageWidth: 21.w,title: 'Privacy Policy',),
+        SizedBox(height: 8.h,),
+        ProfileItems(image: IconsPath.profileTerms,imageHeight: 23.h,imageWidth: 21.w,title: 'Terms and Condition',),
+        SizedBox(height: 8.h,),
       ],
     );
   }
   Widget rowItem(String image,String title,double imageHeight,double imageWidth){
+    
     return ProfileItems(
       height: 100.h,
       width: 191.w,
@@ -53,7 +92,7 @@ class ProfileItemsList extends StatelessWidget {
               ),
               child: Center(child: Image.asset(image,height: imageHeight,width: imageWidth,),),
             ),
-          CustomText.primaryText(text: title,fontSize: 16.sp,fontWeight: FontWeight.w400),
+          CustomText.primaryText(text: title,fontSize: 16.sp,fontWeight: FontWeight.w400,),
         ],
        ),);
   }

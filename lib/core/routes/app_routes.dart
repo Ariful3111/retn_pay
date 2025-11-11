@@ -8,4 +8,10 @@ class AppRoutes {
   static const String mainHome = '/mainHome';
   static const String documentVerification = '/documentVerification';
   static const String subsPlan = '/subsPlan';
+  static const String profile = '/profile';
+  static const String rent = '/rent';
+  static const String dashboard = '/dashboard';
+  static const String chat = '/chat';
+  static const String settings = '/settings';
+
 }

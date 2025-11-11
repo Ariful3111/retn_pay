@@ -40,5 +40,8 @@ class IconsPath {
   static const String profileSupport = 'assets/icons/profile_support.png';
   static const String profileTerms = 'assets/icons/profile_terms.png';
   static const String profileWeb = 'assets/icons/profile_web.png';
+  static const String downArrow = 'assets/icons/down_arrow.png';
+  static const String upArrow = 'assets/icons/up_arrow.png';
+
 
 }

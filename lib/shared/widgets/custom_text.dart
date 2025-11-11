@@ -1,8 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/themes/theme_controller.dart';
 
 class CustomText {
   static Widget primaryText({
@@ -11,17 +13,19 @@ class CustomText {
     FontWeight? fontWeight,
     Color? color,
   }) {
+    ThemeController themeController = Get.find();
     return Text(
       text,
       style: GoogleFonts.inter(
         fontSize:fontSize?? 32.sp,
         fontWeight:fontWeight?? FontWeight.w600,
-        color:color?? AppColors.primaryDarkTextColor,
+        color:themeController.isDarkMode.value? color??AppColors.darkPrimaryText :AppColors.primaryDarkTextColor,
       ),
     );
   }
 
   static Widget secondaryText({
+    
     required String text,
     double? fontSize,
     FontWeight? fontWeight,
@@ -31,12 +35,13 @@ class CustomText {
     double ? decorationThickness,
     TextDecorationStyle ? decorationStyle,
   }) {
+    ThemeController themeController = Get.find();
     return Text(
       text,
       style: GoogleFonts.inter(
         fontSize:fontSize?? 16.sp,
         fontWeight:fontWeight?? FontWeight.w500,
-        color:color?? AppColors.secondaryTextColor,
+        color:themeController.isDarkMode.value? color??AppColors.darkSecondaryText : AppColors.secondaryTextColor,
         decoration: textDecoration,
         decorationColor: decorationColor,
         decorationThickness: decorationThickness,
@@ -63,11 +68,12 @@ class CustomText {
     TextDecoration ? spanDecoration,
     TextDecoration ? textDecoration,
   }) {
+    ThemeController themeController = Get.find();
     return RichText(
       text: TextSpan(
         text: title,
         style: GoogleFonts.inter(
-          color: color ?? AppColors.primaryDarkTextColor,
+          color:themeController.isDarkMode.value? color ??AppColors.darkPrimaryText :AppColors.primaryDarkTextColor,
           fontSize: fontSize ?? 14.sp,
           fontWeight: fontWeight ?? FontWeight.w500,
           decoration: textDecoration,

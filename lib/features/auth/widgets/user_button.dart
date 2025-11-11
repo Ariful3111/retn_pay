@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_secondary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text.dart';
@@ -13,6 +15,7 @@ class UserButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeController themeController = Get.find();
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -20,15 +23,15 @@ class UserButton extends StatelessWidget {
           height: 52.h,
           width: 156.w,
           boxDecoration: BoxDecoration(
-            color: AppColors.whiteColor,
+            color:themeController.isDarkMode.value? AppColors.darkPrimary:AppColors.whiteColor,
             borderRadius: BorderRadius.circular(8.r),
-            border: BoxBorder.all(color: Color(0xFFE2E4E9), width: 1.sp),
+            border: BoxBorder.all(color:themeController.isDarkMode.value?Color(0xFF323335) : Color(0xFFE2E4E9), width: 1.sp),
             boxShadow: [
               BoxShadow(
                 offset: Offset(0, 1),
                 spreadRadius: 0,
                 blurRadius: 2.r,
-                color: Color(0xFF525866).withValues(alpha: 0.06.sp),
+                color:Color(0xFF525866).withValues(alpha: 0.06.sp),
               ),
             ],
           ),
@@ -37,9 +40,9 @@ class UserButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(IconsPath.userBack, width: 20.w, height: 20.h),
+              Image.asset(IconsPath.userBack, width: 20.w, height: 20.h,color:themeController.isDarkMode.value? AppColors.darkSecondaryText:Color(0xFF525866)),
               SizedBox(width: 8.w),
-              CustomText.secondaryText(text: "back", color: Color(0xFF525866)),
+              CustomText.secondaryText(text: "back", color:themeController.isDarkMode.value? AppColors.darkSecondaryText:Color(0xFF525866)),
             ],
           ),
         ),
@@ -51,13 +54,23 @@ class UserButton extends StatelessWidget {
             
             borderRadius: BorderRadius.circular(10.r),
             boxShadow: [
-              BoxShadow(
+             themeController.isDarkMode.value? BoxShadow(
+                offset: Offset(0.sp, 0.sp),
+                blurRadius: 0.r,
+                spreadRadius: 1.r,
+                color: AppColors.primaryColorDark,
+              ):BoxShadow(
                 offset: Offset(0.sp, 0.sp),
                 blurRadius: 0.r,
                 spreadRadius: 1.r,
                 color: Color(0xFF6E3FF3),
               ),
-              BoxShadow(
+              themeController.isDarkMode.value?BoxShadow(
+                offset: Offset(0.sp, 1.sp),
+                blurRadius: 2.r,
+                spreadRadius: 0.r,
+                color: AppColors.primaryColorDark.withValues(alpha: 0.48),
+              ):BoxShadow(
                 offset: Offset(0.sp, 1.sp),
                 blurRadius: 2.r,
                 spreadRadius: 0.r,

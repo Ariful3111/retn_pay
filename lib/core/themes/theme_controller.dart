@@ -10,12 +10,21 @@ class ThemeController extends GetxController{
 
   @override
   void onInit() {
-    isDarkMode.value = _box.read(_key)??false;
+    isDarkMode.value = loadThemeFromStorage();
     super.onInit();
   }
+  void saveThemeToStorage() {
+    _box.write(_key, isDarkMode.value);
+  }
 
-  void toggleTheme(){
+  
+  bool loadThemeFromStorage() {
+    return _box.read(_key) ?? false;
+  }
+
+  void changeTheme(){
     isDarkMode.value=!isDarkMode.value;
+    saveThemeToStorage();
   }
   ThemeData get currentTheme => isDarkMode.value?AppTheme.darkTheme:AppTheme.lightTheme;
 }

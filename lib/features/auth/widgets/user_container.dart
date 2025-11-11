@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text.dart';
 
@@ -21,6 +22,7 @@ class UserContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UserRoleController userRoleController = Get.find();
+    ThemeController themeController = Get.find();
     return Obx(() {
       bool selectedIndex = userRoleController.selectedIndex.value == index;
       return GestureDetector(
@@ -33,7 +35,7 @@ class UserContainer extends StatelessWidget {
           height: 136.72.h,
           width: 170.9.w,
           decoration: BoxDecoration(
-            color: AppColors.whiteColor,
+            color:themeController.isDarkMode.value?AppColors.primaryTextColor: AppColors.whiteColor,
             borderRadius: BorderRadius.circular(8.2.r),
             border: selectedIndex
                 ? Border.all(width: 1.7.w, color: AppColors.borderColor)
@@ -56,14 +58,14 @@ class UserContainer extends StatelessWidget {
               CustomText.primaryText(
                 text: title,
                 fontSize: 14.sp,
-                color: Color(0xFF0A0D14),
+                color:themeController.isDarkMode.value?AppColors.darkPrimaryText: Color(0xFF0A0D14),
               ),
               SizedBox(height: 8.89.h),
               CustomText.secondaryText(
                 text: description,
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: Color(0xFF525866),
+                color:themeController.isDarkMode.value?AppColors.darkSecondaryText : Color(0xFF525866),
               ),
             ],
           ),
