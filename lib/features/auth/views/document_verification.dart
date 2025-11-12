@@ -7,7 +7,9 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/core/utils/image_picker.dart';
+import 'package:renter_pay/core/utils/snackbar.dart';
 import 'package:renter_pay/features/auth/controllers/document_verification_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_primary_button.dart';
@@ -22,9 +24,14 @@ class DocumentVerification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DocumentVerificationController documentVerificationController = Get.find();
+    ThemeController themeController = Get.find();
 
     return CustomContainer(
-      gradient: AppColors.userBackground,
+      gradient: themeController.isDarkMode.value
+          ? LinearGradient(
+              colors: [AppColors.darkPrimary, AppColors.darkPrimary],
+            )
+          : AppColors.userBackground,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 32.w),
         child: Column(
@@ -37,12 +44,13 @@ class DocumentVerification extends StatelessWidget {
             CustomText.primaryText(
               text:
                   "Upload a government-issued ID (such as National ID,\nDriving License, or Passport) for identity verification.",
-              fontSize: 14.sp,
+              fontSize: 13.5.sp,
               fontWeight: FontWeight.w500,
             ),
             SizedBox(height: 20.h),
             Obx(() {
-              final frontImage = documentVerificationController.frontImage.value;
+              final frontImage =
+                  documentVerificationController.frontImage.value;
               return frontImage != null
                   ? DottedBorder(
                       options: RoundedRectDottedBorderOptions(
@@ -56,21 +64,30 @@ class DocumentVerification extends StatelessWidget {
                         width: 350.w,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.sp),
-                          image: DecorationImage(image: FileImage(File(frontImage.path)),fit: BoxFit.fill),
+                          image: DecorationImage(
+                            image: FileImage(File(frontImage.path)),
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
                     )
                   : DocumentUpload(
                       titleText: 'Front Side',
                       onTap: () {
-                        UploadImage.pickDocument(type: 'front', frontImage: documentVerificationController.frontImage, backImage: documentVerificationController.backImage, picker: documentVerificationController.picker);
+                        UploadImage.pickDocument(
+                          type: 'front',
+                          frontImage: documentVerificationController.frontImage,
+                          backImage: documentVerificationController.backImage,
+                          picker: documentVerificationController.picker,
+                        );
                       },
                     );
             }),
             SizedBox(height: 20.h),
             Obx(() {
               final backImage = documentVerificationController.backImage.value;
-              return backImage !=null? DottedBorder(
+              return backImage != null
+                  ? DottedBorder(
                       options: RoundedRectDottedBorderOptions(
                         radius: Radius.circular(20.sp),
                         borderPadding: EdgeInsets.all(1.r),
@@ -82,15 +99,24 @@ class DocumentVerification extends StatelessWidget {
                         width: 350.w,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.sp),
-                          image: DecorationImage(image: FileImage(File(backImage.path)),fit: BoxFit.fill),
+                          image: DecorationImage(
+                            image: FileImage(File(backImage.path)),
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
-                    ) :DocumentUpload(
-                titleText: 'Back Side (Optional)',
-                onTap: () {
-                  UploadImage.pickDocument(type: 'back', frontImage: documentVerificationController.frontImage, backImage: documentVerificationController.backImage, picker: documentVerificationController.picker);
-                },
-              );
+                    )
+                  : DocumentUpload(
+                      titleText: 'Back Side (Optional)',
+                      onTap: () {
+                        UploadImage.pickDocument(
+                          type: 'back',
+                          frontImage: documentVerificationController.frontImage,
+                          backImage: documentVerificationController.backImage,
+                          picker: documentVerificationController.picker,
+                        );
+                      },
+                    );
             }),
             SizedBox(height: 24.h),
             Row(
@@ -111,19 +137,37 @@ class DocumentVerification extends StatelessWidget {
                   height: 52.h,
                   width: 231.w,
                   onPressed: () {
-                    showDialog(
+                    if (documentVerificationController.frontImage.value == null) {
+                      errorSnack(message: 'Front Document Is Required');
+                      showDialog(
                       context: context,
                       builder: (context) {
                         return SuccessDialog(
                           onTap: () {
-                            Get.toNamed(AppRoutes.subsPlan);
+                            Get.toNamed(AppRoutes.mainHome);
                           },
                         );
                       },
                     );
+                    } else {
+                      showDialog(
+                      context: context,
+                      builder: (context) {
+                        return SuccessDialog(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.mainHome);
+                          },
+                        );
+                      },
+                    );
+                    }
+                    
                   },
                   backgroundColor: LinearGradient(
-                    colors: [AppColors.primaryColorDark, AppColors.primaryColorDark],
+                    colors: [
+                      AppColors.primaryColorDark,
+                      AppColors.primaryColorDark,
+                    ],
                   ),
                   text: "Submit for Verification",
                 ),

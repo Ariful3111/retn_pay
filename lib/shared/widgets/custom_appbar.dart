@@ -28,9 +28,9 @@ class CustomAppbar extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: onTap,
-              child: Image.asset(image?? IconsPath.profileDrawer, height:imageHeight?? 12.h,width:imageWidth?? 18.w,color: themeController.isDarkMode.value?imageColor??AppColors.darkAppBar:AppColors.primaryTextColor,)),
+              child: Image.asset(image?? IconsPath.profileDrawer, height:imageHeight?? 12.h,width:imageWidth?? 18.w,color: themeController.isDarkMode.value?imageColor??AppColors.darkAppBar:imageColor??AppColors.primaryTextColor,)),
             SizedBox(width: 8.w,),
-            CustomText.primaryText(text: title,fontSize:fontSize?? 20.sp,fontWeight:fontWeight?? FontWeight.w500,color:themeController.isDarkMode.value? textColor??AppColors.darkAppBar :AppColors.primaryTextColor),
+            CustomText.primaryText(text: title,fontSize:fontSize?? 20.sp,fontWeight:fontWeight?? FontWeight.w500,color:themeController.isDarkMode.value? textColor??AppColors.darkAppBar :textColor??AppColors.primaryTextColor),
             Spacer(),
             ?secondaryWidget,
           ],

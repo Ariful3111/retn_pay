@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text.dart';
@@ -29,6 +28,7 @@ class CustomTextField extends StatelessWidget {
   final bool? readOnly;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
+  final AutovalidateMode? validation;
   const CustomTextField({
     super.key,
     this.hintText,
@@ -52,7 +52,7 @@ class CustomTextField extends StatelessWidget {
     this.hintTextWidget,
     this.labelTextWidget,
     this.padding,
-    this.margin,
+    this.margin, this.validation,
   });
 
   @override
@@ -66,6 +66,7 @@ class CustomTextField extends StatelessWidget {
       validator: validator,
       onChanged: onChanged,
       readOnly: readOnly ?? false,
+      autovalidateMode: validation,
       style: TextStyle(color: themeController.isDarkMode.value?AppColors.darkPrimaryText:AppColors.primaryDarkTextColor),
       decoration: InputDecoration(
 

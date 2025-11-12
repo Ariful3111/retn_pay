@@ -82,7 +82,7 @@ class UserButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CustomText.primaryText(text: "Continue",color: AppColors.whiteColor,fontSize: 16.sp,fontWeight: FontWeight.w500),
+              CustomText.primaryText(text: "Continue",color:themeController.isDarkMode.value? AppColors.whiteColor:AppColors.whiteColor,fontSize: 16.sp,fontWeight: FontWeight.w500),
               SizedBox(width: 4.w,),
               Image.asset(IconsPath.forward,width: 32.w,height: 18.h,)
             ],

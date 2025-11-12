@@ -19,7 +19,7 @@ class CustomText {
       style: GoogleFonts.inter(
         fontSize:fontSize?? 32.sp,
         fontWeight:fontWeight?? FontWeight.w600,
-        color:themeController.isDarkMode.value? color??AppColors.darkPrimaryText :AppColors.primaryDarkTextColor,
+        color:themeController.isDarkMode.value? color??AppColors.darkPrimaryText :color??AppColors.primaryDarkTextColor,
       ),
     );
   }
@@ -41,7 +41,7 @@ class CustomText {
       style: GoogleFonts.inter(
         fontSize:fontSize?? 16.sp,
         fontWeight:fontWeight?? FontWeight.w500,
-        color:themeController.isDarkMode.value? color??AppColors.darkSecondaryText : AppColors.secondaryTextColor,
+        color:themeController.isDarkMode.value? color??AppColors.darkSecondaryText : color??AppColors.secondaryTextColor,
         decoration: textDecoration,
         decorationColor: decorationColor,
         decorationThickness: decorationThickness,
@@ -73,7 +73,7 @@ class CustomText {
       text: TextSpan(
         text: title,
         style: GoogleFonts.inter(
-          color:themeController.isDarkMode.value? color ??AppColors.darkPrimaryText :AppColors.primaryDarkTextColor,
+          color:themeController.isDarkMode.value? color ??AppColors.darkPrimaryText :color??AppColors.primaryDarkTextColor,
           fontSize: fontSize ?? 14.sp,
           fontWeight: fontWeight ?? FontWeight.w500,
           decoration: textDecoration,
@@ -85,7 +85,7 @@ class CustomText {
             style:
                 textStyle ??
                 GoogleFonts.inter(
-                  color: spanColor ?? Color(0xFF59344F),
+                  color:themeController.isDarkMode.value? spanColor ?? spanColor??Color(0xFFBB8CA9):Color(0xFF59344F),
                   fontSize: spanFontSize ?? 14.sp,
                   fontWeight: spanFontWeight ?? FontWeight.w500,
                   decoration: spanDecoration,

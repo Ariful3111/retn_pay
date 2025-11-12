@@ -19,7 +19,6 @@ class LoginField extends StatelessWidget {
     LoginController loginController = Get.find();
     return Form(
       key: fromKey,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -44,16 +43,17 @@ class LoginField extends StatelessWidget {
             hintText: "Enter You're Email",
             controller: loginController.emailController,
             validator: loginController.emailValidation,
+            validation: AutovalidateMode.onUserInteraction,
           ),
           SizedBox(height: 20.h),
           Obx(() {
-
             return CustomTextField(
               labelText: "Password",
               hintText: "Enter You're Password",
               controller: loginController.passwordController,
               validator: loginController.passwordValidation,
               obscureText: loginController.isPasswordVisible.value,
+              validation: AutovalidateMode.onUserInteraction,
               suffixIcon: GestureDetector(
                 onTap: () {
                   loginController.togglePasswordVisibility();

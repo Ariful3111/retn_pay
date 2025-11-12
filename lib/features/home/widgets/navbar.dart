@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
 
 class Navbar extends StatelessWidget {
@@ -11,13 +12,15 @@ class Navbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MainHomeController mainHomeController = Get.find();
-    return Container(
+    ThemeController themeController = Get.find();
+    return Obx((){
+      return Container(
         margin: EdgeInsets.only(right: 8.w, left: 8.w, bottom: 8.h),
         height: 82.h,
         width: MediaQuery.widthOf(context),
         decoration: BoxDecoration(
-          color: AppColors.whiteColor.withValues(alpha: 0.80),
-          border: Border.all(width: 1.sp, color: Color(0xFFEBEDF0)),
+          color:themeController.isDarkMode.value?AppColors.darkPrimary.withValues(alpha: 0.80) :AppColors.whiteColor.withValues(alpha: 0.80),
+          border: Border.all(width: 1.sp, color:themeController.isDarkMode.value? AppColors.darkBorderPrimary:Color(0xFFEBEDF0)),
           borderRadius: BorderRadius.circular(12.sp),
           
         ),
@@ -39,18 +42,23 @@ class Navbar extends StatelessWidget {
                   children: [
                 Image.asset(
                 navIcon,
-                color: itemCount ? AppColors.primaryColorDark : AppColors.secondaryTextColor,
+                color: itemCount ? AppColors.primaryColorDark :themeController.isDarkMode.value? AppColors.darkPrimaryText:AppColors.secondaryTextColor,
                 height: 24.h,
                 width: 24.w,
               ),
                     SizedBox(height: 10.h),
                     Text(
                       navLabel,
-                      style: GoogleFonts.poppins(
+                      style:itemCount?GoogleFonts.inter(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w400,
-                        color: itemCount
-                            ? AppColors.primaryColorDark
+                        color: AppColors.primaryColorDark
+                            
+                      ) :GoogleFonts.poppins(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w400,
+                        color: themeController.isDarkMode.value
+                            ? AppColors.darkPrimaryText
                             : AppColors.secondaryTextColor,
                       ),
                     ),
@@ -61,5 +69,6 @@ class Navbar extends StatelessWidget {
           }),
         ),
       );
+    });
   }
 }

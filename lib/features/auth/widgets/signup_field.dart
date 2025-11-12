@@ -14,7 +14,7 @@ class SignupField extends StatelessWidget {
     SignupController signupController = Get.find();
     return Form(
       key: fromKey,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
+      
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -23,6 +23,7 @@ class SignupField extends StatelessWidget {
             labelText: "Name",
             controller: signupController.nameController,
             validator: signupController.nameValidation,
+            validation: AutovalidateMode.onUserInteraction,
           ),
           SizedBox(height: 14.h),
           CustomTextField(
@@ -30,6 +31,7 @@ class SignupField extends StatelessWidget {
             labelText: "Email",
             controller: signupController.emailController,
             validator: signupController.emailValidation,
+            validation: AutovalidateMode.onUserInteraction,
           ),
           SizedBox(height: 14.h),
           CustomTextField(
@@ -38,6 +40,7 @@ class SignupField extends StatelessWidget {
             controller: signupController.phoneController,
             validator: signupController.phoneValidation,
             keyboardType: TextInputType.number,
+            validation: AutovalidateMode.onUserInteraction,
           ),
           SizedBox(height: 14.h),
           Obx(() {
@@ -47,6 +50,7 @@ class SignupField extends StatelessWidget {
               controller: signupController.passwordController,
               validator: signupController.passwordValidation,
               obscureText: signupController.isPasswordVisible.value,
+              validation: AutovalidateMode.onUserInteraction,
               suffixIcon: GestureDetector(
                 onTap: () {
                   signupController.togglePasswordVisibility();
@@ -72,6 +76,7 @@ class SignupField extends StatelessWidget {
               controller: signupController.confirmPassController,
               validator: signupController.confirmPasswordValidation,
               obscureText: signupController.isConfirmPasswordVisible.value,
+              validation: AutovalidateMode.onUserInteraction,
               suffixIcon: GestureDetector(
                 onTap: () {
                   signupController.toggleConfirmPasswordVisibility();

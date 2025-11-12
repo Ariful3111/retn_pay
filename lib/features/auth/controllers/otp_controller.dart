@@ -30,11 +30,15 @@ class OtpController extends GetxController {
     });
     super.onInit();
   }
-
+final RegExp otp = RegExp(r'^[0-9]+$');
   String? emailOTPValidation(String? value) {
     final text = (value ?? "").trim();
     if (text.isEmpty) {
       return "Email OTP Is Required";
+    }
+
+    if(!otp.hasMatch(text.trim())){
+      return 'Enter A Valid OTP';
     }
     return null;
   }
@@ -43,6 +47,9 @@ class OtpController extends GetxController {
     final text = (value ?? "").trim();
     if (text.isEmpty) {
       return "Email OTP Is Required";
+    }
+    if(!otp.hasMatch(text.trim())){
+      return 'Enter A Valid OTP';
     }
     return null;
   }
@@ -62,6 +69,9 @@ class OtpController extends GetxController {
       }
       else if(index == 3){
         Get.toNamed(AppRoutes.documentVerification);
+      }
+      else if(index==2){
+        Get.toNamed(AppRoutes.mainHome);
       }
     } else {
       errorSnack(message: "Enter Valid OTP");

@@ -18,7 +18,6 @@ class OtpView extends StatelessWidget {
     final fromKey = GlobalKey<FormState>();
     return Form(
       key: fromKey,
-      autovalidateMode: AutovalidateMode.onUserInteraction,
       child: CustomContainer(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -41,6 +40,7 @@ class OtpView extends StatelessWidget {
                 controller: otpController.emailOTPController,
                 validator: otpController.emailOTPValidation,
                 keyboardType: TextInputType.number,
+                validation: AutovalidateMode.onUserInteraction,
               ),
               SizedBox(height: 21.h),
               CustomTextField(
@@ -49,6 +49,7 @@ class OtpView extends StatelessWidget {
                 controller: otpController.numberOTPController,
                 validator: otpController.numberOTPValidation,
                 keyboardType: TextInputType.number,
+                validation: AutovalidateMode.onUserInteraction,
               ),
               SizedBox(height: 21.h),
               CustomPrimaryButton(

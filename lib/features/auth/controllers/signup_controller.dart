@@ -112,6 +112,10 @@ class SignupController extends GetxController {
     if (text.length < 3) {
       return "Name must be at least 3 characters";
     }
+    final RegExp name =RegExp (r"^[A-za-z]+(?: [A-za-z]*)?$");
+    if(!name.hasMatch(text)){
+      return 'You can\'t use number or special character';
+    }
     return null;
   }
 
