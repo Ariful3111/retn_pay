@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
@@ -11,17 +13,35 @@ import 'package:renter_pay/features/profile/views/profile_view.dart';
 import 'package:renter_pay/features/rent/views/rent_view.dart';
 
 class MainHomeController extends GetxController {
+  final ScrollController scrollController = ScrollController();
   RxInt selectIndex = 0.obs;
   RxBool isVisible = true.obs;
-  
-   double lastOffset = 0.0;
-   double minOffset = 10.0;
-   Timer? timer;
+  Timer? timer;
+
   RxList pageList = [HomeView(),RentView(),DashboardView(),ChatView(),ProfileView()].obs;
   void changeIndex(int index){
     selectIndex.value = index;
-    cancelTimer();
+    
   }
+  void listen(){
+    final direction = scrollController.position.userScrollDirection;
+    final pixel = scrollController.position.pixels;
+    timer?.cancel();
+    if(direction == ScrollDirection.forward){
+      if (!isVisible.value) isVisible.value = true;
+    }else if(direction == ScrollDirection.reverse){
+      if (isVisible.value) isVisible.value = false;
+    }
+    timer = Timer(const Duration(milliseconds: 500), () {
+      if (scrollController.hasClients) {
+        final offset = scrollController.offset;
+        if (offset > 50 && isVisible.value) {
+          isVisible.value = false;
+        }
+      }
+    });
+  }
+
   final List<Map<String,dynamic>> navItems = [
     {'icon':IconsPath.home,'label':'Home'},
     {'icon':IconsPath.rent,'label':'Rent'},
@@ -30,43 +50,22 @@ class MainHomeController extends GetxController {
     {'icon':ImagesPath.profile,'label':'Profile'},
   ];
 
-  void handleScroll(ScrollNotification notification){
-    if(notification.metrics.axis !=Axis.vertical) return;
-    final double current = notification.metrics.pixels;
-    final double minScroll = notification.metrics.minScrollExtent;
-    if(current<=minScroll+10){
-      if(!isVisible.value)isVisible.value=true;
-      cancelTimer();
-      return;
-    }
-    if(current-lastOffset>minOffset){
-      hideNav();
-    }else if(lastOffset-current>minOffset){
-      if(!isVisible.value)isVisible.value=true;
-      restoreTimer();
-    }
-    lastOffset = current;
-  }
- void hideNav(){
-    if(isVisible.value)isVisible.value=false;
-        cancelTimer();
-  }
- void restoreTimer(){
-    cancelTimer();
-    timer = Timer(Duration(milliseconds: 500), (){
-      if(lastOffset>50){
-        hideNav();
-      }
-    });
-  }
- void cancelTimer(){
-    timer?.cancel();
-    timer=null;
-  }
 
   @override
+  void onInit() {
+    super.onInit();
+    
+    scrollController.addListener(listen);
+  }
+@override
   void onClose() {
-    cancelTimer();
+    timer!.cancel();
     super.onClose();
+  }
+  @override
+  void dispose() {
+     scrollController.dispose();
+     scrollController.removeListener(listen);
+    super.dispose();
   }
 }

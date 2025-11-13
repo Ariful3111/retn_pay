@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/features/rent/widgets/price_range.dart';
+import 'package:renter_pay/features/rent/widgets/reset_filter.dart';
 
 class RentFilter extends StatelessWidget {
   const RentFilter({super.key});
@@ -16,41 +16,9 @@ class RentFilter extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: 54.h,
-            width: MediaQuery.widthOf(context),
-            decoration: BoxDecoration(
-              color: AppColors.whiteColor,
-              border: Border.all(width: 0.77,color: Color(0xFFE6E9ED)),
-              borderRadius: BorderRadius.circular(9.sp)
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(width: 18.w,),
-                CustomText.primaryText(text: 'Property Preference',fontSize: 12.sp,fontWeight: FontWeight.w500),
-                SizedBox(width: 24.w,),
-                GestureDetector(
-                  onTap: () {
-                    
-                  },
-                  child: Container(
-                    height: 40.h,
-                    width: 95.w,
-                    color: Color(0xFFF4F6F8),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        CustomText.secondaryText(text: 'Reset Filter',fontSize: 11.sp,color: Color(0xFF434953)),
-                        Image.asset(IconsPath.reset,height: 18.h,width: 18.w,),
-                      ],
-                    ),
-                  ),     
-                ),
-              ],
-            ),
-          ),
+          ResetFilter(),
+          SizedBox(height: 8.32,),
+          PriceRange(),
         ],
       ),
     );

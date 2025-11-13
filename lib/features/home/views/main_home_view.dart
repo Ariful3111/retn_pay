@@ -17,27 +17,23 @@ class MainHomeView extends StatelessWidget {
         backgroundColor: themeController.isDarkMode.value
             ? AppColors.darkPrimary
             : AppColors.whiteColor,
-        body: NotificationListener<ScrollNotification>(
+        body: NotificationListener(
           onNotification: (notification) {
-            mainHomeController.handleScroll(notification);
+            mainHomeController.listen();
             return false;
           },
           child:
               mainHomeController.pageList[mainHomeController.selectIndex.value],
         ),
-        bottomNavigationBar: ClipRect(
-          child: AnimatedSlide(
-            offset: mainHomeController.isVisible.value
-                ? Offset.zero
-                : const Offset(0, 1),
+        bottomNavigationBar: AnimatedContainer(
+          height: mainHomeController.isVisible.value?82.h:0,
+          duration: const Duration(milliseconds: 500),
+          curve: Curves.easeInOut,
+          child: AnimatedOpacity(
+            opacity: mainHomeController.isVisible.value ? 1 : 0,
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeInOut,
-            child: AnimatedOpacity(
-              opacity: mainHomeController.isVisible.value ? 1 : 0,
-              duration: const Duration(milliseconds: 500),
-              curve: Curves.easeInOut,
-              child:mainHomeController.isVisible.value? const Navbar():SizedBox(),
-            ),
+            child: Wrap(children:[ Navbar()]),
           ),
         ),
       );

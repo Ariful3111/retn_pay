@@ -60,7 +60,7 @@ class SignupController extends GetxController {
     if (text.isEmpty) {
       return "Email is required";
     }
-    final RegExp emailReg = RegExp(r'^[\w.+-]+@[\w-]+\.[\w.-]+$');
+    final RegExp emailReg = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     if (emailReg.hasMatch(text)) {
       return null;
     }

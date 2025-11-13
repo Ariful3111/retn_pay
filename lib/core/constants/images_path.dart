@@ -1,6 +1,5 @@
 class ImagesPath {
   static const String appLogo = 'assets/images/app_logo.png';
- 
   static const String successBackground = 'assets/images/success_board.png';
   static const String onboardingScreen2 = 'assets/images/onboarding_screen2.png';
   static const String onboardingScreen3 = 'assets/images/onboarding_screen3.png';
@@ -23,4 +22,15 @@ class ImagesPath {
   static const String onboarding16 = 'assets/images/onboarding1.16.png';
   static const String profile = 'assets/images/profile.png';
   static const String navProfile = 'assets/images/nav_profile.png';
+  static const String homeAppbar = 'assets/images/home_appbar.png';
+  static const String allCategory = 'assets/images/all_category.png';
+  static const String apartmentCategory = 'assets/images/apartment_category.png';
+  static const String apartment = 'assets/images/apartment.png';
+  static const String houseCategory = 'assets/images/house_category.png';
+  static const String house = 'assets/images/house.png';
+  static const String homePopular = 'assets/images/home_popular.png';
+  static const String homeRecommendation = 'assets/images/home_recommendation.png';
+  static const String studio = 'assets/images/studio.png';
+  static const String vilaCategory = 'assets/images/vila_category.png';
+  static const String vila = 'assets/images/vila.png';
 }

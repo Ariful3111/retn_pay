@@ -19,7 +19,9 @@ import 'package:renter_pay/features/chat/bindings/chat_bindings.dart';
 import 'package:renter_pay/features/chat/views/chat_view.dart';
 import 'package:renter_pay/features/dashboard/bindings/dashboard_bindings.dart';
 import 'package:renter_pay/features/dashboard/views/dashboard_view.dart';
+import 'package:renter_pay/features/home/bindings/home_bindings.dart';
 import 'package:renter_pay/features/home/bindings/main_home_bindings.dart';
+import 'package:renter_pay/features/home/views/home_view.dart';
 import 'package:renter_pay/features/home/views/main_home_view.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan.dart';
 import 'package:renter_pay/features/profile/bindings/profile_bindings.dart';
@@ -40,7 +42,8 @@ final List<GetPage> appRoutes = [
   ),
   GetPage(name: AppRoutes.signupView, page: () => SignupView(), bindings: [SignupViewBindings()]),
   GetPage(name: AppRoutes.otpView, page: () => OtpView(), bindings: [OtpBindings()]),
-  GetPage(name: AppRoutes.mainHome, page: () => MainHomeView(), bindings: [MainHomeBindings(),RentBindings(),DashboardBindings(),ChatBindings(),ProfileBindings(),UserRoleBinding()]),
+  GetPage(name: AppRoutes.mainHome, page: () => MainHomeView(), bindings: [MainHomeBindings(),HomeBindings(),RentBindings(),DashboardBindings(),ChatBindings(),ProfileBindings(),UserRoleBinding()]),
+  GetPage(name: AppRoutes.home, page: ()=>HomeView(),bindings: [HomeBindings()]),
   GetPage(name: AppRoutes.documentVerification, page: ()=>DocumentVerification(),bindings: [DocumentVerificationBindings(),]),
   GetPage(name: AppRoutes.subsPlan, page: ()=>SubscriptionPlan()),
   GetPage(name: AppRoutes.profile, page: ()=>ProfileView(),

@@ -5,6 +5,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
+import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_info.dart';
 import 'package:renter_pay/features/profile/widgets/profile_items_list.dart';
@@ -20,11 +21,13 @@ class ProfileView extends StatelessWidget {
     ProfileController profileController = Get.find();
     ThemeController themeController = Get.find();
     UserRoleController userRoleController = Get.find();
+    MainHomeController mainHomeController = Get.find();
     return Obx((){
       return CustomContainer(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       gradient:themeController.isDarkMode.value? LinearGradient(colors: [AppColors.darkPrimary,AppColors.darkPrimary]):AppColors.userBackground.withOpacity(0.5),
       child: ListView(
+        controller: mainHomeController.scrollController,
       children: [
         CustomAppbar(
           title:  profileController.profileList[userRoleController.selectedIndex.value],

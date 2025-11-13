@@ -69,7 +69,6 @@ class CustomTextField extends StatelessWidget {
       autovalidateMode: validation,
       style: TextStyle(color: themeController.isDarkMode.value?AppColors.darkPrimaryText:AppColors.primaryDarkTextColor),
       decoration: InputDecoration(
-
         label:
             labelTextWidget ??
             CustomText.secondaryText(

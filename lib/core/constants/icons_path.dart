@@ -47,6 +47,8 @@ class IconsPath {
   static const String profileReport = 'assets/icons/profile_report.png';
   static const String profileTenant = 'assets/icons/profile_tenant.png';
   static const String profileService = 'assets/icons/profile_service.png';
-
-
+  static const String homeNotification ='assets/icons/home_notification.png';
+  static const String homeFilter ='assets/icons/home_filter.png';
+  static const String homeSearch ='assets/icons/home_search.png';
+  static const String homeMic ='assets/icons/home_mic.png';
 }
