@@ -33,4 +33,6 @@ class ImagesPath {
   static const String studio = 'assets/images/studio.png';
   static const String vilaCategory = 'assets/images/vila_category.png';
   static const String vila = 'assets/images/vila.png';
+  static const String officeCategory = 'assets/images/office_category.png';
+  static const String studioCategory = 'assets/images/studio_category.png';
 }

@@ -29,6 +29,7 @@ class CustomTextField extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
   final AutovalidateMode? validation;
+  final bool ?isFilled;
   const CustomTextField({
     super.key,
     this.hintText,
@@ -52,7 +53,7 @@ class CustomTextField extends StatelessWidget {
     this.hintTextWidget,
     this.labelTextWidget,
     this.padding,
-    this.margin, this.validation,
+    this.margin, this.validation,  this.isFilled,
   });
 
   @override
@@ -87,7 +88,8 @@ class CustomTextField extends StatelessWidget {
         
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
-        
+        suffixIconConstraints: BoxConstraints(minHeight: 0,minWidth: 0),
+        prefixIconConstraints: BoxConstraints(minHeight: 0,minWidth: 0),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.r),
           borderSide: BorderSide(color:themeController.isDarkMode.value?AppColors.darkBorderPrimary :Colors.transparent),
@@ -100,7 +102,7 @@ class CustomTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(7.r),
           borderSide: BorderSide(color:themeController.isDarkMode.value?AppColors.darkBorderPrimary : Colors.transparent),
         ),
-        filled: true,
+        filled:isFilled?? true,
         fillColor:themeController.isDarkMode.value?AppColors.darkPrimary: AppColors.textFieldColor,
       ),
     );

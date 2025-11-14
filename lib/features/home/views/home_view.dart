@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
+import 'package:renter_pay/features/home/widgets/category_list.dart';
 import 'package:renter_pay/features/home/widgets/home_appbar.dart';
 import 'package:renter_pay/features/home/widgets/home_search.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
@@ -30,6 +31,8 @@ class HomeView extends StatelessWidget {
             HomeAppbar(),
             SizedBox(height: 16.h,),
             HomeSearch(),
+             SizedBox(height: 20.h,),
+             CategoryList(),
           ],
         ),
       );

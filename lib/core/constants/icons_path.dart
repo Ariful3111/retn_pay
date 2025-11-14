@@ -51,4 +51,5 @@ class IconsPath {
   static const String homeFilter ='assets/icons/home_filter.png';
   static const String homeSearch ='assets/icons/home_search.png';
   static const String homeMic ='assets/icons/home_mic.png';
+  
 }

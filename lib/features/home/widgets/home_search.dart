@@ -13,10 +13,12 @@ class HomeSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     HomeController homeController = Get.find();
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
           height: 48.h,
           width: 326.w,
+          padding: EdgeInsets.only(left: 16.w,right: 14.50,top: 12.h,bottom: 12.h),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12.sp),
             border: Border.all(width: 1.sp,color: AppColors.secondaryBorder),
@@ -24,19 +26,46 @@ class HomeSearch extends StatelessWidget {
             boxShadow: [
               BoxShadow(
                 offset: Offset(0, 4),
-                blurRadius: 30.sp,
+                blurRadius: 25.sp,
+                spreadRadius: 0,
                 color: AppColors.darkPrimary.withValues(alpha: 0.10),
               ),
             ]
           ),
-          child: CustomTextField(
-            
+          child: CustomTextField( 
             controller: homeController.searchController,
             prefixIcon:  Image.asset(IconsPath.homeSearch,height: 24.h,width: 24.w,),
-            suffixIcon: Image.asset(IconsPath.homeMic,height: 18.h,width: 23.w,),
+            suffixIcon: Image.asset(IconsPath.homeMic,height: 24.h,width: 24.w,),
             labelText: 'Search...',
+            isFilled: false,
           ),
         ),
+        GestureDetector(
+          onTap: () {
+            
+          },
+          child: Container(
+            height: 48.h,
+            width: 48.w,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12.sp),
+              border: Border.all(width: 1.sp,color: AppColors.secondaryBorder),
+              gradient: AppColors.primaryColor,
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(0, 4),
+                  blurRadius: 20.sp,
+                  spreadRadius: 0,
+                  color: AppColors.darkPrimary.withValues(alpha: 0.10),
+                ),
+              ]
+            ),
+            child: Center(
+              child: Image.asset(IconsPath.homeFilter,height: 18.h,width: 18.w,),
+            ),
+          ),
+        ),
+        
       ],
     );
   }
