@@ -72,6 +72,7 @@ class LoginController extends GetxController {
       if(index==2){
         Get.toNamed(AppRoutes.mainHome);
       }
+      successSnack(message: 'Login Successful');
     } else {
       errorSnack(message: 'Please fill in all the fields');
       if(index==2){

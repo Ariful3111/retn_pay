@@ -13,18 +13,19 @@ class CategoryList extends StatelessWidget {
     HomeController homeController = Get.find();
     return SizedBox(
       height: 44.h,
-      child: GestureDetector(
-        onTap: () {
-          homeController.isSelectedCategory.value =
-              !homeController.isSelectedCategory.value;
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: homeController.categoryList.length,
+        itemBuilder: (context, index) {
+          final image = homeController.categoryList[index]['image'];
+          final category = homeController.categoryList[index]['category'];
+          return Obx((){
+            final isSelected = homeController.selectedCategory.value==index;
+            return GestureDetector(
+            onTap: () {
+          homeController.selectedCategory.value = index;
         },
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: homeController.categoryList.length,
-          itemBuilder: (context, index) {
-            final image = homeController.categoryList[index]['image'];
-            final category = homeController.categoryList[index]['category'];
-            return Container(
+            child: Container(
               margin: EdgeInsets.only(right: 8.w),
               padding: EdgeInsets.only(
                 top: 2.h,
@@ -34,7 +35,7 @@ class CategoryList extends StatelessWidget {
               ),
               height: 44.h,
               decoration: BoxDecoration(
-                gradient: homeController.isSelectedCategory.value
+                gradient: isSelected
                     ? AppColors.primaryColor
                     : LinearGradient(
                         colors: [AppColors.whiteColor, AppColors.whiteColor],
@@ -55,15 +56,16 @@ class CategoryList extends StatelessWidget {
                   CustomText.secondaryText(
                     text: category,
                     fontSize: 14.sp,
-                    color: homeController.isSelectedCategory.value
+                    color: isSelected
                         ? AppColors.whiteColor
                         : AppColors.secondaryTextColor,
                   ),
                 ],
               ),
-            );
-          },
-        ),
+            ),
+          );
+          });
+        },
       ),
     );
   }

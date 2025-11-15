@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/rent/widgets/price_range.dart';
-import 'package:renter_pay/features/rent/widgets/reset_filter.dart';
+import 'package:renter_pay/shared/widgets/filter/price_range.dart';
+import 'package:renter_pay/shared/widgets/filter/reset_filter.dart';
 
-class RentFilter extends StatelessWidget {
-  const RentFilter({super.key});
+class CustomFilter extends StatelessWidget {
+  const CustomFilter({super.key});
 
   @override
   Widget build(BuildContext context) {

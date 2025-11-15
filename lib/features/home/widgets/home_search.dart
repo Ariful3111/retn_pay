@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/home/controllers/home_controller.dart';
+import 'package:renter_pay/shared/widgets/filter/custom_filter.dart';
 import 'package:renter_pay/shared/widgets/custom_text_field.dart';
 
 class HomeSearch extends StatelessWidget {
@@ -42,7 +43,16 @@ class HomeSearch extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            
+            showDialog(context: context, builder: (context){
+              return Stack(
+                children: [
+                  Positioned(
+                    top: 110.h,
+                    right: 20.w,
+                    child: CustomFilter())
+                ],
+              );
+            });
           },
           child: Container(
             height: 48.h,
@@ -65,7 +75,6 @@ class HomeSearch extends StatelessWidget {
             ),
           ),
         ),
-        
       ],
     );
   }

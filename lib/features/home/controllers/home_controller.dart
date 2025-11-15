@@ -4,7 +4,8 @@ import 'package:renter_pay/core/constants/images_path.dart';
 
 class HomeController extends GetxController{
   TextEditingController searchController = TextEditingController();
-  RxBool isSelectedCategory = false.obs;
+  RxInt selectedCategory = (-1).obs;
+  RxInt ratingCount = 1.obs;
   final List<Map<String,dynamic>> categoryList=[
     {'category':'All','image':ImagesPath.allCategory},
     {'category':'House','image':ImagesPath.houseCategory},

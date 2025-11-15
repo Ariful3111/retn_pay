@@ -51,5 +51,11 @@ class IconsPath {
   static const String homeFilter ='assets/icons/home_filter.png';
   static const String homeSearch ='assets/icons/home_search.png';
   static const String homeMic ='assets/icons/home_mic.png';
-  
+  static const String location ='assets/icons/location.png';
+  static const String linkArrow ='assets/icons/link_arrow.png';
+  static const String vR ='assets/icons/VR.png';
+  static const String bed ='assets/icons/bed.png';
+  static const String bathroom ='assets/icons/bathroom.png';
+  static const String sizeArrow ='assets/icons/size_arrow.png';
+  static const String rating ='assets/icons/rating.png';
 }

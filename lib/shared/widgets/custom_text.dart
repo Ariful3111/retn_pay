@@ -85,7 +85,7 @@ class CustomText {
             style:
                 textStyle ??
                 GoogleFonts.inter(
-                  color:themeController.isDarkMode.value? spanColor ?? spanColor??Color(0xFFBB8CA9):Color(0xFF59344F),
+                  color:themeController.isDarkMode.value? spanColor??Color(0xFFBB8CA9): spanColor ??Color(0xFF59344F),
                   fontSize: spanFontSize ?? 14.sp,
                   fontWeight: spanFontWeight ?? FontWeight.w500,
                   decoration: spanDecoration,

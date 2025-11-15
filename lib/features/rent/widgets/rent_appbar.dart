@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/features/rent/widgets/rent_filter.dart';
+import 'package:renter_pay/shared/widgets/filter/custom_filter.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_text.dart';
 
@@ -57,7 +57,7 @@ class RentAppbar extends StatelessWidget {
                 builder: (context) {
                   return Stack(
                     children: [
-                      Positioned(right: 20.w, top: 20.h, child: RentFilter()),
+                      Positioned(right: 20.w, top: 20.h, child: CustomFilter()),
                     ],
                   );
                 },

@@ -29,10 +29,11 @@ class ImagesPath {
   static const String houseCategory = 'assets/images/house_category.png';
   static const String house = 'assets/images/house.png';
   static const String homePopular = 'assets/images/home_popular.png';
-  static const String homeRecommendation = 'assets/images/home_recommendation.png';
+  static const String homeRecommended = 'assets/images/home_recommended.jpg';
   static const String studio = 'assets/images/studio.png';
   static const String vilaCategory = 'assets/images/vila_category.png';
   static const String vila = 'assets/images/vila.png';
   static const String officeCategory = 'assets/images/office_category.png';
   static const String studioCategory = 'assets/images/studio_category.png';
+  static const String office = 'assets/images/office.png';
 }

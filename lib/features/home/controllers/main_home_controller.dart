@@ -25,7 +25,6 @@ class MainHomeController extends GetxController {
   }
   void listen(){
     final direction = scrollController.position.userScrollDirection;
-    final pixel = scrollController.position.pixels;
     timer?.cancel();
     if(direction == ScrollDirection.forward){
       if (!isVisible.value) isVisible.value = true;
