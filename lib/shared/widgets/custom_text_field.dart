@@ -30,6 +30,9 @@ class CustomTextField extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final AutovalidateMode? validation;
   final bool ?isFilled;
+  final InputBorder ?enableBorder;
+  final InputBorder ?focusBorder;
+  final InputBorder ?border;
   const CustomTextField({
     super.key,
     this.hintText,
@@ -53,7 +56,7 @@ class CustomTextField extends StatelessWidget {
     this.hintTextWidget,
     this.labelTextWidget,
     this.padding,
-    this.margin, this.validation,  this.isFilled,
+    this.margin, this.validation,  this.isFilled, this.enableBorder, this.focusBorder, this.border,
   });
 
   @override
@@ -85,20 +88,19 @@ class CustomTextField extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
         errorText: errorText,
-        
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
         suffixIconConstraints: BoxConstraints(minHeight: 0,minWidth: 0),
         prefixIconConstraints: BoxConstraints(minHeight: 0,minWidth: 0),
-        border: OutlineInputBorder(
+        border:border?? OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.r),
           borderSide: BorderSide(color:themeController.isDarkMode.value?AppColors.darkBorderPrimary :Colors.transparent),
         ),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder:focusBorder?? OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.r),
           borderSide: BorderSide(color:themeController.isDarkMode.value?AppColors.darkBorderPrimary : Colors.transparent),
         ),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder:enableBorder?? OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.r),
           borderSide: BorderSide(color:themeController.isDarkMode.value?AppColors.darkBorderPrimary : Colors.transparent),
         ),

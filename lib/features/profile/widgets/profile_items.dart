@@ -16,9 +16,7 @@ class ProfileItems extends StatelessWidget {
   final String ?image;
   final String ?title;
   final EdgeInsets ?padding;
-
   const ProfileItems({super.key, this.height, this.width, this.primaryWidget, this.secondaryWidget, this.onTap,  this.imageHeight,  this.imageWidth,  this.image,  this.title, this.padding});
-
   @override
   Widget build(BuildContext context) {
     ThemeController themeController = Get.find();
@@ -42,17 +40,15 @@ class ProfileItems extends StatelessWidget {
               width: 35.w,
               decoration: BoxDecoration(
                 color: Color(0xFFFFEEF8),
-                borderRadius: BorderRadius.circular(20.sp),
+                borderRadius: BorderRadius.circular(10.sp),
               ),
               child: Center(child: Image.asset(image!,height: imageHeight,width: imageWidth,),),
             ),
-
             SizedBox(width: 8.h,),
             CustomText.primaryText(text: title??'',fontSize: 16.sp,fontWeight: FontWeight.w400,),
             Spacer(),
             ?secondaryWidget,
             SizedBox(width: 18.w,),
-            
           ],
         ),
       ),

@@ -23,9 +23,9 @@ class UserButton extends StatelessWidget {
           height: 52.h,
           width: 156.w,
           boxDecoration: BoxDecoration(
-            color:themeController.isDarkMode.value? AppColors.darkPrimary:AppColors.whiteColor,
+            color:themeController.isDarkMode.value? AppColors.darkSecondary:AppColors.whiteColor,
             borderRadius: BorderRadius.circular(8.r),
-            border: BoxBorder.all(color:themeController.isDarkMode.value?Color(0xFF323335) : Color(0xFFE2E4E9), width: 1.sp),
+            border: BoxBorder.all(color:themeController.isDarkMode.value?AppColors.darkBorderPrimary : Color(0xFFE2E4E9), width: 1.sp),
             boxShadow: [
               BoxShadow(
                 offset: Offset(0, 1),

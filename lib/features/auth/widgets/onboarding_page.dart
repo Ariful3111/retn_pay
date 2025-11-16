@@ -17,19 +17,19 @@ class OnboardingPage extends StatelessWidget {
       FirstOnboarding(),
       Image.asset(
         ImagesPath.onboardingScreen2,
-        height: 566.h,
+        height: 612.h,
         width: MediaQuery.widthOf(context),
         fit: BoxFit.cover,
       ),
       Image.asset(
         ImagesPath.onboardingScreen3,
-        height: 566.h,
+        height: 612.h,
         width: MediaQuery.widthOf(context),
         fit: BoxFit.cover,
       ),
       Image.asset(
         ImagesPath.onboardingScreen4,
-        height: 566.h,
+        height: 612.h,
         width: MediaQuery.widthOf(context),
         fit: BoxFit.cover,
       ),
@@ -65,7 +65,7 @@ class OnboardingPage extends StatelessWidget {
               children: [
                 imageList[index],
                 Positioned(
-                  bottom: -10.h,
+                  bottom: 0.h,
                   right: 0.w,
                   left: 0.w,
                   child: Container(
@@ -94,10 +94,12 @@ class OnboardingPage extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.only(left: 32.w),
               child: CustomText.primaryText(text: titleList[index]),
             ),
+            SizedBox(height: 8.h,),
             Padding(
               padding: EdgeInsets.only(left: 32.w),
               child: CustomText.secondaryText(text: subtitleList[index]),

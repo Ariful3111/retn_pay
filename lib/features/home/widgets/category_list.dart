@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/home/controllers/home_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text.dart';
 
@@ -11,6 +12,7 @@ class CategoryList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeController homeController = Get.find();
+    ThemeController themeController = Get.find();
     return SizedBox(
       height: 44.h,
       child: ListView.builder(
@@ -37,7 +39,7 @@ class CategoryList extends StatelessWidget {
               decoration: BoxDecoration(
                 gradient: isSelected
                     ? AppColors.primaryColor
-                    : LinearGradient(
+                    :themeController.isDarkMode.value? LinearGradient(colors: [AppColors.darkSecondary,AppColors.darkSecondary,]):LinearGradient(
                         colors: [AppColors.whiteColor, AppColors.whiteColor],
                       ),
                 borderRadius: BorderRadius.circular(12.sp),

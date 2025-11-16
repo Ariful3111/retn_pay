@@ -21,7 +21,7 @@ class OnboardingSlider extends StatelessWidget {
             children: List.generate(4, (index) {
               bool isActive = onboardingController.currentPage.value == index;
               return AnimatedContainer(
-                duration: Duration(milliseconds: 400),
+                duration: Duration(milliseconds: 300),
                 margin: EdgeInsets.symmetric(horizontal: 5.w),
                 height: 6.w,
                 width: isActive ? 24.w : 14.w,
@@ -40,7 +40,7 @@ class OnboardingSlider extends StatelessWidget {
               onboardingController.nextPage();
             },
             child: AnimatedContainer(
-              duration: Duration(milliseconds: 400),
+              duration: Duration(milliseconds: 300),
               curve: Curves.linearToEaseOut,
               height: onboardingController.currentPage.value == 3 ? 60.h : 52.h,
               width: onboardingController.currentPage.value == 3 ? 106.w : 52.w,
@@ -59,7 +59,7 @@ class OnboardingSlider extends StatelessWidget {
                         child: Row(
                           children: [
                             FadeIn(
-                              delay: Duration(milliseconds: 500),
+                              delay: Duration(milliseconds: 400),
                               child: Transform.translate(
                                 offset: Offset(
                                   onboardingController.dragOffset.value.w,

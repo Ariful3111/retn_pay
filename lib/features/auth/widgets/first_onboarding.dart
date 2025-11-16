@@ -55,7 +55,7 @@ class FirstOnboarding extends StatelessWidget {
         firstOnboardingController.resume();
       },
       child: SizedBox(
-        height: 566.h,
+        height: 612.h,
         width: MediaQuery.of(context).size.width,
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,

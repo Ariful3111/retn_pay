@@ -45,12 +45,12 @@ class DarkModeSetting extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16.sp),
                 ),
                 child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
                   onTap: () {
                     themeController.changeTheme();
                     switcher.changeTheme(
                       theme:themeController.currentTheme,
                       isReversed: themeController.isDarkMode.value,
-                      
                        );
                   },
                   child: AnimatedAlign(

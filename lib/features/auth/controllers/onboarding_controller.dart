@@ -6,7 +6,7 @@ import 'package:renter_pay/core/routes/app_routes.dart';
 class OnboardingController extends GetxController {
   RxInt currentPage = 0.obs;
   RxInt activeArrow = 0.obs;
-  var dragOffset = 0.0.obs;
+  RxDouble dragOffset = 0.0.obs;
   final double maxDragDistance = 45;
   List colorList = [
     AppColors.whiteColor,
@@ -23,19 +23,14 @@ class OnboardingController extends GetxController {
   void onInit() {
     super.onInit();
     startArrowAnimation();
-    
   }
 
   void nextPage() {
     if (currentPage.value < 3) {
-      Future.delayed( Duration(milliseconds: 400), () {
+      Future.delayed( Duration(milliseconds: 300), () {
         currentPage.value++;
       });
     }
-  }
-
-  void changePage(int index) {
-    currentPage.value = index;
   }
 
   void startArrowAnimation() {
@@ -54,12 +49,14 @@ class OnboardingController extends GetxController {
   void endDrag() {
     if (dragOffset.value > maxDragDistance * 0.8) {
       Future.delayed(const Duration(milliseconds: 200), () {
-        Get.toNamed(AppRoutes.userRole);
+        Get.delete<OnboardingController>();
+        Get.toNamed(AppRoutes.userRole)!.then((_){
+          dragOffset.value=0.0;
+        });
       });
       dragOffset.value = maxDragDistance;
     } else {
       dragOffset.value = 0.0;
     }
   }
-
 }

@@ -35,10 +35,10 @@ class UserContainer extends StatelessWidget {
           height: 136.72.h,
           width: 170.9.w,
           decoration: BoxDecoration(
-            color:themeController.isDarkMode.value?AppColors.primaryTextColor: AppColors.whiteColor,
+            color:themeController.isDarkMode.value?AppColors.darkSecondary: AppColors.whiteColor,
             borderRadius: BorderRadius.circular(8.2.r),
-            border: selectedIndex
-                ? Border.all(width: 1.7.w, color: AppColors.borderColor)
+            border:selectedIndex
+                ? Border.all(width: 1.7.w, color:themeController.isDarkMode.value? AppColors.darkBorderPrimary :AppColors.borderColor)
                 : null,
             boxShadow: [
               BoxShadow(

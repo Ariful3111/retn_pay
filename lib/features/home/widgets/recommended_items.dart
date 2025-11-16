@@ -14,18 +14,15 @@ class RecommendedItems extends StatelessWidget {
     return SizedBox(
       height: 580.h,
       width: MediaQuery.widthOf(context),
-      child: GridView.builder(
-        
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
         shrinkWrap: true,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 12.w,
-          mainAxisSpacing: 12.h,
-          childAspectRatio: 189/284
-        ),
         itemCount: 10,
         itemBuilder: (context, index) {
           return Container(
+            height: 284.h,
+            width: 189.w,
+            margin: EdgeInsets.only(right: 12.w),
             padding: EdgeInsets.only(
               left: 12.w,
               right: 8.w,

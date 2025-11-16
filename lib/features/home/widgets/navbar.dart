@@ -22,7 +22,6 @@ class Navbar extends StatelessWidget {
           color:themeController.isDarkMode.value?AppColors.darkPrimary.withValues(alpha: 0.80) :AppColors.whiteColor.withValues(alpha: 0.80),
           border: Border.all(width: 1.sp, color:themeController.isDarkMode.value? AppColors.darkBorderPrimary:Color(0xFFEBEDF0)),
           borderRadius: BorderRadius.circular(12.sp),
-          
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,6 +30,7 @@ class Navbar extends StatelessWidget {
             final navItem = mainHomeController.navItems[index];
             final navIcon = navItem['icon'];
             final navLabel = navItem['label'];
+            final isColor = navItem['isColor'];
             
             return Padding(
               padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 12.w),
@@ -42,7 +42,7 @@ class Navbar extends StatelessWidget {
                   children: [
                 Image.asset(
                 navIcon,
-                color: itemCount ? AppColors.primaryColorDark :themeController.isDarkMode.value? AppColors.darkPrimaryText:AppColors.secondaryTextColor,
+                color:isColor? itemCount ? AppColors.primaryColorDark :themeController.isDarkMode.value? AppColors.darkPrimaryText:AppColors.secondaryTextColor:null,
                 height: 24.h,
                 width: 24.w,
               ),
@@ -52,8 +52,7 @@ class Navbar extends StatelessWidget {
                       style:itemCount?GoogleFonts.inter(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w400,
-                        color: AppColors.primaryColorDark
-                            
+                        color: AppColors.primaryColorDark,
                       ) :GoogleFonts.poppins(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w400,

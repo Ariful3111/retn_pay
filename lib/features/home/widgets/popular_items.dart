@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
+import 'package:renter_pay/features/home/widgets/favorite_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text.dart';
 
 class PopularItems extends StatelessWidget {
@@ -30,19 +31,9 @@ class PopularItems extends StatelessWidget {
               children: [
                 Align(
                   alignment: Alignment.topRight,
-                  child: GestureDetector(
-                    onTap: () {
-                      
-                    },
-                    child: Container(
-                      height: 32.h,
-                      width: 32.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.sp),
-                        color: AppColors.whiteColor.withValues(alpha: 0.25),
-                      ),
-                      child: Center(child: Image.asset(IconsPath.linkArrow,height: 14.5.h,width: 14.5,))),
-                  ),
+                  child: FavoriteButton(onTap: () {
+                    
+                  },)
                 ),
                 Spacer(),
                 Row(

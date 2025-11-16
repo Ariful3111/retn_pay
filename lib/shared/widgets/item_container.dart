@@ -14,6 +14,8 @@ class ItemContainer extends StatelessWidget {
   final double? borderRadius;
   final EdgeInsetsGeometry padding;
   final VoidCallback onVR;
+  final ValueChanged<double> updateRating;
+  final double initialRating;
   const ItemContainer({
     super.key,
     required this.imageHeight,
@@ -21,7 +23,7 @@ class ItemContainer extends StatelessWidget {
     required this.image,
     this.borderRadius,
     required this.padding,
-    required this.onVR,
+    required this.onVR, required this.updateRating, required this.initialRating,
   });
 
   @override
@@ -133,7 +135,7 @@ class ItemContainer extends StatelessWidget {
                     onTap: onVR,
                     child: Image.asset(IconsPath.vR, height: 16.h, width: 16.w),
                   ),
-                  Rating(onRating: () {}),
+                  Rating(onRating: updateRating, initialRating: initialRating,),
                 ],
               ),
             ],

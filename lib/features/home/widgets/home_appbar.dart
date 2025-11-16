@@ -35,7 +35,8 @@ class HomeAppbar extends StatelessWidget {
             width: 32.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4.sp),
-              border: Border.all(width: 0.89.sp,color: AppColors.secondaryBorder),
+              border: Border.all(width: 0.89.sp,color:themeController.isDarkMode.value? AppColors.darkBorderPrimary: AppColors.secondaryBorder),
+              color: themeController.isDarkMode.value?AppColors.darkSecondary:AppColors.whiteColor,
               boxShadow: [
                 BoxShadow(
                   offset: Offset(0, 0.89),

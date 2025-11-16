@@ -21,7 +21,10 @@ class UserRole extends StatelessWidget {
     UserRoleController userRoleController = Get.find();
     ThemeController themeController = Get.find();
     return CustomContainer(
-      gradient: themeController.isDarkMode.value?AppColors.darkAuthBG:AppColors.backgroundColor,
+      gradient: themeController.isDarkMode.value?LinearGradient(colors: [
+        AppColors.darkPrimary,
+        AppColors.darkPrimary,
+      ]):AppColors.backgroundColor,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 35.w),
           child: Column(

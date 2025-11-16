@@ -17,11 +17,9 @@ class MainHomeController extends GetxController {
   RxInt selectIndex = 0.obs;
   RxBool isVisible = true.obs;
   Timer? timer;
-
   RxList pageList = [HomeView(),RentView(),DashboardView(),ChatView(),ProfileView()].obs;
   void changeIndex(int index){
     selectIndex.value = index;
-    
   }
   void listen(){
     final direction = scrollController.position.userScrollDirection;
@@ -42,18 +40,16 @@ class MainHomeController extends GetxController {
   }
 
   final List<Map<String,dynamic>> navItems = [
-    {'icon':IconsPath.home,'label':'Home'},
-    {'icon':IconsPath.rent,'label':'Rent'},
-    {'icon':IconsPath.dashboard,'label':'Dashboard'},
-    {'icon':IconsPath.chat,'label':'Chat'},
-    {'icon':ImagesPath.profile,'label':'Profile'},
+    {'icon':IconsPath.home,'label':'Home','isColor':true},
+    {'icon':IconsPath.rent,'label':'Rent','isColor':true},
+    {'icon':IconsPath.dashboard,'label':'Dashboard','isColor':true},
+    {'icon':IconsPath.chat,'label':'Chat','isColor':true},
+    {'icon':ImagesPath.navProfile,'label':'Profile','isColor':false},
   ];
-
 
   @override
   void onInit() {
     super.onInit();
-    
     scrollController.addListener(listen);
   }
 @override

@@ -42,13 +42,21 @@ class ProfileItemsList extends StatelessWidget {
         children: [
           ProfileItems(imageHeight: 21.5.h, imageWidth: 21.5.w, image: IconsPath.profileWeb, title: 'Web Assets',
            secondaryWidget: GestureDetector(
+            behavior: HitTestBehavior.opaque,
             onTap: () {
                profileController.isWebAsset.value= !profileController.isWebAsset.value;
             },
-            child: Image.asset(profileController.isWebAsset.value? IconsPath.upArrow:IconsPath.downArrow,height: 7.5.h,width: 15.w,),
+            child: SizedBox(
+              height: 24.h,
+              width: 24.h,
+              child: Center(child: Image.asset(profileController.isWebAsset.value? IconsPath.upArrow:IconsPath.downArrow,height: 7.5.h,width: 15.w,))),
            ),
             ),
-          if(profileController.isWebAsset.value)Column(
+          AnimatedSize(
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+          child: AnimatedOpacity(opacity: profileController.isWebAsset.value?1:0, duration: Duration(milliseconds: 200),
+          child: profileController.isWebAsset.value?Column(
           children: [
            if(userRoleController.selectedIndex.value==3)ProfileItems(image: IconsPath.profileService,imageHeight: 24.h,imageWidth: 24.w,title: 'Create New Service',),
            if(userRoleController.selectedIndex.value==1)ProfileItems(image: IconsPath.profileAgent,imageHeight: 24.h,imageWidth: 24.w,title: 'Agent Management',),
@@ -62,7 +70,9 @@ class ProfileItemsList extends StatelessWidget {
            if(userRoleController.selectedIndex.value==1)ProfileItems(image: IconsPath.profileReport,imageHeight: 23.h,imageWidth: 19.w,title: 'Reporting & Analytics',),
            if(userRoleController.selectedIndex.value==2)ProfileItems(image: IconsPath.profileReport,imageHeight: 23.h,imageWidth: 19.w,title: 'Reporting & Analytics',),
             ],
-           ),
+           ):SizedBox(),
+            ),
+            ),
         ],
       );
        }
@@ -102,7 +112,7 @@ class ProfileItemsList extends StatelessWidget {
               width: 35.w,
               decoration: BoxDecoration(
                 color: Color(0xFFFFEEF8),
-                borderRadius: BorderRadius.circular(20.sp),
+                borderRadius: BorderRadius.circular(10.sp),
               ),
               child: Center(child: Image.asset(image,height: imageHeight,width: imageWidth,),),
             ),
