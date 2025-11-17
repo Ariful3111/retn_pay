@@ -15,7 +15,6 @@ class Onboarding extends StatelessWidget {
     ThemeController themeController = Get.find();
     return Scaffold(
       backgroundColor:themeController.isDarkMode.value? AppColors.darkPrimary:AppColors.whiteColor,
-
       extendBodyBehindAppBar: true,
         body: ListView(
           padding: EdgeInsets.zero,

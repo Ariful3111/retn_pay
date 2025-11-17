@@ -58,7 +58,7 @@ class HomeView extends StatelessWidget {
             SizedBox(height: 16.h),
             ApartmentList(),
             SizedBox(height: 24.h),
-            Category(categoryName: 'Vila', onTap: () {}),
+            Category(categoryName: 'Villa', onTap: () {}),
             SizedBox(height: 16.h),
             VilaList(),
             SizedBox(height: 24.h),

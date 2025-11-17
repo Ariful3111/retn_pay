@@ -1,4 +1,3 @@
-import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -13,7 +12,6 @@ void main() async {
   await GetStorage.init();
   ThemeBindings().dependencies();
   runApp(const MyApp());
-  
 }
 
 class MyApp extends StatelessWidget {
@@ -23,17 +21,12 @@ class MyApp extends StatelessWidget {
     ThemeController themeController = Get.find();
     return ScreenUtilInit(
       designSize: Size(430, 932),
-      child: ThemeProvider(
-        initTheme: themeController.currentTheme,
-        duration: Duration(milliseconds: 500),
-         builder: (_,theme){
-          return GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Renter Pay',
-          getPages: appRoutes,
-          initialRoute: AppRoutes.onboarding,
-        );
-         },
+      child: GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Renter Pay',
+      getPages: appRoutes,
+      initialRoute: AppRoutes.onboarding,
+      themeMode: themeController.isDarkMode.value?ThemeMode.dark:ThemeMode.light,
       ),
     );
   }

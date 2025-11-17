@@ -12,7 +12,7 @@ class RecommendedItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 580.h,
+      height: 284.h,
       width: MediaQuery.widthOf(context),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,

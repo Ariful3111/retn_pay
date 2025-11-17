@@ -70,9 +70,26 @@ class RentAppbar extends StatelessWidget {
                             max: '\$${end.toInt().toString()}',
                             minRange: rentController.minRange,
                             maxRange: rentController.maxRange,
-                            onChanged: (SfRangeValues value) {
+                            onSliderChanged: (SfRangeValues value) {
                               rentController.range.value = value;
-                            }, textEditingController: rentController.filterSearchController, isSlider: () {  }, isSearch: () {  },
+                            },
+                            textEditingController:
+                                rentController.filterSearchController,
+                            isSlider: () {},
+                            isSearch: () {},
+                            propertyItems: [
+                            'Apartment',
+                            'Studio',
+                            'House',
+                            'Villa',
+                            'Office',
+                          ],
+                            selectedProperty:
+                            rentController.selectedFilterProperty,
+                            onPropertyChange: (value) {},
+                            amenitiesItems: ['Parking','Pet-friendly','Private pool','Gym/Fitness Center','Garden/Outdoor space','24/7 Security'],
+                            selectedAmenities: rentController.selectedAmenities,
+                            onAmenitiesChange: (value) {},
                           );
                         }),
                       ),

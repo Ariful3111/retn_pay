@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -25,8 +24,15 @@ class HomeSearch extends StatelessWidget {
           width: 326.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12.sp),
-            border: Border.all(width: 1.sp, color:themeController.isDarkMode.value? AppColors.darkBorderPrimary:AppColors.secondaryBorder),
-            color:themeController.isDarkMode.value? AppColors.darkSecondary:AppColors.whiteColor,
+            border: Border.all(
+              width: 1.sp,
+              color: themeController.isDarkMode.value
+                  ? AppColors.darkBorderPrimary
+                  : AppColors.secondaryBorder,
+            ),
+            color: themeController.isDarkMode.value
+                ? AppColors.darkSecondary
+                : AppColors.whiteColor,
             boxShadow: [
               BoxShadow(
                 offset: Offset(0, 4),
@@ -40,19 +46,19 @@ class HomeSearch extends StatelessWidget {
             child: CustomTextField(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.sp),
-                borderSide: BorderSide(color: Colors.transparent)
+                borderSide: BorderSide(color: Colors.transparent),
               ),
               enableBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.sp),
-                borderSide: BorderSide(color: Colors.transparent)
+                borderSide: BorderSide(color: Colors.transparent),
               ),
               focusBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.sp),
-                borderSide: BorderSide(color: Colors.transparent)
+                borderSide: BorderSide(color: Colors.transparent),
               ),
               controller: homeController.searchController,
               prefixIcon: Padding(
-                padding:  EdgeInsets.only(left: 16.sp),
+                padding: EdgeInsets.only(left: 16.sp),
                 child: Image.asset(
                   IconsPath.homeSearch,
                   height: 24.h,
@@ -83,9 +89,26 @@ class HomeSearch extends StatelessWidget {
                           max: '\$${end.toInt().toString()}',
                           minRange: homeController.minRange,
                           maxRange: homeController.maxRange,
-                          onChanged: (SfRangeValues value) { 
+                          onSliderChanged: (SfRangeValues value) {
                             homeController.range.value = value;
-                           }, textEditingController: homeController.filterSearchController, isSlider: () {  }, isSearch: () {  },
+                          },
+                          textEditingController:
+                              homeController.filterSearchController,
+                          isSlider: () {},
+                          isSearch: () {},
+                          propertyItems: [
+                            'Apartment',
+                            'Studio',
+                            'House',
+                            'Villa',
+                            'Office',
+                          ],
+                          selectedProperty:
+                          homeController.selectedFilterProperty,
+                          onPropertyChange: (value) {},
+                          amenitiesItems: ['Parking','Pet-friendly','Private pool','Gym/Fitness Center','Garden/Outdoor space','24/7 Security'],
+                          selectedAmenities: homeController.selectedAmenities,
+                          onAmenitiesChange: (value) {},
                         );
                       }),
                     ),
@@ -99,7 +122,12 @@ class HomeSearch extends StatelessWidget {
             width: 48.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.sp),
-              border: Border.all(width: 1.sp, color:themeController.isDarkMode.value? AppColors.darkBorderPrimary: AppColors.secondaryBorder),
+              border: Border.all(
+                width: 1.sp,
+                color: themeController.isDarkMode.value
+                    ? AppColors.darkBorderPrimary
+                    : AppColors.secondaryBorder,
+              ),
               gradient: AppColors.primaryColor,
               boxShadow: [
                 BoxShadow(

@@ -23,7 +23,8 @@ class HomeController extends GetxController{
     {'category':'Office','image':ImagesPath.officeCategory},
     {'category':'Studio Apartment','image':ImagesPath.studioCategory},
   ];
-
+  RxList<String> selectedFilterProperty = <String>[].obs;
+  RxList<String> selectedAmenities = <String>[].obs;
   @override
   void onInit() {
     apartmentRating;

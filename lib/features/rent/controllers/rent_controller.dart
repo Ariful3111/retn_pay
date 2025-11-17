@@ -7,4 +7,6 @@ class RentController extends GetxController{
   double minRange = 0;
   double maxRange = 700000;
   TextEditingController filterSearchController = TextEditingController();
+  RxList<String> selectedFilterProperty = <String>[].obs;
+  RxList<String> selectedAmenities = <String>[].obs;
 }

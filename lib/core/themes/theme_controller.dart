@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:renter_pay/core/themes/app_theme.dart';
 
 class ThemeController extends GetxController{
   final _box = GetStorage();
@@ -16,7 +14,6 @@ class ThemeController extends GetxController{
   void saveThemeToStorage() {
     _box.write(_key, isDarkMode.value);
   }
-
   
   bool loadThemeFromStorage() {
     return _box.read(_key) ?? false;
@@ -26,5 +23,5 @@ class ThemeController extends GetxController{
     isDarkMode.value=!isDarkMode.value;
     saveThemeToStorage();
   }
-  ThemeData get currentTheme => isDarkMode.value?AppTheme.darkTheme:AppTheme.lightTheme;
+  //ThemeData get currentTheme => isDarkMode.value?Brightness.dark:Brightness.light;
 }

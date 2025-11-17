@@ -11,7 +11,6 @@ class StudioList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeController homeController = Get.find();
-  
       return SizedBox(
         height: 288.h,
         width: 300.w,
