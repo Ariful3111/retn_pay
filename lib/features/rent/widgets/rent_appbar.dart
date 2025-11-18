@@ -61,37 +61,44 @@ class RentAppbar extends StatelessWidget {
                       Positioned(
                         right: 20.w,
                         top: 20.h,
-                        child: Obx(() {
-                          final start = rentController.range.value.start;
-                          final end = rentController.range.value.end;
-                          return CustomFilter(
-                            range: rentController.range.value,
-                            min: '\$${start.toInt().toString()}',
-                            max: '\$${end.toInt().toString()}',
-                            minRange: rentController.minRange,
-                            maxRange: rentController.maxRange,
-                            onSliderChanged: (SfRangeValues value) {
-                              rentController.range.value = value;
-                            },
-                            textEditingController:
-                                rentController.filterSearchController,
-                            isSlider: () {},
-                            isSearch: () {},
-                            propertyItems: [
-                            'Apartment',
-                            'Studio',
-                            'House',
-                            'Villa',
-                            'Office',
-                          ],
-                            selectedProperty:
-                            rentController.selectedFilterProperty,
-                            onPropertyChange: (value) {},
-                            amenitiesItems: ['Parking','Pet-friendly','Private pool','Gym/Fitness Center','Garden/Outdoor space','24/7 Security'],
-                            selectedAmenities: rentController.selectedAmenities,
-                            onAmenitiesChange: (value) {},
-                          );
-                        }),
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                          maxHeight:
+                              MediaQuery.of(context).size.height*0.8,
+                          maxWidth: 260.w,
+                        ),
+                          child: Obx(() {
+                            final start = rentController.range.value.start;
+                            final end = rentController.range.value.end;
+                            return CustomFilter(
+                              range: rentController.range.value,
+                              min: '\$${start.toInt().toString()}',
+                              max: '\$${end.toInt().toString()}',
+                              minRange: rentController.minRange,
+                              maxRange: rentController.maxRange,
+                              onSliderChanged: (SfRangeValues value) {
+                                rentController.range.value = value;
+                              },
+                              textEditingController:
+                                  rentController.filterSearchController,
+                              isSlider: () {},
+                              isSearch: () {},
+                              propertyItems: [
+                              'Apartment',
+                              'Studio',
+                              'House',
+                              'Villa',
+                              'Office',
+                            ],
+                              selectedProperty:
+                              rentController.selectedFilterProperty,
+                              onPropertyChange: (value) {},
+                              amenitiesItems: ['Parking','Pet-friendly','Private pool','Gym/Fitness Center','Garden/Outdoor space','24/7 Security'],
+                              selectedAmenities: rentController.selectedAmenities,
+                              onAmenitiesChange: (value) {},
+                            );
+                          }),
+                        ),
                       ),
                     ],
                   );

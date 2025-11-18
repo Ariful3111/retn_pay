@@ -15,7 +15,7 @@ class FilterAmenities extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        height: 252.h,
+        // height: 252.h,
         width: MediaQuery.widthOf(context),
         decoration: BoxDecoration(
             color: AppColors.whiteColor,

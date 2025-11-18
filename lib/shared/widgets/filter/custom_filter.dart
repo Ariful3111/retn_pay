@@ -44,37 +44,39 @@ class CustomFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 925.h,
       width: 260.w,
       color: AppColors.whiteColor,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ResetFilter(),
-          SizedBox(height: 8.32),
-          PriceRange(
-            range: range,
-            min: min,
-            max: max,
-            minRange: minRange,
-            maxRange: maxRange,
-            onChanged: onSliderChanged,
-            onTap: isSlider,
-          ),
-          SizedBox(height: 8.32),
-          FilterSearch(
-            textEditingController: textEditingController,
-            onTap: isSearch,
-          ),
-          SizedBox(height: 8.32),
-          FilterProperty(
-            propertyItems: propertyItems,
-            selectedProperty: selectedProperty,
-            onChange: onPropertyChange,
-          ),
-          SizedBox(height: 8.32),
-          FilterAmenities(amenitiesItems: amenitiesItems, selectedAmenities: selectedAmenities, onAmenitiesChange: onAmenitiesChange)
-        ],
+      child: SingleChildScrollView(
+        
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ResetFilter(),
+            SizedBox(height: 8.32),
+            PriceRange(
+              range: range,
+              min: min,
+              max: max,
+              minRange: minRange,
+              maxRange: maxRange,
+              onChanged: onSliderChanged,
+              onTap: isSlider,
+            ),
+            SizedBox(height: 8.32),
+            FilterSearch(
+              textEditingController: textEditingController,
+              onTap: isSearch,
+            ),
+            SizedBox(height: 8.32),
+            FilterProperty(
+              propertyItems: propertyItems,
+              selectedProperty: selectedProperty,
+              onChange: onPropertyChange,
+            ),
+            SizedBox(height: 8.32),
+            FilterAmenities(amenitiesItems: amenitiesItems, selectedAmenities: selectedAmenities, onAmenitiesChange: onAmenitiesChange)
+          ],
+        ),
       ),
     );
   }

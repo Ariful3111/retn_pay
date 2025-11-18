@@ -80,37 +80,51 @@ class HomeSearch extends StatelessWidget {
                     Positioned(
                       top: 110.h,
                       right: 20.w,
-                      child: Obx(() {
-                        final start = homeController.range.value.start;
-                        final end = homeController.range.value.end;
-                        return CustomFilter(
-                          range: homeController.range.value,
-                          min: '\$${start.toInt().toString()}',
-                          max: '\$${end.toInt().toString()}',
-                          minRange: homeController.minRange,
-                          maxRange: homeController.maxRange,
-                          onSliderChanged: (SfRangeValues value) {
-                            homeController.range.value = value;
-                          },
-                          textEditingController:
-                              homeController.filterSearchController,
-                          isSlider: () {},
-                          isSearch: () {},
-                          propertyItems: [
-                            'Apartment',
-                            'Studio',
-                            'House',
-                            'Villa',
-                            'Office',
-                          ],
-                          selectedProperty:
-                          homeController.selectedFilterProperty,
-                          onPropertyChange: (value) {},
-                          amenitiesItems: ['Parking','Pet-friendly','Private pool','Gym/Fitness Center','Garden/Outdoor space','24/7 Security'],
-                          selectedAmenities: homeController.selectedAmenities,
-                          onAmenitiesChange: (value) {},
-                        );
-                      }),
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          maxHeight:
+                              MediaQuery.of(context).size.height*0.8,
+                          maxWidth: 260.w,
+                        ),
+                        child: Obx(() {
+                          final start = homeController.range.value.start;
+                          final end = homeController.range.value.end;
+                          return CustomFilter(
+                            range: homeController.range.value,
+                            min: '\$${start.toInt().toString()}',
+                            max: '\$${end.toInt().toString()}',
+                            minRange: homeController.minRange,
+                            maxRange: homeController.maxRange,
+                            onSliderChanged: (SfRangeValues value) {
+                              homeController.range.value = value;
+                            },
+                            textEditingController:
+                                homeController.filterSearchController,
+                            isSlider: () {},
+                            isSearch: () {},
+                            propertyItems: [
+                              'Apartment',
+                              'Studio',
+                              'House',
+                              'Villa',
+                              'Office',
+                            ],
+                            selectedProperty:
+                                homeController.selectedFilterProperty,
+                            onPropertyChange: (value) {},
+                            amenitiesItems: [
+                              'Parking',
+                              'Pet-friendly',
+                              'Private pool',
+                              'Gym/Fitness Center',
+                              'Garden/Outdoor space',
+                              '24/7 Security',
+                            ],
+                            selectedAmenities: homeController.selectedAmenities,
+                            onAmenitiesChange: (value) {},
+                          );
+                        }),
+                      ),
                     ),
                   ],
                 );

@@ -58,4 +58,6 @@ class IconsPath {
   static const String bathroom ='assets/icons/bathroom.png';
   static const String sizeArrow ='assets/icons/size_arrow.png';
   static const String rating ='assets/icons/rating.png';
+  static const String arrowLeft ='assets/icons/arrow-left.png';
+  static const String arrowRight ='assets/icons/arrow-right.png';
 }

@@ -19,7 +19,7 @@ class FilterProperty extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        height: 227.h,
+        // height: 227.h,
         width: MediaQuery.widthOf(context),
         decoration: BoxDecoration(
           color: AppColors.whiteColor,
