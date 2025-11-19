@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text.dart';
 
@@ -28,7 +29,7 @@ class HomeAppbar extends StatelessWidget {
         Spacer(),
         GestureDetector(
           onTap: () {
-            
+            Get.toNamed(AppRoutes.notification);
           },
           child: Container(
             height: 32.h,

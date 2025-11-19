@@ -5,8 +5,9 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/shared/widgets/custom_text.dart';
 
 class ResetFilter extends StatelessWidget {
-  const ResetFilter({super.key});
-
+  final VoidCallback onTap;
+  const ResetFilter({super.key, required this.onTap});
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,9 +25,7 @@ class ResetFilter extends StatelessWidget {
                 CustomText.primaryText(text: 'Property Preference',fontSize: 12.sp,fontWeight: FontWeight.w500),
                 SizedBox(width: 24.w,),
                 GestureDetector(
-                  onTap: () {
-                    
-                  },
+                  onTap: onTap,
                   child: Container(
                     height: 40.h,
                     width: 95.w,

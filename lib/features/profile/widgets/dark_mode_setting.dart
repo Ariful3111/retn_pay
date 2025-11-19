@@ -42,7 +42,7 @@ class DarkModeSetting extends StatelessWidget {
           width: 50.w,
           padding: EdgeInsets.all(4.sp),
           decoration: BoxDecoration(
-            color: AppColors.primaryColorDark,
+            color: themeController.isDarkMode.value? AppColors.primaryColorDark:Colors.grey,
             borderRadius: BorderRadius.circular(16.sp),
           ),
           child: GestureDetector(

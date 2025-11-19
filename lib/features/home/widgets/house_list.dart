@@ -16,6 +16,7 @@ class HouseList extends StatelessWidget {
       height: 288.h,
       width: 300.w,
       child: ListView.builder(
+        shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (_, index) {

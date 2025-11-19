@@ -5,13 +5,11 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/home/controllers/home_controller.dart';
-import 'package:renter_pay/shared/widgets/filter/custom_filter.dart';
+import 'package:renter_pay/features/home/widgets/home_filter.dart';
 import 'package:renter_pay/shared/widgets/custom_text_field.dart';
-import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class HomeSearch extends StatelessWidget {
   const HomeSearch({super.key});
-
   @override
   Widget build(BuildContext context) {
     HomeController homeController = Get.find();
@@ -75,59 +73,7 @@ class HomeSearch extends StatelessWidget {
             showDialog(
               context: context,
               builder: (context) {
-                return Stack(
-                  children: [
-                    Positioned(
-                      top: 110.h,
-                      right: 20.w,
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxHeight:
-                              MediaQuery.of(context).size.height*0.8,
-                          maxWidth: 260.w,
-                        ),
-                        child: Obx(() {
-                          final start = homeController.range.value.start;
-                          final end = homeController.range.value.end;
-                          return CustomFilter(
-                            range: homeController.range.value,
-                            min: '\$${start.toInt().toString()}',
-                            max: '\$${end.toInt().toString()}',
-                            minRange: homeController.minRange,
-                            maxRange: homeController.maxRange,
-                            onSliderChanged: (SfRangeValues value) {
-                              homeController.range.value = value;
-                            },
-                            textEditingController:
-                                homeController.filterSearchController,
-                            isSlider: () {},
-                            isSearch: () {},
-                            propertyItems: [
-                              'Apartment',
-                              'Studio',
-                              'House',
-                              'Villa',
-                              'Office',
-                            ],
-                            selectedProperty:
-                                homeController.selectedFilterProperty,
-                            onPropertyChange: (value) {},
-                            amenitiesItems: [
-                              'Parking',
-                              'Pet-friendly',
-                              'Private pool',
-                              'Gym/Fitness Center',
-                              'Garden/Outdoor space',
-                              '24/7 Security',
-                            ],
-                            selectedAmenities: homeController.selectedAmenities,
-                            onAmenitiesChange: (value) {},
-                          );
-                        }),
-                      ),
-                    ),
-                  ],
-                );
+                return HomeFilter();
               },
             );
           },

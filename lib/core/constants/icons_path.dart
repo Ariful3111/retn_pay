@@ -60,4 +60,10 @@ class IconsPath {
   static const String rating ='assets/icons/rating.png';
   static const String arrowLeft ='assets/icons/arrow-left.png';
   static const String arrowRight ='assets/icons/arrow-right.png';
+  static const String mark ='assets/icons/mark.png';
+  static const String notificationPost='assets/icons/notification_post.png';
+  static const String notificationFavorite='assets/icons/notification_favorite.png';
+  static const String notificationShare='assets/icons/notification_share.png';
+  static const String notificationBookmark='assets/icons/notification_bookmark.png';
+
 }

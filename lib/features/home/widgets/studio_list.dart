@@ -15,6 +15,7 @@ class StudioList extends StatelessWidget {
         height: 288.h,
         width: 300.w,
         child: ListView.builder(
+          shrinkWrap: true,
           itemCount: 10,
           scrollDirection: Axis.horizontal,
           itemBuilder: (_, index) {

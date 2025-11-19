@@ -9,13 +9,15 @@ class FilterAmenities extends StatelessWidget {
   final List amenitiesItems;
   final RxList<String> selectedAmenities;
   final Function(List<String>) onAmenitiesChange;
-  const FilterAmenities({super.key, required this.amenitiesItems, required this.selectedAmenities, required this.onAmenitiesChange});
+  final RxBool isShowAmenities;
+  final RxBool isAmenities;
+  const FilterAmenities({super.key, required this.amenitiesItems, required this.selectedAmenities, required this.onAmenitiesChange, required this.isAmenities, required this.isShowAmenities});
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        // height: 252.h,
+        padding: EdgeInsets.all(18.41.h),
         width: MediaQuery.widthOf(context),
         decoration: BoxDecoration(
             color: AppColors.whiteColor,
@@ -26,8 +28,8 @@ class FilterAmenities extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               FilterTitles(title: 'Amenities', onTap: () {
-                
-              },),
+                isAmenities.value =!isAmenities.value; 
+              }, isShow: isShowAmenities,),
               FilterCheckbox(propertyItems: amenitiesItems, selectedProperty: selectedAmenities, onChange: onAmenitiesChange)
             ],
           ),

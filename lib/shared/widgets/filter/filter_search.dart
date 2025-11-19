@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_rx/get_rx.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/shared/widgets/custom_text.dart';
@@ -9,12 +10,14 @@ import 'package:renter_pay/shared/widgets/filter/filter_titles.dart';
 class FilterSearch extends StatelessWidget {
   final TextEditingController textEditingController;
   final VoidCallback onTap;
-  const FilterSearch({super.key, required this.textEditingController, required this.onTap});
+  final RxBool isSearchShow;
+  const FilterSearch({super.key, required this.textEditingController, required this.onTap, required this.isSearchShow});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 210.h,
+      padding: EdgeInsets.all(18.41.h),
+      height: 215.h,
       width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
@@ -25,7 +28,7 @@ class FilterSearch extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          FilterTitles(title: 'Suburb', onTap: onTap,),
+          FilterTitles(title: 'Suburb', onTap: onTap, isShow: isSearchShow,),
           Container(
             padding: EdgeInsets.all(12.27.sp),
             height: 41.42.h,

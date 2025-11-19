@@ -25,6 +25,10 @@ class HomeController extends GetxController{
   ];
   RxList<String> selectedFilterProperty = <String>[].obs;
   RxList<String> selectedAmenities = <String>[].obs;
+  RxBool isProperty = true.obs;
+  RxBool isAmenities = true.obs;
+  RxBool isFilterSearch = false.obs;
+  RxBool isPrice = false.obs;
   @override
   void onInit() {
     apartmentRating;

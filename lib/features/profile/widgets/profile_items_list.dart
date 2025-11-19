@@ -26,14 +26,18 @@ class ProfileItemsList extends StatelessWidget {
           child: Center(
             child: CustomText.primaryText(text: '3',fontSize: 14.sp,fontWeight: FontWeight.w400,color: Color(0xFF002256)),
           ),
-        ),
+        ), onTap: () { Get.toNamed(AppRoutes.notification); },
         ),
         SizedBox(height: 8.h,),
        Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
          children: [
-           rowItem(IconsPath.profileDashboard, 'DashBoard', 23.h, 23.w),
-           rowItem(IconsPath.profileBlog, 'DashBoard', 23.h, 23.w),
+           rowItem(IconsPath.profileDashboard, 'DashBoard', 23.h, 23.w,() {
+             
+           },),
+           rowItem(IconsPath.profileBlog, 'Blog', 23.h, 23.w,() {
+             
+           },),
          ],
        ),
        SizedBox(height: 8.h),
@@ -50,7 +54,7 @@ class ProfileItemsList extends StatelessWidget {
               height: 24.h,
               width: 24.h,
               child: Center(child: Image.asset(profileController.isWebAsset.value? IconsPath.upArrow:IconsPath.downArrow,height: 7.5.h,width: 15.w,))),
-           ),
+           ), onTap: () {  },
             ),
           AnimatedSize(
           duration: Duration(milliseconds: 300),
@@ -58,17 +62,17 @@ class ProfileItemsList extends StatelessWidget {
           child: AnimatedOpacity(opacity: profileController.isWebAsset.value?1:0, duration: Duration(milliseconds: 200),
           child: profileController.isWebAsset.value?Column(
           children: [
-           if(userRoleController.selectedIndex.value==3)ProfileItems(image: IconsPath.profileService,imageHeight: 24.h,imageWidth: 24.w,title: 'Create New Service',),
-           if(userRoleController.selectedIndex.value==1)ProfileItems(image: IconsPath.profileAgent,imageHeight: 24.h,imageWidth: 24.w,title: 'Agent Management',),
-           if(userRoleController.selectedIndex.value==0)ProfileItems(image: IconsPath.profileApplication,imageHeight: 17.h,imageWidth: 18.w,title: 'Application',),
-           if(userRoleController.selectedIndex.value==0)ProfileItems(image: IconsPath.profileAgreement,imageHeight: 23.h,imageWidth: 21.w,title: 'Agreement',),
-           if(userRoleController.selectedIndex.value==1)ProfileItems(image: IconsPath.profileApplication,imageHeight: 17.h,imageWidth: 18.w,title: 'Application',),
-           if(userRoleController.selectedIndex.value==1)ProfileItems(image: IconsPath.profileAgreement,imageHeight: 23.h,imageWidth: 21.w,title: 'Agreement',),
-           if(userRoleController.selectedIndex.value==2)ProfileItems(image: IconsPath.profileApplication,imageHeight: 17.h,imageWidth: 18.w,title: 'Application',),
-           if(userRoleController.selectedIndex.value==2)ProfileItems(image: IconsPath.profileAgreement,imageHeight: 23.h,imageWidth: 21.w,title: 'Agreement',),
-           if(userRoleController.selectedIndex.value==1)ProfileItems(image: IconsPath.profileTenant,imageHeight: 24.h,imageWidth: 24.w,title: 'Tenant Management',),
-           if(userRoleController.selectedIndex.value==1)ProfileItems(image: IconsPath.profileReport,imageHeight: 23.h,imageWidth: 19.w,title: 'Reporting & Analytics',),
-           if(userRoleController.selectedIndex.value==2)ProfileItems(image: IconsPath.profileReport,imageHeight: 23.h,imageWidth: 19.w,title: 'Reporting & Analytics',),
+           if(userRoleController.selectedIndex.value==3)ProfileItems(image: IconsPath.profileService,imageHeight: 24.h,imageWidth: 24.w,title: 'Create New Service', onTap: () {  },),
+           if(userRoleController.selectedIndex.value==1)ProfileItems(image: IconsPath.profileAgent,imageHeight: 24.h,imageWidth: 24.w,title: 'Agent Management', onTap: () {  },),
+           if(userRoleController.selectedIndex.value==0)ProfileItems(image: IconsPath.profileApplication,imageHeight: 17.h,imageWidth: 18.w,title: 'Application', onTap: () {  },),
+           if(userRoleController.selectedIndex.value==0)ProfileItems(image: IconsPath.profileAgreement,imageHeight: 23.h,imageWidth: 21.w,title: 'Agreement', onTap: () {  },),
+           if(userRoleController.selectedIndex.value==1)ProfileItems(image: IconsPath.profileApplication,imageHeight: 17.h,imageWidth: 18.w,title: 'Application', onTap: () {  },),
+           if(userRoleController.selectedIndex.value==1)ProfileItems(image: IconsPath.profileAgreement,imageHeight: 23.h,imageWidth: 21.w,title: 'Agreement', onTap: () {  },),
+           if(userRoleController.selectedIndex.value==2)ProfileItems(image: IconsPath.profileApplication,imageHeight: 17.h,imageWidth: 18.w,title: 'Application', onTap: () {  },),
+           if(userRoleController.selectedIndex.value==2)ProfileItems(image: IconsPath.profileAgreement,imageHeight: 23.h,imageWidth: 21.w,title: 'Agreement', onTap: () {  },),
+           if(userRoleController.selectedIndex.value==1)ProfileItems(image: IconsPath.profileTenant,imageHeight: 24.h,imageWidth: 24.w,title: 'Tenant Management', onTap: () {  },),
+           if(userRoleController.selectedIndex.value==1)ProfileItems(image: IconsPath.profileReport,imageHeight: 23.h,imageWidth: 19.w,title: 'Reporting & Analytics', onTap: () {  },),
+           if(userRoleController.selectedIndex.value==2)ProfileItems(image: IconsPath.profileReport,imageHeight: 23.h,imageWidth: 19.w,title: 'Reporting & Analytics', onTap: () {  },),
             ],
            ):SizedBox(),
             ),
@@ -78,26 +82,26 @@ class ProfileItemsList extends StatelessWidget {
        }
        ),
         SizedBox(height: 8.h,),
-        if(userRoleController.selectedIndex.value==1)ProfileItems(image: IconsPath.profileCalendar,imageHeight: 23.h,imageWidth: 21.w,title: 'Calendar',),
+        if(userRoleController.selectedIndex.value==1)ProfileItems(image: IconsPath.profileCalendar,imageHeight: 23.h,imageWidth: 21.w,title: 'Calendar', onTap: () {  },),
         if(userRoleController.selectedIndex.value==1)SizedBox(height: 8.h,),
-        ProfileItems(image: IconsPath.profilePayment,imageHeight: 23.h,imageWidth: 21.w,title: 'Payment History',),
+        ProfileItems(image: IconsPath.profilePayment,imageHeight: 23.h,imageWidth: 21.w,title: 'Payment History', onTap: () {  },),
         SizedBox(height: 8.h,),
         ProfileItems(image: IconsPath.profileSetting,imageHeight: 23.h,imageWidth: 21.w,title: 'Setting',onTap: (){
           Get.toNamed(AppRoutes.settings);
         },),
         SizedBox(height: 8.h,),
-        ProfileItems(image: IconsPath.profileContact,imageHeight: 23.h,imageWidth: 21.w,title: 'Contact Us',),
+        ProfileItems(image: IconsPath.profileContact,imageHeight: 23.h,imageWidth: 21.w,title: 'Contact Us', onTap: () {  },),
         SizedBox(height: 8.h,),
-        ProfileItems(image: IconsPath.profileSupport,imageHeight: 23.h,imageWidth: 21.w,title: 'Support',),
+        ProfileItems(image: IconsPath.profileSupport,imageHeight: 23.h,imageWidth: 21.w,title: 'Support', onTap: () {  },),
         SizedBox(height: 8.h,),
-        ProfileItems(image: IconsPath.profilePrivacy,imageHeight: 23.h,imageWidth: 21.w,title: 'Privacy Policy',),
+        ProfileItems(image: IconsPath.profilePrivacy,imageHeight: 23.h,imageWidth: 21.w,title: 'Privacy Policy', onTap: () {  },),
         SizedBox(height: 8.h,),
-        ProfileItems(image: IconsPath.profileTerms,imageHeight: 23.h,imageWidth: 21.w,title: 'Terms and Condition',),
+        ProfileItems(image: IconsPath.profileTerms,imageHeight: 23.h,imageWidth: 21.w,title: 'Terms and Condition', onTap: () {  },),
         SizedBox(height: 8.h,),
       ],
     );
   }
-  Widget rowItem(String image,String title,double imageHeight,double imageWidth){
+  Widget rowItem(String image,String title,double imageHeight,double imageWidth, VoidCallback onTap){
     
     return ProfileItems(
       height: 100.h,
@@ -116,9 +120,10 @@ class ProfileItemsList extends StatelessWidget {
               ),
               child: Center(child: Image.asset(image,height: imageHeight,width: imageWidth,),),
             ),
+            SizedBox(height: 5.h),
           CustomText.primaryText(text: title,fontSize: 16.sp,fontWeight: FontWeight.w400,),
         ],
-       ),);
+       ), onTap: onTap,);
   }
 
 }

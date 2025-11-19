@@ -5,6 +5,8 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
 import 'package:renter_pay/features/rent/controllers/rent_controller.dart';
+import 'package:renter_pay/features/rent/widgets/page_no.dart';
+import 'package:renter_pay/features/rent/widgets/property_image_view.dart';
 import 'package:renter_pay/features/rent/widgets/property_sort.dart';
 import 'package:renter_pay/features/rent/widgets/rent_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
@@ -33,6 +35,11 @@ class RentView extends StatelessWidget {
               itemCount: 12,
                 itemBuilder: (_, index) {
                   return ItemContainer(
+                    onTapImage: () {
+                      showDialog(context: context, builder: (context){
+                        return PropertyImageView();
+                      });
+                    },
                     imageHeight: 250.h,
                     imageWidth: MediaQuery.widthOf(context),
                     image: ImagesPath.house,
@@ -45,6 +52,8 @@ class RentView extends StatelessWidget {
                   );
                 },
               ),
+              PageNo(),
+              SizedBox(height: 55.h,),
           ],
         ),
       ),

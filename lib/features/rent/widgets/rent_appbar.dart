@@ -95,7 +95,7 @@ class RentAppbar extends StatelessWidget {
                               onPropertyChange: (value) {},
                               amenitiesItems: ['Parking','Pet-friendly','Private pool','Gym/Fitness Center','Garden/Outdoor space','24/7 Security'],
                               selectedAmenities: rentController.selectedAmenities,
-                              onAmenitiesChange: (value) {},
+                              onAmenitiesChange: (value) {}, onReset: () {  }, isProperty: () {  }, isAmenities: rentController.isAmenities,
                             );
                           }),
                         ),

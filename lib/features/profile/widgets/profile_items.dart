@@ -10,13 +10,13 @@ class ProfileItems extends StatelessWidget {
   final double ?width;
   final Widget ?primaryWidget;
   final Widget ?secondaryWidget;
-  final VoidCallback ?onTap;
+  final VoidCallback onTap;
   final double ?imageHeight;
   final double ?imageWidth;
   final String ?image;
   final String ?title;
   final EdgeInsets ?padding;
-  const ProfileItems({super.key, this.height, this.width, this.primaryWidget, this.secondaryWidget, this.onTap,  this.imageHeight,  this.imageWidth,  this.image,  this.title, this.padding});
+  const ProfileItems({super.key, this.height, this.width, this.primaryWidget, this.secondaryWidget,required this.onTap,  this.imageHeight,  this.imageWidth,  this.image,  this.title, this.padding});
   @override
   Widget build(BuildContext context) {
     ThemeController themeController = Get.find();

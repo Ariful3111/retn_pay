@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/shared/widgets/custom_text.dart';
 import 'package:renter_pay/shared/widgets/filter/custom_slider.dart';
@@ -14,12 +15,14 @@ class PriceRange extends StatelessWidget {
   final double maxRange;
   final ValueChanged<SfRangeValues> onChanged;
   final VoidCallback onTap;
-  const PriceRange({super.key, required this.range, required this.min, required this.max, required this.minRange, required this.maxRange, required this.onChanged, required this.onTap});
+  final RxBool isPriceShow;
+  const PriceRange({super.key, required this.range, required this.min, required this.max, required this.minRange, required this.maxRange, required this.onChanged, required this.onTap, required this.isPriceShow});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 147.25.h,
+      padding: EdgeInsets.symmetric(vertical: 18.41.h),
+      height: 148.h,
       width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(9.2.sp),
@@ -29,10 +32,17 @@ class PriceRange extends StatelessWidget {
          crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          FilterTitles(title: 'Rent Budget', onTap: onTap,),
-          CustomSlider(range: range, minRange: minRange, maxRange: maxRange, onChanged: onChanged,),
           Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 18.41.h),
+            padding:  EdgeInsets.symmetric(horizontal: 18.41.w),
+            child: FilterTitles(title: 'Rent Budget', onTap: onTap, isShow: isPriceShow,),
+          ),
+          SizedBox(
+            height: 18.41.h,
+            
+            child: CustomSlider(range: range, minRange: minRange, maxRange: maxRange, onChanged: onChanged,)),
+          SizedBox(height: 8.44.h,),
+          Padding(
+            padding:  EdgeInsets.symmetric(horizontal: 18.41.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

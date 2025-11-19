@@ -14,4 +14,33 @@ class RentController extends GetxController{
   RxList officeRating = List<double>.filled(12,1.0).obs;
   RxList studioRating = List<double>.filled(12,1.0).obs;
   RxList vilaRating = List<double>.filled(12,1.0).obs;
+  var currentPage = 1.obs;
+  int totalPage = 100;
+  RxBool isAmenities = true.obs;
+  void previousPage(){
+    if(currentPage>1) currentPage.value--;
+  }
+
+  void nextPage(){
+    if(currentPage<totalPage) currentPage++;
+  }
+
+  List<dynamic> get pageNumber{
+    int page = currentPage.value;
+
+     if (totalPage <= 6) {
+      return List.generate(totalPage, (i) => i + 1);
+    }
+
+    if (page <= 3) {
+      return [1, 2, '...', totalPage - 1, totalPage];
+    }
+
+    if (page >= totalPage - 2) {
+      return [1, 2, '...', totalPage - 1, totalPage];
+    }
+
+    return [1, '...', page - 1, page, page + 1, '...', totalPage];
+  }
+  
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -22,6 +23,7 @@ class ThemeController extends GetxController{
   void changeTheme(){
     isDarkMode.value=!isDarkMode.value;
     saveThemeToStorage();
+    Get.changeThemeMode(currentTheme);
   }
-  //ThemeData get currentTheme => isDarkMode.value?Brightness.dark:Brightness.light;
+  ThemeMode get currentTheme => isDarkMode.value?ThemeMode.dark:ThemeMode.light;
 }

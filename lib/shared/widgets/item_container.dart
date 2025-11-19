@@ -16,6 +16,7 @@ class ItemContainer extends StatelessWidget {
   final VoidCallback onVR;
   final ValueChanged<double> updateRating;
   final double initialRating;
+  final VoidCallback ?onTapImage;
   const ItemContainer({
     super.key,
     required this.imageHeight,
@@ -23,7 +24,7 @@ class ItemContainer extends StatelessWidget {
     required this.image,
     this.borderRadius,
     required this.padding,
-    required this.onVR, required this.updateRating, required this.initialRating,
+    required this.onVR, required this.updateRating, required this.initialRating, this.onTapImage,
   });
 
   @override
@@ -34,20 +35,23 @@ class ItemContainer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: imageHeight,
-            width: imageWidth,
-            padding: EdgeInsets.all(8.sp),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(borderRadius ?? 12.sp),
-              image: DecorationImage(
-                image: AssetImage(image),
-                fit: BoxFit.fill,
+          GestureDetector(
+            onTap: onTapImage,
+            child: Container(
+              height: imageHeight,
+              width: imageWidth,
+              padding: EdgeInsets.all(8.sp),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(borderRadius ?? 12.sp),
+                image: DecorationImage(
+                  image: AssetImage(image),
+                  fit: BoxFit.fill,
+                ),
               ),
-            ),
-            child: Align(
-              alignment: Alignment.topRight,
-              child: FavoriteButton(onTap: () {}),
+              child: Align(
+                alignment: Alignment.topRight,
+                child: FavoriteButton(onTap: () {}),
+              ),
             ),
           ),
           SizedBox(height: 4.h),

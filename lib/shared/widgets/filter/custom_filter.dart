@@ -25,6 +25,11 @@ class CustomFilter extends StatelessWidget {
   final List amenitiesItems;
   final RxList<String> selectedAmenities;
   final Function(List<String>) onAmenitiesChange;
+  final VoidCallback onReset;
+  final VoidCallback isProperty;
+  final RxBool isAmenities;
+  final RxBool isShowAmenities;
+  
   const CustomFilter({
     super.key,
     required this.range,
@@ -38,7 +43,13 @@ class CustomFilter extends StatelessWidget {
     required this.onSliderChanged,
     required this.propertyItems,
     required this.selectedProperty,
-    required this.onPropertyChange, required this.amenitiesItems, required this.selectedAmenities, required this.onAmenitiesChange,
+    required this.onPropertyChange,
+    required this.amenitiesItems,
+    required this.selectedAmenities,
+    required this.onAmenitiesChange,
+    required this.onReset,
+    required this.isProperty,
+    required this.isAmenities,
   });
 
   @override
@@ -47,11 +58,10 @@ class CustomFilter extends StatelessWidget {
       width: 260.w,
       color: AppColors.whiteColor,
       child: SingleChildScrollView(
-        
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ResetFilter(),
+            ResetFilter(onTap: onReset),
             SizedBox(height: 8.32),
             PriceRange(
               range: range,
@@ -72,9 +82,15 @@ class CustomFilter extends StatelessWidget {
               propertyItems: propertyItems,
               selectedProperty: selectedProperty,
               onChange: onPropertyChange,
+              onTap: isProperty,
             ),
             SizedBox(height: 8.32),
-            FilterAmenities(amenitiesItems: amenitiesItems, selectedAmenities: selectedAmenities, onAmenitiesChange: onAmenitiesChange)
+           FilterAmenities(
+              amenitiesItems: amenitiesItems,
+              selectedAmenities: selectedAmenities,
+              onAmenitiesChange: onAmenitiesChange,
+              isAmenities: isAmenities,
+            ),
           ],
         ),
       ),

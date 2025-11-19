@@ -86,6 +86,7 @@ class CustomTextField extends StatelessWidget {
               text: hintText ?? "",
               fontSize: 16.sp,
               fontWeight: FontWeight.w500,
+              color:  AppColors.primaryDarkTextColor.withValues(alpha: 0.8)
             ),
         errorText: errorText,
         suffixIcon: suffixIcon,

@@ -14,6 +14,7 @@ class PopularItems extends StatelessWidget {
     return SizedBox(
       height: 284.w,
       child: ListView.builder(
+        shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (_, index) {

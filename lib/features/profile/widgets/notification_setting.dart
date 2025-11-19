@@ -45,7 +45,9 @@ class NotificationSetting extends StatelessWidget {
             borderRadius: BorderRadius.circular(16.sp),
           ),
           child: GestureDetector(
-            onTap: (){},
+            onTap: (){
+              
+            },
             child: AnimatedAlign(
               alignment: Alignment.centerLeft,
               duration: Duration(milliseconds: 300),

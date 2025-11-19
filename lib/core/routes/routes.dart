@@ -21,11 +21,13 @@ import 'package:renter_pay/features/dashboard/bindings/dashboard_bindings.dart';
 import 'package:renter_pay/features/dashboard/views/dashboard_view.dart';
 import 'package:renter_pay/features/home/bindings/home_bindings.dart';
 import 'package:renter_pay/features/home/bindings/main_home_bindings.dart';
+import 'package:renter_pay/features/home/bindings/notification_bindings.dart';
 import 'package:renter_pay/features/home/views/home_view.dart';
 import 'package:renter_pay/features/home/views/main_home_view.dart';
+import 'package:renter_pay/features/home/views/notification_view.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan.dart';
 import 'package:renter_pay/features/profile/bindings/profile_bindings.dart';
-import 'package:renter_pay/features/profile/controllers/settings_bindings.dart';
+import 'package:renter_pay/features/profile/bindings/settings_bindings.dart';
 import 'package:renter_pay/features/profile/views/profile_view.dart';
 import 'package:renter_pay/features/profile/views/setting_view.dart';
 import 'package:renter_pay/features/rent/bindings/rent_bindings.dart';
@@ -54,5 +56,6 @@ final List<GetPage> appRoutes = [
   GetPage(name: AppRoutes.chat, page: ()=>ChatView(),bindings: [ChatBindings()]),
   GetPage(name: AppRoutes.settings, page: ()=>SettingView(),bindings: [
     SettingsBindings()
-  ])
+  ]),
+  GetPage(name: AppRoutes.notification, page: ()=>NotificationView(),bindings: [NotificationBindings()])
 ];

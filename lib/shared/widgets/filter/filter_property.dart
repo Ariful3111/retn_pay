@@ -9,17 +9,20 @@ class FilterProperty extends StatelessWidget {
   final List propertyItems;
   final RxList<String> selectedProperty;
   final Function(List<String>) onChange;
+  final VoidCallback onTap;
+  final RxBool isPropertyShow;
   const FilterProperty({
     super.key,
     required this.propertyItems,
     required this.selectedProperty,
-    required this.onChange,
+    required this.onChange, required this.onTap, required this.isPropertyShow,
+    
   });
   @override
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        // height: 227.h,
+        padding: EdgeInsets.all(18.41.h),
         width: MediaQuery.widthOf(context),
         decoration: BoxDecoration(
           color: AppColors.whiteColor,
@@ -29,7 +32,7 @@ class FilterProperty extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FilterTitles(title: 'Property Type', onTap: () {}),
+            FilterTitles(title: 'Property Type', onTap: onTap, isShow: isPropertyShow,),
             FilterCheckbox(propertyItems: propertyItems, selectedProperty: selectedProperty, onChange: onChange),
           ],
         ),

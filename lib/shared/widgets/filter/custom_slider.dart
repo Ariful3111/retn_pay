@@ -14,7 +14,6 @@ class CustomSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return SfRangeSlider(
-      
       values: range,
       min: minRange,
       max: maxRange,

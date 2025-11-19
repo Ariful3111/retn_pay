@@ -21,13 +21,17 @@ class MyApp extends StatelessWidget {
     ThemeController themeController = Get.find();
     return ScreenUtilInit(
       designSize: Size(430, 932),
-      child: GetMaterialApp(
+      child: Obx((){
+        return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Renter Pay',
       getPages: appRoutes,
       initialRoute: AppRoutes.onboarding,
-      themeMode: themeController.isDarkMode.value?ThemeMode.dark:ThemeMode.light,
-      ),
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: themeController.currentTheme,
+      );
+      }),
     );
   }
 }
