@@ -67,6 +67,7 @@ class LoginController extends GetxController {
     emailValidation(emailController.text.trim());
     passwordValidation(passwordController.text.trim());
     int index = Get.find<UserRoleController>().selectedIndex.value;
+     Get.toNamed(AppRoutes.mainHome);
     if (formKey.currentState?.validate() ?? false) {
       Get.toNamed(AppRoutes.mainHome);
       if(index==2){

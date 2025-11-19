@@ -63,10 +63,9 @@ class RentAppbar extends StatelessWidget {
                         top: 20.h,
                         child: ConstrainedBox(
                           constraints: BoxConstraints(
-                          maxHeight:
-                              MediaQuery.of(context).size.height*0.8,
-                          maxWidth: 260.w,
-                        ),
+                            maxHeight: MediaQuery.of(context).size.height * 0.8,
+                            maxWidth: 260.w,
+                          ),
                           child: Obx(() {
                             final start = rentController.range.value.start;
                             final end = rentController.range.value.end;
@@ -84,18 +83,33 @@ class RentAppbar extends StatelessWidget {
                               isSlider: () {},
                               isSearch: () {},
                               propertyItems: [
-                              'Apartment',
-                              'Studio',
-                              'House',
-                              'Villa',
-                              'Office',
-                            ],
+                                'Apartment',
+                                'Studio',
+                                'House',
+                                'Villa',
+                                'Office',
+                              ],
                               selectedProperty:
-                              rentController.selectedFilterProperty,
+                                  rentController.selectedFilterProperty,
                               onPropertyChange: (value) {},
-                              amenitiesItems: ['Parking','Pet-friendly','Private pool','Gym/Fitness Center','Garden/Outdoor space','24/7 Security'],
-                              selectedAmenities: rentController.selectedAmenities,
-                              onAmenitiesChange: (value) {}, onReset: () {  }, isProperty: () {  }, isAmenities: rentController.isAmenities,
+                              amenitiesItems: [
+                                'Parking',
+                                'Pet-friendly',
+                                'Private pool',
+                                'Gym/Fitness Center',
+                                'Garden/Outdoor space',
+                                '24/7 Security',
+                              ],
+                              selectedAmenities:
+                                  rentController.selectedAmenities,
+                              onAmenitiesChange: (value) {},
+                              onReset: () {},
+                              isProperty: () {},
+                              isAmenities: rentController.isAmenities,
+                              isShowAmenities: rentController.isShowAmenities,
+                              isShowProperty: rentController.isShowProperty,
+                              isShowSearch: rentController.isShowSearch,
+                              isShowPriceRange: rentController.isShowPriceRange,
                             );
                           }),
                         ),

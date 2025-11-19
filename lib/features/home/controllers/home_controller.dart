@@ -29,6 +29,10 @@ class HomeController extends GetxController{
   RxBool isAmenities = true.obs;
   RxBool isFilterSearch = false.obs;
   RxBool isPrice = false.obs;
+  RxBool isShowPriceRange = false.obs;
+  RxBool isShowAmenities = true.obs;
+  RxBool isShowProperty = true.obs;
+  RxBool isShowSearch = false.obs;
   @override
   void onInit() {
     apartmentRating;

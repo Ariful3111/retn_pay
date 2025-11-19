@@ -7,7 +7,6 @@ import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class HomeFilter extends StatelessWidget {
   const HomeFilter({super.key});
-
   @override
   Widget build(BuildContext context) {
     HomeController homeController = Get.find();
@@ -58,6 +57,10 @@ class HomeFilter extends StatelessWidget {
                 onReset: () {},
                 isProperty: () {},
                 isAmenities: homeController.isAmenities,
+                isShowAmenities: homeController.isShowAmenities,
+                isShowProperty: homeController.isShowProperty,
+                isShowSearch: homeController.isShowSearch,
+                isShowPriceRange: homeController.isShowPriceRange,
               );
             }),
           ),

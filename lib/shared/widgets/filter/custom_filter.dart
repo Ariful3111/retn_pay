@@ -29,6 +29,9 @@ class CustomFilter extends StatelessWidget {
   final VoidCallback isProperty;
   final RxBool isAmenities;
   final RxBool isShowAmenities;
+  final RxBool isShowProperty;
+  final RxBool isShowSearch;
+  final RxBool isShowPriceRange;
   
   const CustomFilter({
     super.key,
@@ -49,7 +52,8 @@ class CustomFilter extends StatelessWidget {
     required this.onAmenitiesChange,
     required this.onReset,
     required this.isProperty,
-    required this.isAmenities,
+    required this.isAmenities, required this.isShowAmenities, required this.isShowProperty, required this.isShowSearch, required this.isShowPriceRange,
+    
   });
 
   @override
@@ -70,26 +74,26 @@ class CustomFilter extends StatelessWidget {
               minRange: minRange,
               maxRange: maxRange,
               onChanged: onSliderChanged,
-              onTap: isSlider,
+              onTap: isSlider, isPriceShow: isShowPriceRange,
             ),
             SizedBox(height: 8.32),
             FilterSearch(
               textEditingController: textEditingController,
-              onTap: isSearch,
+              onTap: isSearch, isSearchShow: isShowSearch,
             ),
             SizedBox(height: 8.32),
             FilterProperty(
               propertyItems: propertyItems,
               selectedProperty: selectedProperty,
               onChange: onPropertyChange,
-              onTap: isProperty,
+              onTap: isProperty, isPropertyShow: isShowProperty,
             ),
             SizedBox(height: 8.32),
            FilterAmenities(
               amenitiesItems: amenitiesItems,
               selectedAmenities: selectedAmenities,
               onAmenitiesChange: onAmenitiesChange,
-              isAmenities: isAmenities,
+              isAmenities: isAmenities, isShowAmenities: isShowAmenities,
             ),
           ],
         ),

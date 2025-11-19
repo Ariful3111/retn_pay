@@ -16,7 +16,17 @@ class PriceRange extends StatelessWidget {
   final ValueChanged<SfRangeValues> onChanged;
   final VoidCallback onTap;
   final RxBool isPriceShow;
-  const PriceRange({super.key, required this.range, required this.min, required this.max, required this.minRange, required this.maxRange, required this.onChanged, required this.onTap, required this.isPriceShow});
+  const PriceRange({
+    super.key,
+    required this.range,
+    required this.min,
+    required this.max,
+    required this.minRange,
+    required this.maxRange,
+    required this.onChanged,
+    required this.onTap,
+    required this.isPriceShow,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,39 +36,47 @@ class PriceRange extends StatelessWidget {
       width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(9.2.sp),
-        border: Border.all(width: 0.77.sp,color: AppColors.filterBorder),
+        border: Border.all(width: 0.77.sp, color: AppColors.filterBorder),
       ),
       child: Column(
-         crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 18.41.w),
-            child: FilterTitles(title: 'Rent Budget', onTap: onTap, isShow: isPriceShow,),
+            padding: EdgeInsets.symmetric(horizontal: 18.41.w),
+            child: FilterTitles(
+              title: 'Rent Budget',
+              onTap: onTap,
+              isShow: isPriceShow,
+            ),
           ),
           SizedBox(
             height: 18.41.h,
-            
-            child: CustomSlider(range: range, minRange: minRange, maxRange: maxRange, onChanged: onChanged,)),
-          SizedBox(height: 8.44.h,),
+            child: CustomSlider(
+              range: range,
+              minRange: minRange,
+              maxRange: maxRange,
+              onChanged: onChanged,
+            ),
+          ),
+          SizedBox(height: 8.44.h),
           Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 18.41.w),
+            padding: EdgeInsets.symmetric(horizontal: 18.41.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-              showPrice("Minimum", min),
-              showPrice("Maximum", max),
-            ],),
+              children: [showPrice("Minimum", min), showPrice("Maximum", max)],
+            ),
           ),
         ],
       ),
     );
   }
-  Widget showPrice(String text,String price){
+
+  Widget showPrice(String text, String price) {
     return Container(
       height: 45.h,
       width: 108.53.w,
-      padding: EdgeInsets.symmetric(horizontal: 12.27.w,vertical: 6.14.h),
+      padding: EdgeInsets.symmetric(horizontal: 12.27.w, vertical: 6.14.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6.14.sp),
         color: Color(0xFFF4F6F8),
@@ -67,8 +85,17 @@ class PriceRange extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CustomText.secondaryText(text: text,fontSize: 9.2.sp,fontWeight: FontWeight.w400,color: Color(0xFF697483)),
-          CustomText.primaryText(text: price,fontSize: 12.27.sp,fontWeight: FontWeight.w500),
+          CustomText.secondaryText(
+            text: text,
+            fontSize: 9.2.sp,
+            fontWeight: FontWeight.w400,
+            color: Color(0xFF697483),
+          ),
+          CustomText.primaryText(
+            text: price,
+            fontSize: 12.27.sp,
+            fontWeight: FontWeight.w500,
+          ),
         ],
       ),
     );
