@@ -4,7 +4,8 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/home/widgets/favorite_button.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/custom_text_span.dart';
 
 class PopularItems extends StatelessWidget {
   const PopularItems({super.key});
@@ -40,11 +41,11 @@ class PopularItems extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomText.secondaryText(
+                    CustomTextSecondary(
                       text: 'Maple Grove Garden',
                       color: AppColors.whiteColor,
                     ),
-                    CustomText.spanText(
+                    CustomTextSpan(
                       title: '\$200',
                       spantext: '/Week',
                       fontSize: 16.sp,
@@ -59,7 +60,7 @@ class PopularItems extends StatelessWidget {
                   children: [
                     Image.asset(IconsPath.location,height: 14.h,width: 14.w,),
                     SizedBox(width: 4.w,),
-                    CustomText.secondaryText(
+                    CustomTextSecondary(
                       text: 'New York, USA',
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w400,

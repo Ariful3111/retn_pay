@@ -6,7 +6,8 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
 
 class HomeAppbar extends StatelessWidget {
   const HomeAppbar({super.key});
@@ -22,8 +23,8 @@ class HomeAppbar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomText.primaryText(text: 'Hi,Sakib',fontSize: 20.sp,fontWeight: FontWeight.w500),
-            CustomText.secondaryText(text: 'Welcome to Renterpay',fontSize: 14.sp,fontWeight: FontWeight.w400,color:themeController.isDarkMode.value?AppColors.darkSecondaryText:AppColors.primaryDarkTextColor.withValues(alpha: 0.80)),
+            CustomTextPrimary(text: 'Hi,Sakib',fontSize: 20.sp,fontWeight: FontWeight.w500),
+            CustomTextSecondary(text: 'Welcome to Renterpay',fontSize: 14.sp,fontWeight: FontWeight.w400,color:themeController.isDarkMode.value?AppColors.darkSecondaryText:AppColors.primaryDarkTextColor.withValues(alpha: 0.80)),
           ],
         ),
         Spacer(),

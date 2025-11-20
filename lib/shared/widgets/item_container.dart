@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/home/widgets/favorite_button.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/custom_text_span.dart';
 import 'package:renter_pay/shared/widgets/rating.dart';
 
 class ItemContainer extends StatelessWidget {
@@ -29,6 +31,7 @@ class ItemContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Padding(
       padding: padding,
       child: Column(
@@ -59,14 +62,22 @@ class ItemContainer extends StatelessWidget {
             children: [
               Image.asset(IconsPath.bed, height: 12.h, width: 12.w),
               SizedBox(width: 1.56.w),
-              CustomText.secondaryText(
+              CustomTextSecondary(
                 text: 'Bed',
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
                 color: Color(0xFF7E8B9C),
               ),
               SizedBox(width: 5.42.w),
-              CustomText.secondaryText(
+              Center(
+                child: Image.asset(
+                  IconsPath.bathroom,
+                  height: 15.21.h,
+              width: 15.21.w,
+                ),
+              ),
+              SizedBox(width: 2.w),
+             CustomTextSecondary(
                 text: 'Bathroom',
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
@@ -75,7 +86,7 @@ class ItemContainer extends StatelessWidget {
               SizedBox(width: 5.42.w),
               DottedBorder(
                 options: RectDottedBorderOptions(
-                  color: AppColors.darkPrimary,
+                  color:isDark?AppColors.whiteColor: AppColors.darkPrimary,
                   borderPadding: EdgeInsets.all(0.39.sp),
                   dashPattern: [1.5, 1.5],
                 ),
@@ -87,12 +98,13 @@ class ItemContainer extends StatelessWidget {
                       IconsPath.sizeArrow,
                       height: 4.h,
                       width: 4.w,
+                      color:isDark?AppColors.whiteColor: AppColors.darkPrimary,
                     ),
                   ),
                 ),
               ),
               SizedBox(width: 4.w),
-              CustomText.secondaryText(
+              CustomTextSecondary(
                 text: '2500sft',
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
@@ -108,21 +120,21 @@ class ItemContainer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CustomText.primaryText(
+                  CustomTextPrimary(
                     text: 'Maple Grove Garden House',
                     fontSize: 16.sp,
                   ),
                   Row(
                     children: [
-                      CustomText.spanText(
+                      CustomTextSpan(
                         title: '\$280',
                         spantext: '/week',
                         spanColor: Color(0xFF505F79),
                       ),
                       SizedBox(width: 3.12.w),
-                      CustomText.secondaryText(text: '.', fontSize: 7.02.sp),
+                      CustomTextSecondary(text: '.', fontSize: 7.02.sp),
                       SizedBox(width: 3.12.w),
-                      CustomText.secondaryText(
+                      CustomTextSecondary(
                         text: 'New York, USA',
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,

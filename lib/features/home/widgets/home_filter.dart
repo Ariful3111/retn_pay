@@ -13,7 +13,7 @@ class HomeFilter extends StatelessWidget {
     return Stack(
       children: [
         Positioned(
-          top: 110.h,
+          top: 120.h,
           right: 20.w,
           child: ConstrainedBox(
             constraints: BoxConstraints(
@@ -33,8 +33,8 @@ class HomeFilter extends StatelessWidget {
                   homeController.range.value = value;
                 },
                 textEditingController: homeController.filterSearchController,
-                isSlider: () {},
-                isSearch: () {},
+                isSlider: () {homeController.isShowPriceRange.value=!homeController.isShowPriceRange.value;},
+                isSearch: () {homeController.isShowSearch.value=!homeController.isShowSearch.value;},
                 propertyItems: [
                   'Apartment',
                   'Studio',
@@ -55,8 +55,8 @@ class HomeFilter extends StatelessWidget {
                 selectedAmenities: homeController.selectedAmenities,
                 onAmenitiesChange: (value) {},
                 onReset: () {},
-                isProperty: () {},
-                isAmenities: homeController.isAmenities,
+                isProperty: () {homeController.isShowProperty.value=!homeController.isShowProperty.value;},
+                onAmenities: (){homeController.isShowAmenities.value=!homeController.isShowAmenities.value;},
                 isShowAmenities: homeController.isShowAmenities,
                 isShowProperty: homeController.isShowProperty,
                 isShowSearch: homeController.isShowSearch,

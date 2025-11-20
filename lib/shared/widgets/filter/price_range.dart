@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/filter/custom_slider.dart';
 import 'package:renter_pay/shared/widgets/filter/filter_titles.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
@@ -30,68 +31,89 @@ class PriceRange extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: EdgeInsets.symmetric(vertical: 18.41.h),
-      height: 148.h,
-      width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(9.2.sp),
-        border: Border.all(width: 0.77.sp, color: AppColors.filterBorder),
+        border: Border.all(
+          width: 0.77.sp,
+          color: isDark ? AppColors.darkBorderPrimary : AppColors.filterBorder,
+        ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 18.41.w),
-            child: FilterTitles(
-              title: 'Rent Budget',
-              onTap: onTap,
-              isShow: isPriceShow,
+      child: Obx(() {
+        return Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 18.41.w),
+              child: FilterTitles(
+                title: 'Rent Budget',
+                onTap: onTap,
+                icon: isPriceShow.value ? Icons.remove : Icons.add,
+              ),
             ),
-          ),
-          SizedBox(
-            height: 18.41.h,
-            child: CustomSlider(
-              range: range,
-              minRange: minRange,
-              maxRange: maxRange,
-              onChanged: onChanged,
+            AnimatedSize(
+              duration: Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+              child: AnimatedOpacity(
+                opacity: isPriceShow.value ? 1 : 0,
+                duration: Duration(milliseconds: 200),
+                child: isPriceShow.value
+                    ? Column(
+                        children: [
+                          SizedBox(height: 8.44.h),
+                          SizedBox(
+                            height: 18.41.h,
+                            child: CustomSlider(
+                              range: range,
+                              minRange: minRange,
+                              maxRange: maxRange,
+                              onChanged: onChanged,
+                            ),
+                          ),
+                          SizedBox(height: 8.44.h),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 18.41.w),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                showPrice("Minimum", min, context),
+                                showPrice("Maximum", max, context),
+                              ],
+                            ),
+                          ),
+                        ],
+                      )
+                    : SizedBox(),
+              ),
             ),
-          ),
-          SizedBox(height: 8.44.h),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 18.41.w),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [showPrice("Minimum", min), showPrice("Maximum", max)],
-            ),
-          ),
-        ],
-      ),
+          ],
+        );
+      }),
     );
   }
 
-  Widget showPrice(String text, String price) {
+  Widget showPrice(String text, String price, BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       height: 45.h,
       width: 108.53.w,
       padding: EdgeInsets.symmetric(horizontal: 12.27.w, vertical: 6.14.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6.14.sp),
-        color: Color(0xFFF4F6F8),
+        color: isDark ? AppColors.darkContainer : Color(0xFFF4F6F8),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CustomText.secondaryText(
+          CustomTextSecondary(
             text: text,
             fontSize: 9.2.sp,
             fontWeight: FontWeight.w400,
             color: Color(0xFF697483),
           ),
-          CustomText.primaryText(
+          CustomTextPrimary(
             text: price,
             fontSize: 12.27.sp,
             fontWeight: FontWeight.w500,

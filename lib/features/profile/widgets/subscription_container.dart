@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/shared/widgets/custom_secondary_button.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/custom_text_span.dart';
 
 class SubscriptionContainer extends StatelessWidget {
   final Color? planBG;
@@ -85,19 +87,19 @@ class SubscriptionContainer extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomText.primaryText(
+                     CustomTextPrimary(
                         text: planTitle ?? "Basic",
                         color: AppColors.subsPlanTitle,
                         fontSize: 28.sp,
                       ),
                       SizedBox(height: 12.h),
-                      CustomText.secondaryText(
+                      CustomTextSecondary(
                         text: planSubtitle ?? "(Free 15 days for first-time users)",
                         color: AppColors.subsPlanSubtitle,
                         fontSize: 14.sp,
                       ),
                       SizedBox(height: 16.h),
-                      CustomText.spanText(
+                      CustomTextSpan(
                         title: price ?? '\$299',
                         spantext: '/month',
                         fontSize: 40.sp,
@@ -114,7 +116,7 @@ class SubscriptionContainer extends StatelessWidget {
               SizedBox(height: 12.h),
               Container(height: 2.h, width: 310.w, color: Color(0xFFDFE2E6)),
               SizedBox(height: 12.h),
-              CustomText.secondaryText(text: "Benefits:", color: AppColors.subsPlanTitle),
+              CustomTextSecondary(text: "Benefits:", color: AppColors.subsPlanTitle),
               SizedBox(height: 14.h),
               Column(children: widgetList),
               SizedBox(height:sizeBoxHeight?? 84.h),

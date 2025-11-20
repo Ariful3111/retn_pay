@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
 
 class ProfileItems extends StatelessWidget {
   final double ?height;
@@ -45,7 +45,7 @@ class ProfileItems extends StatelessWidget {
               child: Center(child: Image.asset(image!,height: imageHeight,width: imageWidth,),),
             ),
             SizedBox(width: 8.h,),
-            CustomText.primaryText(text: title??'',fontSize: 16.sp,fontWeight: FontWeight.w400,),
+           CustomTextPrimary(text: title??'',fontSize: 16.sp,fontWeight: FontWeight.w400,),
             Spacer(),
             ?secondaryWidget,
             SizedBox(width: 18.w,),

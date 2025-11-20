@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/home/controllers/home_controller.dart';
 import 'package:renter_pay/features/home/widgets/home_filter.dart';
 import 'package:renter_pay/shared/widgets/custom_text_field.dart';
@@ -13,7 +12,7 @@ class HomeSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeController homeController = Get.find();
-    ThemeController themeController = Get.find();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -24,11 +23,11 @@ class HomeSearch extends StatelessWidget {
             borderRadius: BorderRadius.circular(12.sp),
             border: Border.all(
               width: 1.sp,
-              color: themeController.isDarkMode.value
+              color: isDark
                   ? AppColors.darkBorderPrimary
                   : AppColors.secondaryBorder,
             ),
-            color: themeController.isDarkMode.value
+            color: isDark
                 ? AppColors.darkSecondary
                 : AppColors.whiteColor,
             boxShadow: [
@@ -63,7 +62,8 @@ class HomeSearch extends StatelessWidget {
                   width: 24.w,
                 ),
               ),
-              hintText: 'Search...',
+              labelText: 'Search...',
+              floatingLabelBehavior: FloatingLabelBehavior.never,
               isFilled: false,
             ),
           ),
@@ -84,7 +84,7 @@ class HomeSearch extends StatelessWidget {
               borderRadius: BorderRadius.circular(12.sp),
               border: Border.all(
                 width: 1.sp,
-                color: themeController.isDarkMode.value
+                color: isDark
                     ? AppColors.darkBorderPrimary
                     : AppColors.secondaryBorder,
               ),

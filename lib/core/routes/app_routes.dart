@@ -9,6 +9,7 @@ class AppRoutes {
   static const String documentVerification = '/documentVerification';
   static const String subsPlan = '/subsPlan';
   static const String profile = '/profile';
+  static const String profileEdit = '/profileEdit';
   static const String rent = '/rent';
   static const String dashboard = '/dashboard';
   static const String chat = '/chat';

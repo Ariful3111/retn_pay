@@ -6,7 +6,8 @@ import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/auth/controllers/onboarding_controller.dart';
 import 'package:renter_pay/features/auth/widgets/first_onboarding.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
@@ -97,12 +98,12 @@ class OnboardingPage extends StatelessWidget {
             SizedBox(height: 10.h,),
             Padding(
               padding: EdgeInsets.only(left: 32.w),
-              child: CustomText.primaryText(text: titleList[index]),
+              child: CustomTextPrimary(text: titleList[index]),
             ),
             SizedBox(height: 8.h,),
             Padding(
               padding: EdgeInsets.only(left: 32.w),
-              child: CustomText.secondaryText(text: subtitleList[index]),
+              child: CustomTextSecondary(text: subtitleList[index]),
             ),
           ],
         ),

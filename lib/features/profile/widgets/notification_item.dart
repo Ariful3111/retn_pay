@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
 
 class NotificationItem extends StatelessWidget {
   final String notificationIcon;
@@ -19,8 +18,6 @@ class NotificationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
   
-
-    return Obx(() {
       return GestureDetector(
         onTap: onTap,
         child: Container(
@@ -60,12 +57,12 @@ class NotificationItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText.primaryText(
+                  CustomTextPrimary(
                     text: notificationText,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                   ),
-                  CustomText.primaryText(
+                  CustomTextPrimary(
                     text: notificationTime,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,
@@ -77,6 +74,6 @@ class NotificationItem extends StatelessWidget {
           ),
         ),
       );
-    });
+    
   }
 }

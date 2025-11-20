@@ -40,9 +40,17 @@ class AppColors {
   static const darkSecondary = Color(0xFF1A1718);
   static const darkAppBar = Color(0xFFF0E6EC);
   static const darkBorderPrimary = Color(0xFF243757);
+  static const darkContainer = Color(0xFF091E42);
   static const darkAuthBG = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
     tileMode: TileMode.clamp,
     colors: [Color(0xFF251621), Color(0xFF42233A)]);
+  static const darkAppIcon = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+    Color(0xFF37CADA),
+    Color(0xFF529EDA)
+  ]);
 }

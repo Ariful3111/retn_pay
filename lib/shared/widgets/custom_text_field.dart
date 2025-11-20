@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/core/themes/theme_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
 
 class CustomTextField extends StatelessWidget {
   final Widget? hintTextWidget;
@@ -33,6 +31,8 @@ class CustomTextField extends StatelessWidget {
   final InputBorder ?enableBorder;
   final InputBorder ?focusBorder;
   final InputBorder ?border;
+  final FloatingLabelBehavior? floatingLabelBehavior;
+  final Color ?fillColor;
   const CustomTextField({
     super.key,
     this.hintText,
@@ -56,12 +56,12 @@ class CustomTextField extends StatelessWidget {
     this.hintTextWidget,
     this.labelTextWidget,
     this.padding,
-    this.margin, this.validation,  this.isFilled, this.enableBorder, this.focusBorder, this.border,
+    this.margin, this.validation,  this.isFilled, this.enableBorder, this.focusBorder, this.border, this.floatingLabelBehavior, this.fillColor,
   });
 
   @override
   Widget build(BuildContext context) {
-    ThemeController themeController = Get.find();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return TextFormField(
       controller: controller,
       textDirection: textDirection ?? TextDirection.ltr,
@@ -71,22 +71,22 @@ class CustomTextField extends StatelessWidget {
       onChanged: onChanged,
       readOnly: readOnly ?? false,
       autovalidateMode: validation,
-      style: TextStyle(color: themeController.isDarkMode.value?AppColors.darkPrimaryText:AppColors.primaryDarkTextColor),
+      style: TextStyle(color: isDark?AppColors.darkPrimaryText:AppColors.primaryDarkTextColor),
       decoration: InputDecoration(
+        floatingLabelBehavior:floatingLabelBehavior,
         label:
             labelTextWidget ??
-            CustomText.secondaryText(
+            CustomTextPrimary(
               text: labelText ?? "",
               fontSize: 12.sp,
               fontWeight: FontWeight.w400,
             ),
         hint:
             hintTextWidget ??
-            CustomText.primaryText(
+            CustomTextPrimary(
               text: hintText ?? "",
               fontSize: 16.sp,
               fontWeight: FontWeight.w500,
-              color:  AppColors.primaryDarkTextColor.withValues(alpha: 0.8)
             ),
         errorText: errorText,
         suffixIcon: suffixIcon,
@@ -95,18 +95,18 @@ class CustomTextField extends StatelessWidget {
         prefixIconConstraints: BoxConstraints(minHeight: 0,minWidth: 0),
         border:border?? OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.r),
-          borderSide: BorderSide(color:themeController.isDarkMode.value?AppColors.darkBorderPrimary :Colors.transparent),
+          borderSide: BorderSide(color:isDark?AppColors.darkBorderPrimary :Colors.transparent),
         ),
         focusedBorder:focusBorder?? OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.r),
-          borderSide: BorderSide(color:themeController.isDarkMode.value?AppColors.darkBorderPrimary : Colors.transparent),
+          borderSide: BorderSide(color:isDark?AppColors.darkBorderPrimary : Colors.transparent),
         ),
         enabledBorder:enableBorder?? OutlineInputBorder(
           borderRadius: BorderRadius.circular(7.r),
-          borderSide: BorderSide(color:themeController.isDarkMode.value?AppColors.darkBorderPrimary : Colors.transparent),
+          borderSide: BorderSide(color:isDark?AppColors.darkBorderPrimary : Colors.transparent),
         ),
         filled:isFilled?? true,
-        fillColor:themeController.isDarkMode.value?AppColors.darkPrimary: AppColors.textFieldColor,
+        fillColor: isDark? fillColor?? AppColors.darkPrimary:fillColor?? AppColors.textFieldColor,
       ),
     );
   }

@@ -5,17 +5,17 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/auth/widgets/auth_option.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text_span.dart';
 
 class SignupOption extends StatelessWidget {
   const SignupOption({super.key});
 
   @override
   Widget build(BuildContext context) {
-    ThemeController themeController = Get.find();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
@@ -23,9 +23,9 @@ class SignupOption extends StatelessWidget {
         children: [
           Image.asset(ImagesPath.appLogo,height: 30.h,width: 170.w,),
           SizedBox(height: 20.h,),
-          CustomText.primaryText(text: "Create New Account", fontSize: 28.sp),
+          CustomTextPrimary(text: "Create New Account", fontSize: 28.sp),
           SizedBox(height: 7.h),
-          CustomText.primaryText(
+          CustomTextPrimary(
             text: "Let's login to grab amazing deal",
             fontSize: 14.sp,
             fontWeight: FontWeight.w500,
@@ -33,11 +33,11 @@ class SignupOption extends StatelessWidget {
           SizedBox(height: 20.h,),
           AuthOption(title: "Continue with Google", image: IconsPath.google, onTap: (){}),
           SizedBox(height: 20.h,),
-          AuthOption(title: "Continue with Apple", image: IconsPath.apple,imageColor: themeController.isDarkMode.value?AppColors.whiteColor:null, onTap: (){}),
+          AuthOption(title: "Continue with Apple", image: IconsPath.apple,imageColor: isDark?AppColors.whiteColor:null, onTap: (){}),
           SizedBox(height: 20.h,),
           AuthOption(title: "Continue with Email/Phone", image: IconsPath.emailPhone, onTap: (){Get.toNamed(AppRoutes.loginView);}),
           SizedBox(height: 20.h,),
-           CustomText.spanText(title: "Don't have an account?", spantext: " Sign Up",onTap: (){Get.toNamed(AppRoutes.signupView);}),
+           CustomTextSpan(title: "Don't have an account?", spantext: " Sign Up",onTap: (){Get.toNamed(AppRoutes.signupView);}),
         ],
       ),
       );

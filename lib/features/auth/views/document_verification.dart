@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,14 +6,13 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/core/utils/image_picker.dart';
 import 'package:renter_pay/core/utils/snackbar.dart';
 import 'package:renter_pay/features/auth/controllers/document_verification_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_secondary_button.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/document_upload.dart';
 import 'package:renter_pay/shared/widgets/success_dialog.dart';
 
@@ -24,10 +22,10 @@ class DocumentVerification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DocumentVerificationController documentVerificationController = Get.find();
-    ThemeController themeController = Get.find();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
 
     return CustomContainer(
-      gradient: themeController.isDarkMode.value
+      gradient: isDark
           ? LinearGradient(
               colors: [AppColors.darkPrimary, AppColors.darkPrimary],
             )
@@ -39,9 +37,9 @@ class DocumentVerification extends StatelessWidget {
           children: [
             Image.asset(ImagesPath.appLogo, height: 30.h, width: 170.w),
             SizedBox(height: 20.h),
-            CustomText.primaryText(text: "Verification", fontSize: 28.sp),
+            CustomTextPrimary(text: "Verification", fontSize: 28.sp),
             SizedBox(height: 7.h),
-            CustomText.primaryText(
+            CustomTextPrimary(
               text:
                   "Upload a government-issued ID (such as National ID,\nDriving License, or Passport) for identity verification.",
               fontSize: 13.5.sp,

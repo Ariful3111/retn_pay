@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
 
 class CustomSecondaryButton extends StatelessWidget {
   final double? height;
@@ -49,7 +49,7 @@ class CustomSecondaryButton extends StatelessWidget {
         child:
             child ??
             Center(
-              child: CustomText.primaryText(
+              child:CustomTextPrimary(
                 text: text ?? "",
                 color: textColor ?? AppColors.borderColor,
                 fontSize: fontSize ?? 16.sp,

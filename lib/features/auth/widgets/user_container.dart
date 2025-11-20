@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
 
 class UserContainer extends StatelessWidget {
   final String image;
@@ -22,7 +22,7 @@ class UserContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UserRoleController userRoleController = Get.find();
-    ThemeController themeController = Get.find();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Obx(() {
       bool selectedIndex = userRoleController.selectedIndex.value == index;
       return GestureDetector(
@@ -35,10 +35,10 @@ class UserContainer extends StatelessWidget {
           height: 136.72.h,
           width: 170.9.w,
           decoration: BoxDecoration(
-            color:themeController.isDarkMode.value?AppColors.darkSecondary: AppColors.whiteColor,
+            color:isDark?AppColors.darkSecondary: AppColors.whiteColor,
             borderRadius: BorderRadius.circular(8.2.r),
             border:selectedIndex
-                ? Border.all(width: 1.7.w, color:themeController.isDarkMode.value? AppColors.darkBorderPrimary :AppColors.borderColor)
+                ? Border.all(width: 1.7.w, color:isDark? AppColors.darkBorderPrimary :AppColors.borderColor)
                 : null,
             boxShadow: [
               BoxShadow(
@@ -55,17 +55,17 @@ class UserContainer extends StatelessWidget {
             children: [
               Image.asset(image, height: 44.43.h, width: 44.43.w),
               SizedBox(height: 10.25.h),
-              CustomText.primaryText(
+              CustomTextPrimary(
                 text: title,
                 fontSize: 14.sp,
-                color:themeController.isDarkMode.value?AppColors.darkPrimaryText: Color(0xFF0A0D14),
+                color:isDark?AppColors.darkPrimaryText: Color(0xFF0A0D14),
               ),
               SizedBox(height: 8.89.h),
-              CustomText.secondaryText(
+              CustomTextSecondary(
                 text: description,
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color:themeController.isDarkMode.value?AppColors.darkSecondaryText : Color(0xFF525866),
+                color:isDark?AppColors.darkSecondaryText : Color(0xFF525866),
               ),
             ],
           ),

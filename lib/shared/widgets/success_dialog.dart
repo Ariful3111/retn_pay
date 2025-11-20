@@ -5,7 +5,8 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/shared/widgets/custom_primary_button.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
 
 class SuccessDialog extends StatelessWidget {
   final double? height;
@@ -93,18 +94,18 @@ class SuccessDialog extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 14.h),
-                      CustomText.primaryText(
+                      CustomTextPrimary(
                         text: title1 ?? "Your ID has been verified",
                         color: AppColors.primaryColorDark,
                         fontSize: 20.sp,
                       ),
-                      CustomText.primaryText(
+                      CustomTextPrimary(
                         text: title2 ?? "successfully.",
                         color: AppColors.primaryColorDark,
                         fontSize: 20.sp,
                       ),
                       SizedBox(height: 6.h),
-                      CustomText.secondaryText(
+                      CustomTextSecondary(
                         text: subtitle ?? 'You can now continue.',
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,

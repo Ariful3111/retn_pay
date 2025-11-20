@@ -1,29 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
+import 'package:renter_pay/core/data/local/theme_service.dart';
 
 class ThemeController extends GetxController{
-  final _box = GetStorage();
-  final _key = 'isDarkMode';
+ 
   RxBool isDarkMode = false.obs;
-
+  late final ThemeService themeService;
   @override
   void onInit() {
-    isDarkMode.value = loadThemeFromStorage();
+    themeService = Get.find<ThemeService>();
+    isDarkMode.value = themeService.getIsDark();
     super.onInit();
   }
-  void saveThemeToStorage() {
-    _box.write(_key, isDarkMode.value);
-  }
   
-  bool loadThemeFromStorage() {
-    return _box.read(_key) ?? false;
+
+  void changeTheme(bool value){
+    isDarkMode.value=!isDarkMode.value;
+    themeService.saveThemeToStorage(value);
   }
 
-  void changeTheme(){
-    isDarkMode.value=!isDarkMode.value;
-    saveThemeToStorage();
-    Get.changeThemeMode(currentTheme);
-  }
   ThemeMode get currentTheme => isDarkMode.value?ThemeMode.dark:ThemeMode.light;
+
+  
 }

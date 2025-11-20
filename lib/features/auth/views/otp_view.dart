@@ -6,7 +6,7 @@ import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/auth/controllers/otp_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_primary_button.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text_field.dart';
 
 class OtpView extends StatelessWidget {
@@ -26,9 +26,9 @@ class OtpView extends StatelessWidget {
             children: [
               Image.asset(ImagesPath.appLogo, height: 30.h, width: 170.w),
               SizedBox(height: 21.h),
-              CustomText.primaryText(text: "Verify Your Account", fontSize: 28.sp),
+              CustomTextPrimary(text: "Verify Your Account", fontSize: 28.sp),
               SizedBox(height: 7.h),
-              CustomText.primaryText(
+              CustomTextPrimary(
                 text: "Enter the otp send to your email and phone number",
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,

@@ -6,7 +6,7 @@ import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_items.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
 
 class ProfileItemsList extends StatelessWidget {
   const ProfileItemsList({super.key});
@@ -24,7 +24,7 @@ class ProfileItemsList extends StatelessWidget {
             color: Color(0xFFF0E6EC),
           ),
           child: Center(
-            child: CustomText.primaryText(text: '3',fontSize: 14.sp,fontWeight: FontWeight.w400,color: Color(0xFF002256)),
+            child: CustomTextPrimary(text: '3',fontSize: 14.sp,fontWeight: FontWeight.w400,color: Color(0xFF002256)),
           ),
         ), onTap: () { Get.toNamed(AppRoutes.notification); },
         ),
@@ -121,7 +121,7 @@ class ProfileItemsList extends StatelessWidget {
               child: Center(child: Image.asset(image,height: imageHeight,width: imageWidth,),),
             ),
             SizedBox(height: 5.h),
-          CustomText.primaryText(text: title,fontSize: 16.sp,fontWeight: FontWeight.w400,),
+          CustomTextPrimary(text: title,fontSize: 16.sp,fontWeight: FontWeight.w400,),
         ],
        ), onTap: onTap,);
   }

@@ -11,7 +11,8 @@ import 'package:renter_pay/features/auth/widgets/login_field.dart';
 import 'package:renter_pay/features/auth/widgets/auth_option.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_primary_button.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text_span.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -31,9 +32,9 @@ class LoginView extends StatelessWidget {
             children: [
               Image.asset(ImagesPath.appLogo, height: 30.h, width: 170.w),
               SizedBox(height: 20.h),
-              CustomText.primaryText(text: "Wellcome Back", fontSize: 28.sp),
+              CustomTextPrimary(text: "Wellcome Back", fontSize: 28.sp),
               SizedBox(height: 7.h),
-              CustomText.primaryText(
+              CustomTextPrimary(
                 text: "Let's login to grab amazing deal",
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,
@@ -59,12 +60,11 @@ class LoginView extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
               SizedBox(height: 20.h),
-              CustomText.spanText(
+              CustomTextSpan(
                 title: "Don't have an account?",
                 spantext: " Sign Up",
                 onTap: () {
                   Get.toNamed(AppRoutes.signupView);
-                  
                 },
               ),
             ],

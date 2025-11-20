@@ -6,7 +6,7 @@ import 'package:renter_pay/features/profile/widgets/basic_plan.dart';
 import 'package:renter_pay/features/profile/widgets/platinum_plan.dart';
 import 'package:renter_pay/features/profile/widgets/silver_plan.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
 
 class SubscriptionPlan extends StatelessWidget {
   const SubscriptionPlan({super.key});
@@ -21,7 +21,7 @@ class SubscriptionPlan extends StatelessWidget {
           children: [
             Image.asset(ImagesPath.appLogo, height: 30.h, width: 170.w),
             SizedBox(height: 20.h),
-            CustomText.primaryText(text: "Subscription Plan"),
+            CustomTextPrimary(text: "Subscription Plan"),
             SizedBox(height: 32.h),
             BasicPlan(),
             SizedBox(height: 32.h,),

@@ -5,7 +5,7 @@ import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class HomeController extends GetxController{
   TextEditingController searchController = TextEditingController();
-  RxInt selectedCategory = (-1).obs;
+  RxInt selectedCategory = 0.obs;
   RxList apartmentRating = List<double>.filled(10,1.0).obs;
   RxList houseRating = List<double>.filled(10,1.0).obs;
   RxList officeRating = List<double>.filled(10,1.0).obs;
@@ -25,14 +25,10 @@ class HomeController extends GetxController{
   ];
   RxList<String> selectedFilterProperty = <String>[].obs;
   RxList<String> selectedAmenities = <String>[].obs;
-  RxBool isProperty = true.obs;
-  RxBool isAmenities = true.obs;
-  RxBool isFilterSearch = false.obs;
-  RxBool isPrice = false.obs;
-  RxBool isShowPriceRange = false.obs;
-  RxBool isShowAmenities = true.obs;
-  RxBool isShowProperty = true.obs;
-  RxBool isShowSearch = false.obs;
+  RxBool isShowPriceRange = true.obs;
+  RxBool isShowAmenities = false.obs;
+  RxBool isShowProperty = false.obs;
+  RxBool isShowSearch = true.obs;
   @override
   void onInit() {
     apartmentRating;

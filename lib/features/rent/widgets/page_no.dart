@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/rent/controllers/rent_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
 
 class PageNo extends StatelessWidget {
   const PageNo({super.key});
@@ -26,7 +26,7 @@ class PageNo extends StatelessWidget {
                   width: 15.31.w,
                 ),
                 SizedBox(width: 6.12.w),
-                CustomText.primaryText(
+                CustomTextPrimary(
                   text: 'Previous',
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
@@ -90,7 +90,7 @@ class PageNo extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomText.primaryText(
+               CustomTextPrimary(
                   text: 'Next',
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,

@@ -27,7 +27,7 @@ class CustomFilter extends StatelessWidget {
   final Function(List<String>) onAmenitiesChange;
   final VoidCallback onReset;
   final VoidCallback isProperty;
-  final RxBool isAmenities;
+  final VoidCallback onAmenities;
   final RxBool isShowAmenities;
   final RxBool isShowProperty;
   final RxBool isShowSearch;
@@ -52,15 +52,16 @@ class CustomFilter extends StatelessWidget {
     required this.onAmenitiesChange,
     required this.onReset,
     required this.isProperty,
-    required this.isAmenities, required this.isShowAmenities, required this.isShowProperty, required this.isShowSearch, required this.isShowPriceRange,
+    required this.onAmenities, required this.isShowAmenities, required this.isShowProperty, required this.isShowSearch, required this.isShowPriceRange,
     
   });
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       width: 260.w,
-      color: AppColors.whiteColor,
+      color:isDark?AppColors.darkPrimary: AppColors.whiteColor,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,7 +94,7 @@ class CustomFilter extends StatelessWidget {
               amenitiesItems: amenitiesItems,
               selectedAmenities: selectedAmenities,
               onAmenitiesChange: onAmenitiesChange,
-              isAmenities: isAmenities, isShowAmenities: isShowAmenities,
+              onAmenities: onAmenities, isShowAmenities: isShowAmenities,
             ),
           ],
         ),

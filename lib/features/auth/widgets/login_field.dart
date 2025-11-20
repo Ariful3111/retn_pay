@@ -3,12 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/auth/controllers/login_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
 import 'package:renter_pay/shared/widgets/custom_text_field.dart';
+import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
 
 class LoginField extends StatelessWidget {
   final GlobalKey<FormState> fromKey;
-
   const LoginField({
     super.key,
     required this.fromKey,
@@ -27,7 +26,7 @@ class LoginField extends StatelessWidget {
               Container(height: 1.h, width: 179.w, color: Color(0xFFCBD5E1)),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8.75.w),
-                child: CustomText.secondaryText(
+                child: CustomTextSecondary(
                   text: "Or",
                   color: Color(0xFF9E9E9D),
                   fontSize: 11.sp,

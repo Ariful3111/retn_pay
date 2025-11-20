@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/profile/widgets/benefits_list.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_container.dart';
 
 class SilverPlan extends StatelessWidget {
@@ -50,7 +50,7 @@ class SilverPlan extends StatelessWidget {
             ],
           ),
           child: Center(
-            child: CustomText.primaryText(
+            child:CustomTextPrimary(
               text: "Most popular",
               fontSize: 12.sp,
               color: AppColors.whiteColor,

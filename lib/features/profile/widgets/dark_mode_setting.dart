@@ -3,14 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
 
 class DarkModeSetting extends StatelessWidget {
   const DarkModeSetting({super.key});
   @override
   Widget build(BuildContext context) {
     ThemeController themeController = Get.find();
-    //bool isDark = Theme.of(context).brightness == Brightness.dark;
+    
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -18,7 +18,7 @@ class DarkModeSetting extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomText.secondaryText(
+            CustomTextSecondary(
               text: "Dark Mode",
               fontSize: 20.sp,
               fontWeight: FontWeight.w600,
@@ -26,7 +26,7 @@ class DarkModeSetting extends StatelessWidget {
                   ? AppColors.whiteColor
                   : AppColors.primaryDarkTextColor,
             ),
-            CustomText.secondaryText(
+            CustomTextSecondary(
               text:
                   'Enjoy a sleek, eye-friendly interface\nwith our easy-to-switch dark mode..',
               fontWeight: FontWeight.w400,
@@ -36,34 +36,17 @@ class DarkModeSetting extends StatelessWidget {
             ),
           ],
         ),
-        AnimatedContainer(
-          duration: Duration(milliseconds: 300),
-          height: 28.h,
-          width: 50.w,
-          padding: EdgeInsets.all(4.sp),
-          decoration: BoxDecoration(
-            color: themeController.isDarkMode.value? AppColors.primaryColorDark:Colors.grey,
-            borderRadius: BorderRadius.circular(16.sp),
-          ),
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: () {
-              themeController.changeTheme();
-            },
-            child: AnimatedAlign(
-              alignment: themeController.isDarkMode.value ? Alignment.centerRight : Alignment.centerLeft,
-              duration: Duration(milliseconds: 300),
-              child: Container(
-                height: 20.h,
-                width: 20.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.sp),
-                  color: AppColors.whiteColor,
-                ),
-              ),
-            ),
-          ),
-        ),
+        Obx(() {
+          return Switch(
+            value: themeController.isDarkMode.value,
+            onChanged: themeController.changeTheme,
+            activeThumbColor: AppColors.whiteColor,
+            inactiveThumbColor: AppColors.whiteColor,
+            activeTrackColor: AppColors.primaryColorDark,
+            inactiveTrackColor: Colors.grey,
+            
+          );
+        }),
       ],
     );
   }

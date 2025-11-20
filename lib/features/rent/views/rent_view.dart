@@ -18,8 +18,12 @@ class RentView extends StatelessWidget {
   Widget build(BuildContext context) {
     MainHomeController mainHomeController = Get.find();
     RentController rentController = Get.find();
+     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
-      gradient: AppColors.userBackground.withOpacity(0.5),
+      gradient:isDark? LinearGradient(colors: [
+        AppColors.darkPrimary,
+        AppColors.darkPrimary,
+      ]):AppColors.userBackground.withOpacity(0.5),
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: SingleChildScrollView(
         controller: mainHomeController.scrollController,

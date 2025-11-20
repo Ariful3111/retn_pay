@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
 
 class NotificationAppbar extends StatelessWidget {
   const NotificationAppbar({super.key});
@@ -38,7 +38,7 @@ class NotificationAppbar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Image.asset(IconsPath.mark,width: 10.64.w,height: 6.04.h,),
-              CustomText.secondaryText(text: 'Mark as read',fontSize: 12.sp,color: Color(0xFF6B7280)),
+              CustomTextSecondary(text: 'Mark as read',fontSize: 12.sp,color: Color(0xFF6B7280)),
             ],
           ),
         ),

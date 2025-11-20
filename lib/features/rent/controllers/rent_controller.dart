@@ -14,13 +14,12 @@ class RentController extends GetxController{
   RxList officeRating = List<double>.filled(12,1.0).obs;
   RxList studioRating = List<double>.filled(12,1.0).obs;
   RxList vilaRating = List<double>.filled(12,1.0).obs;
-  RxBool isShowPriceRange = false.obs;
-  RxBool isShowAmenities = true.obs;
-  RxBool isShowProperty = true.obs;
-  RxBool isShowSearch = false.obs;
+  RxBool isShowPriceRange = true.obs;
+  RxBool isShowAmenities = false.obs;
+  RxBool isShowProperty = false.obs;
+  RxBool isShowSearch = true.obs;
   var currentPage = 1.obs;
   int totalPage = 100;
-  RxBool isAmenities = true.obs;
   void previousPage(){
     if(currentPage>1) currentPage.value--;
   }

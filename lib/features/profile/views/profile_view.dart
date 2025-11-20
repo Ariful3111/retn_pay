@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
@@ -19,13 +18,12 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ProfileController profileController = Get.find();
-    ThemeController themeController = Get.find();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     UserRoleController userRoleController = Get.find();
     MainHomeController mainHomeController = Get.find();
-    return Obx((){
-      return CustomContainer(
+    return CustomContainer(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
-      gradient:themeController.isDarkMode.value? LinearGradient(colors: [AppColors.darkPrimary,AppColors.darkPrimary]):AppColors.userBackground.withOpacity(0.5),
+      gradient:isDark? LinearGradient(colors: [AppColors.darkPrimary,AppColors.darkPrimary]):AppColors.userBackground.withOpacity(0.5),
       child: ListView(
         controller: mainHomeController.scrollController,
       children: [
@@ -42,6 +40,5 @@ class ProfileView extends StatelessWidget {
         SizedBox(height: 8.h,),
       ],
     ));
-    });
   }
 }

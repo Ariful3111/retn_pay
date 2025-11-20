@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
 
 class PropertySort extends StatelessWidget {
   const PropertySort({super.key});
 
   @override
   Widget build(BuildContext context) {
+     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: EdgeInsets.all(5.93.sp),
       height: 56.72.h,
       width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
-        border: Border.all(width: 0.74,color: AppColors.filterBorder),
+        border: Border.all(width: 0.74,color:isDark?AppColors.darkBorderPrimary: AppColors.filterBorder),
         borderRadius: BorderRadius.circular(8.89.sp),
       ),
       child: Row(
@@ -26,8 +28,8 @@ class PropertySort extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomText.primaryText(text: 'Property',fontSize: 16.sp),
-                CustomText.secondaryText(text: '---  Showing  result- (12)',fontSize: 12.sp,fontWeight: FontWeight.w400,color: Color(0xFF697483))
+                CustomTextPrimary(text: 'Property',fontSize: 16.sp),
+                CustomTextSecondary(text: '---  Showing  result- (12)',fontSize: 12.sp,fontWeight: FontWeight.w400,color: Color(0xFF697483))
               ],
             ),
           ),
@@ -36,7 +38,7 @@ class PropertySort extends StatelessWidget {
             width: 111.18.w,
             decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5.93),
-            color: Color(0xFFF4F6F8),
+            color:isDark?Color(0xFF0D0D0D): Color(0xFFF4F6F8),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -46,8 +48,8 @@ class PropertySort extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CustomText.secondaryText(text: 'Sort By',fontSize: 10.sp,fontWeight: FontWeight.w400,color: Color(0xFF697483)),
-                    CustomText.secondaryText(text: 'Low to High',fontSize: 12.sp,color: AppColors.darkPrimary),
+                  CustomTextSecondary(text: 'Sort By',fontSize: 10.sp,fontWeight: FontWeight.w400,color:isDark?AppColors.darkSecondaryText: Color(0xFF697483)),
+                  CustomTextSecondary(text: 'Low to High',fontSize: 12.sp,color:isDark?AppColors.darkPrimaryText: AppColors.darkPrimary),
                   ],
                 ),
                 GestureDetector(
@@ -57,7 +59,7 @@ class PropertySort extends StatelessWidget {
                   child: SizedBox(
                     height: 17.79.h,
                     width: 17.79.w,
-                    child: Center(child: Image.asset(IconsPath.downArrow,height: 3.71.h,width: 7.41.w,color: AppColors.darkPrimary,)),
+                    child: Center(child: Image.asset(IconsPath.downArrow,height: 3.71.h,width: 7.41.w,color: isDark?AppColors.darkPrimaryText: AppColors.darkPrimary,)),
                   ),
                 )
               ],

@@ -24,7 +24,8 @@ import 'package:renter_pay/features/home/bindings/main_home_bindings.dart';
 import 'package:renter_pay/features/home/bindings/notification_bindings.dart';
 import 'package:renter_pay/features/home/views/home_view.dart';
 import 'package:renter_pay/features/home/views/main_home_view.dart';
-import 'package:renter_pay/features/home/views/notification_view.dart';
+import 'package:renter_pay/features/profile/views/notification_view.dart';
+import 'package:renter_pay/features/profile/views/profile_edit.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan.dart';
 import 'package:renter_pay/features/profile/bindings/profile_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/settings_bindings.dart';
@@ -57,5 +58,6 @@ final List<GetPage> appRoutes = [
   GetPage(name: AppRoutes.settings, page: ()=>SettingView(),bindings: [
     SettingsBindings()
   ]),
-  GetPage(name: AppRoutes.notification, page: ()=>NotificationView(),bindings: [NotificationBindings()])
+  GetPage(name: AppRoutes.notification, page: ()=>NotificationView(),bindings: [NotificationBindings()]),
+  GetPage(name: AppRoutes.profileEdit, page: ()=>ProfileEdit())
 ];

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
 
 class Category extends StatelessWidget {
   final String categoryName;
@@ -14,12 +15,12 @@ class Category extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        CustomText.primaryText(text: categoryName,fontSize: 20.sp,),
+        CustomTextPrimary(text: categoryName,fontSize: 20.sp,),
         GestureDetector(
           onTap: onTap,
           child: Row(
             children: [
-              CustomText.secondaryText(text: 'See All',fontSize: 14.sp,color: AppColors.primaryColorDark),
+             CustomTextSecondary(text: 'See All',fontSize: 14.sp,color: AppColors.primaryColorDark),
               SizedBox(width: 4.w,),
               Image.asset(IconsPath.forward,height: 10.h,width: 10.w,color: AppColors.primaryColorDark,),
             ],

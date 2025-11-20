@@ -10,29 +10,36 @@ class FilterAmenities extends StatelessWidget {
   final RxList<String> selectedAmenities;
   final Function(List<String>) onAmenitiesChange;
   final RxBool isShowAmenities;
-  final RxBool isAmenities;
-  const FilterAmenities({super.key, required this.amenitiesItems, required this.selectedAmenities, required this.onAmenitiesChange, required this.isAmenities, required this.isShowAmenities});
+  final VoidCallback onAmenities;
+  const FilterAmenities({super.key, required this.amenitiesItems, required this.selectedAmenities, required this.onAmenitiesChange, required this.onAmenities, required this.isShowAmenities});
 
   @override
   Widget build(BuildContext context) {
+     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Material(
       child: Container(
         padding: EdgeInsets.all(18.41.h),
         width: MediaQuery.widthOf(context),
         decoration: BoxDecoration(
-            color: AppColors.whiteColor,
-            border: Border.all(width: 0.77, color: AppColors.filterBorder),
-            borderRadius: BorderRadius.circular(9.2.sp),
-          ),
-          child: Column(
+          color:isDark? AppColors.darkPrimary:AppColors.whiteColor,
+          border: Border.all(width: 0.77, color:isDark?AppColors.darkBorderPrimary: AppColors.filterBorder),
+          borderRadius: BorderRadius.circular(9.2.sp),
+        ),
+          child: Obx((){
+            return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FilterTitles(title: 'Amenities', onTap: () {
-                isAmenities.value =!isAmenities.value; 
-              }, isShow: isShowAmenities,),
-              FilterCheckbox(propertyItems: amenitiesItems, selectedProperty: selectedAmenities, onChange: onAmenitiesChange)
+              FilterTitles(title: 'Amenities', onTap: onAmenities, icon: isShowAmenities.value? Icons.remove:Icons.add,),
+              AnimatedSize(
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+          child: AnimatedOpacity(opacity: isShowAmenities.value?1:0, duration: Duration(milliseconds: 200),
+          child: isShowAmenities.value?FilterCheckbox(propertyItems: amenitiesItems, selectedProperty: selectedAmenities, onChange: onAmenitiesChange):SizedBox() ,
+          ),)
+             
             ],
-          ),
+          );
+          }),
       ),
     );
   }

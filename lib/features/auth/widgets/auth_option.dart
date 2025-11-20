@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/core/themes/theme_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
 
 class AuthOption extends StatelessWidget {
   final String title;
@@ -14,23 +12,23 @@ class AuthOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeController themeController = Get.find();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: onTap,
       child: Container(
         height: 49.84.h,
         width: MediaQuery.widthOf(context),
         decoration: BoxDecoration(
-          color:themeController.isDarkMode.value?AppColors.darkPrimary: AppColors.whiteColor,
+          color:isDark?AppColors.darkPrimary: AppColors.whiteColor,
           borderRadius: BorderRadius.circular(7.r),
-          border: BoxBorder.all(width: 0.87.sp,color:themeController.isDarkMode.value?AppColors.darkBorderPrimary:AppColors.primaryBorder)
+          border: BoxBorder.all(width: 0.87.sp,color:isDark?AppColors.darkBorderPrimary:AppColors.primaryBorder)
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(image,height: 22.h,width: 22.h,color: imageColor,),
             SizedBox(width: 14.w,),
-            CustomText.secondaryText(text: title,fontSize: 14.sp),
+            CustomTextSecondary(text: title,fontSize: 14.sp),
           ],
         ),
       ),

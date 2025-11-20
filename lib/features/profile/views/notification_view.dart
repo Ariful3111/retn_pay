@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/features/home/controllers/notification_controller.dart';
-import 'package:renter_pay/features/home/widgets/notification_appbar.dart';
-import 'package:renter_pay/features/home/widgets/notification_item.dart';
+import 'package:renter_pay/features/profile/controllers/notification_controller.dart';
+import 'package:renter_pay/features/profile/widgets/notification_appbar.dart';
+import 'package:renter_pay/features/profile/widgets/notification_item.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
 
 class NotificationView extends StatelessWidget {
   const NotificationView({super.key});
@@ -20,7 +20,7 @@ class NotificationView extends StatelessWidget {
         children: [
           NotificationAppbar(),
           SizedBox(height: 20.h),
-          CustomText.primaryText(text: 'Today', fontSize: 20.sp),
+          CustomTextPrimary(text: 'Today', fontSize: 20.sp),
           SizedBox(height: 16.h),
           ListView.builder(
             itemCount: notificationController.iconList.length,
@@ -42,7 +42,7 @@ class NotificationView extends StatelessWidget {
               });
             },
           ),
-          CustomText.primaryText(text: 'Yesterday', fontSize: 20.sp),
+          CustomTextPrimary(text: 'Yesterday', fontSize: 20.sp),
           ListView.builder(
             itemCount: notificationController.iconList.length,
             shrinkWrap: true,

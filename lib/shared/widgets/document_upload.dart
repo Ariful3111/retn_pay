@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/custom_text_span.dart';
 
 class DocumentUpload extends StatelessWidget {
   final String titleText;
@@ -36,7 +38,7 @@ class DocumentUpload extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomText.primaryText(
+                CustomTextPrimary(
                   text: titleText,
                   fontSize: 16.sp,
                   color: AppColors.primaryTextColor,
@@ -61,27 +63,27 @@ class DocumentUpload extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CustomText.spanText(
+                    CustomTextSpan(
                       title: "Drag & Drop",
                       spantext: " image",
                       fontSize: 16.sp,
                       spanFontSize: 16.sp,
                       spanColor: AppColors.primaryColorDark,
                     ),
-                    CustomText.primaryText(text: " here", fontSize: 16.sp),
+                    CustomTextPrimary(text: " here", fontSize: 16.sp),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CustomText.secondaryText(text: "or "),
-                    CustomText.secondaryText(
+                    CustomTextSecondary(text: "or "),
+                    CustomTextSecondary(
                       text: "browse images",
                       color: AppColors.primaryColorDark,
                       textDecoration: TextDecoration.underline,
                       decorationColor: AppColors.primaryColorDark,
                     ),
-                    CustomText.secondaryText(text: " on your computer"),
+                    CustomTextSecondary(text: " on your computer"),
                   ],
                 ),
               ],

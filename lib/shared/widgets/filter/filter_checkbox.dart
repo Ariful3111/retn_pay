@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/shared/widgets/custom_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
 
 class FilterCheckbox extends StatelessWidget {
     final List propertyItems;
@@ -41,7 +41,7 @@ class FilterCheckbox extends StatelessWidget {
               },
             );
             }),
-            CustomText.primaryText(
+            CustomTextPrimary(
               text: propertyItems[index],
               fontSize: 12.27.sp,
               fontWeight: FontWeight.w500,

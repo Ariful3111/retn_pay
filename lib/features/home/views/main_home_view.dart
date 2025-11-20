@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
 import 'package:renter_pay/features/home/widgets/navbar.dart';
 
@@ -11,10 +10,10 @@ class MainHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MainHomeController mainHomeController = Get.find();
-    ThemeController themeController = Get.find();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Obx(() {
       return Scaffold(
-        backgroundColor: themeController.isDarkMode.value
+        backgroundColor: isDark
             ? AppColors.darkPrimary
             : AppColors.whiteColor,
         body: NotificationListener(

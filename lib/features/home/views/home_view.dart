@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
 import 'package:renter_pay/features/home/widgets/apartment_list.dart';
 import 'package:renter_pay/features/home/widgets/category.dart';
@@ -22,13 +21,12 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeController themeController = Get.find();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     MainHomeController mainHomeController = Get.find();
 
-    return Obx(() {
-      return CustomContainer(
+    return CustomContainer(
         padding: EdgeInsets.symmetric(horizontal: 20.sp),
-        gradient: themeController.isDarkMode.value
+        gradient: isDark
             ? LinearGradient(
                 colors: [AppColors.darkPrimary, AppColors.darkPrimary],
               )
@@ -72,6 +70,5 @@ class HomeView extends StatelessWidget {
           ],
         ),
       );
-    });
   }
 }
