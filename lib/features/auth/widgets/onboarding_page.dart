@@ -52,7 +52,7 @@ class OnboardingPage extends StatelessWidget {
     return Obx(() {
       int index = onboardingController.currentPage.value;
       return AnimatedSwitcher(
-        duration: const Duration(milliseconds: 400),
+        duration: const Duration(milliseconds: 300),
         switchInCurve: Curves.easeInOut,
         switchOutCurve: Curves.easeInOut,
         transitionBuilder: (child, animation) {

@@ -8,19 +8,23 @@ class CustomContainer extends StatelessWidget {
   final EdgeInsets? padding;
   final EdgeInsets? margin;
   final Gradient? gradient;
+  final Widget ? drawer;
+  final PreferredSizeWidget ? appbar;
   const CustomContainer({
     super.key,
     required this.child,
     this.height,
     this.width,
     this.padding,
-    this.margin, this.gradient,
+    this.margin, this.gradient, this.drawer, this.appbar,
   });
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
+      drawer: drawer,
+      appBar: appbar,
       body: Container(
         padding: padding,
         margin: margin,

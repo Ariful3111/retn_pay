@@ -1,6 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
@@ -11,22 +8,15 @@ import 'package:renter_pay/features/profile/views/profile_view.dart';
 import 'package:renter_pay/features/rent/views/rent_view.dart';
 
 class MainHomeController extends GetxController {
-  final ScrollController scrollController = ScrollController();
+  
   RxInt selectIndex = 0.obs;
-  RxBool isVisible = true.obs;
+
   List pageList = [HomeView(),RentView(),DashboardView(),ChatView(),ProfileView()];
   
   void changeIndex(int index){
     selectIndex.value = index;
   }
-  void listen(){
-    final direction = scrollController.position.userScrollDirection;
-    if(direction == ScrollDirection.forward){
-      if (!isVisible.value) isVisible.value = true;
-    }else if(direction == ScrollDirection.reverse){
-      if (isVisible.value) isVisible.value = false;
-    }
-  }
+  
 
   final List<Map<String,dynamic>> navItems = [
     {'icon':IconsPath.home,'label':'Home','isColor':true},
@@ -36,15 +26,5 @@ class MainHomeController extends GetxController {
     {'icon':ImagesPath.navProfile,'label':'Profile','isColor':false},
   ];
 
-  @override
-  void onInit() {
-    super.onInit();
-    scrollController.addListener(listen);
-  }
-  @override
-  void dispose() {
-     scrollController.dispose();
-     scrollController.removeListener(listen);
-    super.dispose();
-  }
+  
 }

@@ -13,13 +13,25 @@ class SettingView extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
       return CustomContainer(
+        drawer: Drawer(
+          // child: GestureDetector(
+          //   onTap: () {
+          //     Get.back();
+          //   },
+          //   child: Image.asset(IconsPath.appbarBack,height: 24.h,width: 24.w,),
+          // ),
+        ),
+        appbar: AppBar(
+          titleSpacing: 0,
+          title: CustomAppbar(title: 'Setting'),
+        ),
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             gradient: isDark
                 ? LinearGradient(colors: [AppColors.darkPrimary,AppColors.darkPrimary,])
                 : AppColors.userBackground.withOpacity(0.5),
             child: ListView(
               children: [
-                CustomAppbar(title: 'Setting', onTap: () {}),
+                
                 SizedBox(height: 24.h),
                 Container(
                   padding: EdgeInsets.only(top: 24.h, bottom: 24.h, left: 15.w),

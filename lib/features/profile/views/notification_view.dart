@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/features/profile/controllers/notification_controller.dart';
-import 'package:renter_pay/features/profile/widgets/notification_appbar.dart';
+import 'package:renter_pay/features/profile/widgets/notification_appbar_actions.dart';
 import 'package:renter_pay/features/profile/widgets/notification_item.dart';
+import 'package:renter_pay/shared/widgets/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
 
@@ -15,10 +16,14 @@ class NotificationView extends StatelessWidget {
     NotificationController notificationController = Get.find();
 
     return CustomContainer(
+      appbar: AppBar(
+        centerTitle: true,
+        title: CustomAppbar(title: 'Notification'),
+        actions: [NotificationAppbarActions()],
+      ),
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: ListView(
         children: [
-          NotificationAppbar(),
           SizedBox(height: 20.h),
           CustomTextPrimary(text: 'Today', fontSize: 20.sp),
           SizedBox(height: 16.h),

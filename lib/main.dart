@@ -8,10 +8,12 @@ import 'package:renter_pay/core/themes/app_theme.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/auth/bindings/onboarding_bindings.dart';
 import 'package:renter_pay/features/auth/views/onboarding.dart';
+import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DependencyInjection.init();
+  Get.put(GlobalScrollController(),permanent: true);
   runApp(const MyApp());
 }
 

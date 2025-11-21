@@ -33,6 +33,7 @@ import 'package:renter_pay/features/profile/views/profile_view.dart';
 import 'package:renter_pay/features/profile/views/setting_view.dart';
 import 'package:renter_pay/features/rent/bindings/rent_bindings.dart';
 import 'package:renter_pay/features/rent/views/rent_view.dart';
+import 'package:renter_pay/features/rent/widgets/rent_details.dart';
 
 final List<GetPage> appRoutes = [
   GetPage(name: AppRoutes.onboarding, page: () => Onboarding(), bindings:[ OnboardingBindings(),FirstOnboardingBindings()]),
@@ -59,5 +60,6 @@ final List<GetPage> appRoutes = [
     SettingsBindings()
   ]),
   GetPage(name: AppRoutes.notification, page: ()=>NotificationView(),bindings: [NotificationBindings()]),
-  GetPage(name: AppRoutes.profileEdit, page: ()=>ProfileEdit())
+  GetPage(name: AppRoutes.profileEdit, page: ()=>ProfileEdit()),
+  GetPage(name: AppRoutes.rentDetails, page: ()=>RentDetails()),
 ];

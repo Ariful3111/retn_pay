@@ -1,24 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/shared/widgets/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
 
-class NotificationAppbar extends StatelessWidget {
-  const NotificationAppbar({super.key});
+class NotificationAppbarActions extends StatelessWidget {
+  const NotificationAppbarActions({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return CustomAppbar(
-          image: IconsPath.appbarBack,
-          imageHeight: 24.h,
-          imageWidth: 24.w,
-          title: 'Notification', onTap: () {
-          Get.back();
-        },
-        secondaryWidget: Container(
+    return Container(
           height: 32.h,
           width: 119,
           decoration: BoxDecoration(
@@ -41,7 +32,6 @@ class NotificationAppbar extends StatelessWidget {
               CustomTextSecondary(text: 'Mark as read',fontSize: 12.sp,color: Color(0xFF6B7280)),
             ],
           ),
-        ),
         );
   }
 }

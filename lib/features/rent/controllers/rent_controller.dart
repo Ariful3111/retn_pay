@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class RentController extends GetxController{
@@ -20,6 +21,17 @@ class RentController extends GetxController{
   RxBool isShowSearch = true.obs;
   var currentPage = 1.obs;
   int totalPage = 100;
+  List dialogImageList = [
+    ImagesPath.house,
+    ImagesPath.apartment,
+    ImagesPath.office,
+    ImagesPath.studio,
+    ImagesPath.vila,
+  ];
+  RxInt dialogImageIndex=0.obs;
+  void dialogSelectedIndex(int index){
+    dialogImageIndex.value=index;
+  }
   void previousPage(){
     if(currentPage>1) currentPage.value--;
   }
