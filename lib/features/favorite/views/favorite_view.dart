@@ -20,6 +20,8 @@ class FavoriteView extends StatelessWidget {
     GlobalScrollController globalScrollController = Get.find();
     FavoriteController favoriteController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
+
+    
     return CustomContainer(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       gradient:isDark? LinearGradient(colors: [
@@ -29,7 +31,7 @@ class FavoriteView extends StatelessWidget {
       child: ListView(
         //controller: globalScrollController.scrollController,
         children: [
-          Row(children: [
+      Row(children: [
             CustomAppbarLeading(onTap: () {
               Get.back();
             },
