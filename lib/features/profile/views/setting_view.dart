@@ -12,47 +12,45 @@ class SettingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-      return CustomContainer(
-        drawer: Drawer(
-          // child: GestureDetector(
-          //   onTap: () {
-          //     Get.back();
-          //   },
-          //   child: Image.asset(IconsPath.appbarBack,height: 24.h,width: 24.w,),
-          // ),
-        ),
-        appbar: AppBar(
-          titleSpacing: 0,
-          title: CustomAppbar(title: 'Setting'),
-        ),
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            gradient: isDark
-                ? LinearGradient(colors: [AppColors.darkPrimary,AppColors.darkPrimary,])
-                : AppColors.userBackground.withOpacity(0.5),
-            child: ListView(
+    return CustomContainer(
+      drawer: Drawer(),
+      gradient: isDark
+          ? LinearGradient(
+              colors: [AppColors.darkPrimary, AppColors.darkPrimary],
+            )
+          : AppColors.userBackground.withOpacity(0.5),
+      child: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            backgroundColor: Colors.transparent,
+            titleSpacing: 0.w,
+            title: CustomAppbar(title: 'Setting'),
+          ),
+          SliverPadding(padding: EdgeInsetsGeometry.symmetric(horizontal: 20.w),
+          sliver: SliverList(delegate: SliverChildListDelegate([
+            Container(
+            padding: EdgeInsets.only(top: 24.h, bottom: 24.h, left: 15.w),
+            width: MediaQuery.widthOf(context),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16.sp),
+              color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+            ),
+            child: Column(
               children: [
-                
-                SizedBox(height: 24.h),
-                Container(
-                  padding: EdgeInsets.only(top: 24.h, bottom: 24.h, left: 15.w),
-                  width: MediaQuery.widthOf(context),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16.sp),
-                    color:isDark?AppColors.darkSecondary :AppColors.whiteColor,
-                  ),
-                  child: Column(
-                    children: [
-                      NotificationSetting(),
-                      SizedBox(height: 32.h),
-                      DarkModeSetting(),
-                      SizedBox(height: 32.h),
-                      AutoPaySetting(),
-                      SizedBox(height: 32.h),
-                    ],
-                  ),
-                ),
+                NotificationSetting(),
+                SizedBox(height: 32.h),
+                DarkModeSetting(),
+                SizedBox(height: 32.h),
+                AutoPaySetting(),
+                SizedBox(height: 32.h),
               ],
             ),
-          );
+          ),
+          ])),
+          ),
+          
+        ],
+      ),
+    );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
+import 'package:renter_pay/features/favorite/controller/favorite_controller.dart';
 import 'package:renter_pay/features/home/controllers/home_controller.dart';
 import 'package:renter_pay/shared/widgets/item_container.dart';
 
@@ -11,7 +12,7 @@ class HouseList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeController homeController = Get.find();
-     
+    FavoriteController favoriteController = Get.find(); 
       return SizedBox(
       height: 288.h,
       width: 300.w,
@@ -30,7 +31,7 @@ class HouseList extends StatelessWidget {
             },
             updateRating: (double value) {
               homeController.houseRating[index]=value;
-            }, initialRating: homeController.houseRating[index],
+            }, initialRating: homeController.houseRating[index], onFavorite: () {  }, isFavorite: favoriteController.isFavorite(index),
           );
         },
       ),

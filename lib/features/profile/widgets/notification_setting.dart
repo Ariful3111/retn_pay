@@ -30,7 +30,7 @@ class NotificationSetting extends StatelessWidget {
                 color: themeController.isDarkMode.value?AppColors.whiteColor:AppColors.primaryDarkTextColor,
               ),
               CustomTextSecondary(
-                text: 'Stay updated with instant alerts and\nimportant reminders right on your device.',
+                text: 'Stay updated with instant alerts and important reminders right on your device.',
                 fontWeight: FontWeight.w400,
                 color: themeController.isDarkMode.value?AppColors.darkSecondaryText:AppColors.secondaryTextColor,
               ),

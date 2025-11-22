@@ -23,7 +23,6 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     GlobalScrollController globalScrollController = Get.find();
-
     return CustomContainer(
         padding: EdgeInsets.symmetric(horizontal: 20.sp),
         gradient: isDark

@@ -17,4 +17,5 @@ class AppRoutes {
   static const String home = '/home';
   static const String notification = '/notification';
   static const String rentDetails = '/rentDetails';
+  static const String favorite = '/favorite';
 }

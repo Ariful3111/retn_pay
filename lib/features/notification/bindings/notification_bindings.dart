@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:renter_pay/features/profile/controllers/notification_controller.dart';
+import 'package:renter_pay/features/notification/controller/notification_controller.dart';
 
 class NotificationBindings implements Bindings{
   @override

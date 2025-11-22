@@ -23,7 +23,6 @@ class DocumentVerification extends StatelessWidget {
   Widget build(BuildContext context) {
     DocumentVerificationController documentVerificationController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-
     return CustomContainer(
       gradient: isDark
           ? LinearGradient(

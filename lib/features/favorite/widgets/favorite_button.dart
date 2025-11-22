@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/core/themes/theme_controller.dart';
 
 class FavoriteButton extends StatelessWidget {
   final VoidCallback onTap;
-  const FavoriteButton({super.key, required this.onTap});
+  final bool isFavorite;
+  const FavoriteButton({super.key, required this.onTap, required this.isFavorite});
 
   @override
   Widget build(BuildContext context) {
-    ThemeController themeController = Get.find();
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -19,10 +17,10 @@ class FavoriteButton extends StatelessWidget {
         width: 24.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.sp),
-          color:themeController.isDarkMode.value?AppColors.darkSecondary: AppColors.whiteColor,
+          color: AppColors.whiteColor,
         ),
         child: Center(
-          child: Image.asset(IconsPath.favorite,height: 13.5.h,width: 12.w,color: themeController.isDarkMode.value?AppColors.whiteColor:null,),
+          child: Image.asset(isFavorite?IconsPath.selectFavorite :IconsPath.favorite,height: 13.5.h,width: 12.w,),
         ),
       ),
     );

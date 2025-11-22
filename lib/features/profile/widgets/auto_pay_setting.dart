@@ -17,22 +17,24 @@ class AutoPaySetting extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       
       children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-           CustomTextSecondary(
-              text: "Auto-Pay Rent",
-              fontSize: 20.sp,
-              fontWeight: FontWeight.w600,
-              color: themeController.isDarkMode.value?AppColors.whiteColor:AppColors.primaryDarkTextColor,
-            ),
-            CustomTextSecondary(
-              text: 'Set up automatic payments and\nnever miss a rent due date again..',
-              fontWeight: FontWeight.w400,
-              color: themeController.isDarkMode.value?AppColors.darkSecondaryText:AppColors.secondaryTextColor,
-            ),
-          ],
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+             CustomTextSecondary(
+                text: "Auto-Pay Rent",
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w600,
+                color: themeController.isDarkMode.value?AppColors.whiteColor:AppColors.primaryDarkTextColor,
+              ),
+              CustomTextSecondary(
+                text: 'Set up automatic payments and never miss a rent due date again..',
+                fontWeight: FontWeight.w400,
+                color: themeController.isDarkMode.value?AppColors.darkSecondaryText:AppColors.secondaryTextColor,
+              ),
+            ],
+          ),
         ),
         Obx(() {
           return Switch(

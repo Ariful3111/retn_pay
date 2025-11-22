@@ -5,6 +5,10 @@ class AppTheme {
   static final lightTheme = ThemeData(
     brightness: Brightness.light,
     useMaterial3: true,
+    appBarTheme: AppBarTheme(
+      backgroundColor: Colors.transparent,
+      
+    )
   );
   static final darkTheme = ThemeData(
     brightness: Brightness.dark,

@@ -14,27 +14,29 @@ class DarkModeSetting extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomTextSecondary(
-              text: "Dark Mode",
-              fontSize: 20.sp,
-              fontWeight: FontWeight.w600,
-              color: themeController.isDarkMode.value
-                  ? AppColors.whiteColor
-                  : AppColors.primaryDarkTextColor,
-            ),
-            CustomTextSecondary(
-              text:
-                  'Enjoy a sleek, eye-friendly interface\nwith our easy-to-switch dark mode..',
-              fontWeight: FontWeight.w400,
-              color: themeController.isDarkMode.value
-                  ? AppColors.darkSecondaryText
-                  : AppColors.secondaryTextColor,
-            ),
-          ],
+        Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomTextSecondary(
+                text: "Dark Mode",
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w600,
+                color: themeController.isDarkMode.value
+                    ? AppColors.whiteColor
+                    : AppColors.primaryDarkTextColor,
+              ),
+              CustomTextSecondary(
+                text:
+                    'Enjoy a sleek, eye-friendly interface with our easy-to-switch dark mode..',
+                fontWeight: FontWeight.w400,
+                color: themeController.isDarkMode.value
+                    ? AppColors.darkSecondaryText
+                    : AppColors.secondaryTextColor,
+              ),
+            ],
+          ),
         ),
         Obx(() {
           return Switch(

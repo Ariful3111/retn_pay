@@ -5,8 +5,10 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
 
-class PropertySort extends StatelessWidget {
-  const PropertySort({super.key});
+class CustomItemSort extends StatelessWidget {
+  final String title;
+  final VoidCallback onItemSort;
+  const CustomItemSort({super.key, required this.title, required this.onItemSort});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class PropertySort extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomTextPrimary(text: 'Property',fontSize: 16.sp),
+                CustomTextPrimary(text: title,fontSize: 16.sp),
                 CustomTextSecondary(text: '---  Showing  result- (12)',fontSize: 12.sp,fontWeight: FontWeight.w400,color: Color(0xFF697483))
               ],
             ),
@@ -53,9 +55,7 @@ class PropertySort extends StatelessWidget {
                   ],
                 ),
                 GestureDetector(
-                  onTap: () {
-                    
-                  },
+                  onTap: onItemSort,
                   child: SizedBox(
                     height: 17.79.h,
                     width: 17.79.w,

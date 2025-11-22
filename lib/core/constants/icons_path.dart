@@ -65,5 +65,7 @@ class IconsPath {
   static const String notificationFavorite='assets/icons/notification_favorite.png';
   static const String notificationShare='assets/icons/notification_share.png';
   static const String notificationBookmark='assets/icons/notification_bookmark.png';
-
+  static const String selectFavorite='assets/icons/select_favorite.png';
+  static const String image='assets/icons/image.png';
+  static const String propertyCheck='assets/icons/property_check.png';
 }

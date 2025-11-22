@@ -6,8 +6,9 @@ import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
 
 class CustomEndAppbar extends StatelessWidget {
   final VoidCallback onTap;
+  final VoidCallback onFavorite;
   final Widget ?notification;
-  const CustomEndAppbar({super.key, required this.onTap, this.notification});
+  const CustomEndAppbar({super.key, required this.onTap, this.notification, required this.onFavorite});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class CustomEndAppbar extends StatelessWidget {
     return Row(
         children: [
           GestureDetector(
-            onTap: () {},
+            onTap: onFavorite,
             child: Container(
               height: 32.h,
               width: 32.w,

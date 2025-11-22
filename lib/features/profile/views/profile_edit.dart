@@ -32,7 +32,6 @@ class ProfileEdit extends StatelessWidget {
                 .profileList[userRoleController.selectedIndex.value],
           ),
           SizedBox(height: 24.h,),
-          
         ],
       ),
     );

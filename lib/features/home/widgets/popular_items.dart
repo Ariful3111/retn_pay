@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
-import 'package:renter_pay/features/home/widgets/favorite_button.dart';
+import 'package:renter_pay/features/favorite/controller/favorite_controller.dart';
+import 'package:renter_pay/features/favorite/widgets/favorite_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/custom_text_span.dart';
 
@@ -12,6 +14,7 @@ class PopularItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FavoriteController favoriteController = Get.find();
     return SizedBox(
       height: 284.w,
       child: ListView.builder(
@@ -31,12 +34,14 @@ class PopularItems extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Align(
+                Obx((){
+                  return Align(
                   alignment: Alignment.topRight,
                   child: FavoriteButton(onTap: () {
-                    
-                  },)
-                ),
+                    favoriteController.selectFavorite(id: index);
+                  }, isFavorite: favoriteController.isFavorite(index),)
+                );
+                }),
                 Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
