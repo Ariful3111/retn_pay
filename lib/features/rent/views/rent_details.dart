@@ -3,23 +3,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_request_button.dart';
-import 'package:renter_pay/features/rent/widgets/property_details_list.dart';
+import 'package:renter_pay/features/rent/widgets/location_info.dart';
+import 'package:renter_pay/features/rent/widgets/property_banner.dart';
+import 'package:renter_pay/features/rent/widgets/property_customer_review.dart';
+import 'package:renter_pay/shared/widgets/property/property_details_list.dart';
 import 'package:renter_pay/features/rent/widgets/rent_details_image.dart';
-import 'package:renter_pay/features/rent/widgets/rent_details_info.dart';
+import 'package:renter_pay/shared/widgets/property/property_details_info.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/text/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/property/property_key_features.dart';
 
 class RentDetails extends StatelessWidget {
   const RentDetails({super.key});
   
   @override
   Widget build(BuildContext context) {
-    List detailsList = <String>[
-      'Open floor plan with natural lighting',
-      'Fully equipped modern kitchen',
-      'Large balcony with scenic views',
-      'Gated community with 24/7 security',
-    ];
+    
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -40,7 +39,7 @@ class RentDetails extends StatelessWidget {
         SizedBox(height: 24.h,),
         RentDetailsImage(),
         SizedBox(height: 16.h,),
-        RentDetailsInfo(),
+        PropertyDetailsInfo(),
         SizedBox(height: 16.h,),
         InspectionRequestButton(),
         SizedBox(height: 20.h,),
@@ -50,9 +49,20 @@ class RentDetails extends StatelessWidget {
         color: AppColors.darkPrimary.withValues(alpha: 0.5),
         ),
         SizedBox(height: 12.h,),
-        ...List.generate(4, (index){
-          return PropertyDetailsList(title: detailsList[index]);
-        })
+        PropertyDetailsList(),
+        SizedBox(height:20.h),
+        CustomTextSecondary(text: 'Key Features & Amenities',fontSize: 20.sp,fontWeight: FontWeight.w600,),
+        SizedBox(height: 16.h),
+        PropertyKeyFeatures(),
+        SizedBox(height: 24.h,),
+        CustomTextSecondary(text: 'Location Information',fontSize: 20.sp,color: AppColors.primaryTextColor,),
+        SizedBox(height: 8.h,),
+        LocationInfo(),
+        SizedBox(height: 24.h),
+        PropertyCustomerReview(),
+        SizedBox(height: 24.h,),
+        PropertyBanner(),
+        SizedBox(height: 30.h,)
       ],
     ));
   }

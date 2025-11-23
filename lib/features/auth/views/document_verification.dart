@@ -1,5 +1,3 @@
-import 'dart:io';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -10,10 +8,11 @@ import 'package:renter_pay/core/utils/image_picker.dart';
 import 'package:renter_pay/core/utils/snackbar.dart';
 import 'package:renter_pay/features/auth/controllers/document_verification_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
+import 'package:renter_pay/shared/widgets/document_verification/custom_dotted_border.dart';
 import 'package:renter_pay/shared/widgets/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_secondary_button.dart';
-import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
-import 'package:renter_pay/shared/widgets/document_upload.dart';
+import 'package:renter_pay/shared/widgets/text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/document_verification/document_upload.dart';
 import 'package:renter_pay/shared/widgets/success_dialog.dart';
 
 class DocumentVerification extends StatelessWidget {
@@ -49,25 +48,7 @@ class DocumentVerification extends StatelessWidget {
               final frontImage =
                   documentVerificationController.frontImage.value;
               return frontImage != null
-                  ? DottedBorder(
-                      options: RoundedRectDottedBorderOptions(
-                        radius: Radius.circular(20.sp),
-                        borderPadding: EdgeInsets.all(1.r),
-                        color: Color(0xFF9D5781),
-                        dashPattern: [3, 3],
-                      ),
-                      child: Container(
-                        height: 225.h,
-                        width: 350.w,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.sp),
-                          image: DecorationImage(
-                            image: FileImage(File(frontImage.path)),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                    )
+                  ? CustomDottedBorder(image: frontImage)
                   : DocumentUpload(
                       titleText: 'Front Side',
                       onTap: () {
@@ -84,25 +65,7 @@ class DocumentVerification extends StatelessWidget {
             Obx(() {
               final backImage = documentVerificationController.backImage.value;
               return backImage != null
-                  ? DottedBorder(
-                      options: RoundedRectDottedBorderOptions(
-                        radius: Radius.circular(20.sp),
-                        borderPadding: EdgeInsets.all(1.r),
-                        color: Color(0xFF9D5781),
-                        dashPattern: [3, 3],
-                      ),
-                      child: Container(
-                        height: 225.h,
-                        width: 350.w,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20.sp),
-                          image: DecorationImage(
-                            image: FileImage(File(backImage.path)),
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
-                    )
+                  ? CustomDottedBorder(image: backImage)
                   : DocumentUpload(
                       titleText: 'Back Side (Optional)',
                       onTap: () {
@@ -158,7 +121,6 @@ class DocumentVerification extends StatelessWidget {
                       },
                     );
                     }
-                    
                   },
                   backgroundColor: LinearGradient(
                     colors: [

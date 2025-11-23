@@ -30,7 +30,7 @@ class VilaList extends StatelessWidget {
               updateRating: (double value) {
                 homeController.vilaRating[index] = value;
               },
-              initialRating: homeController.vilaRating[index], onFavorite: () {  }, isFavorite: favoriteController.isFavorite(index),
+              initialRating: homeController.vilaRating[index], onFavorite: () { favoriteController.selectFavorite(id: index); }, isFavorite: favoriteController.isFavorite(index),
             );
           },
         ),

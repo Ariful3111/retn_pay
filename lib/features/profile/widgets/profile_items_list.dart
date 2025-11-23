@@ -6,7 +6,7 @@ import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_items.dart';
-import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/text/custom_text_primary.dart';
 
 class ProfileItemsList extends StatelessWidget {
   const ProfileItemsList({super.key});

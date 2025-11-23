@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
-import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/text/custom_text_secondary.dart';
 
 class RentDetailsImage extends StatelessWidget {
   const RentDetailsImage({super.key});
@@ -38,12 +38,8 @@ class RentDetailsImage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50.r),
                         boxShadow: [
                           BoxShadow(
-                            offset: Offset(0, 14.32),
-                            blurRadius: 31.75,
-                          ),
-                          BoxShadow(
-                            offset: Offset(0, 57.51),
-                            blurRadius: 57.51,
+                            offset: Offset(0, 5),
+                            blurRadius: 10,
                           ),
                         ]
                       ),

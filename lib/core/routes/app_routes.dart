@@ -18,4 +18,6 @@ class AppRoutes {
   static const String notification = '/notification';
   static const String rentDetails = '/rentDetails';
   static const String favorite = '/favorite';
+  static const String inspectionFrom = '/inspectionFrom';
+
 }

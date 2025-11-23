@@ -31,7 +31,7 @@ class HouseList extends StatelessWidget {
             },
             updateRating: (double value) {
               homeController.houseRating[index]=value;
-            }, initialRating: homeController.houseRating[index], onFavorite: () {  }, isFavorite: favoriteController.isFavorite(index),
+            }, initialRating: homeController.houseRating[index], onFavorite: () { favoriteController.selectFavorite(id: index); }, isFavorite: favoriteController.isFavorite(index),
           );
         },
       ),

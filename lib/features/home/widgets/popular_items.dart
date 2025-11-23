@@ -6,8 +6,8 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/favorite/controller/favorite_controller.dart';
 import 'package:renter_pay/features/favorite/widgets/favorite_button.dart';
-import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
-import 'package:renter_pay/shared/widgets/custom_text_span.dart';
+import 'package:renter_pay/shared/widgets/text/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/text/custom_text_span.dart';
 
 class PopularItems extends StatelessWidget {
   const PopularItems({super.key});

@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/auth/controllers/login_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text_field.dart';
-import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/text/custom_text_secondary.dart';
 
 class LoginField extends StatelessWidget {
   final GlobalKey<FormState> fromKey;

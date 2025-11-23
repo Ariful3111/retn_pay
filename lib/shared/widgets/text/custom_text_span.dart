@@ -6,7 +6,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 
 class CustomTextSpan extends StatelessWidget {
     final String title;
-    final String? spantext;
+    final String spantext;
     final Color? color;
     final Color? spanColor;
     final double? fontSize;
@@ -21,7 +21,7 @@ class CustomTextSpan extends StatelessWidget {
     final TextStyle? textStyle;
     final TextDecoration ? spanDecoration;
     final TextDecoration ? textDecoration;
-  const CustomTextSpan({super.key, required this.title, this.spantext, this.color, this.spanColor, this.fontSize, this.spanFontSize, this.fontWeight, this.spanFontWeight, this.onTap, this.leftPadding, this.rightPadding, this.topPadding, this.bottomPadding, this.textStyle, this.spanDecoration, this.textDecoration});
+  const CustomTextSpan({super.key, required this.title,required this.spantext, this.color, this.spanColor, this.fontSize, this.spanFontSize, this.fontWeight, this.spanFontWeight, this.onTap, this.leftPadding, this.rightPadding, this.topPadding, this.bottomPadding, this.textStyle, this.spanDecoration, this.textDecoration});
 
   @override
   Widget build(BuildContext context) {

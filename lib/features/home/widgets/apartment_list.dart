@@ -30,7 +30,7 @@ class ApartmentList extends StatelessWidget {
             updateRating: (double value) {
               homeController.apartmentRating[index]=value;
             },
-            initialRating: homeController.apartmentRating[index], onFavorite: () {  }, isFavorite: favoriteController.isFavorite(index),
+            initialRating: homeController.apartmentRating[index], onFavorite: () { favoriteController.selectFavorite(id: index); }, isFavorite: favoriteController.isFavorite(index),
           );
         },
       ),

@@ -47,6 +47,8 @@ dependencies:
   animated_theme_switcher: ^2.0.10
   flutter_rating_bar: ^4.0.1
   syncfusion_flutter_sliders: ^31.2.10
+  flutter_map: ^8.2.2
+  latlong2: ^0.9.1
 
 dev_dependencies:
   flutter_test:

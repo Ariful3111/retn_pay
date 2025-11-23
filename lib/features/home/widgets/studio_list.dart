@@ -30,7 +30,7 @@ class StudioList extends StatelessWidget {
               updateRating: (double value) {
                 homeController.studioRating[index]=value;
               },
-              initialRating: homeController.studioRating[index], onFavorite: () {  }, isFavorite: favoriteController.isFavorite(index),
+              initialRating: homeController.studioRating[index], onFavorite: () { favoriteController.selectFavorite(id: index); }, isFavorite: favoriteController.isFavorite(index),
             );
           },
         ),

@@ -4,7 +4,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/profile/widgets/auto_pay_setting.dart';
 import 'package:renter_pay/features/profile/widgets/dark_mode_setting.dart';
 import 'package:renter_pay/features/profile/widgets/notification_setting.dart';
-import 'package:renter_pay/shared/widgets/custom_appbar.dart';
+import 'package:renter_pay/shared/widgets/appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 
 class SettingView extends StatelessWidget {

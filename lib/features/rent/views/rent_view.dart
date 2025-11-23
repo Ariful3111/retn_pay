@@ -7,7 +7,7 @@ import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/favorite/controller/favorite_controller.dart';
 import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:renter_pay/features/rent/controllers/rent_controller.dart';
-import 'package:renter_pay/features/rent/widgets/page_no.dart';
+import 'package:renter_pay/shared/widgets/custom_pagination.dart';
 import 'package:renter_pay/features/rent/widgets/property_image_view.dart';
 import 'package:renter_pay/shared/widgets/custom_item_sort.dart';
 import 'package:renter_pay/features/rent/widgets/rent_app_bar.dart';
@@ -64,7 +64,7 @@ class RentView extends StatelessWidget {
                   );
                 },
               ),
-              PageNo(),
+              CustomPagination(),
               SizedBox(height: 55.h,),
           ],
         ),

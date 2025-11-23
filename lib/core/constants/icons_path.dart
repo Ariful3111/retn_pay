@@ -68,4 +68,16 @@ class IconsPath {
   static const String selectFavorite='assets/icons/select_favorite.png';
   static const String image='assets/icons/image.png';
   static const String propertyCheck='assets/icons/property_check.png';
+  static const String ac='assets/icons/ac.png';
+  static const String carParking='assets/icons/car_parking.png';
+  static const String gym='assets/icons/gym.png';
+  static const String homeGarden='assets/icons/home_garden.png';
+  static const String pet='assets/icons/pet.png';
+  static const String restaurant='assets/icons/restaurant.png';
+  static const String school='assets/icons/school.png';
+  static const String security='assets/icons/security.png';
+  static const String store='assets/icons/store.png';
+  static const String swimming='assets/icons/swimming.png';
+  static const String review='assets/icons/review.png';
+  static const String consultation='assets/icons/consultation.png';
 }

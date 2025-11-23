@@ -7,7 +7,7 @@ import 'package:renter_pay/features/home/controllers/global_scroll_controller.da
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_info.dart';
 import 'package:renter_pay/features/profile/widgets/profile_items_list.dart';
-import 'package:renter_pay/shared/widgets/custom_appbar.dart';
+import 'package:renter_pay/shared/widgets/appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_primary_button.dart';
 

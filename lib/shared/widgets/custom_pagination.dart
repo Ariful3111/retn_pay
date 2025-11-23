@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/rent/controllers/rent_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/text/custom_text_primary.dart';
 
-class PageNo extends StatelessWidget {
-  const PageNo({super.key});
+class CustomPagination extends StatelessWidget {
+  const CustomPagination({super.key});
   @override
   Widget build(BuildContext context) {
     RentController rentController = Get.find();

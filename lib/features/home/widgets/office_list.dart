@@ -30,7 +30,7 @@ class OfficeList extends StatelessWidget {
             updateRating: (double value) {
               homeController.officeRating[index]=value;
             },
-            initialRating: homeController.officeRating[index], onFavorite: () {  }, isFavorite: favoriteController.isFavorite(index),
+            initialRating: homeController.officeRating[index], onFavorite: () { favoriteController.selectFavorite(id: index); }, isFavorite: favoriteController.isFavorite(index),
           );
         },
       ),

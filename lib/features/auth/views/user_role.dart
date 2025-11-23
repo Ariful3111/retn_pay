@@ -10,7 +10,7 @@ import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/auth/widgets/user_button.dart';
 import 'package:renter_pay/features/auth/widgets/user_container.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/text/custom_text_primary.dart';
 
 class UserRole extends StatelessWidget {
   const UserRole({super.key});

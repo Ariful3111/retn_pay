@@ -5,7 +5,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/shared/widgets/custom_text_field.dart';
-import 'package:renter_pay/shared/widgets/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/filter/filter_titles.dart';
 
 class FilterSearch extends StatelessWidget {

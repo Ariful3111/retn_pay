@@ -34,6 +34,8 @@ import 'package:renter_pay/features/profile/bindings/settings_bindings.dart';
 import 'package:renter_pay/features/profile/views/profile_view.dart';
 import 'package:renter_pay/features/profile/views/setting_view.dart';
 import 'package:renter_pay/features/rent/bindings/rent_bindings.dart';
+import 'package:renter_pay/features/rent/bindings/rent_details_bindings.dart';
+import 'package:renter_pay/features/rent/views/inspection_from.dart';
 import 'package:renter_pay/features/rent/views/rent_view.dart';
 import 'package:renter_pay/features/rent/views/rent_details.dart';
 
@@ -63,6 +65,7 @@ final List<GetPage> appRoutes = [
   ]),
   GetPage(name: AppRoutes.notification, page: ()=>NotificationView(),bindings: [NotificationBindings()]),
   GetPage(name: AppRoutes.profileEdit, page: ()=>ProfileEdit()),
-  GetPage(name: AppRoutes.rentDetails, page: ()=>RentDetails()),
-  GetPage(name: AppRoutes.favorite, page: ()=>FavoriteView(),bindings: [FavoriteBindings()])
+  GetPage(name: AppRoutes.rentDetails, page: ()=>RentDetails(),bindings: [RentDetailsBindings()]),
+  GetPage(name: AppRoutes.favorite, page: ()=>FavoriteView(),bindings: [FavoriteBindings()]),
+  GetPage(name: AppRoutes.inspectionFrom, page: ()=>InspectionFrom())
 ];

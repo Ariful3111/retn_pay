@@ -5,7 +5,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_appbar.dart';
+import 'package:renter_pay/shared/widgets/appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 
 class ProfileEdit extends StatelessWidget {
