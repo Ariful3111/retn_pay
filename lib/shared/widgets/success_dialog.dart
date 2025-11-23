@@ -17,7 +17,7 @@ class SuccessDialog extends StatelessWidget {
   final String? subtitle;
   final Widget? button;
   final String? buttonText;
-  final VoidCallback onTap;
+  final VoidCallback ?onTap;
   const SuccessDialog({
     super.key,
     this.widget,
@@ -28,7 +28,7 @@ class SuccessDialog extends StatelessWidget {
     this.width,
     this.title1,
     this.title2,
-    required this.onTap,
+    this.onTap,
   });
 
   @override
@@ -116,7 +116,7 @@ class SuccessDialog extends StatelessWidget {
                             height: 40.h,
                             width: 172.w,
                             borderRadius: BorderRadius.circular(6.sp),
-                            onPressed: onTap,
+                            onPressed: onTap!,
                             text: buttonText ?? "Back To Dashboard",
                           ),
                     ],

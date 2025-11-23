@@ -112,9 +112,23 @@ class InspectionVerification extends StatelessWidget {
                       context: context,
                       builder: (context) {
                         return SuccessDialog(
-                          onTap: () {
-                            Get.toNamed(AppRoutes.inspectionFrom);
-                          },
+                          title1: 'Your inspection request has ',
+                          title2: 'been submitted!',
+                          subtitle: 'Our agent will contact you within 24 hours to confirm your appointment.',
+                          button: Row(children: [
+                            CustomPrimaryButton(height: 35.h, width: 122.w, text: 'Back To Property',fontSize: 12.sp,fontWeight: FontWeight.w400, onPressed: () {
+                              Get.back();
+                            },),
+                            SizedBox(width: 9.w,),
+                            CustomSecondaryButton(
+                              height: 35.h,
+                              width: 154.w,
+                              text: 'Browse More Properties',
+                              fontSize: 12.sp,fontWeight: FontWeight.w400,
+                              onPressed: () {
+                              Get.toNamed(AppRoutes.home);
+                            },)
+                          ],),
                         );
                       },
                     );
