@@ -90,7 +90,7 @@ class ProfileItemsList extends StatelessWidget {
           Get.toNamed(AppRoutes.settings);
         },),
         SizedBox(height: 8.h,),
-        ProfileItems(image: IconsPath.profileContact,imageHeight: 23.h,imageWidth: 21.w,title: 'Contact Us', onTap: () {  },),
+        ProfileItems(image: IconsPath.profileContact,imageHeight: 23.h,imageWidth: 21.w,title: 'Contact Us', onTap: () { Get.toNamed(AppRoutes.contactUs); },),
         SizedBox(height: 8.h,),
         ProfileItems(image: IconsPath.profileSupport,imageHeight: 23.h,imageWidth: 21.w,title: 'Support', onTap: () {  },),
         SizedBox(height: 8.h,),

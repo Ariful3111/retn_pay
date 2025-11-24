@@ -80,4 +80,15 @@ class IconsPath {
   static const String swimming='assets/icons/swimming.png';
   static const String review='assets/icons/review.png';
   static const String consultation='assets/icons/consultation.png';
+  static const String date='assets/icons/date.png';
+  static const String time='assets/icons/time.png';
+  static const String call='assets/icons/call.png';
+  static const String contactLocation='assets/icons/contact_location.png';
+  static const String email='assets/icons/email.png';
+  static const String facebook='assets/icons/facebook.png';
+  static const String instagram='assets/icons/instagram.png';
+  static const String tiktok='assets/icons/tiktok.png';
+  static const String web='assets/icons/web.png';
+  static const String youtube='assets/icons/youtube.png';
+
 }

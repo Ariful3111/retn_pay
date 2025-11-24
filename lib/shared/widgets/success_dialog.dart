@@ -13,11 +13,10 @@ class SuccessDialog extends StatelessWidget {
   final double? width;
   final Widget? widget;
   final String? title1;
-  final String? title2;
   final String? subtitle;
   final Widget? button;
   final String? buttonText;
-  final VoidCallback ?onTap;
+  final VoidCallback? onTap;
   const SuccessDialog({
     super.key,
     this.widget,
@@ -27,7 +26,6 @@ class SuccessDialog extends StatelessWidget {
     this.height,
     this.width,
     this.title1,
-    this.title2,
     this.onTap,
   });
 
@@ -61,7 +59,11 @@ class SuccessDialog extends StatelessWidget {
                     borderRadius: BorderRadius.circular(25.sp),
                   ),
                   child: Center(
-                    child: Image.asset(IconsPath.close, height: 8.h, width: 8.w),
+                    child: Image.asset(
+                      IconsPath.close,
+                      height: 8.h,
+                      width: 8.w,
+                    ),
                   ),
                 ),
               ),
@@ -84,31 +86,36 @@ class SuccessDialog extends StatelessWidget {
                             width: 34.w,
                             decoration: BoxDecoration(
                               gradient: AppColors.primaryColor,
-                              border: Border.all(width: 2.sp, color: AppColors.whiteColor),
+                              border: Border.all(
+                                width: 2.sp,
+                                color: AppColors.whiteColor,
+                              ),
                               borderRadius: BorderRadius.circular(25.sp),
                             ),
                             child: Center(
-                              child: Image.asset(IconsPath.ok, height: 12.h, width: 17.w),
+                              child: Image.asset(
+                                IconsPath.ok,
+                                height: 12.h,
+                                width: 17.w,
+                              ),
                             ),
                           ),
                         ),
                       ),
                       SizedBox(height: 14.h),
                       CustomTextPrimary(
-                        text: title1 ?? "Your ID has been verified",
+                        text:
+                            title1 ?? "Your ID has been verified successfully",
                         color: AppColors.primaryColorDark,
                         fontSize: 20.sp,
-                      ),
-                      CustomTextPrimary(
-                        text: title2 ?? "successfully.",
-                        color: AppColors.primaryColorDark,
-                        fontSize: 20.sp,
+                        textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 6.h),
                       CustomTextSecondary(
                         text: subtitle ?? 'You can now continue.',
                         fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
+                        textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 32.h),
                       button ??

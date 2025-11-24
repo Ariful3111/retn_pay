@@ -5,13 +5,11 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/core/utils/image_picker.dart';
-import 'package:renter_pay/core/utils/snackbar.dart';
 import 'package:renter_pay/features/rent/controllers/rent_details_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_secondary_button.dart';
 import 'package:renter_pay/shared/widgets/document_verification/custom_dotted_border.dart';
 import 'package:renter_pay/shared/widgets/document_verification/document_upload.dart';
-import 'package:renter_pay/shared/widgets/success_dialog.dart';
 import 'package:renter_pay/shared/widgets/text/custom_text_secondary.dart';
 
 class InspectionVerification extends StatelessWidget {
@@ -96,42 +94,9 @@ class InspectionVerification extends StatelessWidget {
                 text: 'Upload',
                  onPressed: () {
                   if (rentDetailsController.frontImage.value == null) {
-                      errorSnack(message: 'Front Document Is Required');
-                      showDialog(
-                      context: context,
-                      builder: (context) {
-                        return SuccessDialog(
-                          onTap: () {
-                            Get.toNamed(AppRoutes.inspectionFrom);
-                          },
-                        );
-                      },
-                    );
+                      Get.toNamed(AppRoutes.inspectionFrom);
                     } else {
-                      showDialog(
-                      context: context,
-                      builder: (context) {
-                        return SuccessDialog(
-                          title1: 'Your inspection request has ',
-                          title2: 'been submitted!',
-                          subtitle: 'Our agent will contact you within 24 hours to confirm your appointment.',
-                          button: Row(children: [
-                            CustomPrimaryButton(height: 35.h, width: 122.w, text: 'Back To Property',fontSize: 12.sp,fontWeight: FontWeight.w400, onPressed: () {
-                              Get.back();
-                            },),
-                            SizedBox(width: 9.w,),
-                            CustomSecondaryButton(
-                              height: 35.h,
-                              width: 154.w,
-                              text: 'Browse More Properties',
-                              fontSize: 12.sp,fontWeight: FontWeight.w400,
-                              onPressed: () {
-                              Get.toNamed(AppRoutes.home);
-                            },)
-                          ],),
-                        );
-                      },
-                    );
+                      
                     }
                 },
                 )

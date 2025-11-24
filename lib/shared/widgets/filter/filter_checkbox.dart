@@ -5,10 +5,15 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/shared/widgets/text/custom_text_primary.dart';
 
 class FilterCheckbox extends StatelessWidget {
-    final List propertyItems;
+  final List propertyItems;
   final RxList<String> selectedProperty;
   final Function(List<String>) onChange;
-  const FilterCheckbox({super.key, required this.propertyItems, required this.selectedProperty, required this.onChange});
+  const FilterCheckbox({
+    super.key,
+    required this.propertyItems,
+    required this.selectedProperty,
+    required this.onChange,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,25 +26,24 @@ class FilterCheckbox extends StatelessWidget {
         final title = propertyItems[index];
         return Row(
           children: [
-            Obx((){
+            Obx(() {
               final isChecked = selectedProperty.contains(title);
               return Checkbox(
                 visualDensity: VisualDensity.compact,
                 activeColor: AppColors.primaryColorDark,
-               side: BorderSide(color:  Color(0xFF697483)),
-               
-              value: isChecked,
-              onChanged: (value) {
-                if (value == true) {
-                  if(!selectedProperty.contains(title)){
-                    selectedProperty.add(title);
+                side: BorderSide(color: Color(0xFF697483)),
+                value: isChecked,
+                onChanged: (value) {
+                  if (value == true) {
+                    if (!selectedProperty.contains(title)) {
+                      selectedProperty.add(title);
+                    }
+                  } else {
+                    selectedProperty.remove(title);
                   }
-                } else {
-                  selectedProperty.remove(title);
-                }
-                onChange(selectedProperty.toList());
-              },
-            );
+                  onChange(selectedProperty.toList());
+                },
+              );
             }),
             CustomTextPrimary(
               text: propertyItems[index],

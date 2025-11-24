@@ -36,5 +36,6 @@ class ImagesPath {
   static const String officeCategory = 'assets/images/office_category.png';
   static const String studioCategory = 'assets/images/studio_category.png';
   static const String office = 'assets/images/office.png';
+  static const String contactUsBg = 'assets/images/contact_us_bg.png';
   static const String propertyBanner = 'assets/images/property_banner.png';
 }

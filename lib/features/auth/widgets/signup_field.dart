@@ -14,7 +14,6 @@ class SignupField extends StatelessWidget {
     SignupController signupController = Get.find();
     return Form(
       key: fromKey,
-      
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

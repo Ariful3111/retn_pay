@@ -14,7 +14,7 @@ class CustomTextField extends StatelessWidget {
   final double? fontSize;
   final FontWeight? fontWeight;
   final BorderRadius? borderRadius;
-  final TextEditingController? controller;
+  final TextEditingController controller;
   final TextDirection? textDirection;
   final double? width;
   final Widget? labelTextWidget;
@@ -22,7 +22,6 @@ class CustomTextField extends StatelessWidget {
   final String? errorText;
   final String? Function(String?)? validator;
   final ValueChanged<String>? onChanged;
-  final AutovalidateMode? autovalidateMode;
   final bool? readOnly;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
@@ -33,6 +32,8 @@ class CustomTextField extends StatelessWidget {
   final InputBorder ?border;
   final FloatingLabelBehavior? floatingLabelBehavior;
   final Color ?fillColor;
+  final int ? maxLength;
+  final int ? maxLines;
   const CustomTextField({
     super.key,
     this.hintText,
@@ -44,19 +45,18 @@ class CustomTextField extends StatelessWidget {
     this.fontSize,
     this.fontWeight,
     this.borderRadius,
-    this.controller,
+    required this.controller,
     this.textDirection,
     this.width,
     this.labelText,
     this.errorText,
     this.validator,
     this.onChanged,
-    this.autovalidateMode,
     this.readOnly,
     this.hintTextWidget,
     this.labelTextWidget,
     this.padding,
-    this.margin, this.validation,  this.isFilled, this.enableBorder, this.focusBorder, this.border, this.floatingLabelBehavior, this.fillColor,
+    this.margin, this.validation,  this.isFilled, this.enableBorder, this.focusBorder, this.border, this.floatingLabelBehavior, this.fillColor, this.maxLength, this.maxLines,
   });
 
   @override
@@ -64,6 +64,8 @@ class CustomTextField extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return TextFormField(
       controller: controller,
+      maxLines:obscureText==true?1: maxLines,
+      maxLength: maxLength,
       textDirection: textDirection ?? TextDirection.ltr,
       obscureText: obscureText ?? false,
       keyboardType: keyboardType ?? TextInputType.text,

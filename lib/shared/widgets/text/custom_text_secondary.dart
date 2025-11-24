@@ -12,13 +12,15 @@ class CustomTextSecondary extends StatelessWidget {
   final  Color ? decorationColor;
   final  double ? decorationThickness;
   final  TextDecorationStyle ? decorationStyle;
-  const CustomTextSecondary({super.key, required this.text, this.fontSize, this.fontWeight, this.color, this.textDecoration, this.decorationColor, this.decorationThickness, this.decorationStyle});
+  final TextAlign? textAlign;
+  const CustomTextSecondary({super.key, required this.text, this.fontSize, this.fontWeight, this.color, this.textDecoration, this.decorationColor, this.decorationThickness, this.decorationStyle, this.textAlign});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Text(
       text,
+      textAlign: textAlign,
       style: GoogleFonts.inter(
         fontSize:fontSize?? 16.sp,
         fontWeight:fontWeight?? FontWeight.w500,
