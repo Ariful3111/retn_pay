@@ -7,9 +7,9 @@ import 'package:renter_pay/features/home/controllers/global_scroll_controller.da
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_info.dart';
 import 'package:renter_pay/features/profile/widgets/profile_items_list.dart';
-import 'package:renter_pay/shared/widgets/appbar/custom_appbar.dart';
+import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/custom_primary_button.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -34,9 +34,6 @@ class ProfileView extends StatelessWidget {
         slivers: [
           SliverAppBar(
             backgroundColor: Colors.transparent,
-            pinned: false,
-            floating: true,
-            snap: true,
             titleSpacing: 0.w,
             title: CustomAppbar(
               title: profileController

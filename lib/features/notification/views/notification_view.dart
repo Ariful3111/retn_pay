@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:renter_pay/features/notification/controller/notification_controller.dart';
 import 'package:renter_pay/features/notification/widgets/notification_appbar_actions.dart';
 import 'package:renter_pay/features/notification/widgets/notification_item.dart';
-import 'package:renter_pay/shared/widgets/appbar/custom_appbar.dart';
-import 'package:renter_pay/shared/widgets/appbar/custom_appbar_leading.dart';
+import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
+import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class NotificationView extends StatelessWidget {
   const NotificationView({super.key});
@@ -23,7 +23,7 @@ class NotificationView extends StatelessWidget {
             children: [
               CustomAppbarLeading(
                 onTap: () {
-                  Get.back();
+                  Navigator.pop(context);
                 },
               ),
               SizedBox(width: 10.w),

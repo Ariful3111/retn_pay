@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:renter_pay/features/favorite/widgets/favorite_button.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_favorite_button.dart';
 import 'package:renter_pay/shared/widgets/item_info.dart';
 
 class ItemContainer extends StatelessWidget {
@@ -56,7 +56,7 @@ class ItemContainer extends StatelessWidget {
               ),
               child: Align(
                 alignment: Alignment.topRight,
-                child: FavoriteButton(
+                child: CustomFavoriteButton(
                   onTap: onFavorite,
                   isFavorite: isFavorite,
                 ),

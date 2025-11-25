@@ -7,10 +7,10 @@ import 'package:renter_pay/features/rent/widgets/inspection_faq.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_from_field.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_property_image.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_submit.dart';
-import 'package:renter_pay/shared/widgets/appbar/custom_appbar.dart';
-import 'package:renter_pay/shared/widgets/appbar/custom_appbar_leading.dart';
+import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
+import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class InspectionFrom extends StatelessWidget {
   const InspectionFrom({super.key});

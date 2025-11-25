@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:renter_pay/shared/widgets/text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class NotificationItem extends StatelessWidget {
   final String notificationIcon;

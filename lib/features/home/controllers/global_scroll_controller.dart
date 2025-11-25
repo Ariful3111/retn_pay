@@ -6,6 +6,7 @@ class GlobalScrollController extends GetxController{
   final ScrollController scrollController = ScrollController();
     RxBool isVisible = true.obs;
   void listen(){
+    if (!scrollController.hasClients) return;
     final direction = scrollController.position.userScrollDirection;
     if(direction == ScrollDirection.forward){
       if (!isVisible.value) isVisible.value = true;

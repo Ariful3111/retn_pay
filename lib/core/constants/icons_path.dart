@@ -90,5 +90,8 @@ class IconsPath {
   static const String tiktok='assets/icons/tiktok.png';
   static const String web='assets/icons/web.png';
   static const String youtube='assets/icons/youtube.png';
+  static const String pen='assets/icons/pen.png';
+  static const String active='assets/icons/active.png';
+  static const String archive='assets/icons/archive.png';
 
 }

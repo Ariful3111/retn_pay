@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 
-class FavoriteButton extends StatelessWidget {
+class CustomFavoriteButton extends StatelessWidget {
   final VoidCallback onTap;
   final bool isFavorite;
-  const FavoriteButton({super.key, required this.onTap, required this.isFavorite});
+  const CustomFavoriteButton({super.key, required this.onTap, required this.isFavorite});
 
   @override
   Widget build(BuildContext context) {

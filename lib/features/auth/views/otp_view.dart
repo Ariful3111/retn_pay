@@ -5,8 +5,8 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/auth/controllers/otp_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/custom_primary_button.dart';
-import 'package:renter_pay/shared/widgets/text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text_field.dart';
 
 class OtpView extends StatelessWidget {

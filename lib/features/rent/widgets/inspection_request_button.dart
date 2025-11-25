@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_verification.dart';
-import 'package:renter_pay/shared/widgets/custom_primary_button.dart';
-import 'package:renter_pay/shared/widgets/custom_secondary_button.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 
 class InspectionRequestButton extends StatelessWidget {
   const InspectionRequestButton({super.key});

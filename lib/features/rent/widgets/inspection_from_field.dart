@@ -8,7 +8,7 @@ import 'package:renter_pay/core/utils/time_picker.dart';
 import 'package:renter_pay/features/rent/controllers/rent_details_controller.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_type.dart';
 import 'package:renter_pay/shared/widgets/custom_text_field.dart';
-import 'package:renter_pay/shared/widgets/text/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class InspectionFromField extends StatelessWidget {
   const InspectionFromField({super.key});

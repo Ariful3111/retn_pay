@@ -18,14 +18,7 @@ class MainHomeView extends StatelessWidget {
         backgroundColor: isDark
             ? AppColors.darkPrimary
             : AppColors.whiteColor,
-        body: NotificationListener(
-          onNotification: (notification) {
-            globalScrollController.listen();
-            return false;
-          },
-          child:
-              mainHomeController.pageList[mainHomeController.selectIndex.value],
-        ),
+        body: mainHomeController.pageList[mainHomeController.selectIndex.value],
         bottomNavigationBar: AnimatedContainer(
           height: globalScrollController.isVisible.value?82.h:0,
           duration: const Duration(milliseconds: 500),

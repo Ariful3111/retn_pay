@@ -2,7 +2,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/core/utils/snackbar.dart';
 import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 
 class LoginController extends GetxController {
@@ -74,7 +73,6 @@ class LoginController extends GetxController {
         Get.toNamed(AppRoutes.mainHome);
       }
     } else {
-      errorSnack(message: 'Please fill in all the fields');
       if(index==2){
         Get.toNamed(AppRoutes.mainHome);
       }

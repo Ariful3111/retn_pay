@@ -7,8 +7,8 @@ import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/auth/widgets/auth_option.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/text/custom_text_primary.dart';
-import 'package:renter_pay/shared/widgets/text/custom_text_span.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
 
 class SignupOption extends StatelessWidget {
   const SignupOption({super.key});

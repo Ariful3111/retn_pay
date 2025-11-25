@@ -6,7 +6,7 @@ import 'package:renter_pay/features/profile/widgets/basic_plan.dart';
 import 'package:renter_pay/features/profile/widgets/platinum_plan.dart';
 import 'package:renter_pay/features/profile/widgets/silver_plan.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class SubscriptionPlan extends StatelessWidget {
   const SubscriptionPlan({super.key});

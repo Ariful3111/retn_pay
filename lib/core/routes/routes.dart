@@ -17,6 +17,7 @@ import 'package:renter_pay/features/auth/views/signup_view.dart';
 import 'package:renter_pay/features/auth/views/user_role.dart';
 import 'package:renter_pay/features/chat/bindings/chat_bindings.dart';
 import 'package:renter_pay/features/chat/views/chat_view.dart';
+import 'package:renter_pay/features/chat/views/message_view.dart';
 import 'package:renter_pay/features/dashboard/bindings/dashboard_bindings.dart';
 import 'package:renter_pay/features/dashboard/views/dashboard_view.dart';
 import 'package:renter_pay/features/favorite/bindings/favorite_bindings.dart';
@@ -27,8 +28,10 @@ import 'package:renter_pay/features/home/views/home_view.dart';
 import 'package:renter_pay/features/home/views/main_home_view.dart';
 import 'package:renter_pay/features/notification/bindings/notification_bindings.dart';
 import 'package:renter_pay/features/notification/views/notification_view.dart';
+import 'package:renter_pay/features/profile/views/blog_view.dart';
 import 'package:renter_pay/features/profile/views/contact_us.dart';
 import 'package:renter_pay/features/profile/views/profile_edit.dart';
+import 'package:renter_pay/features/profile/views/blog_details.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan.dart';
 import 'package:renter_pay/features/profile/bindings/profile_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/settings_bindings.dart';
@@ -70,4 +73,7 @@ final List<GetPage> appRoutes = [
   GetPage(name: AppRoutes.favorite, page: ()=>FavoriteView(),bindings: [FavoriteBindings()]),
   GetPage(name: AppRoutes.inspectionFrom, page: ()=>InspectionFrom()),
   GetPage(name: AppRoutes.contactUs, page: ()=>ContactUs()),
+  GetPage(name: AppRoutes.blog, page: ()=>BlogView()),
+  GetPage(name: AppRoutes.blogDetails, page: ()=>BlogDetails()),
+  GetPage(name: AppRoutes.messageView, page: ()=>MessageView()),
 ];

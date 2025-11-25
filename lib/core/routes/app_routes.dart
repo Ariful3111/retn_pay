@@ -20,5 +20,8 @@ class AppRoutes {
   static const String favorite = '/favorite';
   static const String inspectionFrom = '/inspectionFrom';
   static const String contactUs = '/contactUs';
+  static const String blog = '/blog';
+  static const String blogDetails = '/blogDetails';
+  static const String messageView = '/messageView';
 
 }

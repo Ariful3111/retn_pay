@@ -6,8 +6,8 @@ import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/auth/controllers/onboarding_controller.dart';
 import 'package:renter_pay/features/auth/widgets/first_onboarding.dart';
-import 'package:renter_pay/shared/widgets/text/custom_text_primary.dart';
-import 'package:renter_pay/shared/widgets/text/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});

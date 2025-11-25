@@ -9,9 +9,9 @@ import 'package:renter_pay/core/utils/snackbar.dart';
 import 'package:renter_pay/features/auth/controllers/document_verification_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/document_verification/custom_dotted_border.dart';
-import 'package:renter_pay/shared/widgets/custom_primary_button.dart';
-import 'package:renter_pay/shared/widgets/custom_secondary_button.dart';
-import 'package:renter_pay/shared/widgets/text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/document_verification/document_upload.dart';
 import 'package:renter_pay/shared/widgets/success_dialog.dart';
 

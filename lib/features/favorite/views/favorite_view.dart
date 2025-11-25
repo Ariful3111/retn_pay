@@ -5,12 +5,12 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/favorite/controller/favorite_controller.dart';
 import 'package:renter_pay/features/home/controllers/home_controller.dart';
-import 'package:renter_pay/shared/widgets/appbar/custom_appbar.dart';
-import 'package:renter_pay/shared/widgets/appbar/custom_appbar_leading.dart';
+import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
+import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_item_sort.dart';
 import 'package:renter_pay/shared/widgets/custom_pagination.dart';
-import 'package:renter_pay/shared/widgets/text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/item_container.dart';
 
 class FavoriteView extends StatelessWidget {

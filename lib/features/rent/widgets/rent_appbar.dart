@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:renter_pay/shared/widgets/appbar/custom_appbar.dart';
+import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 
 
 class RentAppbar extends StatelessWidget {

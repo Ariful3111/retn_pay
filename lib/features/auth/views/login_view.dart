@@ -10,9 +10,9 @@ import 'package:renter_pay/features/auth/widgets/forgot_password.dart';
 import 'package:renter_pay/features/auth/widgets/login_field.dart';
 import 'package:renter_pay/features/auth/widgets/auth_option.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/custom_primary_button.dart';
-import 'package:renter_pay/shared/widgets/text/custom_text_primary.dart';
-import 'package:renter_pay/shared/widgets/text/custom_text_span.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});

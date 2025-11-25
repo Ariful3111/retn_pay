@@ -10,7 +10,7 @@ import 'package:renter_pay/shared/widgets/property/property_details_list.dart';
 import 'package:renter_pay/features/rent/widgets/rent_details_image.dart';
 import 'package:renter_pay/shared/widgets/property/property_details_info.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/text/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/property/property_key_features.dart';
 
 class RentDetails extends StatelessWidget {

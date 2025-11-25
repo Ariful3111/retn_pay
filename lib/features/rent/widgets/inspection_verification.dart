@@ -6,11 +6,11 @@ import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/core/utils/image_picker.dart';
 import 'package:renter_pay/features/rent/controllers/rent_details_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_primary_button.dart';
-import 'package:renter_pay/shared/widgets/custom_secondary_button.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 import 'package:renter_pay/shared/widgets/document_verification/custom_dotted_border.dart';
 import 'package:renter_pay/shared/widgets/document_verification/document_upload.dart';
-import 'package:renter_pay/shared/widgets/text/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class InspectionVerification extends StatelessWidget {
   const InspectionVerification({super.key});
