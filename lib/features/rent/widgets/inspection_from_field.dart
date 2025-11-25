@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/utils/date_picker.dart';
 import 'package:renter_pay/core/utils/time_picker.dart';
 import 'package:renter_pay/features/rent/controllers/rent_details_controller.dart';
+import 'package:renter_pay/features/rent/widgets/inspection_field.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_type.dart';
-import 'package:renter_pay/shared/widgets/custom_text_field.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class InspectionFromField extends StatelessWidget {
   const InspectionFromField({super.key});
@@ -18,13 +16,13 @@ class InspectionFromField extends StatelessWidget {
     RentDetailsController rentDetailsController = Get.find();
     return Column(
       children: [
-        userField(
+        InspectionField(
           controller: rentDetailsController.nameController,
           label: 'Full Name*',
           hint: 'Enter Your Full Name',
         ),
         SizedBox(height: 15.66.h),
-        userField(
+        InspectionField(
           controller: rentDetailsController.emailController,
           label: 'Email Address*',
           hint: 'Enter Your Email Address',
@@ -32,7 +30,7 @@ class InspectionFromField extends StatelessWidget {
           validateMode: AutovalidateMode.onUserInteraction,
         ),
         SizedBox(height: 15.66.h),
-        userField(
+        InspectionField(
           controller: rentDetailsController.phoneController,
           label: 'Phone Number*',
           hint: 'Enter Your Phone Number',
@@ -40,7 +38,7 @@ class InspectionFromField extends StatelessWidget {
           validateMode: AutovalidateMode.onUserInteraction,
         ),
         SizedBox(height: 15.66.h),
-        userField(
+        InspectionField(
           controller: rentDetailsController.dateController,
           label: 'Date*',
           hint: 'Select Date',
@@ -69,7 +67,7 @@ class InspectionFromField extends StatelessWidget {
           ),
         ),
         SizedBox(height: 15.66.h),
-        userField(
+        InspectionField(
           controller: rentDetailsController.timeController,
           label: 'Time*',
           hint: 'Select Time',
@@ -94,43 +92,6 @@ class InspectionFromField extends StatelessWidget {
         SizedBox(height: 15.66.h),
         InspectionType(),
       ],
-    );
-  }
-
-  Widget userField({
-    required TextEditingController controller,
-    required String label,
-    required String hint,
-    String? Function(String?)? validator,
-    Widget? suffix,
-    AutovalidateMode? validateMode,
-    bool ?readOnly,
-  }) {
-    return CustomTextField(
-      controller: controller,
-      validation: validateMode,
-      validator: validator,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(9.4.r),
-        borderSide: BorderSide(width: 0.78.r, color: Color(0xFFDFE2E6)),
-      ),
-      enableBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(9.4.r),
-        borderSide: BorderSide(width: 0.78.r, color: Color(0xFFDFE2E6)),
-      ),
-      focusBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(9.4.r),
-        borderSide: BorderSide(width: 0.78.r, color: Color(0xFFDFE2E6)),
-      ),
-      fillColor: AppColors.whiteColor,
-      labelTextWidget: CustomTextSecondary(
-        text: label,
-        fontSize: 12.sp,
-        fontWeight: FontWeight.w400,
-      ),
-      hintTextWidget: CustomTextSecondary(text: hint),
-      suffixIcon: suffix,
-      readOnly: readOnly,
     );
   }
 }

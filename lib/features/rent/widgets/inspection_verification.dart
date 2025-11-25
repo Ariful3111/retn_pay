@@ -8,9 +8,9 @@ import 'package:renter_pay/core/utils/image_picker.dart';
 import 'package:renter_pay/features/rent/controllers/rent_details_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/document_verification/custom_dotted_border.dart';
 import 'package:renter_pay/shared/widgets/document_verification/document_upload.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class InspectionVerification extends StatelessWidget {
   const InspectionVerification({super.key});
@@ -48,14 +48,17 @@ class InspectionVerification extends StatelessWidget {
                         width: 312.w,
                         image: frontImage,
                       )
-                    : DocumentUpload(titleText: 'Front Image', onTap: () {
-                      UploadImage.pickDocument(
-                          type: 'front',
-                          frontImage: rentDetailsController.frontImage,
-                          backImage: rentDetailsController.backImage,
-                          picker: rentDetailsController.picker,
-                        );
-                    });
+                    : DocumentUpload(
+                        titleText: 'Front Image',
+                        onTap: () {
+                          UploadImage.pickDocument(
+                            type: 'front',
+                            frontImage: rentDetailsController.frontImage,
+                            backImage: rentDetailsController.backImage,
+                            picker: rentDetailsController.picker,
+                          );
+                        },
+                      );
               }),
               SizedBox(height: 21.46.h),
               Obx(() {
@@ -70,37 +73,41 @@ class InspectionVerification extends StatelessWidget {
                         titleText: 'Back Side (Optional)',
                         onTap: () {
                           UploadImage.pickDocument(
-                          type: 'back',
-                          frontImage: rentDetailsController.frontImage,
-                          backImage: rentDetailsController.backImage,
-                          picker: rentDetailsController.picker,
-                        );
+                            type: 'back',
+                            frontImage: rentDetailsController.frontImage,
+                            backImage: rentDetailsController.backImage,
+                            picker: rentDetailsController.picker,
+                          );
                         },
                       );
               }),
-              SizedBox(height: 20.h,),
+              SizedBox(height: 20.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                CustomSecondaryButton(
-                  text: 'Back',
-                  height: 44.h,
-                  width: 85.w,
-                  onPressed: () {
-                  Get.back();
-                },),
-                SizedBox(width: 15.w,),
-                CustomPrimaryButton(height: 44.h,width: 85.w,
-                text: 'Upload',
-                 onPressed: () {
-                  if (rentDetailsController.frontImage.value == null) {
-                      Get.toNamed(AppRoutes.inspectionFrom);
-                    } else {
-                      
-                    }
-                },
-                )
-              ],)
+                  CustomSecondaryButton(
+                    text: 'Back',
+                    height: 44.h,
+                    width: 85.w,
+                    onPressed: () {
+                      Get.back();
+                    },
+                  ),
+                  SizedBox(width: 15.w),
+                  CustomPrimaryButton(
+                    height: 44.h,
+                    width: 85.w,
+                    text: 'Upload',
+                    onPressed: () {
+                      if (rentDetailsController.frontImage.value == null) {
+                        Get.toNamed(AppRoutes.inspectionFrom);
+                      } else {
+                        Get.toNamed(AppRoutes.inspectionFrom);
+                      }
+                    },
+                  ),
+                ],
+              ),
             ],
           ),
         ],

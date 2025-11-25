@@ -15,7 +15,7 @@ class InspectionType extends StatelessWidget {
     return Obx(() {
       return DropdownMenu<String>(
         initialSelection: rentDetailsController.selectedInspection.value,
-        helperText: "inspection Type*",
+        label: Text("inspection Type*"),
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(9.4.r),
@@ -32,6 +32,8 @@ class InspectionType extends StatelessWidget {
           filled: true,
           fillColor: AppColors.whiteColor,
           alignLabelWithHint: true,
+          focusColor: Colors.transparent,
+          
         ),
         trailingIcon: Image.asset(
           IconsPath.downArrow,
@@ -39,8 +41,28 @@ class InspectionType extends StatelessWidget {
           width: 10.w,
           color: Color(0xFF868C98),
         ),
+        
+        selectedTrailingIcon: Image.asset(
+          IconsPath.upArrow,
+          height: 15.h,
+          width: 10.w,
+          color: Color(0xFF868C98),
+        ),
         width: MediaQuery.widthOf(context),
-        menuStyle: MenuStyle(alignment: Alignment.bottomRight),
+        menuStyle: MenuStyle(
+          
+          alignment: Alignment.bottomRight,
+          elevation: WidgetStateProperty.all(6),
+          backgroundColor: WidgetStateProperty.all(Colors.white),
+          shape: WidgetStateProperty.all(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+          ),
+          side: WidgetStateProperty.all(
+            BorderSide(color: Color(0xFFF1F1F2), width: 0.91.r),
+          ),
+          
+        ),
+        
         onSelected: (value) {
           rentDetailsController.selectedInspection.value = value!;
           rentDetailsController.isSelectedInspection.value = true;
