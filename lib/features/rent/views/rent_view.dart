@@ -18,7 +18,7 @@ class RentView extends StatelessWidget {
   const RentView({super.key});
   @override
   Widget build(BuildContext context) {
-    GlobalScrollController globalScrollController = Get.find();
+  final  GlobalScrollController globalScrollController = Get.find();
     FavoriteController favoriteController = Get.find();
     RentController rentController = Get.find();
      bool isDark = Theme.of(context).brightness == Brightness.dark;
