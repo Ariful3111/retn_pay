@@ -10,12 +10,13 @@ class PropertyImageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RentController rentController = Get.find();
+        bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: EdgeInsets.all(7.66.sp),
       width: 380.w,
       height: 272.h,
       decoration: BoxDecoration(
-        color: AppColors.whiteColor,
+        color:isDark? AppColors.darkPrimary:AppColors.whiteColor,
         borderRadius: BorderRadius.circular(12.sp),
       ),
       child: Obx((){

@@ -31,8 +31,9 @@ class SuccessDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+      bool isDark = Theme.of(context).brightness == Brightness.dark;
     return AlertDialog(
-      backgroundColor: AppColors.whiteColor,
+      backgroundColor:isDark? AppColors.darkPrimary:AppColors.whiteColor,
       content: Container(
         height: height ?? 248.h,
         width: width ?? 362.w,

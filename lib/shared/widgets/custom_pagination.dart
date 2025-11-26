@@ -11,6 +11,7 @@ class CustomPagination extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RentController rentController = Get.find();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Obx(() {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -24,16 +25,18 @@ class CustomPagination extends StatelessWidget {
                   IconsPath.arrowLeft,
                   height: 15.31.h,
                   width: 15.31.w,
+                  color: isDark?AppColors.whiteColor:null,
                 ),
                 SizedBox(width: 6.12.w),
                 CustomTextPrimary(
                   text: 'Previous',
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
+                  color: isDark?AppColors.whiteColor:null,
                 ),
               ],
             ),
-            onTap: rentController.previousPage,
+            onTap: rentController.previousPage, context: context,
           ),
           ...rentController.pageNumber.map((item) {
             if (item == '...') {
@@ -68,8 +71,8 @@ class CustomPagination extends StatelessWidget {
                 width: 30.61.w,
                 decoration: BoxDecoration(
                   color: isSelect
-                      ? AppColors.primaryTextColor
-                      : Color(0xFFF5F6F7),
+                      ?isDark? AppColors.primaryColorDark:AppColors.primaryTextColor
+                      :isDark? AppColors.darkContainer:Color(0xFFF5F6F7),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Center(
@@ -77,8 +80,10 @@ class CustomPagination extends StatelessWidget {
                     '$item',
                     style: TextStyle(
                       color: isSelect
-                          ? AppColors.whiteColor
-                          : AppColors.primaryDarkTextColor.withValues(alpha: 0.5),
+                          ? isDark?AppColors.whiteColor.withValues(alpha: 0.5): AppColors.whiteColor
+                          :isDark? AppColors.whiteColor.withValues(alpha: 0.5):AppColors.primaryDarkTextColor.withValues(
+                              alpha: 0.5,
+                            ),
                     ),
                   ),
                 ),
@@ -90,44 +95,45 @@ class CustomPagination extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-               CustomTextPrimary(
+                CustomTextPrimary(
                   text: 'Next',
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
+                  color: isDark?AppColors.whiteColor:null,
                 ),
                 SizedBox(width: 6.12.w),
                 Image.asset(
                   IconsPath.arrowRight,
                   height: 15.31.h,
                   width: 15.31.w,
-                  color: AppColors.darkPrimary,
+                  color:isDark? AppColors.whiteColor:AppColors.darkPrimary,
                 ),
               ],
             ),
-            onTap: rentController.nextPage,
+            onTap: rentController.nextPage, context: context,
           ),
         ],
       );
     });
   }
 
-  Widget pageButton(double width, Widget child, {required VoidCallback onTap}) {
+  Widget pageButton(double width, Widget child, {required VoidCallback onTap,required BuildContext context}) {
+        bool isDark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: onTap,
       child: Container(
         height: 33.25.h,
         width: width,
         decoration: BoxDecoration(
-          color: AppColors.whiteColor,
+          color:isDark? AppColors.darkPrimary:AppColors.whiteColor,
           borderRadius: BorderRadius.circular(6.12.sp),
           border: Border.all(
             width: 0.77.sp,
-            color: AppColors.darkPrimary.withValues(alpha: 0.10),
+            color:isDark? AppColors.whiteColor.withValues(alpha: 0.10):AppColors.darkPrimary.withValues(alpha: 0.10),
           ),
         ),
         child: child,
       ),
     );
   }
-
 }

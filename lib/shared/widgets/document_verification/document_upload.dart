@@ -22,6 +22,7 @@ class DocumentUpload extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -41,13 +42,13 @@ class DocumentUpload extends StatelessWidget {
                 CustomTextPrimary(
                   text: titleText,
                   fontSize: 16.sp,
-                  color: AppColors.primaryTextColor,
+                  color:isDark? AppColors.primaryColorDark: AppColors.primaryTextColor,
                 ),
                 SizedBox(height: 28.5.h),
                 Container(
                   height: 60.h,
                   width: 60.w,
-                  decoration: BoxDecoration(
+                  decoration: BoxDecoration( 
                     color: AppColors.whiteColor,
                     border: Border.all(width: 1.15.sp, color: Color(0xFFDFE2E6)),
                     borderRadius: BorderRadius.circular(4.62.sp),
@@ -83,7 +84,7 @@ class DocumentUpload extends StatelessWidget {
                       textDecoration: TextDecoration.underline,
                       decorationColor: AppColors.primaryColorDark,
                     ),
-                    CustomTextSecondary(text: " on your computer"),
+                    CustomTextSecondary(text: " on your computer") ,
                   ],
                 ),
               ],

@@ -9,6 +9,7 @@ class CustomContainer extends StatelessWidget {
   final EdgeInsets? margin;
   final Gradient? gradient;
   final Widget ? drawer;
+  final Widget ? bottomNav;
   final PreferredSizeWidget ? appbar;
   const CustomContainer({
     super.key,
@@ -16,7 +17,7 @@ class CustomContainer extends StatelessWidget {
     this.height,
     this.width,
     this.padding,
-    this.margin, this.gradient, this.drawer, this.appbar,
+    this.margin, this.gradient, this.drawer, this.appbar, this.bottomNav,
   });
 
   @override
@@ -33,6 +34,7 @@ class CustomContainer extends StatelessWidget {
         decoration: BoxDecoration(gradient:isDark? gradient?? LinearGradient(colors: [AppColors.darkPrimary,AppColors.darkPrimary]):gradient??AppColors.backgroundColor),
         child: SafeArea(child: child),
       ),
+      bottomNavigationBar: bottomNav,
     );
   }
 }

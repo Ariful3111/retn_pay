@@ -12,14 +12,15 @@ class ActiveChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ChatController chatController = Get.find();
+        bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: EdgeInsets.all(10.r),
       height: 70.h,
       width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
-        color: Color(0xFFF2EEFC),
+        color:isDark?AppColors.darkPrimary: Color(0xFFF2EEFC),
         borderRadius: BorderRadius.circular(15.r),
-        border: Border.all(width: 1.25.r, color: Color(0xFFDBDCDF)),
+        border: Border.all(width: 1.25.r, color:isDark? AppColors.darkBorderPrimary:Color(0xFFDBDCDF)),
       ),
       child: Obx(() {
         return Row(

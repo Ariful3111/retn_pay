@@ -13,8 +13,8 @@ import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/property/property_key_features.dart';
 
-class RentDetails extends StatelessWidget {
-  const RentDetails({super.key});
+class PropertyView extends StatelessWidget {
+  const PropertyView({super.key});
   
   @override
   Widget build(BuildContext context) {
@@ -29,12 +29,12 @@ class RentDetails extends StatelessWidget {
       child: ListView(
       children: [
         Row(children: [
-          CustomTextSecondary(text: 'Rent',color: AppColors.primaryTextColor,fontSize: 20.sp,),
+          CustomTextSecondary(text: 'Rent',color:isDark?AppColors.darkAppBar: AppColors.primaryTextColor,fontSize: 20.sp,),
           SizedBox(
             height: 24.h,
             width: 24.w,
-            child: Center(child: Image.asset(IconsPath.forwardArrow,height: 15.h,width: 10.w,color: AppColors.darkPrimary,))),
-          CustomTextSecondary(text: 'Maple Grove Garden House',color: AppColors.primaryTextColor,fontSize: 20.sp,),
+            child: Center(child: Image.asset(IconsPath.forwardArrow,height: 15.h,width: 10.w,color:isDark? AppColors.whiteColor:AppColors.darkPrimary,))),
+          CustomTextSecondary(text: 'Maple Grove Garden House',color:isDark?AppColors.darkAppBar: AppColors.primaryTextColor,fontSize: 20.sp,),
         ],),
         SizedBox(height: 24.h,),
         RentDetailsImage(),
@@ -46,7 +46,7 @@ class RentDetails extends StatelessWidget {
         CustomTextSecondary(text: 'Property Details',fontSize: 20.sp,fontWeight: FontWeight.w600,),
         SizedBox(height: 8.h,),
         CustomTextSecondary(text: 'Experience modern living with high-end finishes, including wood-style flooring, sleek Whirlpool stainless steel appliances, and premium amenities designed for comfort and convenience. Enjoy a sophisticated urban lifestyle in a prime location with easy access to dining, entertainment, and business hubs.',
-        color: AppColors.darkPrimary.withValues(alpha: 0.5),
+        color:isDark?AppColors.darkSecondaryText.withValues(alpha: 0.5) :AppColors.darkPrimary.withValues(alpha: 0.5),
         ),
         SizedBox(height: 12.h,),
         PropertyDetailsList(),
@@ -55,7 +55,7 @@ class RentDetails extends StatelessWidget {
         SizedBox(height: 16.h),
         PropertyKeyFeatures(),
         SizedBox(height: 24.h,),
-        CustomTextSecondary(text: 'Location Information',fontSize: 20.sp,color: AppColors.primaryTextColor,),
+        CustomTextSecondary(text: 'Location Information',fontSize: 20.sp,color:isDark?AppColors.primaryColorDark: AppColors.primaryTextColor,),
         SizedBox(height: 8.h,),
         LocationInfo(),
         SizedBox(height: 24.h),

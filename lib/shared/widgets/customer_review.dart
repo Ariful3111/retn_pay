@@ -12,9 +12,10 @@ class CustomerReview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        bool isDark = Theme.of(context).brightness == Brightness.dark;
     return SizedBox(
       height: 219.h,
-        width: MediaQuery.widthOf(context),
+      width: MediaQuery.widthOf(context),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
@@ -24,10 +25,10 @@ class CustomerReview extends StatelessWidget {
         margin: EdgeInsets.only(right: 10),
         padding: EdgeInsets.symmetric(horizontal: 14.38.w, vertical: 23.96.h),
         height: 219.h,
-        width: MediaQuery.widthOf(context),
+        width: 390.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(14.89.r),
-          gradient: AppColors.userBackground,
+          gradient:isDark?LinearGradient(colors: [AppColors.darkContainer,AppColors.darkContainer]): AppColors.userBackground,
           boxShadow: [
             BoxShadow(
               offset: Offset(0, 3.72),
@@ -38,7 +39,7 @@ class CustomerReview extends StatelessWidget {
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Image.asset(ImagesPath.profile, height: 86.27.h, width: 81.12.w),
             Column(

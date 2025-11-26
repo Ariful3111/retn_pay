@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/utils/date_picker.dart';
 import 'package:renter_pay/core/utils/time_picker.dart';
-import 'package:renter_pay/features/rent/controllers/rent_details_controller.dart';
+import 'package:renter_pay/features/rent/controllers/property_view_controller.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_field.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_type.dart';
 
@@ -13,33 +13,34 @@ class InspectionFromField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RentDetailsController rentDetailsController = Get.find();
+    
+    PropertyViewController propertyViewController = Get.find();
     return Column(
       children: [
         InspectionField(
-          controller: rentDetailsController.nameController,
+          controller: propertyViewController.nameController,
           label: 'Full Name*',
           hint: 'Enter Your Full Name',
         ),
         SizedBox(height: 15.66.h),
         InspectionField(
-          controller: rentDetailsController.emailController,
+          controller: propertyViewController.emailController,
           label: 'Email Address*',
           hint: 'Enter Your Email Address',
-          validator: rentDetailsController.emailValidation,
+          validator: propertyViewController.emailValidation,
           validateMode: AutovalidateMode.onUserInteraction,
         ),
         SizedBox(height: 15.66.h),
         InspectionField(
-          controller: rentDetailsController.phoneController,
+          controller: propertyViewController.phoneController,
           label: 'Phone Number*',
           hint: 'Enter Your Phone Number',
-          validator: rentDetailsController.phoneValidation,
+          validator: propertyViewController.phoneValidation,
           validateMode: AutovalidateMode.onUserInteraction,
         ),
         SizedBox(height: 15.66.h),
         InspectionField(
-          controller: rentDetailsController.dateController,
+          controller: propertyViewController.dateController,
           label: 'Date*',
           hint: 'Select Date',
           readOnly: true,
@@ -50,8 +51,8 @@ class InspectionFromField extends StatelessWidget {
                 DatePicker.pickDate(
                   context: context,
                   onDateSelected: (date) {
-                    rentDetailsController.selectedDate.value = date;
-                    rentDetailsController.dateController.text =
+                    propertyViewController.selectedDate.value = date;
+                    propertyViewController.dateController.text =
                         "${date.day.toString().padLeft(2, '0')}/"
                         "${date.month.toString().padLeft(2, '0')}/"
                         "${date.year}";
@@ -68,7 +69,7 @@ class InspectionFromField extends StatelessWidget {
         ),
         SizedBox(height: 15.66.h),
         InspectionField(
-          controller: rentDetailsController.timeController,
+          controller: propertyViewController.timeController,
           label: 'Time*',
           hint: 'Select Time',
           readOnly: true,
@@ -77,8 +78,8 @@ class InspectionFromField extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 TimePicker.pickTime(context: context, onTimeSelected: (time) {
-                  rentDetailsController.selectedTime.value = time;
-                  rentDetailsController.timeController.text = time.format(context);
+                  propertyViewController.selectedTime.value = time;
+                  propertyViewController.timeController.text = time.format(context);
                 },);
               },
               child: Image.asset(

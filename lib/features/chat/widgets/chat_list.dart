@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
+import 'package:renter_pay/features/chat/widgets/user_message.dart';
+import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class ChatList extends StatelessWidget {
@@ -12,10 +12,11 @@ class ChatList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GlobalScrollController globalScrollController = Get.find();
+        bool isDark = Theme.of(context).brightness == Brightness.dark;
     return ListView.builder(
-      shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
-      itemCount: 10,
+      controller: globalScrollController.scrollController,
+      itemCount: 20,
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
@@ -31,42 +32,12 @@ class ChatList extends StatelessWidget {
             width: MediaQuery.widthOf(context),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.r),
-              color: Color(0xFFF8F6FF),
+              color:isDark? AppColors.darkPrimary:Color(0xFFF8F6FF),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  height: 50,
-                  width: 50,decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30.r),
-                    image: DecorationImage(image: AssetImage(ImagesPath.profile),fit: BoxFit.fill)
-                  ),
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: Container(
-                      margin: EdgeInsets.only(bottom: 6.h,right: 6.w),
-                      height: 7.5.h,
-                      width: 7.5.w,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.r),
-                        color: Color(0xFF65C18C)
-                      ),
-                    ),
-                  )),
-                SizedBox(width: 8.75.w),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomTextPrimary(text: 'Ariful Islam', fontSize: 16.sp),
-                    CustomTextSecondary(
-                      text: 'Landlord',
-                      fontSize: 14.sp,
-                      color: Color(0xFF99A2AB),
-                    ),
-                  ],
-                ),
+                UserMessage(padding: EdgeInsets.zero),
                 Spacer(),
                 Column(
                   children: [

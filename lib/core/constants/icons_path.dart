@@ -93,5 +93,7 @@ class IconsPath {
   static const String pen='assets/icons/pen.png';
   static const String active='assets/icons/active.png';
   static const String archive='assets/icons/archive.png';
+  static const String sendImage='assets/icons/send_image.png';
+  static const String sendMessage='assets/icons/send_message.png';
 
 }

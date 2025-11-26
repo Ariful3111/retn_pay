@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/rent/controllers/rent_details_controller.dart';
+import 'package:renter_pay/features/rent/controllers/property_view_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class InspectionAgreement extends StatelessWidget {
@@ -10,7 +10,7 @@ class InspectionAgreement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RentDetailsController rentDetailsController = Get.find();
+    PropertyViewController propertyViewController = Get.find();
     return Row(
       children: [
         Obx((){
@@ -18,9 +18,9 @@ class InspectionAgreement extends StatelessWidget {
           visualDensity: VisualDensity.compact,
           activeColor: AppColors.primaryColorDark,
           side: BorderSide(color: Color(0xFF697483)),
-          value: rentDetailsController.isAgree.value,
+          value: propertyViewController.isAgree.value,
           onChanged: (value) {
-            rentDetailsController.isAgree.value = value??true;
+            propertyViewController.isAgree.value = value??true;
           },
         );
         }),

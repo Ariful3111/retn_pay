@@ -5,7 +5,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/core/utils/image_picker.dart';
-import 'package:renter_pay/features/rent/controllers/rent_details_controller.dart';
+import 'package:renter_pay/features/rent/controllers/property_view_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
@@ -17,14 +17,15 @@ class InspectionVerification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RentDetailsController rentDetailsController = Get.find();
+    PropertyViewController propertyViewController = Get.find();
+        bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: EdgeInsets.all(21.56.r),
       height: 666.h,
       width: 360.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.78.r),
-        color: AppColors.whiteColor,
+        color:isDark? AppColors.darkPrimary:AppColors.whiteColor,
       ),
       child: ListView(
         shrinkWrap: true,
@@ -41,7 +42,7 @@ class InspectionVerification extends StatelessWidget {
               ),
               SizedBox(height: 24.h),
               Obx(() {
-                final frontImage = rentDetailsController.frontImage.value;
+                final frontImage = propertyViewController.frontImage.value;
                 return frontImage != null
                     ? CustomDottedBorder(
                         height: 201.h,
@@ -53,16 +54,16 @@ class InspectionVerification extends StatelessWidget {
                         onTap: () {
                           UploadImage.pickDocument(
                             type: 'front',
-                            frontImage: rentDetailsController.frontImage,
-                            backImage: rentDetailsController.backImage,
-                            picker: rentDetailsController.picker,
+                            frontImage: propertyViewController.frontImage,
+                            backImage: propertyViewController.backImage,
+                            picker: propertyViewController.picker,
                           );
                         },
                       );
               }),
               SizedBox(height: 21.46.h),
               Obx(() {
-                final backImage = rentDetailsController.backImage.value;
+                final backImage = propertyViewController.backImage.value;
                 return backImage != null
                     ? CustomDottedBorder(
                         height: 201.h,
@@ -74,9 +75,9 @@ class InspectionVerification extends StatelessWidget {
                         onTap: () {
                           UploadImage.pickDocument(
                             type: 'back',
-                            frontImage: rentDetailsController.frontImage,
-                            backImage: rentDetailsController.backImage,
-                            picker: rentDetailsController.picker,
+                            frontImage: propertyViewController.frontImage,
+                            backImage: propertyViewController.backImage,
+                            picker: propertyViewController.picker,
                           );
                         },
                       );
@@ -99,7 +100,7 @@ class InspectionVerification extends StatelessWidget {
                     width: 85.w,
                     text: 'Upload',
                     onPressed: () {
-                      if (rentDetailsController.frontImage.value == null) {
+                      if (propertyViewController.frontImage.value == null) {
                         Get.toNamed(AppRoutes.inspectionFrom);
                       } else {
                         Get.toNamed(AppRoutes.inspectionFrom);

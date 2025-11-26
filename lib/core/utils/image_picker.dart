@@ -26,4 +26,15 @@ class UploadImage {
       errorSnack(message: 'Failed to pick image: $e');
     }
   }
+
+  static Future<void> sendImage({
+    required ImagePicker picker,
+    required Rxn<XFile> pickImage,
+  })async{
+    final XFile? image = await picker.pickImage(source: ImageSource.camera);
+      if(image !=null){
+        pickImage.value = image;
+      }
+  }
 }
+

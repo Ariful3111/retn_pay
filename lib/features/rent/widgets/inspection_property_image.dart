@@ -29,7 +29,7 @@ class InspectionPropertyImage extends StatelessWidget {
           height: 128.h,
           width: 285.w,
           decoration: BoxDecoration(
-            color: AppColors.whiteColor,
+            color:isDark? AppColors.darkPrimary:AppColors.whiteColor,
             borderRadius: BorderRadius.circular(7.07.r),
             boxShadow: [
               BoxShadow(

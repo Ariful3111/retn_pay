@@ -88,7 +88,7 @@ class PropertyDetailsInfo extends StatelessWidget {
               CustomTextSpan(
                 title: '\$280',
                 spantext: '/week',
-                spanColor: AppColors.darkPrimary.withValues(alpha: 0.5),
+                spanColor:isDark? Color(0xFF7E8B9C):AppColors.darkPrimary.withValues(alpha: 0.5),
                 fontSize: 22.sp,
               ),
               SizedBox(width: 60.w),
