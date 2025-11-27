@@ -5,7 +5,6 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/core/utils/snackbar.dart';
 import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/auth/widgets/user_button.dart';
 import 'package:renter_pay/features/auth/widgets/user_container.dart';
@@ -80,7 +79,6 @@ class UserRole extends StatelessWidget {
                 },
                 continueOnTap: () {
                   if(userRoleController.selectedIndex.value==-1){
-                    errorSnack(message: "Please Select A User Role");
                   }else{
                     Get.toNamed(AppRoutes.signupOption);
                   }

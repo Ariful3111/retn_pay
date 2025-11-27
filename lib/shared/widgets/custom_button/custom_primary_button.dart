@@ -15,7 +15,7 @@ class CustomPrimaryButton extends StatelessWidget {
   final BoxDecoration? boxDecoration;
   final Widget? child;
   final FontWeight? fontWeight;
-
+  final EdgeInsets? padding;
   const CustomPrimaryButton({
     super.key,
     required this.height,
@@ -28,7 +28,7 @@ class CustomPrimaryButton extends StatelessWidget {
     this.borderRadius,
     this.child,
     this.boxDecoration,
-    this.fontWeight,
+    this.fontWeight, this.padding,
   });
 
   @override
@@ -36,6 +36,7 @@ class CustomPrimaryButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
+        padding: padding,
         height: height,
         width: width ?? MediaQuery.widthOf(context),
         decoration:
@@ -47,7 +48,7 @@ class CustomPrimaryButton extends StatelessWidget {
         child:
             child ??
             Center(
-              child:CustomTextPrimary(
+              child: CustomTextPrimary(
                 text: text.toString(),
                 color: textColor ?? AppColors.whiteColor,
                 fontSize: fontSize ?? 16.sp,

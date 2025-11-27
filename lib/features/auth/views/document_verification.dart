@@ -5,7 +5,6 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/core/utils/image_picker.dart';
-import 'package:renter_pay/core/utils/snackbar.dart';
 import 'package:renter_pay/features/auth/controllers/document_verification_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/document_verification/custom_dotted_border.dart';
@@ -98,7 +97,6 @@ class DocumentVerification extends StatelessWidget {
                   width: 231.w,
                   onPressed: () {
                     if (documentVerificationController.frontImage.value == null) {
-                      errorSnack(message: 'Front Document Is Required');
                       showDialog(
                       context: context,
                       builder: (context) {

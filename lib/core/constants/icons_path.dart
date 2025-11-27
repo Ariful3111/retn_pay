@@ -95,5 +95,15 @@ class IconsPath {
   static const String archive='assets/icons/archive.png';
   static const String sendImage='assets/icons/send_image.png';
   static const String sendMessage='assets/icons/send_message.png';
+  static const String profileEdit='assets/icons/profile_edit.png';
+  static const String profile='assets/icons/profile.png';
+  static const String drawerLogo='assets/icons/drawer_logo.png';
+  static const String drawerActive='assets/icons/drawer_active.png';
+  static const String drawerClose='assets/icons/drawer_close.png';
+  static const String drawerInspection='assets/icons/drawer_inspection.png';
+  static const String drawerKey='assets/icons/drawer_key.png';
+  static const String drawerPayment='assets/icons/drawer_payment.png';
+  static const String drawerRepair='assets/icons/drawer_Repair.png';
+  static const String drawerService='assets/icons/drawer_service.png';
 
 }

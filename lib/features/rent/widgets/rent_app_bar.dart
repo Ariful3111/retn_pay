@@ -5,7 +5,8 @@ import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/rent/widgets/rent_filter.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
-import 'package:renter_pay/shared/widgets/custom_appbar/custom_end_appbar.dart';
+import 'package:renter_pay/shared/widgets/custom_appbar/custom_favorite_appbar.dart';
+import 'package:renter_pay/shared/widgets/custom_appbar/custom_filter_appbar.dart';
 
 class RentAppBar extends StatelessWidget {
   const RentAppBar({super.key});
@@ -21,14 +22,16 @@ class RentAppBar extends StatelessWidget {
         SizedBox(width: 10.w,),
         CustomAppbar(title: 'Property'),
         Spacer(),
-        CustomEndAppbar(onTap: () {
+        CustomFavoriteAppbar(onFavorite: () { Get.toNamed(AppRoutes.favorite); },),
+        SizedBox(width: 8.w,),
+        CustomFilterAppbar(onTap: () {
           showDialog(
                 context: context,
                 builder: (context) {
                   return RentFilter();
                 },
               );
-        }, onFavorite: () { Get.toNamed(AppRoutes.favorite); },)
+        },)
       ],
     );
   }

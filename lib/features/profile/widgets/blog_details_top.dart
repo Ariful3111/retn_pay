@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
@@ -10,6 +11,7 @@ class BlogDetailsTop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(children: [
                 SizedBox(height: 20.h),
               CustomTextPrimary(text: 'How to Request\nMaintenance Properly',fontSize: 24.sp,textAlign: TextAlign.center,),
@@ -23,7 +25,7 @@ class BlogDetailsTop extends StatelessWidget {
                     CustomTextSecondary(
                       text: 'By RenterPay Team',
                       fontSize: 12.sp,
-                      color: Color(0xFF091E42),
+                      color:isDark? Color(0xFFFAFBFB):AppColors.darkContainer,
                     ),
                   ],
                 ),

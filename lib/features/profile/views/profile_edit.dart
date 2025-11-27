@@ -3,9 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
-import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
+import 'package:renter_pay/features/profile/widgets/profile_edit_details.dart';
+import 'package:renter_pay/features/profile/widgets/profile_edit_info.dart';
+import 'package:renter_pay/features/profile/widgets/profile_edit_property.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
+import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 
 class ProfileEdit extends StatelessWidget {
@@ -16,7 +19,6 @@ class ProfileEdit extends StatelessWidget {
     ProfileController profileController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     UserRoleController userRoleController = Get.find();
-    GlobalScrollController globalScrollController = Get.find();
     return CustomContainer(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       gradient: isDark
@@ -25,13 +27,27 @@ class ProfileEdit extends StatelessWidget {
             )
           : AppColors.userBackground,
       child: ListView(
-        controller: globalScrollController.scrollController,
         children: [
-          CustomAppbar(
-            title: profileController
-                .profileList[userRoleController.selectedIndex.value],
+          Row(
+            children: [
+              CustomAppbarLeading(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              SizedBox(width: 8.w,),
+              CustomAppbar(
+                title: profileController
+                    .profileList[userRoleController.selectedIndex.value],
+              ),
+            ],
           ),
-          SizedBox(height: 24.h,),
+          SizedBox(height: 24.h),
+          ProfileEditInfo(),
+          SizedBox(height: 20.h,),
+          ProfileEditDetails(),
+          SizedBox(height: 20.h,),
+          ProfileEditProperty()
         ],
       ),
     );

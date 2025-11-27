@@ -13,9 +13,13 @@ class BlogView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
       padding: EdgeInsets.only(top: 20.h),
-      gradient: AppColors.userBackground,
+      gradient:isDark? LinearGradient(colors: [
+        AppColors.darkPrimary,
+        AppColors.darkPrimary,
+      ]):AppColors.userBackground,
       drawer: Drawer(),
       child: CustomScrollView(
         slivers: [

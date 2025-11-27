@@ -26,14 +26,16 @@ class CustomTextField extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
   final AutovalidateMode? validation;
-  final bool ?isFilled;
-  final InputBorder ?enableBorder;
-  final InputBorder ?focusBorder;
-  final InputBorder ?border;
+  final bool? isFilled;
+  final InputBorder? enableBorder;
+  final InputBorder? focusBorder;
+  final InputBorder? border;
   final FloatingLabelBehavior? floatingLabelBehavior;
-  final Color ?fillColor;
-  final int ? maxLength;
-  final int ? maxLines;
+  final Color? fillColor;
+  final int? maxLength;
+  final int? maxLines;
+  final TextDirection? hintDirection;
+  final bool? isAlignLabelWithHint;
   const CustomTextField({
     super.key,
     this.hintText,
@@ -56,7 +58,18 @@ class CustomTextField extends StatelessWidget {
     this.hintTextWidget,
     this.labelTextWidget,
     this.padding,
-    this.margin, this.validation,  this.isFilled, this.enableBorder, this.focusBorder, this.border, this.floatingLabelBehavior, this.fillColor, this.maxLength, this.maxLines,
+    this.margin,
+    this.validation,
+    this.isFilled,
+    this.enableBorder,
+    this.focusBorder,
+    this.border,
+    this.floatingLabelBehavior,
+    this.fillColor,
+    this.maxLength,
+    this.maxLines,
+    this.hintDirection,
+    this.isAlignLabelWithHint,
   });
 
   @override
@@ -64,7 +77,7 @@ class CustomTextField extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return TextFormField(
       controller: controller,
-      maxLines:obscureText==true?1: maxLines,
+      maxLines: obscureText == true ? 1 : maxLines,
       maxLength: maxLength,
       textDirection: textDirection ?? TextDirection.ltr,
       obscureText: obscureText ?? false,
@@ -73,9 +86,16 @@ class CustomTextField extends StatelessWidget {
       onChanged: onChanged,
       readOnly: readOnly ?? false,
       autovalidateMode: validation,
-      style: TextStyle(color: isDark?AppColors.darkPrimaryText:AppColors.primaryDarkTextColor),
+      style: TextStyle(
+        color: isDark
+            ? AppColors.darkPrimaryText
+            : AppColors.primaryDarkTextColor,
+      ),
       decoration: InputDecoration(
-        floatingLabelBehavior:floatingLabelBehavior,
+        floatingLabelBehavior: floatingLabelBehavior,
+        hintTextDirection: hintDirection,
+        alignLabelWithHint: isAlignLabelWithHint,
+        contentPadding:  padding,
         label:
             labelTextWidget ??
             CustomTextPrimary(
@@ -93,22 +113,42 @@ class CustomTextField extends StatelessWidget {
         errorText: errorText,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
-        suffixIconConstraints: BoxConstraints(minHeight: 0,minWidth: 0),
-        prefixIconConstraints: BoxConstraints(minHeight: 0,minWidth: 0),
-        border:border?? OutlineInputBorder(
-          borderRadius: BorderRadius.circular(7.r),
-          borderSide: BorderSide(color:isDark?AppColors.darkBorderPrimary :Colors.transparent),
-        ),
-        focusedBorder:focusBorder?? OutlineInputBorder(
-          borderRadius: BorderRadius.circular(7.r),
-          borderSide: BorderSide(color:isDark?AppColors.darkBorderPrimary : Colors.transparent),
-        ),
-        enabledBorder:enableBorder?? OutlineInputBorder(
-          borderRadius: BorderRadius.circular(7.r),
-          borderSide: BorderSide(color:isDark?AppColors.darkBorderPrimary : Colors.transparent),
-        ),
-        filled:isFilled?? true,
-        fillColor: isDark? fillColor?? AppColors.darkPrimary:fillColor?? AppColors.textFieldColor,
+        suffixIconConstraints: BoxConstraints(minHeight: 0, minWidth: 0),
+        prefixIconConstraints: BoxConstraints(minHeight: 0, minWidth: 0),
+        border:
+            border ??
+            OutlineInputBorder( 
+              borderRadius: BorderRadius.circular(7.r),
+              borderSide: BorderSide(
+                color: isDark
+                    ? AppColors.darkBorderPrimary
+                    : Colors.transparent,
+              ),
+            ),
+        focusedBorder:
+            focusBorder ??
+            OutlineInputBorder(
+              borderRadius: BorderRadius.circular(7.r),
+              borderSide: BorderSide(
+                color: isDark
+                    ? AppColors.darkBorderPrimary
+                    : Colors.transparent,
+              ),
+            ),
+        enabledBorder:
+            enableBorder ??
+            OutlineInputBorder(
+              borderRadius: BorderRadius.circular(7.r),
+              borderSide: BorderSide(
+                color: isDark
+                    ? AppColors.darkBorderPrimary
+                    : Colors.transparent,
+              ),
+            ),
+        filled: isFilled ?? true,
+        fillColor: isDark
+            ? fillColor ?? AppColors.darkPrimary
+            : fillColor ?? AppColors.textFieldColor,
       ),
     );
   }

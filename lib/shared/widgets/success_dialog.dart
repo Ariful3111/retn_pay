@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
@@ -31,9 +30,9 @@ class SuccessDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      bool isDark = Theme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return AlertDialog(
-      backgroundColor:isDark? AppColors.darkPrimary:AppColors.whiteColor,
+      backgroundColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
       content: Container(
         height: height ?? 248.h,
         width: width ?? 362.w,
@@ -50,7 +49,7 @@ class SuccessDialog extends StatelessWidget {
               right: 10.w,
               child: GestureDetector(
                 onTap: () {
-                  Get.back();
+                  Navigator.pop(context);
                 },
                 child: Container(
                   height: 32.h,

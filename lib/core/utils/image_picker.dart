@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:renter_pay/core/utils/snackbar.dart';
 
 class UploadImage {
   static Future<void> pickDocument({
@@ -14,27 +13,23 @@ class UploadImage {
       if (image != null) {
         if (type == 'front') {
           frontImage.value = image;
-          successSnack(message: "Image Uploaded");
         } else if (type == 'back') {
           backImage.value = image;
-          successSnack(message: "Image Uploaded");
         }
-      } else {
-        errorSnack(message: "Image Not Selected");
-      }
+      } else {}
     } catch (e) {
-      errorSnack(message: 'Failed to pick image: $e');
+      // ignore: avoid_print
+      print('$e');
     }
   }
 
   static Future<void> sendImage({
     required ImagePicker picker,
     required Rxn<XFile> pickImage,
-  })async{
+  }) async {
     final XFile? image = await picker.pickImage(source: ImageSource.camera);
-      if(image !=null){
-        pickImage.value = image;
-      }
+    if (image != null) {
+      pickImage.value = image;
+    }
   }
 }
-

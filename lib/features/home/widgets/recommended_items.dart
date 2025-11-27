@@ -43,7 +43,7 @@ class RecommendedItems extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.sp),
                 image: DecorationImage(
                   image: AssetImage(ImagesPath.homeRecommended),
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
               ),
               child: Column(

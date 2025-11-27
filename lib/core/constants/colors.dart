@@ -53,4 +53,11 @@ class AppColors {
     Color(0xFF37CADA),
     Color(0xFF529EDA)
   ]);
+  static const checkBox = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [
+    Color(0xFF138BD7),
+    Color(0xFF62AAFB)
+  ]);
 }

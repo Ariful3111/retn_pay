@@ -6,7 +6,7 @@ import 'package:renter_pay/core/utils/date_picker.dart';
 import 'package:renter_pay/core/utils/time_picker.dart';
 import 'package:renter_pay/features/rent/controllers/property_view_controller.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_field.dart';
-import 'package:renter_pay/features/rent/widgets/inspection_type.dart';
+import 'package:renter_pay/shared/widgets/custom_dropdown_menu.dart';
 
 class InspectionFromField extends StatelessWidget {
   const InspectionFromField({super.key});
@@ -77,10 +77,15 @@ class InspectionFromField extends StatelessWidget {
             padding: EdgeInsets.only(right: 12.w),
             child: GestureDetector(
               onTap: () {
-                TimePicker.pickTime(context: context, onTimeSelected: (time) {
-                  propertyViewController.selectedTime.value = time;
-                  propertyViewController.timeController.text = time.format(context);
-                },);
+                TimePicker.pickTime(
+                  context: context,
+                  onTimeSelected: (time) {
+                    propertyViewController.selectedTime.value = time;
+                    propertyViewController.timeController.text = time.format(
+                      context,
+                    );
+                  },
+                );
               },
               child: Image.asset(
                 IconsPath.time,
@@ -91,7 +96,10 @@ class InspectionFromField extends StatelessWidget {
           ),
         ),
         SizedBox(height: 15.66.h),
-        InspectionType(),
+        CustomDropdownMenu(onSelect: (value) {
+          propertyViewController.selectedInspection.value = value!;
+          propertyViewController.isSelectedInspection.value = true;
+        }, option: propertyViewController.inspectOption, isSelect: propertyViewController.selectedInspection, labelText: 'Inspection Type',),
       ],
     );
   }

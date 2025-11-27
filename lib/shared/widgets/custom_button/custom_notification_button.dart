@@ -26,14 +26,12 @@ class CustomNotificationButton extends StatelessWidget {
                 ? AppColors.darkBorderPrimary
                 : AppColors.secondaryBorder,
           ),
-          color: isDark
-              ? AppColors.darkSecondary
-              : AppColors.whiteColor,
+          gradient: isDark?AppColors.darkAppIcon:LinearGradient(colors: [AppColors.whiteColor,AppColors.whiteColor]),
           boxShadow: [
             BoxShadow(
               offset: Offset(0, 0.89),
               blurRadius: 1.78,
-              color: Color(0xFF525866).withValues(alpha: 0.06),
+              color:isDark? AppColors.darkBorderPrimary:Color(0xFF525866).withValues(alpha: 0.06),
             ),
           ],
         ),
@@ -56,6 +54,7 @@ class CustomNotificationButton extends StatelessWidget {
                 IconsPath.homeNotification,
                 height: 18.h,
                 width: 18.w,
+                color: isDark?AppColors.darkPrimary:null,
               ),
             ],
           ),

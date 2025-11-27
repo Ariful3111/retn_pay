@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/core/utils/snackbar.dart';
 
 class SignupController extends GetxController {
   TextEditingController nameController = TextEditingController();
@@ -112,8 +111,8 @@ class SignupController extends GetxController {
     if (text.length < 3) {
       return "Name must be at least 3 characters";
     }
-    final RegExp name =RegExp (r"^[A-za-z]+(?: [A-za-z]*)?$");
-    if(!name.hasMatch(text)){
+    final RegExp name = RegExp(r"^[A-za-z]+(?: [A-za-z]*)?$");
+    if (!name.hasMatch(text)) {
       return 'You can\'t use number or special character';
     }
     return null;
@@ -126,11 +125,7 @@ class SignupController extends GetxController {
     passwordValidation(passwordController.text.trim());
     confirmPasswordValidation(confirmPassController.text.trim());
     Get.toNamed(AppRoutes.otpView);
-    if (fromKey.currentState?.validate() ?? false) {
-      successSnack(message: "Signup Successful");
-    } else {
-      errorSnack(message: "'Please fill in all the required fields.");
-    }
+    if (fromKey.currentState?.validate() ?? false) {}
   }
 
   void togglePasswordVisibility() {

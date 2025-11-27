@@ -16,6 +16,7 @@ class ItemContainer extends StatelessWidget {
   final VoidCallback? onTapDetails;
   final VoidCallback onFavorite;
   final bool isFavorite;
+  final BoxFit? fit;
   const ItemContainer({
     super.key,
     required this.imageHeight,
@@ -29,12 +30,11 @@ class ItemContainer extends StatelessWidget {
     this.onTapImage,
     required this.onFavorite,
     required this.isFavorite,
-    this.onTapDetails,
+    this.onTapDetails, this.fit,
   });
 
   @override
   Widget build(BuildContext context) {
-    
     return Padding(
       padding: padding,
       child: Column(
@@ -51,7 +51,7 @@ class ItemContainer extends StatelessWidget {
                 borderRadius: BorderRadius.circular(borderRadius ?? 12.sp),
                 image: DecorationImage(
                   image: AssetImage(image),
-                  fit: BoxFit.fill,
+                  fit:fit?? BoxFit.fill,
                 ),
               ),
               child: Align(
@@ -64,7 +64,12 @@ class ItemContainer extends StatelessWidget {
             ),
           ),
           SizedBox(height: 4.h),
-          ItemInfo(onVR: onVR, updateRating: updateRating, initialRating: initialRating,onTapDetails: onTapDetails,)
+          ItemInfo(
+            onVR: onVR,
+            updateRating: updateRating,
+            initialRating: initialRating,
+            onTapDetails: onTapDetails,
+          ),
         ],
       ),
     );
