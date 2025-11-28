@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
+import 'package:renter_pay/features/profile/controllers/settings_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class AutoPaySetting extends StatelessWidget {
@@ -13,6 +14,7 @@ class AutoPaySetting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeController themeController = Get.find();
+    SettingsController settingsController = Get.find();
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       
@@ -38,8 +40,10 @@ class AutoPaySetting extends StatelessWidget {
         ),
         Obx(() {
           return Switch(
-            value: themeController.isDarkMode.value,
-            onChanged: themeController.changeTheme,
+            value: settingsController.isAutoPayment.value,
+            onChanged: (value) {
+              settingsController.isAutoPayment.value = value;
+            },
             activeThumbColor: AppColors.whiteColor,
             inactiveThumbColor: AppColors.whiteColor,
             activeTrackColor: AppColors.primaryColorDark,

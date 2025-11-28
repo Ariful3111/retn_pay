@@ -29,6 +29,7 @@ class PropertyViewController extends GetxController{
     if (text.isEmpty) {
       return "Email is required";
     }
+    // ignore: deprecated_member_use
     final RegExp emailReg = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     if (emailReg.hasMatch(text)) {
       return null;
@@ -43,6 +44,7 @@ class PropertyViewController extends GetxController{
     if (text.isEmpty) {
       return "Phone number is required";
     }
+    // ignore: deprecated_member_use
     final RegExp phoneReg = RegExp(r'^(?:\+?88)?01[3-9]\d{8}$');
     if (phoneReg.hasMatch(text)) {
       return null;

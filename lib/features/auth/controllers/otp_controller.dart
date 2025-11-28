@@ -30,6 +30,7 @@ class OtpController extends GetxController {
     super.onInit();
   }
 
+  // ignore: deprecated_member_use
   final RegExp otp = RegExp(r'^[0-9]+$');
   String? emailOTPValidation(String? value) {
     final text = (value ?? "").trim();

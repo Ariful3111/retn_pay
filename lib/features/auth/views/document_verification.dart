@@ -3,16 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
-import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/core/utils/image_picker.dart';
 import 'package:renter_pay/features/auth/controllers/document_verification_controller.dart';
+import 'package:renter_pay/features/auth/widgets/verification_button.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/document_verification/custom_dotted_border.dart';
-import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
-import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/document_verification/document_upload.dart';
-import 'package:renter_pay/shared/widgets/success_dialog.dart';
 
 class DocumentVerification extends StatelessWidget {
   const DocumentVerification({super.key});
@@ -78,58 +75,7 @@ class DocumentVerification extends StatelessWidget {
                     );
             }),
             SizedBox(height: 24.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomSecondaryButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  height: 52.h,
-                  width: 117.w,
-                  borderColor: AppColors.primaryColorDark,
-                  borderRadius: BorderRadius.circular(8.sp),
-                  borderWidth: 1.w,
-                  text: "Cancel",
-                ),
-                CustomPrimaryButton(
-                  height: 52.h,
-                  width: 231.w,
-                  onPressed: () {
-                    if (documentVerificationController.frontImage.value == null) {
-                      showDialog(
-                      context: context,
-                      builder: (context) {
-                        return SuccessDialog(
-                          onTap: () {
-                            Get.toNamed(AppRoutes.mainHome);
-                          },
-                        );
-                      },
-                    );
-                    } else {
-                      showDialog(
-                      context: context,
-                      builder: (context) {
-                        return SuccessDialog(
-                          onTap: () {
-                            Get.toNamed(AppRoutes.mainHome);
-                          },
-                        );
-                      },
-                    );
-                    }
-                  },
-                  backgroundColor: LinearGradient(
-                    colors: [
-                      AppColors.primaryColorDark,
-                      AppColors.primaryColorDark,
-                    ],
-                  ),
-                  text: "Submit for Verification",
-                ),
-              ],
-            ),
+            VerificationButton()
           ],
         ),
       ),

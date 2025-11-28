@@ -103,7 +103,7 @@ class IconsPath {
   static const String drawerInspection='assets/icons/drawer_inspection.png';
   static const String drawerKey='assets/icons/drawer_key.png';
   static const String drawerPayment='assets/icons/drawer_payment.png';
-  static const String drawerRepair='assets/icons/drawer_Repair.png';
+  static const String drawerRepair='assets/icons/drawer_repair.png';
   static const String drawerService='assets/icons/drawer_service.png';
 
 }

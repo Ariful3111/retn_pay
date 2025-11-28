@@ -11,54 +11,18 @@ class SignupController extends GetxController {
   RxBool isPasswordVisible = true.obs;
   RxBool isConfirmPasswordVisible = true.obs;
   RxBool isLoading = false.obs;
-
-  final FocusNode emailFocusNode = FocusNode();
-  final FocusNode passwordFocusNode = FocusNode();
-  final FocusNode confirmPasswordFocusNode = FocusNode();
-  final FocusNode nameFocusNode = FocusNode();
-  final FocusNode phoneFocusNode = FocusNode();
-
   final emailTouched = false.obs;
   final passwordTouched = false.obs;
   final confirmPasswordTouched = false.obs;
   final nameTouched = false.obs;
   final phoneTouched = false.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-    emailFocusNode.addListener(() {
-      if (emailFocusNode.hasFocus) {
-        emailTouched.value = true;
-      }
-    });
-    passwordFocusNode.addListener(() {
-      if (passwordFocusNode.hasFocus) {
-        passwordTouched.value = true;
-      }
-    });
-    confirmPasswordFocusNode.addListener(() {
-      if (confirmPasswordFocusNode.hasFocus) {
-        confirmPasswordTouched.value = true;
-      }
-    });
-    nameFocusNode.addListener(() {
-      if (nameFocusNode.hasFocus) {
-        nameTouched.value = true;
-      }
-    });
-    phoneFocusNode.addListener(() {
-      if (phoneFocusNode.hasFocus) {
-        phoneTouched.value = true;
-      }
-    });
-  }
-
   String? emailValidation(String? value) {
     final text = (value ?? '').trim();
     if (text.isEmpty) {
       return "Email is required";
     }
+    // ignore: deprecated_member_use
     final RegExp emailReg = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     if (emailReg.hasMatch(text)) {
       return null;
@@ -73,6 +37,7 @@ class SignupController extends GetxController {
     if (text.isEmpty) {
       return "Phone number is required";
     }
+    // ignore: deprecated_member_use
     final RegExp phoneReg = RegExp(r'^(?:\+?88)?01[3-9]\d{8}$');
     if (phoneReg.hasMatch(text)) {
       return null;
@@ -111,6 +76,7 @@ class SignupController extends GetxController {
     if (text.length < 3) {
       return "Name must be at least 3 characters";
     }
+    // ignore: deprecated_member_use
     final RegExp name = RegExp(r"^[A-za-z]+(?: [A-za-z]*)?$");
     if (!name.hasMatch(text)) {
       return 'You can\'t use number or special character';
@@ -153,11 +119,6 @@ class SignupController extends GetxController {
     phoneController.dispose();
     passwordController.dispose();
     confirmPassController.dispose();
-    emailFocusNode.dispose();
-    passwordFocusNode.dispose();
-    confirmPasswordFocusNode.dispose();
-    nameFocusNode.dispose();
-    phoneFocusNode.dispose();
     super.onClose();
   }
 }

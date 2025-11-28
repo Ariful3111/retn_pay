@@ -92,6 +92,8 @@ class InspectionVerification extends StatelessWidget {
                     width: 85.w,
                     onPressed: () {
                       Get.back();
+                      propertyViewController.frontImage.value = null;
+                      propertyViewController.backImage.value = null;
                     },
                   ),
                   SizedBox(width: 15.w),

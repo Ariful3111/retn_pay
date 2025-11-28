@@ -11,36 +11,18 @@ class LoginController extends GetxController {
   RxBool isLoading = false.obs;
   RxBool isRemember = false.obs;
 
-  final emailFocusNode = FocusNode();
-  final passwordFocusNode = FocusNode();
-
   final emailTouched = false.obs;
   final passwordTouched = false.obs;
 
   void toggleRemember(bool? value) {
     isRemember.value = value ?? true;
   }
-
-  @override
-  void onInit() {
-    super.onInit();
-    emailFocusNode.addListener(() {
-      if (emailFocusNode.hasFocus) {
-        emailTouched.value = true;
-      }
-    });
-    passwordFocusNode.addListener(() {
-      if (passwordFocusNode.hasFocus) {
-        passwordTouched.value = true;
-      }
-    });
-  }
-
   String? emailValidation(String? value) {
     final text = (value ?? '').trim();
     if (text.isEmpty) {
       return "Email is required";
     }
+    // ignore: deprecated_member_use
     final RegExp emailReg = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     if (emailReg.hasMatch(text)) {
       return null;
@@ -90,8 +72,6 @@ class LoginController extends GetxController {
   void onClose() {
     emailController.dispose();
     passwordController.dispose();
-    emailFocusNode.dispose();
-    passwordFocusNode.dispose();
     super.onClose();
   }
 
