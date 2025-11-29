@@ -30,7 +30,7 @@ class UserButton extends StatelessWidget {
                 offset: Offset(0, 1),
                 spreadRadius: 0,
                 blurRadius: 2.r,
-                color:Color(0xFF525866).withValues(alpha: 0.06.sp),
+                color:AppColors.buttonShadowColor.withValues(alpha: 0.06.sp),
               ),
             ],
           ),
@@ -39,9 +39,9 @@ class UserButton extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(IconsPath.userBack, width: 20.w, height: 20.h,color:isDark? AppColors.darkSecondaryText:Color(0xFF525866)),
+              Image.asset(IconsPath.userBack, width: 20.w, height: 20.h,color:isDark? AppColors.darkSecondaryText:AppColors.buttonShadowColor),
               SizedBox(width: 8.w),
-              CustomTextSecondary(text: "back", color:isDark? AppColors.darkSecondaryText:Color(0xFF525866)),
+              CustomTextSecondary(text: "back", color:isDark? AppColors.darkSecondaryText:AppColors.buttonShadowColor),
             ],
           ),
         ),

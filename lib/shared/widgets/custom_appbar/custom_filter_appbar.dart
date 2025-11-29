@@ -34,7 +34,7 @@ class CustomFilterAppbar extends StatelessWidget {
               offset: Offset(0, 0.88.sp),
               blurRadius: 1.76.sp,
               spreadRadius: 0,
-              color: Color(0xFF525866).withValues(alpha: 0.06),
+              color: AppColors.buttonShadowColor.withValues(alpha: 0.06),
             ),
           ],
         ),

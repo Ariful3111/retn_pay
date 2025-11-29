@@ -33,24 +33,6 @@ class ProfileEditField extends StatelessWidget {
       ),
       floatingLabelBehavior: FloatingLabelBehavior.always,
       fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12.r),
-        borderSide: BorderSide(
-          color: isDark ? AppColors.darkBorderPrimary : AppColors.primaryBorder,
-        ),
-      ),
-      enableBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12.r),
-        borderSide: BorderSide(
-          color: isDark ? AppColors.darkBorderPrimary : AppColors.primaryBorder,
-        ),
-      ),
-      focusBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12.r),
-        borderSide: BorderSide(
-          color: isDark ? AppColors.darkBorderPrimary : AppColors.primaryBorder,
-        ),
-      ),
     );
   }
 }

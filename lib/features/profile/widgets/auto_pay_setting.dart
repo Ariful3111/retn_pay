@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/profile/controllers/settings_controller.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_switch_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class AutoPaySetting extends StatelessWidget {
@@ -39,15 +40,11 @@ class AutoPaySetting extends StatelessWidget {
           ),
         ),
         Obx(() {
-          return Switch(
-            value: settingsController.isAutoPayment.value,
+          return CustomSwitchButton(
+            isOn: settingsController.isAutoPayment.value,
             onChanged: (value) {
               settingsController.isAutoPayment.value = value;
             },
-            activeThumbColor: AppColors.whiteColor,
-            inactiveThumbColor: AppColors.whiteColor,
-            activeTrackColor: AppColors.primaryColorDark,
-            inactiveTrackColor: Colors.grey,
           );
         }),
       ],

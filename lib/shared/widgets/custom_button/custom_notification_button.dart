@@ -31,7 +31,7 @@ class CustomNotificationButton extends StatelessWidget {
             BoxShadow(
               offset: Offset(0, 0.89),
               blurRadius: 1.78,
-              color:isDark? AppColors.darkBorderPrimary:Color(0xFF525866).withValues(alpha: 0.06),
+              color:isDark? AppColors.darkBorderPrimary:AppColors.buttonShadowColor.withValues(alpha: 0.06),
             ),
           ],
         ),

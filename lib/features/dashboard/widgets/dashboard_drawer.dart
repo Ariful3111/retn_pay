@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
+import 'package:renter_pay/features/dashboard/widgets/drawer_item.dart';
 
 class DashboardDrawer extends StatelessWidget {
   const DashboardDrawer({super.key});
@@ -22,7 +22,7 @@ class DashboardDrawer extends StatelessWidget {
           left: 16.w,
           right: 16.w,
         ),
-        height: 448.h,
+        height: 460.h,
         width: 260.w,
         decoration: BoxDecoration(
           color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
@@ -60,23 +60,7 @@ class DashboardDrawer extends StatelessWidget {
             ),
             SizedBox(height: 32.w),
             ...List.generate(dashboardController.drawerItems.length, (index) {
-              return Container(
-                padding: EdgeInsets.all(8.r),
-                height: 40.h,
-                width: MediaQuery.widthOf(context),
-                decoration: BoxDecoration(
-                  gradient: dashboardController.isItemSelect.value? AppColors.primaryColor:null,
-                  borderRadius: BorderRadius.circular(8.r),
-                ),
-                child: Row(
-                  children: [
-                    Image.asset(dashboardController.drawerItems[index]['icon'],height: 24.h,width: 24.w,color:dashboardController.isItemSelect.value?Color(0xFF3B0225): AppColors.whiteColor,),
-                    SizedBox(width: 8.w,),
-                    CustomTextSecondary(text: dashboardController.drawerItems[index]['title'],color: dashboardController.isItemSelect.value?Color(0xFF3B0225): AppColors.whiteColor,)
-
-                  ],
-                ),
-              );
+              return DrawerItem(index: index);
             }),
           ],
         ),

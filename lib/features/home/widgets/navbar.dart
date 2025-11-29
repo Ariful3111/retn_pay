@@ -20,7 +20,7 @@ class Navbar extends StatelessWidget {
         width: MediaQuery.widthOf(context),
         decoration: BoxDecoration(
           color:themeController.isDarkMode.value?AppColors.darkPrimary.withValues(alpha: 0.80) :AppColors.whiteColor.withValues(alpha: 0.80),
-          border: Border.all(width: 1.sp, color:themeController.isDarkMode.value? AppColors.darkBorderPrimary:Color(0xFFEBEDF0)),
+          border: Border.all(width: 1.sp, color:themeController.isDarkMode.value? AppColors.darkBorderPrimary:AppColors.whiteBorder),
           borderRadius: BorderRadius.circular(12.sp),
         ),
         child: Row(

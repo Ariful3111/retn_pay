@@ -38,7 +38,7 @@ class ItemInfo extends StatelessWidget {
                 text: 'Bed',
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: Color(0xFF7E8B9C),
+                color: AppColors.lightText,
               ),
               SizedBox(width: 5.42.w),
               Center(
@@ -53,7 +53,7 @@ class ItemInfo extends StatelessWidget {
                 text: 'Bathroom',
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: Color(0xFF7E8B9C),
+                color: AppColors.lightText,
               ),
               SizedBox(width: 5.42.w),
               DottedBorder(
@@ -82,7 +82,7 @@ class ItemInfo extends StatelessWidget {
                 text: '2500sft',
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: Color(0xFF7E8B9C),
+                color: AppColors.lightText,
               ),
             ],
           ),

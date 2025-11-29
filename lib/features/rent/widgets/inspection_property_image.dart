@@ -52,7 +52,7 @@ class InspectionPropertyImage extends StatelessWidget {
                 text: 'Bed',
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: Color(0xFF7E8B9C),
+                color: AppColors.lightText,
               ),
               SizedBox(width: 7.07.w),
               Center(
@@ -67,7 +67,7 @@ class InspectionPropertyImage extends StatelessWidget {
                 text: 'Bathroom',
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: Color(0xFF7E8B9C),
+                color: AppColors.lightText,
               ),
               SizedBox(width: 7.07.w),
               DottedBorder(
@@ -98,11 +98,11 @@ class InspectionPropertyImage extends StatelessWidget {
                 text: '2500sft',
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: Color(0xFF7E8B9C),
+                color: AppColors.lightText,
               ),
             ],
           ),
-          CustomTextSecondary(text: 'New York, USA',fontSize: 12.sp,fontWeight: FontWeight.w400,color: Color(0xFF7E8B9C),),
+          CustomTextSecondary(text: 'New York, USA',fontSize: 12.sp,fontWeight: FontWeight.w400,color: AppColors.lightText,),
           CustomTextSpan(title: '\$280', spantext: '/week',fontSize: 16.sp,spanFontSize: 12.sp,fontWeight: FontWeight.w400,spanColor: Color(0xFF505F79),)
             ],
           ),

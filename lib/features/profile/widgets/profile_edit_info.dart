@@ -27,7 +27,7 @@ class ProfileEditInfo extends StatelessWidget {
         borderRadius: BorderRadius.circular(15.r),
         border: Border.all(
           width: 1.r,
-          color: isDark ? AppColors.darkBorderPrimary : Color(0xFFEBEDF0),
+          color: isDark ? AppColors.darkBorderPrimary : AppColors.whiteBorder,
         ),
       ),
       child: Column(

@@ -33,7 +33,7 @@ class CustomFavoriteAppbar extends StatelessWidget {
               offset: Offset(0, 1.03.sp),
               blurRadius: 2.07.sp,
               spreadRadius: 0,
-              color: Color(0xFF525866).withValues(alpha: 0.06),
+              color: AppColors.buttonShadowColor.withValues(alpha: 0.06),
             ),
           ],
         ),

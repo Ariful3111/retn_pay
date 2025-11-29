@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
-import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class DashboardController extends GetxController {
   RxBool isFavorite = false.obs;
-  Rx<SfRangeValues> range = SfRangeValues(300, 670000).obs;
-  double minRange = 0;
-  double maxRange = 700000;
-  TextEditingController filterSearchController = TextEditingController();
-  RxList<String> selectedFilterProperty = <String>[].obs;
-  RxList<String> selectedAmenities = <String>[].obs;
-  RxBool isShowPriceRange = true.obs;
-  RxBool isShowAmenities = false.obs;
-  RxBool isShowProperty = false.obs;
-  RxBool isShowSearch = true.obs;
+  RxBool isAutoPay = false.obs;
+  ImagePicker picker = ImagePicker();
+  Rxn<XFile> upload = Rxn<XFile>();
+  TextEditingController addressController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  RxBool isQuickActions = false.obs;
   List dialogImageList = [
     ImagesPath.house,
     ImagesPath.apartment,
@@ -24,7 +20,7 @@ class DashboardController extends GetxController {
     ImagesPath.vila,
   ];
   RxInt dialogImageIndex = 0.obs;
-  List<Map<String, dynamic>> drawerItems = [
+  List drawerItems = [
     {'icon': IconsPath.dashboard, 'title': 'Dashboard'},
     {'icon': IconsPath.drawerInspection, 'title': 'Inspection Request'},
     {'icon': IconsPath.drawerKey, 'title': 'Key Release'},
@@ -33,7 +29,13 @@ class DashboardController extends GetxController {
     {'icon': IconsPath.drawerRepair, 'title': 'Repair \$ Maintenance'},
     {'icon': IconsPath.drawerService, 'title': 'Service'},
   ];
-  RxBool isItemSelect = false.obs;
+  List dashboardItems = [
+    {'icon': IconsPath.dashboardRent, 'title': 'Rents'},
+    {'icon': IconsPath.dashboardInspection, 'title': 'Inspections'},
+    {'icon': IconsPath.dashboardApplication, 'title': 'Applications'},
+    {'icon': IconsPath.dashboardRepair, 'title': 'Repairs'},
+  ];
+  RxInt isItemSelect = 0.obs;
   void dialogSelectedIndex(int index) {
     dialogImageIndex.value = index;
   }

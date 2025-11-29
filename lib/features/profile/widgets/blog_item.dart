@@ -30,7 +30,7 @@ class BlogItem extends StatelessWidget {
             width: MediaQuery.widthOf(context),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.r),
-              border: Border.all(width: 1.r, color:isDark? AppColors.darkContainer:Color(0xFFEBEDF0)),
+              border: Border.all(width: 1.r, color:isDark? AppColors.darkContainer:AppColors.whiteBorder),
               color:isDark? AppColors.darkPrimary:AppColors.whiteColor,
               boxShadow: [
                 BoxShadow(
@@ -61,12 +61,12 @@ class BlogItem extends StatelessWidget {
                     CustomTextSecondary(
                       text: '10 Oct, 2025',
                       fontSize: 12.sp,
-                      color: Color(0xFF7A8699),
+                      color: AppColors.darkLightText,
                     ),
                     CustomTextSecondary(
                       text: '2 min read',
                       fontSize: 12.sp,
-                      color: Color(0xFF7A8699),
+                      color: AppColors.darkLightText,
                     ),
                   ],
                 ),

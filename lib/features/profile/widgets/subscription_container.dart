@@ -114,7 +114,7 @@ class SubscriptionContainer extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 12.h),
-              Container(height: 2.h, width: 310.w, color: Color(0xFFDFE2E6)),
+              Container(height: 2.h, width: 310.w, color: AppColors.primaryBorder),
               SizedBox(height: 12.h),
               CustomTextSecondary(text: "Benefits:", color: AppColors.subsPlanTitle),
               SizedBox(height: 14.h),

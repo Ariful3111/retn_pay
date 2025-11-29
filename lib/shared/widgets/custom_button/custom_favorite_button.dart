@@ -20,7 +20,7 @@ class CustomFavoriteButton extends StatelessWidget {
           color: AppColors.whiteColor,
         ),
         child: Center(
-          child: Image.asset(isFavorite?IconsPath.selectFavorite :IconsPath.favorite,height: 13.5.h,width: 12.w,),
+          child: Image.asset(isFavorite?IconsPath.selectFavorite :IconsPath.favorite,height: isFavorite? 20.h:15.h,width: isFavorite? 20.h:15.h,),
         ),
       ),
     );

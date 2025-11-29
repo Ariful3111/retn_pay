@@ -32,27 +32,6 @@ class CustomDropdownMenu extends StatelessWidget {
           fontWeight: FontWeight.w400,
         ),
         inputDecorationTheme: InputDecorationTheme(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(9.4.r),
-            borderSide: BorderSide(
-              width: 0.78.r,
-              color: isDark ? AppColors.darkBorderPrimary : Color(0xFFDFE2E6),
-            ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(9.4.r),
-            borderSide: BorderSide(
-              width: 0.78.r,
-              color: isDark ? AppColors.darkBorderPrimary : Color(0xFFDFE2E6),
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(9.4.r),
-            borderSide: BorderSide(
-              width: 0.78.r,
-              color: isDark ? AppColors.darkBorderPrimary : Color(0xFFDFE2E6),
-            ),
-          ),
           filled: true,
           fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
           alignLabelWithHint: true,

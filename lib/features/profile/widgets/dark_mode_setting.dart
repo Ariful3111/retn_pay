@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_switch_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class DarkModeSetting extends StatelessWidget {
@@ -39,15 +40,7 @@ class DarkModeSetting extends StatelessWidget {
           ),
         ),
         Obx(() {
-          return Switch(
-            value: themeController.isDarkMode.value,
-            onChanged: themeController.changeTheme,
-            activeThumbColor: AppColors.whiteColor,
-            inactiveThumbColor: AppColors.whiteColor,
-            activeTrackColor: AppColors.primaryColorDark,
-            inactiveTrackColor: Colors.grey,
-            
-          );
+          return CustomSwitchButton(isOn: themeController.isDarkMode.value, onChanged: themeController.changeTheme);
         }),
       ],
     );

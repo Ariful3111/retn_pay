@@ -65,7 +65,7 @@ class UserContainer extends StatelessWidget {
                 text: description,
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color:isDark?AppColors.darkSecondaryText : Color(0xFF525866),
+                color:isDark?AppColors.darkSecondaryText : AppColors.buttonShadowColor,
               ),
             ],
           ),

@@ -50,7 +50,7 @@ class DocumentUpload extends StatelessWidget {
                   width: 60.w,
                   decoration: BoxDecoration( 
                     color: AppColors.whiteColor,
-                    border: Border.all(width: 1.15.sp, color: Color(0xFFDFE2E6)),
+                    border: Border.all(width: 1.15.sp, color: AppColors.primaryBorder),
                     borderRadius: BorderRadius.circular(4.62.sp),
                   ),
                   child: Center(

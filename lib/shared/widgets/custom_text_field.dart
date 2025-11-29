@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class CustomTextField extends StatelessWidget {
   final Widget? hintTextWidget;
@@ -98,17 +98,15 @@ class CustomTextField extends StatelessWidget {
         contentPadding:  padding,
         label:
             labelTextWidget ??
-            CustomTextPrimary(
+            CustomTextSecondary(
               text: labelText ?? "",
               fontSize: 12.sp,
               fontWeight: FontWeight.w400,
             ),
         hint:
             hintTextWidget ??
-            CustomTextPrimary(
+            CustomTextSecondary(
               text: hintText ?? "",
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
             ),
         errorText: errorText,
         suffixIcon: suffixIcon,
@@ -118,31 +116,34 @@ class CustomTextField extends StatelessWidget {
         border:
             border ??
             OutlineInputBorder( 
-              borderRadius: BorderRadius.circular(7.r),
+              borderRadius: BorderRadius.circular(9.4.r),
               borderSide: BorderSide(
+                width: 0.78.r,
                 color: isDark
                     ? AppColors.darkBorderPrimary
-                    : Colors.transparent,
+                    : AppColors.primaryBorder,
               ),
             ),
         focusedBorder:
             focusBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(7.r),
+              borderRadius: BorderRadius.circular(9.4.r),
               borderSide: BorderSide(
+                width: 0.78.r,
                 color: isDark
                     ? AppColors.darkBorderPrimary
-                    : Colors.transparent,
+                    : AppColors.primaryBorder,
               ),
             ),
         enabledBorder:
             enableBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(7.r),
+              borderRadius: BorderRadius.circular(9.4.r),
               borderSide: BorderSide(
+                width: 0.78.r,
                 color: isDark
                     ? AppColors.darkBorderPrimary
-                    : Colors.transparent,
+                    : AppColors.primaryBorder,
               ),
             ),
         filled: isFilled ?? true,

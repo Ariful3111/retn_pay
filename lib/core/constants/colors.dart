@@ -6,7 +6,9 @@ class AppColors {
     end: Alignment.center,
     colors: [Color(0xFF92045A), Color(0xFFAC1972)],
   );
-  static const userBackground = LinearGradient(colors: [Color(0xFFFAF5FF), Color(0xFFFAF4FF)]);
+  static const userBackground = LinearGradient(
+    colors: [Color(0xFFFAF5FF), Color(0xFFFAF4FF)],
+  );
   static const primaryColorDark = Color(0xFF6C0443);
   static const primaryTextColor = Color(0xFF2D021C);
   static const primaryDarkTextColor = Color(0xFF000000);
@@ -27,16 +29,22 @@ class AppColors {
   static const silverIconBG = LinearGradient(
     colors: [Color(0xFFFFD9F0), Color(0xFFFFA8CE), Color(0xFFFF99C3)],
   );
-  static const platinumIconBG = LinearGradient(colors: [Color(0xFFC3FFE8), Color(0xFFF0FFF4)]);
+  static const platinumIconBG = LinearGradient(
+    colors: [Color(0xFFC3FFE8), Color(0xFFF0FFF4)],
+  );
   static const subsPlanTitle = Color(0xFF15294B);
   static const subsPlanSubtitle = Color(0xFF354764);
   static const lightBorder = Color(0xFF9D5781);
+  static const lightText = Color(0xFF7E8B9C);
   static const primaryBorder = Color(0xFFDFE2E6);
   static const secondaryBorder = Color(0xFFE9E9E9);
+  static const buttonShadowColor = Color(0xFF525866);
+  static const whiteBorder = Color(0xFFEBEDF0);
   static const filterBorder = Color(0xFFE6E9ED);
   static const darkPrimary = Colors.black;
   static const darkPrimaryText = Colors.white;
   static const darkSecondaryText = Color(0xFFC2C7D0);
+  static const darkLightText = Color(0xFF7A8699);
   static const darkSecondary = Color(0xFF1A1718);
   static const darkAppBar = Color(0xFFF0E6EC);
   static const darkBorderPrimary = Color(0xFF243757);
@@ -45,19 +53,16 @@ class AppColors {
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
     tileMode: TileMode.clamp,
-    colors: [Color(0xFF251621), Color(0xFF42233A)]);
+    colors: [Color(0xFF251621), Color(0xFF42233A)],
+  );
   static const darkAppIcon = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
-    colors: [
-    Color(0xFF37CADA),
-    Color(0xFF529EDA)
-  ]);
+    colors: [Color(0xFF37CADA), Color(0xFF529EDA)],
+  );
   static const checkBox = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
-    colors: [
-    Color(0xFF138BD7),
-    Color(0xFF62AAFB)
-  ]);
+    colors: [Color(0xFF138BD7), Color(0xFF62AAFB)],
+  );
 }

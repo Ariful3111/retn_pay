@@ -1,0 +1,83 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
+
+class CustomReminder extends StatelessWidget {
+  final String? title;
+  final String? date;
+  final String? detail;
+  final String? icon;
+  final EdgeInsets ? margin;
+  final EdgeInsets ? padding;
+  const CustomReminder({
+    super.key,
+    this.title,
+    this.date,
+    this.detail,
+    this.icon, this.margin, this.padding,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
+    return Container(
+      padding:padding?? EdgeInsets.all(13.07.r),
+      margin:margin?? EdgeInsets.only(bottom: 13.07.h),
+      height: 145.86.h,
+      width: 354.05.w,
+      decoration: BoxDecoration(
+        color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+        borderRadius: BorderRadius.circular(13.07.sp),
+        border: Border.all(
+          color: isDark ? AppColors.darkBorderPrimary : AppColors.whiteBorder,
+          width: 1.09,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.dropShadowColor.withValues(alpha: 0.10),
+            blurRadius: 30.5,
+            offset: Offset(0, 8.72),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Image.asset(
+            icon ?? IconsPath.reminder,
+            height: 26.15.h,
+            width: 26.15.w,
+          ),
+          SizedBox(width: 14.16.w),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start ,
+            children: [
+              CustomTextSecondary(
+                text: title ?? 'Inspection Reminder',
+                color: isDark ? AppColors.darkAppBar : AppColors.darkContainer,
+              ),
+              SizedBox(height: 5.h,),
+              Expanded(
+                child: CustomTextSecondary(
+                  text:
+                      detail ??
+                      'Your lease for Harborview Apartments\nexpires soon — renew online to avoid\ninterruption.',
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400, 
+                ),
+              ),
+              SizedBox(height: 8.71.h),
+              CustomTextSecondary(
+                text: date ?? '12 Aug, 2023 at 10:00 AM',
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w400,
+                color: AppColors.primaryColorDark,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}

@@ -45,12 +45,12 @@ class BlogDetailsTop extends StatelessWidget {
                     CustomTextSecondary(
                       text: '10 Oct, 2025',
                       fontSize: 12.sp,
-                      color: Color(0xFF7A8699),
+                      color: AppColors.darkLightText,
                     ),
                     CustomTextSecondary(
                       text: '2 min read',
                       fontSize: 12.sp,
-                      color: Color(0xFF7A8699),
+                      color: AppColors.darkLightText,
                     ),
                   ],
                 ),

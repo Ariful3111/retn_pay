@@ -21,18 +21,6 @@ class InspectionField extends StatelessWidget {
       controller: controller,
       validation: validateMode,
       validator: validator,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(9.4.r),
-        borderSide: BorderSide(width: 0.78.r, color:isDark?AppColors.darkBorderPrimary: Color(0xFFDFE2E6)),
-      ),
-      enableBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(9.4.r),
-        borderSide: BorderSide(width: 0.78.r, color:isDark?AppColors.darkBorderPrimary: Color(0xFFDFE2E6)),
-      ),
-      focusBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(9.4.r),
-        borderSide: BorderSide(width: 0.78.r, color:isDark?AppColors.darkBorderPrimary: Color(0xFFDFE2E6)),
-      ),
       fillColor:isDark? AppColors.darkPrimary:AppColors.whiteColor,
       labelTextWidget: CustomTextSecondary(
         text: label,
