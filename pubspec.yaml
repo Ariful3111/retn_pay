@@ -49,6 +49,7 @@ dependencies:
   syncfusion_flutter_sliders: ^31.2.10
   flutter_map: ^8.2.2
   latlong2: ^0.9.1
+  table_calendar: ^3.2.0
 
 dev_dependencies:
   flutter_test:

@@ -86,7 +86,7 @@ class FilterSearch extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: isDark?AppColors.darkPrimary:AppColors.whiteColor,
                     borderRadius: BorderRadius.circular(9.2.sp),
-                    border: Border.all(width: 0.89, color:isDark?AppColors.darkBorderPrimary: Color(0xFFF1F1F2)),
+                    border: Border.all(width: 0.89, color:isDark?AppColors.darkBorderPrimary: AppColors.whiteLightBorder),
                     boxShadow: [
                       BoxShadow(
                         offset: Offset(0, 6.14),

@@ -11,6 +11,7 @@ class ViewNotice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     List viewInfo = [
       'Current Rent: \$2,000/month',
       'Contract Expiry: 10 Sep 2026',
@@ -20,7 +21,7 @@ class ViewNotice extends StatelessWidget {
       height: 262.58,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
-        color: AppColors.whiteColor,
+        color:isDark? AppColors.darkPrimary:AppColors.whiteColor,
       ),
       child: Column(
         children: [

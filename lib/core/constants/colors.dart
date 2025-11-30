@@ -41,6 +41,7 @@ class AppColors {
   static const buttonShadowColor = Color(0xFF525866);
   static const whiteBorder = Color(0xFFEBEDF0);
   static const filterBorder = Color(0xFFE6E9ED);
+  static const whiteLightBorder = Color(0xFFE6E9ED);
   static const darkPrimary = Colors.black;
   static const darkPrimaryText = Colors.white;
   static const darkSecondaryText = Color(0xFFC2C7D0);

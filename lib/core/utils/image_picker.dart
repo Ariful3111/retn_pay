@@ -32,4 +32,15 @@ class UploadImage {
       pickImage.value = image;
     }
   }
+
+  static Future<void> pickMultipleImage({
+    required RxList<String> allImages,
+  }) async {
+    final ImagePicker picker = ImagePicker();
+    final List<XFile> images = await picker.pickMultiImage(imageQuality: 25);
+    if (images.isNotEmpty) {
+      final newImages = images.map((e) => e.path).toList();
+      allImages.insertAll(0, newImages);
+    }
+  }
 }

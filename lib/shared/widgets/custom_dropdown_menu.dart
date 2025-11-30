@@ -61,7 +61,7 @@ class CustomDropdownMenu extends StatelessWidget {
           ),
           side: WidgetStateProperty.all(
             BorderSide(
-              color: isDark ? AppColors.darkBorderPrimary : Color(0xFFF1F1F2),
+              color: isDark ? AppColors.darkBorderPrimary : AppColors.whiteLightBorder,
               width: 0.91.r,
             ),
           ),

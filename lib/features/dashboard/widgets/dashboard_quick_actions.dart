@@ -11,13 +11,14 @@ class DashboardQuickActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     DashboardController dashboardController = Get.find();
     return Container(
       height: 78.44.h,
       width: MediaQuery.widthOf(context),
       padding: EdgeInsets.all(17.43.r),
       decoration: BoxDecoration(
-        color: AppColors.whiteColor,
+        color:isDark? AppColors.darkSecondary:AppColors.whiteColor,
         borderRadius: BorderRadius.circular(20.r),
       ),
       child: Row(
@@ -26,17 +27,18 @@ class DashboardQuickActions extends StatelessWidget {
           CustomTextPrimary(
             text: 'Quick Actions',
             fontSize: 24.sp,
-            color: AppColors.primaryColorDark,
+            color:isDark? AppColors.darkAppBar:AppColors.primaryColorDark,
           ),
           Obx(
             () => GestureDetector(
               onTap: () {
+                HitTestBehavior.translucent;
                 dashboardController.isQuickActions.value =
                     !dashboardController.isQuickActions.value;
               },
               child: SizedBox(
-                height: 24.h,
-                width: 24.w,
+                height: 40.h,
+                width: 40.w,
                 child: Center(
                   child: Image.asset(
                     dashboardController.isQuickActions.value

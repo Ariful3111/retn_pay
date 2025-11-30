@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 
 class DashboardController extends GetxController {
   RxBool isFavorite = false.obs;
   RxBool isAutoPay = false.obs;
-  ImagePicker picker = ImagePicker();
-  Rxn<XFile> upload = Rxn<XFile>();
+  RxInt isDay = 0.obs;
+  RxList<String> repairImages = <String>[].obs;
   TextEditingController addressController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   RxBool isQuickActions = false.obs;
@@ -35,6 +34,45 @@ class DashboardController extends GetxController {
     {'icon': IconsPath.dashboardApplication, 'title': 'Applications'},
     {'icon': IconsPath.dashboardRepair, 'title': 'Repairs'},
   ];
+  RxList<Map<String, dynamic>> reminderList = [
+    {
+      'title': 'Inspection Reminder',
+      'detail':
+          'Your lease for Harborview Apartments\nexpires soon — renew online to avoid\ninterruption.',
+      'date': '12 Aug, 2023 at 10:00 AM',
+    },
+    {
+      'title': 'Rent Due Reminder',
+      'detail':
+          'Your rent for Maplewood Apartments\nis due in 3 days. Please ensure payment\nis made on time.',
+      'date': '15 Aug, 2023 at 09:00 AM',
+    },
+    {
+      'title': 'Maintenance Reminder',
+      'detail':
+          'Scheduled maintenance for Pinecrest\nCondominiums is coming up next week.\nPlease prepare accordingly.',
+      'date': '20 Aug, 2023 at 11:00 AM',
+    },
+    {
+      'title': 'Inspection Reminder',
+      'detail':
+          'Your lease for Harborview Apartments\nexpires soon — renew online to avoid\ninterruption.',
+      'date': '12 Aug, 2023 at 10:00 AM',
+    },
+    {
+      'title': 'Rent Due Reminder',
+      'detail':
+          'Your rent for Maplewood Apartments\nis due in 3 days. Please ensure payment\nis made on time.',
+      'date': '15 Aug, 2023 at 09:00 AM',
+    },
+    {
+      'title': 'Maintenance Reminder',
+      'detail':
+          'Scheduled maintenance for Pinecrest\nCondominiums is coming up next week.\nPlease prepare accordingly.',
+      'date': '20 Aug, 2023 at 11:00 AM',
+    },
+  ].obs;
+
   RxInt isItemSelect = 0.obs;
   void dialogSelectedIndex(int index) {
     dialogImageIndex.value = index;

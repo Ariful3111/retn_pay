@@ -9,8 +9,9 @@ class DrawerItem extends StatelessWidget {
   final int index;
   const DrawerItem({super.key, required this.index});
 
-  @override
+  @override 
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     DashboardController dashboardController = Get.find();
     return Obx(() {
                 final item = dashboardController.drawerItems[index];
@@ -39,14 +40,14 @@ class DrawerItem extends StatelessWidget {
                           width: 24.w,
                           color: isSelected
                               ? AppColors.whiteColor
-                              : Color(0xFF3B0225),
+                              :isDark? AppColors.darkSecondaryText:Color(0xFF3B0225),
                         ),
                         SizedBox(width: 8.w),
                         CustomTextSecondary(
                           text: item['title'],
                           color: isSelected
                               ? AppColors.whiteColor
-                              : Color(0xFF3B0225),
+                              :isDark?AppColors.darkSecondaryText: Color(0xFF3B0225),
                         ),
                       ],
                     ),

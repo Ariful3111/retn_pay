@@ -22,6 +22,7 @@ class NoticeButtonModel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -29,8 +30,8 @@ class NoticeButtonModel extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6.r),
-          color: AppColors.whiteColor,
-          border: Border.all(color: AppColors.secondaryBorder, width: 1.0),
+          color:isDark? AppColors.darkSecondary:AppColors.whiteColor,
+          border: Border.all(color:isDark? AppColors.darkBorderPrimary:AppColors.secondaryBorder, width: 1.0),
           boxShadow: [
             BoxShadow(
               color: AppColors.buttonShadowColor.withValues(alpha: 0.10),
@@ -47,7 +48,7 @@ class NoticeButtonModel extends StatelessWidget {
             CustomTextSecondary(
               text: text,
               fontSize: 14.sp,
-              color: Color(0xFF1D1E25),
+              color:isDark? AppColors.darkAppBar:Color(0xFF1D1E25),
             ),
           ],
         ),

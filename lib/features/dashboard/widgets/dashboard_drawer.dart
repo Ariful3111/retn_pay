@@ -54,6 +54,7 @@ class DashboardDrawer extends StatelessWidget {
                     IconsPath.drawerClose,
                     height: 24.h,
                     width: 24.w,
+                    color: isDark?AppColors.darkAppBar:null,
                   ),
                 ),
               ],

@@ -5,17 +5,17 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class CustomReminder extends StatelessWidget {
-  final String? title;
-  final String? date;
-  final String? detail;
+  final String title;
+  final String date;
+  final String detail;
   final String? icon;
   final EdgeInsets ? margin;
   final EdgeInsets ? padding;
   const CustomReminder({
     super.key,
-    this.title,
-    this.date,
-    this.detail,
+    required this.title,
+    required this.date,
+    required this.detail,
     this.icon, this.margin, this.padding,
   });
 
@@ -26,7 +26,7 @@ class CustomReminder extends StatelessWidget {
       padding:padding?? EdgeInsets.all(13.07.r),
       margin:margin?? EdgeInsets.only(bottom: 13.07.h),
       height: 145.86.h,
-      width: 354.05.w,
+      width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
         borderRadius: BorderRadius.circular(13.07.sp),
@@ -54,22 +54,21 @@ class CustomReminder extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start ,
             children: [
               CustomTextSecondary(
-                text: title ?? 'Inspection Reminder',
+                text: title ,
                 color: isDark ? AppColors.darkAppBar : AppColors.darkContainer,
               ),
               SizedBox(height: 5.h,),
               Expanded(
                 child: CustomTextSecondary(
                   text:
-                      detail ??
-                      'Your lease for Harborview Apartments\nexpires soon — renew online to avoid\ninterruption.',
+                      detail,
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400, 
                 ),
               ),
               SizedBox(height: 8.71.h),
               CustomTextSecondary(
-                text: date ?? '12 Aug, 2023 at 10:00 AM',
+                text: date,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.primaryColorDark,
