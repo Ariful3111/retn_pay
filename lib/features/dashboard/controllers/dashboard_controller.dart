@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class DashboardController extends GetxController {
   RxBool isFavorite = false.obs;
@@ -72,9 +74,24 @@ class DashboardController extends GetxController {
       'date': '20 Aug, 2023 at 11:00 AM',
     },
   ].obs;
-
+  late DateTime today;
+  late DateTime firstDay;
+  late DateTime lastDay;
+  Rx<DateTime> focusedDay = DateTime.now().obs;
+  Rx<DateTime?> rangeStart = Rxn<DateTime>();
+  Rx<DateTime?> rangeEnd = Rxn<DateTime>();
+  Rx<RangeSelectionMode> rangeSelectionMode = RangeSelectionMode.toggledOn.obs;
+  Rx<CalendarFormat> calendarFormat = CalendarFormat.month.obs;
   RxInt isItemSelect = 0.obs;
   void dialogSelectedIndex(int index) {
     dialogImageIndex.value = index;
+  }
+  List drawerPage = [AppRoutes.dashboard,AppRoutes.inspectionRequestView,AppRoutes.keyReleaseView,AppRoutes.activePropertiesView,AppRoutes.paymentManagementView,AppRoutes.repairMaintenanceView,AppRoutes.servicesView,];
+  @override
+  void onInit() {
+    today = DateTime.now();
+    firstDay = DateTime(today.year - 1, today.month, today.day);
+    lastDay = DateTime(today.year + 1, today.month, today.day);
+    super.onInit();
   }
 }

@@ -23,5 +23,11 @@ class AppRoutes {
   static const String blog = '/blog';
   static const String blogDetails = '/blogDetails';
   static const String messageView = '/messageView';
+  static const String activePropertiesView = '/activePropertyView';
+  static const String keyReleaseView = '/keyReleaseView';
+  static const String inspectionRequestView = '/inspectionRequestView';
+  static const String paymentManagementView = '/paymentManagementView';
+  static const String servicesView = '/servicesView';
+  static const String repairMaintenanceView = '/repairMaintenanceView';
 
 }

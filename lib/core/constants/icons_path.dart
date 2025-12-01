@@ -123,4 +123,6 @@ class IconsPath {
   static const String renew = 'assets/icons/renew.png';
   // ignore: constant_identifier_names
   static const String AR = 'assets/icons/ar.png';
+  static const String calendarLeft = 'assets/icons/calendar_left.png';
+  static const String calendarRight = 'assets/icons/calendar_right.png';
 }

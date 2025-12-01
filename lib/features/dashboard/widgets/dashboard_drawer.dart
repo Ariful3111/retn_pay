@@ -7,14 +7,14 @@ import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.d
 import 'package:renter_pay/features/dashboard/widgets/drawer_item.dart';
 
 class DashboardDrawer extends StatelessWidget {
-  const DashboardDrawer({super.key});
-
+  final Alignment ?alignment;
+  const DashboardDrawer({super.key, this.alignment});
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     DashboardController dashboardController = Get.find();
     return Align(
-      alignment: Alignment(-0.8, -0.7),
+      alignment:alignment?? Alignment(-0.8, -0.7),
       child: Container(
         padding: EdgeInsets.only(
           top: 24.h,
@@ -36,34 +36,37 @@ class DashboardDrawer extends StatelessWidget {
           borderRadius: BorderRadius.circular(12.r),
         ),
 
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Image.asset(
-                  IconsPath.drawerLogo,
-                  height: 19.11.h,
-                  width: 115.52.w,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Image.asset(
-                    IconsPath.drawerClose,
-                    height: 24.h,
-                    width: 24.w,
-                    color: isDark?AppColors.darkAppBar:null,
+        child: Material(
+          color: Colors.transparent,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.asset(
+                    IconsPath.drawerLogo,
+                    height: 19.11.h,
+                    width: 115.52.w,
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 32.w),
-            ...List.generate(dashboardController.drawerItems.length, (index) {
-              return DrawerItem(index: index);
-            }),
-          ],
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Image.asset(
+                      IconsPath.drawerClose,
+                      height: 24.h,
+                      width: 24.w,
+                      color: isDark ? AppColors.darkAppBar : null,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 32.w),
+              ...List.generate(dashboardController.drawerItems.length, (index) {
+                return DrawerItem(index: index);
+              }),
+            ],
+          ),
         ),
       ),
     );

@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/features/dashboard/controllers/inspection_request_controller.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
+
+class InspectionType extends StatelessWidget {
+  const InspectionType({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    InspectionRequestController inspectionRequestController = Get.find();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
+    return Container(
+      padding: EdgeInsets.all(4.r),
+      height: 45.h,
+      width: 275.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(9.63.r),
+        gradient: isDark
+            ? AppColors.darkAppIcon
+            : LinearGradient(
+                colors: [AppColors.whiteColor, AppColors.whiteColor],
+              ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: List.generate(
+          inspectionRequestController.inspectionTypeList.length,
+          (index) {
+            return CustomTextSecondary(
+              text: inspectionRequestController.inspectionTypeList[index],
+              fontSize: 14.sp,    
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
