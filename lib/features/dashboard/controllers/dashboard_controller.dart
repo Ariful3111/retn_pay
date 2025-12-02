@@ -86,7 +86,15 @@ class DashboardController extends GetxController {
   void dialogSelectedIndex(int index) {
     dialogImageIndex.value = index;
   }
-  List drawerPage = [AppRoutes.dashboard,AppRoutes.inspectionRequestView,AppRoutes.keyReleaseView,AppRoutes.activePropertiesView,AppRoutes.paymentManagementView,AppRoutes.repairMaintenanceView,AppRoutes.servicesView,];
+  List drawerPage = [
+    AppRoutes.mainHome,
+    AppRoutes.inspectionRequestView,
+    AppRoutes.keyReleaseView,
+    AppRoutes.activePropertiesView,
+    AppRoutes.paymentManagementView,
+    AppRoutes.repairMaintenanceView,
+    AppRoutes.servicesView,
+  ];
   @override
   void onInit() {
     today = DateTime.now();

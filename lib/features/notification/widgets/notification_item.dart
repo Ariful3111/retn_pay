@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class NotificationItem extends StatelessWidget {
@@ -66,7 +67,7 @@ class NotificationItem extends StatelessWidget {
                     text: notificationTime,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,
-                    color: Color(0xFF6F6F6F),
+                    color: AppColors.tableHead,
                   ),
                 ],
               ),

@@ -24,7 +24,7 @@ class PropertyBanner extends StatelessWidget {
         children: [
           Image.asset(ImagesPath.appLogo,color: AppColors.whiteColor,width: 131.7.w,height: 30.h,),
           SizedBox(height: 12.h,),
-          CustomTextPrimary(text: 'Looking to Rent\na Property?',fontSize: 24.sp,color: Color(0xFFEBF1F2),),
+          CustomTextPrimary(text: 'Looking to Rent\na Property?',fontSize: 24.sp,color: AppColors.approveBG,),
           CustomTextPrimary(text: 'Schedule a visit today or talk\nto our agent for more details.',fontSize: 14.sp,color: Color(0xFFE6E9ED),fontWeight: FontWeight.w400,),
           SizedBox(height: 16.h,),
           GestureDetector(

@@ -75,7 +75,7 @@ class FilterSearch extends StatelessWidget {
                         borderRadius: BorderRadius.circular(24.54.sp),
                         borderSide: BorderSide(color:isDark? AppColors.secondaryTextColor: AppColors.filterBorder,)
                       ),
-                      fillColor: isDark? AppColors.darkBorderPrimary: Color(0xFFF6F6F6),
+                      fillColor: isDark? AppColors.darkBorderPrimary: AppColors.tableHead,
                     ),
                   ),
                 ),

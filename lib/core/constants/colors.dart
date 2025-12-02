@@ -42,6 +42,12 @@ class AppColors {
   static const whiteBorder = Color(0xFFEBEDF0);
   static const filterBorder = Color(0xFFE6E9ED);
   static const whiteLightBorder = Color(0xFFE6E9ED);
+  static const tableHead = Color(0xFFF6F6F6);
+  static const approveText = Color(0xFF2E6C6D);
+  static const approveBG = Color(0xFFEBF1F2);
+  static const completeText = Color(0xFF15833F);
+  static const tableUpload = Color(0xFF1AA851);
+  static const completeBG = Color(0xFFE8F8EE);
   static const darkPrimary = Colors.black;
   static const darkPrimaryText = Colors.white;
   static const darkSecondaryText = Color(0xFFC2C7D0);
@@ -50,6 +56,9 @@ class AppColors {
   static const darkAppBar = Color(0xFFF0E6EC);
   static const darkBorderPrimary = Color(0xFF243757);
   static const darkContainer = Color(0xFF091E42);
+  static const darkTableHead = Color(0xFF292627);
+  static const darkApprovedBG = Color(0xFF153232);
+  static const darkCompleteBG = Color(0xFF042611);
   static const darkAuthBG = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
