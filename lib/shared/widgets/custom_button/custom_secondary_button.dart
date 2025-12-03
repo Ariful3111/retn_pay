@@ -16,6 +16,7 @@ class CustomSecondaryButton extends StatelessWidget {
   final Color? textColor;
   final BorderRadius? borderRadius;
   final FontWeight? fontWeight;
+  final Color ?color;
 
   const CustomSecondaryButton({
     super.key,
@@ -30,7 +31,7 @@ class CustomSecondaryButton extends StatelessWidget {
     this.text,
     this.textColor,
     this.borderRadius,
-    this.fontWeight,
+    this.fontWeight, this.color,
   });
 
   @override
@@ -43,13 +44,17 @@ class CustomSecondaryButton extends StatelessWidget {
         decoration:
             boxDecoration ??
             BoxDecoration(
+              color: color,
               borderRadius: borderRadius ?? BorderRadius.circular(10.r),
-              border: BoxBorder.all(color: AppColors.borderColor, width: borderWidth ?? 1.w),
+              border: BoxBorder.all(
+                color: borderColor ?? AppColors.borderColor,
+                width: borderWidth ?? 1.w,
+              ),
             ),
         child:
             child ??
             Center(
-              child:CustomTextPrimary(
+              child: CustomTextPrimary(
                 text: text ?? "",
                 color: textColor ?? AppColors.borderColor,
                 fontSize: fontSize ?? 16.sp,

@@ -101,7 +101,7 @@ class PriceRange extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 12.27.w, vertical: 6.14.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6.14.sp),
-        color: isDark ? AppColors.darkContainer : Color(0xFFF4F6F8),
+        color: isDark ? AppColors.darkContainer : AppColors.whiteButtonColor,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

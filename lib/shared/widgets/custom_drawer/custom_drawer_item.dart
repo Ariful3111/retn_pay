@@ -5,9 +5,9 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
-class DrawerItem extends StatelessWidget {
+class CustomDrawerItem extends StatelessWidget {
   final int index;
-  const DrawerItem({super.key, required this.index});
+  const CustomDrawerItem({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {

@@ -127,4 +127,5 @@ class IconsPath {
   static const String calendarRight = 'assets/icons/calendar_right.png';
   static const String tableClose = 'assets/icons/table_close.png';
   static const String tableUpload = 'assets/icons/table_upload.png';
+  static const String tableInspection = 'assets/icons/table_inspection.png';
 }

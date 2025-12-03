@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/features/dashboard/widgets/dashboard_drawer.dart';
+import 'package:renter_pay/shared/widgets/custom_drawer/custom_drawer.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_filter.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_table.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_type.dart';
@@ -31,7 +31,7 @@ class InspectionRequestView extends StatelessWidget {
                   showDialog(
                     context: context,
                     builder: (context) {
-                      return DashboardDrawer();
+                      return CustomDrawer();
                     },
                   );
                 },

@@ -39,4 +39,5 @@ class ImagesPath {
   static const String contactUsBg = 'assets/images/contact_us_bg.png';
   static const String propertyBanner = 'assets/images/property_banner.png';
   static const String service = 'assets/images/service.png';
+  static const String landlordSignature = 'assets/images/landlord_signature.png';
 }

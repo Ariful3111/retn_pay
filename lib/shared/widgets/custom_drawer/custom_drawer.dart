@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.dart';
-import 'package:renter_pay/features/dashboard/widgets/drawer_item.dart';
+import 'package:renter_pay/shared/widgets/custom_drawer/custom_drawer_item.dart';
 
-class DashboardDrawer extends StatelessWidget {
+class CustomDrawer extends StatelessWidget {
   final Alignment ?alignment;
-  const DashboardDrawer({super.key, this.alignment});
+  const CustomDrawer({super.key, this.alignment});
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
@@ -63,7 +63,7 @@ class DashboardDrawer extends StatelessWidget {
               ),
               SizedBox(height: 32.w),
               ...List.generate(dashboardController.drawerItems.length, (index) {
-                return DrawerItem(index: index);
+                return CustomDrawerItem(index: index);
               }),
             ],
           ),

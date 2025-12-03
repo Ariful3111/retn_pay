@@ -17,6 +17,7 @@ class AppColors {
     colors: [Color(0xFFE4EDFF), Color(0xFFFFFFFF), Color(0xFFFFF0F9)],
   );
   static const whiteColor = Color(0xFFFFFFFF);
+  static const whiteButtonColor = Color(0xFFF4F6F8);
   static const borderColor = Color(0xFF92045A);
   static const dropShadowColor = Color(0xFF14142B);
   static const textFieldColor = Color(0xFFF5F6F7);

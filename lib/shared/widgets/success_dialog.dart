@@ -55,7 +55,7 @@ class SuccessDialog extends StatelessWidget {
                   height: 32.h,
                   width: 32.h,
                   decoration: BoxDecoration(
-                    color: Color(0xFFF4F6F8),
+                    color: AppColors.whiteButtonColor,
                     borderRadius: BorderRadius.circular(25.sp),
                   ),
                   child: Center(

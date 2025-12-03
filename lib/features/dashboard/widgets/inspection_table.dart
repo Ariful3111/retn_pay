@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/inspection_request_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_table.dart';
+import 'package:renter_pay/shared/widgets/custom_table/custom_table.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class InspectionTable extends StatelessWidget {
@@ -13,6 +13,7 @@ class InspectionTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     InspectionRequestController inspectionRequestController = Get.find();
+    inspectionRequestController.initRows(5);
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return MediaQuery(
       data: MediaQueryData(
@@ -30,8 +31,8 @@ class InspectionTable extends StatelessWidget {
               return inspectionRequestController.tableColumn[index];
             },
           ),
-          row: [
-            [
+          row: List.generate(5, (rowIndex) {
+            return [
               CustomTextPrimary(
                 text: '123 Elm Street',
                 fontSize: 12.sp,
@@ -42,9 +43,7 @@ class InspectionTable extends StatelessWidget {
                 bgColor: isDark
                     ? AppColors.darkApprovedBG
                     : AppColors.approveBG,
-                textColor: isDark
-                    ? AppColors.approveBG
-                    : AppColors.approveText,
+                textColor: isDark ? AppColors.approveBG : AppColors.approveText,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -56,66 +55,24 @@ class InspectionTable extends StatelessWidget {
                     color: AppColors.tableUpload,
                     onTap: () {},
                   ),
+                  SizedBox(width: 8.w),
+                  action(
+                    icon: IconsPath.tableInspection,
+                    color: AppColors.borderColor,
+                    onTap: () {
+                      inspectionRequestController.toggleExpanded(rowIndex);
+                    },
+                  ),
                 ],
               ),
-            ],
-            [
-              CustomTextPrimary(
-                text: '987 Birch Boulevard',
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w400,
-              ),
-              status(
+            ];
+          }), status: status(
                 status: 'Approved',
                 bgColor: isDark
                     ? AppColors.darkApprovedBG
                     : AppColors.approveBG,
-                textColor: isDark
-                    ? AppColors.approveBG
-                    : AppColors.approveText,
+                textColor: isDark ? AppColors.approveBG : AppColors.approveText,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  action(icon: IconsPath.tableClose, onTap: () {}),
-                  SizedBox(width: 8.w),
-                  action(
-                    icon: IconsPath.tableUpload,
-                    color: AppColors.tableUpload,
-                    onTap: () {},
-                  ),
-                ],
-              ),
-            ],
-            [
-              CustomTextPrimary(
-                text: '123 Elm Street',
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w400,
-              ),
-              status(
-                status: 'Complete',
-                bgColor: isDark
-                    ? AppColors.darkCompleteBG
-                    : AppColors.completeBG,
-                textColor: isDark
-                    ? AppColors.completeBG
-                    : AppColors.completeText,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  action(icon: IconsPath.tableClose, onTap: () {}),
-                  SizedBox(width: 8.w),
-                  action(
-                    icon: IconsPath.tableUpload,
-                    color: AppColors.tableUpload,
-                    onTap: () {},
-                  ),
-                ],
-              ),
-            ],
-          ],
         ),
       ),
     );
@@ -125,6 +82,7 @@ class InspectionTable extends StatelessWidget {
     required String icon,
     Color? color,
     required VoidCallback onTap,
+    Color? iconColor,
   }) {
     return GestureDetector(
       onTap: onTap,
@@ -137,7 +95,7 @@ class InspectionTable extends StatelessWidget {
           borderRadius: BorderRadius.circular(6.r),
         ),
         child: Center(
-          child: Image.asset(icon, height: 24.h, width: 24.w),
+          child: Image.asset(icon, height: 24.h, width: 24.w, color: iconColor),
         ),
       ),
     );

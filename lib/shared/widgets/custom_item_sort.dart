@@ -40,7 +40,7 @@ class CustomItemSort extends StatelessWidget {
             width: 111.18.w,
             decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(5.93),
-            color:isDark?Color(0xFF0D0D0D): Color(0xFFF4F6F8),
+            color:isDark?Color(0xFF0D0D0D): AppColors.whiteButtonColor,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
