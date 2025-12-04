@@ -9,15 +9,20 @@ class NoticeButtonModel extends StatelessWidget {
   final VoidCallback onTap;
   final String icon;
   final String text;
-  final double ?blur;
-  final Offset ?offset;
+  final double? blur;
+  final Offset? offset;
+  final Color? shadowColor;
+  final Color ?borderColorDark;
   const NoticeButtonModel({
     super.key,
     required this.width,
     required this.height,
     required this.onTap,
     required this.icon,
-    required this.text, this.blur, this.offset,
+    required this.text,
+    this.blur,
+    this.offset,
+    this.shadowColor, this.borderColorDark,
   });
 
   @override
@@ -30,13 +35,20 @@ class NoticeButtonModel extends StatelessWidget {
         width: width,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6.r),
-          color:isDark? AppColors.darkSecondary:AppColors.whiteColor,
-          border: Border.all(color:isDark? AppColors.darkBorderPrimary:AppColors.secondaryBorder, width: 1.0),
+          color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+          border: Border.all(
+            color: isDark
+                ?borderColorDark?? AppColors.darkBorderPrimary
+                : AppColors.secondaryBorder,
+            width: 1.0,
+          ),
           boxShadow: [
             BoxShadow(
-              color: AppColors.buttonShadowColor.withValues(alpha: 0.10),
-              blurRadius:blur?? 2,
-              offset:offset?? Offset(0, 1),
+              color:
+                  shadowColor ??
+                  AppColors.buttonShadowColor.withValues(alpha: 0.10),
+              blurRadius: blur ?? 2,
+              offset: offset ?? Offset(0, 1),
             ),
           ],
         ),
@@ -48,7 +60,7 @@ class NoticeButtonModel extends StatelessWidget {
             CustomTextSecondary(
               text: text,
               fontSize: 14.sp,
-              color:isDark? AppColors.darkAppBar:Color(0xFF1D1E25),
+              color: isDark ? AppColors.darkAppBar : Color(0xFF1D1E25),
             ),
           ],
         ),

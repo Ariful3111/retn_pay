@@ -22,7 +22,7 @@ class DashboardRentNotice extends StatelessWidget {
       width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
-        color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+        color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
       ),
       child: Column(
         children: [

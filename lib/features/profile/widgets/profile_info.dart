@@ -29,7 +29,7 @@ class ProfileInfo extends StatelessWidget {
                 width: 65.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(45.sp),
-                  border: Border.all(width: 2.sp,color: Color(0xFFF0E6EC)),
+                  border: Border.all(width: 2.sp,color: AppColors.darkAppBar),
                   image: DecorationImage(image: AssetImage(ImagesPath.profile))
                 ),
                 

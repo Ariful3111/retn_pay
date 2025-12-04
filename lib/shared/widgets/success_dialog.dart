@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
-import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
@@ -13,19 +12,15 @@ class SuccessDialog extends StatelessWidget {
   final Widget? widget;
   final String? title1;
   final String? subtitle;
-  final Widget? button;
-  final String? buttonText;
-  final VoidCallback? onTap;
+  final Widget ?button;
   const SuccessDialog({
     super.key,
     this.widget,
     this.subtitle,
     this.button,
-    this.buttonText,
     this.height,
     this.width,
     this.title1,
-    this.onTap,
   });
 
   @override
@@ -55,7 +50,7 @@ class SuccessDialog extends StatelessWidget {
                   height: 32.h,
                   width: 32.h,
                   decoration: BoxDecoration(
-                    color: AppColors.whiteButtonColor,
+                    color:isDark? AppColors.darkSecondary:AppColors.whiteButtonColor,
                     borderRadius: BorderRadius.circular(25.sp),
                   ),
                   child: Center(
@@ -63,6 +58,7 @@ class SuccessDialog extends StatelessWidget {
                       IconsPath.close,
                       height: 8.h,
                       width: 8.w,
+                      color: isDark?AppColors.whiteColor:null,
                     ),
                   ),
                 ),
@@ -118,14 +114,8 @@ class SuccessDialog extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 32.h),
-                      button ??
-                          CustomPrimaryButton(
-                            height: 40.h,
-                            width: 172.w,
-                            borderRadius: BorderRadius.circular(6.sp),
-                            onPressed: onTap!,
-                            text: buttonText ?? "Back To Dashboard",
-                          ),
+                      ?button
+                          
                     ],
                   ),
                 ),

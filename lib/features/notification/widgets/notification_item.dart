@@ -27,7 +27,7 @@ class NotificationItem extends StatelessWidget {
           height: 105.h,
           decoration: BoxDecoration(
             color: isSelect
-                ? Color(0xFFF0E6EC)
+                ? AppColors.darkAppBar
                 : null,
             borderRadius: BorderRadius.circular(
               isSelect ? 8.sp : 0.sp,
@@ -43,7 +43,7 @@ class NotificationItem extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: isSelect
                       ? Color(0xFFD1B1C5)
-                      : Color(0xFFF0E6EC),
+                      : AppColors.darkAppBar,
                   borderRadius: BorderRadius.circular(99.sp),
                 ),
                 child: Center(

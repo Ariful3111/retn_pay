@@ -44,7 +44,7 @@ class CustomPagination extends StatelessWidget {
                 height: 30.61.h,
                 width: 30.61.w,
                 decoration: BoxDecoration(
-                  color: Color(0xFFF5F6F7),
+                  color: AppColors.textFieldColor,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Center(
@@ -72,7 +72,7 @@ class CustomPagination extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: isSelect
                       ?isDark? AppColors.primaryColorDark:AppColors.primaryTextColor
-                      :isDark? AppColors.darkContainer:Color(0xFFF5F6F7),
+                      :isDark? AppColors.darkContainer:AppColors.textFieldColor,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Center(

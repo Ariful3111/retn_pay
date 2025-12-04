@@ -100,8 +100,6 @@ class CustomTextField extends StatelessWidget {
             labelTextWidget ??
             CustomTextSecondary(
               text: labelText ?? "",
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w400,
             ),
         hint:
             hintTextWidget ??

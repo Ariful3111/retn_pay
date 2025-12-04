@@ -37,9 +37,15 @@ class VerificationButton extends StatelessWidget {
                       context: context,
                       builder: (context) {
                         return SuccessDialog(
-                          onTap: () {
+                          button: CustomPrimaryButton(
+                            height: 40.h,
+                            width: 172.w,
+                            borderRadius: BorderRadius.circular(6.sp),
+                            onPressed: () {
                             Get.toNamed(AppRoutes.mainHome);
                           },
+                            text:"Back To Dashboard",
+                          ),
                         );
                       },
                     );
@@ -48,9 +54,15 @@ class VerificationButton extends StatelessWidget {
                       context: context,
                       builder: (context) {
                         return SuccessDialog(
-                          onTap: () {
+                          button: CustomPrimaryButton(
+                            height: 40.h,
+                            width: 172.w,
+                            borderRadius: BorderRadius.circular(6.sp),
+                            onPressed: () {
                             Get.toNamed(AppRoutes.mainHome);
                           },
+                            text:"Back To Dashboard",
+                          ),
                         );
                       },
                     );

@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/widgets/release_form.dart';
+import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_drawer/custom_drawer.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class KeyReleaseView extends StatelessWidget {
   const KeyReleaseView({super.key});
@@ -37,11 +37,7 @@ class KeyReleaseView extends StatelessWidget {
                 },
               ),
               SizedBox(width: 8.w),
-              CustomTextSecondary(
-                text: 'Key Release',
-                fontSize: 20.sp,
-                color: AppColors.primaryTextColor,
-              ),
+              CustomAppbar(title: 'Key Release'),
             ],
           ),
           SizedBox(height: 32.h),

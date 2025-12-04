@@ -10,6 +10,7 @@ class KeyReleaseController extends GetxController {
     penStrokeWidth: 3,
     penColor: AppColors.darkPrimary,
   );
+  RxString typedText = ''.obs;
   @override
   void dispose() {
     signatureController.dispose();
