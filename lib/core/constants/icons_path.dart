@@ -129,4 +129,5 @@ class IconsPath {
   static const String tableUpload = 'assets/icons/table_upload.png';
   static const String tableInspection = 'assets/icons/table_inspection.png';
   static const String star = 'assets/icons/star.png';
+  static const String export = 'assets/icons/export.png';
 }

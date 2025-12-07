@@ -6,16 +6,20 @@ import 'package:renter_pay/features/dashboard/widgets/upcoming_payment_info.dart
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class DashboardUpcomingPayment extends StatelessWidget {
-  const DashboardUpcomingPayment({super.key});
+  final Widget? widget;
+  const DashboardUpcomingPayment({super.key, this.widget});
 
   @override
   Widget build(BuildContext context) {
     List imageList = [ImagesPath.house, ImagesPath.studio, ImagesPath.office];
-    
+
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return MediaQuery(
       data: MediaQueryData(
-        size: Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height),
+        size: Size(
+          MediaQuery.of(context).size.width,
+          MediaQuery.of(context).size.height,
+        ),
       ),
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 29.w, vertical: 24.h),
@@ -49,7 +53,7 @@ class DashboardUpcomingPayment extends StatelessWidget {
                 );
               }),
             ),
-            UpcomingPaymentInfo(),
+            UpcomingPaymentInfo(widget: widget,),
           ],
         ),
       ),

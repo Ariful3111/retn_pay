@@ -5,7 +5,6 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/favorite/controller/favorite_controller.dart';
-import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:renter_pay/features/rent/controllers/rent_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_pagination.dart';
 import 'package:renter_pay/features/rent/widgets/property_image_view.dart';
@@ -18,7 +17,6 @@ class RentView extends StatelessWidget {
   const RentView({super.key});
   @override
   Widget build(BuildContext context) {
-  final  GlobalScrollController globalScrollController = Get.find();
     FavoriteController favoriteController = Get.find();
     RentController rentController = Get.find();
      bool isDark = Theme.of(context).brightness == Brightness.dark;
@@ -29,7 +27,7 @@ class RentView extends StatelessWidget {
       ]):AppColors.userBackground.withOpacity(0.5),
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: SingleChildScrollView(
-        controller: globalScrollController.scrollController,
+        controller: rentController.scrollController,
         child: Column(
           children: [
             RentAppBar(),

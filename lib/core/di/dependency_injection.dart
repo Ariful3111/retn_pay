@@ -7,6 +7,6 @@ class DependencyInjection {
   static Future<void> init ()async {
     await GetStorage.init();
     Get.put<ThemeService>(ThemeService(),permanent: true);
-      Get.put(GlobalScrollController(),permanent: true);
+    Get.put(GlobalScrollController(),permanent: true);
   }
 }

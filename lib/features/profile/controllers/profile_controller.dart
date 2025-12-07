@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 
 class ProfileController extends GetxController{
   RxBool isWebAsset = false.obs;
+ final scrollController = ScrollController();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -16,5 +18,16 @@ class ProfileController extends GetxController{
     ];
   void logOut(){
     Get.offAllNamed(AppRoutes.userRole);
+  }
+
+  @override
+  void onInit() {
+    Get.find<GlobalScrollController>().listen(scrollController);
+    super.onInit();
+  }
+  @override
+  void onClose() {
+    scrollController.dispose();
+    super.onClose();
   }
 }

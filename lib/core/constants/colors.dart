@@ -49,6 +49,9 @@ class AppColors {
   static const completeText = Color(0xFF15833F);
   static const tableUpload = Color(0xFF1AA851);
   static const completeBG = Color(0xFFE8F8EE);
+  static const pendingBG = Color(0xFFFFF7E6);
+  static const pendingText = Color(0xFFE89E00);
+
   static const darkPrimary = Colors.black;
   static const darkPrimaryText = Colors.white;
   static const darkSecondaryText = Color(0xFFC2C7D0);
@@ -60,6 +63,7 @@ class AppColors {
   static const darkTableHead = Color(0xFF292627);
   static const darkApprovedBG = Color(0xFF153232);
   static const darkCompleteBG = Color(0xFF042611);
+  static const darkPendingBG = Color(0xFF382806);
   static const darkAuthBG = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,

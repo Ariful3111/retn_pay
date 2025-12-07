@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/chat/controllers/chat_controller.dart';
 import 'package:renter_pay/features/chat/widgets/user_message.dart';
-import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class ChatList extends StatelessWidget {
@@ -12,10 +12,10 @@ class ChatList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GlobalScrollController globalScrollController = Get.find();
+    ChatController chatController = Get.find();
         bool isDark = Theme.of(context).brightness == Brightness.dark;
     return ListView.builder(
-      controller: globalScrollController.scrollController,
+      controller: chatController.scrollController,
       itemCount: 20,
       itemBuilder: (context, index) {
         return GestureDetector(

@@ -13,7 +13,6 @@ class InspectionTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     InspectionRequestController inspectionRequestController = Get.find();
-    inspectionRequestController.initRows(5);
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return MediaQuery(
       data: MediaQueryData(
@@ -66,7 +65,8 @@ class InspectionTable extends StatelessWidget {
                 ],
               ),
             ];
-          }), status: status(
+          }),
+          status: status(
                 status: 'Approved',
                 bgColor: isDark
                     ? AppColors.darkApprovedBG

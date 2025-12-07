@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/widgets/dashboard_range_calendar.dart';
 import 'package:renter_pay/features/dashboard/widgets/select_day.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 
-class DashboardFilter extends StatelessWidget {
-  const DashboardFilter({super.key});
+class CustomCalenderFilter extends StatelessWidget {
+  final Widget widget;
+  const CustomCalenderFilter({super.key, required this.widget});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class DashboardFilter extends StatelessWidget {
                 SizedBox(
                   height: 270.h,
                   width: 244.w,
-                  child: DashboardRangeCalendar(),
+                  child: widget,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -54,7 +54,7 @@ class DashboardFilter extends StatelessWidget {
                       fontSize: 9.44.sp,
                       onPressed: () {},
                     ),
-                    SizedBox(width: 11.8,),
+                    SizedBox(width: 11.8),
                     CustomPrimaryButton(
                       height: 23.44.h,
                       width: 44.86.w,

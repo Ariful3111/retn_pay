@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
@@ -11,7 +12,7 @@ class MainHomeController extends GetxController {
   
   RxInt selectIndex = 0.obs;
 
-  List pageList = [HomeView(),RentView(),DashboardView(),ChatView(),ProfileView()];
+  List<Widget> pageList = [HomeView(),RentView(),DashboardView(),ChatView(),ProfileView()];
   
   void changeIndex(int index){
     selectIndex.value = index;

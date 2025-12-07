@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
+import 'package:renter_pay/features/home/controllers/home_controller.dart';
 import 'package:renter_pay/features/home/widgets/apartment_list.dart';
 import 'package:renter_pay/features/home/widgets/category.dart';
 import 'package:renter_pay/features/home/widgets/category_list.dart';
@@ -22,7 +22,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-   final GlobalScrollController globalScrollController = Get.find();
+   final HomeController homeController = Get.find();
     return CustomContainer(
         padding: EdgeInsets.symmetric(horizontal: 20.sp),
         gradient: isDark
@@ -31,7 +31,7 @@ class HomeView extends StatelessWidget {
               )
             : AppColors.userBackground.withOpacity(0.5),
         child: ListView(
-          controller: globalScrollController.scrollController,
+          controller: homeController.scrollController,
           children: [
             HomeAppbar(),
             SizedBox(height: 16.h),

@@ -24,7 +24,7 @@ class InspectionAgreement extends StatelessWidget {
           },
         );
         }),
-        CustomTextSecondary(text: 'I agree to the Terms & Privacy Policy',fontSize: 12.sp,fontWeight: FontWeight.w400,color: AppColors.tableHead,),
+        CustomTextSecondary(text: 'I agree to the Terms & Privacy Policy',fontSize: 12.sp,fontWeight: FontWeight.w400,color: Color(0xFF6F6F6F),),
       ],
     );
   }

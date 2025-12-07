@@ -3,8 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_range_calendar.dart';
 import 'package:renter_pay/shared/widgets/custom_drawer/custom_drawer.dart';
-import 'package:renter_pay/features/dashboard/widgets/dashboard_filter.dart';
+import 'package:renter_pay/shared/widgets/custom_calender/custom_calender_filter.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_favorite_appbar.dart';
@@ -46,7 +47,7 @@ class DashboardAppbar extends StatelessWidget {
               showDialog(
                 context: context,
                 builder: (context) {
-                  return DashboardFilter();
+                  return CustomCalenderFilter(widget: DashboardRangeCalendar());
                 },
               );
             },

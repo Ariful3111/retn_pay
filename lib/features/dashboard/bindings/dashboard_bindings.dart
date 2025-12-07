@@ -4,6 +4,6 @@ import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.d
 class DashboardBindings implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => DashboardController());
+    Get.lazyPut(() => DashboardController(),fenix: true);
   }
 }

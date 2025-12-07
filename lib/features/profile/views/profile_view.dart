@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
-import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_info.dart';
 import 'package:renter_pay/features/profile/widgets/profile_items_list.dart';
@@ -18,7 +17,6 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     ProfileController profileController = Get.find();
     UserRoleController userRoleController = Get.find();
-    GlobalScrollController globalScrollController = Get.find();
 
     bool isDark = Theme.of(context).brightness == Brightness.dark;
 
@@ -30,7 +28,7 @@ class ProfileView extends StatelessWidget {
             )
           : AppColors.userBackground.withOpacity(0.5),
       child: CustomScrollView(
-        controller: globalScrollController.scrollController,
+        controller: profileController.scrollController,
         slivers: [
           SliverAppBar(
             backgroundColor: Colors.transparent,

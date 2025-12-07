@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
+import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class RentController extends GetxController{
+  final scrollController = ScrollController();
   Rx<SfRangeValues> range = SfRangeValues(300, 670000).obs;
   double minRange = 0;
   double maxRange = 700000;
@@ -56,6 +58,18 @@ class RentController extends GetxController{
     }
 
     return [1, '...', page - 1, page, page + 1, '...', totalPage];
+  }
+
+  @override
+  void onInit() {
+    Get.find<GlobalScrollController>().listen(scrollController);
+    super.onInit();
+  }
+
+  @override
+  void onClose() {
+    scrollController.dispose();
+    super.onClose();
   }
   
 }

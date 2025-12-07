@@ -3,9 +3,11 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class DashboardController extends GetxController {
+  final  scrollController =ScrollController();
   RxBool isFavorite = false.obs;
   RxBool isAutoPay = false.obs;
   RxInt isDay = 0.obs;
@@ -27,7 +29,7 @@ class DashboardController extends GetxController {
     {'icon': IconsPath.drawerKey, 'title': 'Key Release'},
     {'icon': IconsPath.drawerActive, 'title': 'Active Properties'},
     {'icon': IconsPath.drawerPayment, 'title': 'Payment Management'},
-    {'icon': IconsPath.drawerRepair, 'title': 'Repair \$ Maintenance'},
+    {'icon': IconsPath.drawerRepair, 'title': 'Repair & Maintenance'},
     {'icon': IconsPath.drawerService, 'title': 'Service'},
   ];
   List dashboardItems = [
@@ -97,9 +99,16 @@ class DashboardController extends GetxController {
   ];
   @override
   void onInit() {
+    
+    Get.find<GlobalScrollController>().listen(scrollController);
     today = DateTime.now();
     firstDay = DateTime(today.year - 1, today.month, today.day);
     lastDay = DateTime(today.year + 1, today.month, today.day);
     super.onInit();
+  }
+  @override
+  void onClose() {
+    scrollController.dispose();
+    super.onClose();
   }
 }

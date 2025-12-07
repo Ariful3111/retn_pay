@@ -29,6 +29,7 @@ class DashboardView extends StatelessWidget {
             )
           : AppColors.userBackground.withOpacity(0.5),
       child: CustomScrollView(
+        controller: dashboardController.scrollController,
         slivers: [
           DashboardAppbar(),
           SliverPadding(

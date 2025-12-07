@@ -6,7 +6,11 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart
 
 class CustomFilterAppbar extends StatelessWidget {
   final VoidCallback onTap;
-  const CustomFilterAppbar({super.key, required this.onTap});
+  final String ?title;
+  final String ?icon;
+  final double ? height;
+  final double ? width;
+  const CustomFilterAppbar({super.key, required this.onTap, this.title, this.icon, this.height, this.width});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +18,9 @@ class CustomFilterAppbar extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 32.h, 
-        width: 70.w,
+        padding: EdgeInsets.symmetric(vertical: 7.06.h, horizontal: 8.w),
+        height:height,
+        width: width,
         decoration: BoxDecoration(
           gradient: isDark
               ? AppColors.darkAppIcon
@@ -42,7 +47,7 @@ class CustomFilterAppbar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomTextSecondary(
-              text: 'Filter',
+              text:title?? 'Filter',
               fontSize: 12.sp,
               color: isDark
                   ? AppColors.darkPrimary
@@ -50,7 +55,7 @@ class CustomFilterAppbar extends StatelessWidget {
             ),
             SizedBox(width: 8.h),
             Image.asset(
-              IconsPath.filter,
+             icon?? IconsPath.filter,
               height: 14.h,
               width: 14.w,
               color: isDark ? AppColors.darkPrimary : null,

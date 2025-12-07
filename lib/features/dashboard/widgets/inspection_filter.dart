@@ -18,6 +18,8 @@ class InspectionFilter extends StatelessWidget {
       child: MenuAnchor(
         builder: (context, controller, child) {
           return CustomFilterAppbar(
+            height: 32.h,
+            width: 71.w,
             onTap: () {
               if (controller.isOpen) {
                 controller.close();
