@@ -12,46 +12,50 @@ class InspectionType extends StatelessWidget {
   Widget build(BuildContext context) {
     InspectionRequestController inspectionRequestController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return Container( 
-      padding: EdgeInsets.all(4.r),
-      height: 45.h,
-      width: 275.w,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(9.63.r),
-        gradient: isDark
-            ? AppColors.darkAppIcon
-            : LinearGradient(
-                colors: [AppColors.whiteColor, AppColors.whiteColor],
-              ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: List.generate(
-          inspectionRequestController.inspectionTypeList.length,
-          (index) {
-            return Obx(() {
-               final isSelected =
-                inspectionRequestController.isInspectionType.value == index;
-              return GestureDetector(
-                onTap: () {
-                  inspectionRequestController.isInspectionType.value = index;
-                },
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 12.w,vertical: 8.w),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6.42.r),
-                    color: isSelected ? AppColors.primaryColorDark :null,
-                  ),
-                  child: CustomTextSecondary(
-                    text:
-                        inspectionRequestController.inspectionTypeList[index],
-                    fontSize: 14.sp,
-                    color: isSelected?AppColors.whiteColor:isDark? AppColors.darkPrimary:null,
-                  ),
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container( 
+        padding: EdgeInsets.all(4.r),
+        height: 45.h,
+        width: 275.w,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(9.63.r),
+          gradient: isDark
+              ? AppColors.darkAppIcon
+              : LinearGradient(
+                  colors: [AppColors.whiteColor, AppColors.whiteColor],
                 ),
-              );
-            });
-          },
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: List.generate(
+            inspectionRequestController.inspectionTypeList.length,
+            (index) {
+              return Obx(() {
+                 final isSelected =
+                  inspectionRequestController.isInspectionType.value == index;
+                return GestureDetector(
+                  onTap: () {
+                    inspectionRequestController.isInspectionType.value = index;
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 12.w,vertical: 8.w),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6.42.r),
+                      color: isSelected ? AppColors.primaryColorDark :null,
+                    ),
+                    child: CustomTextSecondary(
+                      text:
+                          inspectionRequestController.inspectionTypeList[index],
+                      fontSize: 14.sp,
+                      color: isSelected?AppColors.whiteColor:isDark? AppColors.darkPrimary:null,
+                    ),
+                  ),
+                );
+              });
+            },
+          ),
         ),
       ),
     );

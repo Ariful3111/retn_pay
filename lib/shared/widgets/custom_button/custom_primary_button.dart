@@ -4,7 +4,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class CustomPrimaryButton extends StatelessWidget {
-  final double height;
+  final double? height;
   final double? width;
   final String? text;
   final double? fontSize;
@@ -18,7 +18,7 @@ class CustomPrimaryButton extends StatelessWidget {
   final EdgeInsets? padding;
   const CustomPrimaryButton({
     super.key,
-    required this.height,
+    this.height,
     this.width,
     this.text,
     this.fontSize,

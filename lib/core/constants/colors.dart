@@ -51,6 +51,8 @@ class AppColors {
   static const completeBG = Color(0xFFE8F8EE);
   static const pendingBG = Color(0xFFFFF7E6);
   static const pendingText = Color(0xFFE89E00);
+  static const rejectBG = Color(0xFFFCE6E6);
+  static const rejectText = Color(0xFFDF0101);
 
   static const darkPrimary = Colors.black;
   static const darkPrimaryText = Colors.white;
@@ -64,6 +66,7 @@ class AppColors {
   static const darkApprovedBG = Color(0xFF153232);
   static const darkCompleteBG = Color(0xFF042611);
   static const darkPendingBG = Color(0xFF382806);
+  static const darkRejectBG = Color(0xFF330303);
   static const darkAuthBG = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,

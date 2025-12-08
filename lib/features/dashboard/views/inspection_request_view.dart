@@ -21,8 +21,7 @@ class InspectionRequestView extends StatelessWidget {
       gradient: isDark
           ? LinearGradient(colors: [AppColors.darkPrimary, AppColors.darkPrimary])
           : AppColors.userBackground.withOpacity(0.5),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
         children: [
           Row(
             children: [
