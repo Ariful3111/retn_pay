@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/payment_management_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_upcoming_payment.dart';
+import 'package:renter_pay/features/dashboard/widgets/drawer_items_appbar.dart';
 import 'package:renter_pay/features/dashboard/widgets/payment_history.dart';
 import 'package:renter_pay/features/dashboard/widgets/payment_tab.dart';
-import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
-import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/custom_drawer/custom_drawer.dart';
 
 class PaymentManagementView extends StatelessWidget {
   const PaymentManagementView({super.key});
@@ -30,23 +27,7 @@ class PaymentManagementView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              CustomAppbarLeading(
-                icon: IconsPath.profileDrawer,
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return CustomDrawer();
-                    },
-                  );
-                },
-              ),
-              SizedBox(width: 8.w),
-              CustomAppbar(title: 'Payment Management'),
-            ],
-          ),
+          DrawerItemsAppbar(title: 'Payment Management'),
           SizedBox(height: 24.h),
           PaymentTab(),
           SizedBox(height: 20.h),

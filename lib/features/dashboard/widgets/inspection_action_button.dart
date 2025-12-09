@@ -6,59 +6,18 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/inspection_request_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
-import 'package:renter_pay/shared/widgets/custom_table/table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
-class ExpandedTableContent extends StatelessWidget {
+class InspectionActionButton extends StatelessWidget {
   final int rowIndex;
-  const ExpandedTableContent({super.key, required this.rowIndex});
+  const InspectionActionButton({super.key, required this.rowIndex});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     final controller = Get.find<InspectionRequestController>();
     final item = controller.allRows[rowIndex];
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: 8.h),
-        CustomTextPrimary(
-          text: "Monthly Rent: ${item.rent}",
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w400,
-        ),
-        SizedBox(height: 8.h),
-        CustomTextPrimary(
-          text: "Scheduled: ${item.scheduleDate}",
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w400,
-        ),
-        SizedBox(height: 8.h),
-        CustomTextPrimary(
-          text: "Inspection Type: ${item.type}",
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w400,
-        ),
-        SizedBox(height: 8.h),
-        Row(
-          children: [
-            CustomTextPrimary(
-              text: "Status",
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
-            ),
-            SizedBox(width: 8.w),
-            TableStatus(status: item.status),
-          ],
-        ),
-        SizedBox(height: 8.h),
-        CustomTextPrimary(
-          text: "Action",
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w500,
-        ),
-        SizedBox(height: 8.h),
-        Row(
+    return Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             CustomSecondaryButton(
@@ -100,11 +59,11 @@ class ExpandedTableContent extends StatelessWidget {
               ),
               onPressed: () {},
             ),
-            if(item.status == 'Complete') CustomSecondaryButton(
+            if(item.status == 'Complete') CustomPrimaryButton(
               borderRadius: BorderRadius.circular(6.r),
               height: 36.h,
               width: 80.w,
-              color:  AppColors.tableUpload,
+              backgroundColor:LinearGradient(colors: [AppColors.tableUpload,AppColors.tableUpload])  ,
               text: 'Apply',
               fontSize: 14.sp,
               fontWeight: FontWeight.w400,
@@ -113,22 +72,7 @@ class ExpandedTableContent extends StatelessWidget {
                   : AppColors.darkContainer,
               onPressed: () {},
             ),
-
           ],
-        ),
-        SizedBox(height: 12.h),
-        Container(
-          height: 1,
-          decoration: BoxDecoration(
-            border: BoxBorder.all(
-              width: 1.r,
-              color: isDark
-                  ? AppColors.darkBorderPrimary
-                  : AppColors.primaryBorder,
-            ),
-          ),
-        ),
-      ],
-    );
+        );
   }
 }

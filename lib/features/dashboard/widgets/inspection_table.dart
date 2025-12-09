@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/inspection_request_controller.dart';
+import 'package:renter_pay/features/dashboard/widgets/inspection_table_content.dart';
+import 'package:renter_pay/features/dashboard/widgets/inspection_table_data.dart';
 import 'package:renter_pay/shared/widgets/custom_table/custom_table.dart';
+import 'package:renter_pay/shared/widgets/custom_table/custom_table_expanded.dart';
 import 'package:renter_pay/shared/widgets/custom_table/table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
@@ -28,59 +30,14 @@ class InspectionTable extends StatelessWidget {
           final list = inspectionRequestController.filterRow;
           final rowWidgets = List<List<Widget>>.generate(list.length, (index) {
             final item = list[index].value;
-            final value = list[index].key;
-            final isValue = inspectionRequestController.allRows[value];
             return [
               CustomTextPrimary(
                 text: item.address,
-                fontSize: 12.sp,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
               ),
               TableStatus(status: item.status),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (isValue.status == 'Approved') ...[
-                    action(
-                      icon: IconsPath.tableClose,
-                      onTap: () {
-                       
-                      }, context: context,
-                    ),
-                  ],
-
-                  if (isValue.status == 'Complete') ...[
-                    action(
-                      icon: IconsPath.tableClose,
-                      onTap: () {
-                        
-                      }, context: context,
-                    ),
-                    action(
-                      icon: IconsPath.tableUpload,
-                      color: AppColors.tableUpload,
-                      onTap: () {}, context: context,
-                    ),
-                  ],
-                  if(isValue.status == 'Pending')...[
-                    action(
-                      icon: IconsPath.tableClose,
-                      onTap: () {
-                        inspectionRequestController.updateStatus(
-                          list[index].key,'Cancel'
-                        );
-                      }, context: context,
-                    ),
-                  ],
-                  if (isValue.type == "VR"&& isValue.status !='Complete'&& isValue.status !='Rejected'&&isValue.status !='Cancel'&&isValue.status!='Pending') ...[ 
-                    action(
-                      icon: IconsPath.tableInspection,
-                      color: AppColors.borderColor,
-                      onTap: () {}, context: context,
-                    ),
-                  ],
-                ],
-              ),
+              InspectionTableData(index: index),
             ];
           });
           final listIndex = list.map((e) => e.key).toList();
@@ -88,34 +45,30 @@ class InspectionTable extends StatelessWidget {
             column: inspectionRequestController.tableColumn,
             row: rowWidgets,
             listIndex: listIndex,
+            expandedTableBuilder: (index) {
+              final item = list[index].value;
+              final rowIndex = listIndex[index];
+              return CustomTableExpanded(
+                rowIndex: rowIndex,
+                title: 'Property Address: ${item.address}',
+                rowList: inspectionRequestController.allRows,
+                isOpen: inspectionRequestController.expanded[rowIndex],
+                onExpandedClose: () {
+                  inspectionRequestController.toggleExpanded(rowIndex);
+                },
+                expandedContent: InspectionTableContent(rowIndex: index),
+              );
+            },
+            onRowTap: (index) {
+              final rowIndex = listIndex[index];
+              inspectionRequestController.toggleExpanded(rowIndex);
+            },
+            isExpandedTable: (index) {
+              final rowIndex = listIndex[index];
+              return inspectionRequestController.expanded[rowIndex];
+            },
           );
         }),
-      ),
-    );
-  }
-
-  Widget action({
-    required String icon,
-    Color? color,
-    required VoidCallback onTap,
-    Color? iconColor,
-    required BuildContext context,
-  }) {
-    bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.all(5.r),
-        height: 36.h,
-        width: 36.w,
-        decoration: BoxDecoration(
-          color:isDark?color??AppColors.darkContainer :color ?? AppColors.whiteColor,
-          border: Border.all(width: 1.r, color:isDark?AppColors.darkBorderPrimary :AppColors.whiteBorder),
-          borderRadius: BorderRadius.circular(6.r),
-        ),
-        child: Center(
-          child: Image.asset(icon, height: 24.h, width: 24.w, color: iconColor),
-        ),
       ),
     );
   }

@@ -33,7 +33,6 @@ class RepairRequest extends StatelessWidget {
           RepairPhoto(),
           SizedBox(height: 13.18.h,),
           CustomPrimaryButton(height: 54.h, onPressed: () {
-            
           },
           text: 'Submit Repair Request',
           )
