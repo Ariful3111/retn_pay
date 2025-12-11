@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/shared/widgets/custom_check_box.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class FilterCheckbox extends StatelessWidget {
@@ -28,12 +28,7 @@ class FilterCheckbox extends StatelessWidget {
           children: [
             Obx(() {
               final isChecked = selectedProperty.contains(title);
-              return Checkbox(
-                visualDensity: VisualDensity.compact,
-                activeColor: AppColors.primaryColorDark,
-                side: BorderSide(color: Color(0xFF697483)),
-                value: isChecked,
-                onChanged: (value) {
+              return CustomCheckBox(isChecked: isChecked, onChange: (value) {
                   if (value == true) {
                     if (!selectedProperty.contains(title)) {
                       selectedProperty.add(title);
@@ -42,8 +37,7 @@ class FilterCheckbox extends StatelessWidget {
                     selectedProperty.remove(title);
                   }
                   onChange(selectedProperty.toList());
-                },
-              );
+                });
             }),
             CustomTextPrimary(
               text: propertyItems[index],

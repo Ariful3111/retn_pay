@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:renter_pay/features/dashboard/widgets/inspection_type.dart';
+import 'package:renter_pay/features/dashboard/widgets/inspection_filter_type.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_filter_appbar.dart';
 
 class InspectionFilter extends StatelessWidget {
@@ -27,7 +27,7 @@ class InspectionFilter extends StatelessWidget {
         ),
         controller: MenuController(),
         menuChildren: [
-          InspectionType(),
+          InspectionFilterType(),
         ],
       ),
     );

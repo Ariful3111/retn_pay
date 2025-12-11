@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/widgets/drawer_items_appbar.dart';
+import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_table.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_types.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 
@@ -20,7 +21,7 @@ class RepairMaintenanceView extends StatelessWidget {
         SizedBox(height: 24.h,),
         RepairTypes(),
         SizedBox(height: 20.h,),
-        
+        RepairMaintenanceTable(),
       ],
     ));
   }

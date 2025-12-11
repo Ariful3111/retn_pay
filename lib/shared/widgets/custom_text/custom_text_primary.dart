@@ -10,7 +10,8 @@ class CustomTextPrimary extends StatelessWidget {
   final  FontWeight? fontWeight;
   final  Color? color;
   final TextAlign ?textAlign;
-  const CustomTextPrimary({super.key, required this.text, this.fontSize, this.fontWeight, this.color, this.textAlign});
+  final TextOverflow ?textOverflow;
+  const CustomTextPrimary({super.key, required this.text, this.fontSize, this.fontWeight, this.color, this.textAlign, this.textOverflow});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +19,7 @@ class CustomTextPrimary extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
+      overflow: textOverflow,
       style: GoogleFonts.inter(
         fontSize:fontSize?? 32.sp,
         fontWeight:fontWeight?? FontWeight.w600,

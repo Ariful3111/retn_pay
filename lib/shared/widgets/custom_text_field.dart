@@ -95,7 +95,7 @@ class CustomTextField extends StatelessWidget {
         floatingLabelBehavior: floatingLabelBehavior,
         hintTextDirection: hintDirection,
         alignLabelWithHint: isAlignLabelWithHint,
-        contentPadding:  padding,
+        contentPadding: padding,
         label:
             labelTextWidget ??
             CustomTextSecondary(

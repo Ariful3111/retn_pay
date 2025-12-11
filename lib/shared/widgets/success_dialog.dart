@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_close_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
@@ -42,27 +43,7 @@ class SuccessDialog extends StatelessWidget {
             Positioned(
               top: 10.h,
               right: 10.w,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  height: 32.h,
-                  width: 32.h,
-                  decoration: BoxDecoration(
-                    color:isDark? AppColors.darkSecondary:AppColors.whiteButtonColor,
-                    borderRadius: BorderRadius.circular(25.sp),
-                  ),
-                  child: Center(
-                    child: Image.asset(
-                      IconsPath.close,
-                      height: 8.h,
-                      width: 8.w,
-                      color: isDark?AppColors.whiteColor:null,
-                    ),
-                  ),
-                ),
-              ),
+              child: CustomCloseButton(onTap: () {  Navigator.pop(context); },),
             ),
             widget ??
                 Center(

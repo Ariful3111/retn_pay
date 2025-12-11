@@ -59,7 +59,13 @@ class CustomTableRow extends StatelessWidget {
               }),
             ),
           ),
-          if (isExpandedTable) expandedTable,
+          ClipRect(
+          child: AnimatedSize(
+            duration: const Duration(milliseconds: 250),
+            curve: Curves.easeInOut,
+            child: isExpandedTable ? expandedTable : const SizedBox.shrink(),
+          ),
+        ),
         ],
       );
   }

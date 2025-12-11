@@ -56,16 +56,14 @@ class InspectionTable extends StatelessWidget {
                 onExpandedClose: () {
                   inspectionRequestController.toggleExpanded(rowIndex);
                 },
-                expandedContent: InspectionTableContent(rowIndex: index),
+                expandedContent: InspectionTableContent(rowIndex: rowIndex),
               );
             },
             onRowTap: (index) {
-              final rowIndex = listIndex[index];
-              inspectionRequestController.toggleExpanded(rowIndex);
+              inspectionRequestController.toggleExpanded(listIndex[index]);
             },
-            isExpandedTable: (index) {
-              final rowIndex = listIndex[index];
-              return inspectionRequestController.expanded[rowIndex];
+            isExpandedTableBuilder: (index) {
+              return inspectionRequestController.expanded[listIndex[index]];
             },
           );
         }),

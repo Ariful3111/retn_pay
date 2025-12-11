@@ -67,9 +67,7 @@ class InspectionActionButton extends StatelessWidget {
               text: 'Apply',
               fontSize: 14.sp,
               fontWeight: FontWeight.w400,
-              textColor: isDark
-                  ? AppColors.whiteColor
-                  : AppColors.darkContainer,
+              textColor:AppColors.whiteColor, 
               onPressed: () {},
             ),
           ],
