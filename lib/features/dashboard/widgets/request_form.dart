@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_text_field.dart';
+import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
 class RequestForm extends StatelessWidget {
   const RequestForm({super.key});
@@ -15,6 +16,7 @@ class RequestForm extends StatelessWidget {
           controller: dashboardController.addressController,
           hintText: 'Enter your address',
           labelText: 'Problem Address',
+          textColor: AppColors.secondaryTextColor,
         ),
         SizedBox(height: 10,),
         CustomTextField(

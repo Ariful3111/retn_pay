@@ -91,10 +91,11 @@ class DashboardView extends StatelessWidget {
                     SizedBox(height: 20.h),
                     Obx(
                       () => dashboardController.isQuickActions.value
-                          ? AnimatedSize(
-                            duration: Duration(milliseconds: 300),
-                            curve: Curves.bounceIn,
-                            child: Column(
+                          ? AnimatedSwitcher(
+                              duration: Duration(milliseconds: 300),
+                              switchInCurve: Curves.easeInOut,
+                              switchOutCurve: Curves.easeOut,
+                              child: Column(
                                 children: [
                                   LandlordContact(),
                                   SizedBox(height: 13.07.h),
@@ -103,7 +104,7 @@ class DashboardView extends StatelessWidget {
                                   DashboardKeyFeatures(),
                                 ],
                               ),
-                          )
+                            )
                           : SizedBox(),
                     ),
                   ],

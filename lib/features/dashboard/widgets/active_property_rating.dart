@@ -30,7 +30,7 @@ class ActivePropertyRating extends StatelessWidget {
               BoxShadow(
                 offset: Offset(0, 1),
                 blurRadius: 2,
-                color: Color(0xFFE4E5E7).withValues(alpha: 0.24),
+                color: AppColors.dropShadowColorSecondary.withValues(alpha: 0.24),
               ),
             ],
           ),

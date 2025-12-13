@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/features/dashboard/controllers/repair_maintenance_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_text_field.dart';
+import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
 class AddRepairRequestField extends StatelessWidget {
   const AddRepairRequestField({super.key});

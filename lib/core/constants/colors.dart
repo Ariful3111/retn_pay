@@ -20,6 +20,7 @@ class AppColors {
   static const whiteButtonColor = Color(0xFFF4F6F8);
   static const borderColor = Color(0xFF92045A);
   static const dropShadowColor = Color(0xFF14142B);
+  static const dropShadowColorSecondary = Color(0xFFE4E5E7);
   static const textFieldColor = Color(0xFFF5F6F7);
   static const basicPlanBG = Color(0xFFFAEAC8);
   static const silverPlanBG = Color(0xFFFAC8E6);
@@ -54,7 +55,7 @@ class AppColors {
   static const rejectBG = Color(0xFFFCE6E6);
   static const rejectText = Color(0xFFDF0101);
 
-  static const darkPrimary = Colors.black;
+  static const darkPrimary = Color(0xFF000000);
   static const darkPrimaryText = Colors.white;
   static const darkSecondaryText = Color(0xFFC2C7D0);
   static const darkLightText = Color(0xFF7A8699);

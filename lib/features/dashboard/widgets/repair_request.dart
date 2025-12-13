@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/widgets/repair_photo.dart';
+import 'package:renter_pay/core/utils/image_picker.dart';
+import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.dart';
+import 'package:renter_pay/shared/widgets/custom_add_multi_image.dart';
 import 'package:renter_pay/features/dashboard/widgets/request_form.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
@@ -13,6 +16,7 @@ class RepairRequest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
+        DashboardController dashboardController = Get.find();
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 31.w, vertical: 24.h),
       height: 412.h,
@@ -30,7 +34,11 @@ class RepairRequest extends StatelessWidget {
           SizedBox(height: 8.79.h,),
           CustomTextSecondary(text: 'Attach Photos',color:isDark? AppColors.darkSecondaryText:AppColors.darkContainer,),
           SizedBox(height: 8.79.h,),
-          RepairPhoto(),
+          CustomAddMultiImage(buttonHeight: 57.h, buttonWidth: 57.w, sizedBoxHeight: 57.h, imageHeight: 57.h, imageWidth: 57.w, onTap: () { 
+            UploadImage.pickMultipleImage(
+                allImages: dashboardController.repairImages,
+              );
+           }, item: dashboardController.repairImages.length, imagesPath: dashboardController.repairImages, iconHeight: 26.37.h, iconWidth: 26.37.w,),
           SizedBox(height: 13.18.h,),
           CustomPrimaryButton(height: 54.h, onPressed: () {
           },

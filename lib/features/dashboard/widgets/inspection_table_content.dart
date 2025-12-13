@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/inspection_request_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_action_button.dart';
 import 'package:renter_pay/shared/widgets/custom_table/table_status.dart';
@@ -13,7 +12,6 @@ class InspectionTableContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = Theme.of(context).brightness == Brightness.dark;
     final controller = Get.find<InspectionRequestController>();
     final item = controller.allRows[rowIndex];
     return Column(
@@ -38,17 +36,6 @@ class InspectionTableContent extends StatelessWidget {
         SizedBox(height: 8.h),
         InspectionActionButton(rowIndex: rowIndex),
         SizedBox(height: 12.h),
-        Container(
-          height: 1,
-          decoration: BoxDecoration(
-            border: BoxBorder.all(
-              width: 1.r,
-              color: isDark
-                  ? AppColors.darkBorderPrimary
-                  : AppColors.primaryBorder,
-            ),
-          ),
-        ),
       ],
     );
   }

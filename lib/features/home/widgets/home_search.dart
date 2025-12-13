@@ -5,7 +5,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/home/controllers/home_controller.dart';
 import 'package:renter_pay/features/home/widgets/home_filter.dart';
-import 'package:renter_pay/shared/widgets/custom_text_field.dart';
+import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
 class HomeSearch extends StatelessWidget {
   const HomeSearch({super.key});

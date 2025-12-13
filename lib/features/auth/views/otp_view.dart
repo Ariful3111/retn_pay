@@ -7,7 +7,7 @@ import 'package:renter_pay/features/auth/controllers/otp_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
-import 'package:renter_pay/shared/widgets/custom_text_field.dart';
+import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
 class OtpView extends StatelessWidget {
   const OtpView({super.key});

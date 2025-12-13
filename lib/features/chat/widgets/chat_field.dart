@@ -6,7 +6,7 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/utils/image_picker.dart';
 import 'package:renter_pay/features/chat/controllers/chat_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
-import 'package:renter_pay/shared/widgets/custom_text_field.dart';
+import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
 class ChatField extends StatelessWidget {
   const ChatField({super.key});

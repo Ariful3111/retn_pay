@@ -19,6 +19,7 @@ import 'package:renter_pay/features/chat/bindings/chat_bindings.dart';
 import 'package:renter_pay/features/chat/views/chat_view.dart';
 import 'package:renter_pay/features/chat/views/message_view.dart';
 import 'package:renter_pay/features/dashboard/bindings/active_properties_bindings.dart';
+import 'package:renter_pay/features/dashboard/bindings/add_repair_request_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/dashboard_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/inspection_request_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/key_release_bindings.dart';
@@ -93,6 +94,6 @@ final List<GetPage> appRoutes = [
   GetPage(name: AppRoutes.inspectionRequestView, page:()=> InspectionRequestView(),bindings: [InspectionRequestBindings()]),
   GetPage(name: AppRoutes.keyReleaseView, page:()=> KeyReleaseView(),bindings: [KeyReleaseBindings()]),
   GetPage(name: AppRoutes.paymentManagementView, page:()=> PaymentManagementView(),bindings: [PaymentManagementBindings()]),
-  GetPage(name: AppRoutes.repairMaintenanceView, page:()=> RepairMaintenanceView(),bindings: [RepairMaintenanceBindings()]),
+  GetPage(name: AppRoutes.repairMaintenanceView, page:()=> RepairMaintenanceView(),bindings: [RepairMaintenanceBindings(),AddRepairRequestBindings()]),
   GetPage(name: AppRoutes.servicesView, page:()=> ServicesView(),bindings: [ServicesBindings()]),
 ];

@@ -1,105 +1,90 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/utils/date_picker.dart';
 import 'package:renter_pay/core/utils/time_picker.dart';
 import 'package:renter_pay/features/rent/controllers/property_view_controller.dart';
-import 'package:renter_pay/features/rent/widgets/inspection_field.dart';
+import 'package:renter_pay/shared/widgets/custom_fields/custom_date_field.dart';
 import 'package:renter_pay/shared/widgets/custom_dropdown_menu.dart';
+import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
+import 'package:renter_pay/shared/widgets/custom_fields/custom_time_field.dart';
 
 class InspectionFromField extends StatelessWidget {
   const InspectionFromField({super.key});
 
   @override
   Widget build(BuildContext context) {
-    
     PropertyViewController propertyViewController = Get.find();
     return Column(
       children: [
-        InspectionField(
+        CustomTextField(
           controller: propertyViewController.nameController,
-          label: 'Full Name*',
-          hint: 'Enter Your Full Name',
+          labelText: 'Full Name*',
+          hintText: 'Enter Your Full Name',
+          textColor: AppColors.secondaryTextColor,
         ),
         SizedBox(height: 15.66.h),
-        InspectionField(
+        CustomTextField(
           controller: propertyViewController.emailController,
-          label: 'Email Address*',
-          hint: 'Enter Your Email Address',
+          labelText: 'Email Address*',
+          hintText: 'Enter Your Email Address',
           validator: propertyViewController.emailValidation,
-          validateMode: AutovalidateMode.onUserInteraction,
+          validation: AutovalidateMode.onUserInteraction,
+          textColor: AppColors.secondaryTextColor,
         ),
         SizedBox(height: 15.66.h),
-        InspectionField(
+        CustomTextField(
           controller: propertyViewController.phoneController,
-          label: 'Phone Number*',
-          hint: 'Enter Your Phone Number',
+          labelText: 'Phone Number*',
+          hintText: 'Enter Your Phone Number',
           validator: propertyViewController.phoneValidation,
-          validateMode: AutovalidateMode.onUserInteraction,
+          validation: AutovalidateMode.onUserInteraction,
+          textColor: AppColors.secondaryTextColor,
         ),
         SizedBox(height: 15.66.h),
-        InspectionField(
+        CustomDateField(
           controller: propertyViewController.dateController,
-          label: 'Date*',
-          hint: 'Select Date',
-          readOnly: true,
-          suffix: Padding(
-            padding: EdgeInsets.only(right: 12.w),
-            child: GestureDetector(
-              onTap: () {
-                DatePicker.pickDate(
-                  context: context,
-                  onDateSelected: (date) {
-                    propertyViewController.selectedDate.value = date;
-                    propertyViewController.dateController.text =
-                        "${date.day.toString().padLeft(2, '0')}/"
-                        "${date.month.toString().padLeft(2, '0')}/"
-                        "${date.year}";
-                  },
-                );
+          onTap: () {
+            DatePicker.pickDate(
+              context: context,
+              onDateSelected: (date) {
+                propertyViewController.selectedDate.value = date;
+                propertyViewController.dateController.text =
+                    "${date.day.toString().padLeft(2, '0')}/"
+                    "${date.month.toString().padLeft(2, '0')}/"
+                    "${date.year}";
               },
-              child: Image.asset(
-                IconsPath.date,
-                height: 15.66.h,
-                width: 15.66.w,
-              ),
-            ),
-          ),
+            );
+          },
+          textColor: AppColors.secondaryTextColor,
         ),
         SizedBox(height: 15.66.h),
-        InspectionField(
+        CustomTimeField(
           controller: propertyViewController.timeController,
-          label: 'Time*',
-          hint: 'Select Time',
-          readOnly: true,
-          suffix: Padding(
-            padding: EdgeInsets.only(right: 12.w),
-            child: GestureDetector(
-              onTap: () {
-                TimePicker.pickTime(
-                  context: context,
-                  onTimeSelected: (time) {
-                    propertyViewController.selectedTime.value = time;
-                    propertyViewController.timeController.text = time.format(
-                      context,
-                    );
-                  },
+          onTap: () {
+            TimePicker.pickTime(
+              context: context,
+              onTimeSelected: (time) {
+                propertyViewController.selectedTime.value = time;
+                propertyViewController.timeController.text = time.format(
+                  context,
                 );
               },
-              child: Image.asset(
-                IconsPath.time,
-                height: 15.66.h,
-                width: 15.66.w,
-              ),
-            ),
-          ),
+            );
+          },
+          textColor: AppColors.secondaryTextColor,
         ),
         SizedBox(height: 15.66.h),
-        CustomDropdownMenu(onSelect: (value) {
-          propertyViewController.selectedInspection.value = value!;
-          propertyViewController.isSelectedInspection.value = true;
-        }, option: propertyViewController.inspectOption, isSelect: propertyViewController.selectedInspection, labelText: 'Inspection Type',),
+        CustomDropdownMenu(
+          onSelect: (value) {
+            propertyViewController.selectedInspection.value = value!;
+            propertyViewController.isSelectedInspection.value = true;
+          },
+          option: propertyViewController.inspectOption,
+          isSelect: propertyViewController.selectedInspection,
+          labelText: 'Inspection Type',
+        ),
       ],
     );
   }

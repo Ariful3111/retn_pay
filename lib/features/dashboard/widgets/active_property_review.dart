@@ -5,7 +5,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/active_property_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/active_property_rating.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
-import 'package:renter_pay/shared/widgets/custom_text_field.dart';
+import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
 class ActivePropertyReview extends StatelessWidget {
   const ActivePropertyReview({super.key});
@@ -28,7 +28,7 @@ class ActivePropertyReview extends StatelessWidget {
               BoxShadow(
                 offset: Offset(0, 1.24),
                 blurRadius: 2.48,
-                color:Color(0xFFE4E5E7).withValues(alpha: 0.24),
+                color:AppColors.dropShadowColorSecondary.withValues(alpha: 0.24),
               ),
             ],
           ),

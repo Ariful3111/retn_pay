@@ -18,7 +18,7 @@ class DashboardQuickActions extends StatelessWidget {
       width: MediaQuery.widthOf(context),
       padding: EdgeInsets.all(17.43.r),
       decoration: BoxDecoration(
-        color:isDark? AppColors.darkSecondary:AppColors.whiteColor,
+        color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
         borderRadius: BorderRadius.circular(20.r),
       ),
       child: Row(
@@ -27,7 +27,7 @@ class DashboardQuickActions extends StatelessWidget {
           CustomTextPrimary(
             text: 'Quick Actions',
             fontSize: 24.sp,
-            color:isDark? AppColors.darkAppBar:AppColors.primaryColorDark,
+            color: isDark ? AppColors.darkAppBar : AppColors.primaryColorDark,
           ),
           Obx(
             () => GestureDetector(
@@ -39,14 +39,19 @@ class DashboardQuickActions extends StatelessWidget {
               child: SizedBox(
                 height: 40.h,
                 width: 40.w,
-                child: Center(
-                  child: Image.asset(
-                    dashboardController.isQuickActions.value
-                        ? IconsPath.upArrow
-                        : IconsPath.downArrow,
-                    height: 7.5.h,
-                    width: 15.w,
-                    color: AppColors.secondaryTextColor,
+                child: AnimatedSwitcher(
+                  duration: Duration(milliseconds: 300),
+                  switchInCurve: Curves.easeInOut,
+                  switchOutCurve: Curves.easeOut,
+                  child: Center(
+                    child: Image.asset(
+                      dashboardController.isQuickActions.value
+                          ? IconsPath.upArrow
+                          : IconsPath.downArrow,
+                      height: 7.5.h,
+                      width: 15.w,
+                      color: AppColors.secondaryTextColor,
+                    ),
                   ),
                 ),
               ),
