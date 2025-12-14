@@ -4,9 +4,10 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/active_property_controller.dart';
-import 'package:renter_pay/features/dashboard/widgets/submit_review_dialog.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
-import 'package:renter_pay/shared/widgets/rating.dart';
+import 'package:renter_pay/shared/widgets/custom_dialog/submit_rating_dialog.dart';
+import 'package:renter_pay/shared/widgets/custom_rating/custom_rating_bar.dart';
+import 'package:renter_pay/shared/widgets/custom_rating/custom_rating_builder.dart';
 
 class ActivePropertyRating extends StatelessWidget {
   const ActivePropertyRating({super.key});
@@ -34,7 +35,7 @@ class ActivePropertyRating extends StatelessWidget {
               ),
             ],
           ),
-          child: Rating(
+          child: CustomRatingBuilder(
             onRating: (value) {
               activePropertyController.rating.value = value;
             },
@@ -53,7 +54,7 @@ class ActivePropertyRating extends StatelessWidget {
             showDialog(
               context: context,
               builder: (context) {
-                return SubmitReviewDialog();
+                return SubmitRatingDialog(rating: CustomRatingBar(rating: activePropertyController.rating.value), ratingTitle: 'Rate The Landlord', reviewText: activePropertyController.reviewController.text, onTap: () {  },);
               },
             );
           },

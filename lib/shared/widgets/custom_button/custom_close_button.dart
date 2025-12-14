@@ -9,12 +9,14 @@ class CustomCloseButton extends StatelessWidget {
   final double? iconHeight;
   final double? iconWidth;
   final VoidCallback onTap;
+  final Color? color;
   const CustomCloseButton({
     super.key,
     this.height,
     this.width,
     this.iconHeight,
-    this.iconWidth, required this.onTap,
+    this.iconWidth,
+    required this.onTap, this.color,
   });
 
   @override
@@ -26,7 +28,7 @@ class CustomCloseButton extends StatelessWidget {
         height: height ?? 32.h,
         width: width ?? 32.h,
         decoration: BoxDecoration(
-          color: isDark ? AppColors.darkSecondary : AppColors.whiteButtonColor,
+          color: isDark ?color?? AppColors.darkSecondary : color?? AppColors.whiteButtonColor,
           borderRadius: BorderRadius.circular(25.sp),
         ),
         child: Center(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/features/dashboard/controllers/repair_maintenance_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/add_repair_request_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
 class AddRepairRequestField extends StatelessWidget {
@@ -9,17 +9,17 @@ class AddRepairRequestField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    RepairMaintenanceController repairMaintenanceController = Get.find();
+    AddRepairRequestController addRepairRequestController = Get.find();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         myField(
-          controller: repairMaintenanceController.issueTitleController,
+          controller: addRepairRequestController.issueTitleController,
           hint: 'Enter Your Issue Title',
           label: 'Issue Title',
         ),
         SizedBox(height: 16.h,),
-        myField(controller: repairMaintenanceController.issueDetailsController, hint: 'Enter Your Issue In Details', label: 'Issue Details',maxLine: 7,isAlignLabelWithHint: true),
+        myField(controller: addRepairRequestController.issueDetailsController, hint: 'Enter Your Issue In Details', label: 'Issue Details',maxLine: 7,isAlignLabelWithHint: true),
       ],
     );
   }

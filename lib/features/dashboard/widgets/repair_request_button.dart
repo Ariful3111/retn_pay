@@ -26,7 +26,7 @@ class RepairRequestButton extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 8.w),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6.r),
-              color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+              gradient: isDark ? AppColors.darkAppIcon : LinearGradient(colors: [AppColors.whiteColor,AppColors.whiteColor]),
               border: Border.all(
                 width: 0.8.r,
                 color: isDark
@@ -48,8 +48,9 @@ class RepairRequestButton extends StatelessWidget {
                   text: 'Issue A Request',
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
+                  color: isDark?AppColors.darkPrimary:null,
                 ),
-                Image.asset(IconsPath.add, height: 20.h, width: 20.w),
+                Image.asset(IconsPath.add, height: 20.h, width: 20.w,color: isDark?AppColors.darkPrimary:null,),
               ],
             ),
           ),

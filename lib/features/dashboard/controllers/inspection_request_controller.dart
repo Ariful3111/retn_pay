@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class InspectionModel {
@@ -17,7 +16,7 @@ class InspectionModel {
   });
 }
 
-class InspectionRequestController extends GetxController with GetSingleTickerProviderStateMixin{
+class InspectionRequestController extends GetxController{
   RxInt isInspectionType = 0.obs;
   RxBool isFilter = false.obs;
   RxInt filterIndex = 0.obs;
@@ -26,7 +25,6 @@ class InspectionRequestController extends GetxController with GetSingleTickerPro
   final List filterList = ['All', 'Approved', 'Complete'];
   final List<String> tableColumn = ['Property Address', 'Status', 'Action'];
   RxList<InspectionModel> allRows = <InspectionModel>[].obs;
-  late AnimationController animationController;
 
   List<MapEntry<int, InspectionModel>> get filterRow {
     final tempRow = <MapEntry<int, InspectionModel>>[];
@@ -172,11 +170,6 @@ class InspectionRequestController extends GetxController with GetSingleTickerPro
     if (index >= 0 && index < expanded.length) {
       expanded[index] = !expanded[index];
     }
-    if (expanded[index]) {
-      animationController.forward(from: 0);
-    } else {
-      animationController.reverse();
-    }
     expanded.refresh();
   }
 
@@ -198,12 +191,4 @@ class InspectionRequestController extends GetxController with GetSingleTickerPro
     super.onReady();
   }
 
-  @override
-  void onInit() {
-    animationController = AnimationController(
-      vsync: this,
-      duration: Duration(milliseconds: 300),
-    );
-    super.onInit();
-  }
 }

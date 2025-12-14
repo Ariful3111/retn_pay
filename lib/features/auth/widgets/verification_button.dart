@@ -6,7 +6,7 @@ import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/auth/controllers/document_verification_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
-import 'package:renter_pay/shared/widgets/success_dialog.dart';
+import 'package:renter_pay/shared/widgets/custom_dialog/success_dialog.dart';
 
 class VerificationButton extends StatelessWidget {
   const VerificationButton({super.key});

@@ -22,7 +22,7 @@ class RepairTypes extends StatelessWidget {
           width: 176.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(9.69.r),
-            color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+            gradient: isDark ? AppColors.darkAppIcon : LinearGradient(colors: [AppColors.whiteColor,AppColors.whiteColor]),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,7 +49,7 @@ class RepairTypes extends StatelessWidget {
                       child: CustomTextSecondary(
                         text: repairMaintenanceController.repairType[index],
                         fontSize: 14.sp,
-                        color: isActive ? AppColors.whiteColor : null,
+                        color: isActive ? AppColors.whiteColor : AppColors.darkPrimary,
                       ),
                     ),
                   );

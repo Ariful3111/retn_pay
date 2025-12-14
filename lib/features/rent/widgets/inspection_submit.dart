@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
-import 'package:renter_pay/shared/widgets/success_dialog.dart';
+import 'package:renter_pay/shared/widgets/custom_dialog/success_dialog.dart';
 
 class InspectionSubmit extends StatelessWidget {
   const InspectionSubmit({super.key});

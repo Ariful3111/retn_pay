@@ -17,63 +17,73 @@ class AddRepairRequest extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Material(
       color: Colors.transparent,
-      child: Container(
-        padding: EdgeInsets.all(16.r),
-        margin: EdgeInsets.all(25.r),
-        height: 805.h,
-        width: MediaQuery.widthOf(context),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16.r),
-          color:isDark?AppColors.darkSecondary :AppColors.whiteColor,
-          boxShadow: [
-            myShadow(dy: 179.2, alpha: 0.10),
-            myShadow(dy: 718.06, alpha: 0.09),
-            myShadow(dy: 1615.32, alpha: 0.05),
-            myShadow(dy: 2872.24, alpha: 0.01),
-            myShadow(dy: 4487.56, alpha: 0.0),
-          ],
-        ),
-        child: ListView(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomTextPrimary(text: 'Repair Request', fontSize: 20.sp),
-                CustomCloseButton(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                ),
+      child: Column(
+        children: [
+          Container(
+            padding: EdgeInsets.only(top: 16.h, left: 16.w, right: 16.w),
+            margin: EdgeInsets.only(top: 25.h, left: 25.w, right: 25.w),
+            height: 712.h,
+            width: MediaQuery.widthOf(context),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(16.r),
+                topRight: Radius.circular(16.r),
+              ),
+              color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+              boxShadow: [
+                myShadow(dy: 179.2, alpha: 0.10),
+                myShadow(dy: 718.06, alpha: 0.09),
+                myShadow(dy: 1615.32, alpha: 0.05),
+                myShadow(dy: 2872.24, alpha: 0.01),
+                myShadow(dy: 4487.56, alpha: 0.0),
               ],
             ),
-            SizedBox(width: 4.h),
-            CustomTextPrimary(
-              text: 'You can request a repair here',
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w400,
+            child: ListView(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomTextPrimary(text: 'Repair Request', fontSize: 20.sp),
+                    CustomCloseButton(
+                      color: isDark
+                          ? AppColors.darkBorderPrimary
+                          : AppColors.whiteButtonColor,
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                ),
+                SizedBox(width: 4.h),
+                CustomTextPrimary(
+                  text: 'You can request a repair here',
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w400,
+                ),
+                SizedBox(height: 16.h),
+                AddRepairRequestField(),
+                SizedBox(height: 20.h),
+                RequestType(),
+                SizedBox(height: 20.h),
+                CustomTextPrimary(
+                  text: 'Attach Photo',
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+                SizedBox(height: 8.h),
+                RepairRequestImageDate(),
+                SizedBox(height: 10.h),
+                CustomTextPrimary(
+                  text: 'Preferred Time Period',
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+                RequestTime(),
+              ],
             ),
-            SizedBox(height: 16.h),
-            AddRepairRequestField(),
-            SizedBox(height: 20.h),
-            RequestType(),
-            SizedBox(height: 20.h),
-            CustomTextPrimary(
-              text: 'Attach Photo',
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w500,
-            ),
-            SizedBox(height: 8.h),
-            RepairRequestImageDate(),
-            SizedBox(height: 10.h),
-            CustomTextPrimary(
-              text: 'Preferred Time Period',
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w500,
-            ),
-            RequestTime(),
-            RequestSubmit(),
-          ],
-        ),
+          ),
+          RequestSubmit(),
+        ],
       ),
     );
   }

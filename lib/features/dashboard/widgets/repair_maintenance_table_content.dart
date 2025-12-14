@@ -13,7 +13,6 @@ class RepairMaintenanceTableContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //bool isDark = Theme.of(context).brightness == Brightness.dark;
     RepairMaintenanceController repairMaintenanceController = Get.find();
     final item = repairMaintenanceController.dataList[rowIndex];
     return Column(
@@ -46,7 +45,9 @@ class RepairMaintenanceTableContent extends StatelessWidget {
           fontWeight: FontWeight.w400,
           textColor: AppColors.darkAppBar,
           borderRadius: BorderRadius.circular(6.r),
-          onPressed: () {},
+          onPressed: () {
+            
+          },
         ),
         SizedBox(height: 12.h),
       ],

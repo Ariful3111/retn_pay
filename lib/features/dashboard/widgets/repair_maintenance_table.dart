@@ -32,6 +32,7 @@ class RepairMaintenanceTable extends StatelessWidget {
             index,
           ) {
             final item = rowList[index].value;
+            final listIndex = rowList.map((e) => e.key).toList();
             return [
               CustomTextPrimary(
                 text: item.title,
@@ -48,7 +49,9 @@ class RepairMaintenanceTable extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 textColor: AppColors.darkAppBar,
                 borderRadius: BorderRadius.circular(6.r),
-                onPressed: () {},
+                onPressed: () {repairMaintenanceController.showExpandedData(
+                    listIndex[index],
+                  );},
               ),
             ];
           });
@@ -66,9 +69,7 @@ class RepairMaintenanceTable extends StatelessWidget {
             expandedTableBuilder: (index) {
               final item = rowList[index].value;
               return CustomTableExpanded(
-                rowIndex: listIndex[index],
                 title: 'Issue Title: ${item.title}',
-                rowList: repairMaintenanceController.dataList,
                 isOpen:
                     repairMaintenanceController.expandedData[listIndex[index]],
                 onExpandedClose: () {

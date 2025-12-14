@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RepairModel {
@@ -17,8 +16,6 @@ class RepairModel {
 
 class RepairMaintenanceController extends GetxController {
   RxInt repairTypeIndex = 0.obs;
-  TextEditingController issueTitleController = TextEditingController();
-  TextEditingController issueDetailsController = TextEditingController();
   final List<String> repairType = ['Active', 'Complete'];
   final List<String> repairColumn = ['Issue ', 'Status', 'Action'];
   RxList<RepairModel> dataList = <RepairModel>[].obs;

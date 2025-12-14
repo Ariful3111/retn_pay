@@ -31,6 +31,7 @@ class CustomTableRow extends StatelessWidget {
                 bool isLastCol = colIndex == column.length - 1;
                 return Expanded(
                   child: Container(
+                    padding: EdgeInsets.only(left: 12.w),
                     height: 64.h,
                     decoration: BoxDecoration(
                       color: isDark
@@ -59,13 +60,11 @@ class CustomTableRow extends StatelessWidget {
               }),
             ),
           ),
-          ClipRect(
-          child: AnimatedSize(
+          AnimatedSize(
             duration: const Duration(milliseconds: 250),
             curve: Curves.easeInOut,
             child: isExpandedTable ? expandedTable : const SizedBox.shrink(),
           ),
-        ),
         ],
       );
   }

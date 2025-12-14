@@ -15,6 +15,7 @@ class RepairRequestImageDate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AddRepairRequestController addRepairRequestController = Get.find();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Obx(() {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,34 +32,42 @@ class RepairRequestImageDate extends StatelessWidget {
               );
             },
             item: addRepairRequestController.repairImages.length,
-            imagesPath: addRepairRequestController.repairImages, iconHeight: 15.25.h, iconWidth: 15.25.w,
+            imagesPath: addRepairRequestController.repairImages,
+            iconHeight: 15.25.h,
+            iconWidth: 15.25.w,
             borderRadius: 2.54.r,
             borderWidth: 0.64.w,
             imageRadius: 2.54.r,
             margin: 7.62.w,
             sizedBox: 7.62.w,
           ),
-          SizedBox(height: 10.h,),
-          CustomTextPrimary(text: 'Date and Time:',fontSize: 12.sp,fontWeight: FontWeight.w500,),
-          SizedBox(height: 8.h,),
+          SizedBox(height: 10.h),
+          CustomTextPrimary(
+            text: 'Date and Time:',
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w500,
+          ),
+          SizedBox(height: 8.h),
           SizedBox(
             width: 254.w,
             child: CustomDateField(
-              controller: addRepairRequestController.dateController, onTap: () {
-              DatePicker.pickDate(
-                context: context,
-                onDateSelected: (date) {
-                  addRepairRequestController.selectedDate.value = date;
-                  addRepairRequestController.dateController.text =
-                      "${date.day.toString().padLeft(2, '0')}/"
-                      "${date.month.toString().padLeft(2, '0')}/"
-                      "${date.year}";
-                },
-              );
-            },
-            textColor:AppColors.secondaryTextColor,
+              controller: addRepairRequestController.dateController,
+              onTap: () {
+                DatePicker.pickDate(
+                  context: context,
+                  onDateSelected: (date) {
+                    addRepairRequestController.selectedDate.value = date;
+                    addRepairRequestController.dateController.text =
+                        "${date.day.toString().padLeft(2, '0')}/"
+                        "${date.month.toString().padLeft(2, '0')}/"
+                        "${date.year}";
+                  },
+                );
+              },
+              textColor: AppColors.secondaryTextColor,
+              fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
             ),
-          )
+          ),
         ],
       );
     });

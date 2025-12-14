@@ -3,12 +3,12 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 
-class Rating extends StatelessWidget {
+class CustomRatingBuilder extends StatelessWidget {
   final ValueChanged<double> onRating;
   final double initialRating;
   final double? itemSize;
   final Widget Function(BuildContext, int)? itemBuilder;
-  const Rating({
+  const CustomRatingBuilder({
     super.key,
     required this.onRating,
     required this.initialRating,

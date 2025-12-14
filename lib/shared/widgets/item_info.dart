@@ -6,7 +6,7 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
-import 'package:renter_pay/shared/widgets/rating.dart';
+import 'package:renter_pay/shared/widgets/custom_rating/custom_rating_builder.dart';
 
 class ItemInfo extends StatelessWidget {
   final VoidCallback onVR;
@@ -129,7 +129,7 @@ class ItemInfo extends StatelessWidget {
                   onTap: onVR,
                   child: Image.asset(IconsPath.vR, height: 16.h, width: 16.w),
                 ),
-                Rating(onRating: updateRating, initialRating: initialRating),
+                CustomRatingBuilder(onRating: updateRating, initialRating: initialRating),
               ],
             ),
           ],

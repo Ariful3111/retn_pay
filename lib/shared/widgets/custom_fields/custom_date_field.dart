@@ -8,7 +8,8 @@ class CustomDateField extends StatelessWidget {
   final TextEditingController controller;
   final VoidCallback onTap;
   final Color? textColor;
-  const CustomDateField({super.key, required this.controller, required this.onTap, this.textColor});
+  final Color? fillColor;
+  const CustomDateField({super.key, required this.controller, required this.onTap, this.textColor, this.fillColor});
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class CustomDateField extends StatelessWidget {
         ),
       ),
       textColor: textColor,
+      fillColor: fillColor,
     );
   }
 }

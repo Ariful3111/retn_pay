@@ -29,12 +29,13 @@ class InspectionTable extends StatelessWidget {
         child: Obx(() {
           final list = inspectionRequestController.filterRow;
           final rowWidgets = List<List<Widget>>.generate(list.length, (index) {
-            final item = list[index].value;
+          final item = list[index].value;
             return [
               CustomTextPrimary(
                 text: item.address,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
+                textOverflow: TextOverflow.ellipsis,
               ),
               TableStatus(status: item.status),
               InspectionTableData(index: index),
@@ -49,9 +50,7 @@ class InspectionTable extends StatelessWidget {
               final item = list[index].value;
               final rowIndex = listIndex[index];
               return CustomTableExpanded(
-                rowIndex: rowIndex,
                 title: 'Property Address: ${item.address}',
-                rowList: inspectionRequestController.allRows,
                 isOpen: inspectionRequestController.expanded[rowIndex],
                 onExpandedClose: () {
                   inspectionRequestController.toggleExpanded(rowIndex);

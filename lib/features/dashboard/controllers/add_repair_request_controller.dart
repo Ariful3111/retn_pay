@@ -7,6 +7,8 @@ class AddRepairRequestController extends GetxController {
   RxInt selectedIndex = 0.obs;
   TextEditingController dateController = TextEditingController();
   TextEditingController timeController = TextEditingController();
+  TextEditingController issueTitleController = TextEditingController();
+  TextEditingController issueDetailsController = TextEditingController();
   Rx<DateTime?> selectedDate = Rx<DateTime?>(null);
   final List timePeriodList = [
     'Between 8 a.m. - 12 p.m.',
@@ -16,6 +18,10 @@ class AddRepairRequestController extends GetxController {
   ];
   RxInt checkboxIndex = 0.obs;
   RxBool isCheck = false.obs;
+  @override
+  void dispose() {
+    super.dispose();
+    dateController.dispose();
+    timeController.dispose();
+  }
 }
-
-

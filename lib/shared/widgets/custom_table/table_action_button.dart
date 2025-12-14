@@ -14,6 +14,7 @@ class TableActionButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        margin: EdgeInsets.all(5.r),
         padding: EdgeInsets.all(5.r),
         height: 36.h,
         width: 36.w,

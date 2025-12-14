@@ -29,5 +29,6 @@ class AppRoutes {
   static const String paymentManagementView = '/paymentManagementView';
   static const String servicesView = '/servicesView';
   static const String repairMaintenanceView = '/repairMaintenanceView';
+  static const String repairRequestView = '/repairRequestView';
 
 }
