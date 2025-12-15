@@ -18,5 +18,6 @@ class AppTheme {
       primary: AppColors.darkPrimary,
       surface: AppColors.darkBorderPrimary,
     ),
+    datePickerTheme: DatePickerThemeData()
   );
 }

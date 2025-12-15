@@ -8,10 +8,11 @@ class CustomTimeField extends StatelessWidget {
   final TextEditingController controller;
   final VoidCallback onTap;
   final Color? textColor;
+  final Color? fillColor;
   const CustomTimeField({
     super.key,
     required this.controller,
-    required this.onTap, this.textColor,
+    required this.onTap, this.textColor, this.fillColor,
   });
 
   @override
@@ -33,6 +34,7 @@ class CustomTimeField extends StatelessWidget {
         ),
       ),
       textColor:textColor,
+      fillColor: fillColor,
     );
   }
 }

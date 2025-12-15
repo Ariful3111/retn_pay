@@ -77,7 +77,11 @@ class ProfileEditProperty extends StatelessWidget {
               profileEditController.isSelectedPet.value = true;
             },
             option: profileEditController.petType,
-            isSelect: profileEditController.initialPet, labelText: 'Pet Type',
+            isSelect: profileEditController.initialPet, label:CustomTextSecondary(
+          text:'Pet Type',
+          fontSize: 12.sp,
+          fontWeight: FontWeight.w400,
+        ) ,
           ),
           SizedBox(height: 20,),
           ProfileSaveButton(),

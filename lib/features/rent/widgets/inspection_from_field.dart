@@ -9,6 +9,7 @@ import 'package:renter_pay/shared/widgets/custom_fields/custom_date_field.dart';
 import 'package:renter_pay/shared/widgets/custom_dropdown_menu.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_time_field.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class InspectionFromField extends StatelessWidget {
   const InspectionFromField({super.key});
@@ -19,6 +20,7 @@ class InspectionFromField extends StatelessWidget {
     return Column(
       children: [
         CustomTextField(
+          fillColor: AppColors.whiteColor,
           controller: propertyViewController.nameController,
           labelText: 'Full Name*',
           hintText: 'Enter Your Full Name',
@@ -26,6 +28,7 @@ class InspectionFromField extends StatelessWidget {
         ),
         SizedBox(height: 15.66.h),
         CustomTextField(
+          fillColor: AppColors.whiteColor,
           controller: propertyViewController.emailController,
           labelText: 'Email Address*',
           hintText: 'Enter Your Email Address',
@@ -35,6 +38,7 @@ class InspectionFromField extends StatelessWidget {
         ),
         SizedBox(height: 15.66.h),
         CustomTextField(
+          fillColor: AppColors.whiteColor,
           controller: propertyViewController.phoneController,
           labelText: 'Phone Number*',
           hintText: 'Enter Your Phone Number',
@@ -44,6 +48,7 @@ class InspectionFromField extends StatelessWidget {
         ),
         SizedBox(height: 15.66.h),
         CustomDateField(
+          fillColor: AppColors.whiteColor,
           controller: propertyViewController.dateController,
           onTap: () {
             DatePicker.pickDate(
@@ -61,6 +66,7 @@ class InspectionFromField extends StatelessWidget {
         ),
         SizedBox(height: 15.66.h),
         CustomTimeField(
+          fillColor: AppColors.whiteColor,
           controller: propertyViewController.timeController,
           onTap: () {
             TimePicker.pickTime(
@@ -83,7 +89,11 @@ class InspectionFromField extends StatelessWidget {
           },
           option: propertyViewController.inspectOption,
           isSelect: propertyViewController.selectedInspection,
-          labelText: 'Inspection Type',
+          label:CustomTextSecondary(
+          text: 'Inspection Type*',
+          fontSize: 12.sp,
+          fontWeight: FontWeight.w400,
+        ),
         ),
       ],
     );

@@ -23,5 +23,7 @@ class AddRepairRequestController extends GetxController {
     super.dispose();
     dateController.dispose();
     timeController.dispose();
+    issueDetailsController.dispose();
+    issueTitleController.dispose();
   }
 }

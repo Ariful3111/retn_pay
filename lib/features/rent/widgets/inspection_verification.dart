@@ -91,7 +91,7 @@ class InspectionVerification extends StatelessWidget {
                     height: 44.h,
                     width: 85.w,
                     onPressed: () {
-                      Get.back();
+                     Navigator.pop(context);
                       propertyViewController.frontImage.value = null;
                       propertyViewController.backImage.value = null;
                     },

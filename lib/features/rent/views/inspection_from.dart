@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_agreement.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_faq.dart';
@@ -32,7 +31,7 @@ class InspectionFrom extends StatelessWidget {
             children: [
               CustomAppbarLeading(
                 onTap: () {
-                  Get.back();
+                  Navigator.pop(context);
                 },
               ),
               SizedBox(width: 8.w),

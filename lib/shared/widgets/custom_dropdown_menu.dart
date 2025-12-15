@@ -9,7 +9,7 @@ class CustomDropdownMenu extends StatelessWidget {
   final List option;
   final void Function(String?) onSelect;
   final RxString isSelect;
-  final String labelText;
+  final Widget? label;
   final Color? selectedTrailingIconColor;
   final Color? trailingIconColor;
   const CustomDropdownMenu({
@@ -17,7 +17,7 @@ class CustomDropdownMenu extends StatelessWidget {
     required this.onSelect,
     required this.option,
     required this.isSelect,
-    required this.labelText, this.selectedTrailingIconColor, this.trailingIconColor,
+     this.label, this.selectedTrailingIconColor, this.trailingIconColor,
   });
 
   @override
@@ -26,16 +26,30 @@ class CustomDropdownMenu extends StatelessWidget {
     return Obx(() {
       return DropdownMenu<String>(
         initialSelection: isSelect.value,
-        label: CustomTextSecondary(
-          text: labelText,
-          fontSize: 12.sp,
-          fontWeight: FontWeight.w400,
-        ),
+        label: label,
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
           fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
           alignLabelWithHint: true,
           focusColor: Colors.transparent,
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(9.4.r),
+              borderSide: BorderSide(
+                width: 0.78.r,
+                color: isDark
+                    ? AppColors.darkBorderPrimary
+                    : AppColors.primaryBorder,
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(9.4.r),
+              borderSide: BorderSide(
+                width: 0.78.r,
+                color: isDark
+                    ? AppColors.darkBorderPrimary
+                    : AppColors.primaryBorder,
+              ),
+            ),
         ),
         trailingIcon: Image.asset(
           IconsPath.downArrow,
@@ -52,7 +66,7 @@ class CustomDropdownMenu extends StatelessWidget {
         ),
         width: MediaQuery.widthOf(context),
         menuStyle: MenuStyle(
-          maximumSize: WidgetStatePropertyAll(Size(144.w, 115)),
+          maximumSize: WidgetStatePropertyAll(Size(144.w, 115.h)),
           alignment: Alignment.bottomRight,
           elevation: WidgetStateProperty.all(6),
           backgroundColor: WidgetStateProperty.all(Colors.white),
@@ -102,6 +116,7 @@ class CustomDropdownMenu extends StatelessWidget {
     required Color color,
   }) {
     return Container(
+      
       height: 33.h,
       width: 119.w,
       padding: EdgeInsets.only(left: 6.27.w),

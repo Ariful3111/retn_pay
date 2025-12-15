@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/features/dashboard/controllers/repair_request_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_dialog/submit_rating_dialog.dart';
 import 'package:renter_pay/shared/widgets/custom_rating/custom_rating_builder.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
@@ -11,7 +14,8 @@ class RepairRequestService extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        bool isDark = Theme.of(context).brightness == Brightness.dark;
+    RepairRequestController repairRequestController = Get.find();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -21,7 +25,7 @@ class RepairRequestService extends StatelessWidget {
           fontSize: 20.sp,
           fontWeight: FontWeight.w600,
           spanFontSize: 20.sp,
-          spanColor:isDark? AppColors.whiteColor:AppColors.darkPrimary,
+          spanColor: isDark ? AppColors.whiteColor : AppColors.darkPrimary,
         ),
         SizedBox(height: 8.h),
         CustomTextSpan(
@@ -30,7 +34,7 @@ class RepairRequestService extends StatelessWidget {
           fontSize: 20.sp,
           fontWeight: FontWeight.w600,
           spanFontSize: 20.sp,
-          spanColor:isDark? AppColors.whiteColor:AppColors.darkPrimary,
+          spanColor: isDark ? AppColors.whiteColor : AppColors.darkPrimary,
         ),
         SizedBox(height: 24.h),
         CustomPrimaryButton(
@@ -39,9 +43,32 @@ class RepairRequestService extends StatelessWidget {
           borderRadius: BorderRadius.circular(6.r),
           text: 'Mark as Complete',
           onPressed: () {
-            showDialog(context: context, builder: (context){
-              return SubmitRatingDialog(rating: CustomRatingBuilder(onRating: onRating, initialRating: initialRating), ratingTitle: 'Rate The Service Provider', reviewText: activePropertyController.reviewController.text, onTap: () {  },)
-            });
+            showDialog(
+              context: context,
+              builder: (context) {
+                return SubmitRatingDialog(
+                  rating: CustomRatingBuilder(
+                    onRating: (value) {
+                      repairRequestController.rating.value = value;
+                    },
+                    initialRating: repairRequestController.rating.value,
+                  ),
+                  ratingTitle: 'Rate The Service Provider',
+                  onTap: () {},
+                  writeReview: true,
+                  controller: repairRequestController.reviewController,
+                  cancelButton: CustomSecondaryButton(
+                    text: 'Cancel',
+                    height: 40.h,
+                    width: 85.w,
+                    borderRadius: BorderRadius.circular(6.r),
+                    onPressed: () {
+                    
+                  },),
+                  buttonSpace: SizedBox(width: 16.w,),
+                );
+              },
+            );
           },
         ),
       ],

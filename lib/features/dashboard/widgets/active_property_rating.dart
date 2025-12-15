@@ -54,7 +54,7 @@ class ActivePropertyRating extends StatelessWidget {
             showDialog(
               context: context,
               builder: (context) {
-                return SubmitRatingDialog(rating: CustomRatingBar(rating: activePropertyController.rating.value), ratingTitle: 'Rate The Landlord', reviewText: activePropertyController.reviewController.text, onTap: () {  },);
+                return SubmitRatingDialog(rating: CustomRatingBar(rating: activePropertyController.rating.value), ratingTitle: 'Rate The Landlord', reviewText: activePropertyController.reviewController.text, onTap: () {  }, writeReview: false,);
               },
             );
           },

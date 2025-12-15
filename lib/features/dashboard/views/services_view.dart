@@ -1,10 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/features/dashboard/controllers/services_controller.dart';
+import 'package:renter_pay/features/dashboard/widgets/drawer_items_appbar.dart';
+import 'package:renter_pay/features/dashboard/widgets/service_review.dart';
+import 'package:renter_pay/features/dashboard/widgets/services_search.dart';
+import 'package:renter_pay/shared/widgets/custom_container.dart';
+import 'package:renter_pay/shared/widgets/custom_dropdown_menu.dart';
 
 class ServicesView extends StatelessWidget {
   const ServicesView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
+    ServicesController servicesController = Get.find();
+    return CustomContainer(
+      padding: EdgeInsets.all(20.r),
+      gradient: isDark
+          ? LinearGradient(
+              colors: [AppColors.darkPrimary, AppColors.darkPrimary],
+            )
+          : AppColors.userBackground,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              DrawerItemsAppbar(title: 'Services'),
+              SizedBox(
+                height: 38.h,
+                width: 140.w,
+                child: Center(
+                  child: CustomDropdownMenu(
+                    onSelect: (value) {
+                      servicesController.selectedServiceType.value = value!;
+                      servicesController.isSelected.value = true;
+                    },
+                    option: servicesController.serviceType,
+                    isSelect: servicesController.selectedServiceType,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 24.h,),
+          ServicesSearch(),
+          SizedBox(height: 12.h,),
+          ServiceReview(),
+        ],
+      ),
+    );
   }
 }

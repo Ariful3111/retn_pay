@@ -73,7 +73,10 @@ class CustomTextField extends StatelessWidget {
     this.maxLength,
     this.maxLines,
     this.hintDirection,
-    this.isAlignLabelWithHint, this.fontHeight, this.cursorHeight, this.isDense,
+    this.isAlignLabelWithHint,
+    this.fontHeight,
+    this.cursorHeight,
+    this.isDense,
   });
 
   @override
@@ -91,14 +94,14 @@ class CustomTextField extends StatelessWidget {
       readOnly: readOnly ?? false,
       autovalidateMode: validation,
       cursorHeight: cursorHeight,
-      
+
       style: GoogleFonts.inter(
         color: isDark
-            ?textColor?? AppColors.darkPrimaryText
-            :textColor?? AppColors.primaryDarkTextColor,
-            fontSize:fontSize?? 16.sp,
-            fontWeight:fontWeight?? FontWeight.w500,
-            height: fontHeight,
+            ? textColor ?? AppColors.darkPrimaryText
+            : textColor ?? AppColors.primaryDarkTextColor,
+        fontSize: fontSize ?? 16.sp,
+        fontWeight: fontWeight ?? FontWeight.w500,
+        height: fontHeight,
       ),
       decoration: InputDecoration(
         floatingLabelBehavior: floatingLabelBehavior,
@@ -106,16 +109,8 @@ class CustomTextField extends StatelessWidget {
         alignLabelWithHint: isAlignLabelWithHint,
         contentPadding: padding,
         isDense: isDense,
-        label:
-            labelTextWidget ??
-            CustomTextSecondary(
-              text: labelText ?? "",
-            ),
-        hint:
-            hintTextWidget ??
-            CustomTextSecondary(
-              text: hintText ?? "",
-            ),
+        label: labelTextWidget ?? CustomTextSecondary(text: labelText ?? ""),
+        hint: hintTextWidget ?? CustomTextSecondary(text: hintText ?? ""),
         errorText: errorText,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
@@ -123,7 +118,7 @@ class CustomTextField extends StatelessWidget {
         prefixIconConstraints: BoxConstraints(minHeight: 0, minWidth: 0),
         border:
             border ??
-            OutlineInputBorder( 
+            OutlineInputBorder(
               borderRadius: BorderRadius.circular(9.4.r),
               borderSide: BorderSide(
                 width: 0.78.r,

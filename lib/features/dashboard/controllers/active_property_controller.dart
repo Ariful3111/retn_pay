@@ -23,4 +23,9 @@ class ActivePropertyController extends GetxController {
     ActivePropertyContact(),
     ActivePropertyReview(),
   ];
+  @override
+  void dispose() {
+    reviewController.dispose();
+    super.dispose();
+  }
 }
