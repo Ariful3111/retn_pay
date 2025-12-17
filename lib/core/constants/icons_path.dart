@@ -130,6 +130,20 @@ class IconsPath {
   static const String tableInspection = 'assets/icons/table_inspection.png';
   static const String star = 'assets/icons/star.png';
   static const String export = 'assets/icons/export.png';
-  static const String rentChipIcon = 'assets/icons/rent_chip_icon.png';
+  static const String appCurrency = 'assets/icons/app_currency.png';
   static const String add = 'assets/icons/add.png';
+  static const String serviceBath = 'assets/icons/service_bath.png';
+  static const String serviceClient = 'assets/icons/service_client.png';
+  static const String serviceDrain = 'assets/icons/service_drain.png';
+  static const String serviceExp = 'assets/icons/service_exp.png';
+  static const String serviceHeater = 'assets/icons/service_heater.png';
+  static const String servicePipe = 'assets/icons/service_pipe.png'; 
+  static const String servicePrice = 'assets/icons/service_price.png';
+  static const String serviceRating = 'assets/icons/service_rating.png';
+  static const String serviceRepair = 'assets/icons/service_repair.png';
+  static const String serviceResponse = 'assets/icons/service_response.png';
+  static const String serviceSupport = 'assets/icons/service_support.png';
+  static const String serviceTech = 'assets/icons/service_tech.png';
+  static const String service = 'assets/icons/service.png';
+  static const String serviceDetails = 'assets/icons/service_details.png';
 }

@@ -5,36 +5,60 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/services_controller.dart';
+import 'package:renter_pay/features/dashboard/widgets/services_search_suggestion.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class ServicesSearch extends StatelessWidget {
   const ServicesSearch({super.key});
-
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     ServicesController servicesController = Get.find();
-    return TypeAheadField(
-      itemBuilder: (BuildContext context, int index) {
-        return CustomTextSecondary(
-          text: servicesController.serviceList[index],
-          fontSize: 14.sp,
-          color: AppColors.darkContainer,
+    return TypeAheadField<String>(
+      hideOnUnfocus: true,
+      hideOnEmpty: true,
+      hideKeyboardOnDrag: true,
+      hideOnLoading: true,
+      itemBuilder: (BuildContext context, String suggestion) {
+        return Padding(
+          padding: EdgeInsets.all(4.0.r),
+          child: CustomTextSecondary(
+            text: suggestion,
+            fontSize: 14.sp,
+            color: isDark
+                ? AppColors.darkSecondaryText
+                : AppColors.darkContainer,
+          ),
         );
       },
       onSelected: (value) {
-        print(value);
+        servicesController.searchController.text = value;
       },
+      controller: servicesController.searchController,
       suggestionsCallback: (String search) {
-        // return servicesController.serviceList.where((e) {
-        //   return e.contains(search);
-        // }).toList();
+        if (search.trim().isEmpty) {
+          return null;
+        }
+        return servicesController.serviceList.where((e) {
+          return e.toLowerCase().contains(search.toLowerCase());
+        }).toList();
       },
       builder: (context, controller, focusNode) {
-        return CustomTextField(controller: controller,fillColor: AppColors.whiteColor,prefixIcon: Padding(
-          padding: EdgeInsets.only(left:16.w),
-          child: Image.asset(IconsPath.homeSearch,height: 24.h,width: 24.w,),
-        ),labelText: 'Search services',);
+        return CustomTextField(
+          controller: controller,
+          focusNode: focusNode,
+          fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+          prefixIcon: Padding(
+            padding: EdgeInsets.only(left: 16.w),
+            child: Image.asset(IconsPath.homeSearch, height: 24.h, width: 24.w),
+          ),
+          labelText: 'Search services',
+        );
+      },
+      decorationBuilder: (context, child) {
+        
+        return ServicesSearchSuggestion(child: child);
       },
     );
   }

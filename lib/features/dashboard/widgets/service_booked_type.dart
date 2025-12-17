@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/inspection_request_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/service_booked_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
-class InspectionType extends StatelessWidget {
-  const InspectionType({super.key});
+class ServiceBookedType extends StatelessWidget {
+  const ServiceBookedType({super.key});
+
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    InspectionRequestController inspectionRequestController = Get.find();
+    ServiceBookedController serviceBookedController = Get.find();
     return Align(
       alignment: Alignment.centerLeft,
       child: Container(
@@ -28,13 +29,13 @@ class InspectionType extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(
-              inspectionRequestController.inspectionTypeList.length,
+              serviceBookedController.bookedTypeList.length,
               (index) {
                 final isSelected =
-                    inspectionRequestController.isInspectionType.value == index;
+                    serviceBookedController.isBookedType.value == index;
                 return GestureDetector(
                   onTap: () {
-                    inspectionRequestController.isInspectionType.value = index;
+                    serviceBookedController.isBookedType.value = index;
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(
@@ -47,7 +48,7 @@ class InspectionType extends StatelessWidget {
                     ),
                     child: CustomTextSecondary(
                       text:
-                          inspectionRequestController.inspectionTypeList[index],
+                          serviceBookedController.bookedTypeList[index],
                       fontSize: 14.sp,
                       color: isSelected
                           ? AppColors.whiteColor

@@ -29,7 +29,7 @@ class CustomContainer extends StatelessWidget {
       body: Container(
         padding: padding,
         margin: margin,
-        height: height ?? MediaQuery.heightOf(context),
+        height: height,
         width: width ?? MediaQuery.widthOf(context),
         decoration: BoxDecoration(gradient:isDark? gradient?? LinearGradient(colors: [AppColors.darkPrimary,AppColors.darkPrimary]):gradient??AppColors.backgroundColor),
         child: SafeArea(child: child),

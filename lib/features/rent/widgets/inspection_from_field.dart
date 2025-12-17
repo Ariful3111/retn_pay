@@ -93,7 +93,7 @@ class InspectionFromField extends StatelessWidget {
           text: 'Inspection Type*',
           fontSize: 12.sp,
           fontWeight: FontWeight.w400,
-        ),
+        ), textAlign: TextAlign.start,
         ),
       ],
     );

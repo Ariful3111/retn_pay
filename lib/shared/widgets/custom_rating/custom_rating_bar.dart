@@ -5,19 +5,20 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 
 class CustomRatingBar extends StatelessWidget {
   final double rating;
-  final String ? image;
-  const CustomRatingBar({super.key, required this.rating, this.image});
+  final String? image;
+  final double? itemSize;
+  const CustomRatingBar({super.key, required this.rating, this.image, this.itemSize});
 
   @override
   Widget build(BuildContext context) {
     return RatingBarIndicator(
-              rating: rating,
-              itemCount: 5,
-              itemSize: 20.sp,
-              itemPadding: EdgeInsets.all(2.r),
-              itemBuilder: (_, _) {
-                return Image.asset(image?? IconsPath.rating);
-              },
-            );
+      rating: rating,
+      itemCount: 5,
+      itemSize:itemSize?? 20.sp,
+      itemPadding: EdgeInsets.all(2.r),
+      itemBuilder: (_, _) {
+        return Image.asset(image ?? IconsPath.rating);
+      },
+    );
   }
 }

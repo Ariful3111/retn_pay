@@ -1,4 +1,5 @@
 class AppRoutes {
+  AppRoutes._();
   static const String onboarding = '/onboarding';
   static const String userRole = '/userRole';
   static const String loginView = '/LoginView';
@@ -30,5 +31,7 @@ class AppRoutes {
   static const String servicesView = '/servicesView';
   static const String repairMaintenanceView = '/repairMaintenanceView';
   static const String repairRequestView = '/repairRequestView';
-
+  static const String serviceSearchDetails = '/serviceSearchDetails';
+  static const String serviceBookedDetails = '/serviceBookedDetails';
+  static const String serviceBookedView = '/serviceBookedView';
 }

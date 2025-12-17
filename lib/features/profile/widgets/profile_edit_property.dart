@@ -81,7 +81,7 @@ class ProfileEditProperty extends StatelessWidget {
           text:'Pet Type',
           fontSize: 12.sp,
           fontWeight: FontWeight.w400,
-        ) ,
+        ), textAlign: TextAlign.start ,
           ),
           SizedBox(height: 20,),
           ProfileSaveButton(),

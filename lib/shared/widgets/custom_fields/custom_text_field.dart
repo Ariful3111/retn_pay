@@ -40,6 +40,7 @@ class CustomTextField extends StatelessWidget {
   final double? fontHeight;
   final double? cursorHeight;
   final bool? isDense;
+  final FocusNode? focusNode;
   const CustomTextField({
     super.key,
     this.hintText,
@@ -76,7 +77,7 @@ class CustomTextField extends StatelessWidget {
     this.isAlignLabelWithHint,
     this.fontHeight,
     this.cursorHeight,
-    this.isDense,
+    this.isDense, this.focusNode,
   });
 
   @override
@@ -94,7 +95,7 @@ class CustomTextField extends StatelessWidget {
       readOnly: readOnly ?? false,
       autovalidateMode: validation,
       cursorHeight: cursorHeight,
-
+      focusNode: focusNode,
       style: GoogleFonts.inter(
         color: isDark
             ? textColor ?? AppColors.darkPrimaryText

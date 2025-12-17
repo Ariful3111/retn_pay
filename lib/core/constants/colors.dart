@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  AppColors._();
   static const primaryColor = LinearGradient(
     begin: Alignment.center,
     end: Alignment.center,
