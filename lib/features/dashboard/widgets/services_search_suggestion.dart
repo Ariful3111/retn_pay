@@ -4,7 +4,8 @@ import 'package:renter_pay/core/constants/colors.dart';
 
 class ServicesSearchSuggestion extends StatelessWidget {
   final Widget child;
-  const ServicesSearchSuggestion({super.key, required this.child});
+  final bool isFocus;
+  const ServicesSearchSuggestion({super.key, required this.child, required this.isFocus});
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +13,9 @@ class ServicesSearchSuggestion extends StatelessWidget {
     return Align(
       alignment: Alignment.topLeft,
       child: Container(
-        padding: EdgeInsets.all(6.r),
+        padding: EdgeInsets.all(isFocus? 6.r:0),
         width: 243.w,
-        decoration: BoxDecoration(
+        decoration:isFocus? BoxDecoration(
           color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
           borderRadius: BorderRadius.circular(12.r),
           border: Border.all(
@@ -28,7 +29,7 @@ class ServicesSearchSuggestion extends StatelessWidget {
             myShadow(dy: 526, radius: 210, alpha: 0.01),
             myShadow(dy: 821, radius: 230, alpha: 0.0),
           ],
-        ),
+        ):null,
         child: child,
       ),
     );

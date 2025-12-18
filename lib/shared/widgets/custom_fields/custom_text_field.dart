@@ -103,7 +103,7 @@ class CustomTextField extends StatelessWidget {
         fontSize: fontSize ?? 16.sp,
         fontWeight: fontWeight ?? FontWeight.w500,
         height: fontHeight,
-      ),
+      ),cursorColor: isDark?AppColors.darkAppBar:AppColors.darkPrimary,
       decoration: InputDecoration(
         floatingLabelBehavior: floatingLabelBehavior,
         hintTextDirection: hintDirection,

@@ -5,10 +5,10 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/services_controller.dart';
 import 'package:renter_pay/features/dashboard/views/service_booked_view.dart';
 import 'package:renter_pay/features/dashboard/widgets/drawer_items_appbar.dart';
+import 'package:renter_pay/features/dashboard/widgets/service_dropdown_menu.dart';
 import 'package:renter_pay/features/dashboard/widgets/service_review.dart';
 import 'package:renter_pay/features/dashboard/widgets/services_search.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/custom_dropdown_menu.dart';
 
 class ServicesView extends StatelessWidget {
   const ServicesView({super.key});
@@ -41,29 +41,7 @@ class ServicesView extends StatelessWidget {
                         : 'Booked Services',
                   ),
                 ),
-                SizedBox(
-                  height: 38.h,
-                  width: 170.w,
-                  child: Center(
-                    child: CustomDropdownMenu(
-                      offset: Offset(1, 2),
-                      onSelect: (value) {
-                        servicesController.selectedServiceType.value = value!;
-                        servicesController.isSelected.value = true;
-                      },
-                      option: servicesController.serviceType,
-                      isSelect: servicesController.selectedServiceType,
-                      borderWidth: 1.r,
-                      focusBorderWidth: 1.r,
-                      borderRadius: 6.r,
-                      focusBorderRadius: 6.r,
-                      expandedInsets: EdgeInsets.zero,
-                      textAlign: TextAlign.start,
-                      contentPadding: EdgeInsets.zero,
-                      fontSize: 12.sp,
-                    ),
-                  ),
-                ),
+                ServiceDropdownMenu(),
               ],
             ),
               Expanded(

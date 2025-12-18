@@ -5,6 +5,7 @@ class ServicesController extends GetxController {
   RxList serviceType = ['Search', 'Booked Services'].obs;
   RxString selectedServiceType = 'Search'.obs;
   RxBool isSelected = false.obs;
+  RxBool isSearchFocus = false.obs;
   TextEditingController searchController = TextEditingController();
   List<String> serviceList = <String>[
     'Plumbing',

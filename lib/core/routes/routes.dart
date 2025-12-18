@@ -106,5 +106,5 @@ final List<GetPage> appRoutes = [
   GetPage(name: AppRoutes.repairRequestView, page: ()=>RepairRequestView(),bindings: [RepairRequestBindings(),AddRepairRequestBindings()]),
   GetPage(name: AppRoutes.serviceBookedDetails, page: ()=>ServiceBookedDetails(),bindings: [ServiceBookedBindings()]),
   GetPage(name: AppRoutes.serviceBookedView, page: ()=>ServiceBookedView(),bindings: [ServiceBookedBindings()]),
-  GetPage(name: AppRoutes.serviceSearchDetails, page: ()=>ServiceSearchDetails(),bindings: [ServiceSearchBindings()]),
+  GetPage(name: AppRoutes.serviceSearchDetails, page: ()=>ServiceSearchDetails(),bindings: [ServiceSearchBindings(),ServicesBindings()]),
 ];

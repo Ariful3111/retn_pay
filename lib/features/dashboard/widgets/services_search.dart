@@ -17,9 +17,6 @@ class ServicesSearch extends StatelessWidget {
     ServicesController servicesController = Get.find();
     return TypeAheadField<String>(
       hideOnUnfocus: true,
-      hideOnEmpty: true,
-      hideKeyboardOnDrag: true,
-      hideOnLoading: true,
       itemBuilder: (BuildContext context, String suggestion) {
         return Padding(
           padding: EdgeInsets.all(4.0.r),
@@ -37,14 +34,14 @@ class ServicesSearch extends StatelessWidget {
       },
       controller: servicesController.searchController,
       suggestionsCallback: (String search) {
-        if (search.trim().isEmpty) {
-          return null;
-        }
         return servicesController.serviceList.where((e) {
           return e.toLowerCase().contains(search.toLowerCase());
         }).toList();
       },
       builder: (context, controller, focusNode) {
+        focusNode.addListener(() {
+          servicesController.isSearchFocus.value = focusNode.hasFocus;
+        });
         return CustomTextField(
           controller: controller,
           focusNode: focusNode,
@@ -57,8 +54,12 @@ class ServicesSearch extends StatelessWidget {
         );
       },
       decorationBuilder: (context, child) {
-        
-        return ServicesSearchSuggestion(child: child);
+        return Obx(
+          () => ServicesSearchSuggestion(
+            isFocus: servicesController.isSearchFocus.value,
+            child: child,
+          ),
+        );
       },
     );
   }

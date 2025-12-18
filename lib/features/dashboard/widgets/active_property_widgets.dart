@@ -13,12 +13,10 @@ class ActivePropertyWidgets extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     ActivePropertyController controller = Get.find();
-
     return Obx(
       () => Column(
         children: List.generate(controller.title.length, (index) {
           final isSelected = controller.widgetIndex.value == index;
-
           return Column(
             children: [
               Container(

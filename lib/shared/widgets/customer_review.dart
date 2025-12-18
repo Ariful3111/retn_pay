@@ -28,7 +28,7 @@ class CustomerReview extends StatelessWidget {
         width: 390.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(14.89.r),
-          gradient:isDark?LinearGradient(colors: [AppColors.darkContainer,AppColors.darkContainer]): AppColors.userBackground,
+          gradient:isDark?LinearGradient(colors: [AppColors.darkPrimary,AppColors.darkPrimary ]): AppColors.userBackground,
           boxShadow: [
             BoxShadow(
               offset: Offset(0, 3.72),
