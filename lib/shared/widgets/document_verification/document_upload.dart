@@ -2,10 +2,10 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
+import 'package:renter_pay/shared/widgets/document_verification/document_upload_button.dart';
 
 class DocumentUpload extends StatelessWidget {
   final String titleText;
@@ -45,21 +45,7 @@ class DocumentUpload extends StatelessWidget {
                   color:isDark? AppColors.primaryColorDark: AppColors.primaryTextColor,
                 ),
                 SizedBox(height: 28.5.h),
-                Container(
-                  height: 60.h,
-                  width: 60.w,
-                  decoration: BoxDecoration( 
-                    color: AppColors.whiteColor,
-                    border: Border.all(width: 1.15.sp, color: AppColors.primaryBorder),
-                    borderRadius: BorderRadius.circular(4.62.sp),
-                  ),
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: onTap,
-                      child: Image.asset(IconsPath.upload, height: 23.h, width: 20.w),
-                    ),
-                  ),
-                ),
+                DocumentUploadButton(onTap: onTap),
                 SizedBox(height: 16.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

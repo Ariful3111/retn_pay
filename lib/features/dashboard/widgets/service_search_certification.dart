@@ -23,6 +23,7 @@ class ServiceSearchCertification extends StatelessWidget {
               crossAxisCount: 2,
               crossAxisSpacing: 11.43.w,
               mainAxisSpacing: 11.43.w,
+              childAspectRatio: 1.15
             ),
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
@@ -50,7 +51,7 @@ class ServiceSearchCertification extends StatelessWidget {
   }) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 12.w),
+      padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 10.w),
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
         borderRadius: BorderRadius.circular(8.57.r),
@@ -72,7 +73,7 @@ class ServiceSearchCertification extends StatelessWidget {
             
           ),
           SizedBox(height: 10.h),
-          CustomTextPrimary(text: title, fontSize: 12.sp,textAlign: TextAlign.center,color: isDark ? AppColors.whiteColor : Color(0xFF0A0D14),),
+          CustomTextPrimary(text: title, fontSize: 12.sp,textAlign: TextAlign.center,color: isDark ? AppColors.whiteColor : AppColors.darkTextColor,),
           SizedBox(height: 10.h),
           CustomTextSecondary(
             text: subTitle,

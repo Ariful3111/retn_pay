@@ -16,8 +16,8 @@ class CustomSecondaryButton extends StatelessWidget {
   final Color? textColor;
   final BorderRadius? borderRadius;
   final FontWeight? fontWeight;
-  final Color ?color;
-
+  final Color? color;
+  final EdgeInsets? padding;
   const CustomSecondaryButton({
     super.key,
     this.height,
@@ -31,7 +31,8 @@ class CustomSecondaryButton extends StatelessWidget {
     this.text,
     this.textColor,
     this.borderRadius,
-    this.fontWeight, this.color,
+    this.fontWeight,
+    this.color, this.padding,
   });
 
   @override
@@ -40,6 +41,7 @@ class CustomSecondaryButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
+        padding: padding,
         height: height,
         width: width,
         decoration:
@@ -48,7 +50,9 @@ class CustomSecondaryButton extends StatelessWidget {
               color: color,
               borderRadius: borderRadius ?? BorderRadius.circular(10.r),
               border: BoxBorder.all(
-                color:isDark? borderColor??AppColors.whiteColor:borderColor ?? AppColors.borderColor,
+                color: isDark
+                    ? borderColor ?? AppColors.whiteColor
+                    : borderColor ?? AppColors.borderColor,
                 width: borderWidth ?? 1.w,
               ),
             ),
@@ -57,7 +61,9 @@ class CustomSecondaryButton extends StatelessWidget {
             Center(
               child: CustomTextPrimary(
                 text: text ?? "",
-                color:isDark?textColor?? AppColors.whiteColor:textColor ?? AppColors.borderColor,
+                color: isDark
+                    ? textColor ?? AppColors.whiteColor
+                    : textColor ?? AppColors.borderColor,
                 fontSize: fontSize ?? 16.sp,
                 fontWeight: fontWeight ?? FontWeight.w500,
               ),

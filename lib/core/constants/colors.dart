@@ -13,6 +13,7 @@ class AppColors {
   static const primaryColorDark = Color(0xFF6C0443);
   static const primaryTextColor = Color(0xFF2D021C);
   static const primaryDarkTextColor = Color(0xFF000000);
+  static const darkTextColor = Color(0xFF0A0D14);
   static const secondaryTextColor = Color(0xFF42526D);
   static const backgroundColor = LinearGradient(
     colors: [Color(0xFFE4EDFF), Color(0xFFFFFFFF), Color(0xFFFFF0F9)],

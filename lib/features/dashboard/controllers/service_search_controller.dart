@@ -9,12 +9,38 @@ import 'package:renter_pay/features/dashboard/widgets/service_search_review.dart
 
 class ServiceSearchController extends GetxController {
   RxBool isShowInfo = false.obs;
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController numberController = TextEditingController();
+  TextEditingController address1Controller = TextEditingController();
+  TextEditingController address2Controller = TextEditingController();
+  TextEditingController cityController = TextEditingController();
+  TextEditingController stateController = TextEditingController();
+  TextEditingController zipController = TextEditingController();
+  TextEditingController problemController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController dateController = TextEditingController();
+  TextEditingController timeController = TextEditingController();
+
+  RxList<String> uploadedImage = <String>[].obs;
   RxInt widgetIndex = (-1).obs;
+  RxString state = 'Dhaka'.obs;
+  RxList stateList = ['Dhaka', 'Khulna', 'Rajshahi'].obs;
+  Rx<DateTime?> selectedDate = Rx<DateTime?>(null);
+  RxInt checkboxIndex = 0.obs;
+  RxBool isCheck = false.obs;
   final List<Widget> widgetList = [
     ServiceSearchCertification(),
     ServiceSearchOffered(),
     ServiceSearchPastWork(),
     ServiceSearchReview(),
+  ];
+  final List timePeriodList = [
+    'Between 8 a.m. - 12 p.m.',
+    'Between 12 p.m. - 5 p.m.',
+    'After 5 p.m.',
+    '',
   ];
   final List<String> widgetTitle = [
     'Why Choose ProFix Plumbing?',
@@ -26,7 +52,7 @@ class ServiceSearchController extends GetxController {
     {
       'icon': IconsPath.serviceTech,
       'title': 'Leak Repairs',
-      'subTitle': 'Fast detection & repair of pipe leaks, faucets, and taps. ',
+      'subTitle': 'Licensed & insured professionals',
     },
     {
       'icon': IconsPath.serviceResponse,
@@ -72,8 +98,38 @@ class ServiceSearchController extends GetxController {
     },
   ];
   final List pastWork = [
-    {'Image':ImagesPath.service,'Text':'Emergency pipe burst fixed within hours, restoring full water flow and preventing further damage.'},
-    {'Image':ImagesPath.service,'Text':'Emergency pipe burst fixed within hours, restoring full water flow and preventing further damage.'},
-    {'Image':ImagesPath.service,'Text':'Emergency pipe burst fixed within hours, restoring full water flow and preventing further damage.'},
+    {
+      'Image': ImagesPath.service,
+      'Text':
+          'Emergency pipe burst fixed within hours, restoring full water flow and preventing further damage.',
+    },
+    {
+      'Image': ImagesPath.service,
+      'Text':
+          'Emergency pipe burst fixed within hours, restoring full water flow and preventing further damage.',
+    },
+    {
+      'Image': ImagesPath.service,
+      'Text':
+          'Emergency pipe burst fixed within hours, restoring full water flow and preventing further damage.',
+    },
   ];
+  @override
+  void dispose() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    emailController.dispose();
+    numberController.dispose();
+    address1Controller.dispose();
+    problemController.dispose();
+    address1Controller.dispose();
+    address2Controller.dispose();
+    cityController.dispose();
+    stateController.dispose();
+    zipController.dispose();
+    dateController.dispose();
+    descriptionController.dispose();
+    timeController.dispose();
+    super.dispose();
+  }
 }

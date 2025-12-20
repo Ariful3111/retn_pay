@@ -27,6 +27,7 @@ import 'package:renter_pay/features/dashboard/bindings/payment_management_bindin
 import 'package:renter_pay/features/dashboard/bindings/repair_maintenance_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/repair_request_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/service_booked_bindings.dart';
+import 'package:renter_pay/features/dashboard/bindings/service_booked_details_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/service_search_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/services_bindings.dart';
 import 'package:renter_pay/features/dashboard/views/Repair_maintenance_view.dart';
@@ -104,7 +105,7 @@ final List<GetPage> appRoutes = [
   GetPage(name: AppRoutes.repairMaintenanceView, page:()=> RepairMaintenanceView(),bindings: [RepairMaintenanceBindings(),AddRepairRequestBindings()]),
   GetPage(name: AppRoutes.servicesView, page:()=> ServicesView(),bindings: [ServicesBindings(),ServiceBookedBindings()]),
   GetPage(name: AppRoutes.repairRequestView, page: ()=>RepairRequestView(),bindings: [RepairRequestBindings(),AddRepairRequestBindings()]),
-  GetPage(name: AppRoutes.serviceBookedDetails, page: ()=>ServiceBookedDetails(),bindings: [ServiceBookedBindings()]),
+  GetPage(name: AppRoutes.serviceBookedDetails, page: ()=>ServiceBookedDetails(),bindings: [ServiceBookedBindings(),ServiceBookedDetailsBindings(),ServiceSearchBindings()]),
   GetPage(name: AppRoutes.serviceBookedView, page: ()=>ServiceBookedView(),bindings: [ServiceBookedBindings()]),
   GetPage(name: AppRoutes.serviceSearchDetails, page: ()=>ServiceSearchDetails(),bindings: [ServiceSearchBindings(),ServicesBindings()]),
 ];

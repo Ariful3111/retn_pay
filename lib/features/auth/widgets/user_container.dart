@@ -58,7 +58,7 @@ class UserContainer extends StatelessWidget {
               CustomTextPrimary(
                 text: title,
                 fontSize: 14.sp,
-                color:isDark?AppColors.darkPrimaryText: Color(0xFF0A0D14),
+                color:isDark?AppColors.darkPrimaryText: AppColors.darkTextColor,
               ),
               SizedBox(height: 8.89.h),
               CustomTextSecondary(

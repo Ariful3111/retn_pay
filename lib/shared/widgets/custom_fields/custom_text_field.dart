@@ -14,7 +14,6 @@ class CustomTextField extends StatelessWidget {
   final Color? textColor;
   final double? fontSize;
   final FontWeight? fontWeight;
-  final BorderRadius? borderRadius;
   final TextEditingController controller;
   final TextDirection? textDirection;
   final double? width;
@@ -41,6 +40,12 @@ class CustomTextField extends StatelessWidget {
   final double? cursorHeight;
   final bool? isDense;
   final FocusNode? focusNode;
+  final double? borderRadius;
+  final BorderRadius? enableBorderRadius;
+  final BorderRadius? focusBorderRadius;
+  final double? borderWidth;
+  final double? enableBorderWidth;
+  final double? focusBorderWidth;
   const CustomTextField({
     super.key,
     this.hintText,
@@ -51,7 +56,6 @@ class CustomTextField extends StatelessWidget {
     this.textColor,
     this.fontSize,
     this.fontWeight,
-    this.borderRadius,
     required this.controller,
     this.textDirection,
     this.width,
@@ -77,7 +81,8 @@ class CustomTextField extends StatelessWidget {
     this.isAlignLabelWithHint,
     this.fontHeight,
     this.cursorHeight,
-    this.isDense, this.focusNode,
+    this.isDense,
+    this.focusNode, this.borderRadius, this.enableBorderRadius, this.focusBorderRadius, this.borderWidth, this.enableBorderWidth, this.focusBorderWidth,
   });
 
   @override
@@ -103,7 +108,8 @@ class CustomTextField extends StatelessWidget {
         fontSize: fontSize ?? 16.sp,
         fontWeight: fontWeight ?? FontWeight.w500,
         height: fontHeight,
-      ),cursorColor: isDark?AppColors.darkAppBar:AppColors.darkPrimary,
+      ),
+      cursorColor: isDark ? AppColors.darkAppBar : AppColors.darkPrimary,
       decoration: InputDecoration(
         floatingLabelBehavior: floatingLabelBehavior,
         hintTextDirection: hintDirection,
@@ -120,9 +126,9 @@ class CustomTextField extends StatelessWidget {
         border:
             border ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(9.4.r),
+              borderRadius: BorderRadius.circular(borderRadius?? 9.4.r),
               borderSide: BorderSide(
-                width: 0.78.r,
+                width:borderWidth?? 0.78.r,
                 color: isDark
                     ? AppColors.darkBorderPrimary
                     : AppColors.primaryBorder,
@@ -131,9 +137,9 @@ class CustomTextField extends StatelessWidget {
         focusedBorder:
             focusBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(9.4.r),
+              borderRadius:focusBorderRadius?? BorderRadius.circular( 9.4.r),
               borderSide: BorderSide(
-                width: 0.78.r,
+                width:focusBorderWidth?? 0.78.r,
                 color: isDark
                     ? AppColors.darkBorderPrimary
                     : AppColors.primaryBorder,
@@ -142,9 +148,9 @@ class CustomTextField extends StatelessWidget {
         enabledBorder:
             enableBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(9.4.r),
+              borderRadius:enableBorderRadius?? BorderRadius.circular(9.4.r),
               borderSide: BorderSide(
-                width: 0.78.r,
+                width:enableBorderWidth?? 0.78.r,
                 color: isDark
                     ? AppColors.darkBorderPrimary
                     : AppColors.primaryBorder,
