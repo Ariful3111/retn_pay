@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class InspectionModel {
+class InspectionModel { 
   final String address;
   final String rent;
   final String scheduleDate;

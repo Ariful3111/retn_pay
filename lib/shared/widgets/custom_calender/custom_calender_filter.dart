@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/widgets/select_day.dart';
+import 'package:renter_pay/shared/widgets/custom_calender/select_day.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 
@@ -52,7 +52,7 @@ class CustomCalenderFilter extends StatelessWidget {
                       width: 49.88.w,
                       borderRadius: BorderRadius.circular(3.54.r),
                       fontSize: 9.44.sp,
-                      onPressed: () {},
+                      onPressed: () {Navigator.pop(context);},
                     ),
                     SizedBox(width: 11.8),
                     CustomPrimaryButton(

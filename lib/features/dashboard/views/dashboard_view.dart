@@ -4,15 +4,15 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.dart';
-import 'package:renter_pay/features/dashboard/widgets/dashboard_appbar.dart';
-import 'package:renter_pay/features/dashboard/widgets/dashboard_item.dart';
-import 'package:renter_pay/features/dashboard/widgets/dashboard_key_features.dart';
-import 'package:renter_pay/features/dashboard/widgets/dashboard_quick_actions.dart';
-import 'package:renter_pay/features/dashboard/widgets/dashboard_reminder.dart';
-import 'package:renter_pay/features/dashboard/widgets/dashboard_rent_notice.dart';
-import 'package:renter_pay/features/dashboard/widgets/dashboard_upcoming_payment.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_appbar.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_item.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_key_features.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_quick_actions.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_reminder.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_rent_notice.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_upcoming_payment.dart';
 import 'package:renter_pay/features/dashboard/widgets/landlord_contact.dart';
-import 'package:renter_pay/features/dashboard/widgets/repair_request.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/repair_request.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 
 class DashboardView extends StatelessWidget {

@@ -16,17 +16,17 @@ class DocumentUploadButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height:height?? 60.h,
-      width:width?? 60.w,
-      decoration: BoxDecoration(
-        color: AppColors.whiteColor,
-        border: Border.all(width:borderWidth?? 1.15.sp, color:borderColor?? AppColors.primaryBorder),
-        borderRadius: BorderRadius.circular(radius?? 4.62.sp),
-      ),
-      child: Center(
-        child: GestureDetector(
-          onTap: onTap,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height:height?? 60.h,
+        width:width?? 60.w,
+        decoration: BoxDecoration(
+          color: AppColors.whiteColor,
+          border: Border.all(width:borderWidth?? 1.15.sp, color:borderColor?? AppColors.primaryBorder),
+          borderRadius: BorderRadius.circular(radius?? 4.62.sp),
+        ),
+        child: Center(
           child: Image.asset(IconsPath.upload, height:iconHeight?? 23.h, width:iconWidth?? 20.w),
         ),
       ),

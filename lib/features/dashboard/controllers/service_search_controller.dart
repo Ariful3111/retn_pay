@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
-import 'package:renter_pay/features/dashboard/widgets/service_search_certification.dart';
-import 'package:renter_pay/features/dashboard/widgets/service_search_offered.dart';
-import 'package:renter_pay/features/dashboard/widgets/service_search_past_work.dart';
-import 'package:renter_pay/features/dashboard/widgets/service_search_review.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/service_search_certification.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/service_search_offered.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/service_search_past_work.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/service_search_review.dart';
 
 class ServiceSearchController extends GetxController {
   RxBool isShowInfo = false.obs;
@@ -16,7 +16,6 @@ class ServiceSearchController extends GetxController {
   TextEditingController address1Controller = TextEditingController();
   TextEditingController address2Controller = TextEditingController();
   TextEditingController cityController = TextEditingController();
-  TextEditingController stateController = TextEditingController();
   TextEditingController zipController = TextEditingController();
   TextEditingController problemController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
@@ -125,7 +124,6 @@ class ServiceSearchController extends GetxController {
     address1Controller.dispose();
     address2Controller.dispose();
     cityController.dispose();
-    stateController.dispose();
     zipController.dispose();
     dateController.dispose();
     descriptionController.dispose();

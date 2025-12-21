@@ -4,11 +4,12 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/service_booked_details_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/service_search_controller.dart';
-import 'package:renter_pay/features/dashboard/widgets/service_booked_request.dart';
-import 'package:renter_pay/features/dashboard/widgets/service_details_commit.dart';
-import 'package:renter_pay/features/dashboard/widgets/service_details_widgets.dart';
-import 'package:renter_pay/features/dashboard/widgets/service_dropdown_menu.dart';
-import 'package:renter_pay/features/dashboard/widgets/service_search_info.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_complete.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_request.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_details_commit.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_details_widgets.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_dropdown_menu.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/service_search_info.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
@@ -65,6 +66,8 @@ class ServiceBookedDetails extends StatelessWidget {
           ServiceDetailsCommit(),
           SizedBox(height: 20.h),
           ServiceBookedRequest(),
+          SizedBox(height: 20.h,),
+          ServiceBookedComplete() 
         ],
       ),
     );

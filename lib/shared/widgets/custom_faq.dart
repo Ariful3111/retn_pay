@@ -4,44 +4,81 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class CustomFaq extends StatelessWidget {
-  final  String title;
-   final  String subtitle;
-   final  VoidCallback onTap;
-   final  bool isShow;
-  const CustomFaq({super.key, required this.title, required this.subtitle, required this.onTap, required this.isShow});
+  final String title;
+  final String subtitle;
+  final VoidCallback onTap;
+  final bool isShow;
+  final double? fontSize;
+  final FontWeight? fontWeight;
+  final double? subFontSize;
+  final FontWeight? subFontWeight;
+  const CustomFaq({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+    required this.isShow,
+    this.fontSize,
+    this.fontWeight,
+    this.subFontSize,
+    this.subFontWeight,
+  });
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CustomTextSecondary(text: title, color:isDark?AppColors.darkSecondaryText: AppColors.primaryTextColor),
-            GestureDetector(
-              onTap: onTap,
-              child: Icon(
-                isShow ? Icons.add : Icons.remove,
-                size: 15.sp,
-                color:isDark?AppColors.darkSecondaryText: AppColors.primaryTextColor,
+    return Container(
+      margin: EdgeInsets.only(bottom: 8.h),
+      padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 14.w),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.r),
+        gradient: isDark ? AppColors.darkAuthBG : AppColors.userBackground,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                child: CustomTextSecondary(
+                  text: title,
+                  color: isDark
+                      ? AppColors.darkSecondaryText
+                      : AppColors.primaryTextColor,
+                  fontSize: fontSize,
+                  fontWeight: fontWeight,
+                ),
               ),
-            ),
-          ],
-        ),
-        SizedBox(height: 6.w,),
-        AnimatedSize(
-          duration: Duration(milliseconds: 300),
-          curve: Curves.easeInOutCubic,
-          child: CustomTextSecondary(
-            text: subtitle,
-            fontSize: 14.sp,
-            fontWeight: FontWeight.w400,
-            color:isDark?AppColors.darkSecondaryText: AppColors.primaryTextColor,
+              GestureDetector(
+                onTap: onTap,
+                child: Icon(
+                  isShow ? Icons.add : Icons.remove,
+                  size: 15.sp,
+                  color: isDark
+                      ? AppColors.darkSecondaryText
+                      : AppColors.primaryTextColor,
+                ),
+              ),
+            ],
           ),
-        ),
-      ],
+          SizedBox(height: 6.h,),
+          AnimatedSize(
+            duration: Duration(milliseconds: 300),
+            curve: Curves.easeInOutCubic,
+            child: CustomTextSecondary(
+              text: subtitle,
+              fontSize: subFontSize ?? 14.sp,
+              fontWeight: subFontWeight ?? FontWeight.w400,
+              color: isDark
+                  ? AppColors.darkSecondaryText
+                  : AppColors.primaryTextColor,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

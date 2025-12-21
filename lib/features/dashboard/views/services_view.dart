@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/services_controller.dart';
 import 'package:renter_pay/features/dashboard/views/service_booked_view.dart';
-import 'package:renter_pay/features/dashboard/widgets/drawer_items_appbar.dart';
-import 'package:renter_pay/features/dashboard/widgets/service_dropdown_menu.dart';
-import 'package:renter_pay/features/dashboard/widgets/service_review.dart';
-import 'package:renter_pay/features/dashboard/widgets/services_search.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_dropdown_menu.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_review.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/services_search.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 
 class ServicesView extends StatelessWidget {

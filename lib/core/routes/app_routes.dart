@@ -34,4 +34,5 @@ class AppRoutes {
   static const String serviceSearchDetails = '/serviceSearchDetails';
   static const String serviceBookedDetails = '/serviceBookedDetails';
   static const String serviceBookedView = '/serviceBookedView';
+  static const String supportView = '/supportView';
 }

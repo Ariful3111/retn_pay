@@ -42,57 +42,59 @@ class SuccessDialog extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            widget ??
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 45.h,
-                      width: 45.h,
-                      decoration: BoxDecoration(
-                        gradient: AppColors.primaryColor,
-                        borderRadius: BorderRadius.circular(35.sp),
-                      ),
-                      child: Center(
-                        child: Container(
-                          height: 34.h,
-                          width: 34.w,
-                          decoration: BoxDecoration(
-                            gradient: AppColors.primaryColor,
-                            border: Border.all(
-                              width: 2.sp,
-                              color: AppColors.whiteColor,
+            Center(
+              child: widget ??
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 45.h,
+                        width: 45.h,
+                        decoration: BoxDecoration(
+                          gradient: AppColors.primaryColor,
+                          borderRadius: BorderRadius.circular(35.sp),
+                        ),
+                        child: Center(
+                          child: Container(
+                            height: 34.h,
+                            width: 34.w,
+                            decoration: BoxDecoration(
+                              gradient: AppColors.primaryColor,
+                              border: Border.all(
+                                width: 2.sp,
+                                color: AppColors.whiteColor,
+                              ),
+                              borderRadius: BorderRadius.circular(25.sp),
                             ),
-                            borderRadius: BorderRadius.circular(25.sp),
-                          ),
-                          child: Center(
-                            child: Image.asset(
-                              IconsPath.ok,
-                              height: 12.h,
-                              width: 17.w,
+                            child: Center(
+                              child: Image.asset(
+                                IconsPath.ok,
+                                height: 12.h,
+                                width: 17.w,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: 14.h),
-                    CustomTextPrimary(
-                      text: title1 ?? "Your ID has been verified successfully",
-                      color: AppColors.primaryColorDark,
-                      fontSize: 20.sp,
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(height: 6.h),
-                    CustomTextSecondary(
-                      text: subtitle ?? 'You can now continue.',
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(height: 32.h),
-                    ?button,
-                  ],
-                ),
+                      SizedBox(height: 14.h),
+                      CustomTextPrimary(
+                        text: title1 ?? "Your ID has been verified successfully",
+                        color: AppColors.primaryColorDark,
+                        fontSize: 20.sp,
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 6.h),
+                      CustomTextSecondary(
+                        text: subtitle ?? 'You can now continue.',
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 32.h),
+                      ?button,
+                    ],
+                  ),
+            ),
             Positioned(
               top: 0.h,
               right: 0.w,

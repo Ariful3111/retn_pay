@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class BookedServiceModel {
   final String serviceName;
@@ -19,6 +20,14 @@ class ServiceBookedController extends GetxController {
   RxList<BookedServiceModel> bookedList = <BookedServiceModel>[].obs;
   RxList<bool> expandedData = <bool>[].obs;
   final List<String> tableColumn = ['Service Name', 'Status', 'Action'];
+  late DateTime today;
+  late DateTime firstDay;
+  late DateTime lastDay;
+  Rx<DateTime> focusedDay = DateTime.now().obs;
+  Rx<DateTime?> rangeStart = Rxn<DateTime>();
+  Rx<DateTime?> rangeEnd = Rxn<DateTime>();
+  Rx<RangeSelectionMode> rangeSelectionMode = RangeSelectionMode.toggledOn.obs;
+  Rx<CalendarFormat> calendarFormat = CalendarFormat.month.obs;
 
   List<MapEntry<int, BookedServiceModel>> get filterRow {
     final tempRow = <MapEntry<int, BookedServiceModel>>[];
@@ -159,5 +168,12 @@ class ServiceBookedController extends GetxController {
   void onReady() {
     initList();
     super.onReady();
+  }
+  @override
+  void onInit() {
+    today = DateTime.now();
+    firstDay = DateTime(today.year - 1, today.month, today.day);
+    lastDay = DateTime(today.year + 1, today.month, today.day);
+    super.onInit();
   }
 }

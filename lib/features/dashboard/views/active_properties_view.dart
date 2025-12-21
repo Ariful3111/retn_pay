@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/widgets/active_property_image.dart';
-import 'package:renter_pay/features/dashboard/widgets/active_property_widgets.dart';
-import 'package:renter_pay/features/dashboard/widgets/dashboard_rent_notice.dart';
-import 'package:renter_pay/features/dashboard/widgets/drawer_items_appbar.dart';
+import 'package:renter_pay/features/dashboard/widgets/active_property_widgets/active_property_image.dart';
+import 'package:renter_pay/features/dashboard/widgets/active_property_widgets/active_property_widgets.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_rent_notice.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/property/property_details_info.dart';
 

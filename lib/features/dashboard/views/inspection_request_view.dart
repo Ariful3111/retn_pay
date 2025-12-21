@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/widgets/drawer_items_appbar.dart';
-import 'package:renter_pay/features/dashboard/widgets/inspection_filter.dart';
-import 'package:renter_pay/features/dashboard/widgets/inspection_table.dart';
-import 'package:renter_pay/features/dashboard/widgets/inspection_type.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
+import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_filter.dart';
+import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_table.dart';
+import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_type.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 
 class InspectionRequestView extends StatelessWidget {

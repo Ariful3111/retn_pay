@@ -12,13 +12,13 @@ class TableStatus extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     Color text;
     Color bg;
-    if (status == "Approved"||status == 'Assigned') {
+    if (status == "Approved"||status == 'Assigned'||status == 'Open') {
       bg = isDark ? AppColors.darkApprovedBG : AppColors.approveBG;
       text = isDark ? AppColors.approveBG : AppColors.approveText;
     } else if (status == "Pending") {
       bg = isDark ? AppColors.darkPendingBG : AppColors.pendingBG;
       text = isDark ? AppColors.pendingBG : AppColors.pendingText;
-    } else if (status == "Complete"||status == 'In Progress'|| status=='Booked') {
+    } else if (status == "Complete"||status == 'In Progress'|| status=='Booked'||status =='Resolved') {
       bg = isDark ? AppColors.darkCompleteBG : AppColors.completeBG;
       text = isDark ? AppColors.completeBG : AppColors.completeText;
     }
@@ -38,6 +38,7 @@ class TableStatus extends StatelessWidget {
         fontSize: 12.sp,
         fontWeight: FontWeight.w400,
         color: text,
+        textOverflow: TextOverflow.ellipsis,
       ),
     );
   }

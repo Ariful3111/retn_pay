@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:renter_pay/features/dashboard/widgets/service_booked_filter.dart';
-import 'package:renter_pay/features/dashboard/widgets/service_booked_table.dart';
-import 'package:renter_pay/features/dashboard/widgets/service_booked_type.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_filter.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_table.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_type.dart';
 class ServiceBookedView extends StatelessWidget {
   const ServiceBookedView({super.key});
 
