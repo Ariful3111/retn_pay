@@ -35,7 +35,6 @@ class CustomDrawer extends StatelessWidget {
           ],
           borderRadius: BorderRadius.circular(12.r),
         ),
-
         child: Material(
           color: Colors.transparent,
           child: Column(

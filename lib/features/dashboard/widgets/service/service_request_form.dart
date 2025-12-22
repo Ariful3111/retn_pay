@@ -8,6 +8,7 @@ import 'package:renter_pay/features/dashboard/widgets/service/service_from_field
 import 'package:renter_pay/features/dashboard/widgets/service/service_request_from_details.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/service_time.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class ServiceRequestForm extends StatelessWidget with ServiceFromField{
   const ServiceRequestForm({super.key});
@@ -34,25 +35,25 @@ class ServiceRequestForm extends StatelessWidget with ServiceFromField{
           myField(
             controller: serviceSearchController.firstNameController,
             context: context,
-            labelText:myLabel(title: 'Resident First Name', spanText: '*') ,
+            labelText:CustomTextSecondary(text: 'Resident First Name*') ,
           ),
           SizedBox(height: 20.h),
           myField(
             controller: serviceSearchController.lastNameController,
             context: context,
-            labelText:myLabel(title: 'Resident Last Name', spanText: '*') ,
+            labelText:CustomTextSecondary(text: 'Resident Last Name*') ,
           ),
           SizedBox(height: 20.h),
           myField(
             controller: serviceSearchController.emailController,
             context: context,
-            labelText:myLabel(title: 'Resident Email', spanText: "*") ,
+            labelText:CustomTextSecondary(text: 'Resident Email*') ,
           ),
           SizedBox(height: 20.h),
           myField(
             controller: serviceSearchController.numberController,
             context: context,
-            labelText:myLabel(title: 'Resident Phone Number', spanText: "*") ,
+            labelText:CustomTextSecondary(text: 'Resident Phone Number') ,
           ),
           SizedBox(height: 24.h),
           ServiceAddressField(),

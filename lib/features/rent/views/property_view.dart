@@ -51,7 +51,7 @@ class PropertyView extends StatelessWidget {
         SizedBox(height: 16.h),
         PropertyKeyFeatures(),
         SizedBox(height: 24.h,),
-        CustomTextSecondary(text: 'Location Information',fontSize: 20.sp,color:isDark?AppColors.primaryColorDark: AppColors.primaryTextColor,),
+        CustomTextSecondary(text: 'Location Information',fontSize: 20.sp,color:isDark?AppColors.darkAppBar: AppColors.primaryTextColor,),
         SizedBox(height: 8.h,),
         LocationInfo(),
         SizedBox(height: 24.h),

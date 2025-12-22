@@ -24,7 +24,7 @@ class ServiceSearchController extends GetxController {
 
   RxList<String> uploadedImage = <String>[].obs;
   RxInt widgetIndex = (-1).obs;
-  RxString state = 'Dhaka'.obs;
+  RxString state = 'State*'.obs;
   RxList stateList = ['Dhaka', 'Khulna', 'Rajshahi'].obs;
   Rx<DateTime?> selectedDate = Rx<DateTime?>(null);
   RxInt checkboxIndex = 0.obs;

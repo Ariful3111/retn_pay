@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/repair_maintenance_controller.dart';
+import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_maintenance_table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
-import 'package:renter_pay/shared/widgets/custom_table/table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class RepairMaintenanceTableContent extends StatelessWidget {
@@ -27,7 +27,7 @@ class RepairMaintenanceTableContent extends StatelessWidget {
           children: [
             info(text: 'Status'),
             SizedBox(width: 8.w),
-            TableStatus(status: item.status),
+            RepairMaintenanceTableStatus(rowIndex: rowIndex),
           ],
         ),
         SizedBox(height: 8.h),
@@ -45,9 +45,7 @@ class RepairMaintenanceTableContent extends StatelessWidget {
           fontWeight: FontWeight.w400,
           textColor: AppColors.darkAppBar,
           borderRadius: BorderRadius.circular(6.r),
-          onPressed: () {
-            
-          },
+          onPressed: () {},
         ),
         SizedBox(height: 12.h),
       ],

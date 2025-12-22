@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_appbar.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_item.dart';
@@ -11,6 +11,8 @@ import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboar
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_reminder.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_rent_notice.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_upcoming_payment.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_upcoming_payment.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/property_promotion.dart';
 import 'package:renter_pay/features/dashboard/widgets/landlord_contact.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/repair_request.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
@@ -22,6 +24,7 @@ class DashboardView extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     DashboardController dashboardController = Get.find();
+    int userIndex = Get.find<UserRoleController>().selectedIndex.value;
     return CustomContainer(
       gradient: isDark
           ? LinearGradient(
@@ -43,39 +46,28 @@ class DashboardView extends StatelessWidget {
                 Column(
                   children: [
                     SizedBox(height: 24.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        DashboardItem(
-                          icon: IconsPath.dashboardRent,
-                          title: 'Rents',
-                          value: '\$1200',
-                        ),
-                        DashboardItem(
-                          icon: IconsPath.dashboardInspection,
-                          title: 'Inspections',
-                          value: '3',
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 12.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        DashboardItem(
-                          icon: IconsPath.dashboardApplication,
-                          title: 'Rents',
-                          value: '4',
-                        ),
-                        DashboardItem(
-                          icon: IconsPath.dashboardRepair,
-                          title: 'Inspections',
-                          value: '3',
-                        ),
-                      ],
+                    GridView.builder(
+                      itemCount: 4,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 12.w,
+                        mainAxisSpacing: 12.h,
+                        childAspectRatio: 188 / 85,
+                      ),
+                      itemBuilder: (context, index) {
+                        final list = dashboardController.dashboardItem[index];
+                        return DashboardItem(
+                          icon: list['icon'],
+                          title: list['title'],
+                          value: list['value'],
+                        );
+                      },
                     ),
                     SizedBox(height: 20.h),
-                    DashboardUpcomingPayment(),
+                  if(userIndex==0)  DashboardUpcomingPayment(),
+                  if(userIndex==1) LandlordUpcomingPayment(),
                     SizedBox(height: 20.h),
                     DashboardReminder(),
                     Obx(
@@ -87,6 +79,7 @@ class DashboardView extends StatelessWidget {
                     ),
                     DashboardRentNotice(),
                     SizedBox(height: 20.h),
+                    if(userIndex == 1) PropertyPromotion(),
                     DashboardQuickActions(),
                     SizedBox(height: 20.h),
                     Obx(

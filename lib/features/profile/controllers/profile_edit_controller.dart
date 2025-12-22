@@ -16,7 +16,7 @@ class ProfileEditController extends GetxController {
   TextEditingController bathroomController = TextEditingController();
   RxBool isPets = false.obs;
   RxBool isParking = false.obs;
-  RxString initialPet = 'Dog'.obs;
+  RxString initialPet = 'Pet Type'.obs;
   RxList petType = ['Dog','Cat'].obs;
   RxBool isSelectedPet = false.obs;
 }

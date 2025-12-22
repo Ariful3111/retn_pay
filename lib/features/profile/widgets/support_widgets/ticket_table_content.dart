@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/profile/controllers/support_controller.dart';
+import 'package:renter_pay/features/profile/widgets/support_widgets/ticket_table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
-import 'package:renter_pay/shared/widgets/custom_table/table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class TicketTableContent extends StatelessWidget {
@@ -27,7 +27,7 @@ class TicketTableContent extends StatelessWidget {
           children: [
             info(text: 'Status'),
             SizedBox(width: 8.w),
-            TableStatus(status: item.status),
+            TicketTableStatus(rowIndex: rowIndex),
           ],
         ),
         SizedBox(height: 8.h),

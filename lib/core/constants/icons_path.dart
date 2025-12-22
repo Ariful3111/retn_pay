@@ -146,4 +146,7 @@ class IconsPath {
   static const String serviceTech = 'assets/icons/service_tech.png';
   static const String service = 'assets/icons/service.png';
   static const String serviceDetails = 'assets/icons/service_details.png';
+  static const String supportCall = 'assets/icons/support_call.png';
+  static const String supportChat = 'assets/icons/support_chat.png';
+  static const String supportEmail = 'assets/icons/support_email.png';
 }

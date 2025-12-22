@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/repair_maintenance_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_maintenance_table_content.dart';
+import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_maintenance_table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_table/custom_table.dart';
 import 'package:renter_pay/shared/widgets/custom_table/custom_table_expanded.dart';
-import 'package:renter_pay/shared/widgets/custom_table/table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class RepairMaintenanceTable extends StatelessWidget {
@@ -40,7 +40,7 @@ class RepairMaintenanceTable extends StatelessWidget {
                 fontWeight: FontWeight.w500,
                 textOverflow: TextOverflow.ellipsis,
               ),
-              TableStatus(status: item.status),
+              RepairMaintenanceTableStatus(rowIndex: listIndex[index]),
               CustomPrimaryButton(
                 text: 'View',
                 height: 37.h,
@@ -49,9 +49,11 @@ class RepairMaintenanceTable extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 textColor: AppColors.darkAppBar,
                 borderRadius: BorderRadius.circular(6.r),
-                onPressed: () {repairMaintenanceController.showExpandedData(
+                onPressed: () {
+                  repairMaintenanceController.showExpandedData(
                     listIndex[index],
-                  );},
+                  );
+                },
               ),
             ];
           });

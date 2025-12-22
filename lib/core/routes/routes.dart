@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/auth/bindings/document_verification_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/first_onboarding_bindings.dart';
+import 'package:renter_pay/features/auth/bindings/forgot_password_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/login_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/onboarding_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/otp_bindings.dart';
@@ -70,7 +71,7 @@ import 'package:renter_pay/features/rent/views/property_view.dart';
 final List<GetPage> appRoutes = [
   GetPage(name: AppRoutes.onboarding, page: () => Onboarding(), bindings:[ OnboardingBindings(),FirstOnboardingBindings()]),
   GetPage(name: AppRoutes.userRole, page: () => UserRole(), bindings: [UserRoleBinding()]),
-  GetPage(name: AppRoutes.loginView, page: () => LoginView(), bindings: [LoginBindings()]),
+  GetPage(name: AppRoutes.loginView, page: () => LoginView(), bindings: [LoginBindings(),ForgotPasswordBindings()]),
   GetPage(
     name: AppRoutes.signupOption,
     page: () => SignupOption(),

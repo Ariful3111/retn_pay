@@ -103,10 +103,31 @@ class ItemInfo extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      CustomTextSpan(
-                        title: '\$280',
-                        spantext: '/week',
-                        spanColor: Color(0xFF505F79),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomTextSpan(
+                            title: '\$280',
+                            spantext: '/week',
+                            spanColor: Color(0xFF505F79),
+                          ),
+                          Row(
+                            children: [
+                              Image.asset(
+                                IconsPath.appCurrency,
+                                height: 11.h,
+                                width: 11.h,
+                                color: isDark?null:AppColors.darkPrimary,
+                              ),
+                              SizedBox(width: 3.w),
+                              CustomTextSpan(
+                                title: '280',
+                                spantext: '/week',
+                                spanColor: Color(0xFF505F79),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                       SizedBox(width: 3.12.w),
                       CustomTextSecondary(text: '.', fontSize: 7.02.sp),
@@ -129,7 +150,10 @@ class ItemInfo extends StatelessWidget {
                   onTap: onVR,
                   child: Image.asset(IconsPath.vR, height: 16.h, width: 16.w),
                 ),
-                CustomRatingBuilder(onRating: updateRating, initialRating: initialRating),
+                CustomRatingBuilder(
+                  onRating: updateRating,
+                  initialRating: initialRating,
+                ),
               ],
             ),
           ],

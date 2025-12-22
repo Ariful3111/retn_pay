@@ -16,7 +16,7 @@ class VilaList extends StatelessWidget {
     HomeController homeController = Get.find();
     FavoriteController favoriteController = Get.find();
     return SizedBox(
-        height: 288.h,
+        height: 300.h,
         width: 300.w,
         child: ListView.builder(
           shrinkWrap: true,

@@ -23,6 +23,16 @@ class DashboardController extends GetxController {
     ImagesPath.vila,
   ];
   RxInt dialogImageIndex = 0.obs;
+  final List dashboardItem = [
+    {"icon": IconsPath.dashboardRent, "title": 'Rents', "value": '\$1200'},
+    {
+      "icon": IconsPath.dashboardInspection,
+      "title": 'Inspections',
+      "value": '3',
+    },
+    {"icon": IconsPath.dashboardApplication, "title": 'Rents', "value": '4'},
+    {"icon": IconsPath.dashboardRepair, "title": 'Inspections', "value": '3'},
+  ];
   List drawerItems = [
     {'icon': IconsPath.dashboard, 'title': 'Dashboard'},
     {'icon': IconsPath.drawerInspection, 'title': 'Inspection Request'},
@@ -31,12 +41,6 @@ class DashboardController extends GetxController {
     {'icon': IconsPath.drawerPayment, 'title': 'Payment Management'},
     {'icon': IconsPath.drawerRepair, 'title': 'Repair & Maintenance'},
     {'icon': IconsPath.drawerService, 'title': 'Service'},
-  ];
-  List dashboardItems = [
-    {'icon': IconsPath.dashboardRent, 'title': 'Rents'},
-    {'icon': IconsPath.dashboardInspection, 'title': 'Inspections'},
-    {'icon': IconsPath.dashboardApplication, 'title': 'Applications'},
-    {'icon': IconsPath.dashboardRepair, 'title': 'Repairs'},
   ];
   RxList<Map<String, dynamic>> reminderList = [
     {

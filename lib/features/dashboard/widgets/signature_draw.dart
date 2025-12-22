@@ -29,13 +29,24 @@ class SignatureDraw extends StatelessWidget {
             () => Stack(
               children: [
                 if (keyReleaseController.signatureMode.value == 'draw')
-                  ClipRRect(
-                    borderRadius: BorderRadiusGeometry.circular(17.r),
-                    child: Signature(
-                      controller: keyReleaseController.signatureController,
-                      backgroundColor: isDark
-                          ? AppColors.darkSecondary
-                          : AppColors.whiteColor,
+                  Listener(
+                    onPointerDown: (event) {
+                      keyReleaseController.isDrawing.value = true;
+                    },
+                    onPointerCancel: (event) {
+                      keyReleaseController.isDrawing.value = false;
+                    },
+                    onPointerUp: (event) {
+                      keyReleaseController.isDrawing.value = false;
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadiusGeometry.circular(17.r),
+                      child: Signature(
+                        controller: keyReleaseController.signatureController,
+                        backgroundColor: isDark
+                            ? AppColors.darkSecondary
+                            : AppColors.whiteColor,
+                      ),
                     ),
                   ),
                 if (keyReleaseController.signatureMode.value == 'type')

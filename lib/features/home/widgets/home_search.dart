@@ -41,6 +41,7 @@ class HomeSearch extends StatelessWidget {
           ),
           child: Center(
             child: CustomTextField(
+              padding: EdgeInsets.zero,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12.sp),
                 borderSide: BorderSide(color: Colors.transparent),

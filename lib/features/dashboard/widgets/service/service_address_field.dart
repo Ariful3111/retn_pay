@@ -24,19 +24,19 @@ class ServiceAddressField extends StatelessWidget with ServiceFromField {
           myField(
             controller: serviceSearchController.address1Controller,
             context: context,
-            labelText:myLabel(title: 'Address Line 1', spanText: '*') ,
+            labelText:CustomTextSecondary(text: 'Address Line 1*') ,
           ),
           SizedBox(height: 20.h),
           myField(
             controller: serviceSearchController.address2Controller,
             context: context,
-            labelText:myLabel(title: 'Address Line 2', spanText: '') ,
+            labelText:CustomTextSecondary(text: 'Address Line 2*') ,
           ),
           SizedBox(height: 20.h),
           myField(
             controller: serviceSearchController.cityController,
             context: context,
-            labelText:myLabel(title: 'City', spanText: '*') ,
+            labelText:CustomTextSecondary(text: 'City*') ,
           ),
           SizedBox(height: 20.h),
            CustomDropdownMenu(
@@ -50,13 +50,13 @@ class ServiceAddressField extends StatelessWidget with ServiceFromField {
               borderRadius: 12.r,
               focusBorderRadius: 12.r,
               focusBorderWidth: 1.r,
-              label:myLabel(title: 'State', spanText: '*'),
+              label:CustomTextSecondary(text: 'State*'),
             ),
           SizedBox(height: 20.h),
           myField(
             controller: serviceSearchController.zipController,
             context: context,
-            labelText:myLabel(title:'Zip Code', spanText: '*') ,
+            labelText:CustomTextSecondary(text:'Zip Code*') ,
           ),],);
   }
 }

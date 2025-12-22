@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
 
 mixin ServiceFromField {
   Widget myField({
@@ -26,9 +25,5 @@ mixin ServiceFromField {
       maxLines: maxLines,
       isAlignLabelWithHint: isAlignLabelWithHint,
     );
-  }
-
-  Widget myLabel({required String title, required String spanText}) {
-    return CustomTextSpan(title: title, spantext: spanText,fontSize: 12.sp,fontWeight: FontWeight.w400,color: AppColors.secondaryTextColor,spanColor: AppColors.secondaryTextColor,);
   }
 }

@@ -84,7 +84,6 @@ class RecommendedItems extends StatelessWidget {
                         spanColor: AppColors.darkSecondaryText,
                       ),
                       SizedBox(width: 5.w,),
-                      
                       Image.asset(IconsPath.appCurrency,height: 11.h,width: 11.h,),
                       SizedBox(width: 3.w,),
                       CustomTextSpan(

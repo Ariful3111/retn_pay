@@ -3,17 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/utils/image_picker.dart';
-import 'package:renter_pay/features/dashboard/controllers/service_search_controller.dart';
-import 'package:renter_pay/features/dashboard/widgets/service/service_request_image_view.dart';
+import 'package:renter_pay/shared/widgets/custom_attach_image/custom_attach_image_view.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/document_verification/document_upload_button.dart';
 
-class ServiceRequestImage extends StatelessWidget {
-  const ServiceRequestImage({super.key});
+class CustomAttachedImage extends StatelessWidget {
+   final RxList<String> imageList;
+  const CustomAttachedImage({super.key, required this.imageList});
 
   @override
   Widget build(BuildContext context) {
-    ServiceSearchController serviceSearchController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,7 +45,7 @@ class ServiceRequestImage extends StatelessWidget {
                 iconWidth: 11.74.w,
                 onTap: () {
                   UploadImage.pickMultipleImage(
-                    allImages: serviceSearchController.uploadedImage,
+                    allImages: imageList,
                   );
                 },
               ),
@@ -60,7 +59,7 @@ class ServiceRequestImage extends StatelessWidget {
           ),
         ),
         SizedBox(width: 10.w,),
-        ServiceRequestImageView(),
+        CustomAttachImageView(imageList: imageList,),
       ],
     );
   }

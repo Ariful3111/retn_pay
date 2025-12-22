@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/profile/controllers/support_controller.dart';
 import 'package:renter_pay/features/profile/widgets/support_widgets/ticket_table_content.dart';
+import 'package:renter_pay/features/profile/widgets/support_widgets/ticket_table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_table/custom_table.dart';
 import 'package:renter_pay/shared/widgets/custom_table/custom_table_expanded.dart';
-import 'package:renter_pay/shared/widgets/custom_table/table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class TicketTable extends StatelessWidget {
@@ -45,7 +45,7 @@ class TicketTable extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 textOverflow: TextOverflow.ellipsis,
               ),
-              TableStatus(status: item.status),
+              TicketTableStatus(rowIndex: listIndex[index]),
               CustomPrimaryButton(
                 text: 'View',
                 height: 37.h,

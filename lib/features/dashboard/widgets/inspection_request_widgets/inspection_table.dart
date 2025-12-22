@@ -23,7 +23,7 @@ class InspectionTable extends StatelessWidget {
       ),
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12.r),
+          borderRadius: BorderRadius.circular(20.r),
           color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
         ),
         child: Obx(() {

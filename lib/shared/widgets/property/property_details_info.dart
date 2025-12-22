@@ -12,7 +12,7 @@ class PropertyDetailsInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = Theme.of(context).brightness ==Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return SizedBox(
       height: 88.4.h,
       width: MediaQuery.widthOf(context),
@@ -20,10 +20,7 @@ class PropertyDetailsInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CustomTextPrimary(
-            text: 'Maple Grove Garden House',
-            fontSize: 24.sp,
-          ),
+          CustomTextPrimary(text: 'Maple Grove Garden House', fontSize: 24.sp),
           Row(
             children: [
               Image.asset(IconsPath.bed, height: 16.5.h, width: 16.5.w),
@@ -52,9 +49,7 @@ class PropertyDetailsInfo extends StatelessWidget {
               SizedBox(width: 6.w),
               DottedBorder(
                 options: RectDottedBorderOptions(
-                  color: isDark
-                      ? AppColors.whiteColor
-                      : AppColors.darkPrimary,
+                  color: isDark ? AppColors.whiteColor : AppColors.darkPrimary,
                   borderPadding: EdgeInsets.all(0.39.sp),
                   dashPattern: [1.5, 1.5],
                 ),
@@ -88,7 +83,20 @@ class PropertyDetailsInfo extends StatelessWidget {
               CustomTextSpan(
                 title: '\$280',
                 spantext: '/week',
-                spanColor:isDark? AppColors.lightText:AppColors.darkPrimary.withValues(alpha: 0.5),
+                spanColor: isDark
+                    ? AppColors.lightText
+                    : AppColors.darkPrimary.withValues(alpha: 0.5),
+                fontSize: 22.sp,
+              ),
+              SizedBox(width: 5.w),
+              Image.asset(IconsPath.appCurrency, height: 15.h, width: 15.h,color: isDark?null:AppColors.darkPrimary,),
+              SizedBox(width: 3.w),
+              CustomTextSpan(
+                title: '280',
+                spantext: '/week',
+                spanColor: isDark
+                    ? AppColors.lightText
+                    : AppColors.darkPrimary.withValues(alpha: 0.5),
                 fontSize: 22.sp,
               ),
               SizedBox(width: 60.w),

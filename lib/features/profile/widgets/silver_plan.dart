@@ -61,7 +61,6 @@ class SilverPlan extends StatelessWidget {
       planBG: AppColors.silverPlanBG,
       planIcon: IconsPath.silverPlan,
       planIconBG: AppColors.silverIconBG,
-      
       planTitle: 'Silver',
       planSubtitle: '(Free 15 days for first-time users)',
       price: '\$799',

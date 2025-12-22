@@ -5,6 +5,7 @@ import 'package:signature/signature.dart';
 
 class KeyReleaseController extends GetxController {
   TextEditingController drawController = TextEditingController();
+  RxBool isDrawing = false.obs;
   RxString signatureMode = 'draw'.obs;
   final SignatureController signatureController = SignatureController(
     penStrokeWidth: 3,

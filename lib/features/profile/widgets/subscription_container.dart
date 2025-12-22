@@ -120,7 +120,7 @@ class SubscriptionContainer extends StatelessWidget {
               SizedBox(height: 14.h),
               Column(children: widgetList),
               SizedBox(height:sizeBoxHeight?? 84.h),
-              CustomSecondaryButton(onPressed: onTap, text: "Buy", height: 52.h, width: 286.w),
+              CustomSecondaryButton(onPressed: onTap, text: "Buy", height: 52.h, width: 286.w,),
             ],
           ),
         ],

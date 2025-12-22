@@ -45,18 +45,17 @@ class CustomDropdownMenu extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Obx(() {
       return DropdownMenu<String>(
+        initialSelection: isSelect.value,
         textAlign: textAlign,
         textStyle: GoogleFonts.inter(
           fontSize:fontSize?? 16.sp,
           fontWeight: FontWeight.w500,
           color:isDark? AppColors.darkSecondaryText:AppColors.secondaryTextColor,
         ),
-        initialSelection: isSelect.value,
         label: label,
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
           fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
-          alignLabelWithHint: true,
           contentPadding: contentPadding,
           focusColor: Colors.transparent,
           enabledBorder: OutlineInputBorder(
@@ -81,14 +80,14 @@ class CustomDropdownMenu extends StatelessWidget {
         expandedInsets: expandedInsets,
         trailingIcon: Image.asset(
           IconsPath.downArrow,
-          height: 15.h,
-          width: 10.w,
+          height: 20.h,
+          width: 15.w,
           color: trailingIconColor ?? Color(0xFF868C98),
         ),
         selectedTrailingIcon: Image.asset(
           IconsPath.upArrow,
-          height: 15.h,
-          width: 10.w,
+          height: 20.h,
+          width: 15.w,
           color: selectedTrailingIconColor ?? Color(0xFF868C98),
         ),
         width: MediaQuery.widthOf(context),

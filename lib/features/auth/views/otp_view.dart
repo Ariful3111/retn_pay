@@ -57,7 +57,7 @@ class OtpView extends StatelessWidget {
                 onPressed: () {
                   otpController.verifyOTP(fromKey);
                 },
-                text: "Signup",
+                text: "Verify OTP",
                 textColor: AppColors.whiteColor,
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w500,

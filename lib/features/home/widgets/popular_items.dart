@@ -62,14 +62,38 @@ class PopularItems extends StatelessWidget {
                         text: 'Maple Grove Garden',
                         color: AppColors.whiteColor,
                       ),
-                      CustomTextSpan(
-                        title: '\$200',
-                        spantext: '/Week',
-                        fontSize: 16.sp,
-                        spanFontSize: 12.sp,
-                        spanFontWeight: FontWeight.w400,
-                        color: AppColors.whiteColor,
-                        spanColor: AppColors.darkSecondaryText,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomTextSpan(
+                            title: '\$200',
+                            spantext: '/Week',
+                            fontSize: 16.sp,
+                            spanFontSize: 12.sp,
+                            spanFontWeight: FontWeight.w400,
+                            color: AppColors.whiteColor,
+                            spanColor: AppColors.darkSecondaryText,
+                          ),
+                          Row(
+                            children: [
+                              Image.asset(
+                                IconsPath.appCurrency,
+                                height: 11.h,
+                                width: 11.h,
+                              ),
+                              SizedBox(width: 3.w),
+                              CustomTextSpan(
+                                title: '200',
+                                spantext: '/Week',
+                                fontSize: 16.sp,
+                                spanFontSize: 12.sp,
+                                spanFontWeight: FontWeight.w400,
+                                color: AppColors.whiteColor,
+                                spanColor: AppColors.darkSecondaryText,
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ],
                   ),

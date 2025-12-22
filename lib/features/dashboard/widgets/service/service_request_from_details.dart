@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_from_field.dart';
-import 'package:renter_pay/features/dashboard/widgets/service/service_request_image.dart';
+import 'package:renter_pay/shared/widgets/custom_attach_image/custom_attached_image.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
@@ -26,14 +26,14 @@ class ServiceRequestFromDetails extends StatelessWidget with ServiceFromField{
           myField(
             controller: serviceSearchController.problemController,
             context: context,
-            labelText:myLabel(title: 'Location of Problem', spanText: "*") ,
+            labelText:CustomTextSecondary(text: 'Location of Problem*') ,
           ),
           SizedBox(height: 20.h),
           CustomTextPrimary(text: 'Attached Photos',fontSize: 16.sp,fontWeight: FontWeight.w500,),
           SizedBox(height: 4.h),
-          ServiceRequestImage(),
+          CustomAttachedImage(imageList: serviceSearchController.uploadedImage,),
           SizedBox(height: 20.h),
-          myField(controller: serviceSearchController.descriptionController, context: context, labelText: myLabel(title: 'Please provide a brief description of the problem', spanText: '*'),isAlignLabelWithHint: true,maxLines: 3),
+          myField(controller: serviceSearchController.descriptionController, context: context, labelText: CustomTextSecondary(text: 'Please provide a brief description of the problem*'),isAlignLabelWithHint: true,maxLines: 3),
           SizedBox(height: 20.h),
 
       ],
