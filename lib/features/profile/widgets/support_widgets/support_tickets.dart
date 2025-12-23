@@ -18,67 +18,82 @@ class SupportTickets extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     SupportController supportController = Get.find();
     return Obx(
-      () => AnimatedSize(
-        duration: Duration(milliseconds: 200),
-        curve: Curves.easeInOut,
-        child: supportController.isCreateTicket.value
-            ? CreateTicket()
-            : Column(
-                children: [
-                  Container(
-                    height: 176.h,
-                    width: MediaQuery.widthOf(context),
-                    padding: EdgeInsets.all(12.r),
-                    decoration: BoxDecoration(
-                      color: isDark
-                          ? AppColors.darkSecondary
-                          : AppColors.whiteColor,
-                      borderRadius: BorderRadius.circular(12.r),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: CustomTextPrimary(
-                                text: 'Track & Manage Your\nSupport Tickets',
-                                fontSize: 20.sp,
-                              ),
-                            ),
-                            TicketFilter(),
-                          ],
-                        ),
-                        SizedBox(height: 4.h),
-                        CustomTextSecondary(
-                          text:
-                              'Submit a new ticket or check the status of your existing requests.',
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w400,
-                        ),
-                        SizedBox(height: 12.h),
-                        CustomPrimaryButton(
-                          height: 40.h,
-                          width: 170.w,
-                          textColor: AppColors.darkAppBar,
-                          borderRadius: BorderRadius.circular(6.r),
-                          text: 'Create New Ticket',
-                          onPressed: () {
-                            supportController.isCreateTicket.value =
-                                !supportController.isCreateTicket.value;
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 20.h),
-                  TicketTable(),
-                ],
+      () =>
+      AnimatedSwitcher(
+          duration: const Duration(milliseconds: 300),
+          switchInCurve: Curves.easeOutCubic,
+          switchOutCurve: Curves.easeInCubic,
+          transitionBuilder: (child, animation) {
+            final slideTween = Tween<Offset>(
+              begin: Offset(0, supportController.isCreateTicket.value ? 0.08 : 0.08),
+              end: Offset.zero,
+            );
+
+            return FadeTransition(
+              opacity: animation,
+              child: SlideTransition(
+               position: slideTween.animate(animation),
+                child: child,
               ),
-      ),
+            );
+          },
+      child:  supportController.isCreateTicket.value
+          ? CreateTicket()
+          : Column(
+              children: [
+                Container(
+                  height: 176.h,
+                  width: MediaQuery.widthOf(context),
+                  padding: EdgeInsets.all(12.r),
+                  decoration: BoxDecoration(
+                    color: isDark
+                        ? AppColors.darkSecondary
+                        : AppColors.whiteColor,
+                    borderRadius: BorderRadius.circular(12.r),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: CustomTextPrimary(
+                              text: 'Track & Manage Your\nSupport Tickets',
+                              fontSize: 20.sp,
+                            ),
+                          ),
+                          TicketFilter(),
+                        ],
+                      ),
+                      SizedBox(height: 4.h),
+                      CustomTextSecondary(
+                        text:
+                            'Submit a new ticket or check the status of your existing requests.',
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      SizedBox(height: 12.h),
+                      CustomPrimaryButton(
+                        height: 40.h,
+                        width: 170.w,
+                        textColor: AppColors.darkAppBar,
+                        borderRadius: BorderRadius.circular(6.r),
+                        text: 'Create New Ticket',
+                        onPressed: () {
+                          supportController.isCreateTicket.value =
+                              !supportController.isCreateTicket.value;
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20.h),
+                TicketTable(),
+              ],
+            ),),
     );
   }
 }

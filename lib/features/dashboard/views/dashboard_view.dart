@@ -13,7 +13,7 @@ import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboar
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_upcoming_payment.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_upcoming_payment.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/property_promotion.dart';
-import 'package:renter_pay/features/dashboard/widgets/landlord_contact.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_contact.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/repair_request.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 

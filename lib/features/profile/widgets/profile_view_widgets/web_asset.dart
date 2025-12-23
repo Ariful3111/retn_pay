@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
-import 'package:renter_pay/features/profile/widgets/profile_items.dart';
-import 'package:renter_pay/features/profile/widgets/web_asset_items.dart';
+import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_items.dart';
+import 'package:renter_pay/features/profile/widgets/profile_view_widgets/web_asset_items.dart';
 
 class WebAsset extends StatelessWidget {
   const WebAsset({super.key});

@@ -17,81 +17,76 @@ class TicketTable extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     SupportController supportController = Get.find();
-    return MediaQuery(
-      data: MediaQueryData(
-        size: Size(MediaQuery.widthOf(context), MediaQuery.heightOf(context)),
+    return Container(
+      decoration: BoxDecoration(
+        color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
       ),
-      child: Container(
-        decoration: BoxDecoration(
-          color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
-        ),
-        child: Obx(() {
-          final rowList = supportController.filterData;
-          final rowWidgets = List<List<Widget>>.generate(rowList.length, (
-            index,
-          ) {
-            final item = rowList[index].value;
-            final listIndex = rowList.map((e) => e.key).toList();
-            return [
-              CustomTextPrimary(
-                text: item.ticketID,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
-                textOverflow: TextOverflow.ellipsis,
-              ),
-              CustomTextPrimary(
-                text: item.category,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-                textOverflow: TextOverflow.ellipsis,
-              ),
-              TicketTableStatus(rowIndex: listIndex[index]),
-              CustomPrimaryButton(
-                text: 'View',
-                height: 37.h,
-                width: 63.w,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-                textColor: AppColors.darkAppBar,
-                borderRadius: BorderRadius.circular(6.r),
-                onPressed: () {
-                  supportController.showExpandedData(
-                    listIndex[index],
-                  );
-                },
-              ),
-            ];
-          });
+      child: Obx(() {
+        final rowList = supportController.filterData;
+        final rowWidgets = List<List<Widget>>.generate(rowList.length, (
+          index,
+        ) {
+          final item = rowList[index].value;
           final listIndex = rowList.map((e) => e.key).toList();
-          return CustomTable(
-            column: supportController.tableColumn,
-            row: rowWidgets,
-            listIndex: listIndex,
-            onRowTap: (index) {
-              supportController.showExpandedData(listIndex[index]);
-            },
-            isExpandedTableBuilder: (index) {
-              return supportController.expandedData[listIndex[index]];
-            },
-            expandedTableBuilder: (index) {
-              final item = rowList[index].value;
-              return CustomTableExpanded(
-                title: 'Ticket ID: ${item.ticketID}',
-                isOpen:
-                    supportController.expandedData[listIndex[index]],
-                onExpandedClose: () {
-                  supportController.showExpandedData(
-                    listIndex[index],
-                  );
-                },
-                expandedContent: TicketTableContent(
-                  rowIndex: listIndex[index],
-                ),
-              );
-            },
-          );
-        }),
-      ),
+          return [
+            CustomTextPrimary(
+              text: item.ticketID,
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500,
+              textOverflow: TextOverflow.ellipsis,
+            ),
+            CustomTextPrimary(
+              text: item.category,
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w400,
+              textOverflow: TextOverflow.ellipsis,
+            ),
+            TicketTableStatus(rowIndex: listIndex[index]),
+            CustomPrimaryButton(
+              text: 'View',
+              height: 37.h,
+              width: 63.w,
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w400,
+              textColor: AppColors.darkAppBar,
+              borderRadius: BorderRadius.circular(6.r),
+              onPressed: () {
+                supportController.showExpandedData(
+                  listIndex[index],
+                );
+              },
+            ),
+          ];
+        });
+        final listIndex = rowList.map((e) => e.key).toList();
+        return CustomTable(
+          column: supportController.tableColumn,
+          row: rowWidgets,
+          listIndex: listIndex,
+          onRowTap: (index) {
+            supportController.showExpandedData(listIndex[index]);
+          },
+          isExpandedTableBuilder: (index) {
+            return supportController.expandedData[listIndex[index]];
+          },
+          expandedTableBuilder: (index) {
+            final item = rowList[index].value;
+            return CustomTableExpanded(
+              title: 'Ticket ID: ${item.ticketID}',
+              isOpen:
+                  supportController.expandedData[listIndex[index]],
+              onExpandedClose: () {
+                supportController.showExpandedData(
+                  listIndex[index],
+                );
+              },
+              expandedContent: TicketTableContent(
+                rowIndex: listIndex[index],
+              ),
+            );
+          },
+        );
+      }),
     );
   }
 }

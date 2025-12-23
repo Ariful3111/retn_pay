@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/widgets/add_repair_request_field.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/add_repair_request_field.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_request_image_date.dart';
-import 'package:renter_pay/features/dashboard/widgets/request_submit.dart';
-import 'package:renter_pay/features/dashboard/widgets/request_time.dart';
-import 'package:renter_pay/features/dashboard/widgets/request_type.dart';
+import 'package:renter_pay/features/dashboard/widgets/add_repair_request_widgets/request_submit.dart';
+import 'package:renter_pay/features/dashboard/widgets/add_repair_request_widgets/request_time.dart';
+import 'package:renter_pay/features/dashboard/widgets/add_repair_request_widgets/request_type.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_close_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 

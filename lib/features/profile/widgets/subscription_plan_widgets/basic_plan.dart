@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/features/profile/widgets/benefits_list.dart';
-import 'package:renter_pay/features/profile/widgets/subscription_container.dart';
+import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/benefits_list.dart';
+import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/subscription_container.dart';
 
 class BasicPlan extends StatelessWidget {
   const BasicPlan({super.key});

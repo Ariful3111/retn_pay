@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/features/profile/widgets/profile_items.dart';
+import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_items.dart';
 import 'package:renter_pay/features/profile/widgets/profile_shared_item.dart';
-import 'package:renter_pay/features/profile/widgets/profile_user_items.dart';
-import 'package:renter_pay/features/profile/widgets/web_asset.dart';
+import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_user_items.dart';
+import 'package:renter_pay/features/profile/widgets/profile_view_widgets/web_asset.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class ProfileItemsList extends StatelessWidget with ProfileSharedItem{

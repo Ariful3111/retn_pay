@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/key_release_controller.dart';
-import 'package:renter_pay/features/dashboard/widgets/signature_field.dart';
-import 'package:renter_pay/features/dashboard/widgets/signature_mode_button.dart';
+import 'package:renter_pay/features/dashboard/widgets/active_property_widgets/signature_field.dart';
+import 'package:renter_pay/features/dashboard/widgets/active_property_widgets/signature_mode_button.dart';
 import 'package:signature/signature.dart';
 
 class SignatureDraw extends StatelessWidget {

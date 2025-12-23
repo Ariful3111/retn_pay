@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/profile/controllers/profile_edit_controller.dart';
-import 'package:renter_pay/features/profile/widgets/profile_edit_checkbox.dart';
-import 'package:renter_pay/features/profile/widgets/profile_edit_field.dart';
-import 'package:renter_pay/features/profile/widgets/profile_save_button.dart';
+import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_checkbox.dart';
+import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_field.dart';
+import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_save_button.dart';
 import 'package:renter_pay/shared/widgets/custom_dropdown_menu.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
