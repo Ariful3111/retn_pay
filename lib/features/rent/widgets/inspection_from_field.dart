@@ -16,11 +16,12 @@ class InspectionFromField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     PropertyViewController propertyViewController = Get.find();
     return Column(
       children: [
         CustomTextField(
-          fillColor: AppColors.whiteColor,
+          fillColor:isDark? AppColors.darkPrimary:AppColors.whiteColor,
           controller: propertyViewController.nameController,
           labelText: 'Full Name*',
           hintText: 'Enter Your Full Name',
@@ -28,7 +29,7 @@ class InspectionFromField extends StatelessWidget {
         ),
         SizedBox(height: 15.66.h),
         CustomTextField(
-          fillColor: AppColors.whiteColor,
+          fillColor: isDark? AppColors.darkPrimary:AppColors.whiteColor,
           controller: propertyViewController.emailController,
           labelText: 'Email Address*',
           hintText: 'Enter Your Email Address',
@@ -38,7 +39,7 @@ class InspectionFromField extends StatelessWidget {
         ),
         SizedBox(height: 15.66.h),
         CustomTextField(
-          fillColor: AppColors.whiteColor,
+          fillColor: isDark? AppColors.darkPrimary:AppColors.whiteColor,
           controller: propertyViewController.phoneController,
           labelText: 'Phone Number*',
           hintText: 'Enter Your Phone Number',
@@ -48,7 +49,7 @@ class InspectionFromField extends StatelessWidget {
         ),
         SizedBox(height: 15.66.h),
         CustomDateField(
-          fillColor: AppColors.whiteColor,
+          fillColor: isDark? AppColors.darkPrimary:AppColors.whiteColor,
           controller: propertyViewController.dateController,
           onTap: () {
             DatePicker.pickDate(
@@ -66,7 +67,7 @@ class InspectionFromField extends StatelessWidget {
         ),
         SizedBox(height: 15.66.h),
         CustomTimeField(
-          fillColor: AppColors.whiteColor,
+          fillColor: isDark? AppColors.darkPrimary:AppColors.whiteColor,
           controller: propertyViewController.timeController,
           onTap: () {
             TimePicker.pickTime(
@@ -89,11 +90,12 @@ class InspectionFromField extends StatelessWidget {
           },
           option: propertyViewController.inspectOption,
           isSelect: propertyViewController.selectedInspection,
-          label:CustomTextSecondary(
-          text: 'Inspection Type*',
-          fontSize: 12.sp,
-          fontWeight: FontWeight.w400,
-        ), textAlign: TextAlign.start,
+          label: CustomTextSecondary(
+            text: 'Inspection Type*',
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w400,
+          ),
+          textAlign: TextAlign.start,
         ),
       ],
     );

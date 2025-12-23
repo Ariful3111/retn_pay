@@ -18,7 +18,7 @@ class NotificationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
+bool isDark = Theme.of(context).brightness == Brightness.dark;
       return GestureDetector(
         onTap: onTap,
         child: Container(
@@ -27,7 +27,7 @@ class NotificationItem extends StatelessWidget {
           height: 105.h,
           decoration: BoxDecoration(
             color: isSelect
-                ? AppColors.darkAppBar
+                ?isDark?AppColors.darkSecondary :AppColors.darkAppBar
                 : null,
             borderRadius: BorderRadius.circular(
               isSelect ? 8.sp : 0.sp,

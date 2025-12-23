@@ -39,7 +39,6 @@ class CustomFaq extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
@@ -50,6 +49,10 @@ class CustomFaq extends StatelessWidget {
                       : AppColors.primaryTextColor,
                   fontSize: fontSize,
                   fontWeight: fontWeight,
+                  textHeightBehavior: TextHeightBehavior(
+                    applyHeightToFirstAscent: false,
+                    applyHeightToLastDescent: false,
+                  ),
                 ),
               ),
               GestureDetector(

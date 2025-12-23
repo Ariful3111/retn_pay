@@ -16,8 +16,9 @@ class ActivePropertyWidgets extends StatelessWidget {
     return Obx(
       () => Column(
         children: List.generate(controller.title.length, (index) {
-          final isSelected = controller.widgetIndex.value == index;
+          final isSelected = controller.isOpenList[index];
           return Column(
+            key: ValueKey(index),
             children: [
               Container(
                 padding: EdgeInsets.all(20.r),
@@ -39,16 +40,13 @@ class ActivePropertyWidgets extends StatelessWidget {
                               ? AppColors.whiteColor
                               : AppColors.secondaryTextColor,
                         ),
-                        GestureDetector(
+                        InkWell(
                           onTap: () {
-                            HitTestBehavior.opaque;
-                            controller.widgetIndex.value = isSelected
-                                ? -1
-                                : index;
+                            controller.isOpenList[index] =
+                                !controller.isOpenList[index];
                           },
-                          child: SizedBox(
-                            height: 24.h,
-                            width: 24.w,
+                          child: Padding(
+                            padding: EdgeInsets.all(8.r),
                             child: Center(
                               child: Image.asset(
                                 isSelected
@@ -70,9 +68,9 @@ class ActivePropertyWidgets extends StatelessWidget {
                       curve: Curves.easeInOut,
                       child: isSelected
                           ? Padding(
-                            padding: EdgeInsets.only(top: 12.h),
-                            child: controller.widgetList[index],
-                          )
+                              padding: EdgeInsets.only(top: 12.h),
+                              child: controller.widgetList[index],
+                            )
                           : SizedBox.shrink(),
                     ),
                   ],

@@ -16,7 +16,7 @@ class PropertyCustomerReview extends StatelessWidget {
         CustomTextPrimary(text: 'Customer Review',fontSize: 20.sp,color:isDark?AppColors.darkAppBar: Color(0xFF251621),),
         CustomTextPrimary(text: 'Hear what our happy tenants say about Maple\nGrove Garden House',fontSize: 14.sp,color:isDark? AppColors.darkSecondaryText:AppColors.darkLightText,fontWeight: FontWeight.w400,textAlign: TextAlign.center,),
         SizedBox(height: 12.h,),
-        CustomerReview(),
+        CustomerReview(linearGradient: LinearGradient(colors: [AppColors.darkSecondary,AppColors.darkSecondary]),),
       ],
     );
   }

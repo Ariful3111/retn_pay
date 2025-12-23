@@ -30,28 +30,22 @@ class DashboardQuickActions extends StatelessWidget {
             color: isDark ? AppColors.darkAppBar : AppColors.primaryColorDark,
           ),
           Obx(
-            () => GestureDetector(
+            () => InkWell(
               onTap: () {
-                HitTestBehavior.translucent;
+                
                 dashboardController.isQuickActions.value =
                     !dashboardController.isQuickActions.value;
               },
-              child: SizedBox(
-                height: 40.h,
-                width: 40.w,
-                child: AnimatedSwitcher(
-                  duration: Duration(milliseconds: 300),
-                  switchInCurve: Curves.easeInOut,
-                  switchOutCurve: Curves.easeOut,
-                  child: Center(
-                    child: Image.asset(
-                      dashboardController.isQuickActions.value
-                          ? IconsPath.upArrow
-                          : IconsPath.downArrow,
-                      height: 7.5.h,
-                      width: 15.w,
-                      color: AppColors.secondaryTextColor,
-                    ),
+              child: Padding(
+                padding:  EdgeInsets.all(8.r),
+                child: Center(
+                  child: Image.asset(
+                    dashboardController.isQuickActions.value
+                        ? IconsPath.upArrow
+                        : IconsPath.downArrow,
+                    height: 7.5.h,
+                    width: 15.w,
+                    color: AppColors.secondaryTextColor,
                   ),
                 ),
               ),

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-class PropertyViewController extends GetxController{
+class PropertyViewController extends GetxController {
   ImagePicker picker = ImagePicker();
   Rxn<XFile> frontImage = Rxn<XFile>();
   Rxn<XFile> backImage = Rxn<XFile>();
+  ScrollController scrollController = ScrollController();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -15,15 +16,31 @@ class PropertyViewController extends GetxController{
   Rx<DateTime?> selectedDate = Rx<DateTime?>(null);
   Rx<TimeOfDay?> selectedTime = Rx<TimeOfDay?>(null);
   RxList<bool> isShowFAQ = <bool>[].obs;
-  RxList inspectOption = ['In-Person Visit','Virtual Tour'].obs;
-  RxString selectedInspection = 'In-Person Visit'.obs;
+  RxList inspectOption = ['In-Person Visit', 'Virtual Tour'].obs;
+  RxString selectedInspection = 'Inspection Type'.obs;
   RxBool isSelectedInspection = false.obs;
-  List <Map<String,dynamic>> faqList =[
-      {'title':'How long does an inspection take?','subtitle':'Most inspections take 20-45 minutes, depending on\nthe size of the property. Our agent will guide you\nthrough each feature and answer your questions\nduring the visit.'},
-      {'title':'Can I reschedule my appointment?','subtitle':'Most inspections take 20-45 minutes, depending on\nthe size of the property. Our agent will guide you\nthrough each feature and answer your questions\nduring the visit.'},
-      {'title':'Do I need to bring documents?','subtitle':'Most inspections take 20-45 minutes, depending on\nthe size of the property. Our agent will guide you\nthrough each feature and answer your questions\nduring the visit.'},
-      {'title':'Is there any cost for booking an inspection?','subtitle':'Most inspections take 20-45 minutes, depending on\nthe size of the property. Our agent will guide you\nthrough each feature and answer your questions\nduring the visit.'},
-    ];
+  List<Map<String, dynamic>> faqList = [
+    {
+      'title': 'How long does an inspection take?',
+      'subtitle':
+          'Most inspections take 20-45 minutes, depending on\nthe size of the property. Our agent will guide you\nthrough each feature and answer your questions\nduring the visit.',
+    },
+    {
+      'title': 'Can I reschedule my appointment?',
+      'subtitle':
+          'Most inspections take 20-45 minutes, depending on\nthe size of the property. Our agent will guide you\nthrough each feature and answer your questions\nduring the visit.',
+    },
+    {
+      'title': 'Do I need to bring documents?',
+      'subtitle':
+          'Most inspections take 20-45 minutes, depending on\nthe size of the property. Our agent will guide you\nthrough each feature and answer your questions\nduring the visit.',
+    },
+    {
+      'title': 'Is there any cost for booking an inspection?',
+      'subtitle':
+          'Most inspections take 20-45 minutes, depending on\nthe size of the property. Our agent will guide you\nthrough each feature and answer your questions\nduring the visit.',
+    },
+  ];
   String? emailValidation(String? value) {
     final text = (value ?? '').trim();
     if (text.isEmpty) {
@@ -54,7 +71,24 @@ class PropertyViewController extends GetxController{
 
   @override
   void onInit() {
-    isShowFAQ.value=List.filled(faqList.length+1, true);
+    isShowFAQ.value = List.filled(faqList.length + 1, true);
     super.onInit();
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
+    timeController.dispose();
+    dateController.dispose();
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void onClose() {
+    scrollController.dispose();
+    super.onClose();
   }
 }

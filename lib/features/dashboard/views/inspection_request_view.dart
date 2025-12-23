@@ -28,6 +28,7 @@ class InspectionRequestView extends StatelessWidget {
           InspectionFilter(),
           SizedBox(height: 20.h,),
           InspectionTable(),
+          SizedBox(height: 20.h,),
         ],  
       ),
     );

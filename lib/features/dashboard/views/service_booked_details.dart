@@ -60,7 +60,7 @@ class ServiceBookedDetails extends StatelessWidget {
           ServiceDetailsWidgets(
             widgetList: serviceSearchController.widgetList,
             widgetTitleList: serviceSearchController.widgetTitle,
-            widgetIndex: serviceBookedDetailsController.widgetIndex,
+            selectedWidget: serviceBookedDetailsController.selectedWidgetList,
           ),
           SizedBox(height: 20.h),
           ServiceDetailsCommit(),

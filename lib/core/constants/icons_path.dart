@@ -137,7 +137,7 @@ class IconsPath {
   static const String serviceDrain = 'assets/icons/service_drain.png';
   static const String serviceExp = 'assets/icons/service_exp.png';
   static const String serviceHeater = 'assets/icons/service_heater.png';
-  static const String servicePipe = 'assets/icons/service_pipe.png'; 
+  static const String servicePipe = 'assets/icons/service_pipe.png';
   static const String servicePrice = 'assets/icons/service_price.png';
   static const String serviceRating = 'assets/icons/service_rating.png';
   static const String serviceRepair = 'assets/icons/service_repair.png';

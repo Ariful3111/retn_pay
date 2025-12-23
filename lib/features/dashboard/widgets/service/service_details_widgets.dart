@@ -8,12 +8,12 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 class ServiceDetailsWidgets extends StatelessWidget {
   final List<Widget> widgetList;
   final List<String> widgetTitleList;
-  final RxInt widgetIndex;
+  final RxList selectedWidget;
   const ServiceDetailsWidgets({
     super.key,
     required this.widgetList,
     required this.widgetTitleList,
-    required this.widgetIndex,
+    required this.selectedWidget,
   });
 
   @override
@@ -21,8 +21,9 @@ class ServiceDetailsWidgets extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Obx(()=> Column(
       children: List.generate(widgetList.length, (index) {
-        final isSelected = widgetIndex.value == index;
+        final isSelected = selectedWidget[index];
         return Column(
+          key: ValueKey(index),
           children: [
             Container(
               padding: EdgeInsets.all(16.r),
@@ -31,6 +32,7 @@ class ServiceDetailsWidgets extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.r),
               ),
               child: Column(
+                key: ValueKey(index),
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,7 +47,7 @@ class ServiceDetailsWidgets extends StatelessWidget {
                       ServiceDetailsSwitcher(
                         isShow: isSelected,
                         onTap: () {
-                          widgetIndex.value = isSelected ? -1 : index;
+                          selectedWidget[index]=!selectedWidget[index];
                         },
                       ),
                     ],

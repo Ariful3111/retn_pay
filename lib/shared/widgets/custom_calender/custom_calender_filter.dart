@@ -19,7 +19,7 @@ class CustomCalenderFilter extends StatelessWidget {
         height: 350.h,
         width: 360.w,
         decoration: BoxDecoration(
-          color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+          color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
           boxShadow: [
             BoxShadow(
               offset: Offset(0, 4.72),

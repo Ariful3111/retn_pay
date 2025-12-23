@@ -16,34 +16,57 @@ class RepairRequest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-        DashboardController dashboardController = Get.find();
+    DashboardController dashboardController = Get.find();
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 31.w, vertical: 24.h),
       height: 412.h,
       width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
-        color:isDark? AppColors.darkPrimary:AppColors.whiteColor,
+        color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Center(child: CustomTextPrimary(text: 'Submit a Repair Request',fontSize: 24.sp,color:isDark? AppColors.darkAppBar:AppColors.primaryColorDark,)),
-          SizedBox(height: 18.h,),
+          Center(
+            child: CustomTextPrimary(
+              text: 'Submit a Repair Request',
+              fontSize: 24.sp,
+              color: isDark ? AppColors.darkAppBar : AppColors.primaryColorDark,
+            ),
+          ),
+          SizedBox(height: 18.h),
           RequestForm(),
-          SizedBox(height: 8.79.h,),
-          CustomTextSecondary(text: 'Attach Photos',color:isDark? AppColors.darkSecondaryText:AppColors.darkContainer,),
-          SizedBox(height: 8.79.h,),
-          CustomAddMultiImage(buttonHeight: 57.h, buttonWidth: 57.w, sizedBoxHeight: 57.h, imageHeight: 57.h, imageWidth: 57.w, onTap: () { 
-            UploadImage.pickMultipleImage(
+          SizedBox(height: 8.79.h),
+          CustomTextSecondary(
+            text: 'Attach Photos',
+            color: isDark
+                ? AppColors.darkSecondaryText
+                : AppColors.darkContainer,
+          ),
+          SizedBox(height: 8.79.h),
+         Obx(()=> CustomAddMultiImage(
+            buttonHeight: 57.h,
+            buttonWidth: 57.w,
+            sizedBoxHeight: 57.h,
+            imageHeight: 57.h,
+            imageWidth: 57.w,
+            onTap: () {
+              UploadImage.pickMultipleImage(
                 allImages: dashboardController.repairImages,
               );
-           }, item: dashboardController.repairImages.length, imagesPath: dashboardController.repairImages, iconHeight: 26.37.h, iconWidth: 26.37.w,),
-          SizedBox(height: 13.18.h,),
-          CustomPrimaryButton(height: 54.h, onPressed: () {
-          },
-          text: 'Submit Repair Request',
-          )
+            },
+            item: dashboardController.repairImages.length,
+            imagesPath: dashboardController.repairImages,
+            iconHeight: 26.37.h,
+            iconWidth: 26.37.w,
+          ),),
+          SizedBox(height: 13.18.h),
+          CustomPrimaryButton(
+            height: 54.h,
+            onPressed: () {},
+            text: 'Submit Repair Request',
+          ),
         ],
       ),
     );

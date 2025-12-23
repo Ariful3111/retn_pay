@@ -70,12 +70,12 @@ class LandlordContact extends StatelessWidget {
           CustomTextSecondary(
             text: 'Lease Duration',
             fontWeight: FontWeight.w400,
-            color: AppColors.lightText,
+            color:isDarkMode?AppColors.darkSecondaryText: AppColors.lightText,
           ),
           SizedBox(height: 5.h,),
           CustomTextSecondary(
             text: '23 Aug 2025',
-            color: AppColors.darkContainer,
+            color:isDarkMode? AppColors.darkSecondaryText:AppColors.darkContainer,
           ),
           SizedBox(height: 15.h,),
           Row(
@@ -87,6 +87,7 @@ class LandlordContact extends StatelessWidget {
                 onTap: () {},
                 icon: IconsPath.dashboardCall,
                 text: 'Call',
+                iconColor: isDarkMode?AppColors.whiteColor:null,
               ),
               SizedBox(width: 12.w),
               NoticeButtonModel(

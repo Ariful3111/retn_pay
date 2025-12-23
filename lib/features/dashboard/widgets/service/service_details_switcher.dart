@@ -14,17 +14,17 @@ class ServiceDetailsSwitcher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
+    return InkWell(
       onTap: onTap,
-      child: SizedBox(
-        height: 24.h,
-        width: 24.w,
+      child: Padding(
+        padding:  EdgeInsets.all(8.0.r),
         child: Center(
           child: Image.asset(
             isShow ? IconsPath.upArrow : IconsPath.downArrow,
             height: 15.h,
             width: 15.w,
-            color: AppColors.secondaryTextColor,
+            color:isDark? AppColors.darkAppBar:AppColors.secondaryTextColor,
           ),
         ),
       ),

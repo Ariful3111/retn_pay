@@ -29,7 +29,7 @@ class SettingView extends StatelessWidget {
           SliverPadding(padding: EdgeInsetsGeometry.symmetric(horizontal: 20.w),
           sliver: SliverList(delegate: SliverChildListDelegate([
             Container(
-            padding: EdgeInsets.only(top: 24.h, bottom: 24.h, left: 15.w),
+            padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 15.w),
             width: MediaQuery.widthOf(context),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16.sp),

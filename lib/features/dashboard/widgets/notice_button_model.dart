@@ -13,6 +13,7 @@ class NoticeButtonModel extends StatelessWidget {
   final Offset? offset;
   final Color? shadowColor;
   final Color ?borderColorDark;
+  final Color ? iconColor;
   const NoticeButtonModel({
     super.key,
     required this.width,
@@ -22,7 +23,7 @@ class NoticeButtonModel extends StatelessWidget {
     required this.text,
     this.blur,
     this.offset,
-    this.shadowColor, this.borderColorDark,
+    this.shadowColor, this.borderColorDark, this.iconColor,
   });
 
   @override
@@ -55,7 +56,7 @@ class NoticeButtonModel extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(icon, width: 20.w, height: 20.h),
+            Image.asset(icon, width: 20.w, height: 20.h,color: iconColor,),
             SizedBox(width: 4.w),
             CustomTextSecondary(
               text: text,

@@ -4,19 +4,21 @@ import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
-class RentController extends GetxController{
+class RentController extends GetxController {
   final scrollController = ScrollController();
   Rx<SfRangeValues> range = SfRangeValues(300, 670000).obs;
   double minRange = 0;
   double maxRange = 700000;
+  RxString initialSort = 'sortBy'.obs;
+  List sortList = ['Low To High','High to Low'];
   TextEditingController filterSearchController = TextEditingController();
   RxList<String> selectedFilterProperty = <String>[].obs;
   RxList<String> selectedAmenities = <String>[].obs;
-  RxList apartmentRating = List<double>.filled(12,1.0).obs;
-  RxList houseRating = List<double>.filled(12,1.0).obs;
-  RxList officeRating = List<double>.filled(12,1.0).obs;
-  RxList studioRating = List<double>.filled(12,1.0).obs;
-  RxList vilaRating = List<double>.filled(12,1.0).obs;
+  RxList apartmentRating = List<double>.filled(12, 1.0).obs;
+  RxList houseRating = List<double>.filled(12, 1.0).obs;
+  RxList officeRating = List<double>.filled(12, 1.0).obs;
+  RxList studioRating = List<double>.filled(12, 1.0).obs;
+  RxList vilaRating = List<double>.filled(12, 1.0).obs;
   RxBool isShowPriceRange = true.obs;
   RxBool isShowAmenities = false.obs;
   RxBool isShowProperty = false.obs;
@@ -30,22 +32,23 @@ class RentController extends GetxController{
     ImagesPath.studio,
     ImagesPath.vila,
   ];
-  RxInt dialogImageIndex=0.obs;
-  void dialogSelectedIndex(int index){
-    dialogImageIndex.value=index;
-  }
-  void previousPage(){
-    if(currentPage>1) currentPage.value--;
+  RxInt dialogImageIndex = 0.obs;
+  void dialogSelectedIndex(int index) {
+    dialogImageIndex.value = index;
   }
 
-  void nextPage(){
-    if(currentPage<totalPage) currentPage++;
+  void previousPage() {
+    if (currentPage > 1) currentPage.value--;
   }
 
-  List<dynamic> get pageNumber{
+  void nextPage() {
+    if (currentPage < totalPage) currentPage++;
+  }
+
+  List<dynamic> get pageNumber {
     int page = currentPage.value;
 
-     if (totalPage <= 6) {
+    if (totalPage <= 6) {
       return List.generate(totalPage, (i) => i + 1);
     }
 
@@ -71,5 +74,4 @@ class RentController extends GetxController{
     scrollController.dispose();
     super.onClose();
   }
-  
 }

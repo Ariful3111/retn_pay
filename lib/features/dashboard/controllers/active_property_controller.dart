@@ -6,7 +6,7 @@ import 'package:renter_pay/shared/widgets/property/property_details_list.dart';
 import 'package:renter_pay/shared/widgets/property/property_key_features.dart';
 
 class ActivePropertyController extends GetxController {
-  RxInt widgetIndex = (-1).obs;
+  RxList<bool> isOpenList = <bool>[].obs;
   TextEditingController reviewController = TextEditingController();
   var rating = 0.0.obs;
   List<String> title = [
@@ -27,5 +27,10 @@ class ActivePropertyController extends GetxController {
   void dispose() {
     reviewController.dispose();
     super.dispose();
+  }
+  @override
+  void onInit() {
+    isOpenList.value = List.generate(title.length, (_) => false);
+    super.onInit();
   }
 }

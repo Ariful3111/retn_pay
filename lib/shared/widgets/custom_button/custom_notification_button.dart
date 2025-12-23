@@ -38,6 +38,12 @@ class CustomNotificationButton extends StatelessWidget {
         child: Center(
           child: Stack(
             children: [
+              Image.asset(
+                IconsPath.homeNotification,
+                height: 18.h,
+                width: 18.w,
+                color: isDark?AppColors.darkPrimary:null,
+              ),
               Positioned(
                 top: 1.50.h,
                 right: 1.50.w,
@@ -49,12 +55,6 @@ class CustomNotificationButton extends StatelessWidget {
                     color: Color(0xFFFF4D5E),
                   ),
                 ),
-              ),
-              Image.asset(
-                IconsPath.homeNotification,
-                height: 18.h,
-                width: 18.w,
-                color: isDark?AppColors.darkPrimary:null,
               ),
             ],
           ),

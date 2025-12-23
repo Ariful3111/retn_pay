@@ -19,51 +19,64 @@ class RentView extends StatelessWidget {
   Widget build(BuildContext context) {
     FavoriteController favoriteController = Get.find();
     RentController rentController = Get.find();
-     bool isDark = Theme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
-      gradient:isDark? LinearGradient(colors: [
-        AppColors.darkPrimary,
-        AppColors.darkPrimary,
-      ]):AppColors.userBackground.withOpacity(0.5),
+      gradient: isDark
+          ? LinearGradient(
+              colors: [AppColors.darkPrimary, AppColors.darkPrimary],
+            )
+          : AppColors.userBackground.withOpacity(0.5),
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: SingleChildScrollView(
+        
         controller: rentController.scrollController,
         child: Column(
           children: [
             RentAppBar(),
             SizedBox(height: 8.h),
-            CustomItemSort(onItemSort: () { 
-            },title: 'Property',),
+            CustomItemSort(
+              title: 'Property',
+              option: rentController.sortList,
+              onSelect: (value) {
+                rentController.initialSort.value = value!;
+              },
+              isSelect: rentController.initialSort,
+            ),
             SizedBox(height: 19.28.h),
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
               itemCount: 12,
-                itemBuilder: (_, index) {
-                  return ItemContainer(
-                    onTapImage: () {
-                      showDialog(context: context, builder: (context){
+              itemBuilder: (_, index) {
+                return ItemContainer(
+                  onTapImage: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
                         return Dialog(child: PropertyImageView());
-                      });
-                    },
-                    onTapDetails: () {
-                      HitTestBehavior.opaque;
-                      Get.toNamed(AppRoutes.rentDetails);
-                    },
-                    imageHeight: 250.h,
-                    imageWidth: MediaQuery.widthOf(context),
-                    image: ImagesPath.house,
-                    padding: EdgeInsetsGeometry.only(bottom: 24.h),
-                    onVR: () {},
-                    updateRating: (value) {
-                      rentController.houseRating[index] = value;
-                    },
-                    initialRating: rentController.houseRating[index], onFavorite: () {  }, isFavorite: favoriteController.isFavorite(index),
-                  );
-                },
-              ),
-              CustomPagination(),
-              SizedBox(height: 55.h,),
+                      },
+                    );
+                  },
+                  onTapDetails: () {
+                    HitTestBehavior.opaque;
+                    Get.toNamed(AppRoutes.rentDetails);
+                  },
+                  imageHeight: 250.h,
+                  imageWidth: MediaQuery.widthOf(context),
+                  image: ImagesPath.house,
+                  padding: EdgeInsetsGeometry.only(bottom: 24.h),
+                  onVR: () {},
+                  updateRating: (value) {
+                    rentController.houseRating[index] = value;
+                  },
+                  initialRating: rentController.houseRating[index],
+                  onFavorite: () {},
+                  isFavorite: favoriteController.isFavorite(index),
+                );
+              },
+            ),
+            CustomPagination(),
+            SizedBox(height: 55.h),
           ],
         ),
       ),

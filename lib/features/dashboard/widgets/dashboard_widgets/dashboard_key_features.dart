@@ -47,7 +47,7 @@ class DashboardKeyFeatures extends StatelessWidget {
           SizedBox(height: 8.72.h),
           ...List.generate(keyFeatures.length, (index) {
             return Padding(
-              padding: EdgeInsets.only(bottom:  4.h),
+              padding: EdgeInsets.only(bottom:index==keyFeatures.length-1?  0:4.h),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -59,7 +59,6 @@ class DashboardKeyFeatures extends StatelessWidget {
                       color:isDark? AppColors.darkSecondaryText:AppColors.secondaryTextColor,
                       shape: BoxShape.circle,
                     ),
-                    
                   ),
                   SizedBox(width: 10.w),
                   Expanded(

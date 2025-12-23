@@ -12,22 +12,40 @@ class DocumentUploadButton extends StatelessWidget {
   final double? borderWidth;
   final double? radius;
   final Color? borderColor;
-  const DocumentUploadButton({super.key, required this.onTap, this.iconHeight, this.iconWidth, this.borderWidth, this.radius, this.borderColor, this.height, this.width});
+  const DocumentUploadButton({
+    super.key,
+    required this.onTap,
+    this.iconHeight,
+    this.iconWidth,
+    this.borderWidth,
+    this.radius,
+    this.borderColor,
+    this.height,
+    this.width,
+  });
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height:height?? 60.h,
-        width:width?? 60.w,
+        height: height ?? 60.h,
+        width: width ?? 60.w,
         decoration: BoxDecoration(
-          color: AppColors.whiteColor,
-          border: Border.all(width:borderWidth?? 1.15.sp, color:borderColor?? AppColors.primaryBorder),
-          borderRadius: BorderRadius.circular(radius?? 4.62.sp),
+          color:isDark? AppColors.darkSecondary:AppColors.whiteColor,
+          border: Border.all(
+            width: borderWidth ?? 1.15.sp,
+            color: borderColor ?? AppColors.primaryBorder,
+          ),
+          borderRadius: BorderRadius.circular(radius ?? 4.62.sp),
         ),
         child: Center(
-          child: Image.asset(IconsPath.upload, height:iconHeight?? 23.h, width:iconWidth?? 20.w),
+          child: Image.asset(
+            IconsPath.upload,
+            height: iconHeight ?? 23.h,
+            width: iconWidth ?? 20.w,
+          ),
         ),
       ),
     );

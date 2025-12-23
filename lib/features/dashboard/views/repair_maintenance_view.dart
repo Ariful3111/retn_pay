@@ -22,6 +22,7 @@ class RepairMaintenanceView extends StatelessWidget {
         RepairTypes(),
         SizedBox(height: 20.h,),
         RepairMaintenanceTable(),
+        SizedBox(height: 20.h,),
       ],
     ));
   }

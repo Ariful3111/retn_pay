@@ -23,7 +23,7 @@ class ServiceSearchController extends GetxController {
   TextEditingController timeController = TextEditingController();
 
   RxList<String> uploadedImage = <String>[].obs;
-  RxInt widgetIndex = (-1).obs;
+  RxList<bool> selectedWidgetList = <bool>[].obs;
   RxString state = 'State*'.obs;
   RxList stateList = ['Dhaka', 'Khulna', 'Rajshahi'].obs;
   Rx<DateTime?> selectedDate = Rx<DateTime?>(null);
@@ -129,5 +129,10 @@ class ServiceSearchController extends GetxController {
     descriptionController.dispose();
     timeController.dispose();
     super.dispose();
+  }
+  @override
+  void onInit() {
+    selectedWidgetList.value = List.generate(widgetList.length, (_) => false);
+    super.onInit();
   }
 }

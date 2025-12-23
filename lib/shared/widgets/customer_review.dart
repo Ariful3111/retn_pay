@@ -8,11 +8,12 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class CustomerReview extends StatelessWidget {
-  const CustomerReview({super.key});
+  final LinearGradient? linearGradient;
+  const CustomerReview({super.key, this.linearGradient});
 
   @override
   Widget build(BuildContext context) {
-        bool isDark = Theme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return SizedBox(
       height: 219.h,
       width: MediaQuery.widthOf(context),
@@ -20,80 +21,99 @@ class CustomerReview extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         itemCount: 5,
-        itemBuilder: (context,index){
-        return Container(
-        margin: EdgeInsets.only(right: 10),
-        padding: EdgeInsets.symmetric(horizontal: 14.38.w, vertical: 23.96.h),
-        height: 219.h,
-        width: 390.w,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(14.89.r),
-          gradient:isDark?LinearGradient(colors: [AppColors.darkPrimary,AppColors.darkPrimary ]): AppColors.userBackground,
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(0, 3.72),
-              blurRadius: 13.03,
-              color: AppColors.dropShadowColor.withValues(alpha: 0.10),
+        itemBuilder: (context, index) {
+          return Container(
+            margin: EdgeInsets.only(right: 10),
+            padding: EdgeInsets.symmetric(
+              horizontal: 14.38.w,
+              vertical: 23.96.h,
             ),
-          ],
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Image.asset(ImagesPath.profile, height: 86.27.h, width: 81.12.w),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomTextPrimary(
-                  text:
-                      '"The apartment is stunning! The\nnatural light and spacious rooms\nmake it feel so refreshing. The 24/7\nsecurity gives me peace of mind."',
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                ),
-                SizedBox(
-                  width: 252.w,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomTextPrimary(
-                            text: 'Jems Charter',
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          CustomTextSecondary(
-                            text: 'Dhaka, Bangladesh',
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w400,
-                          ),
-                          RatingBarIndicator(
-                            rating: 5,
-                            itemCount: 5,
-                            itemSize: 12.sp,
-                            itemPadding: EdgeInsets.all(1.5.r),
-                            itemBuilder: (context,index){
-                            return Image.asset(IconsPath.rating,color: AppColors.primaryColorDark,);
-                          })
-                        ],
-                      ),
-                      Image.asset(
-                        IconsPath.review,
-                        height: 33.51.h,
-                        width: 37.77.w,
-                      ),
-                    ],
-                  ),
+
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(14.89.r),
+              gradient: isDark
+                  ? linearGradient ??
+                        LinearGradient(
+                          colors: [
+                            AppColors.darkPrimary,
+                            AppColors.darkPrimary,
+                          ],
+                        )
+                  : AppColors.userBackground,
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(0, 3.72),
+                  blurRadius: 13.03,
+                  color: AppColors.dropShadowColor.withValues(alpha: 0.10),
                 ),
               ],
             ),
-          ],
-        ),
-      );
-      }),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Image.asset(
+                  ImagesPath.profile,
+                  height: 86.27.h,
+                  width: 81.12.w,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomTextPrimary(
+                      text:
+                          '"The apartment is stunning! The\nnatural light and spacious rooms\nmake it feel so refreshing. The 24/7\nsecurity gives me peace of mind."',
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    SizedBox(
+                      width: 252.w,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              CustomTextPrimary(
+                                text: 'Jems Charter',
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                              CustomTextSecondary(
+                                text: 'Dhaka, Bangladesh',
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
+                              ),
+                              RatingBarIndicator(
+                                rating: 5,
+                                itemCount: 5,
+                                itemSize: 12.sp,
+                                itemPadding: EdgeInsets.all(1.5.r),
+                                itemBuilder: (context, index) {
+                                  return Image.asset(
+                                    IconsPath.rating,
+                                    color: AppColors.primaryColorDark,
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                          Image.asset(
+                            IconsPath.review,
+                            height: 33.51.h,
+                            width: 37.77.w,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

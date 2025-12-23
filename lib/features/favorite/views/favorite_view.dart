@@ -23,40 +23,66 @@ class FavoriteView extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
-      gradient:isDark? LinearGradient(colors: [
-        AppColors.darkPrimary,
-        AppColors.darkPrimary,
-      ]):AppColors.userBackground.withOpacity(0.5),
+      gradient: isDark
+          ? LinearGradient(
+              colors: [AppColors.darkPrimary, AppColors.darkPrimary],
+            )
+          : AppColors.userBackground.withOpacity(0.5),
       child: ListView(
         children: [
-      Row(children: [
-            CustomAppbarLeading(onTap: () {
-              Get.back();
-            },
-            ),
-            SizedBox(width: 10.w,),
-            CustomAppbar(title: 'Favorite'),
-          ],),
+          Row(
+            children: [
+              CustomAppbarLeading(
+                onTap: () {
+                  Get.back();
+                },
+              ),
+              SizedBox(width: 10.w),
+              CustomAppbar(title: 'Favorite'),
+            ],
+          ),
           SizedBox(height: 8.h),
-          CustomItemSort(title: 'Favorite', onItemSort: () {
-          },),
-          SizedBox(height: 20.h,),
-          favoriteController.favoriteItem.isNotEmpty? ListView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemCount: favoriteController.favoriteItem.length,
-            itemBuilder: (context,index){
-            return ItemContainer(imageHeight: 250.h, imageWidth: MediaQuery.widthOf(context), image: ImagesPath.office, padding: EdgeInsetsGeometry.only(bottom: 20.h), onVR: () {
-              
-            }, updateRating: (value) {
-              homeController.houseRating[index]=value;
-            }, initialRating: homeController.houseRating[index], onFavorite: () {
-              favoriteController.favoriteItem.contains(index);
-            }, isFavorite: favoriteController.isFavorite(index));
-          }):Center(child: CustomTextPrimary(text: 'No Favorite Item Selected',fontSize: 20.sp,),),
-          SizedBox(height: 20.h,),
-         if(favoriteController.favoriteItem.isNotEmpty) CustomPagination(),
-          SizedBox(height: 60.h,),
+          CustomItemSort(
+            title: 'Favorite',
+            option: favoriteController.sortList,
+            onSelect: (value) {
+              favoriteController.initialSort.value = value!;
+            },
+            isSelect: favoriteController.initialSort,
+          ),
+          SizedBox(height: 20.h),
+          favoriteController.favoriteItem.isNotEmpty
+              ? ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: favoriteController.favoriteItem.length,
+                  itemBuilder: (context, index) {
+                    return ItemContainer(
+                      imageHeight: 250.h,
+                      imageWidth: MediaQuery.widthOf(context),
+                      image: ImagesPath.office,
+                      padding: EdgeInsetsGeometry.only(bottom: 20.h),
+                      onVR: () {},
+                      updateRating: (value) {
+                        homeController.houseRating[index] = value;
+                      },
+                      initialRating: homeController.houseRating[index],
+                      onFavorite: () {
+                        favoriteController.favoriteItem.contains(index);
+                      },
+                      isFavorite: favoriteController.isFavorite(index),
+                    );
+                  },
+                )
+              : Center(
+                  child: CustomTextPrimary(
+                    text: 'No Favorite Item Selected',
+                    fontSize: 20.sp,
+                  ),
+                ),
+          SizedBox(height: 20.h),
+          if (favoriteController.favoriteItem.isNotEmpty) CustomPagination(),
+          SizedBox(height: 60.h),
         ],
       ),
     );

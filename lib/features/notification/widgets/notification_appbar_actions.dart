@@ -9,29 +9,34 @@ class NotificationAppbarActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-          height: 32.h,
-          width: 119,
-          decoration: BoxDecoration(
-            color: AppColors.whiteColor,
-            borderRadius: BorderRadius.circular(6.sp),
-            border: Border.all(width: 1.sp,color: AppColors.filterBorder),
-            boxShadow: [
-              BoxShadow(
-                offset: Offset(0, 1),
-                blurRadius: 2.sp,
-                spreadRadius: 0.sp,
-                color: AppColors.buttonShadowColor.withValues(alpha: 0.06),
-              )
-            ]
+      height: 32.h,
+      width: 119,
+      decoration: BoxDecoration(
+        gradient: isDark?AppColors.darkAppIcon:LinearGradient(colors: [AppColors.whiteColor,AppColors.whiteColor]),
+        borderRadius: BorderRadius.circular(6.sp),
+        border: Border.all(width: 1.sp, color:isDark? AppColors.darkBorderPrimary:AppColors.filterBorder),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, 1),
+            blurRadius: 2.sp,
+            spreadRadius: 0.sp,
+            color: AppColors.buttonShadowColor.withValues(alpha: 0.06),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Image.asset(IconsPath.mark,width: 10.64.w,height: 6.04.h,),
-              CustomTextSecondary(text: 'Mark as read',fontSize: 12.sp,color: Color(0xFF6B7280)),
-            ],
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Image.asset(IconsPath.mark, width: 10.64.w, height: 6.04.h),
+          CustomTextSecondary(
+            text: 'Mark as read',
+            fontSize: 12.sp,
+            color: Color(0xFF6B7280),
           ),
-        );
+        ],
+      ),
+    );
   }
 }

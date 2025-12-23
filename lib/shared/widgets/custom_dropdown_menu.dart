@@ -22,6 +22,14 @@ class CustomDropdownMenu extends StatelessWidget {
   final EdgeInsets? contentPadding;
   final TextAlign textAlign;
   final double? fontSize;
+  final TextStyle? textStyle;
+  final Color? fillColor;
+  final InputBorder? enableBorder;
+  final InputBorder? focusBorder;
+  final double? selectedTrailingIconHeight;
+  final double? selectedTrailingIconWidth;
+  final double? trailingIconHeight;
+  final double? trailingIconWidth;
   const CustomDropdownMenu({
     super.key,
     required this.onSelect,
@@ -37,7 +45,16 @@ class CustomDropdownMenu extends StatelessWidget {
     this.borderRadius,
     this.focusBorderRadius,
     this.contentPadding,
-    required this.textAlign, this.fontSize,
+    required this.textAlign,
+    this.fontSize,
+    this.enableBorder,
+    this.focusBorder,
+    this.textStyle,
+    this.fillColor,
+    this.selectedTrailingIconHeight,
+    this.selectedTrailingIconWidth,
+    this.trailingIconHeight,
+    this.trailingIconWidth,
   });
 
   @override
@@ -47,47 +64,57 @@ class CustomDropdownMenu extends StatelessWidget {
       return DropdownMenu<String>(
         initialSelection: isSelect.value,
         textAlign: textAlign,
-        textStyle: GoogleFonts.inter(
-          fontSize:fontSize?? 16.sp,
-          fontWeight: FontWeight.w500,
-          color:isDark? AppColors.darkSecondaryText:AppColors.secondaryTextColor,
-        ),
+        textStyle:
+            textStyle ??
+            GoogleFonts.inter(
+              fontSize: fontSize ?? 16.sp,
+              fontWeight: FontWeight.w500,
+              color: isDark
+                  ? AppColors.darkSecondaryText
+                  : AppColors.secondaryTextColor,
+            ),
         label: label,
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
-          fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+          fillColor: isDark
+              ? fillColor ?? AppColors.darkPrimary
+              : fillColor ?? AppColors.whiteColor,
           contentPadding: contentPadding,
           focusColor: Colors.transparent,
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 9.4.r),
-            borderSide: BorderSide(
-              width: borderWidth ?? 0.78.r,
-              color: isDark
-                  ? AppColors.darkBorderPrimary
-                  : AppColors.primaryBorder,
-            ),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(focusBorderRadius ?? 9.4.r),
-            borderSide: BorderSide(
-              width: focusBorderWidth ?? 0.78.r,
-              color: isDark
-                  ? AppColors.darkBorderPrimary
-                  : AppColors.primaryBorder,
-            ),
-          ),
+          enabledBorder:
+              enableBorder ??
+              OutlineInputBorder(
+                borderRadius: BorderRadius.circular(borderRadius ?? 9.4.r),
+                borderSide: BorderSide(
+                  width: borderWidth ?? 0.78.r,
+                  color: isDark
+                      ? AppColors.darkBorderPrimary
+                      : AppColors.primaryBorder,
+                ),
+              ),
+          focusedBorder:
+              focusBorder ??
+              OutlineInputBorder(
+                borderRadius: BorderRadius.circular(focusBorderRadius ?? 9.4.r),
+                borderSide: BorderSide(
+                  width: focusBorderWidth ?? 0.78.r,
+                  color: isDark
+                      ? AppColors.darkBorderPrimary
+                      : AppColors.primaryBorder,
+                ),
+              ),
         ),
         expandedInsets: expandedInsets,
         trailingIcon: Image.asset(
           IconsPath.downArrow,
-          height: 20.h,
-          width: 15.w,
+          height: trailingIconHeight ?? 20.h,
+          width: trailingIconWidth ?? 15.w,
           color: trailingIconColor ?? Color(0xFF868C98),
         ),
         selectedTrailingIcon: Image.asset(
           IconsPath.upArrow,
-          height: 20.h,
-          width: 15.w,
+          height: selectedTrailingIconHeight ?? 20.h,
+          width: selectedTrailingIconWidth ?? 15.w,
           color: selectedTrailingIconColor ?? Color(0xFF868C98),
         ),
         width: MediaQuery.widthOf(context),

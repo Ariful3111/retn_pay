@@ -29,7 +29,7 @@ class SelectDay extends StatelessWidget {
         height: 164.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(7.08.r),
-          color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+          color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
           border: Border.all(
             width: 0.69.r,
             color: isDark
