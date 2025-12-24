@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/upcoming_payment_status.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_switch_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
@@ -64,7 +65,7 @@ class UpcomingPaymentInfo extends StatelessWidget {
             ],
           ),
         ),
-        UpcomingPaymentInfo(widget: widget,),
+        UpcomingPaymentStatus(widget: widget),
       ],
     );
   }
