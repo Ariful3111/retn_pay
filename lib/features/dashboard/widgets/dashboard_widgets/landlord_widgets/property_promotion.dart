@@ -42,7 +42,7 @@ class PropertyPromotion extends StatelessWidget {
             SizedBox(height: 16.h),
             Row(
               children: [
-                Image.asset(IconsPath.Boster, height: 20.h, width: 20.w),
+                Image.asset(IconsPath.boster, height: 20.h, width: 20.w),
                 SizedBox(width: 4.w),
                 CustomTextSecondary(
                   text: 'Boost anytime:',

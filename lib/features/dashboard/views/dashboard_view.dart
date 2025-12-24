@@ -12,6 +12,7 @@ import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboar
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_rent_notice.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_upcoming_payment.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/dashboard_landlord_plan.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/dashboard_landlord_quick_action.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/landlord_upcoming_payment.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/property_promotion.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_contact.dart';
@@ -67,8 +68,8 @@ class DashboardView extends StatelessWidget {
                       },
                     ),
                     SizedBox(height: 20.h),
-                  if(userIndex==0)  DashboardUpcomingPayment(),
-                  if(userIndex==1) LandlordUpcomingPayment(),
+                    if (userIndex == 0) DashboardUpcomingPayment(),
+                    if (userIndex == 1) LandlordUpcomingPayment(),
                     SizedBox(height: 20.h),
                     DashboardReminder(),
                     Obx(
@@ -78,10 +79,10 @@ class DashboardView extends StatelessWidget {
                             : 20.h,
                       ),
                     ),
+                    if (userIndex == 1) PropertyPromotion(),
+                    if (userIndex == 1) DashboardLandlordPlan(),
                     DashboardRentNotice(),
                     SizedBox(height: 20.h),
-                    if(userIndex == 1) PropertyPromotion(),
-                    if(userIndex == 1) DashboardLandlordPlan(),
                     DashboardQuickActions(),
                     SizedBox(height: 20.h),
                     Obx(
@@ -92,11 +93,17 @@ class DashboardView extends StatelessWidget {
                               switchOutCurve: Curves.easeOut,
                               child: Column(
                                 children: [
-                                  LandlordContact(),
-                                  SizedBox(height: 13.07.h),
-                                  RepairRequest(),
-                                  SizedBox(height: 20.h),
-                                  DashboardKeyFeatures(),
+                                  if (userIndex == 0)
+                                    Column(
+                                      children: [
+                                        LandlordContact(),
+                                        SizedBox(height: 13.07.h),
+                                        RepairRequest(),
+                                        SizedBox(height: 20.h),
+                                        DashboardKeyFeatures(),
+                                      ],
+                                    ),
+                                  if (userIndex == 1) DashboardLandlordQuickAction(),
                                 ],
                               ),
                             )

@@ -149,5 +149,19 @@ class IconsPath {
   static const String supportCall = 'assets/icons/support_call.png';
   static const String supportChat = 'assets/icons/support_chat.png';
   static const String supportEmail = 'assets/icons/support_email.png';
-  static const String Boster = 'assets/icons/boster.png';
+  static const String boster = 'assets/icons/boster.png';
+  static const String dashboardLandlordCalender =
+      'assets/icons/dashboard_landlord_calender.png';
+  static const String dashboardLandlordInspection =
+      'assets/icons/dashboard_landlord_inspection.png';
+  static const String dashboardLandlordTask =
+      'assets/icons/dashboard_landlord_task.png';
+  static const String dashboardLandlordVirtual =
+      'assets/icons/dashboard_landlord_virtual.png';
+  static const String dashboardInspectionManagement =
+      'assets/icons/dashboard_inspection_management.png';
+  static const String dashboardPropertyManagement =
+      'assets/icons/dashboard_property_management.png';
+  static const String dashboardCalender =
+      'assets/icons/dashboard_calender.png';
 }

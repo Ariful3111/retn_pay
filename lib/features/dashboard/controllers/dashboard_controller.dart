@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -33,15 +34,75 @@ class DashboardController extends GetxController {
     {"icon": IconsPath.dashboardApplication, "title": 'Rents', "value": '4'},
     {"icon": IconsPath.dashboardRepair, "title": 'Inspections', "value": '3'},
   ];
-  List drawerItems = [
-    {'icon': IconsPath.dashboard, 'title': 'Dashboard'},
-    {'icon': IconsPath.drawerInspection, 'title': 'Inspection Request'},
-    {'icon': IconsPath.drawerKey, 'title': 'Key Release'},
-    {'icon': IconsPath.drawerActive, 'title': 'Active Properties'},
-    {'icon': IconsPath.drawerPayment, 'title': 'Payment Management'},
-    {'icon': IconsPath.drawerRepair, 'title': 'Repair & Maintenance'},
-    {'icon': IconsPath.drawerService, 'title': 'Service'},
+  List<Map<String, dynamic>> drawerItems = [
+    {
+      'icon': IconsPath.dashboard,
+      'title': 'Dashboard',
+      'allowedUser': [0, 1, 2, 3],
+      'routes': AppRoutes.mainHome,
+    },
+    {
+      'icon': IconsPath.drawerInspection,
+      'title': 'Inspection Request',
+      'allowedUser': [0],
+      'routes': AppRoutes.inspectionRequestView,
+    },
+    {
+      'icon': IconsPath.dashboardPropertyManagement,
+      'title': 'Property Management',
+      'allowedUser': [1],
+      'routes': AppRoutes.activePropertiesView,
+    },
+    {
+      'icon': IconsPath.dashboardInspectionManagement,
+      'title': 'Inspection Management',
+      'allowedUser': [1],
+      'routes': AppRoutes.inspectionRequestView,
+    },
+    {
+      'icon': IconsPath.drawerKey,
+      'title': 'Key Release',
+      'allowedUser': [0, 1],
+      'routes': AppRoutes.keyReleaseView,
+    },
+    {
+      'icon': IconsPath.drawerActive,
+      'title': 'Active Properties',
+      'allowedUser': [0, 1],
+      'routes': AppRoutes.activePropertiesView,
+    },
+    {
+      'icon': IconsPath.drawerPayment,
+      'title': 'Payment Management',
+      'allowedUser': [0, 1],
+      'routes': AppRoutes.paymentManagementView,
+    },
+    {
+      'icon': IconsPath.drawerRepair,
+      'title': 'Repair & Maintenance',
+      'allowedUser': [0, 1],
+      'routes': AppRoutes.repairMaintenanceView,
+    },
+    {
+      'icon': IconsPath.drawerService,
+      'title': 'Service',
+      'allowedUser': [0, 1],
+      'routes': AppRoutes.servicesView,
+    },
+    {
+      'icon': IconsPath.dashboardCalender,
+      'title': 'Calender',
+      'allowedUser': [1],
+      'routes': AppRoutes.servicesView,
+    },
   ];
+  List<Map<String, dynamic>> get userDrawerItems {
+    int userIndex = Get.find<UserRoleController>().selectedIndex.value;
+    return drawerItems
+        .where((user) => user['allowedUser'].contains(userIndex))
+        .toList();
+  }
+
   RxList<Map<String, dynamic>> reminderList = [
     {
       'title': 'Inspection Reminder',
@@ -93,15 +154,6 @@ class DashboardController extends GetxController {
     dialogImageIndex.value = index;
   }
 
-  List drawerPage = [
-    AppRoutes.mainHome,
-    AppRoutes.inspectionRequestView,
-    AppRoutes.keyReleaseView,
-    AppRoutes.activePropertiesView,
-    AppRoutes.paymentManagementView,
-    AppRoutes.repairMaintenanceView,
-    AppRoutes.servicesView,
-  ];
   @override
   void onInit() {
     Get.find<GlobalScrollController>().listen(scrollController);
