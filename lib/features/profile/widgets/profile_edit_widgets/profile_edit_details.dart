@@ -39,7 +39,10 @@ class ProfileEditDetails extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    profileEditController.isEdit.value =
+                        !profileEditController.isEdit.value;
+                  },
                   child: Container(
                     height: 41.h,
                     width: 86.w,
@@ -71,29 +74,29 @@ class ProfileEditDetails extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20.h),
-            ProfileEditField(
+          Obx(()=>  Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+              ProfileEditField(
               controller: profileEditController.nameController,
-              labelText: 'Name',
-              hintText: 'Ariful Islam',
+              labelText: 'Name', readOnly: profileEditController.isEdit.value?false:true,
             ),
             SizedBox(height: 16.h),
             ProfileEditField(
               controller: profileEditController.emailController,
-              labelText: 'Email',
-              hintText: 'example@gmail.com',
+              labelText: 'Email', readOnly:  profileEditController.isEdit.value?false:true,
             ),
             SizedBox(height: 16.h),
             ProfileEditField(
               controller: profileEditController.phoneController,
-              labelText: 'Phone',
-              hintText: '+08801524545',
+              labelText: 'Phone', readOnly:  profileEditController.isEdit.value?false:true,
             ),
             SizedBox(height: 16.h),
             ProfileEditField(
               controller: profileEditController.passwordController,
-              labelText: 'Password',
-              hintText: '**********',
+              labelText: 'Password', readOnly:  profileEditController.isEdit.value?false:true,
             ),
+            ],),)
           ],
         ),
       ),

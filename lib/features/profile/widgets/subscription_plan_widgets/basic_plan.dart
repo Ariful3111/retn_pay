@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/benefits_list.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/subscription_container.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 
 class BasicPlan extends StatelessWidget {
-  const BasicPlan({super.key});
+  final Widget? purchaseButton;
+  const BasicPlan({super.key, this.purchaseButton});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,8 @@ class BasicPlan extends StatelessWidget {
         BenefitsList(listText: 'List 1 property'),
         SizedBox(height: 12),
         BenefitsList(
-          listText: 'Ads on RenterPay page + social media\n(free 30 days, T&C apply)',
+          listText:
+              'Ads on RenterPay page + social media\n(free 30 days, T&C apply)',
           fontSize: 14.sp,
         ),
         SizedBox(height: 12),
@@ -35,9 +36,12 @@ class BasicPlan extends StatelessWidget {
         ),
         SizedBox(height: 12),
       ],
-      onTap: () {
-        Get.toNamed(AppRoutes.mainHome);
-      },
+      purchaseButton:purchaseButton?? CustomSecondaryButton(
+        onPressed: () {},
+        text: "Buy",
+        height: 52.h,
+        width: 286.w,
+      ),
     );
   }
 }

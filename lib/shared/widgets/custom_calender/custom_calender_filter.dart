@@ -7,13 +7,14 @@ import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.
 
 class CustomCalenderFilter extends StatelessWidget {
   final Widget widget;
-  const CustomCalenderFilter({super.key, required this.widget});
+  final AlignmentGeometry? alignmentGeometry;
+  const CustomCalenderFilter({super.key, required this.widget, this.alignmentGeometry});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Align(
-      alignment: Alignment(0.5, -0.850),
+      alignment:alignmentGeometry?? Alignment(0.5, -0.850),
       child: Container(
         padding: EdgeInsets.all(9.44.r),
         height: 350.h,
@@ -38,11 +39,7 @@ class CustomCalenderFilter extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                SizedBox(
-                  height: 270.h,
-                  width: 244.w,
-                  child: widget,
-                ),
+                SizedBox(height: 270.h, width: 244.w, child: widget),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -52,7 +49,9 @@ class CustomCalenderFilter extends StatelessWidget {
                       width: 49.88.w,
                       borderRadius: BorderRadius.circular(3.54.r),
                       fontSize: 9.44.sp,
-                      onPressed: () {Navigator.pop(context);},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                     ),
                     SizedBox(width: 11.8),
                     CustomPrimaryButton(

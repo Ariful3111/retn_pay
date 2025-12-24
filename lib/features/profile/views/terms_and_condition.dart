@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DashboardGraph extends StatelessWidget {
-  const DashboardGraph({super.key});
+class TermsAndCondition extends StatelessWidget {
+  const TermsAndCondition({super.key});
 
   @override
   Widget build(BuildContext context) {

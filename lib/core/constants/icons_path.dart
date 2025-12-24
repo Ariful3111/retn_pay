@@ -149,4 +149,30 @@ class IconsPath {
   static const String supportCall = 'assets/icons/support_call.png';
   static const String supportChat = 'assets/icons/support_chat.png';
   static const String supportEmail = 'assets/icons/support_email.png';
+  static const String boster = 'assets/icons/boster.png';
+  static const String dashboardLandlordCalender =
+      'assets/icons/dashboard_landlord_calender.png';
+  static const String dashboardLandlordInspection =
+      'assets/icons/dashboard_landlord_inspection.png';
+  static const String dashboardLandlordTask =
+      'assets/icons/dashboard_landlord_task.png';
+  static const String dashboardLandlordVirtual =
+      'assets/icons/dashboard_landlord_virtual.png';
+  static const String dashboardInspectionManagement =
+      'assets/icons/dashboard_inspection_management.png';
+  static const String dashboardPropertyManagement =
+      'assets/icons/dashboard_property_management.png';
+  static const String dashboardCalender = 'assets/icons/dashboard_calender.png';
+  static const String availability = 'assets/icons/availability.png';
+  static const String rentAdjust = 'assets/icons/rent_adjust.png';
+  static const String dotMenu = 'assets/icons/dot_menu.png';
+  static const String actonView = 'assets/icons/action_view.png';
+  static const String share = 'assets/icons/share.png';
+  static const String insurance = 'assets/icons/insurance.png';
+  static const String enlist = 'assets/icons/enlist.png';
+  static const String messenger = 'assets/icons/messenger.png';
+  static const String shareFacebook = 'assets/icons/share_facebook.png';
+  static const String whatsapp = 'assets/icons/whatsapp.png';
+  static const String gmail = 'assets/icons/gmail.png';
+
 }

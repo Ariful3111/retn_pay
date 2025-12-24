@@ -27,7 +27,7 @@ class RecommendedItems extends StatelessWidget {
           return GestureDetector(
             onTap: () {
               HitTestBehavior.opaque;
-                      Get.toNamed(AppRoutes.rentDetails);
+              Get.toNamed(AppRoutes.rentDetails);
             },
             child: Container(
               height: 284.h,
@@ -49,26 +49,30 @@ class RecommendedItems extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Obx((){
+                  Obx(() {
                     return Align(
-                    alignment: Alignment.topRight,
-                    child: CustomFavoriteButton(onTap: (){favoriteController.selectFavorite(id: index);}, isFavorite: favoriteController.isFavorite(index),),
-                  );
+                      alignment: Alignment.topRight,
+                      child: CustomFavoriteButton(
+                        onTap: () {
+                          favoriteController.selectFavorite(id: index);
+                        },
+                        isFavorite: favoriteController.isFavorite(index),
+                      ),
+                    );
                   }),
                   Spacer(),
-                  CustomTextSecondary(
-                    text: 'Maple Grove Garden',
-                    color: AppColors.whiteColor,
-                  ),
+                  
                   Row(
                     children: [
-                      Image.asset(IconsPath.location, height: 14.h, width: 14.w),
+                      Image.asset(
+                        IconsPath.location,
+                        height: 14.h,
+                        width: 14.w,
+                      ),
                       SizedBox(width: 4.w),
                       CustomTextSecondary(
                         text: 'New York, USA',
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.whiteColor.withValues(alpha: 0.75),
+                        color: AppColors.whiteColor,
                       ),
                     ],
                   ),
@@ -83,9 +87,13 @@ class RecommendedItems extends StatelessWidget {
                         color: AppColors.whiteColor,
                         spanColor: AppColors.darkSecondaryText,
                       ),
-                      SizedBox(width: 5.w,),
-                      Image.asset(IconsPath.appCurrency,height: 11.h,width: 11.h,),
-                      SizedBox(width: 3.w,),
+                      SizedBox(width: 5.w),
+                      Image.asset(
+                        IconsPath.appCurrency,
+                        height: 11.h,
+                        width: 11.h,
+                      ),
+                      SizedBox(width: 3.w),
                       CustomTextSpan(
                         title: '200',
                         spantext: '/Week',

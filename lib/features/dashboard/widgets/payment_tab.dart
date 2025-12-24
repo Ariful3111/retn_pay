@@ -32,7 +32,9 @@ class PaymentTab extends StatelessWidget {
               onTap: () {
                 paymentManagementController.paymentTypeIndex.value = index;
               },
-              child: Container(
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 300),
+                curve: Curves.fastOutSlowIn,
                 padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 12.w),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(6.42.r),

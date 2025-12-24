@@ -65,7 +65,7 @@ class UpcomingPaymentInfo extends StatelessWidget {
             ],
           ),
         ),
-        UpcomingPaymentStatus(widget: widget),
+        UpcomingPaymentStatus(widget: widget,),
       ],
     );
   }

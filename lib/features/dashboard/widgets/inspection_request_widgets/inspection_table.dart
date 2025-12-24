@@ -17,56 +17,51 @@ class InspectionTable extends StatelessWidget {
   Widget build(BuildContext context) {
     InspectionRequestController inspectionRequestController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return MediaQuery(
-      data: MediaQueryData(
-        size: Size(MediaQuery.widthOf(context), MediaQuery.heightOf(context)),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.r),
+        color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
       ),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.r),
-          color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
-        ),
-        child: Obx(() {
-          final list = inspectionRequestController.filterRow;
-          final rowWidgets = List<List<Widget>>.generate(list.length, (index) {
-          final item = list[index].value;
-            return [
-              CustomTextPrimary(
-                text: item.address,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-                textOverflow: TextOverflow.ellipsis,
-              ),
-              TableStatus(status: item.status),
-              InspectionTableData(index: index),
-            ];
-          });
-          final listIndex = list.map((e) => e.key).toList();
-          return CustomTable(
-            column: inspectionRequestController.tableColumn,
-            row: rowWidgets,
-            listIndex: listIndex,
-            expandedTableBuilder: (index) {
-              final item = list[index].value;
-              final rowIndex = listIndex[index];
-              return CustomTableExpanded(
-                title: 'Property Address: ${item.address}',
-                isOpen: inspectionRequestController.expanded[rowIndex],
-                onExpandedClose: () {
-                  inspectionRequestController.toggleExpanded(rowIndex);
-                },
-                expandedContent: InspectionTableContent(rowIndex: rowIndex),
-              );
-            },
-            onRowTap: (index) {
-              inspectionRequestController.toggleExpanded(listIndex[index]);
-            },
-            isExpandedTableBuilder: (index) {
-              return inspectionRequestController.expanded[listIndex[index]];
-            },
-          );
-        }),
-      ),
+      child: Obx(() {
+        final list = inspectionRequestController.filterRow;
+        final rowWidgets = List<List<Widget>>.generate(list.length, (index) {
+        final item = list[index].value;
+          return [
+            CustomTextPrimary(
+              text: item.address,
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w400,
+              textOverflow: TextOverflow.ellipsis,
+            ),
+            TableStatus(status: item.status),
+            InspectionTableData(index: index),
+          ];
+        });
+        final listIndex = list.map((e) => e.key).toList();
+        return CustomTable(
+          column: inspectionRequestController.tableColumn,
+          row: rowWidgets,
+          listIndex: listIndex,
+          expandedTableBuilder: (index) {
+            final item = list[index].value;
+            final rowIndex = listIndex[index];
+            return CustomTableExpanded(
+              title: 'Property Address: ${item.address}',
+              isOpen: inspectionRequestController.expanded[rowIndex],
+              onExpandedClose: () {
+                inspectionRequestController.toggleExpanded(rowIndex);
+              },
+              expandedContent: InspectionTableContent(rowIndex: rowIndex),
+            );
+          },
+          onRowTap: (index) {
+            inspectionRequestController.toggleExpanded(listIndex[index]);
+          },
+          isExpandedTableBuilder: (index) {
+            return inspectionRequestController.expanded[listIndex[index]];
+          }, isNeedLastCol: true,
+        );
+      }),
     );
   }
 }

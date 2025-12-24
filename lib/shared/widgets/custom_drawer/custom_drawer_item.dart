@@ -14,14 +14,13 @@ class CustomDrawerItem extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     final DashboardController dashboardController = Get.find();
     return Obx(() {
-      final item = dashboardController.drawerItems[index];
+      final item = dashboardController.userDrawerItems[index];
       final isSelected = dashboardController.isItemSelect.value == index;
       return GestureDetector(
         onTap: () {
           dashboardController.isItemSelect.value = index;
           Navigator.pop(context);
-          final route = dashboardController.drawerPage[index];
-
+          final route = item['routes'];
           if (Get.currentRoute != route) {
             Get.toNamed(route);
           }
@@ -29,7 +28,6 @@ class CustomDrawerItem extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(8.r),
           margin: EdgeInsets.only(bottom: 12.h),
-          height: 40.h,
           width: MediaQuery.widthOf(context),
           decoration: BoxDecoration(
             gradient: isSelected ? AppColors.primaryColor : null,

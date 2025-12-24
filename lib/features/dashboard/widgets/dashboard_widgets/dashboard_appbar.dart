@@ -17,43 +17,43 @@ class DashboardAppbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
-      return SliverAppBar(
-        backgroundColor: Colors.transparent,
-        leading: CustomAppbarLeading(
-          icon: IconsPath.profileDrawer,
+    return SliverAppBar(
+      backgroundColor: Colors.transparent,
+      leading: CustomAppbarLeading(
+        icon: IconsPath.profileDrawer,
+        onTap: () {
+          HitTestBehavior.opaque;
+          showDialog(
+            context: context,
+            builder: (context) {
+              return CustomDrawer();
+            },
+          );
+        },
+      ),
+      titleSpacing: 0.w,
+      title: CustomAppbar(title: 'Dashboard'),
+      actions: [
+        CustomFavoriteAppbar(
+          onFavorite: () {
+            Get.toNamed(AppRoutes.favorite);
+          },
+        ),
+        SizedBox(width: 8.w),
+        CustomNotificationButton(),
+        SizedBox(width: 8.w),
+        CustomFilterAppbar(
           onTap: () {
             showDialog(
               context: context,
               builder: (context) {
-                return CustomDrawer();
+                return CustomCalenderFilter(widget: DashboardRangeCalendar());
               },
             );
           },
         ),
-        titleSpacing: 0.w,
-        title: CustomAppbar(title: 'Dashboard'),
-        actions: [
-          CustomFavoriteAppbar(
-            onFavorite: () {
-              Get.toNamed(AppRoutes.favorite);
-            },
-          ),
-          SizedBox(width: 8.w),
-          CustomNotificationButton(),
-          SizedBox(width: 8.w,),
-          CustomFilterAppbar(
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return CustomCalenderFilter(widget: DashboardRangeCalendar());
-                },
-              );
-            },
-          ),
-          SizedBox(width: 20.w,)
-        ],
-      );
+        SizedBox(width: 20.w),
+      ],
+    );
   }
 }
