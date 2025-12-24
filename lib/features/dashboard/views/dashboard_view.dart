@@ -11,8 +11,9 @@ import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboar
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_reminder.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_rent_notice.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_upcoming_payment.dart';
-import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_upcoming_payment.dart';
-import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/property_promotion.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/dashboard_landlord_plan.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/landlord_upcoming_payment.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/property_promotion.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_contact.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/repair_request.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
@@ -80,6 +81,7 @@ class DashboardView extends StatelessWidget {
                     DashboardRentNotice(),
                     SizedBox(height: 20.h),
                     if(userIndex == 1) PropertyPromotion(),
+                    if(userIndex == 1) DashboardLandlordPlan(),
                     DashboardQuickActions(),
                     SizedBox(height: 20.h),
                     Obx(

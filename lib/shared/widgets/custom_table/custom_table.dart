@@ -12,6 +12,7 @@ class CustomTable extends StatelessWidget {
   final Widget Function(int index) expandedTableBuilder;
   final Function(int) onRowTap;
   final bool Function(int index) isExpandedTableBuilder;
+  final bool isNeedLastCol;
   const CustomTable({
     super.key,
     required this.column,
@@ -19,7 +20,7 @@ class CustomTable extends StatelessWidget {
     required this.listIndex,
     required this.onRowTap,
     required this.isExpandedTableBuilder,
-    required this.expandedTableBuilder,
+    required this.expandedTableBuilder, required this.isNeedLastCol,
   });
 
   @override
@@ -68,6 +69,7 @@ class CustomTable extends StatelessWidget {
           expandedTable: expandedTableBuilder(rowIndex),
           onRowTap: () => onRowTap(rowIndex),
           isExpandedTable: isExpandedTableBuilder(rowIndex),
+          isNeedLastCol: isNeedLastCol,
         );
       });
     });

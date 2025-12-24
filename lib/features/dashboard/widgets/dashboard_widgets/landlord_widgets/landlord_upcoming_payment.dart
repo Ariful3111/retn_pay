@@ -31,12 +31,13 @@ class LandlordUpcomingPayment extends StatelessWidget {
           ],),
         ),
         SizedBox(height: 12.h,),
-        MediaQuery(data: MediaQueryData(size: Size(MediaQuery.widthOf(context), MediaQuery.heightOf(context))), child: Container(
+        Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20.r),
             color: isDark?AppColors.darkSecondary:AppColors.whiteColor,
           ),
-        )) 
+          
+        ) 
       ],
     );
   }

@@ -84,7 +84,7 @@ class TicketTable extends StatelessWidget {
                 rowIndex: listIndex[index],
               ),
             );
-          },
+          }, isNeedLastCol: true,
         );
       }),
     );

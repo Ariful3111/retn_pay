@@ -149,4 +149,5 @@ class IconsPath {
   static const String supportCall = 'assets/icons/support_call.png';
   static const String supportChat = 'assets/icons/support_chat.png';
   static const String supportEmail = 'assets/icons/support_email.png';
+  static const String Boster = 'assets/icons/boster.png';
 }

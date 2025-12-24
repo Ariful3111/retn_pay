@@ -63,7 +63,7 @@ class ServiceBookedTable extends StatelessWidget {
             },
             isExpandedTableBuilder: (index) {
               return serviceBookedController.expandedData[listIndex[index]];
-            },
+            }, isNeedLastCol: true,
           );
         }),
       ),
