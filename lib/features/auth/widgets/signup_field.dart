@@ -3,6 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/auth/controllers/signup_controller.dart';
+import 'package:renter_pay/shared/mixins/Validators/confirm_password_validator.dart';
+import 'package:renter_pay/shared/mixins/Validators/email_validator.dart';
+import 'package:renter_pay/shared/mixins/Validators/name_validator.dart';
+import 'package:renter_pay/shared/mixins/Validators/password_validator.dart';
+import 'package:renter_pay/shared/mixins/Validators/phone_validator.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
 class SignupField extends StatelessWidget {
@@ -21,7 +26,7 @@ class SignupField extends StatelessWidget {
             hintText: "Enter You're Name",
             labelText: "Name",
             controller: signupController.nameController,
-            validator: signupController.nameValidation,
+            validator: nameValidation,
             validation: AutovalidateMode.onUserInteraction,
           ),
           SizedBox(height: 14.h),
@@ -29,7 +34,7 @@ class SignupField extends StatelessWidget {
             hintText: "Enter you're Email",
             labelText: "Email",
             controller: signupController.emailController,
-            validator: signupController.emailValidation,
+            validator: emailValidation,
             validation: AutovalidateMode.onUserInteraction,
           ),
           SizedBox(height: 14.h),
@@ -37,7 +42,7 @@ class SignupField extends StatelessWidget {
             hintText: "Enter You're Phone Number",
             labelText: "Phone Number",
             controller: signupController.phoneController,
-            validator: signupController.phoneValidation,
+            validator: phoneValidation,
             keyboardType: TextInputType.number,
             validation: AutovalidateMode.onUserInteraction,
           ),
@@ -47,7 +52,7 @@ class SignupField extends StatelessWidget {
               hintText: "Enter You're Password",
               labelText: "Password",
               controller: signupController.passwordController,
-              validator: signupController.passwordValidation,
+              validator: passwordValidation,
               obscureText: signupController.isPasswordVisible.value,
               validation: AutovalidateMode.onUserInteraction,
               suffixIcon: GestureDetector(
@@ -73,7 +78,10 @@ class SignupField extends StatelessWidget {
               hintText: "Re Enter You're Password",
               labelText: "Confirm Password",
               controller: signupController.confirmPassController,
-              validator: signupController.confirmPasswordValidation,
+              validator: (value) => confirmPasswordValidation(
+                signupController.passwordController.text,
+                value,
+              ),
               obscureText: signupController.isConfirmPasswordVisible.value,
               validation: AutovalidateMode.onUserInteraction,
               suffixIcon: GestureDetector(

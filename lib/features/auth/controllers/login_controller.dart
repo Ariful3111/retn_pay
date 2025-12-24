@@ -20,33 +20,6 @@ class LoginController extends GetxController {
     isRemember.value = value ?? true;
   }
 
-  String? emailValidation(String? value) {
-    final text = (value ?? '').trim();
-    if (text.isEmpty) {
-      return "Email is required";
-    }
-    // ignore: deprecated_member_use
-    final RegExp emailReg = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    if (emailReg.hasMatch(text)) {
-      return null;
-    }
-    {
-      return "Enter a valid email address";
-    }
-  }
-
-  String? passwordValidation(String? value) {
-    final text = (value ?? '').trim();
-
-    if (text.isEmpty) {
-      return "Password is required";
-    }
-    if (text.length < 8) {
-      return "Password must be at least 8 characters";
-    }
-    return null;
-  }
-
   Future<void> userLogin({required GlobalKey<FormState> formKey}) async {
     if (formKey.currentState?.validate() ?? false) {
       isLoading.value = true;

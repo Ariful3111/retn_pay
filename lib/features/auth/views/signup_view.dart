@@ -41,7 +41,7 @@ class SignupView extends StatelessWidget {
               CustomPrimaryButton(
                 height: 48.50.h,
                 onPressed: () {
-                  signupController.userSignup(fromKey);
+                  signupController.userSignup(fromKey: fromKey);
                 },
                 text: "Signup",
                 textColor: AppColors.whiteColor,

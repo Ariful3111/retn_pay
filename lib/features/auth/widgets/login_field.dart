@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/auth/controllers/login_controller.dart';
+import 'package:renter_pay/shared/mixins/Validators/email_validator.dart';
+import 'package:renter_pay/shared/mixins/Validators/password_validator.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
@@ -38,7 +40,7 @@ class LoginField extends StatelessWidget {
             labelText: "Email",
             hintText: "Enter You're Email",
             controller: loginController.emailController,
-            validator: loginController.emailValidation,
+            validator: emailValidation,
             validation: AutovalidateMode.onUserInteraction,
           ),
           SizedBox(height: 20.h),
@@ -47,7 +49,7 @@ class LoginField extends StatelessWidget {
               labelText: "Password",
               hintText: "Enter You're Password",
               controller: loginController.passwordController,
-              validator: loginController.passwordValidation,
+              validator: passwordValidation,
               obscureText: loginController.isPasswordVisible.value,
               validation: AutovalidateMode.onUserInteraction,
               suffixIcon: GestureDetector(
