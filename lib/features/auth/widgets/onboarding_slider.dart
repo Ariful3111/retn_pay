@@ -51,56 +51,60 @@ class OnboardingSlider extends StatelessWidget {
               child: onboardingController.currentPage.value == 3
                   ? Padding(
                       padding: EdgeInsets.all(5.sp),
-                      child: GestureDetector(
-                        onHorizontalDragUpdate: (details) =>
-                            onboardingController.updateDrag(details.delta.dx),
-                        onHorizontalDragEnd: (_) =>
-                            onboardingController.endDrag(),
-                        child: Row(
-                          children: [
-                            FadeIn(
-                              delay: Duration(milliseconds: 400),
-                              child: Transform.translate(
-                                offset: Offset(
-                                  onboardingController.dragOffset.value.w,
-                                  0,
-                                ),
-                                child: Container(
-                                  height: 52.h,
-                                  width: 52.w,
-                                  decoration: BoxDecoration(
-                                    color: AppColors.whiteColor,
-                                    borderRadius: BorderRadius.circular(30.r),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        physics: const NeverScrollableScrollPhysics(),
+                        child: GestureDetector(
+                          onHorizontalDragUpdate: (details) =>
+                              onboardingController.updateDrag(details.delta.dx),
+                          onHorizontalDragEnd: (_) =>
+                              onboardingController.endDrag(),
+                          child: Row(
+                            children: [
+                              FadeIn(
+                                delay: Duration(milliseconds: 400),
+                                child: Transform.translate(
+                                  offset: Offset(
+                                    onboardingController.dragOffset.value.w,
+                                    0,
                                   ),
-                                  child: Center(
-                                    child: Image.asset(
-                                      IconsPath.onboardingHome,
-                                      height: 22.h,
-                                      width: 22.w,
+                                  child: Container(
+                                    height: 52.h,
+                                    width: 52.w,
+                                    decoration: BoxDecoration(
+                                      color: AppColors.whiteColor,
+                                      borderRadius: BorderRadius.circular(30.r),
+                                    ),
+                                    child: Center(
+                                      child: Image.asset(
+                                        IconsPath.onboardingHome,
+                                        height: 22.h,
+                                        width: 22.w,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                            SizedBox(width: 10.w),
-                            ...List.generate(3, (index) {
-                              return FadeIn(
-                                delay: Duration(
-                                  milliseconds: 800 + (index * 200),
-                                ),
-                                child: onboardingController.dragOffset < 20.w
-                                    ? Image.asset(
-                                        IconsPath.forwardArrow,
-                                        height: 12.h,
-                                        width: 8.w,
-                                        color: onboardingController.syncColor(
-                                          index,
-                                        ),
-                                      )
-                                    : SizedBox(),
-                              );
-                            }),
-                          ],
+                              SizedBox(width: 10.w),
+                              ...List.generate(3, (index) {
+                                return FadeIn(
+                                  delay: Duration(
+                                    milliseconds: 800 + (index * 200),
+                                  ),
+                                  child: onboardingController.dragOffset < 20.w
+                                      ? Image.asset(
+                                          IconsPath.forwardArrow,
+                                          height: 12.h,
+                                          width: 8.w,
+                                          color: onboardingController.syncColor(
+                                            index,
+                                          ),
+                                        )
+                                      : SizedBox(),
+                                );
+                              }),
+                            ],
+                          ),
                         ),
                       ),
                     )
