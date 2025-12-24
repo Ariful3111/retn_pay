@@ -1,22 +1,25 @@
 // ignore_for_file: unused_element
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
+import 'package:renter_pay/features/auth/repositories/login_repo.dart';
+import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
 class LoginController extends GetxController {
+  final LoginRepository loginRepository;
+  LoginController({required this.loginRepository});
+  final StorageService storageService = Get.find();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   RxBool isPasswordVisible = true.obs;
   RxBool isLoading = false.obs;
   RxBool isRemember = false.obs;
 
-  final emailTouched = false.obs;
-  final passwordTouched = false.obs;
-
   void toggleRemember(bool? value) {
     isRemember.value = value ?? true;
   }
+
   String? emailValidation(String? value) {
     final text = (value ?? '').trim();
     if (text.isEmpty) {
@@ -44,27 +47,35 @@ class LoginController extends GetxController {
     return null;
   }
 
-  Future<void> userLogin(GlobalKey<FormState> formKey) async {
+  Future<void> userLogin({required GlobalKey<FormState> formKey}) async {
     emailValidation(emailController.text.trim());
     passwordValidation(passwordController.text.trim());
-    int index = Get.find<UserRoleController>().selectedIndex.value;
-     Get.toNamed(AppRoutes.mainHome);
     if (formKey.currentState?.validate() ?? false) {
-      Get.toNamed(AppRoutes.mainHome);
-      if(index==2){
-        Get.toNamed(AppRoutes.mainHome);
-      }
-    } else {
-      if(index==2){
-        Get.toNamed(AppRoutes.mainHome);
-      }
+      isLoading.value = true;
+      final response = await loginRepository.execute(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+      isLoading.value = false;
+      response.fold(
+        (error) {
+          ErrorSnackbar.show(description: error.message);
+        },
+        (data) async {
+          await storageService.write(
+            key: storageService.tokenKey,
+            value: data.data!.token.toString(),
+          );
+          Get.toNamed(AppRoutes.mainHome);
+        },
+      );
     }
   }
 
-  void signup(fromKey) {
+  void signup({required GlobalKey<FormState> formKey}) {
     emailController.clear();
     passwordController.clear();
-    fromKey.currentState?.reset();
+    formKey.currentState?.reset();
     Get.toNamed(AppRoutes.signupView);
   }
 

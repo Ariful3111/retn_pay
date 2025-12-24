@@ -3,6 +3,7 @@ import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/auth/bindings/document_verification_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/first_onboarding_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/forgot_password_bindings.dart';
+import 'package:renter_pay/features/home/bindings/logged_in_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/login_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/onboarding_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/otp_bindings.dart';
@@ -45,7 +46,6 @@ import 'package:renter_pay/features/dashboard/views/services_view.dart';
 import 'package:renter_pay/features/favorite/bindings/favorite_bindings.dart';
 import 'package:renter_pay/features/favorite/views/favorite_view.dart';
 import 'package:renter_pay/features/home/bindings/home_bindings.dart';
-import 'package:renter_pay/features/home/bindings/main_home_bindings.dart';
 import 'package:renter_pay/features/home/views/home_view.dart';
 import 'package:renter_pay/features/home/views/main_home_view.dart';
 import 'package:renter_pay/features/notification/bindings/notification_bindings.dart';
@@ -102,16 +102,7 @@ final List<GetPage> appRoutes = [
   GetPage(
     name: AppRoutes.mainHome,
     page: () => MainHomeView(),
-    bindings: [
-      MainHomeBindings(),
-      HomeBindings(),
-      RentBindings(),
-      DashboardBindings(),
-      ChatBindings(),
-      ProfileBindings(),
-      UserRoleBinding(),
-      FavoriteBindings(),
-    ],
+    binding: LoggedInBindings(),
   ),
   GetPage(
     name: AppRoutes.home,

@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
-import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/auth/controllers/login_controller.dart';
 import 'package:renter_pay/features/auth/widgets/forgot_password.dart';
 import 'package:renter_pay/features/auth/widgets/login_field.dart';
@@ -13,6 +12,7 @@ import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -32,7 +32,7 @@ class LoginView extends StatelessWidget {
             children: [
               Image.asset(ImagesPath.appLogo, height: 30.h, width: 170.w),
               SizedBox(height: 20.h),
-              CustomTextPrimary(text: "Wellcome Back", fontSize: 28.sp),
+              CustomTextPrimary(text: "Welcome Back", fontSize: 28.sp),
               SizedBox(height: 7.h),
               CustomTextPrimary(
                 text: "Let's login to grab amazing deal",
@@ -40,31 +40,43 @@ class LoginView extends StatelessWidget {
                 fontWeight: FontWeight.w500,
               ),
               SizedBox(height: 20.h),
-              AuthOption(title: "Continue with Google", image: IconsPath.google, onTap: () {}),
+              AuthOption(
+                title: "Continue with Google",
+                image: IconsPath.google,
+                onTap: () {},
+              ),
               SizedBox(height: 20.h),
-              AuthOption(title: "Continue with Apple", image: IconsPath.apple, onTap: () {}),
+              AuthOption(
+                title: "Continue with Apple",
+                image: IconsPath.apple,
+                onTap: () {},
+              ),
               SizedBox(height: 20.h),
               LoginField(fromKey: fromKey),
               SizedBox(height: 7.h),
               ForgotPassword(),
               SizedBox(height: 20.h),
-              CustomPrimaryButton(
-                onPressed: () {
-                  loginController.userLogin(fromKey);
-                },
-                text: "Login",
-                borderRadius: BorderRadius.circular(7.r),
-                textColor: AppColors.whiteColor,
-                height: 48.50.h,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
-              ),
+              Obx(() {
+                return loginController.isLoading.value
+                    ? ButtonLoading()
+                    : CustomPrimaryButton(
+                        onPressed: () async {
+                          await loginController.userLogin(formKey: fromKey);
+                        },
+                        text: "Login",
+                        borderRadius: BorderRadius.circular(7.r),
+                        textColor: AppColors.whiteColor,
+                        height: 48.50.h,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                      );
+              }),
               SizedBox(height: 20.h),
               CustomTextSpan(
                 title: "Don't have an account?",
                 spantext: " Sign Up",
                 onTap: () {
-                  Get.toNamed(AppRoutes.signupView);
+                  loginController.signup(formKey: fromKey);
                 },
               ),
             ],

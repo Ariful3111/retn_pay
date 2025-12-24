@@ -34,10 +34,12 @@ class ProfileView extends StatelessWidget {
             backgroundColor: Colors.transparent,
             titleSpacing: 0.w,
             title: CustomAppbar(
-              title: profileController
-                  .profileList[userRoleController.selectedIndex.value],
+              title:
+                  profileController
+                      .profileList[userRoleController.selectedIndex.value == -1
+                      ? 0
+                      : userRoleController.selectedIndex.value],
             ),
-            
           ),
 
           SliverPadding(
@@ -50,8 +52,8 @@ class ProfileView extends StatelessWidget {
                 CustomPrimaryButton(
                   height: 52.h,
                   text: 'Logout',
-                  onPressed: () {
-                    profileController.logOut();
+                  onPressed: () async {
+                    await profileController.logOut();
                   },
                 ),
                 SizedBox(height: 8.h),

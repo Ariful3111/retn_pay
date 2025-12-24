@@ -8,10 +8,7 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart
 
 class LoginField extends StatelessWidget {
   final GlobalKey<FormState> fromKey;
-  const LoginField({
-    super.key,
-    required this.fromKey,
-  });
+  const LoginField({super.key, required this.fromKey});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +55,7 @@ class LoginField extends StatelessWidget {
                   loginController.togglePasswordVisibility();
                 },
                 child: Padding(
-                  padding:  EdgeInsets.all(10.0.sp),
+                  padding: EdgeInsets.all(10.0.sp),
                   child: Image.asset(
                     loginController.isPasswordVisible.value
                         ? IconsPath.passwordVisibility
