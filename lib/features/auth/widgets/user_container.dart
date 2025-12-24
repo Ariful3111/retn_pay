@@ -27,7 +27,7 @@ class UserContainer extends StatelessWidget {
       bool selectedIndex = userRoleController.selectedIndex.value == index;
       return GestureDetector(
         onTap: () {
-          userRoleController.selectUser(index);
+          userRoleController.selectUser(index: index);
         },
         child: AnimatedContainer(
           duration: Duration(microseconds: 300),

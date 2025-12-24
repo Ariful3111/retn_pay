@@ -48,8 +48,6 @@ class LoginController extends GetxController {
   }
 
   Future<void> userLogin({required GlobalKey<FormState> formKey}) async {
-    emailValidation(emailController.text.trim());
-    passwordValidation(passwordController.text.trim());
     if (formKey.currentState?.validate() ?? false) {
       isLoading.value = true;
       final response = await loginRepository.execute(

@@ -65,7 +65,9 @@ class RentController extends GetxController {
 
   @override
   void onInit() {
-    Get.find<GlobalScrollController>().listen(scrollController);
+    if (!scrollController.hasClients) {
+      Get.find<GlobalScrollController>().listen(scrollController);
+    }
     super.onInit();
   }
 
