@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/auth/controllers/first_onboarding_controller.dart';
 
 class FirstOnboarding extends StatelessWidget {
@@ -10,36 +9,7 @@ class FirstOnboarding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FirstOnboardingController firstOnboardingController = Get.find();
-    List imageList = [
-      ImagesPath.onboarding1,
-      ImagesPath.onboarding2,
-      ImagesPath.onboarding3,
-      ImagesPath.onboarding4,
-      ImagesPath.onboarding5,
-      ImagesPath.onboarding6,
-      ImagesPath.onboarding7,
-      ImagesPath.onboarding8,
-      ImagesPath.onboarding9,
-      ImagesPath.onboarding10,
-      ImagesPath.onboarding11,
-      ImagesPath.onboarding12,
-      ImagesPath.onboarding13,
-      ImagesPath.onboarding14,
-      ImagesPath.onboarding15,
-    ];
 
-    final int rowCount =
-        (imageList.length / firstOnboardingController.crossAxis).ceil();
-
-    final List<List<String>> columns = List.generate(
-      firstOnboardingController.crossAxis,
-      (colIndex) {
-        return List.generate(rowCount, (rowIndex) {
-          int index = rowIndex * firstOnboardingController.crossAxis + colIndex;
-          return index < imageList.length ? imageList[index] : null;
-        }).whereType<String>().toList();
-      },
-    );
     return GestureDetector(
       onPanDown: (_) {
         firstOnboardingController.paused();
@@ -62,16 +32,25 @@ class FirstOnboarding extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: List.generate(columns.length, (colIndex) {
+            children: List.generate(firstOnboardingController.crossAxis, (
+              colIndex,
+            ) {
               return SizedBox(
                 width: 150.w,
                 child: ListView.builder(
                   controller:
                       firstOnboardingController.columnController[colIndex],
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: columns[colIndex].length,
+                  physics: const NeverScrollableScrollPhysics(),
+                  // Use a large number to simulate infinite scrolling or null for truly infinite
+                  // However, for performance and simplicity with jumpTo logic, we can just use null (infinite)
+                  // But we need to ensure the index wraps around.
                   itemBuilder: (context, i) {
-                    return onboardingContainer(columns[colIndex][i]);
+                    final List<String> currentColumn =
+                        firstOnboardingController.columns[colIndex];
+                    // Use modulo to loop the list
+                    final String image =
+                        currentColumn[i % currentColumn.length];
+                    return onboardingContainer(image);
                   },
                 ),
               );
@@ -84,7 +63,7 @@ class FirstOnboarding extends StatelessWidget {
 
   Widget onboardingContainer(String image) {
     return Container(
-      margin: EdgeInsets.only(right: 10.w,bottom: 10.h),
+      margin: EdgeInsets.only(right: 10.w, bottom: 10.h),
       height: 200.h,
       width: 150.w,
       decoration: BoxDecoration(
