@@ -1,10 +1,152 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/features/dashboard/controllers/dashboard_landlord_controller.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/graph_top_info.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class DashboardGraph extends StatelessWidget {
   const DashboardGraph({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
+    DashboardLandlordController dashboardLandlordController = Get.find();
+    return Container(
+      margin: EdgeInsets.only(top: 20.h),
+      padding: EdgeInsets.only(top: 16.h, bottom: 6.h, left: 16.w, right: 16.w),
+      decoration: BoxDecoration(
+        color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+        borderRadius: BorderRadius.circular(10.r),
+        border: Border.all(
+          width: 1.w,
+          color: isDark ? AppColors.darkBorderPrimary : AppColors.whiteBorder,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          GraphTopInfo(),
+          SfCartesianChart(
+            plotAreaBorderWidth: 0,
+            trackballBehavior: TrackballBehavior(
+              enable: true,
+              lineType: TrackballLineType.none,
+              activationMode: ActivationMode.singleTap,
+              tooltipSettings: InteractiveTooltip(
+                enable: true,
+                format: 'point.x : point.yk',canShowMarker: true
+              ),
+              markerSettings: TrackballMarkerSettings(
+                markerVisibility: TrackballVisibilityMode.visible,
+              ),
+            ),
+            tooltipBehavior: TooltipBehavior(
+              color: AppColors.primaryColorDark,
+              enable: true,
+              builder:
+                  (
+                    dynamic data,
+                    dynamic point,
+                    dynamic series,
+                    int pointIndex,
+                    int seriesIndex,
+                  ) {
+                    final value = (point.y * 1000).toInt();
+                    return Padding(
+                      padding: EdgeInsets.all(8.w),
+                      child: Text(
+                        '\$${value.toString().replaceAllMapped(RegExp(r'(\d)(?=(\d{3})+$)'), (m) => '${m[1]},')}',
+                        style: GoogleFonts.poppins(
+                          color: AppColors.whiteColor,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14.sp,
+                        ),
+                      ),
+                    );
+                  },
+            ),
+            primaryXAxis: CategoryAxis(
+              axisLine: AxisLine(width: 0),
+              majorGridLines: MajorGridLines(width: 0),
+              labelStyle: GoogleFonts.poppins(
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w400,
+                color: Color(0xFF636875),
+              ),
+            ),
+            primaryYAxis: NumericAxis(
+              minimum: 1,
+              maximum: 7,
+              interval: 1,
+              axisLine: AxisLine(width: 0),
+              majorTickLines: MajorTickLines(size: 0),
+              labelFormat: '{value}k',
+              labelStyle: GoogleFonts.poppins(
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w400,
+                color: Color(0xFF636875),
+              ),
+            ),
+            series: [
+              SplineAreaSeries(
+                dataSource: dashboardLandlordController.data,
+                xValueMapper: (d, _) => d.month,
+                yValueMapper: (d, _) => d.p1 / 1000,
+                enableTooltip: false,
+                enableTrackball: false,
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xFFFF68C3).withValues(alpha: 31.73),
+                    Color(0xFFFEE3F3).withValues(alpha: 0.01),
+                  ],
+                ),
+                isVisibleInLegend: false,
+              ),
+              SplineAreaSeries(
+                dataSource: dashboardLandlordController.data,
+                xValueMapper: (d, _) => d.month,
+                yValueMapper: (d, _) => d.p2 / 1000,
+                enableTooltip: false,
+                enableTrackball: false,
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xFF68FCFF).withValues(alpha: 31.73),
+                    Color(0xFFE3FDFE).withValues(alpha: 0.01),
+                  ],
+                ),
+                isVisibleInLegend: false,
+              ),
+
+              SplineSeries<ChartData, String>(
+                name: 'Property 1',
+                dataSource: dashboardLandlordController.data,
+                xValueMapper: (ChartData d, _) => d.month,
+                yValueMapper: (ChartData d, _) => d.p1 / 1000,
+                color: AppColors.primaryColorDark,
+                width: 1.55.w,
+                markerSettings: MarkerSettings(isVisible: false),
+              ),
+
+              SplineSeries<ChartData, String>(
+                name: 'Property 2',
+                dataSource: dashboardLandlordController.data,
+                xValueMapper: (ChartData d, _) => d.month,
+                yValueMapper: (ChartData d, _) => d.p2 / 1000,
+                color: Color(0xFF337778),
+                width: 1.55.w,
+                markerSettings: MarkerSettings(isVisible: false),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

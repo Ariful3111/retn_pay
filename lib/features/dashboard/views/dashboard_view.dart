@@ -11,6 +11,7 @@ import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboar
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_reminder.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_rent_notice.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_upcoming_payment.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/dashboard_graph.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/dashboard_landlord_plan.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/dashboard_landlord_quick_action.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/landlord_upcoming_payment.dart';
@@ -67,6 +68,7 @@ class DashboardView extends StatelessWidget {
                         );
                       },
                     ),
+                    if(userIndex==1) DashboardGraph(),
                     SizedBox(height: 20.h),
                     if (userIndex == 0) DashboardUpcomingPayment(),
                     if (userIndex == 1) LandlordUpcomingPayment(),
