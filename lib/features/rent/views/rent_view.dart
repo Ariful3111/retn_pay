@@ -42,7 +42,7 @@ class RentView extends StatelessWidget {
               },
               isSelect: rentController.initialSort,
             ),
-            SizedBox(height: 19.28.h),
+            SizedBox(height: 20.h),
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),

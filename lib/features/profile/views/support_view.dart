@@ -38,7 +38,7 @@ class SupportView extends StatelessWidget {
               CustomAppbar(title: 'Support'),
             ],
           ),
-          SizedBox(height: 24.h,),
+          SizedBox(height: 24.h),
           Align(
             alignment: Alignment.centerLeft,
             child: Container(
@@ -55,37 +55,57 @@ class SupportView extends StatelessWidget {
               child: Obx(
                 () => Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: List.generate(supportController.supportType.length, (
-                    index,
-                  ) {
-                    bool isSelect =
-                        supportController.selectedIndex.value == index;
-                    return GestureDetector(
-                      onTap: () {
-                        supportController.selectedIndex.value = index;
-                      },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(vertical: 8.h,horizontal: 12.w),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(6.42.r),
-                          color: isSelect?AppColors.primaryColorDark:null,
+                  children: List.generate(
+                    supportController.supportType.length,
+                    (index) {
+                      bool isSelect =
+                          supportController.selectedIndex.value == index;
+                      return GestureDetector(
+                        onTap: () {
+                          supportController.selectedIndex.value = index;
+                        },
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.fastOutSlowIn,
+                          padding: EdgeInsets.symmetric(
+                            vertical: 8.h,
+                            horizontal: 12.w,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(6.42.r),
+                            color: isSelect ? AppColors.primaryColorDark : null,
+                          ),
+                          child: Center(
+                            child: CustomTextSecondary(
+                              text: supportController.supportType[index],
+                              fontSize: 14.sp,
+                              color: isSelect
+                                  ? AppColors.whiteColor
+                                  : isDark
+                                  ? AppColors.darkPrimary
+                                  : null,
+                            ),
+                          ),
                         ),
-                        child: Center(child: CustomTextSecondary(text: supportController.supportType[index],fontSize: 14.sp,color: isSelect?AppColors.whiteColor:isDark? AppColors.darkPrimary:null,),),
-                      ),
-                    );
-                  }),
+                      );
+                    },
+                  ),
                 ),
               ),
             ),
           ),
-          SizedBox(height: 24.h,),
-          Obx(() => Column(
-            children: [
-              if(supportController.selectedIndex.value==0) SupportFaq(),
-              if(supportController.selectedIndex.value==1) SupportTickets(),
-              if(supportController.selectedIndex.value==2) ContactSupport(),
-            ],
-          ),)
+          SizedBox(height: 24.h),
+          Obx(
+            () => Column(
+              children: [
+                if (supportController.selectedIndex.value == 0) SupportFaq(),
+                if (supportController.selectedIndex.value == 1)
+                  SupportTickets(),
+                if (supportController.selectedIndex.value == 2)
+                  ContactSupport(),
+              ],
+            ),
+          ),
         ],
       ),
     );

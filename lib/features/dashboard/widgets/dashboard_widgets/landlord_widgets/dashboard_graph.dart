@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/dashboard_landlord_controller.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/dashboard_graph_line.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/graph_top_info.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -13,7 +12,7 @@ class DashboardGraph extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    DashboardLandlordController dashboardLandlordController = Get.find();
+    
     return Container(
       margin: EdgeInsets.only(top: 20.h),
       padding: EdgeInsets.only(top: 16.h, bottom: 6.h, left: 16.w, right: 16.w),
@@ -30,6 +29,7 @@ class DashboardGraph extends StatelessWidget {
         children: [
           GraphTopInfo(),
           SfCartesianChart(
+            
             plotAreaBorderWidth: 0,
             trackballBehavior: TrackballBehavior(
               enable: true,
@@ -37,7 +37,8 @@ class DashboardGraph extends StatelessWidget {
               activationMode: ActivationMode.singleTap,
               tooltipSettings: InteractiveTooltip(
                 enable: true,
-                format: 'point.x : point.yk',canShowMarker: true
+                format: 'point.x : point.yk',
+                canShowMarker: true,
               ),
               markerSettings: TrackballMarkerSettings(
                 markerVisibility: TrackballVisibilityMode.visible,
@@ -90,60 +91,7 @@ class DashboardGraph extends StatelessWidget {
                 color: Color(0xFF636875),
               ),
             ),
-            series: [
-              SplineAreaSeries(
-                dataSource: dashboardLandlordController.data,
-                xValueMapper: (d, _) => d.month,
-                yValueMapper: (d, _) => d.p1 / 1000,
-                enableTooltip: false,
-                enableTrackball: false,
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Color(0xFFFF68C3).withValues(alpha: 31.73),
-                    Color(0xFFFEE3F3).withValues(alpha: 0.01),
-                  ],
-                ),
-                isVisibleInLegend: false,
-              ),
-              SplineAreaSeries(
-                dataSource: dashboardLandlordController.data,
-                xValueMapper: (d, _) => d.month,
-                yValueMapper: (d, _) => d.p2 / 1000,
-                enableTooltip: false,
-                enableTrackball: false,
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Color(0xFF68FCFF).withValues(alpha: 31.73),
-                    Color(0xFFE3FDFE).withValues(alpha: 0.01),
-                  ],
-                ),
-                isVisibleInLegend: false,
-              ),
-
-              SplineSeries<ChartData, String>(
-                name: 'Property 1',
-                dataSource: dashboardLandlordController.data,
-                xValueMapper: (ChartData d, _) => d.month,
-                yValueMapper: (ChartData d, _) => d.p1 / 1000,
-                color: AppColors.primaryColorDark,
-                width: 1.55.w,
-                markerSettings: MarkerSettings(isVisible: false),
-              ),
-
-              SplineSeries<ChartData, String>(
-                name: 'Property 2',
-                dataSource: dashboardLandlordController.data,
-                xValueMapper: (ChartData d, _) => d.month,
-                yValueMapper: (ChartData d, _) => d.p2 / 1000,
-                color: Color(0xFF337778),
-                width: 1.55.w,
-                markerSettings: MarkerSettings(isVisible: false),
-              ),
-            ],
+            series: series,
           ),
         ],
       ),

@@ -68,7 +68,7 @@ class ItemContainer extends StatelessWidget {
             onVR: onVR,
             updateRating: updateRating,
             initialRating: initialRating,
-            onTapDetails: onTapDetails,
+            onTapDetails: onTapDetails, imageWidth: imageWidth,
           ),
         ],
       ),
