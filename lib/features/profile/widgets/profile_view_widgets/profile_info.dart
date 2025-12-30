@@ -44,8 +44,7 @@ class ProfileInfo extends StatelessWidget {
                 ],
               ),
               Spacer(),
-              GestureDetector(
-                behavior: HitTestBehavior.opaque,
+              InkWell(
                 onTap: () {
                   Get.toNamed(AppRoutes.profileEdit);
                 },

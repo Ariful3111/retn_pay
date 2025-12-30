@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
+import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/landlord_profile_plan.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_details.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_info.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_property.dart';
@@ -18,7 +19,7 @@ class ProfileEdit extends StatelessWidget {
   Widget build(BuildContext context) {
     ProfileController profileController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    UserRoleController userRoleController = Get.find();
+    int userIndex = Get.find<UserRoleController>().selectedIndex.value;
     return CustomContainer(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       gradient: isDark
@@ -38,7 +39,7 @@ class ProfileEdit extends StatelessWidget {
               SizedBox(width: 8.w,),
               CustomAppbar(
                 title: profileController
-                    .profileList[userRoleController.selectedIndex.value],
+                    .profileList[userIndex],
               ),
             ],
           ),
@@ -47,7 +48,8 @@ class ProfileEdit extends StatelessWidget {
           SizedBox(height: 20.h,),
           ProfileEditDetails(),
           SizedBox(height: 20.h,),
-          ProfileEditProperty()
+         if(userIndex==0) ProfileEditProperty(),
+         if(userIndex==1) LandlordProfilePlan()
         ],
       ),
     );

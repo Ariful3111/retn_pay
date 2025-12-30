@@ -17,7 +17,7 @@ class DashboardGraph extends StatelessWidget {
       margin: EdgeInsets.only(top: 20.h),
       padding: EdgeInsets.only(top: 16.h, bottom: 6.h, left: 16.w, right: 16.w),
       decoration: BoxDecoration(
-        color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+        color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
         borderRadius: BorderRadius.circular(10.r),
         border: Border.all(
           width: 1.w,
@@ -28,8 +28,9 @@ class DashboardGraph extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           GraphTopInfo(),
+          SizedBox(height: 4.h,),
           SfCartesianChart(
-            
+            margin: EdgeInsets.zero,
             plotAreaBorderWidth: 0,
             trackballBehavior: TrackballBehavior(
               enable: true,
@@ -70,8 +71,10 @@ class DashboardGraph extends StatelessWidget {
                   },
             ),
             primaryXAxis: CategoryAxis(
+              rangePadding: ChartRangePadding.none,
               axisLine: AxisLine(width: 0),
               majorGridLines: MajorGridLines(width: 0),
+              majorTickLines: MajorTickLines(width: 0),
               labelStyle: GoogleFonts.poppins(
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
@@ -80,10 +83,15 @@ class DashboardGraph extends StatelessWidget {
             ),
             primaryYAxis: NumericAxis(
               minimum: 1,
-              maximum: 7,
+              maximum: dashboardLandlordController.data.length - 1,
               interval: 1,
+              anchorRangeToVisiblePoints: false,
+              rangePadding: ChartRangePadding.none,
               axisLine: AxisLine(width: 0),
+              majorGridLines: MajorGridLines(width: 0),
               majorTickLines: MajorTickLines(size: 0),
+              minorTickLines: MinorTickLines(width: 0),
+              minorGridLines: MinorGridLines(width: 0),
               labelFormat: '{value}k',
               labelStyle: GoogleFonts.poppins(
                 fontSize: 12.sp,

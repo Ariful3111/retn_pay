@@ -99,11 +99,11 @@ class CustomTableCalender extends StatelessWidget {
                     color: AppColors.borderColor,
                   ),
                   rangeStartDecoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
+                    shape: BoxShape.circle,
                     color: Color(0xFFD1B1C5),
                   ),
                   rangeEndDecoration: BoxDecoration(
-                    shape: BoxShape.rectangle,
+                    shape: BoxShape.circle,
                     color: Color(0xFFD1B1C5),
                   ),
                 ),

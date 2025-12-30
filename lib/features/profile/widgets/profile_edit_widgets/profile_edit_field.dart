@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
 class ProfileEditField extends StatelessWidget {
   final TextEditingController controller;
   final String labelText;
-  final String hintText;
+  final bool readOnly;
   const ProfileEditField({
     super.key,
     required this.controller,
     required this.labelText,
-    required this.hintText,
+    required this.readOnly,
   });
 
   @override
@@ -20,19 +18,11 @@ class ProfileEditField extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomTextField(
       controller: controller,
-      hintTextWidget: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomTextSecondary(
-            text: labelText,
-            fontSize: 12.sp,
-            fontWeight: FontWeight.w400,
-          ),
-          CustomTextSecondary(text: hintText),
-        ],
-      ),
+      labelText: labelText,
+      hintText: controller.text,
       floatingLabelBehavior: FloatingLabelBehavior.always,
       fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+      readOnly: readOnly,
     );
   }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
@@ -18,8 +17,8 @@ class SubscriptionContainer extends StatelessWidget {
   final Gradient? planIconBG;
   final List<Widget> widgetList;
   final Widget? stackList;
-  final VoidCallback onTap;
   final double? sizeBoxHeight;
+  final Widget purchaseButton;
   const SubscriptionContainer({
     super.key,
     this.planBG,
@@ -30,9 +29,10 @@ class SubscriptionContainer extends StatelessWidget {
     this.price,
     this.planIcon,
     required this.widgetList,
-    required this.onTap,
     this.stackList,
-    this.planIconBG, this.sizeBoxHeight,
+    this.planIconBG,
+    this.sizeBoxHeight,
+    required this.purchaseButton,
   });
 
   @override
@@ -46,7 +46,10 @@ class SubscriptionContainer extends StatelessWidget {
         gradient: LinearGradient(
           begin: AlignmentGeometry.bottomLeft,
           end: Alignment.topRight,
-          colors: [Color(0xFFFFFBF2).withValues(alpha: 0.0), planBG ?? Color(0xFFFAEAC8)],
+          colors: [
+            Color(0xFFFFFBF2).withValues(alpha: 0.0),
+            planBG ?? Color(0xFFFAEAC8),
+          ],
         ),
         boxShadow: [
           BoxShadow(
@@ -87,14 +90,16 @@ class SubscriptionContainer extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                     CustomTextPrimary(
+                      CustomTextPrimary(
                         text: planTitle ?? "Basic",
                         color: AppColors.subsPlanTitle,
                         fontSize: 28.sp,
                       ),
                       SizedBox(height: 12.h),
                       CustomTextSecondary(
-                        text: planSubtitle ?? "(Free 15 days for first-time users)",
+                        text:
+                            planSubtitle ??
+                            "(Free 15 days for first-time users)",
                         color: AppColors.subsPlanSubtitle,
                         fontSize: 14.sp,
                       ),
@@ -114,13 +119,20 @@ class SubscriptionContainer extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 12.h),
-              Container(height: 2.h, width: 310.w, color: AppColors.primaryBorder),
+              Container(
+                height: 2.h,
+                width: 310.w,
+                color: AppColors.primaryBorder,
+              ),
               SizedBox(height: 12.h),
-              CustomTextSecondary(text: "Benefits:", color: AppColors.subsPlanTitle),
+              CustomTextSecondary(
+                text: "Benefits:",
+                color: AppColors.subsPlanTitle,
+              ),
               SizedBox(height: 14.h),
               Column(children: widgetList),
-              SizedBox(height:sizeBoxHeight?? 84.h),
-              CustomSecondaryButton(onPressed: onTap, text: "Buy", height: 52.h, width: 286.w,),
+              SizedBox(height: sizeBoxHeight ?? 84.h),
+              Center(child: purchaseButton),
             ],
           ),
         ],

@@ -24,7 +24,7 @@ class PropertyPromotion extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomTextPrimary(
-              text: 'Free 30-Day Property Promotion!',
+              text: 'Free 30-Day\nProperty Promotion!',
               fontSize: 24.sp,
               color: AppColors.primaryColorDark,
               textAlign: TextAlign.center,

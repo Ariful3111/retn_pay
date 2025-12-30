@@ -166,4 +166,6 @@ class IconsPath {
       'assets/icons/dashboard_calender.png';
   static const String availability =
       'assets/icons/availability.png';
+  static const String rentAdjust =
+      'assets/icons/rent_adjust.png';
 }
