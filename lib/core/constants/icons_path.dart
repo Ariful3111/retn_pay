@@ -162,10 +162,17 @@ class IconsPath {
       'assets/icons/dashboard_inspection_management.png';
   static const String dashboardPropertyManagement =
       'assets/icons/dashboard_property_management.png';
-  static const String dashboardCalender =
-      'assets/icons/dashboard_calender.png';
-  static const String availability =
-      'assets/icons/availability.png';
-  static const String rentAdjust =
-      'assets/icons/rent_adjust.png';
+  static const String dashboardCalender = 'assets/icons/dashboard_calender.png';
+  static const String availability = 'assets/icons/availability.png';
+  static const String rentAdjust = 'assets/icons/rent_adjust.png';
+  static const String dotMenu = 'assets/icons/dot_menu.png';
+  static const String actonView = 'assets/icons/action_view.png';
+  static const String share = 'assets/icons/share.png';
+  static const String insurance = 'assets/icons/insurance.png';
+  static const String enlist = 'assets/icons/enlist.png';
+  static const String messenger = 'assets/icons/messenger.png';
+  static const String shareFacebook = 'assets/icons/share_facebook.png';
+  static const String whatsapp = 'assets/icons/whatsapp.png';
+  static const String gmail = 'assets/icons/gmail.png';
+
 }

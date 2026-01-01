@@ -8,7 +8,7 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart
 
 class CustomDropdownMenu extends StatelessWidget {
   final List option;
-  final void Function(String?) onSelect;
+  final void Function(String? value) onSelect;
   final RxString isSelect;
   final Widget? label;
   final Color? selectedTrailingIconColor;
@@ -30,6 +30,7 @@ class CustomDropdownMenu extends StatelessWidget {
   final double? selectedTrailingIconWidth;
   final double? trailingIconHeight;
   final double? trailingIconWidth;
+  final double? menuFontSize;
   const CustomDropdownMenu({
     super.key,
     required this.onSelect,
@@ -54,7 +55,7 @@ class CustomDropdownMenu extends StatelessWidget {
     this.selectedTrailingIconHeight,
     this.selectedTrailingIconWidth,
     this.trailingIconHeight,
-    this.trailingIconWidth,
+    this.trailingIconWidth, this.menuFontSize,
   });
 
   @override
@@ -147,7 +148,7 @@ class CustomDropdownMenu extends StatelessWidget {
               padding: WidgetStatePropertyAll(EdgeInsets.zero),
               backgroundColor: isDark
                   ? WidgetStatePropertyAll(AppColors.darkPrimary)
-                  : null,
+                  : WidgetStatePropertyAll(AppColors.whiteColor),
             ),
             labelWidget: dropdownItem(
               gradient: selected ? AppColors.primaryColor : null,
@@ -159,6 +160,7 @@ class CustomDropdownMenu extends StatelessWidget {
                   : isDark
                   ? AppColors.whiteColor
                   : Color(0xFF091E42),
+              fontSize: menuFontSize??14.sp,
             ),
           );
         }).toList(),
@@ -170,6 +172,7 @@ class CustomDropdownMenu extends StatelessWidget {
     LinearGradient? gradient,
     required String option,
     required Color color,
+    required double fontSize,
   }) {
     return Container(
       height: 33.h,
@@ -180,7 +183,11 @@ class CustomDropdownMenu extends StatelessWidget {
         gradient: gradient,
       ),
       child: Center(
-        child: CustomTextSecondary(text: option, fontSize: 14.sp, color: color),
+        child: CustomTextSecondary(
+          text: option,
+          fontSize: fontSize,
+          color: color,
+        ),
       ),
     );
   }

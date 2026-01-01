@@ -8,7 +8,8 @@ import 'package:renter_pay/features/home/controllers/global_scroll_controller.da
 import 'package:table_calendar/table_calendar.dart';
 
 class DashboardController extends GetxController {
-  final scrollController = ScrollController();
+  final scrollController = TrackingScrollController();
+
   RxBool isFavorite = false.obs;
   RxBool isAutoPay = false.obs;
   RxInt isDay = 0.obs;
@@ -51,7 +52,7 @@ class DashboardController extends GetxController {
       'icon': IconsPath.dashboardPropertyManagement,
       'title': 'Property Management',
       'allowedUser': [1],
-      'routes': AppRoutes.activePropertiesView,
+      'routes': AppRoutes.propertyManagement,
     },
     {
       'icon': IconsPath.dashboardInspectionManagement,
@@ -157,6 +158,9 @@ class DashboardController extends GetxController {
   @override
   void onInit() {
     Get.find<GlobalScrollController>().listen(scrollController);
+    if (!scrollController.hasClients) {
+      Get.find<GlobalScrollController>().listen(scrollController);
+    }
     today = DateTime.now();
     firstDay = DateTime(today.year - 1, today.month, today.day);
     lastDay = DateTime(today.year + 1, today.month, today.day);

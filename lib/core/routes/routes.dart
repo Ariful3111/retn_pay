@@ -42,6 +42,7 @@ import 'package:renter_pay/features/dashboard/views/service_booked_details.dart'
 import 'package:renter_pay/features/dashboard/views/service_booked_view.dart';
 import 'package:renter_pay/features/dashboard/views/service_search_details.dart';
 import 'package:renter_pay/features/dashboard/views/services_view.dart';
+import 'package:renter_pay/features/dashboard/views/property_management.dart';
 import 'package:renter_pay/features/favorite/bindings/favorite_bindings.dart';
 import 'package:renter_pay/features/favorite/views/favorite_view.dart';
 import 'package:renter_pay/features/home/bindings/home_bindings.dart';
@@ -116,4 +117,5 @@ final List<GetPage> appRoutes = [
   GetPage(name: AppRoutes.supportView, page: ()=>SupportView(),binding: SupportBindings()),
   GetPage(name: AppRoutes.termsAndCondition, page: ()=>TermsAndCondition()),
   GetPage(name: AppRoutes.privacyPolicy, page: ()=>PrivacyPolicy(),binding: ProfileBindings()),
+  GetPage(name: AppRoutes.propertyManagement, page: ()=>PropertyManagement(),binding: DashboardBindings())
 ];

@@ -37,4 +37,5 @@ class AppRoutes {
   static const String supportView = '/supportView';
   static const String termsAndCondition = '/termsAndCondition';
   static const String privacyPolicy = '/privacyPolicy';
+  static const String propertyManagement = '/propertyManagement';
 }

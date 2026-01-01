@@ -34,6 +34,7 @@ class LandlordUpcomingPayment extends StatelessWidget {
                     context: context,
                     builder: (context) {
                       return CustomCalenderFilter(
+                        alignmentGeometry: Alignment(0, 0.4),
                         widget: UpcomingPaymentFilter(),
                       );
                     },

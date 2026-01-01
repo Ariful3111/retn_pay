@@ -18,7 +18,7 @@ class TableStatus extends StatelessWidget {
     } else if (status == "Pending") {
       bg = isDark ? AppColors.darkPendingBG : AppColors.pendingBG;
       text = isDark ? AppColors.pendingBG : AppColors.pendingText;
-    } else if (status == "Complete"|| status=='Booked'||status =='Resolved') {
+    } else if (status == "Complete"|| status=='Booked'||status =='Resolved'||status=='Publish') {
       bg = isDark ? AppColors.darkCompleteBG : AppColors.completeBG;
       text = isDark ? AppColors.completeBG : AppColors.completeText;
     }
