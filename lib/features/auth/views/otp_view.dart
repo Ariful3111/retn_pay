@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/auth/controllers/otp_controller.dart';
+import 'package:renter_pay/shared/mixins/Validators/otp_validator.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
@@ -38,7 +39,7 @@ class OtpView extends StatelessWidget {
                 labelText: "Verify Email OTP",
                 hintText: "Enter Email OTP",
                 controller: otpController.emailOTPController,
-                validator: otpController.emailOTPValidation,
+                validator: otpValidation,
                 keyboardType: TextInputType.number,
                 validation: AutovalidateMode.onUserInteraction,
               ),
@@ -47,7 +48,7 @@ class OtpView extends StatelessWidget {
                 labelText: "Verify Phone Number OTP",
                 hintText: "Enter Phone Number OTP",
                 controller: otpController.numberOTPController,
-                validator: otpController.numberOTPValidation,
+                validator: otpValidation,
                 keyboardType: TextInputType.number,
                 validation: AutovalidateMode.onUserInteraction,
               ),

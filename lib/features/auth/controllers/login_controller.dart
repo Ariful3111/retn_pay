@@ -56,8 +56,4 @@ class LoginController extends GetxController {
     passwordController.dispose();
     super.onClose();
   }
-
-  void togglePasswordVisibility() {
-    isPasswordVisible.value = !isPasswordVisible.value;
-  }
 }

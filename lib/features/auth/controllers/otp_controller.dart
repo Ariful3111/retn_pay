@@ -7,61 +7,11 @@ class OtpController extends GetxController {
   TextEditingController emailOTPController = TextEditingController();
   TextEditingController numberOTPController = TextEditingController();
 
-  final emailOTPNode = FocusNode();
-  final numberOTPNode = FocusNode();
-
   RxBool isLoading = false.obs;
-
-  final emailOTPTouch = false.obs;
-  final numberOTPTouched = false.obs;
-
-  @override
-  void onInit() {
-    emailOTPNode.addListener(() {
-      if (emailOTPNode.hasFocus) {
-        emailOTPTouch.value = true;
-      }
-    });
-    numberOTPNode.addListener(() {
-      if (numberOTPNode.hasFocus) {
-        numberOTPTouched.value = true;
-      }
-    });
-    super.onInit();
-  }
-
-  // ignore: deprecated_member_use
-  final RegExp otp = RegExp(r'^[0-9]+$');
-  String? emailOTPValidation(String? value) {
-    final text = (value ?? "").trim();
-    if (text.isEmpty) {
-      return "Email OTP Is Required";
-    }
-
-    if (!otp.hasMatch(text.trim())) {
-      return 'Enter A Valid OTP';
-    }
-    return null;
-  }
-
-  String? numberOTPValidation(String? value) {
-    final text = (value ?? "").trim();
-    if (text.isEmpty) {
-      return "Email OTP Is Required";
-    }
-    if (!otp.hasMatch(text.trim())) {
-      return 'Enter A Valid OTP';
-    }
-    return null;
-  }
 
   Future<void> verifyOTP(GlobalKey<FormState> fromKey) async {
     int index = Get.find<UserRoleController>().selectedIndex.value;
-    emailOTPValidation(emailOTPController.text.trim());
-    numberOTPValidation(numberOTPController.text.trim());
     if (fromKey.currentState?.validate() ?? false) {
-      isLoading.value = true;
-      isLoading.value = false;
       if (index == 0) {
         Get.toNamed(AppRoutes.mainHome);
       } else if (index == 1) {

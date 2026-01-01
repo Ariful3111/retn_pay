@@ -57,7 +57,8 @@ class SignupField extends StatelessWidget {
               validation: AutovalidateMode.onUserInteraction,
               suffixIcon: GestureDetector(
                 onTap: () {
-                  signupController.togglePasswordVisibility();
+                  signupController.isPasswordVisible.value =
+                      !signupController.isPasswordVisible.value;
                 },
                 child: Padding(
                   padding: EdgeInsets.all(10.0.sp),
@@ -86,12 +87,13 @@ class SignupField extends StatelessWidget {
               validation: AutovalidateMode.onUserInteraction,
               suffixIcon: GestureDetector(
                 onTap: () {
-                  signupController.toggleConfirmPasswordVisibility();
+                  signupController.isConfirmPasswordVisible.value =
+                      !signupController.isConfirmPasswordVisible.value;
                 },
                 child: Padding(
                   padding: EdgeInsets.all(10.0.sp),
                   child: Image.asset(
-                    signupController.isPasswordVisible.value
+                    signupController.isConfirmPasswordVisible.value
                         ? IconsPath.passwordVisibility
                         : IconsPath.passwordVisibility,
                     height: 21.h,

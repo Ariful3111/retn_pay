@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/auth/controllers/login_controller.dart';
-import 'package:renter_pay/shared/mixins/Validators/email_validator.dart';
+import 'package:renter_pay/shared/mixins/Validators/email_or_phone_validator.dart';
 import 'package:renter_pay/shared/mixins/Validators/password_validator.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
@@ -37,10 +37,10 @@ class LoginField extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           CustomTextField(
-            labelText: "Email",
-            hintText: "Enter You're Email",
+            labelText: "Email/Phone Number",
+            hintText: "Enter Your Email or Phone Number",
             controller: loginController.emailController,
-            validator: emailValidation,
+            validator: emailOrPhoneValidation,
             validation: AutovalidateMode.onUserInteraction,
           ),
           SizedBox(height: 20.h),
@@ -54,7 +54,8 @@ class LoginField extends StatelessWidget {
               validation: AutovalidateMode.onUserInteraction,
               suffixIcon: GestureDetector(
                 onTap: () {
-                  loginController.togglePasswordVisibility();
+                  loginController.isPasswordVisible.value =
+                      !loginController.isPasswordVisible.value;
                 },
                 child: Padding(
                   padding: EdgeInsets.all(10.0.sp),
