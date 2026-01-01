@@ -19,6 +19,7 @@ class DependencyInjection {
     Get.put<PostWithResponse>(PostWithResponse(), permanent: true);
     Get.put<PostWithoutResponse>(PostWithoutResponse(), permanent: true);
     Get.put<PostWithResponse>(PostWithResponse(), permanent: true);
+    Get.put<PostWithoutResponse>(PostWithoutResponse(), permanent: true);
 
     return Get.find<StorageService>().read(
           key: Get.find<StorageService>().tokenKey,
