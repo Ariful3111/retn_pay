@@ -1,8 +1,21 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
+import 'package:renter_pay/features/auth/repositories/register_repo.dart';
+import 'package:renter_pay/features/auth/repositories/verification_repo.dart';
+import 'package:renter_pay/shared/extensions/Extractors/name_extractor.dart';
+import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
+import 'package:renter_pay/shared/widgets/snackbars/success_snackbar.dart';
 
 class SignupController extends GetxController {
+  final VerificationRepository verificationRepository;
+  final RegisterRepository registerRepository;
+  SignupController({
+    required this.verificationRepository,
+    required this.registerRepository,
+  });
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -11,105 +24,99 @@ class SignupController extends GetxController {
   RxBool isPasswordVisible = true.obs;
   RxBool isConfirmPasswordVisible = true.obs;
   RxBool isLoading = false.obs;
-  final emailTouched = false.obs;
-  final passwordTouched = false.obs;
-  final confirmPasswordTouched = false.obs;
-  final nameTouched = false.obs;
-  final phoneTouched = false.obs;
+  final storage = Get.find<StorageService>();
 
-  String? emailValidation(String? value) {
-    final text = (value ?? '').trim();
-    if (text.isEmpty) {
-      return "Email is required";
-    }
-    // ignore: deprecated_member_use
-    final RegExp emailReg = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    if (emailReg.hasMatch(text)) {
-      return null;
-    }
-    {
-      return "Enter a valid email address";
+  Future<void> sendCode({required GlobalKey<FormState> fromKey}) async {
+    if (fromKey.currentState?.validate() ?? false) {
+      isLoading.value = true;
+      final (contact, contactType, message) = verificationIdentifier();
+      final response = await verificationRepository.execute(
+        contact: contact,
+        contactType: contactType,
+        isRegistration: 1,
+      );
+      isLoading.value = false;
+      response.fold(
+        (error) {
+          ErrorSnackbar.show(description: error.message);
+        },
+        (data) {
+          SuccessSnackbar.show(description: message);
+          Get.toNamed(AppRoutes.otpView, arguments: contactType);
+        },
+      );
     }
   }
 
-  String? phoneValidation(String? value) {
-    final text = (value ?? '').trim();
-    if (text.isEmpty) {
-      return "Phone number is required";
-    }
-    // ignore: deprecated_member_use
-    final RegExp phoneReg = RegExp(r'^(?:\+?88)?01[3-9]\d{8}$');
-    if (phoneReg.hasMatch(text)) {
-      return null;
-    }
-    return "Enter a valid phone number";
+  Future<void> register({
+    required String phoneCode,
+    required String emailCode,
+  }) async {
+    isLoading.value = true;
+
+    final (firstName, lastName) = nameController.text.extractNameParts();
+
+    final response = await registerRepository.execute(
+      role: roleIdentifier(),
+      firstName: firstName,
+      lastName: lastName,
+      phone: phoneCode.isNotEmpty ? phoneController.text : "",
+      email: emailCode.isNotEmpty ? emailController.text : "",
+      password: passwordController.text,
+      confirmPassword: confirmPassController.text,
+      phoneCode: phoneCode,
+      emailCode: emailCode,
+    );
+    isLoading.value = false;
+    response.fold(
+      (error) {
+        ErrorSnackbar.show(description: error.message);
+      },
+      (data) async {
+        await storage.write(
+          key: storage.tokenKey,
+          value: data.data!.token.toString(),
+        );
+        SuccessSnackbar.show(description: "Registration Successful");
+        navigator();
+      },
+    );
   }
 
-  String? passwordValidation(String? value) {
-    final text = (value ?? '').trim();
-
-    if (text.isEmpty) {
-      return "Password is required";
+  String roleIdentifier() {
+    int index = Get.find<UserRoleController>().selectedIndex.value;
+    if (index == 0) {
+      return "tenant";
+    } else if (index == 1) {
+      return "landlord";
+    } else if (index == 2) {
+      return "agent";
+    } else {
+      return "service-vendor";
     }
-    if (text.length < 8) {
-      return "Password must be at least 8 characters";
-    }
-    return null;
   }
 
-  String? confirmPasswordValidation(String? value) {
-    final text = (value ?? '').trim();
-    if (text.isEmpty) {
-      return "Confirm Password is required";
+  (String, String, String) verificationIdentifier() {
+    if (phoneController.text.isNotEmpty) {
+      return (phoneController.text, "phone", "Code sended to your phone");
+    } else if (emailController.text.isNotEmpty) {
+      return (emailController.text, "email", "Code sended to your email");
+    } else {
+      return ("", "", "");
     }
-    if (text != passwordController.text) {
-      return "Passwords do not match";
-    }
-    return null;
   }
 
-  String? nameValidation(String? value) {
-    final text = (value ?? '');
-    if (text.isEmpty) {
-      return "Name is required";
+  void navigator() {
+    int index = Get.find<UserRoleController>().selectedIndex.value;
+    if (index == 0) {
+      Get.offAllNamed(AppRoutes.mainHome);
+    } else if (index == 1) {
+      Get.toNamed(AppRoutes.documentVerification);
+    } else if (index == 3) {
+      Get.toNamed(AppRoutes.documentVerification);
+    } else if (index == 2) {
+      Get.toNamed(AppRoutes.mainHome);
     }
-    if (text.length < 3) {
-      return "Name must be at least 3 characters";
-    }
-    // ignore: deprecated_member_use
-    final RegExp name = RegExp(r"^[A-za-z]+(?: [A-za-z]*)?$");
-    if (!name.hasMatch(text)) {
-      return 'You can\'t use number or special character';
-    }
-    return null;
-  }
-
-  void userSignup(GlobalKey<FormState> fromKey) async {
-    nameValidation(nameController.text);
-    emailValidation(emailController.text.trim());
-    phoneValidation(phoneController.text.trim());
-    passwordValidation(passwordController.text.trim());
-    confirmPasswordValidation(confirmPassController.text.trim());
-    Get.toNamed(AppRoutes.otpView);
-    if (fromKey.currentState?.validate() ?? false) {}
-  }
-
-  void togglePasswordVisibility() {
-    isPasswordVisible.value = !isPasswordVisible.value;
-  }
-
-  void toggleConfirmPasswordVisibility() {
-    isConfirmPasswordVisible.value = !isConfirmPasswordVisible.value;
-  }
-
-  void login(fromKey) {
-    confirmPassController.clear();
-    emailController.clear();
-    passwordController.clear();
-    nameController.clear();
-    phoneController.clear();
-    fromKey.currentState?.reset();
-    Get.toNamed(AppRoutes.loginView);
   }
 
   @override

@@ -1,83 +1,57 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
+import 'package:renter_pay/features/auth/controllers/signup_controller.dart';
+import 'package:renter_pay/features/auth/repositories/check_validity_repo.dart';
+import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
 class OtpController extends GetxController {
+  final CheckValidityRepository checkValidityRepository;
+  OtpController({required this.checkValidityRepository});
+
+  final signupController = Get.find<SignupController>();
+
   TextEditingController emailOTPController = TextEditingController();
   TextEditingController numberOTPController = TextEditingController();
 
-  final emailOTPNode = FocusNode();
-  final numberOTPNode = FocusNode();
-
   RxBool isLoading = false.obs;
 
-  final emailOTPTouch = false.obs;
-  final numberOTPTouched = false.obs;
-
-  @override
-  void onInit() {
-    emailOTPNode.addListener(() {
-      if (emailOTPNode.hasFocus) {
-        emailOTPTouch.value = true;
-      }
-    });
-    numberOTPNode.addListener(() {
-      if (numberOTPNode.hasFocus) {
-        numberOTPTouched.value = true;
-      }
-    });
-    super.onInit();
-  }
-
-  // ignore: deprecated_member_use
-  final RegExp otp = RegExp(r'^[0-9]+$');
-  String? emailOTPValidation(String? value) {
-    final text = (value ?? "").trim();
-    if (text.isEmpty) {
-      return "Email OTP Is Required";
-    }
-
-    if (!otp.hasMatch(text.trim())) {
-      return 'Enter A Valid OTP';
-    }
-    return null;
-  }
-
-  String? numberOTPValidation(String? value) {
-    final text = (value ?? "").trim();
-    if (text.isEmpty) {
-      return "Email OTP Is Required";
-    }
-    if (!otp.hasMatch(text.trim())) {
-      return 'Enter A Valid OTP';
-    }
-    return null;
-  }
-
   Future<void> verifyOTP(GlobalKey<FormState> fromKey) async {
-    int index = Get.find<UserRoleController>().selectedIndex.value;
-    emailOTPValidation(emailOTPController.text.trim());
-    numberOTPValidation(numberOTPController.text.trim());
     if (fromKey.currentState?.validate() ?? false) {
-      isLoading.value = true;
-      isLoading.value = false;
-      if (index == 0) {
-        Get.toNamed(AppRoutes.mainHome);
-      } else if (index == 1) {
-        Get.toNamed(AppRoutes.documentVerification);
-      } else if (index == 3) {
-        Get.toNamed(AppRoutes.documentVerification);
-      } else if (index == 2) {
-        Get.toNamed(AppRoutes.mainHome);
-      }
+      await checkCodeValidity();
+    }
+  }
+
+  Future<void> checkCodeValidity() async {
+    isLoading.value = true;
+    final (contact, contactType, message) = Get.find<SignupController>()
+        .verificationIdentifier();
+    final response = await checkValidityRepository.execute(
+      contact: contact,
+      code: codeIdentifier(),
+    );
+    response.fold(
+      (error) {
+        isLoading.value = false;
+        ErrorSnackbar.show(description: error.message);
+      },
+      (data) async {
+        if (data.error == false) {
+          await signupController.register(
+            phoneCode: numberOTPController.text,
+            emailCode: emailOTPController.text,
+          );
+        }
+        isLoading.value = false;
+      },
+    );
+  }
+
+  String codeIdentifier() {
+    String otpType = Get.arguments.toString();
+    if (otpType == "email") {
+      return emailOTPController.text;
     } else {
-      if (index == 0) {
-      } else if (index == 1) {
-        Get.toNamed(AppRoutes.documentVerification);
-      } else if (index == 3) {
-        Get.toNamed(AppRoutes.documentVerification);
-      }
+      return numberOTPController.text;
     }
   }
 }

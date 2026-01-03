@@ -38,7 +38,9 @@ class HomeController extends GetxController {
     studioRating;
     officeRating;
     vilaRating;
-    Get.find<GlobalScrollController>().listen(scrollController);
+    if (!scrollController.hasClients) {
+      Get.find<GlobalScrollController>().listen(scrollController);
+    }
     super.onInit();
   }
 

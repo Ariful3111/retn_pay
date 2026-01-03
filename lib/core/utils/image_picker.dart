@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -9,14 +10,54 @@ class UploadImage {
     required ImagePicker picker,
   }) async {
     try {
-      final XFile? image = await picker.pickImage(source: ImageSource.camera);
-      if (image != null) {
-        if (type == 'front') {
-          frontImage.value = image;
-        } else if (type == 'back') {
-          backImage.value = image;
-        }
-      } else {}
+      await Get.bottomSheet(
+        Container(
+          padding: const EdgeInsets.all(16),
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(16),
+              topRight: Radius.circular(16),
+            ),
+          ),
+          child: Wrap(
+            children: [
+              ListTile(
+                leading: const Icon(Icons.camera_alt),
+                title: const Text('Camera'),
+                onTap: () async {
+                  Get.back();
+                  final XFile? image =
+                      await picker.pickImage(source: ImageSource.camera);
+                  if (image != null) {
+                    if (type == 'front') {
+                      frontImage.value = image;
+                    } else if (type == 'back') {
+                      backImage.value = image;
+                    }
+                  }
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.photo_library),
+                title: const Text('Gallery'),
+                onTap: () async {
+                  Get.back();
+                  final XFile? image =
+                      await picker.pickImage(source: ImageSource.gallery);
+                  if (image != null) {
+                    if (type == 'front') {
+                      frontImage.value = image;
+                    } else if (type == 'back') {
+                      backImage.value = image;
+                    }
+                  }
+                },
+              ),
+            ],
+          ),
+        ),
+      );
     } catch (e) {
       // ignore: avoid_print
       print('$e');
@@ -27,10 +68,46 @@ class UploadImage {
     required ImagePicker picker,
     required Rxn<XFile> pickImage,
   }) async {
-    final XFile? image = await picker.pickImage(source: ImageSource.camera);
-    if (image != null) {
-      pickImage.value = image;
-    }
+    await Get.bottomSheet(
+      Container(
+        padding: const EdgeInsets.all(16),
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(16),
+            topRight: Radius.circular(16),
+          ),
+        ),
+        child: Wrap(
+          children: [
+            ListTile(
+              leading: const Icon(Icons.camera_alt),
+              title: const Text('Camera'),
+              onTap: () async {
+                Get.back();
+                final XFile? image =
+                    await picker.pickImage(source: ImageSource.camera);
+                if (image != null) {
+                  pickImage.value = image;
+                }
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.photo_library),
+              title: const Text('Gallery'),
+              onTap: () async {
+                Get.back();
+                final XFile? image =
+                    await picker.pickImage(source: ImageSource.gallery);
+                if (image != null) {
+                  pickImage.value = image;
+                }
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   static Future<void> pickMultipleImage({

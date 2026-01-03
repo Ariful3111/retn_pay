@@ -10,6 +10,7 @@ import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
 class SignupView extends StatelessWidget {
   const SignupView({super.key});
@@ -38,16 +39,20 @@ class SignupView extends StatelessWidget {
               SizedBox(height: 20.h),
               SignupField(fromKey: fromKey),
               SizedBox(height: 20.h),
-              CustomPrimaryButton(
-                height: 48.50.h,
-                onPressed: () {
-                  signupController.userSignup(fromKey);
-                },
-                text: "Signup",
-                textColor: AppColors.whiteColor,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
-              ),
+              Obx(() {
+                return signupController.isLoading.value
+                    ? ButtonLoading()
+                    : CustomPrimaryButton(
+                        height: 48.50.h,
+                        onPressed: () async {
+                          await signupController.sendCode(fromKey: fromKey);
+                        },
+                        text: "Signup",
+                        textColor: AppColors.whiteColor,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                      );
+              }),
               SizedBox(height: 21.h),
               CustomTextSpan(
                 title: "Do have an account?",

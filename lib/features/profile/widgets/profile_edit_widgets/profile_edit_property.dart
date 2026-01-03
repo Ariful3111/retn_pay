@@ -18,7 +18,6 @@ class ProfileEditProperty extends StatelessWidget {
     ProfileEditController profileEditController = Get.find();
     return Container(
       padding: EdgeInsets.all(16.sp),
-      height: 705.h,
       width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,

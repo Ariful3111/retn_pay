@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/dashboard_landlord_controller.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+
 DashboardLandlordController dashboardLandlordController = Get.find();
 List<CartesianSeries<dynamic, dynamic>> series = [
   SplineAreaSeries(

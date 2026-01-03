@@ -4,17 +4,18 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/auth/controllers/otp_controller.dart';
+import 'package:renter_pay/shared/extensions/Validators/otp_validator.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
-class OtpView extends StatelessWidget {
+class OtpView extends GetView<OtpController> {
   const OtpView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    OtpController otpController = Get.find();
     final fromKey = GlobalKey<FormState>();
     return Form(
       key: fromKey,
@@ -33,35 +34,51 @@ class OtpView extends StatelessWidget {
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,
               ),
+              Get.arguments.toString() == "email"
+                  ? Column(
+                      children: [
+                        SizedBox(height: 21.h),
+                        CustomTextField(
+                          labelText: "Verify Email OTP",
+                          hintText: "Enter Email OTP",
+                          controller: controller.emailOTPController,
+                          validator: otpValidation,
+                          keyboardType: TextInputType.number,
+                          validation: AutovalidateMode.onUserInteraction,
+                        ),
+                      ],
+                    )
+                  : SizedBox(),
+              Get.arguments.toString() == "phone"
+                  ? Column(
+                      children: [
+                        SizedBox(height: 21.h),
+                        CustomTextField(
+                          labelText: "Verify Phone Number OTP",
+                          hintText: "Enter Phone Number OTP",
+                          controller: controller.numberOTPController,
+                          validator: otpValidation,
+                          keyboardType: TextInputType.number,
+                          validation: AutovalidateMode.onUserInteraction,
+                        ),
+                      ],
+                    )
+                  : SizedBox(),
               SizedBox(height: 21.h),
-              CustomTextField(
-                labelText: "Verify Email OTP",
-                hintText: "Enter Email OTP",
-                controller: otpController.emailOTPController,
-                validator: otpController.emailOTPValidation,
-                keyboardType: TextInputType.number,
-                validation: AutovalidateMode.onUserInteraction,
-              ),
-              SizedBox(height: 21.h),
-              CustomTextField(
-                labelText: "Verify Phone Number OTP",
-                hintText: "Enter Phone Number OTP",
-                controller: otpController.numberOTPController,
-                validator: otpController.numberOTPValidation,
-                keyboardType: TextInputType.number,
-                validation: AutovalidateMode.onUserInteraction,
-              ),
-              SizedBox(height: 21.h),
-              CustomPrimaryButton(
-                height: 48.50.h,
-                onPressed: () {
-                  otpController.verifyOTP(fromKey);
-                },
-                text: "Verify OTP",
-                textColor: AppColors.whiteColor,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
-              ),
+              Obx(() {
+                return controller.isLoading.value
+                    ? ButtonLoading()
+                    : CustomPrimaryButton(
+                        height: 48.50.h,
+                        onPressed: () async {
+                          await controller.verifyOTP(fromKey);
+                        },
+                        text: "Verify OTP",
+                        textColor: AppColors.whiteColor,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                      );
+              }),
             ],
           ),
         ),

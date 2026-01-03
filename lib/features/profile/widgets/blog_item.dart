@@ -13,7 +13,7 @@ class BlogItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        bool isDark = Theme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return ListView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
@@ -26,12 +26,14 @@ class BlogItem extends StatelessWidget {
           child: Container(
             margin: EdgeInsets.only(bottom: 14.44.h),
             padding: EdgeInsets.all(14.r),
-            height: 310.h,
             width: MediaQuery.widthOf(context),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.r),
-              border: Border.all(width: 1.r, color:isDark? AppColors.darkContainer:AppColors.whiteBorder),
-              color:isDark? AppColors.darkPrimary:AppColors.whiteColor,
+              border: Border.all(
+                width: 1.r,
+                color: isDark ? AppColors.darkContainer : AppColors.whiteBorder,
+              ),
+              color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
               boxShadow: [
                 BoxShadow(
                   offset: Offset(0, 5.78),
@@ -90,7 +92,9 @@ class BlogItem extends StatelessWidget {
                     CustomTextSecondary(
                       text: 'By RenterPay Team',
                       fontSize: 12.sp,
-                      color:isDark?Color(0xFFFAFBFB) :AppColors.darkContainer,
+                      color: isDark
+                          ? Color(0xFFFAFBFB)
+                          : AppColors.darkContainer,
                     ),
                   ],
                 ),

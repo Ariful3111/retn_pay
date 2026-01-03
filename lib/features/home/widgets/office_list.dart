@@ -16,7 +16,7 @@ class OfficeList extends StatelessWidget {
     HomeController homeController = Get.find();
     FavoriteController favoriteController = Get.find();
       return SizedBox(
-      height: 301.h,
+      height: 302.h,
       width: 300.w,
       child: ListView.builder(
         shrinkWrap: true,

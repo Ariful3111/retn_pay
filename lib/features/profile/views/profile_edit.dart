@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
-import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/landlord_profile_plan.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_details.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_info.dart';
@@ -17,7 +16,7 @@ class ProfileEdit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ProfileController profileController = Get.find();
+    Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     int userIndex = Get.find<UserRoleController>().selectedIndex.value;
     return CustomContainer(
@@ -36,20 +35,17 @@ class ProfileEdit extends StatelessWidget {
                   Navigator.pop(context);
                 },
               ),
-              SizedBox(width: 8.w,),
-              CustomAppbar(
-                title: profileController
-                    .profileList[userIndex],
-              ),
+              SizedBox(width: 8.w),
+              CustomAppbar(title: "Edit Profile"),
             ],
           ),
           SizedBox(height: 24.h),
           ProfileEditInfo(),
-          SizedBox(height: 20.h,),
+          SizedBox(height: 20.h),
           ProfileEditDetails(),
-          SizedBox(height: 20.h,),
-         if(userIndex==0) ProfileEditProperty(),
-         if(userIndex==1) LandlordProfilePlan()
+          SizedBox(height: 20.h),
+          if (userIndex == 0) ProfileEditProperty(),
+          if (userIndex == 1) LandlordProfilePlan(),
         ],
       ),
     );

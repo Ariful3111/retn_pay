@@ -9,7 +9,6 @@ import 'package:table_calendar/table_calendar.dart';
 
 class DashboardController extends GetxController {
   final scrollController = TrackingScrollController();
-
   RxBool isFavorite = false.obs;
   RxBool isAutoPay = false.obs;
   RxInt isDay = 0.obs;

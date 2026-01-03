@@ -3,6 +3,7 @@ import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/auth/bindings/document_verification_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/first_onboarding_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/forgot_password_bindings.dart';
+import 'package:renter_pay/features/home/bindings/logged_in_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/login_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/onboarding_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/otp_bindings.dart';
@@ -31,7 +32,7 @@ import 'package:renter_pay/features/dashboard/bindings/service_booked_bindings.d
 import 'package:renter_pay/features/dashboard/bindings/service_booked_details_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/service_search_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/services_bindings.dart';
-import 'package:renter_pay/features/dashboard/views/Repair_maintenance_view.dart';
+import 'package:renter_pay/features/dashboard/views/repair_maintenance_view.dart';
 import 'package:renter_pay/features/dashboard/views/active_properties_view.dart';
 import 'package:renter_pay/features/dashboard/views/dashboard_view.dart';
 import 'package:renter_pay/features/dashboard/views/inspection_request_view.dart';
@@ -46,7 +47,6 @@ import 'package:renter_pay/features/dashboard/views/property_management.dart';
 import 'package:renter_pay/features/favorite/bindings/favorite_bindings.dart';
 import 'package:renter_pay/features/favorite/views/favorite_view.dart';
 import 'package:renter_pay/features/home/bindings/home_bindings.dart';
-import 'package:renter_pay/features/home/bindings/main_home_bindings.dart';
 import 'package:renter_pay/features/home/views/home_view.dart';
 import 'package:renter_pay/features/home/views/main_home_view.dart';
 import 'package:renter_pay/features/notification/bindings/notification_bindings.dart';
@@ -72,22 +72,160 @@ import 'package:renter_pay/features/rent/views/rent_view.dart';
 import 'package:renter_pay/features/rent/views/property_view.dart';
 
 final List<GetPage> appRoutes = [
-  GetPage(name: AppRoutes.onboarding, page: () => Onboarding(), bindings:[ OnboardingBindings(),FirstOnboardingBindings()]),
-  GetPage(name: AppRoutes.userRole, page: () => UserRole(), bindings: [UserRoleBinding()]),
-  GetPage(name: AppRoutes.loginView, page: () => LoginView(), bindings: [LoginBindings(),ForgotPasswordBindings()]),
+  GetPage(
+    name: AppRoutes.onboarding,
+    page: () => Onboarding(),
+    bindings: [OnboardingBindings(), FirstOnboardingBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.userRole,
+    page: () => UserRole(),
+    bindings: [UserRoleBinding()],
+  ),
+  GetPage(
+    name: AppRoutes.loginView,
+    page: () => LoginView(),
+    bindings: [LoginBindings(), ForgotPasswordBindings()],
+  ),
   GetPage(
     name: AppRoutes.signupOption,
     page: () => SignupOption(),
     bindings: [SignupOptionBindings()],
   ),
-  GetPage(name: AppRoutes.signupView, page: () => SignupView(), bindings: [SignupViewBindings()]),
-  GetPage(name: AppRoutes.otpView, page: () => OtpView(), bindings: [OtpBindings()]),
-  GetPage(name: AppRoutes.mainHome, page: () => MainHomeView(), bindings: [MainHomeBindings(),HomeBindings(),RentBindings(),DashboardBindings(),ChatBindings(),ProfileBindings(),UserRoleBinding(),FavoriteBindings()]),
-  GetPage(name: AppRoutes.home, page: ()=>HomeView(),bindings: [HomeBindings(),FavoriteBindings()]),
-  GetPage(name: AppRoutes.documentVerification, page: ()=>DocumentVerification(),bindings: [DocumentVerificationBindings(),]),
-  GetPage(name: AppRoutes.subsPlan, page: ()=>SubscriptionPlan()),
-  GetPage(name: AppRoutes.profile, page: ()=>ProfileView(),
-  bindings: [ProfileBindings(),]
+  GetPage(
+    name: AppRoutes.signupView,
+    page: () => SignupView(),
+    bindings: [SignupViewBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.otpView,
+    page: () => OtpView(),
+    bindings: [OtpBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.mainHome,
+    page: () => MainHomeView(),
+    binding: LoggedInBindings(),
+  ),
+  GetPage(
+    name: AppRoutes.home,
+    page: () => HomeView(),
+    bindings: [HomeBindings(), FavoriteBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.documentVerification,
+    page: () => DocumentVerification(),
+    bindings: [DocumentVerificationBindings()],
+  ),
+  GetPage(name: AppRoutes.subsPlan, page: () => SubscriptionPlan()),
+  GetPage(
+    name: AppRoutes.profile,
+    page: () => ProfileView(),
+    bindings: [ProfileBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.rent,
+    page: () => RentView(),
+    bindings: [RentBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.dashboard,
+    page: () => DashboardView(),
+    bindings: [DashboardBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.chat,
+    page: () => ChatView(),
+    bindings: [ChatBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.settings,
+    page: () => SettingView(),
+    bindings: [SettingsBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.notification,
+    page: () => NotificationView(),
+    bindings: [NotificationBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.profileEdit,
+    page: () => ProfileEdit(),
+    bindings: [ProfileEditBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.rentDetails,
+    page: () => PropertyView(),
+    bindings: [RentDetailsBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.favorite,
+    page: () => FavoriteView(),
+    bindings: [FavoriteBindings()],
+  ),
+  GetPage(name: AppRoutes.inspectionFrom, page: () => InspectionFrom()),
+  GetPage(name: AppRoutes.contactUs, page: () => ContactUs()),
+  GetPage(name: AppRoutes.blog, page: () => BlogView()),
+  GetPage(name: AppRoutes.blogDetails, page: () => BlogDetails()),
+  GetPage(name: AppRoutes.messageView, page: () => MessageView()),
+  GetPage(
+    name: AppRoutes.activePropertiesView,
+    page: () => ActivePropertiesView(),
+    bindings: [ActivePropertiesBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.inspectionRequestView,
+    page: () => InspectionRequestView(),
+    bindings: [InspectionRequestBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.keyReleaseView,
+    page: () => KeyReleaseView(),
+    bindings: [KeyReleaseBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.paymentManagementView,
+    page: () => PaymentManagementView(),
+    bindings: [PaymentManagementBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.repairMaintenanceView,
+    page: () => RepairMaintenanceView(),
+    bindings: [RepairMaintenanceBindings(), AddRepairRequestBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.servicesView,
+    page: () => ServicesView(),
+    bindings: [ServicesBindings(), ServiceBookedBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.repairRequestView,
+    page: () => RepairRequestView(),
+    bindings: [RepairRequestBindings(), AddRepairRequestBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.serviceBookedDetails,
+    page: () => ServiceBookedDetails(),
+    bindings: [
+      ServiceBookedBindings(),
+      ServiceBookedDetailsBindings(),
+      ServiceSearchBindings(),
+    ],
+  ),
+  GetPage(
+    name: AppRoutes.serviceBookedView,
+    page: () => ServiceBookedView(),
+    bindings: [ServiceBookedBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.serviceSearchDetails,
+    page: () => ServiceSearchDetails(),
+    bindings: [ServiceSearchBindings(), ServicesBindings()],
+  ),
+  GetPage(
+    name: AppRoutes.supportView,
+    page: () => SupportView(),
+    binding: SupportBindings(),
   ),
   GetPage(name: AppRoutes.rent, page: ()=>RentView(),bindings: [RentBindings()]),
   GetPage(name: AppRoutes.dashboard, page: ()=>DashboardView(),bindings: [DashboardBindings()]),
