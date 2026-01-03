@@ -17,7 +17,7 @@ class SignupController extends GetxController {
   RxBool isConfirmPasswordVisible = true.obs;
   RxBool isLoading = false.obs;
 
-  void userSignup({required GlobalKey<FormState> fromKey}) async {
+  Future<void> sendCode({required GlobalKey<FormState> fromKey}) async {
     if (fromKey.currentState?.validate() ?? false) {
       isLoading.value = true;
       final (contact, contactType, message) = verificationIdentifier();
@@ -33,11 +33,14 @@ class SignupController extends GetxController {
         },
         (data) {
           SuccessSnackbar.show(description: message);
-          Get.toNamed(AppRoutes.otpView);
+          Get.toNamed(AppRoutes.otpView, arguments: contactType);
         },
       );
     }
   }
+
+
+  
 
   (String, String, String) verificationIdentifier() {
     if (phoneController.text.isNotEmpty) {
@@ -47,16 +50,6 @@ class SignupController extends GetxController {
     } else {
       return ("", "", "");
     }
-  }
-
-  void login(fromKey) {
-    confirmPassController.clear();
-    emailController.clear();
-    passwordController.clear();
-    nameController.clear();
-    phoneController.clear();
-    fromKey.currentState?.reset();
-    Get.toNamed(AppRoutes.loginView);
   }
 
   @override
