@@ -43,6 +43,7 @@ import 'package:renter_pay/features/dashboard/views/service_booked_details.dart'
 import 'package:renter_pay/features/dashboard/views/service_booked_view.dart';
 import 'package:renter_pay/features/dashboard/views/service_search_details.dart';
 import 'package:renter_pay/features/dashboard/views/services_view.dart';
+import 'package:renter_pay/features/dashboard/views/property_management.dart';
 import 'package:renter_pay/features/favorite/bindings/favorite_bindings.dart';
 import 'package:renter_pay/features/favorite/views/favorite_view.dart';
 import 'package:renter_pay/features/home/bindings/home_bindings.dart';
@@ -54,9 +55,11 @@ import 'package:renter_pay/features/profile/bindings/profile_edit_bindings.dart'
 import 'package:renter_pay/features/profile/bindings/support_bindings.dart';
 import 'package:renter_pay/features/profile/views/blog_view.dart';
 import 'package:renter_pay/features/profile/views/contact_us.dart';
+import 'package:renter_pay/features/profile/views/privacy_policy.dart';
 import 'package:renter_pay/features/profile/views/profile_edit.dart';
-import 'package:renter_pay/features/profile/views/blog_details.dart';
+import 'package:renter_pay/features/profile/widgets/blog_details.dart';
 import 'package:renter_pay/features/profile/views/support_view.dart';
+import 'package:renter_pay/features/profile/views/terms_and_condition.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/subscription_plan.dart';
 import 'package:renter_pay/features/profile/bindings/profile_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/settings_bindings.dart';
@@ -224,4 +227,33 @@ final List<GetPage> appRoutes = [
     page: () => SupportView(),
     binding: SupportBindings(),
   ),
+  GetPage(name: AppRoutes.rent, page: ()=>RentView(),bindings: [RentBindings()]),
+  GetPage(name: AppRoutes.dashboard, page: ()=>DashboardView(),bindings: [DashboardBindings()]),
+  GetPage(name: AppRoutes.chat, page: ()=>ChatView(),bindings: [ChatBindings()]),
+  GetPage(name: AppRoutes.settings, page: ()=>SettingView(),bindings: [
+    SettingsBindings()
+  ]),
+  GetPage(name: AppRoutes.notification, page: ()=>NotificationView(),bindings: [NotificationBindings()]),
+  GetPage(name: AppRoutes.profileEdit, page: ()=>ProfileEdit(),bindings: [ProfileEditBindings()]),
+  GetPage(name: AppRoutes.rentDetails, page: ()=>PropertyView(),bindings: [RentDetailsBindings()]),
+  GetPage(name: AppRoutes.favorite, page: ()=>FavoriteView(),bindings: [FavoriteBindings()]),
+  GetPage(name: AppRoutes.inspectionFrom, page: ()=>InspectionFrom()),
+  GetPage(name: AppRoutes.contactUs, page: ()=>ContactUs()),
+  GetPage(name: AppRoutes.blog, page: ()=>BlogView()),
+  GetPage(name: AppRoutes.blogDetails, page: ()=>BlogDetails()),
+  GetPage(name: AppRoutes.messageView, page: ()=>MessageView()),
+  GetPage(name: AppRoutes.activePropertiesView, page:()=> ActivePropertiesView(),bindings: [ActivePropertiesBindings()]),
+  GetPage(name: AppRoutes.inspectionRequestView, page:()=> InspectionRequestView(),bindings: [InspectionRequestBindings()]),
+  GetPage(name: AppRoutes.keyReleaseView, page:()=> KeyReleaseView(),bindings: [KeyReleaseBindings()]),
+  GetPage(name: AppRoutes.paymentManagementView, page:()=> PaymentManagementView(),bindings: [PaymentManagementBindings()]),
+  GetPage(name: AppRoutes.repairMaintenanceView, page:()=> RepairMaintenanceView(),bindings: [RepairMaintenanceBindings(),AddRepairRequestBindings()]),
+  GetPage(name: AppRoutes.servicesView, page:()=> ServicesView(),bindings: [ServicesBindings(),ServiceBookedBindings()]),
+  GetPage(name: AppRoutes.repairRequestView, page: ()=>RepairRequestView(),bindings: [RepairRequestBindings(),AddRepairRequestBindings()]),
+  GetPage(name: AppRoutes.serviceBookedDetails, page: ()=>ServiceBookedDetails(),bindings: [ServiceBookedBindings(),ServiceBookedDetailsBindings(),ServiceSearchBindings()]),
+  GetPage(name: AppRoutes.serviceBookedView, page: ()=>ServiceBookedView(),bindings: [ServiceBookedBindings()]),
+  GetPage(name: AppRoutes.serviceSearchDetails, page: ()=>ServiceSearchDetails(),bindings: [ServiceSearchBindings(),ServicesBindings()]),
+  GetPage(name: AppRoutes.supportView, page: ()=>SupportView(),binding: SupportBindings()),
+  GetPage(name: AppRoutes.termsAndCondition, page: ()=>TermsAndCondition()),
+  GetPage(name: AppRoutes.privacyPolicy, page: ()=>PrivacyPolicy(),binding: ProfileBindings()),
+  GetPage(name: AppRoutes.propertyManagement, page: ()=>PropertyManagement(),binding: DashboardBindings())
 ];

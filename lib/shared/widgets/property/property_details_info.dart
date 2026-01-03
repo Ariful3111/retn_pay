@@ -20,13 +20,13 @@ class PropertyDetailsInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CustomTextPrimary(text: 'Maple Grove Garden House', fontSize: 24.sp),
+          CustomTextPrimary(text: 'New York, USA', fontSize: 24.sp),
           Row(
             children: [
               Image.asset(IconsPath.bed, height: 16.5.h, width: 16.5.w),
               SizedBox(width: 9.3.w),
               CustomTextSecondary(
-                text: 'Bed',
+                text: 'Bed-04',
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.lightText,
@@ -41,7 +41,7 @@ class PropertyDetailsInfo extends StatelessWidget {
               ),
               SizedBox(width: 2.w),
               CustomTextSecondary(
-                text: 'Bathroom',
+                text: 'Bath-04',
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.lightText,
@@ -75,6 +75,15 @@ class PropertyDetailsInfo extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 color: AppColors.lightText,
               ),
+              SizedBox(width: 4.w),
+              Image.asset(IconsPath.availability, height: 12.h, width: 12.w),
+              SizedBox(width: 2.w),
+              CustomTextSecondary(
+                text: 'Jan-26',
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w400,
+                color: AppColors.lightText,
+              ),
             ],
           ),
           SizedBox(height: 4.h),
@@ -99,13 +108,8 @@ class PropertyDetailsInfo extends StatelessWidget {
                     : AppColors.darkPrimary.withValues(alpha: 0.5),
                 fontSize: 22.sp,
               ),
-              SizedBox(width: 60.w),
-              CustomTextSecondary(
-                text: 'New York, USA',
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w400,
-                color: AppColors.lightText,
-              ),
+              Spacer(),
+              CustomTextSpan(title: 'Available From:', spantext: 'Jan-26',)
             ],
           ),
         ],

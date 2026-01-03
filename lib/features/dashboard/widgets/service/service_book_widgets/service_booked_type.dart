@@ -37,7 +37,9 @@ class ServiceBookedType extends StatelessWidget {
                   onTap: () {
                     serviceBookedController.isBookedType.value = index;
                   },
-                  child: Container(
+                  child: AnimatedContainer(
+                    duration: Duration(milliseconds: 300),
+                    curve: Curves.fastOutSlowIn,
                     padding: EdgeInsets.symmetric(
                       horizontal: 12.w,
                       vertical: 8.w,

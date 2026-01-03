@@ -17,6 +17,8 @@ class ProfileEditController extends GetxController {
   RxBool isPets = false.obs;
   RxBool isParking = false.obs;
   RxString initialPet = 'Pet Type'.obs;
-  RxList petType = ['Dog','Cat'].obs;
+  RxList petType = ['Dog', 'Cat'].obs;
   RxBool isSelectedPet = false.obs;
+  RxBool isEdit = false.obs;
+  List<String> userType = ['Tenant', 'Landlord', 'Agent', 'Service Vendor'];
 }

@@ -13,12 +13,13 @@ class ItemInfo extends StatelessWidget {
   final ValueChanged<double> updateRating;
   final VoidCallback? onTapDetails;
   final double initialRating;
+  final double imageWidth;
   const ItemInfo({
     super.key,
     required this.onVR,
     required this.updateRating,
     this.onTapDetails,
-    required this.initialRating,
+    required this.initialRating, required this.imageWidth,
   });
 
   @override
@@ -28,14 +29,14 @@ class ItemInfo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        GestureDetector(
+        InkWell(
           onTap: onTapDetails,
           child: Row(
             children: [
               Image.asset(IconsPath.bed, height: 12.h, width: 12.w),
               SizedBox(width: 1.56.w),
               CustomTextSecondary(
-                text: 'Bed',
+                text: 'Bed-04',
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.lightText,
@@ -50,7 +51,7 @@ class ItemInfo extends StatelessWidget {
               ),
               SizedBox(width: 2.w),
               CustomTextSecondary(
-                text: 'Bathroom',
+                text: 'Bath-04',
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.lightText,
@@ -84,79 +85,87 @@ class ItemInfo extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 color: AppColors.lightText,
               ),
+              SizedBox(width: 4.w),
+              Image.asset(IconsPath.availability, height: 12.h, width: 12.w),
+              SizedBox(width: 2.w),
+              CustomTextSecondary(
+                text: 'Jan-26',
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w400,
+                color: AppColors.lightText,
+              ),
             ],
           ),
         ),
         SizedBox(height: 4.h),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-              onTap: onTapDetails,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        SizedBox(
+          width: imageWidth,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              InkWell(
+                onTap: onTapDetails,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Image.asset(
+                          IconsPath.location,
+                          height: 14.h,
+                          width: 14.w,
+                          color: isDark ? null : AppColors.darkPrimary,
+                        ),
+                        SizedBox(width: 4.w),
+                        CustomTextPrimary(text: 'New York, USA', fontSize: 16.sp),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        CustomTextSpan(
+                          title: '\$280',
+                          spantext: '/week',
+                          spanColor: Color(0xFF505F79),
+                        ),
+                        Row(
+                          children: [
+                            Image.asset(
+                              IconsPath.appCurrency,
+                              height: 11.h,
+                              width: 11.h,
+                              color: isDark ? null : AppColors.darkPrimary,
+                            ),
+                            SizedBox(width: 3.w),
+                            CustomTextSpan(
+                              title: '280',
+                              spantext: '/week',
+                              spanColor: Color(0xFF505F79),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  CustomTextPrimary(
-                    text: 'Maple Grove Garden House',
-                    fontSize: 16.sp,
+                  InkWell(
+                    onTap: onVR,
+                    child: Image.asset(IconsPath.vR, height: 16.h, width: 16.w),
                   ),
-                  Row(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomTextSpan(
-                            title: '\$280',
-                            spantext: '/week',
-                            spanColor: Color(0xFF505F79),
-                          ),
-                          Row(
-                            children: [
-                              Image.asset(
-                                IconsPath.appCurrency,
-                                height: 11.h,
-                                width: 11.h,
-                                color: isDark?null:AppColors.darkPrimary,
-                              ),
-                              SizedBox(width: 3.w),
-                              CustomTextSpan(
-                                title: '280',
-                                spantext: '/week',
-                                spanColor: Color(0xFF505F79),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      SizedBox(width: 3.12.w),
-                      CustomTextSecondary(text: '.', fontSize: 7.02.sp),
-                      SizedBox(width: 3.12.w),
-                      CustomTextSecondary(
-                        text: 'New York, USA',
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ],
+                  CustomRatingBuilder(
+                    onRating: updateRating,
+                    initialRating: initialRating,
                   ),
                 ],
               ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                GestureDetector(
-                  onTap: onVR,
-                  child: Image.asset(IconsPath.vR, height: 16.h, width: 16.w),
-                ),
-                CustomRatingBuilder(
-                  onRating: updateRating,
-                  initialRating: initialRating,
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );

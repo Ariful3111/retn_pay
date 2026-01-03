@@ -83,7 +83,7 @@ class RepairMaintenanceTable extends StatelessWidget {
                   rowIndex: listIndex[index],
                 ),
               );
-            },
+            }, isNeedLastCol: true,
           );
         }),
       ),

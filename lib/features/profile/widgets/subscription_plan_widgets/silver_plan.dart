@@ -3,11 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/benefits_list.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/subscription_container.dart';
 
 class SilverPlan extends StatelessWidget {
-  const SilverPlan({super.key});
+  final Widget? purchaseButton;
+  const SilverPlan({super.key, this.purchaseButton});
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +87,14 @@ class SilverPlan extends StatelessWidget {
         BenefitsList(listText: '12 hours free legal advice (tenancies\nor sale))', fontSize: 14.sp),
         SizedBox(height: 12),
       ],
-      onTap: () {},
+      purchaseButton:purchaseButton?? CustomSecondaryButton(
+                onPressed: () {
+                  
+                },
+                text: "Buy",
+                height: 52.h,
+                width: 286.w,
+              ),
     );
   }
 }
