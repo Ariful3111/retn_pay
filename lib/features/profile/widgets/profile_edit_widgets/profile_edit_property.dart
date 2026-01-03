@@ -6,7 +6,7 @@ import 'package:renter_pay/features/profile/controllers/profile_edit_controller.
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_checkbox.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_field.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_save_button.dart';
-import 'package:renter_pay/shared/widgets/custom_dropdown_menu.dart';
+import 'package:renter_pay/shared/widgets/custom_dropdown/custom_dropdown_menu.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class ProfileEditProperty extends StatelessWidget {

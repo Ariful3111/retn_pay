@@ -14,7 +14,7 @@ class PropertyInsurance extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return AlertDialog(
-      backgroundColor: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+      backgroundColor: isDark ? AppColors.darkSecondary : null,
       constraints: BoxConstraints.tight(
         Size(MediaQuery.widthOf(context), 370.h),
       ),

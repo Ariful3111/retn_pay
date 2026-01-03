@@ -24,7 +24,7 @@ class PropertyShare extends StatelessWidget {
         children: [
           CustomTextPrimary(text: 'Maple Grove Garden House', fontSize: 19.sp),
           CustomCloseButton(
-            color: isDark?AppColors.darkPrimary:AppColors.whiteColor,
+            color: isDark?AppColors.darkPrimary:null,
             onTap: () {
               Navigator.pop(context);
             },
