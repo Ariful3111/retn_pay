@@ -1,14 +1,14 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/features/auth/controllers/signup_controller.dart';
-import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/auth/repositories/check_validity_repo.dart';
 import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
-import 'package:renter_pay/shared/widgets/snackbars/success_snackbar.dart';
 
 class OtpController extends GetxController {
   final CheckValidityRepository checkValidityRepository;
   OtpController({required this.checkValidityRepository});
+
+  final signupController = Get.find<SignupController>();
 
   TextEditingController emailOTPController = TextEditingController();
   TextEditingController numberOTPController = TextEditingController();
@@ -16,18 +16,8 @@ class OtpController extends GetxController {
   RxBool isLoading = false.obs;
 
   Future<void> verifyOTP(GlobalKey<FormState> fromKey) async {
-    int index = Get.find<UserRoleController>().selectedIndex.value;
     if (fromKey.currentState?.validate() ?? false) {
       await checkCodeValidity();
-      // if (index == 0) {
-      //   Get.toNamed(AppRoutes.mainHome);
-      // } else if (index == 1) {
-      //   Get.toNamed(AppRoutes.documentVerification);
-      // } else if (index == 3) {
-      //   Get.toNamed(AppRoutes.documentVerification);
-      // } else if (index == 2) {
-      //   Get.toNamed(AppRoutes.mainHome);
-      // }
     }
   }
 
@@ -39,15 +29,19 @@ class OtpController extends GetxController {
       contact: contact,
       code: codeIdentifier(),
     );
-    isLoading.value = false;
     response.fold(
       (error) {
+        isLoading.value = false;
         ErrorSnackbar.show(description: error.message);
       },
-      (data) {
+      (data) async {
         if (data.error == false) {
-          SuccessSnackbar.show(description: "OTP verified successfully");
+          await signupController.register(
+            phoneCode: numberOTPController.text,
+            emailCode: emailOTPController.text,
+          );
         }
+        isLoading.value = false;
       },
     );
   }

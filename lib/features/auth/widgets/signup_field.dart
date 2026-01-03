@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/auth/controllers/signup_controller.dart';
-import 'package:renter_pay/shared/mixins/Validators/confirm_password_validator.dart';
-import 'package:renter_pay/shared/mixins/Validators/email_validator.dart';
-import 'package:renter_pay/shared/mixins/Validators/name_validator.dart';
-import 'package:renter_pay/shared/mixins/Validators/password_validator.dart';
-import 'package:renter_pay/shared/mixins/Validators/phone_validator.dart';
+import 'package:renter_pay/shared/extensions/Validators/confirm_password_validator.dart';
+import 'package:renter_pay/shared/extensions/Validators/email_validator.dart';
+import 'package:renter_pay/shared/extensions/Validators/name_validator.dart';
+import 'package:renter_pay/shared/extensions/Validators/password_validator.dart';
+import 'package:renter_pay/shared/extensions/Validators/phone_validator.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
 class SignupField extends StatelessWidget {

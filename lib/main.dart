@@ -12,6 +12,7 @@ import 'package:renter_pay/features/auth/bindings/onboarding_bindings.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   String token = await DependencyInjection.init();
+  debugPrint("Token: $token");
   runApp(MyApp(token: token));
 }
 

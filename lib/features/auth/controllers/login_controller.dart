@@ -37,7 +37,7 @@ class LoginController extends GetxController {
             key: storageService.tokenKey,
             value: data.data!.token.toString(),
           );
-          Get.toNamed(AppRoutes.mainHome);
+          Get.offAllNamed(AppRoutes.mainHome);
         },
       );
     }
