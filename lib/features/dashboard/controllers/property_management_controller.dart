@@ -9,12 +9,15 @@ class PropertyModel {
   final String rent;
   final String agent;
   final String enlistStatus;
+  final String date;
+  final String email;
+  final String phoneNo;
   PropertyModel({
     required this.address,
     required this.verifyStatus,
     required this.rent,
     required this.agent,
-    required this.enlistStatus,
+    required this.enlistStatus, required this.date, required this.email, required this.phoneNo,
   });
 }
 
@@ -29,6 +32,11 @@ class PropertyManagementController extends GetxController {
     'Property Address',
     'Enlisting Status',
     'Action',
+  ];
+  final List<String> conditionReportTableColumn = [
+    'Property Address',
+    'Date',
+    'Condition Report',
   ];
   final RxMap<int, MyMenu?> selectedMenu = <int, MyMenu?>{}.obs;
   void setMenu(int index, MyMenu menu) {
@@ -67,48 +75,48 @@ class PropertyManagementController extends GetxController {
         verifyStatus: 'Pending',
         rent: '\$650',
         agent:
-            'Mehbubur Rahman \nEmail: suriya123@gmail.comPhone No: +1234567890',
-        enlistStatus: '-',
+            'Mehbubur Rahman ',
+        enlistStatus: '-', date: '8 Aug, 2025', email: 'Email: suriya123@gmail.com', phoneNo: 'Phone No: +1234567890',
       ),
       PropertyModel(
         address: '789 Pine Road',
         verifyStatus: 'Pending',
         rent: '\$650',
         agent:
-            'Mehbubur Rahman \nEmail: suriya123@gmail.comPhone No: +1234567890',
-        enlistStatus: '-',
+            'Mehbubur Rahman',
+        enlistStatus: '-', date: '8 Aug, 2025', email: 'Email: suriya123@gmail.com', phoneNo: 'Phone No: +1234567890',
       ),
       PropertyModel(
         address: '789 Pine Road',
         verifyStatus: 'Approved',
         rent: '\$650',
         agent:
-            'Mehbubur Rahman \nEmail: suriya123@gmail.comPhone No: +1234567890',
-        enlistStatus: 'Publish',
+            'Mehbubur Rahman',
+        enlistStatus: 'Publish', date: '8 Aug, 2025', email: 'Email: suriya123@gmail.com', phoneNo: 'Phone No: +1234567890',
       ),
       PropertyModel(
         address: '789 Pine Road',
         verifyStatus: 'Approved',
         rent: '\$650',
         agent:
-            'Mehbubur Rahman \nEmail: suriya123@gmail.comPhone No: +1234567890',
-        enlistStatus: 'Publish',
+            'Mehbubur Rahman',
+        enlistStatus: 'Publish', date: '8 Aug, 2025', email: 'Email: suriya123@gmail.com', phoneNo: 'Phone No: +1234567890',
       ),
       PropertyModel(
         address: '789 Pine Road',
         verifyStatus: 'Rejected',
         rent: '\$650',
         agent:
-            'Mehbubur Rahman \nEmail: suriya123@gmail.comPhone No: +1234567890',
-        enlistStatus: 'Publish',
+            'Mehbubur Rahman',
+        enlistStatus: 'Publish', date: '8 Aug, 2025', email: 'Email: suriya123@gmail.com', phoneNo: 'Phone No: +1234567890',
       ),
       PropertyModel(
         address: '789 Pine Road',
         verifyStatus: 'Rejected',
         rent: '\$650',
         agent:
-            'Mehbubur Rahman \nEmail: suriya123@gmail.comPhone No: +1234567890',
-        enlistStatus: '-',
+            'Mehbubur Rahman',
+        enlistStatus: '-', date: '8 Aug, 2025', email: 'Email: suriya123@gmail.com', phoneNo: 'Phone No: +1234567890',
       ),
     ];
     expanded.value = List.generate(allRows.length, (_) => false);

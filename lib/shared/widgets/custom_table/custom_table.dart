@@ -46,7 +46,7 @@ class CustomTable extends StatelessWidget {
             child: Center(
               child: CustomTextSecondary(
                 text: column[index],
-                fontSize: 12,
+                fontSize: 14.sp,
                 color: isDark
                     ? AppColors.whiteColor
                     : AppColors.darkBorderPrimary,
