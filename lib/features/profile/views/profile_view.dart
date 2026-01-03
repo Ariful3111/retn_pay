@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_info.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_items_list.dart';
@@ -16,10 +15,7 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ProfileController profileController = Get.find();
-    UserRoleController userRoleController = Get.find();
-
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-
     return CustomContainer(
       drawer: Drawer(),
       gradient: isDark
@@ -33,20 +29,16 @@ class ProfileView extends StatelessWidget {
           SliverAppBar(
             backgroundColor: Colors.transparent,
             titleSpacing: 0.w,
-            title: CustomAppbar(
-              title:
-                  profileController
-                      .profileList[userRoleController.selectedIndex.value == -1
-                      ? 0
-                      : userRoleController.selectedIndex.value],
-            ),
+            title: Obx(() {
+              return CustomAppbar(title: roleDetector());
+            }),
           ),
 
           SliverPadding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             sliver: SliverList(
               delegate: SliverChildListDelegate([
-                ProfileInfo(),
+                ProfileInfo(controller: profileController),
                 SizedBox(height: 12.h),
                 ProfileItemsList(),
                 CustomPrimaryButton(
@@ -63,5 +55,21 @@ class ProfileView extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String roleDetector() {
+    ProfileController profileController = Get.find();
+    if (profileController.profileData.value == null) {
+      return 'User';
+    } else {
+      return profileController
+          .profileData
+          .value!
+          .data!
+          .roles!
+          .first
+          .capitalizeFirst
+          .toString();
+    }
   }
 }
