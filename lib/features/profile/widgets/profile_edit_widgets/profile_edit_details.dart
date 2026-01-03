@@ -78,19 +78,19 @@ class ProfileEditDetails extends StatelessWidget {
             ),
             SizedBox(height: 16.h),
             ProfileEditField(
-              controller: profileEditController.nameController,
+              controller: profileEditController.emailController,
               labelText: 'Email',
               hintText: 'example@gmail.com',
             ),
             SizedBox(height: 16.h),
             ProfileEditField(
-              controller: profileEditController.nameController,
+              controller: profileEditController.phoneController,
               labelText: 'Phone',
               hintText: '+08801524545',
             ),
             SizedBox(height: 16.h),
             ProfileEditField(
-              controller: profileEditController.nameController,
+              controller: profileEditController.passwordController,
               labelText: 'Password',
               hintText: '**********',
             ),

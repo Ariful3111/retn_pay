@@ -37,8 +37,12 @@ class ProfileEdit extends StatelessWidget {
               ),
               SizedBox(width: 8.w,),
               CustomAppbar(
-                title: profileController
-                    .profileList[userRoleController.selectedIndex.value],
+                title: (userRoleController.selectedIndex.value >= 0 &&
+                        userRoleController.selectedIndex.value <
+                            profileController.profileList.length)
+                    ? profileController
+                        .profileList[userRoleController.selectedIndex.value]
+                    : "Edit Profile",
               ),
             ],
           ),
