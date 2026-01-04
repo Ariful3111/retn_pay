@@ -9,20 +9,27 @@ class CustomDateField extends StatelessWidget {
   final VoidCallback onTap;
   final Color? textColor;
   final Color? fillColor;
-  const CustomDateField({super.key, required this.controller, required this.onTap, this.textColor, this.fillColor});
+  final String? label;
+  const CustomDateField({
+    super.key,
+    required this.controller,
+    required this.onTap,
+    this.textColor,
+    this.fillColor, this.label,
+  });
 
   @override
   Widget build(BuildContext context) {
     return CustomTextField(
       controller: controller,
       labelTextWidget: CustomTextSecondary(
-        text: 'Date*',
+        text:label?? 'Date*',
         fontSize: 12.sp,
         fontWeight: FontWeight.w400,
       ),
       hintText: 'Select Date',
       readOnly: true,
-      suffixIcon: Padding( 
+      suffixIcon: Padding(
         padding: EdgeInsets.only(right: 12.w),
         child: GestureDetector(
           onTap: onTap,

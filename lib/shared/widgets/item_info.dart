@@ -129,6 +129,7 @@ class ItemInfo extends StatelessWidget {
                           spantext: '/week',
                           spanColor: Color(0xFF505F79),
                         ),
+                        SizedBox(width: 5.w,),
                         Row(
                           children: [
                             Image.asset(

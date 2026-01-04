@@ -255,5 +255,5 @@ final List<GetPage> appRoutes = [
   GetPage(name: AppRoutes.supportView, page: ()=>SupportView(),binding: SupportBindings()),
   GetPage(name: AppRoutes.termsAndCondition, page: ()=>TermsAndCondition()),
   GetPage(name: AppRoutes.privacyPolicy, page: ()=>PrivacyPolicy(),binding: ProfileBindings()),
-  GetPage(name: AppRoutes.propertyManagement, page: ()=>PropertyManagement(),binding: DashboardBindings())
+  GetPage(name: AppRoutes.propertyManagement, page: ()=>PropertyManagement(),binding: DashboardBindings()),
 ];

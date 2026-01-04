@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/features/dashboard/controllers/add_new_property_controller.dart';
+import 'package:renter_pay/features/dashboard/views/add_new_property.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_management_row.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_management_table.dart';
@@ -13,6 +16,7 @@ class PropertyManagement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
+    AddNewPropertyController addNewPropertyController = Get.find();
     return CustomContainer(
       padding: EdgeInsets.all(20.h),
       gradient: isDark
@@ -32,7 +36,7 @@ class PropertyManagement extends StatelessWidget {
           SizedBox(height: 16.h,),
           PropertyManagementRow(),
           SizedBox(height: 20.h,),
-          PropertyManagementTable()
+         Obx(()=>addNewPropertyController.isNewProperty.value?AddNewProperty() :PropertyManagementTable(),),
         ],
       ),
     );

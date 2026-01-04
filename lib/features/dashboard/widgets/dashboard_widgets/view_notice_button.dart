@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/notice_button_model.dart';
 
 class ViewNoticeButton extends StatelessWidget {
@@ -10,7 +8,7 @@ class ViewNoticeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int userIndex = Get.find<UserRoleController>().selectedIndex.value;
+    int userIndex = 1;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

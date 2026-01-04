@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -97,7 +96,7 @@ class DashboardController extends GetxController {
     },
   ];
   List<Map<String, dynamic>> get userDrawerItems {
-    int userIndex = Get.find<UserRoleController>().selectedIndex.value;
+    int userIndex = 1;
     return drawerItems
         .where((user) => user['allowedUser'].contains(userIndex))
         .toList();

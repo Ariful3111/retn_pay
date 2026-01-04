@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/landlord_profile_plan.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_details.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_info.dart';
@@ -18,7 +17,7 @@ class ProfileEdit extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    int userIndex = Get.find<UserRoleController>().selectedIndex.value;
+    int userIndex = 1;
     return CustomContainer(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       gradient: isDark

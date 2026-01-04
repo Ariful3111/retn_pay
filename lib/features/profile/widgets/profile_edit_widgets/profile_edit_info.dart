@@ -7,7 +7,6 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/utils/image_picker.dart';
-import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_edit_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
@@ -17,7 +16,7 @@ class ProfileEditInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     int userIndex = Get.find<UserRoleController>().selectedIndex.value;
+     int userIndex = 1;
     ProfileEditController profileEditController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
