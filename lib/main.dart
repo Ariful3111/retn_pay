@@ -6,7 +6,8 @@ import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/core/routes/routes.dart';
 import 'package:renter_pay/core/themes/app_theme.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
-import 'package:renter_pay/features/home/bindings/main_home_bindings.dart';
+import 'package:renter_pay/features/auth/bindings/onboarding_bindings.dart';
+import 'package:renter_pay/features/home/bindings/logged_in_bindings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,9 +30,13 @@ class MyApp extends StatelessWidget {
             return GetMaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Renter Pay',
-              initialBinding: MainHomeBindings(),
+              initialBinding: token.isNotEmpty
+                  ? LoggedInBindings()
+                  : OnboardingBindings(),
               getPages: appRoutes,
-              initialRoute: AppRoutes.dashboard,
+              initialRoute: token.isNotEmpty
+                  ? AppRoutes.mainHome
+                  : AppRoutes.onboarding,
               theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme,
               themeMode: controller.currentTheme,
