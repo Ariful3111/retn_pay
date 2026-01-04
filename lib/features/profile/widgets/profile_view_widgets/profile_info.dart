@@ -64,11 +64,15 @@ class ProfileInfo extends StatelessWidget {
                   fontSize: 20.sp,
                 ),
                 SizedBox(height: 8.h),
-                CustomTextPrimary(
-                  text: contact,
-                  color: AppColors.whiteColor,
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w400,
+                SizedBox(
+                  width: 240.w,
+                  child: CustomTextPrimary(
+                    text: contact,
+                    color: AppColors.whiteColor,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                    textOverflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ],
             ),
