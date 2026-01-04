@@ -6,40 +6,43 @@ import 'package:renter_pay/features/dashboard/controllers/add_new_property_contr
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_container.dart';
 import 'package:renter_pay/shared/widgets/custom_check_box.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
-class AddNewPropertyInspection extends StatelessWidget {
-  const AddNewPropertyInspection({super.key});
+class AddNewPropertyFeatures extends StatelessWidget {
+  const AddNewPropertyFeatures({super.key});
 
   @override
   Widget build(BuildContext context) {
-    AddNewPropertyController addNewPropertyController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
+    AddNewPropertyController addNewPropertyController = Get.find();
     return AddNewPropertyContainer(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomTextPrimary(
-            text: 'Inspection:',
+            text: 'Key Features & Amenities:',
             fontSize: 20.sp,
             color: isDark ? null : AppColors.darkContainer,
           ),
           SizedBox(height: 12.h),
-          ...List.generate(addNewPropertyController.inspectionType.length, (
+          ...List.generate(addNewPropertyController.featureList.length, (
             index,
           ) {
-           return Obx(() {
-              bool isChecked =
-                  addNewPropertyController.inspectionNo.value == index;
+            return Obx(() {
+              bool isChecked = addNewPropertyController.selectedFeature
+                  .contains(index);
               return Row(
                 children: [
                   CustomCheckBox(
                     isChecked: isChecked,
                     onChange: (value) {
-                      addNewPropertyController.inspectionNo.value = index;
+                      if (value) {
+                        addNewPropertyController.selectedFeature.add(index);
+                      } else {
+                        addNewPropertyController.selectedFeature.remove(index);
+                      }
                     },
                   ),
-                  CustomTextSecondary(text: addNewPropertyController.inspectionType[index],fontSize: 14.sp,fontWeight: FontWeight.w400,)
+                  CustomTextPrimary(text: addNewPropertyController.featureList[index],fontSize: 14.sp,fontWeight: FontWeight.w400,)
                 ],
               );
             });
