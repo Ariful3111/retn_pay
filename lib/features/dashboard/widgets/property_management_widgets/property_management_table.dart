@@ -1,0 +1,85 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/features/dashboard/controllers/property_management_controller.dart';
+import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_management_table_action.dart';
+import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_management_table_content.dart';
+import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_management_table_data.dart';
+import 'package:renter_pay/shared/widgets/custom_appbar/custom_filter_appbar.dart';
+import 'package:renter_pay/shared/widgets/custom_table/custom_table.dart';
+import 'package:renter_pay/shared/widgets/custom_table/custom_table_expanded.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
+
+class PropertyManagementTable extends StatelessWidget {
+  const PropertyManagementTable({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
+    PropertyManagementController propertyManagementController = Get.find();
+    
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.r),
+        color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+      ),
+      child: Obx(() {
+        bool isProperty =
+        propertyManagementController.selected.value == 'Property';
+        final list = propertyManagementController.listData;
+        final rowWidgets = List<List<Widget>>.generate(list.length, (index) {
+          final item = list[index].value;
+          return [
+            CustomTextPrimary(
+              text: item.address,
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w400,
+              textOverflow: TextOverflow.ellipsis,
+            ),
+           isProperty? PropertyManagementTableData(index: index):CustomTextSecondary(text: '8 Aug, 2025',fontSize: 12.sp,fontWeight: FontWeight.w400,),
+           isProperty? item.verifyStatus == 'Approved'
+                ? PropertyManagementTableAction(index: index)
+                : SizedBox.shrink():CustomFilterAppbar(
+                  width: 100.w,
+                  height: 34.h,
+                  title: 'Download',
+                  icon: IconsPath.export,
+                  onTap: () {
+                  
+                },),
+          ];
+        });
+        final listIndex = list.map((e) => e.key).toList();
+        return CustomTable(
+          column:isProperty? propertyManagementController.tableColumn:propertyManagementController.conditionReportTableColumn, 
+          row: rowWidgets,
+          listIndex: listIndex,
+          expandedTableBuilder: (index) {
+            final item = list[index].value;
+            final rowIndex = listIndex[index];
+            return CustomTableExpanded(
+              title: 'Property Address: ${item.address}',
+              isOpen: propertyManagementController.expanded[rowIndex],
+              onExpandedClose: () {
+                propertyManagementController.toggleExpanded(rowIndex);
+              },
+              expandedContent: PropertyManagementTableContent(
+                rowIndex: rowIndex,
+              ),
+            );
+          },
+          onRowTap: (index) {
+            propertyManagementController.toggleExpanded(listIndex[index]);
+          },
+          isExpandedTableBuilder: (index) {
+            return propertyManagementController.expanded[listIndex[index]];
+          },
+          isNeedLastCol:isProperty? true:false,
+        );
+      }),
+    );
+  }
+}

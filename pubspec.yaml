@@ -54,6 +54,7 @@ dependencies:
   intl: ^0.20.2
   flutter_typeahead: ^5.2.0
   flutter_spinkit: ^5.2.2
+  syncfusion_flutter_charts: ^31.2.18
 
 dev_dependencies:
   flutter_test:

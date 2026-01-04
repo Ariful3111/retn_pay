@@ -6,7 +6,7 @@ import 'package:renter_pay/features/profile/controllers/profile_edit_controller.
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_checkbox.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_field.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_save_button.dart';
-import 'package:renter_pay/shared/widgets/custom_dropdown_menu.dart';
+import 'package:renter_pay/shared/widgets/custom_dropdown/custom_dropdown_menu.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class ProfileEditProperty extends StatelessWidget {
@@ -30,44 +30,51 @@ class ProfileEditProperty extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomTextSecondary(
-            text: 'Property Preferences',
-            fontSize: 20.sp,
-            fontWeight: FontWeight.w600,
-          ),
-          SizedBox(height: 20.h),
-          ProfileEditField(
-            controller: profileEditController.rentController,
-            labelText: 'Weekly Rent',
-            hintText: '\$344',
-          ),
-          SizedBox(height: 16.h),
-          ProfileEditField(
-            controller: profileEditController.subsController,
-            labelText: 'Preferred Suburbs',
-            hintText: 'Dhaka',
-          ),
-          SizedBox(height: 16.h),
-          ProfileEditField(
-            controller: profileEditController.amountController,
-            labelText: 'Amount',
-            hintText: '\$300',
-          ),
-          SizedBox(height: 16.h),
-          ProfileEditField(
-            controller: profileEditController.bedroomController,
-            labelText: 'Bedroom',
-            hintText: '3',
-          ),
-          SizedBox(height: 16.h),
-          ProfileEditField(
-            controller: profileEditController.bathroomController,
-            labelText: 'Bathroom',
-            hintText: '2',
+          Obx(
+            () => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomTextSecondary(
+                  text: 'Property Preferences',
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.w600,
+                ),
+                SizedBox(height: 20.h),
+                ProfileEditField(
+                  controller: profileEditController.rentController,
+                  labelText: 'Weekly Rent',
+                  readOnly: profileEditController.isEdit.value ? false : true,
+                ),
+                SizedBox(height: 16.h),
+                ProfileEditField(
+                  controller: profileEditController.subsController,
+                  labelText: 'Preferred Suburbs',
+                  readOnly: profileEditController.isEdit.value ? false : true,
+                ),
+                SizedBox(height: 16.h),
+                ProfileEditField(
+                  controller: profileEditController.amountController,
+                  labelText: 'Amount',
+                  readOnly: profileEditController.isEdit.value ? false : true,
+                ),
+                SizedBox(height: 16.h),
+                ProfileEditField(
+                  controller: profileEditController.bedroomController,
+                  labelText: 'Bedroom',
+                  readOnly: profileEditController.isEdit.value ? false : true,
+                ),
+                SizedBox(height: 16.h),
+                ProfileEditField(
+                  controller: profileEditController.bathroomController,
+                  labelText: 'Bathroom',
+                  readOnly: profileEditController.isEdit.value ? false : true,
+                ),
+              ],
+            ),
           ),
           SizedBox(height: 20.h),
           ProfileEditCheckbox(),
-          SizedBox(height: 20.h,),
+          SizedBox(height: 20.h),
           CustomDropdownMenu(
             selectedTrailingIconColor: AppColors.secondaryTextColor,
             trailingIconColor: AppColors.secondaryTextColor,
@@ -76,15 +83,17 @@ class ProfileEditProperty extends StatelessWidget {
               profileEditController.isSelectedPet.value = true;
             },
             option: profileEditController.petType,
-            isSelect: profileEditController.initialPet, label:CustomTextSecondary(
-          text:'Pet Type',
-          fontSize: 12.sp,
-          fontWeight: FontWeight.w400,
-        ), textAlign: TextAlign.start ,
+            isSelect: profileEditController.initialPet,
+            label: CustomTextSecondary(
+              text: 'Pet Type',
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w400,
+            ),
+            textAlign: TextAlign.start,
           ),
-          SizedBox(height: 20,),
+          SizedBox(height: 20),
           ProfileSaveButton(),
-          SizedBox(height: 20,),
+          SizedBox(height: 20),
         ],
       ),
     );

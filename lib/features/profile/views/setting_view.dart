@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/profile/widgets/auto_pay_setting.dart';
-import 'package:renter_pay/features/profile/widgets/dark_mode_setting.dart';
-import 'package:renter_pay/features/profile/widgets/notification_setting.dart';
+import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
+import 'package:renter_pay/features/profile/widgets/settings_widgets/auto_pay_setting.dart';
+import 'package:renter_pay/features/profile/widgets/settings_widgets/dark_mode_setting.dart';
+import 'package:renter_pay/features/profile/widgets/settings_widgets/landlord_settings.dart';
+import 'package:renter_pay/features/profile/widgets/settings_widgets/notification_setting.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 
@@ -12,6 +15,7 @@ class SettingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
+    int userIndex = Get.find<UserRoleController>().selectedIndex.value;
     return CustomContainer(
       drawer: Drawer(),
       gradient: isDark
@@ -26,29 +30,37 @@ class SettingView extends StatelessWidget {
             titleSpacing: 0.w,
             title: CustomAppbar(title: 'Setting'),
           ),
-          SliverPadding(padding: EdgeInsetsGeometry.symmetric(horizontal: 20.w),
-          sliver: SliverList(delegate: SliverChildListDelegate([
-            Container(
-            padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 15.w),
-            width: MediaQuery.widthOf(context),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16.sp),
-              color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
-            ),
-            child: Column(
-              children: [
-                NotificationSetting(),
-                SizedBox(height: 32.h),
-                DarkModeSetting(),
-                SizedBox(height: 32.h),
-                AutoPaySetting(),
-                SizedBox(height: 32.h),
-              ],
+          SliverPadding(
+            padding: EdgeInsetsGeometry.symmetric(horizontal: 20.w),
+            sliver: SliverList(
+              delegate: SliverChildListDelegate([
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 24.h,
+                    horizontal: 15.w,
+                  ),
+                  width: MediaQuery.widthOf(context),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16.sp),
+                    color: isDark
+                        ? AppColors.darkSecondary
+                        : AppColors.whiteColor,
+                  ),
+                  child: Column(
+                    children: [
+                      NotificationSetting(),
+                      SizedBox(height: 32.h),
+                      DarkModeSetting(),
+                      SizedBox(height: 32.h),
+                      AutoPaySetting(),
+                      SizedBox(height: 32.h),
+                    ],
+                  ),
+                ),
+                if (userIndex == 1) LandlordSettings(),
+              ]),
             ),
           ),
-          ])),
-          ),
-          
         ],
       ),
     );

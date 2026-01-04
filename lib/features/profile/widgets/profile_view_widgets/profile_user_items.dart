@@ -66,7 +66,7 @@ class ProfileUserItems extends StatelessWidget {
           imageHeight: 23.h,
           imageWidth: 21.w,
           title: 'Privacy Policy',
-          onTap: () {},
+          onTap: () {Get.toNamed(AppRoutes.privacyPolicy);},
         ),
         SizedBox(height: 8.h),
         ProfileItems(
@@ -74,7 +74,7 @@ class ProfileUserItems extends StatelessWidget {
           imageHeight: 23.h,
           imageWidth: 21.w,
           title: 'Terms and Condition',
-          onTap: () {},
+          onTap: () {Get.toNamed( AppRoutes.termsAndCondition);},
         ),
         SizedBox(height: 8.h),
       ],

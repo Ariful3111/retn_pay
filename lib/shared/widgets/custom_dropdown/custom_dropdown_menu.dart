@@ -4,11 +4,12 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/custom_dropdown/dropdown_input_decoration.dart';
+import 'package:renter_pay/shared/widgets/custom_dropdown/dropdown_menu_items.dart';
 
 class CustomDropdownMenu extends StatelessWidget {
   final List option;
-  final void Function(String?) onSelect;
+  final void Function(String? value) onSelect;
   final RxString isSelect;
   final Widget? label;
   final Color? selectedTrailingIconColor;
@@ -30,6 +31,7 @@ class CustomDropdownMenu extends StatelessWidget {
   final double? selectedTrailingIconWidth;
   final double? trailingIconHeight;
   final double? trailingIconWidth;
+  final double? menuFontSize;
   const CustomDropdownMenu({
     super.key,
     required this.onSelect,
@@ -55,6 +57,7 @@ class CustomDropdownMenu extends StatelessWidget {
     this.selectedTrailingIconWidth,
     this.trailingIconHeight,
     this.trailingIconWidth,
+    this.menuFontSize,
   });
 
   @override
@@ -74,35 +77,16 @@ class CustomDropdownMenu extends StatelessWidget {
                   : AppColors.secondaryTextColor,
             ),
         label: label,
-        inputDecorationTheme: InputDecorationTheme(
-          filled: true,
-          fillColor: isDark
-              ? fillColor ?? AppColors.darkPrimary
-              : fillColor ?? AppColors.whiteColor,
+        inputDecorationTheme: DropdownInputDecoration().inputDecoration(
+          context: context,
+          fillColor: fillColor,
+          enableBorder: enableBorder,
+          focusBorder: focusBorder,
+          focusBorderWidth: focusBorderWidth,
+          borderWidth: borderWidth,
+          borderRadius: borderRadius,
+          focusBorderRadius: focusBorderRadius,
           contentPadding: contentPadding,
-          focusColor: Colors.transparent,
-          enabledBorder:
-              enableBorder ??
-              OutlineInputBorder(
-                borderRadius: BorderRadius.circular(borderRadius ?? 9.4.r),
-                borderSide: BorderSide(
-                  width: borderWidth ?? 0.78.r,
-                  color: isDark
-                      ? AppColors.darkBorderPrimary
-                      : AppColors.primaryBorder,
-                ),
-              ),
-          focusedBorder:
-              focusBorder ??
-              OutlineInputBorder(
-                borderRadius: BorderRadius.circular(focusBorderRadius ?? 9.4.r),
-                borderSide: BorderSide(
-                  width: focusBorderWidth ?? 0.78.r,
-                  color: isDark
-                      ? AppColors.darkBorderPrimary
-                      : AppColors.primaryBorder,
-                ),
-              ),
         ),
         expandedInsets: expandedInsets,
         trailingIcon: Image.asset(
@@ -138,50 +122,13 @@ class CustomDropdownMenu extends StatelessWidget {
         ),
         alignmentOffset: offset,
         onSelected: onSelect,
-        dropdownMenuEntries: option.map((option) {
-          bool selected = option == isSelect.value;
-          return DropdownMenuEntry<String>(
-            value: option,
-            label: option,
-            style: ButtonStyle(
-              padding: WidgetStatePropertyAll(EdgeInsets.zero),
-              backgroundColor: isDark
-                  ? WidgetStatePropertyAll(AppColors.darkPrimary)
-                  : null,
-            ),
-            labelWidget: dropdownItem(
-              gradient: selected ? AppColors.primaryColor : null,
-              option: option,
-              color: selected
-                  ? isDark
-                        ? AppColors.darkSecondaryText
-                        : AppColors.whiteColor
-                  : isDark
-                  ? AppColors.whiteColor
-                  : Color(0xFF091E42),
-            ),
-          );
-        }).toList(),
+        dropdownMenuEntries: DropdownMenuItems().dropdownMenuItem(
+          option: option,
+          isSelect: isSelect,
+          context: context,
+          menuFontSize: menuFontSize,
+        ),
       );
     });
-  }
-
-  Widget dropdownItem({
-    LinearGradient? gradient,
-    required String option,
-    required Color color,
-  }) {
-    return Container(
-      height: 33.h,
-      width: 119.w,
-      padding: EdgeInsets.only(left: 6.27.w),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6.27.r),
-        gradient: gradient,
-      ),
-      child: Center(
-        child: CustomTextSecondary(text: option, fontSize: 14.sp, color: color),
-      ),
-    );
   }
 }

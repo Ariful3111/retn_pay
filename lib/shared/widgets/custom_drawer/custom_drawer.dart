@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_drawer/custom_drawer_item.dart';
 
@@ -13,6 +14,7 @@ class CustomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     DashboardController dashboardController = Get.find();
+    int userIndex = Get.find<UserRoleController>().selectedIndex.value;
     return Align(
       alignment:alignment?? Alignment(-0.8, -0.7),
       child: Container(
@@ -22,8 +24,8 @@ class CustomDrawer extends StatelessWidget {
           left: 16.w,
           right: 16.w,
         ),
-        height: 460.h,
-        width: 260.w,
+        height:userIndex==1? 560:460.h,
+        width:userIndex==1? 270.w:260.w,
         decoration: BoxDecoration(
           color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
           boxShadow: [
@@ -60,8 +62,8 @@ class CustomDrawer extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 32.w),
-              ...List.generate(dashboardController.drawerItems.length, (index) {
+              SizedBox(height: 32.h),
+              ...List.generate(dashboardController.userDrawerItems.length, (index) {
                 return CustomDrawerItem(index: index);
               }),
             ],

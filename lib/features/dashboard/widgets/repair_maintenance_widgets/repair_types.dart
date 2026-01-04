@@ -37,7 +37,9 @@ class RepairTypes extends StatelessWidget {
                     onTap: () {
                       repairMaintenanceController.repairTypeIndex.value = index;
                     },
-                    child: Container(
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 300),
+                    curve: Curves.fastOutSlowIn,
                       padding: EdgeInsets.symmetric(
                         vertical: 8.05.h,
                         horizontal: 12.07.w,
