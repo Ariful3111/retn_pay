@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
 import 'package:renter_pay/shared/widgets/document_verification/document_upload_button.dart';
 
@@ -47,32 +46,28 @@ class DocumentUpload extends StatelessWidget {
                 SizedBox(height: 28.5.h),
                 DocumentUploadButton(onTap: onTap),
                 SizedBox(height: 16.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CustomTextSpan(
-                      title: "Drag & Drop",
-                      spantext: " image",
-                      fontSize: 16.sp,
-                      spanFontSize: 16.sp,
-                      spanColor: AppColors.primaryColorDark,
-                    ),
-                    CustomTextPrimary(text: " here", fontSize: 16.sp),
-                  ],
+                CustomTextSpan(
+                  title: "Press The Button To Upload",
+                  spantext: "\nImage",
+                  fontSize: 16.sp,
+                  spanFontSize: 16.sp,
+                  spanColor: AppColors.primaryColorDark,
+                  textAlign: TextAlign.center,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CustomTextSecondary(text: "or "),
-                    CustomTextSecondary(
-                      text: "browse images",
-                      color: AppColors.primaryColorDark,
-                      textDecoration: TextDecoration.underline,
-                      decorationColor: AppColors.primaryColorDark,
-                    ),
-                    CustomTextSecondary(text: " on your computer") ,
-                  ],
-                ),
+                //CustomTextPrimary(text: " Here", fontSize: 16.sp),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center,
+                //   children: [
+                //     CustomTextSecondary(text: "or "),
+                //     CustomTextSecondary(
+                //       text: "browse images",
+                //       color: AppColors.primaryColorDark,
+                //       textDecoration: TextDecoration.underline,
+                //       decorationColor: AppColors.primaryColorDark,
+                //     ),
+                //     CustomTextSecondary(text: " on your computer") ,
+                //   ],
+                // ),
               ],
             ),
           ),
