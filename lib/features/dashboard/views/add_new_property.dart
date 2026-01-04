@@ -6,9 +6,12 @@ import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/a
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_container.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_data.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_details.dart';
+import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_features.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_info.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_inspection.dart';
+import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_virtual_tour.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/property_maintenance_info.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_dropdown/custom_dropdown_menu.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
@@ -43,6 +46,19 @@ class AddNewProperty extends StatelessWidget {
         ),
         SizedBox(height: 20.h),
         PropertyMaintenanceInfo(),
+        SizedBox(height: 20.h),
+        AddNewPropertyFeatures(),
+        SizedBox(height: 20.h),
+        AddNewPropertyVirtualTour(),
+        SizedBox(height: 24.h,),
+        CustomPrimaryButton(onPressed: () {
+          
+        },
+        height: 52.h,
+        width: 180.w,
+        borderRadius: BorderRadius.circular(8.r),
+        text: 'Submit',
+        )
       ],
     );
   }

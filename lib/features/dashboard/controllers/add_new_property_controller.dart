@@ -21,6 +21,17 @@ class AddNewPropertyController extends GetxController {
   List propertyType = ['House', 'Vila', 'Studio', 'Office', 'Apartment'];
   List stateType = ['Dhaka', 'Khulna'];
   RxInt inspectionNo = (-1).obs;
+  RxList<int> selectedFeature = <int>[].obs;
+  List featureList = [
+    'Swimming Pool',
+    '24/7 Security',
+    'Close to Schools',
+    'Gym & Fitness Center',
+    'Garden & Outdoor Space',
+    'Close to Hospital',
+    'Close to Restaurant',
+    'Pet Allowance',
+  ];
   RxString selectedAgent = ''.obs;
   List agentList = ['Ariful', 'Rafi', 'Shanto'];
   List inspectionType = ['In-Person Inspection', 'Virtual Tour'];
