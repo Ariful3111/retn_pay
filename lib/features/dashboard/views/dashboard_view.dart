@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_appbar.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_item.dart';
@@ -27,7 +26,7 @@ class DashboardView extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     DashboardController dashboardController = Get.find();
-    int userIndex = Get.find<UserRoleController>().selectedIndex.value;
+    int userIndex = 1;
     return CustomContainer(
       gradient: isDark
           ? LinearGradient(

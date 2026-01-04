@@ -21,7 +21,7 @@ class CustomDropdownMenu extends StatelessWidget {
   final double? focusBorderRadius;
   final EdgeInsets? expandedInsets;
   final EdgeInsets? contentPadding;
-  final TextAlign textAlign;
+  final TextAlign? textAlign;
   final double? fontSize;
   final TextStyle? textStyle;
   final Color? fillColor;
@@ -32,6 +32,7 @@ class CustomDropdownMenu extends StatelessWidget {
   final double? trailingIconHeight;
   final double? trailingIconWidth;
   final double? menuFontSize;
+  final AlignmentGeometry? alignmentGeometry;
   const CustomDropdownMenu({
     super.key,
     required this.onSelect,
@@ -47,7 +48,7 @@ class CustomDropdownMenu extends StatelessWidget {
     this.borderRadius,
     this.focusBorderRadius,
     this.contentPadding,
-    required this.textAlign,
+    this.textAlign,
     this.fontSize,
     this.enableBorder,
     this.focusBorder,
@@ -57,7 +58,7 @@ class CustomDropdownMenu extends StatelessWidget {
     this.selectedTrailingIconWidth,
     this.trailingIconHeight,
     this.trailingIconWidth,
-    this.menuFontSize,
+    this.menuFontSize, this.alignmentGeometry,
   });
 
   @override
@@ -66,7 +67,7 @@ class CustomDropdownMenu extends StatelessWidget {
     return Obx(() {
       return DropdownMenu<String>(
         initialSelection: isSelect.value,
-        textAlign: textAlign,
+        textAlign: textAlign ?? TextAlign.left,
         textStyle:
             textStyle ??
             GoogleFonts.inter(
@@ -104,7 +105,7 @@ class CustomDropdownMenu extends StatelessWidget {
         width: MediaQuery.widthOf(context),
         menuStyle: MenuStyle(
           maximumSize: WidgetStatePropertyAll(Size(144.w, 115.h)),
-          alignment: Alignment.bottomRight,
+          alignment:alignmentGeometry?? Alignment.bottomRight,
           elevation: WidgetStateProperty.all(6),
           backgroundColor: WidgetStateProperty.all(Colors.white),
           shape: WidgetStateProperty.all(

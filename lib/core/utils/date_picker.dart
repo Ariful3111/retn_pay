@@ -4,7 +4,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 class DatePicker {
   static Future<void> pickDate({
     required BuildContext context,
-    required Function(DateTime) onDateSelected,
+    required Function(DateTime date) onDateSelected,
     DateTime? initialDate,
     DateTime? firstDate,
     DateTime? lastDate,

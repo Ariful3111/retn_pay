@@ -8,14 +8,16 @@ class AutoPaySetting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SettingsController settingsController = Get.find();
-    return SettingsItemModel(
-      title: "Auto-Pay Rent",
-      subTitle: 'Set up automatic payments and never miss a rent due date again.',
-      isOn: settingsController.isAutoPayment.value,
-      onChanged: (value) {
-        settingsController.isAutoPayment.value = value;
-      },
+    return Obx(
+      () => SettingsItemModel(
+        title: "Auto-Pay Rent",
+        subTitle:
+            'Set up automatic payments and never miss a rent due date again.',
+        isOn: settingsController.isAutoPayment.value,
+        onChanged: (value) {
+          settingsController.isAutoPayment.value = value;
+        },
+      ),
     );
-    
   }
 }
