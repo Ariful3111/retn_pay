@@ -174,5 +174,8 @@ class IconsPath {
   static const String shareFacebook = 'assets/icons/share_facebook.png';
   static const String whatsapp = 'assets/icons/whatsapp.png';
   static const String gmail = 'assets/icons/gmail.png';
-
+  static const String error = 'assets/icons/error.png';
+  static const String take = 'assets/icons/take.png';
+  static const String remove = 'assets/icons/remove.png';
+  static const String document = 'assets/icons/document.png';
 }

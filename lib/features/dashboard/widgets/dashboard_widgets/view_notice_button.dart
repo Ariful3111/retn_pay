@@ -13,16 +13,12 @@ class ViewNoticeButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         NoticeButtonModel(
-          width: 106.w,
-          height: 40.h,
           onTap: () {},
           icon:userIndex==1? IconsPath.rentAdjust:IconsPath.renew,
           text:userIndex==1? 'Adjust Rent':'Renew',
         ),
         SizedBox(width: 12.w),
         NoticeButtonModel(
-          width: 107.w,
-          height: 40.h,
           onTap: () {},
           icon: IconsPath.reject,
           text: 'Cancel',

@@ -33,7 +33,7 @@ class AddNewPropertyUploadImage extends StatelessWidget {
         children: [
          isTitle? CustomTextPrimary(
             text: 'Upload Property Image',
-            color: AppColors.primaryTextColor,
+            color:isDark? AppColors.darkPrimaryText:AppColors.primaryTextColor,
             fontSize: 16.sp,
           ):SizedBox.shrink(),
           SizedBox(height:isTitle? 70.h:52.h),

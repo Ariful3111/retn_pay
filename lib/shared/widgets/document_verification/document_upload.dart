@@ -11,7 +11,7 @@ class DocumentUpload extends StatelessWidget {
   final double? height;
   final double? width;
   final VoidCallback onTap;
-  const DocumentUpload({
+  const  DocumentUpload({
     super.key,
     required this.titleText,
     this.height,
@@ -28,7 +28,7 @@ class DocumentUpload extends StatelessWidget {
         DottedBorder(
           options: RoundedRectDottedBorderOptions(
             borderPadding: EdgeInsets.all(1.r),
-            color: Color(0xFF9D5781),
+            color: AppColors.lightBorder,
             dashPattern: [3, 3], radius: Radius.circular(20.sp),
           ),
           child: Container(

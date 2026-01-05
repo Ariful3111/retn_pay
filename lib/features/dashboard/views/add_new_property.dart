@@ -6,6 +6,7 @@ import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/a
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_container.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_data.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_details.dart';
+import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_dialog.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_features.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_info.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_inspection.dart';
@@ -49,16 +50,26 @@ class AddNewProperty extends StatelessWidget {
         SizedBox(height: 20.h),
         AddNewPropertyFeatures(),
         SizedBox(height: 20.h),
-        AddNewPropertyVirtualTour(),
-        SizedBox(height: 24.h,),
-        CustomPrimaryButton(onPressed: () {
-          
-        },
-        height: 52.h,
-        width: 180.w,
-        borderRadius: BorderRadius.circular(8.r),
-        text: 'Submit',
-        )
+        Obx(() {
+         return addNewPropertyController.inspectionNo.value == 1
+              ? AddNewPropertyVirtualTour()
+              : SizedBox.shrink();
+        }),
+        SizedBox(height: 24.h),
+        CustomPrimaryButton(
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AddNewPropertyDialog();
+              },
+            );
+          },
+          height: 52.h,
+          width: 180.w,
+          borderRadius: BorderRadius.circular(8.r),
+          text: 'Submit',
+        ),
       ],
     );
   }

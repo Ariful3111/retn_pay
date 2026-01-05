@@ -62,7 +62,6 @@ class TicketTable extends StatelessWidget {
         return CustomTable(
           column: supportController.tableColumn,
           row: rowWidgets,
-          listIndex: listIndex,
           onRowTap: (index) {
             supportController.showExpandedData(listIndex[index]);
           },

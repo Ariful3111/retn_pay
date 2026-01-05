@@ -4,6 +4,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:renter_pay/core/constants/colors.dart';
 
 class CustomDottedBorder extends StatelessWidget {
   final XFile image;
@@ -17,7 +18,7 @@ class CustomDottedBorder extends StatelessWidget {
       options: RoundedRectDottedBorderOptions(
         radius: Radius.circular(20.sp),
         borderPadding: EdgeInsets.all(1.r),
-        color: Color(0xFF9D5781),
+        color: AppColors.lightBorder,
         dashPattern: [3, 3],
       ),
       child: Container(

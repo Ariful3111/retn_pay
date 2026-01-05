@@ -11,6 +11,7 @@ class DashboardController extends GetxController {
   RxBool isFavorite = false.obs;
   RxBool isAutoPay = false.obs;
   RxInt isDay = 0.obs;
+  RxBool isUpgrade = false.obs;
   RxList<String> repairImages = <String>[].obs;
   TextEditingController addressController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();

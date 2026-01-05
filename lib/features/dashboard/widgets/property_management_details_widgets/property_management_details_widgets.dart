@@ -3,16 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/features/dashboard/controllers/active_property_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/property_management_details_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
-class ActivePropertyWidgets extends StatelessWidget {
-  const ActivePropertyWidgets({super.key});
+class PropertyManagementDetailsWidgets extends StatelessWidget {
+  const PropertyManagementDetailsWidgets({super.key});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    ActivePropertyController controller = Get.find();
+    PropertyManagementDetailsController controller = Get.find();
     return Obx(
       () => Column(
         children: List.generate(controller.title.length, (index) {

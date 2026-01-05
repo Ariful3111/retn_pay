@@ -4,7 +4,6 @@ import 'package:renter_pay/core/constants/colors.dart';
 
 class CustomTableRow extends StatelessWidget {
   final List<List<Widget>> row;
-  final List<int> listIndex;
   final int rowIndex;
   final List<String> column;
   final Widget expandedTable;
@@ -14,7 +13,6 @@ class CustomTableRow extends StatelessWidget {
   const CustomTableRow({
     super.key,
     required this.row,
-    required this.listIndex,
     required this.rowIndex,
     required this.column,
     required this.expandedTable,

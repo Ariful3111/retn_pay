@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 class AddNewPropertyController extends GetxController {
   RxBool isNewProperty = false.obs;
+  RxBool isPropertyDetails = false.obs;
   TextEditingController imageDescriptionController = TextEditingController();
   TextEditingController areaController = TextEditingController();
   TextEditingController rentController = TextEditingController();
@@ -15,12 +16,14 @@ class AddNewPropertyController extends GetxController {
   TextEditingController descriptionController = TextEditingController();
   TextEditingController featureController = TextEditingController();
   TextEditingController dateController = TextEditingController();
+  TextEditingController propertyNameController = TextEditingController();
+  TextEditingController propertyAddressController = TextEditingController();
   Rx<DateTime> selectedDate = DateTime.now().obs;
   RxString selectedProperty = ''.obs;
   RxString selectedState = ''.obs;
   List propertyType = ['House', 'Vila', 'Studio', 'Office', 'Apartment'];
   List stateType = ['Dhaka', 'Khulna'];
-  RxInt inspectionNo = (-1).obs;
+  RxInt inspectionNo = 0.obs;
   RxList<int> selectedFeature = <int>[].obs;
   List featureList = [
     'Swimming Pool',

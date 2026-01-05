@@ -35,8 +35,8 @@ class PropertyManagementTable extends StatelessWidget {
           return [
             CustomTextPrimary(
               text: item.address,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500,
               textOverflow: TextOverflow.ellipsis,
             ),
            isProperty? PropertyManagementTableData(index: index):CustomTextSecondary(text: '8 Aug, 2025',fontSize: 12.sp,fontWeight: FontWeight.w400,),
@@ -56,7 +56,6 @@ class PropertyManagementTable extends StatelessWidget {
         return CustomTable(
           column:isProperty? propertyManagementController.tableColumn:propertyManagementController.conditionReportTableColumn, 
           row: rowWidgets,
-          listIndex: listIndex,
           expandedTableBuilder: (index) {
             final item = list[index].value;
             final rowIndex = listIndex[index];
