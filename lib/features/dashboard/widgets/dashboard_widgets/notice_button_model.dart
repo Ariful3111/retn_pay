@@ -4,8 +4,6 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class NoticeButtonModel extends StatelessWidget {
-  final double width;
-  final double height;
   final VoidCallback onTap;
   final String icon;
   final String text;
@@ -16,8 +14,6 @@ class NoticeButtonModel extends StatelessWidget {
   final Color ? iconColor;
   const NoticeButtonModel({
     super.key,
-    required this.width,
-    required this.height,
     required this.onTap,
     required this.icon,
     required this.text,
@@ -32,8 +28,7 @@ class NoticeButtonModel extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: height,
-        width: width,
+        padding: EdgeInsets.symmetric(vertical: 8.h,horizontal: 16.w),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6.r),
           color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,

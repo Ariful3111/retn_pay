@@ -82,8 +82,6 @@ class LandlordContact extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               NoticeButtonModel(
-                width: 158.w,
-                height: 43.9.h,
                 onTap: () {},
                 icon: IconsPath.dashboardCall,
                 text: 'Call',
@@ -91,8 +89,6 @@ class LandlordContact extends StatelessWidget {
               ),
               SizedBox(width: 12.w),
               NoticeButtonModel(
-                width: 158.w,
-                height: 43.9.h,
                 onTap: () {},
                 icon: IconsPath.dashboardChat,
                 text: 'Chat',

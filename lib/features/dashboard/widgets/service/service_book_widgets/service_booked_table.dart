@@ -45,7 +45,6 @@ class ServiceBookedTable extends StatelessWidget {
           return CustomTable(
             column: serviceBookedController.tableColumn,
             row: rowWidgets,
-            listIndex: listIndex,
             expandedTableBuilder: (index) {
               final item = list[index].value;
               final rowIndex = listIndex[index];

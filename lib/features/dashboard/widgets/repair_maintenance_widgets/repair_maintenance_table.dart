@@ -61,7 +61,6 @@ class RepairMaintenanceTable extends StatelessWidget {
           return CustomTable(
             column: repairMaintenanceController.repairColumn,
             row: rowWidgets,
-            listIndex: listIndex,
             onRowTap: (index) {
               repairMaintenanceController.showExpandedData(listIndex[index]);
             },

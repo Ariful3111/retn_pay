@@ -14,6 +14,7 @@ class SuccessDialog extends StatelessWidget {
   final String? title1;
   final String? subtitle;
   final Widget? button;
+  final bool isBG;
   const SuccessDialog({
     super.key,
     this.widget,
@@ -21,7 +22,7 @@ class SuccessDialog extends StatelessWidget {
     this.button,
     this.height,
     this.width,
-    this.title1,
+    this.title1, this.isBG = true,
   });
 
   @override
@@ -34,16 +35,23 @@ class SuccessDialog extends StatelessWidget {
         width: width ?? 362.w,
         padding: EdgeInsets.zero,
         decoration: BoxDecoration(
-          image: DecorationImage(
+          image:isBG? DecorationImage(
             image: AssetImage(ImagesPath.successBackground),
             fit: BoxFit.cover,
-          ),
-        boxShadow: [myShadow(dy: 200.63, alpha: 0.10),myShadow(dy: 803.95, alpha: 0.09),myShadow(dy: 1808.54, alpha: 0.05),myShadow(dy: 3215.81, alpha: 0.01),myShadow(dy: 5024.35, alpha: 0.0)]
+          ):null,
+          boxShadow: [
+            myShadow(dy: 200.63, alpha: 0.10),
+            myShadow(dy: 803.95, alpha: 0.09),
+            myShadow(dy: 1808.54, alpha: 0.05),
+            myShadow(dy: 3215.81, alpha: 0.01),
+            myShadow(dy: 5024.35, alpha: 0.0),
+          ],
         ),
         child: Stack(
           children: [
             Center(
-              child: widget ??
+              child:
+                  widget ??
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -78,7 +86,8 @@ class SuccessDialog extends StatelessWidget {
                       ),
                       SizedBox(height: 14.h),
                       CustomTextPrimary(
-                        text: title1 ?? "Your ID has been verified successfully",
+                        text:
+                            title1 ?? "Your I D has been verified successfully",
                         color: AppColors.primaryColorDark,
                         fontSize: 20.sp,
                         textAlign: TextAlign.center,
@@ -110,7 +119,11 @@ class SuccessDialog extends StatelessWidget {
     );
   }
 
-  BoxShadow myShadow({required double dy,required double alpha}) {
-    return BoxShadow(offset: Offset(0, dy),blurRadius: 177.87,color: AppColors.darkPrimary.withValues(alpha: alpha));
+  BoxShadow myShadow({required double dy, required double alpha}) {
+    return BoxShadow(
+      offset: Offset(0, dy),
+      blurRadius: 177.87,
+      color: AppColors.darkPrimary.withValues(alpha: alpha),
+    );
   }
 }

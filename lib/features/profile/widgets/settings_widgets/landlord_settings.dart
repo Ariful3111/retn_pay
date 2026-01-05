@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/profile/controllers/settings_controller.dart';
 import 'package:renter_pay/features/profile/widgets/settings_widgets/landlord_setting_items.dart';
-import 'package:renter_pay/features/profile/widgets/settings_widgets/landlord_settings_upgrade.dart';
+import 'package:renter_pay/shared/widgets/custom_animated_switcher.dart';
+import 'package:renter_pay/shared/widgets/custom_shadow_overlay_button.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 
 class LandlordSettings extends StatelessWidget {
   const LandlordSettings({super.key});
@@ -21,31 +23,27 @@ class LandlordSettings extends StatelessWidget {
         color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
       ),
       child: Obx(
-        () => AnimatedSwitcher(
-          duration: const Duration(milliseconds: 500),
-          switchInCurve: Curves.easeOutCubic,
-          switchOutCurve: Curves.easeInCubic,
-          transitionBuilder: (child, animation) {
-            return FadeTransition(
-              opacity: animation,
-              child: ScaleTransition(
-                scale: Tween(begin: 0.97, end: 1.0).animate(animation),
-                child: child,
-              ),
-            );
-          },
+        () => CustomAnimatedSwitcher(
           child: Stack(
             key: ValueKey(settingsController.isUpgrade.value),
             children: [
               LandlordSettingItems(),
               if (!settingsController.isUpgrade.value)
-                LandlordSettingsUpgrade().shadow(context: context),
+                CustomShadowOverlayButton().shadow(context: context),
               if (!settingsController.isUpgrade.value)
-                LandlordSettingsUpgrade().button(
-                  onTap: () {
-                    settingsController.isUpgrade.value =
-                        !settingsController.isUpgrade.value;
-                  },
+                Positioned(
+                  left: 42.w,
+                  right: 42.w,
+                  bottom: 150.h,
+                  child: CustomPrimaryButton(
+                    height: 48.h,
+                    width: 307.w,
+                    text: 'Upgrade Your Plan',
+                    onPressed: () {
+                      settingsController.isUpgrade.value =
+                          !settingsController.isUpgrade.value;
+                    },
+                  ),
                 ),
             ],
           ),

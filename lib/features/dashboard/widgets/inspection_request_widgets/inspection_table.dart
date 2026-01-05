@@ -41,7 +41,6 @@ class InspectionTable extends StatelessWidget {
         return CustomTable(
           column: inspectionRequestController.tableColumn,
           row: rowWidgets,
-          listIndex: listIndex,
           expandedTableBuilder: (index) {
             final item = list[index].value;
             final rowIndex = listIndex[index];

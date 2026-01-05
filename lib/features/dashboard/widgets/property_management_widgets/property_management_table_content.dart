@@ -44,7 +44,7 @@ class PropertyManagementTableContent extends StatelessWidget {
         SizedBox(height: 8.h),
         if (!isProperty)
           CustomTextSecondary(
-            text: 'Date: 8 Aug, 2025',
+            text: 'Date: ${item.date}',
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
           ),

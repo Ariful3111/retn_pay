@@ -64,8 +64,6 @@ class ActivePropertyContact extends StatelessWidget {
               ],
             ),
             NoticeButtonModel(
-              width: 92.w.w,
-              height: 40.h,
               onTap: () {},
               icon: IconsPath.dashboardChat,
               text: 'Chat',

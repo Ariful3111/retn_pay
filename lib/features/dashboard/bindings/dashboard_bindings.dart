@@ -3,6 +3,7 @@ import 'package:renter_pay/features/dashboard/controllers/add_new_property_contr
 import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/dashboard_landlord_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/property_management_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/property_management_details_controller.dart';
 
 class DashboardBindings implements Bindings {
   @override
@@ -11,5 +12,6 @@ class DashboardBindings implements Bindings {
     Get.lazyPut(() => DashboardLandlordController());
     Get.lazyPut(() => PropertyManagementController());
     Get.lazyPut(() => AddNewPropertyController());
+    Get.lazyPut(() => PropertyManagementDetailsController());
   }
 }
