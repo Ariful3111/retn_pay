@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/features/dashboard/controllers/tenant_controller/key_release_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
 class SignatureField extends StatelessWidget {
-  const SignatureField({super.key});
+  final TextEditingController controller;
+  final ValueChanged<String> onChanged;
+  final VoidCallback onClear;
+  const SignatureField({
+    super.key,
+    required this.controller,
+    required this.onChanged,
+    required this.onClear,
+  });
 
   @override
   Widget build(BuildContext context) {
-    KeyReleaseController keyReleaseController = Get.find();
     return Positioned(
       left: 17.w,
       top: 137.h,
@@ -19,19 +24,13 @@ class SignatureField extends StatelessWidget {
         height: 80.h,
         width: MediaQuery.widthOf(context),
         child: CustomTextField(
-          controller: keyReleaseController.drawController,
-          onChanged: (value) {
-            keyReleaseController.typedText.value = value;
-          },
+          controller: controller,
+          onChanged: onChanged,
           labelText: 'Type Your Signature Here',
           prefixIcon: Padding(
             padding: EdgeInsets.only(left: 5.h),
             child: GestureDetector(
-              onTap: () {
-                keyReleaseController.signatureController.clear();
-                keyReleaseController.drawController.clear();
-                keyReleaseController.typedText.value = '';
-              },
+              onTap: onClear,
               child: Image.asset(
                 IconsPath.close,
                 height: 12.h,

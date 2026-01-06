@@ -20,7 +20,6 @@ class DashboardKeyFeatures extends StatelessWidget {
     ];
     return Container(
       padding: EdgeInsets.all(21.79.r),
-      height: 525.h,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         color:isDark?AppColors.darkPrimary: AppColors.whiteColor,
