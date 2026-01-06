@@ -356,4 +356,5 @@ final List<GetPage> appRoutes = [
     page: () => LandlordKeyRelease(),
     binding: LandlordKeyReleaseBindings(),
   ),
+  GetPage(name: AppRoutes.landlordInspectionView, page:()=> LandlordInspectionView())
 ];
