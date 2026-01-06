@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/landrord_controller/add_new_property_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_dialog/success_dialog.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';

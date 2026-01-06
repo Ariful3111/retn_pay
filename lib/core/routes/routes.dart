@@ -4,6 +4,7 @@ import 'package:renter_pay/features/auth/bindings/document_verification_bindings
 import 'package:renter_pay/features/auth/bindings/first_onboarding_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/forgot_password_bindings.dart';
 import 'package:renter_pay/features/dashboard/views/landlord_views/property_management_details.dart';
+import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/landlord_inspection/landlord_inspection_view.dart';
 import 'package:renter_pay/features/home/bindings/logged_in_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/login_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/onboarding_bindings.dart';
@@ -258,4 +259,5 @@ final List<GetPage> appRoutes = [
   GetPage(name: AppRoutes.privacyPolicy, page: ()=>PrivacyPolicy(),binding: ProfileBindings()),
   GetPage(name: AppRoutes.propertyManagement, page: ()=>PropertyManagement(),binding: DashboardBindings()),
   GetPage(name: AppRoutes.propertyManagementDetails, page: ()=>PropertyManagementDetails(),binding: DashboardBindings()),
+  GetPage(name: AppRoutes.landlordInspectionView, page: ()=>LandlordInspectionView())
 ];

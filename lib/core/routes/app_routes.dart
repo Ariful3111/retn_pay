@@ -39,4 +39,5 @@ class AppRoutes {
   static const String privacyPolicy = '/privacyPolicy';
   static const String propertyManagement = '/propertyManagement';
   static const String propertyManagementDetails = '/propertyManagementDetails';
+  static const String landlordInspectionView = '/landlordInspectionView';
 }

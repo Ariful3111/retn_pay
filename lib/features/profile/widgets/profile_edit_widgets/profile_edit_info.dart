@@ -16,12 +16,16 @@ class ProfileEditInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     int userIndex = 1;
+    int userIndex = 1;
     ProfileEditController profileEditController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      padding: EdgeInsets.only(top: 16.w, left: 16.w),
-      height: 172.h,
+      padding: EdgeInsets.only(
+        top: 16.w,
+        left: 16.w,
+        bottom: 32.h,
+        right: 16.w,
+      ),
       width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
@@ -41,47 +45,52 @@ class ProfileEditInfo extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           Row(
-            children: [ 
-             Obx(()=> Container(
-                height: 74.h,
-                width: 74.w,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image:profileEditController.upload.value !=null?FileImage(File(profileEditController.upload.value!.path)) :AssetImage(ImagesPath.profile),
-                    fit: BoxFit.fill,
+            children: [
+              Obx(
+                () => Container(
+                  height: 74.h,
+                  width: 74.w,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: profileEditController.upload.value != null
+                          ? FileImage(
+                              File(profileEditController.upload.value!.path),
+                            )
+                          : AssetImage(ImagesPath.profile),
+                      fit: BoxFit.fill,
+                    ),
+                    borderRadius: BorderRadius.circular(50.r),
                   ),
-                  borderRadius: BorderRadius.circular(50.r),
-                ),
-                child: Align(
-                  alignment: Alignment(0.1, 1.5),
-                  child: GestureDetector(
-                    onTap: () {
-                      UploadImage.sendImage(
-                        picker: profileEditController.picker,
-                        pickImage: profileEditController.upload,
-                      );
-                    },
-                    child: Container(
-                      height: 30.h,
-                      width: 30.w,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.r),
-                        color: AppColors.whiteColor,
-                      ),
-                      child: Center(
-                        child: Image.asset(
-                          IconsPath.upload,
-                          height: 20.h,
-                          width: 20.w,
+                  child: Align(
+                    alignment: Alignment(0.1, 1.5),
+                    child: GestureDetector(
+                      onTap: () {
+                        UploadImage.sendImage(
+                          picker: profileEditController.picker,
+                          pickImage: profileEditController.upload,
+                        );
+                      },
+                      child: Container(
+                        height: 30.h,
+                        width: 30.w,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.r),
+                          color: AppColors.whiteColor,
+                        ),
+                        child: Center(
+                          child: Image.asset(
+                            IconsPath.upload,
+                            height: 20.h,
+                            width: 20.w,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),),
+              ),
               SizedBox(width: 16.w),
               Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomTextPrimary(
@@ -89,6 +98,7 @@ class ProfileEditInfo extends StatelessWidget {
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                   ),
+                  SizedBox(height: 8.h),
                   CustomTextPrimary(
                     text: profileEditController.userType[userIndex],
                     fontSize: 14.sp,

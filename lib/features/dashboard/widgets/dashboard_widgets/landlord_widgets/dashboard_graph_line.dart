@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/landrord_controller/dashboard_landlord_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/landlord_controller/dashboard_landlord_controller.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 DashboardLandlordController dashboardLandlordController = Get.find();
