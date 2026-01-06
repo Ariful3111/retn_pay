@@ -62,8 +62,14 @@ class DashboardController extends GetxController {
     {
       'icon': IconsPath.drawerKey,
       'title': 'Key Release',
-      'allowedUser': [0, 1],
+      'allowedUser': [0],
       'routes': AppRoutes.keyReleaseView,
+    },
+    {
+      'icon': IconsPath.drawerKey,
+      'title': 'Key Release',
+      'allowedUser': [1],
+      'routes': AppRoutes.landlordKeyRelease,
     },
     {
       'icon': IconsPath.drawerActive,

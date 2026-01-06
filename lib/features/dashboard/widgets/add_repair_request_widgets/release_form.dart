@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_repair_request_widgets/landlord_signature.dart';
 import 'package:renter_pay/features/dashboard/widgets/room_info.dart';
 import 'package:renter_pay/features/dashboard/widgets/active_property_widgets/signature_draw.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
+import 'package:signature/signature.dart';
 
 class ReleaseForm extends StatelessWidget {
-  const ReleaseForm({super.key});
+  final RxString signatureMode;
+  final RxBool isDrawing;
+  final SignatureController signatureController;
+  final RxString typedText;
+  final TextEditingController textEditingController;
+  const ReleaseForm({
+    super.key,
+    required this.signatureMode,
+    required this.isDrawing,
+    required this.signatureController,
+    required this.typedText,
+    required this.textEditingController,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,43 +34,48 @@ class ReleaseForm extends StatelessWidget {
         formText(title: 'Resident First Name:', subTitle: 'Ariful'),
         SizedBox(height: 20.h),
         formText(title: 'Resident Last Name:', subTitle: 'Islam'),
-        SizedBox(height: 24.h,),
+        SizedBox(height: 24.h),
         infoText(text: 'Property Address:'),
-        SizedBox(height: 12.h,),
+        SizedBox(height: 12.h),
         formText(title: 'Address Line 1:', subTitle: 'Dhanmondi'),
-        SizedBox(height: 20.h,),
+        SizedBox(height: 20.h),
         formText(title: 'Address Line 2:', subTitle: 'Kawran-Bazar'),
-        SizedBox(height: 20.h,),
+        SizedBox(height: 20.h),
         formText(title: 'City:', subTitle: 'Dhaka'),
-        SizedBox(height: 20.h,),
+        SizedBox(height: 20.h),
         formText(title: 'State:', subTitle: 'Bangla-Motor'),
-        SizedBox(height: 20.h,),
+        SizedBox(height: 20.h),
         formText(title: 'Zip Code:', subTitle: '400'),
-        SizedBox(height: 24.h,),
+        SizedBox(height: 24.h),
         RoomInfo(),
-        SizedBox(height: 24.h,),
+        SizedBox(height: 24.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            formText(title: 'Date:', subTitle: '12 October, 2025'),
-          ],
+          children: [formText(title: 'Date:', subTitle: '12 October, 2025')],
         ),
         infoText(text: 'Resident Signature'),
-        SizedBox(height: 14.h,),
-        SignatureDraw(),
-        SizedBox(height: 20.h,),
+        SizedBox(height: 14.h),
+        SignatureDraw(
+          signatureMode: signatureMode,
+          isDrawing: isDrawing,
+          signatureController: signatureController,
+          typedText: typedText,
+          textEditingController: textEditingController,
+        ),
+        SizedBox(height: 20.h),
         infoText(text: 'Landlord/Agent Signature'),
-        SizedBox(height: 13.h,),
+        SizedBox(height: 13.h),
         LandlordSignature(),
-        SizedBox(height:  20.h),
+        SizedBox(height: 20.h),
         Center(
-          child: CustomPrimaryButton(height: 40.h,width: 100.w, onPressed: () {
-            
-          },
-          text: 'Submit',
-          borderRadius: BorderRadius.circular(6.r),
+          child: CustomPrimaryButton(
+            height: 40.h,
+            width: 100.w,
+            onPressed: () {},
+            text: 'Submit',
+            borderRadius: BorderRadius.circular(6.r),
           ),
-        )
+        ),
       ],
     );
   }
@@ -69,12 +88,7 @@ class ReleaseForm extends StatelessWidget {
     );
   }
 
-  Widget formText(
-    {
-      required String title,
-      required String subTitle,
-    }
-  ) {
+  Widget formText({required String title, required String subTitle}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

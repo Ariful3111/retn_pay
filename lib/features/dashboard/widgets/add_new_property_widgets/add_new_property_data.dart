@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/features/dashboard/controllers/landrord_controller/add_new_property_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_container.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_info_field.dart';
 import 'package:renter_pay/shared/widgets/custom_dropdown/custom_dropdown_menu.dart';

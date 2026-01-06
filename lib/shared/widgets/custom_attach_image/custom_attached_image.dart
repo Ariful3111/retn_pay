@@ -8,7 +8,7 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart
 import 'package:renter_pay/shared/widgets/document_verification/document_upload_button.dart';
 
 class CustomAttachedImage extends StatelessWidget {
-   final RxList<String> imageList;
+  final RxList<String> imageList;
   const CustomAttachedImage({super.key, required this.imageList});
 
   @override
@@ -17,49 +17,50 @@ class CustomAttachedImage extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-          padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 12.w),
-          decoration: BoxDecoration(
-            color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
-            borderRadius: BorderRadius.circular(10.r),
-            border: Border.all(width: 1.w, color: AppColors.secondaryBorder),
-            boxShadow: [
-              BoxShadow(
-                offset: Offset(0, 1),
-                blurRadius: 2,
-                color: AppColors.dropShadowColorSecondary.withValues(
-                  alpha: 0.24,
+        GestureDetector(
+          onTap: () async {
+            await UploadImage.pickMultipleImage(allImages: imageList);
+          },
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: 10.5.h, horizontal: 12.w),
+            decoration: BoxDecoration(
+              color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+              borderRadius: BorderRadius.circular(10.r),
+              border: Border.all(width: 1.w, color: AppColors.secondaryBorder),
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(0, 1),
+                  blurRadius: 2,
+                  color: AppColors.dropShadowColorSecondary.withValues(
+                    alpha: 0.24,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          child: Row(
-            children: [
-              DocumentUploadButton(
-                height: 32.h,
-                width: 32.w,
-                borderColor: AppColors.darkLightText,
-                borderWidth: 0.7.r,
-                radius: 2.7.r,
-                iconHeight: 13.86.h,
-                iconWidth: 11.74.w,
-                onTap: () {
-                  UploadImage.pickMultipleImage(
-                    allImages: imageList,
-                  );
-                },
-              ),
-              SizedBox(width: 8.w),
-              CustomTextSecondary(
-                text: 'or drag files here.',
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-              ),
-            ],
+              ],
+            ),
+            child: Row(
+              children: [
+                DocumentUploadButton(
+                  height: 32.h,
+                  width: 32.w,
+                  borderColor: AppColors.darkLightText,
+                  borderWidth: 0.7.r,
+                  radius: 2.7.r,
+                  iconHeight: 13.86.h,
+                  iconWidth: 11.74.w,
+                  onTap: () {},
+                ),
+                SizedBox(width: 8.w),
+                CustomTextSecondary(
+                  text: 'or drag files here.',
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                ),
+              ],
+            ),
           ),
         ),
-        SizedBox(width: 10.w,),
-        CustomAttachImageView(imageList: imageList,),
+        SizedBox(width: 10.w),
+        CustomAttachImageView(imageList: imageList),
       ],
     );
   }
