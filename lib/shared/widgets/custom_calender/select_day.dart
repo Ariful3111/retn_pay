@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/state_manager.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class SelectDay extends StatelessWidget {

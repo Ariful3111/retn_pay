@@ -13,8 +13,6 @@ class NoticeButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         NoticeButtonModel(
-          width: 88.w,
-          height: 40.h,
           onTap: () {
             showDialog(
               context: context,
@@ -28,8 +26,6 @@ class NoticeButton extends StatelessWidget {
         ),
         SizedBox(width: 12.w),
         NoticeButtonModel(
-          width: 102.w,
-          height: 40.h,
           onTap: () {},
           icon: IconsPath.reject,
           text: 'Reject',

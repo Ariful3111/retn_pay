@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/chat/views/chat_view.dart';
-import 'package:renter_pay/features/dashboard/views/dashboard_view.dart';
+import 'package:renter_pay/features/dashboard/views/tenant_views/dashboard_view.dart';
 import 'package:renter_pay/features/home/views/home_view.dart';
 import 'package:renter_pay/features/profile/views/profile_view.dart';
 import 'package:renter_pay/features/rent/views/rent_view.dart';

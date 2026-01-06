@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:renter_pay/features/dashboard/controllers/key_release_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/key_release_controller.dart';
 
 class KeyReleaseBindings implements Bindings {
   @override

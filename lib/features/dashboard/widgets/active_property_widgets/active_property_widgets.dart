@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/features/dashboard/controllers/active_property_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/active_property_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class ActivePropertyWidgets extends StatelessWidget {
@@ -21,7 +21,7 @@ class ActivePropertyWidgets extends StatelessWidget {
             key: ValueKey(index),
             children: [
               Container(
-                padding: EdgeInsets.all(20.r),
+                padding: EdgeInsets.symmetric(vertical: 17.43.h,horizontal: 16.w),
                 decoration: BoxDecoration(
                   color: isDark
                       ? AppColors.darkSecondary

@@ -3,18 +3,29 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/key_release_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/active_property_widgets/signature_field.dart';
 import 'package:renter_pay/features/dashboard/widgets/active_property_widgets/signature_mode_button.dart';
 import 'package:signature/signature.dart';
 
 class SignatureDraw extends StatelessWidget {
-  const SignatureDraw({super.key});
+  final RxString signatureMode;
+  final RxBool isDrawing;
+  final SignatureController signatureController;
+  final RxString typedText;
+  final TextEditingController textEditingController;
+
+  const SignatureDraw({
+    super.key,
+    required this.signatureMode,
+    required this.isDrawing,
+    required this.signatureController,
+    required this.typedText,
+    required this.textEditingController,
+  });
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    KeyReleaseController keyReleaseController = Get.find();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -28,31 +39,31 @@ class SignatureDraw extends StatelessWidget {
           child: Obx(
             () => Stack(
               children: [
-                if (keyReleaseController.signatureMode.value == 'draw')
+                if (signatureMode.value == 'draw')
                   Listener(
                     onPointerDown: (event) {
-                      keyReleaseController.isDrawing.value = true;
+                      isDrawing.value = true;
                     },
                     onPointerCancel: (event) {
-                      keyReleaseController.isDrawing.value = false;
+                      isDrawing.value = false;
                     },
                     onPointerUp: (event) {
-                      keyReleaseController.isDrawing.value = false;
+                      isDrawing.value = false;
                     },
                     child: ClipRRect(
                       borderRadius: BorderRadiusGeometry.circular(17.r),
                       child: Signature(
-                        controller: keyReleaseController.signatureController,
+                        controller: signatureController,
                         backgroundColor: isDark
                             ? AppColors.darkSecondary
                             : AppColors.whiteColor,
                       ),
                     ),
                   ),
-                if (keyReleaseController.signatureMode.value == 'type')
+                if (signatureMode.value == 'type')
                   Center(
                     child: Text(
-                      keyReleaseController.typedText.value,
+                      typedText.value,
                       style: GoogleFonts.alexBrush(
                         fontSize: 50.sp,
                         fontWeight: FontWeight.w500,
@@ -62,14 +73,32 @@ class SignatureDraw extends StatelessWidget {
                       ),
                     ),
                   ),
-                if (keyReleaseController.signatureMode.value == 'type')
-                  SignatureField(),
+                if (signatureMode.value == 'type')
+                  SignatureField(
+                    controller: textEditingController,
+                    onChanged: (value) {
+                      typedText.value = value;
+                    },
+                    onClear: () {
+                      signatureController.clear();
+                      textEditingController.clear();
+                      typedText.value = '';
+                    },
+                  ),
               ],
             ),
           ),
         ),
         SizedBox(height: 10.h),
-        SignatureModeButton(),
+        SignatureModeButton(
+          signatureMode: signatureMode,
+          onModeChanged: (mode) {
+            signatureMode.value = mode;
+            signatureController.clear();
+            textEditingController.clear();
+            typedText.value = '';
+          },
+        ),
       ],
     );
   }

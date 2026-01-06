@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_drawer/custom_drawer_item.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -38,34 +38,36 @@ class CustomDrawer extends StatelessWidget {
         ),
         child: Material(
           color: Colors.transparent,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset(
-                    IconsPath.drawerLogo,
-                    height: 19.11.h,
-                    width: 115.52.w,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Image.asset(
-                      IconsPath.drawerClose,
-                      height: 24.h,
-                      width: 24.w,
-                      color: isDark ? AppColors.darkAppBar : null,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.asset(
+                      IconsPath.drawerLogo,
+                      height: 19.11.h,
+                      width: 115.52.w,
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 32.h),
-              ...List.generate(dashboardController.userDrawerItems.length, (index) {
-                return CustomDrawerItem(index: index);
-              }),
-            ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Image.asset(
+                        IconsPath.drawerClose,
+                        height: 24.h,
+                        width: 24.w,
+                        color: isDark ? AppColors.darkAppBar : null,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 32.h),
+                ...List.generate(dashboardController.userDrawerItems.length, (index) {
+                  return CustomDrawerItem(index: index);
+                }),
+              ],
+            ),
           ),
         ),
       ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/features/dashboard/controllers/property_management_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_filter_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_table/table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
@@ -44,7 +44,7 @@ class PropertyManagementTableContent extends StatelessWidget {
         SizedBox(height: 8.h),
         if (!isProperty)
           CustomTextSecondary(
-            text: 'Date: 8 Aug, 2025',
+            text: 'Date: ${item.date}',
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
           ),

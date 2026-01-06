@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/features/dashboard/controllers/add_new_property_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
@@ -14,6 +15,7 @@ class PropertyManagementRow extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     AddNewPropertyController addNewPropertyController = Get.find();
+    PropertyManagementController propertyManagementController = Get.find();
     return Obx(
       () => Container(
         padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
@@ -21,7 +23,7 @@ class PropertyManagementRow extends StatelessWidget {
           color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
           borderRadius: BorderRadius.circular(12.r),
         ),
-        child: addNewPropertyController.isNewProperty.value
+        child: propertyManagementController.isViewProperty.value
             ? Center(
                 child: CustomTextPrimary(
                   text: 'Property Information',

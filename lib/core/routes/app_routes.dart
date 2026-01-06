@@ -38,4 +38,6 @@ class AppRoutes {
   static const String termsAndCondition = '/termsAndCondition';
   static const String privacyPolicy = '/privacyPolicy';
   static const String propertyManagement = '/propertyManagement';
+  static const String propertyManagementDetails = '/propertyManagementDetails';
+  static const String landlordKeyRelease = '/landlordKeyRelease';
 }

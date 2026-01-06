@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/key_release_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/key_release_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_repair_request_widgets/release_form.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
@@ -39,7 +39,13 @@ class KeyReleaseView extends StatelessWidget {
                 color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
                 borderRadius: BorderRadius.circular(20.r),
               ),
-              child: ReleaseForm(),
+              child: ReleaseForm(
+                signatureMode: keyReleaseController.signatureMode,
+                isDrawing: keyReleaseController.isDrawing,
+                signatureController: keyReleaseController.signatureController,
+                typedText: keyReleaseController.typedText,
+                textEditingController: keyReleaseController.drawController,
+              ),
             ),
           ),
         ],

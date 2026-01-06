@@ -9,6 +9,7 @@ class ActivePropertyController extends GetxController {
   RxList<bool> isOpenList = <bool>[].obs;
   TextEditingController reviewController = TextEditingController();
   var rating = 0.0.obs;
+  RxBool isAccess = false.obs;
   List<String> title = [
     'Property Details',
     'Key Features & Amenities',
@@ -28,6 +29,7 @@ class ActivePropertyController extends GetxController {
     reviewController.dispose();
     super.dispose();
   }
+
   @override
   void onInit() {
     isOpenList.value = List.generate(title.length, (_) => false);

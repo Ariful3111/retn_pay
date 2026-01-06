@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/service_booked_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/service_booked_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_table_action.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_table_content.dart';
 import 'package:renter_pay/shared/widgets/custom_table/custom_table.dart';
@@ -45,7 +45,6 @@ class ServiceBookedTable extends StatelessWidget {
           return CustomTable(
             column: serviceBookedController.tableColumn,
             row: rowWidgets,
-            listIndex: listIndex,
             expandedTableBuilder: (index) {
               final item = list[index].value;
               final rowIndex = listIndex[index];

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_calender/custom_table_calender.dart';
 import 'package:table_calendar/table_calendar.dart';
 

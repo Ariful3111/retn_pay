@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/repair_maintenance_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/repair_maintenance_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_maintenance_table_content.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_maintenance_table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
@@ -61,7 +61,6 @@ class RepairMaintenanceTable extends StatelessWidget {
           return CustomTable(
             column: repairMaintenanceController.repairColumn,
             row: rowWidgets,
-            listIndex: listIndex,
             onRowTap: (index) {
               repairMaintenanceController.showExpandedData(listIndex[index]);
             },

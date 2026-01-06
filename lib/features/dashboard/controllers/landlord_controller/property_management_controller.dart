@@ -17,7 +17,10 @@ class PropertyModel {
     required this.verifyStatus,
     required this.rent,
     required this.agent,
-    required this.enlistStatus, required this.date, required this.email, required this.phoneNo,
+    required this.enlistStatus,
+    required this.date,
+    required this.email,
+    required this.phoneNo,
   });
 }
 
@@ -28,6 +31,7 @@ class PropertyManagementController extends GetxController {
   RxString selected = 'Property'.obs;
   TextEditingController shareController = TextEditingController();
   RxBool isShare = false.obs;
+  RxBool isViewProperty = false.obs;
   final List<String> tableColumn = [
     'Property Address',
     'Enlisting Status',
@@ -48,6 +52,10 @@ class PropertyManagementController extends GetxController {
         break;
       case MyMenu.insurance:
         Get.dialog(PropertyInsurance(property: property));
+      case MyMenu.view:
+        Future.delayed(Duration(milliseconds: 300),() {
+          isViewProperty.value=!isViewProperty.value;
+        },);
       default:
         null;
     }
@@ -74,49 +82,61 @@ class PropertyManagementController extends GetxController {
         address: '789 Pine Road',
         verifyStatus: 'Pending',
         rent: '\$650',
-        agent:
-            'Mehbubur Rahman ',
-        enlistStatus: '-', date: '8 Aug, 2025', email: 'Email: suriya123@gmail.com', phoneNo: 'Phone No: +1234567890',
+        agent: 'Mehbubur Rahman ',
+        enlistStatus: '-',
+        date: '8 Aug, 2025',
+        email: 'Email: suriya123@gmail.com',
+        phoneNo: 'Phone No: +1234567890',
       ),
       PropertyModel(
         address: '789 Pine Road',
         verifyStatus: 'Pending',
         rent: '\$650',
-        agent:
-            'Mehbubur Rahman',
-        enlistStatus: '-', date: '8 Aug, 2025', email: 'Email: suriya123@gmail.com', phoneNo: 'Phone No: +1234567890',
+        agent: 'Mehbubur Rahman',
+        enlistStatus: '-',
+        date: '8 Aug, 2025',
+        email: 'Email: suriya123@gmail.com',
+        phoneNo: 'Phone No: +1234567890',
       ),
       PropertyModel(
         address: '789 Pine Road',
         verifyStatus: 'Approved',
         rent: '\$650',
-        agent:
-            'Mehbubur Rahman',
-        enlistStatus: 'Publish', date: '8 Aug, 2025', email: 'Email: suriya123@gmail.com', phoneNo: 'Phone No: +1234567890',
+        agent: 'Mehbubur Rahman',
+        enlistStatus: 'Publish',
+        date: '8 Aug, 2025',
+        email: 'Email: suriya123@gmail.com',
+        phoneNo: 'Phone No: +1234567890',
       ),
       PropertyModel(
         address: '789 Pine Road',
         verifyStatus: 'Approved',
         rent: '\$650',
-        agent:
-            'Mehbubur Rahman',
-        enlistStatus: 'Publish', date: '8 Aug, 2025', email: 'Email: suriya123@gmail.com', phoneNo: 'Phone No: +1234567890',
+        agent: 'Mehbubur Rahman',
+        enlistStatus: 'Publish',
+        date: '8 Aug, 2025',
+        email: 'Email: suriya123@gmail.com',
+        phoneNo: 'Phone No: +1234567890',
       ),
       PropertyModel(
         address: '789 Pine Road',
         verifyStatus: 'Rejected',
         rent: '\$650',
-        agent:
-            'Mehbubur Rahman',
-        enlistStatus: 'Publish', date: '8 Aug, 2025', email: 'Email: suriya123@gmail.com', phoneNo: 'Phone No: +1234567890',
+        agent: 'Mehbubur Rahman',
+        enlistStatus: 'Publish',
+        date: '8 Aug, 2025',
+        email: 'Email: suriya123@gmail.com',
+        phoneNo: 'Phone No: +1234567890',
       ),
       PropertyModel(
         address: '789 Pine Road',
         verifyStatus: 'Rejected',
         rent: '\$650',
-        agent:
-            'Mehbubur Rahman',
-        enlistStatus: '-', date: '8 Aug, 2025', email: 'Email: suriya123@gmail.com', phoneNo: 'Phone No: +1234567890',
+        agent: 'Mehbubur Rahman',
+        enlistStatus: '-',
+        date: '8 Aug, 2025',
+        email: 'Email: suriya123@gmail.com',
+        phoneNo: 'Phone No: +1234567890',
       ),
     ];
     expanded.value = List.generate(allRows.length, (_) => false);
@@ -127,7 +147,6 @@ class PropertyManagementController extends GetxController {
     if (index >= 0 && index < expanded.length) {
       expanded[index] = !expanded[index];
     }
-    expanded.refresh();
   }
 
   @override

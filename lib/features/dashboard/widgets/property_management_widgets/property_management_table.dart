@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/features/dashboard/controllers/property_management_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_management_table_action.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_management_table_content.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_management_table_data.dart';
@@ -35,8 +35,8 @@ class PropertyManagementTable extends StatelessWidget {
           return [
             CustomTextPrimary(
               text: item.address,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500,
               textOverflow: TextOverflow.ellipsis,
             ),
            isProperty? PropertyManagementTableData(index: index):CustomTextSecondary(text: '8 Aug, 2025',fontSize: 12.sp,fontWeight: FontWeight.w400,),
@@ -56,7 +56,6 @@ class PropertyManagementTable extends StatelessWidget {
         return CustomTable(
           column:isProperty? propertyManagementController.tableColumn:propertyManagementController.conditionReportTableColumn, 
           row: rowWidgets,
-          listIndex: listIndex,
           expandedTableBuilder: (index) {
             final item = list[index].value;
             final rowIndex = listIndex[index];

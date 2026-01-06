@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/features/dashboard/controllers/service_booked_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/service_booked_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_filter_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_calender/custom_calender_filter.dart';
 import 'package:renter_pay/shared/widgets/custom_calender/custom_table_calender.dart';

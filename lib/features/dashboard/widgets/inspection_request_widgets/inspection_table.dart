@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/inspection_request_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/inspection_request_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_table_content.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_table_data.dart';
 import 'package:renter_pay/shared/widgets/custom_table/custom_table.dart';
@@ -41,7 +41,6 @@ class InspectionTable extends StatelessWidget {
         return CustomTable(
           column: inspectionRequestController.tableColumn,
           row: rowWidgets,
-          listIndex: listIndex,
           expandedTableBuilder: (index) {
             final item = list[index].value;
             final rowIndex = listIndex[index];

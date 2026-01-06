@@ -27,8 +27,9 @@ class UploadImage {
                 title: const Text('Camera'),
                 onTap: () async {
                   Get.back();
-                  final XFile? image =
-                      await picker.pickImage(source: ImageSource.camera);
+                  final XFile? image = await picker.pickImage(
+                    source: ImageSource.camera,
+                  );
                   if (image != null) {
                     if (type == 'front') {
                       frontImage.value = image;
@@ -43,8 +44,9 @@ class UploadImage {
                 title: const Text('Gallery'),
                 onTap: () async {
                   Get.back();
-                  final XFile? image =
-                      await picker.pickImage(source: ImageSource.gallery);
+                  final XFile? image = await picker.pickImage(
+                    source: ImageSource.gallery,
+                  );
                   if (image != null) {
                     if (type == 'front') {
                       frontImage.value = image;
@@ -85,8 +87,9 @@ class UploadImage {
               title: const Text('Camera'),
               onTap: () async {
                 Get.back();
-                final XFile? image =
-                    await picker.pickImage(source: ImageSource.camera);
+                final XFile? image = await picker.pickImage(
+                  source: ImageSource.camera,
+                );
                 if (image != null) {
                   pickImage.value = image;
                 }
@@ -97,8 +100,9 @@ class UploadImage {
               title: const Text('Gallery'),
               onTap: () async {
                 Get.back();
-                final XFile? image =
-                    await picker.pickImage(source: ImageSource.gallery);
+                final XFile? image = await picker.pickImage(
+                  source: ImageSource.gallery,
+                );
                 if (image != null) {
                   pickImage.value = image;
                 }

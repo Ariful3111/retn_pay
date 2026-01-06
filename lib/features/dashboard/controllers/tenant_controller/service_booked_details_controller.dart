@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/features/dashboard/controllers/service_search_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/service_search_controller.dart';
 
 class ServiceBookedDetailsController extends GetxController {
   RxBool isShowInfo = false.obs;

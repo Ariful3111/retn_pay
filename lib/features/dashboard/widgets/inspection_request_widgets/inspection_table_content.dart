@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/features/dashboard/controllers/inspection_request_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/inspection_request_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_action_button.dart';
 import 'package:renter_pay/shared/widgets/custom_table/table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
