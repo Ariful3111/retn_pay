@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/service_search_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/service_search_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
 class ServiceTimePeriodField extends StatelessWidget {

@@ -38,7 +38,7 @@ class DashboardGraph extends StatelessWidget {
               activationMode: ActivationMode.singleTap,
               tooltipSettings: InteractiveTooltip(
                 enable: true,
-                format: 'point.x : point.yk',
+                format: 'point.x : point.y',
                 canShowMarker: true,
               ),
               markerSettings: TrackballMarkerSettings(

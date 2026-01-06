@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
-import 'package:renter_pay/features/dashboard/controllers/property_management_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/landrord_controller/property_management_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_close_button.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 

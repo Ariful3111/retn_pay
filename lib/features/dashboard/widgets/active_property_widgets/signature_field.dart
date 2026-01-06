@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/features/dashboard/controllers/key_release_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/key_release_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
 class SignatureField extends StatelessWidget {

@@ -4,7 +4,7 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/features/dashboard/controllers/services_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/services_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/services_search_suggestion.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';

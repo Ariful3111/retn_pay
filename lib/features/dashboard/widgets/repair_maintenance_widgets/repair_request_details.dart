@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/add_repair_request_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/add_repair_request_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_request_images.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_request_info.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_request_status.dart';
