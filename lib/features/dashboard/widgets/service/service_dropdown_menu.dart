@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/features/dashboard/controllers/services_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/services_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_dropdown/custom_dropdown_menu.dart';
 
 class ServiceDropdownMenu extends StatelessWidget {

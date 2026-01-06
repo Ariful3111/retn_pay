@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/utils/date_picker.dart';
-import 'package:renter_pay/features/dashboard/controllers/service_search_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/service_search_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/service_request_submit.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/service_time_period.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_date_field.dart';

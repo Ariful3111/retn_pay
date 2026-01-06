@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/features/dashboard/controllers/active_property_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/active_property_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/active_property_widgets/active_property_image.dart';
 import 'package:renter_pay/features/dashboard/widgets/active_property_widgets/active_property_widgets.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_rent_notice.dart';

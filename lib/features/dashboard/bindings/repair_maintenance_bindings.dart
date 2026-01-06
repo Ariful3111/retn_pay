@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:renter_pay/features/dashboard/controllers/repair_maintenance_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/repair_maintenance_controller.dart';
 
 class RepairMaintenanceBindings implements Bindings {
   @override

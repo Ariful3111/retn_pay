@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/features/dashboard/controllers/dashboard_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_item.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_key_features.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_quick_actions.dart';

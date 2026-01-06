@@ -7,7 +7,7 @@ import 'package:renter_pay/shared/widgets/custom_attach_image/custom_attached_im
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
-import '../../controllers/service_search_controller.dart';
+import '../../controllers/tenant_controller/service_search_controller.dart';
 
 class ServiceRequestFromDetails extends StatelessWidget with ServiceFromField{
   const ServiceRequestFromDetails({super.key});

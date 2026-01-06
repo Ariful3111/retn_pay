@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_items.dart';
 
 class WebAssetItems extends StatelessWidget {
@@ -10,10 +8,10 @@ class WebAssetItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    UserRoleController userRoleController = Get.find();
+    int userIndex = 1;
     return Column(
       children: [
-        if (userRoleController.selectedIndex.value == 3)
+        if (userIndex == 3)
           ProfileItems(
             image: IconsPath.profileService,
             imageHeight: 24.h,
@@ -21,7 +19,7 @@ class WebAssetItems extends StatelessWidget {
             title: 'Create New Service',
             onTap: () {},
           ),
-        if (userRoleController.selectedIndex.value == 1)
+        if (userIndex == 1)
           ProfileItems(
             image: IconsPath.profileAgent,
             imageHeight: 24.h,
@@ -29,7 +27,7 @@ class WebAssetItems extends StatelessWidget {
             title: 'Agent Management',
             onTap: () {},
           ),
-        if (userRoleController.selectedIndex.value == 0)
+        if (userIndex == 0)
           ProfileItems(
             image: IconsPath.profileApplication,
             imageHeight: 17.h,
@@ -37,7 +35,7 @@ class WebAssetItems extends StatelessWidget {
             title: 'Application',
             onTap: () {},
           ),
-        if (userRoleController.selectedIndex.value == 0)
+        if (userIndex == 0)
           ProfileItems(
             image: IconsPath.profileAgreement,
             imageHeight: 23.h,
@@ -45,7 +43,7 @@ class WebAssetItems extends StatelessWidget {
             title: 'Agreement',
             onTap: () {},
           ),
-        if (userRoleController.selectedIndex.value == 1)
+        if (userIndex == 1)
           ProfileItems(
             image: IconsPath.profileApplication,
             imageHeight: 17.h,
@@ -53,7 +51,7 @@ class WebAssetItems extends StatelessWidget {
             title: 'Application',
             onTap: () {},
           ),
-        if (userRoleController.selectedIndex.value == 1)
+        if (userIndex == 1)
           ProfileItems(
             image: IconsPath.profileAgreement,
             imageHeight: 23.h,
@@ -61,7 +59,7 @@ class WebAssetItems extends StatelessWidget {
             title: 'Agreement',
             onTap: () {},
           ),
-        if (userRoleController.selectedIndex.value == 2)
+        if (userIndex == 2)
           ProfileItems(
             image: IconsPath.profileApplication,
             imageHeight: 17.h,
@@ -69,7 +67,7 @@ class WebAssetItems extends StatelessWidget {
             title: 'Application',
             onTap: () {},
           ),
-        if (userRoleController.selectedIndex.value == 2)
+        if (userIndex == 2)
           ProfileItems(
             image: IconsPath.profileAgreement,
             imageHeight: 23.h,
@@ -77,7 +75,7 @@ class WebAssetItems extends StatelessWidget {
             title: 'Agreement',
             onTap: () {},
           ),
-        if (userRoleController.selectedIndex.value == 1)
+        if (userIndex == 1)
           ProfileItems(
             image: IconsPath.profileTenant,
             imageHeight: 24.h,
@@ -85,7 +83,7 @@ class WebAssetItems extends StatelessWidget {
             title: 'Tenant Management',
             onTap: () {},
           ),
-        if (userRoleController.selectedIndex.value == 1)
+        if (userIndex == 1)
           ProfileItems(
             image: IconsPath.profileReport,
             imageHeight: 23.h,
@@ -93,7 +91,7 @@ class WebAssetItems extends StatelessWidget {
             title: 'Reporting & Analytics',
             onTap: () {},
           ),
-        if (userRoleController.selectedIndex.value == 2)
+        if (userIndex == 2)
           ProfileItems(
             image: IconsPath.profileReport,
             imageHeight: 23.h,
