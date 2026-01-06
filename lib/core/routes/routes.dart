@@ -6,6 +6,7 @@ import 'package:renter_pay/features/auth/bindings/forgot_password_bindings.dart'
 import 'package:renter_pay/features/dashboard/bindings/landlord_key_release_bindings.dart';
 import 'package:renter_pay/features/dashboard/views/landlord_views/landlord_key_release.dart';
 import 'package:renter_pay/features/dashboard/views/landlord_views/property_management_details.dart';
+import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/landlord_inspection/landlord_inspection_view.dart';
 import 'package:renter_pay/features/home/bindings/logged_in_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/login_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/onboarding_bindings.dart';
@@ -355,4 +356,5 @@ final List<GetPage> appRoutes = [
     page: () => LandlordKeyRelease(),
     binding: LandlordKeyReleaseBindings(),
   ),
+  GetPage(name: AppRoutes.landlordInspectionView, page:()=> LandlordInspectionView())
 ];

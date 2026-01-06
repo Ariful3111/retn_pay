@@ -45,4 +45,6 @@ class ImagesPath {
   static const String service = 'assets/images/service.png';
   static const String landlordSignature =
       'assets/images/landlord_signature.png';
+  static const String document =
+      'assets/images/document.png';
 }

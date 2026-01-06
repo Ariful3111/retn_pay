@@ -38,7 +38,9 @@ class PropertyManagement extends StatelessWidget {
             ],
           ),
           Obx(
-            () =>addNewPropertyController.isPropertyDetails.value?PropertyManagementDetails() :addNewPropertyController.isNewProperty.value
+            () => addNewPropertyController.isPropertyDetails.value
+                ? PropertyManagementDetails()
+                : addNewPropertyController.isNewProperty.value
                 ? PropertyOwnerDocument()
                 : Column(
                     children: [
