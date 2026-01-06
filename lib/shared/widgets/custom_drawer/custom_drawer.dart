@@ -38,34 +38,36 @@ class CustomDrawer extends StatelessWidget {
         ),
         child: Material(
           color: Colors.transparent,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset(
-                    IconsPath.drawerLogo,
-                    height: 19.11.h,
-                    width: 115.52.w,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Image.asset(
-                      IconsPath.drawerClose,
-                      height: 24.h,
-                      width: 24.w,
-                      color: isDark ? AppColors.darkAppBar : null,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.asset(
+                      IconsPath.drawerLogo,
+                      height: 19.11.h,
+                      width: 115.52.w,
                     ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 32.h),
-              ...List.generate(dashboardController.userDrawerItems.length, (index) {
-                return CustomDrawerItem(index: index);
-              }),
-            ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Image.asset(
+                        IconsPath.drawerClose,
+                        height: 24.h,
+                        width: 24.w,
+                        color: isDark ? AppColors.darkAppBar : null,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 32.h),
+                ...List.generate(dashboardController.userDrawerItems.length, (index) {
+                  return CustomDrawerItem(index: index);
+                }),
+              ],
+            ),
           ),
         ),
       ),
