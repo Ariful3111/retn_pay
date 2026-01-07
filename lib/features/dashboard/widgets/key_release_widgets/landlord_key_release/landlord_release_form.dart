@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_repair_request_widgets/landlord_signature.dart';
-import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/landlord_key_release_room_info.dart';
-import 'package:renter_pay/features/dashboard/widgets/active_property_widgets/signature_draw.dart';
+import 'package:renter_pay/features/dashboard/widgets/key_release_widgets/landlord_key_release/landlord_key_release_room_info.dart';
+import 'package:renter_pay/features/dashboard/widgets/key_release_widgets/landlord_key_release/signature_draw.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_dropdown/custom_dropdown_menu.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
@@ -75,7 +75,7 @@ class LandlordReleaseForm extends StatelessWidget {
           isSelect: RxString(''),
           fillColor: Theme.of(context).brightness == Brightness.dark
               ? AppColors.darkPrimary
-              : AppColors.textFieldColor,
+              : AppColors.whiteColor,
           alignmentGeometry: Alignment(0.10, 0),
         ),
         SizedBox(height: 20.h),

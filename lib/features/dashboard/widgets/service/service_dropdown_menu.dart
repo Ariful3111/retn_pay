@@ -28,7 +28,7 @@ class ServiceDropdownMenu extends StatelessWidget {
           focusBorderRadius: 6.r,
           expandedInsets: EdgeInsets.zero,
           textAlign: TextAlign.left,
-          contentPadding: EdgeInsets.zero,
+          contentPadding: EdgeInsets.only(left: 8.w),
           fontSize: 12.sp,
         ),
       ),

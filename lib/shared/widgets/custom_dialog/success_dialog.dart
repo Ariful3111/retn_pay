@@ -32,7 +32,7 @@ class SuccessDialog extends StatelessWidget {
       backgroundColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
       content: Container(
         height: height ?? 248.h,
-        width: width ?? 362.w,
+        width: width ?? 390.w,
         padding: EdgeInsets.zero,
         decoration: BoxDecoration(
           image:isBG? DecorationImage(

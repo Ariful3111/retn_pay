@@ -41,4 +41,6 @@ class AppRoutes {
   static const String propertyManagementDetails = '/propertyManagementDetails';
   static const String landlordKeyRelease = '/landlordKeyRelease';
   static const String landlordInspectionView = '/landlordInspectionView';
+  static const String applicationManagementView = '/applicationManagementView';
+  static const String landlordCalenderView = '/landlordCalenderView';
 }

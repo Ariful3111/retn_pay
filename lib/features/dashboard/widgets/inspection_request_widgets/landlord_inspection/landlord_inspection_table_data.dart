@@ -5,6 +5,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/landlord_inspection_request_controller.dart';
+import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/landlord_inspection/landlord_inspection_view_dialog.dart';
 import 'package:renter_pay/shared/widgets/custom_table/table_action_button.dart';
 
 class LandlordInspectionTableData extends StatelessWidget {
@@ -30,11 +31,22 @@ class LandlordInspectionTableData extends StatelessWidget {
             onTap: () {
               Get.toNamed(AppRoutes.landlordInspectionView);
             },
-            iconColor:isDark? AppColors.whiteColor:null,
+            iconColor: isDark ? AppColors.whiteColor : null,
           ),
         SizedBox(width: 8.w),
         if (isValue.status == 'Approved')
-          TableActionButton(icon: IconsPath.check, onTap: () {},iconColor:isDark? AppColors.whiteColor:null,),
+          TableActionButton(
+            icon: IconsPath.check,
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return LandlordInspectionViewDialog();
+                },
+              );
+            },
+            iconColor: isDark ? AppColors.whiteColor : null,
+          ),
       ],
     );
   }

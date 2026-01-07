@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/features/dashboard/controllers/tenant_controller/add_repair_request_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
 
@@ -13,7 +12,6 @@ class RequestSubmit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    AddRepairRequestController addRepairRequestController = Get.find();
     return Container(
       padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
       height: 57.h,
@@ -51,16 +49,8 @@ class RequestSubmit extends StatelessWidget {
             text: 'Submit Now',
             fontSize: 14.sp,
             onPressed: () {
-              
-              if (addRepairRequestController.dateController.text.isEmpty) {
-                Get.snackbar('Error', 'Pick a date');
-              }
-              if (addRepairRequestController.repairImages.isEmpty) {
-                Get.snackbar('Error', 'Pick a Image');
-              } else {
-                Navigator.pop(context);
-                Get.toNamed(AppRoutes.repairRequestView);
-              }
+              Navigator.pop(context);
+              Get.toNamed(AppRoutes.repairRequestView);
             },
           ),
         ],

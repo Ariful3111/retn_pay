@@ -9,7 +9,10 @@ import 'package:renter_pay/shared/widgets/document_verification/document_upload_
 
 class CustomAttachedImage extends StatelessWidget {
   final RxList<String> imageList;
-  const CustomAttachedImage({super.key, required this.imageList});
+  final double? height;
+  final double? width;
+  final double? verticalPadding;
+  const CustomAttachedImage({super.key, required this.imageList, this.height, this.width, this.verticalPadding});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,9 @@ class CustomAttachedImage extends StatelessWidget {
             await UploadImage.pickMultipleImage(allImages: imageList);
           },
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: 10.5.h, horizontal: 12.w),
+            padding: EdgeInsets.symmetric(vertical:verticalPadding?? 10.5.h, horizontal: 12.w),
+            height: height,
+            width: width,
             decoration: BoxDecoration(
               color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
               borderRadius: BorderRadius.circular(10.r),
