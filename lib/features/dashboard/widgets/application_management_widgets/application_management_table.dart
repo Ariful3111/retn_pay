@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/landlord_controller/landlord_inspection_request_controller.dart';
-import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/landlord_inspection/landlord_inspection_table_content.dart';
-import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/landlord_inspection/landlord_inspection_table_data.dart';
+import 'package:renter_pay/features/dashboard/controllers/landlord_controller/application_management_controller.dart';
+import 'package:renter_pay/features/dashboard/widgets/application_management_widgets/application_management_table_content.dart';
+import 'package:renter_pay/features/dashboard/widgets/application_management_widgets/application_management_table_data.dart';
+import 'package:renter_pay/features/dashboard/widgets/application_management_widgets/application_management_table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_table/custom_table.dart';
 import 'package:renter_pay/shared/widgets/custom_table/custom_table_expanded.dart';
-import 'package:renter_pay/shared/widgets/custom_table/table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
-class LandlordInspectionTable extends StatelessWidget {
-  const LandlordInspectionTable({super.key});
+class ApplicationManagementTable extends StatelessWidget {
+  const ApplicationManagementTable({super.key});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    LandlordInspectionRequestController landlordInspectionRequestController =
+    ApplicationManagementController applicationManagementController =
         Get.find();
     return Container(
       decoration: BoxDecoration(
@@ -24,41 +24,41 @@ class LandlordInspectionTable extends StatelessWidget {
         color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
       ),
       child: Obx(() {
-        final list = landlordInspectionRequestController.filterRow;
+        final list = applicationManagementController.filterRow;
         final rowWidgets = List<List<Widget>>.generate(list.length, (index) {
           final item = list[index].value;
           return [
             CustomTextPrimary(
-              text: item.address,
+              text: item.property,
               fontSize: 14.sp,
               fontWeight: FontWeight.w400,
               textOverflow: TextOverflow.ellipsis,
             ),
-            TableStatus(status: item.status),
-            LandlordInspectionTableData(index: index),
+            ApplicationManagementTableStatus(status: item.status,),
+            ApplicationManagementTableData(index: index),
           ];
         });
         final listIndex = list.map((e) => e.key).toList();
         return CustomTable(
-          column: landlordInspectionRequestController.tableColumn,
+          column: applicationManagementController.tableColumn,
           row: rowWidgets,
           expandedTableBuilder: (index) {
             final item = list[index].value;
             final rowIndex = listIndex[index];
             return CustomTableExpanded(
-              title: 'Property Address: ${item.address}',
-              isOpen: landlordInspectionRequestController.expanded[rowIndex],
+              title: 'Property Address: ${item.property}',
+              isOpen: applicationManagementController.expanded[rowIndex],
               onExpandedClose: () {
-                landlordInspectionRequestController.toggleExpanded(rowIndex);
+                applicationManagementController.toggleExpanded(rowIndex);
               },
-              expandedContent: LandlordInspectionTableContent(index: listIndex[index],),
+              expandedContent: ApplicationManagementTableContent(index: listIndex[index]),
             );
           },
           onRowTap: (index) {
-            landlordInspectionRequestController.toggleExpanded(listIndex[index]);
+            applicationManagementController.toggleExpanded(listIndex[index]);
           },
           isExpandedTableBuilder: (index) {
-            return landlordInspectionRequestController.expanded[listIndex[index]];
+            return applicationManagementController.expanded[listIndex[index]];
           },
           isNeedLastCol: true,
         );

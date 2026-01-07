@@ -18,7 +18,7 @@ class ServiceBookedTableContent extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 8.h),
-        infoText(title: "Monthly Rent: ${item.serviceProviderContact}"),
+        infoText(title: "ServiceProviderContact: ${item.serviceProviderContact}"),
         SizedBox(height: 8.h),
         infoText(title: "Scheduled: ${item.schedule}"),
         SizedBox(height: 8.h),

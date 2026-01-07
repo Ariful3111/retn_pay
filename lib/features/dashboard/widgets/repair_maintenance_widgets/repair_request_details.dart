@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/tenant_controller/add_repair_request_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_request_images.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_request_info.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_request_status.dart';
@@ -16,7 +14,6 @@ class RepairRequestDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    AddRepairRequestController addRepairRequestController = Get.find();
     return Container(
       height: MediaQuery.heightOf(context),
       width: MediaQuery.widthOf(context),
@@ -39,25 +36,18 @@ class RepairRequestDetails extends StatelessWidget {
               SizedBox(height: 12.h),
               CustomTextSpan(
                 title: 'Urgency: ',
-                spantext:
-                    addRepairRequestController
-                        .requestType[addRepairRequestController
-                        .selectedIndex
-                        .value],
+                spantext: 'Urgent',
                 spanColor: AppColors.primaryColorDark,
                 fontSize: 20.sp,
                 spanFontSize: 20.sp,
               ),
               SizedBox(height: 16.h),
-              fieldText(
-                title: 'Issue Title ',
-                subTitle: addRepairRequestController.issueTitleController.text,
-              ),
+              fieldText(title: 'Issue Title ', subTitle: 'Plumbing issue'),
               SizedBox(height: 16.h),
               fieldText(
                 title: 'Issue Details',
                 subTitle:
-                    addRepairRequestController.issueDetailsController.text,
+                    'A persistent plumbing problem has emerged in the Johnson household. The kitchen sink is draining slowly, causing water to back up and creating a mess. Additionally, the bathroom faucet has developed a constant drip, leading to concerns about water waste and potential damage. The family is frustrated and seeking a reliable plumber to resolve these issues promptly.',
               ),
               SizedBox(height: 16.h),
               RepairRequestImages(),

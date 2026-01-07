@@ -49,9 +49,6 @@ class VerificationButton extends StatelessWidget {
                         if (index == 1 || index == 3) {
                           Get.toNamed(AppRoutes.subsPlan);
                         }
-                        // else{
-                        //   Get.toNamed(AppRoutes.mainHome);
-                        // }
                       },
                       text: "Back To Dashboard",
                     ),
