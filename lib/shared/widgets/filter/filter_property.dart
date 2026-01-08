@@ -15,8 +15,9 @@ class FilterProperty extends StatelessWidget {
     super.key,
     required this.propertyItems,
     required this.selectedProperty,
-    required this.onChange, required this.onTap, required this.isPropertyShow,
-    
+    required this.onChange,
+    required this.onTap,
+    required this.isPropertyShow,
   });
   @override
   Widget build(BuildContext context) {
@@ -26,24 +27,42 @@ class FilterProperty extends StatelessWidget {
         padding: EdgeInsets.all(18.41.h),
         width: MediaQuery.widthOf(context),
         decoration: BoxDecoration(
-          color:isDark? AppColors.darkPrimary:AppColors.whiteColor,
-          border: Border.all(width: 0.77, color:isDark?AppColors.darkBorderPrimary: AppColors.filterBorder),
+          color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+          border: Border.all(
+            width: 0.77,
+            color: isDark
+                ? AppColors.darkBorderPrimary
+                : AppColors.filterBorder,
+          ),
           borderRadius: BorderRadius.circular(9.2.sp),
         ),
-        child: Obx((){
+        child: Obx(() {
           return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FilterTitles(title: 'Property Type', onTap: onTap, icon: isPropertyShow.value? Icons.remove:Icons.add,),
-            AnimatedSize(
-          duration: Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
-          child: AnimatedOpacity(opacity: isPropertyShow.value?1:0, duration: Duration(milliseconds: 200),
-          child: isPropertyShow.value?FilterCheckbox(propertyItems: propertyItems, selectedProperty: selectedProperty, onChange: onChange):SizedBox(),
-          ),),
-          ],
-        );
-        })
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FilterTitles(
+                title: 'Property Type',
+                onTap: onTap,
+                icon: isPropertyShow.value ? Icons.remove : Icons.add,
+              ),
+              AnimatedSize(
+                duration: Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+                child: AnimatedOpacity(
+                  opacity: isPropertyShow.value ? 1 : 0,
+                  duration: Duration(milliseconds: 200),
+                  child: isPropertyShow.value
+                      ? FilterCheckbox(
+                          propertyItems: propertyItems,
+                          selectedProperty: selectedProperty,
+                          onChange: onChange,
+                        )
+                      : SizedBox(),
+                ),
+              ),
+            ],
+          );
+        }),
       ),
     );
   }
