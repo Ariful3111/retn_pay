@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/landlord_calender_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
-import 'package:renter_pay/features/dashboard/widgets/landlord_calender_widgets/custom_event_calender.dart';
+import 'package:renter_pay/features/dashboard/widgets/landlord_calender_widgets/landlord_calender_filter.dart';
+import 'package:renter_pay/shared/widgets/custom_calender/custom_calender_filter.dart';
+import 'package:renter_pay/shared/widgets/custom_calender/custom_calender_filter_helper.dart';
+import 'package:renter_pay/shared/widgets/custom_calender/custom_event_calender.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_filter_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
@@ -35,7 +37,7 @@ class LandlordCalenderView extends StatelessWidget {
                 child: CustomTextField(
                   padding: EdgeInsets.zero,
                   controller: landlordCalenderController.searchController,
-                  fillColor: isDark?null:AppColors.whiteColor,
+                  fillColor: isDark ? null : AppColors.whiteColor,
                   labelText: 'Search',
                   prefixIcon: Padding(
                     padding: EdgeInsetsGeometry.only(left: 6.w),
@@ -52,13 +54,62 @@ class LandlordCalenderView extends StatelessWidget {
                 width: 99.w,
                 radius: 12.r,
                 onTap: () {
-                
-              },)
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Obx(
+                        () => Material(
+                          color: Colors.transparent,
+                          child: CustomCalenderFilter(
+                            widget: LandlordCalenderFilter(),
+                            isDay: landlordCalenderController.isDay.value,
+                            onTap: (index) {
+                              landlordCalenderController.isDay.value = index;
+                              calenderFilter(
+                                index: index,
+                                selectedDay:
+                                    landlordCalenderController.selectedDay,
+                                rangeStart:
+                                    landlordCalenderController.rangeStart,
+                                rangeEnd: landlordCalenderController.rangeEnd,
+                                rangeSelectionMode: landlordCalenderController
+                                    .rangeSelectionMode,
+                              );
+                            },
+                            onApply: () {
+                              if (landlordCalenderController.rangeStart.value !=
+                                  null) {
+                                landlordCalenderController.focusedDay.value =
+                                    landlordCalenderController
+                                        .rangeStart
+                                        .value!;
+                              } else {
+                                landlordCalenderController.focusedDay.value =
+                                    landlordCalenderController
+                                        .selectedDay
+                                        .value;
+                              }
+                              landlordCalenderController.applyFilter();
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
             ],
           ),
-          SizedBox(height: 16.h,),
-          CustomTextSecondary(text: DateFormat('MMMM,yyyy').format(DateTime.now()),fontSize: 20.sp,fontWeight: FontWeight.w600,),
-          SizedBox(height: 16.h,),
+          SizedBox(height: 16.h),
+          Obx(
+            () => CustomTextSecondary(
+              text: landlordCalenderController.selectedMonthLabel,
+              fontSize: 20.sp,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          SizedBox(height: 16.h),
           CustomEventCalender(),
         ],
       ),

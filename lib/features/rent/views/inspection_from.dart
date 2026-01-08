@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/rent/controllers/property_view_controller.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_agreement.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_faq.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_from_field.dart';
@@ -19,7 +17,6 @@ class InspectionFrom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    PropertyViewController propertyViewController = Get.find();
     return CustomContainer(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       gradient: isDark
@@ -29,7 +26,6 @@ class InspectionFrom extends StatelessWidget {
           : AppColors.userBackground.withOpacity(0.50),
 
       child: ListView(
-        controller: propertyViewController.scrollController,
         children: [
           Row(
             children: [

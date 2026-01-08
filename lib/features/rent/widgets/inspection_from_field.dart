@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/utils/date_picker.dart';
 import 'package:renter_pay/core/utils/time_picker.dart';
-import 'package:renter_pay/features/rent/controllers/property_view_controller.dart';
+import 'package:renter_pay/features/rent/controllers/inspection_from_controller.dart';
+import 'package:renter_pay/shared/extensions/Validators/email_validator.dart';
+import 'package:renter_pay/shared/extensions/Validators/phone_validator.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_date_field.dart';
 import 'package:renter_pay/shared/widgets/custom_dropdown/custom_dropdown_menu.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
@@ -17,12 +19,12 @@ class InspectionFromField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    PropertyViewController propertyViewController = Get.find();
+    InspectionFromController inspectionFromController = Get.find();
     return Column(
       children: [
         CustomTextField(
           fillColor:isDark? AppColors.darkPrimary:AppColors.whiteColor,
-          controller: propertyViewController.nameController,
+          controller: inspectionFromController.nameController,
           labelText: 'Full Name*',
           hintText: 'Enter Your Full Name',
           textColor: AppColors.secondaryTextColor,
@@ -30,33 +32,33 @@ class InspectionFromField extends StatelessWidget {
         SizedBox(height: 15.66.h),
         CustomTextField(
           fillColor: isDark? AppColors.darkPrimary:AppColors.whiteColor,
-          controller: propertyViewController.emailController,
+          controller: inspectionFromController.emailController,
           labelText: 'Email Address*',
           hintText: 'Enter Your Email Address',
-          validator: propertyViewController.emailValidation,
+          validator: emailValidation,
           validation: AutovalidateMode.onUserInteraction,
           textColor: AppColors.secondaryTextColor,
         ),
         SizedBox(height: 15.66.h),
         CustomTextField(
           fillColor: isDark? AppColors.darkPrimary:AppColors.whiteColor,
-          controller: propertyViewController.phoneController,
+          controller: inspectionFromController.phoneController,
           labelText: 'Phone Number*',
           hintText: 'Enter Your Phone Number',
-          validator: propertyViewController.phoneValidation,
+          validator: phoneValidation,
           validation: AutovalidateMode.onUserInteraction,
           textColor: AppColors.secondaryTextColor,
         ),
         SizedBox(height: 15.66.h),
         CustomDateField(
           fillColor: isDark? AppColors.darkPrimary:AppColors.whiteColor,
-          controller: propertyViewController.dateController,
+          controller: inspectionFromController.dateController,
           onTap: () {
             DatePicker.pickDate(
               context: context,
               onDateSelected: (date) {
-                propertyViewController.selectedDate.value = date;
-                propertyViewController.dateController.text =
+                inspectionFromController.selectedDate.value = date;
+                inspectionFromController.dateController.text =
                     "${date.day.toString().padLeft(2, '0')}/"
                     "${date.month.toString().padLeft(2, '0')}/"
                     "${date.year}";
@@ -68,13 +70,13 @@ class InspectionFromField extends StatelessWidget {
         SizedBox(height: 15.66.h),
         CustomTimeField(
           fillColor: isDark? AppColors.darkPrimary:AppColors.whiteColor,
-          controller: propertyViewController.timeController,
+          controller: inspectionFromController.timeController,
           onTap: () {
             TimePicker.pickTime(
               context: context,
               onTimeSelected: (time) {
-                propertyViewController.selectedTime.value = time;
-                propertyViewController.timeController.text = time.format(
+                inspectionFromController.selectedTime.value = time;
+                inspectionFromController.timeController.text = time.format(
                   context,
                 );
               },
@@ -85,11 +87,11 @@ class InspectionFromField extends StatelessWidget {
         SizedBox(height: 15.66.h),
         CustomDropdownMenu(
           onSelect: (value) {
-            propertyViewController.selectedInspection.value = value!;
-            propertyViewController.isSelectedInspection.value = true;
+            inspectionFromController.selectedInspection.value = value!;
+            inspectionFromController.isSelectedInspection.value = true;
           },
-          option: propertyViewController.inspectOption,
-          isSelect: propertyViewController.selectedInspection,
+          option: inspectionFromController.inspectOption,
+          isSelect: inspectionFromController.selectedInspection,
           label: CustomTextSecondary(
             text: 'Inspection Type*',
             fontSize: 12.sp,

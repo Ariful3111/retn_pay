@@ -22,6 +22,8 @@ class ChartData {
 }
 
 class DashboardLandlordController extends GetxController {
+  final selectedDay = DateTime.now().obs;
+  RxInt isDay = 0.obs;
   RxInt checkedIndex = (-1).obs;
   late DateTime today;
   late DateTime firstDay;
@@ -98,4 +100,5 @@ class DashboardLandlordController extends GetxController {
       amount: '\$450',
     ),
   ];
+  
 }

@@ -7,14 +7,23 @@ import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.
 
 class CustomCalenderFilter extends StatelessWidget {
   final Widget widget;
+  final int isDay;
+  final Function(int index) onTap;
   final AlignmentGeometry? alignmentGeometry;
-  const CustomCalenderFilter({super.key, required this.widget, this.alignmentGeometry});
+  final VoidCallback onApply;
+  const CustomCalenderFilter({
+    super.key,
+    required this.widget,
+    this.alignmentGeometry,
+    required this.isDay,
+    required this.onTap, required this.onApply,
+  });
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Align(
-      alignment:alignmentGeometry?? Alignment(0.5, -0.850),
+      alignment: alignmentGeometry ?? Alignment(0.5, -0.850),
       child: Container(
         padding: EdgeInsets.all(9.44.r),
         height: 350.h,
@@ -34,7 +43,7 @@ class CustomCalenderFilter extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SelectDay(),
+            SelectDay(isDay: isDay, onTap: onTap),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -60,7 +69,7 @@ class CustomCalenderFilter extends StatelessWidget {
                       borderRadius: BorderRadius.circular(3.54.r),
                       text: 'Apply',
                       fontSize: 9.44.sp,
-                      onPressed: () {},
+                      onPressed: onApply,
                     ),
                   ],
                 ),
