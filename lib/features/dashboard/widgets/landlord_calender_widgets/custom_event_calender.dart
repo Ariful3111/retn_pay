@@ -11,13 +11,12 @@ import 'package:table_calendar/table_calendar.dart';
 class CustomEventCalender extends StatelessWidget {
   const CustomEventCalender({super.key});
 
-  
   DateTime normalize(DateTime d) => DateTime(d.year, d.month, d.day);
 
   @override
   Widget build(BuildContext context) {
     LandlordCalenderController landlordCalenderController = Get.find();
- bool isDark = Theme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       children: [
         Obx(() {
@@ -25,7 +24,7 @@ class CustomEventCalender extends StatelessWidget {
             height: 252.h,
             padding: EdgeInsets.all(16.r),
             decoration: BoxDecoration(
-              color:isDark? AppColors.darkSecondary:AppColors.whiteColor,
+              color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
               borderRadius: BorderRadius.circular(12.r),
             ),
             child: TableCalendar(
@@ -40,7 +39,8 @@ class CustomEventCalender extends StatelessWidget {
               onPageChanged: landlordCalenderController.onMonthChanged,
               calendarBuilders: CalendarBuilders(
                 defaultBuilder: (context, day, _) {
-                  final list = landlordCalenderController.events[normalize(day)];
+                  final list =
+                      landlordCalenderController.events[normalize(day)];
                   if (list != null && list.isNotEmpty) {
                     return _coloredDate(day.day, list.first.color);
                   }
@@ -49,16 +49,21 @@ class CustomEventCalender extends StatelessWidget {
               ),
               calendarStyle: CalendarStyle(
                 cellMargin: EdgeInsets.all(4.r),
-                  defaultTextStyle: textDecoration(color: isDark?AppColors.darkAppBar:null),
-                  todayTextStyle: textDecoration(color: AppColors.borderColor),
-                  outsideTextStyle: textDecoration(color:isDark? AppColors.borderColor:Color(0xFF525E6F)),
-                  weekendTextStyle: textDecoration(color: isDark?AppColors.darkAppBar:null),
-                  rangeHighlightColor: Color(0xFFD1B1C5),
-                  withinRangeTextStyle: textDecoration(
-                    color: AppColors.borderColor,
-                  ),
-                  
+                defaultTextStyle: textDecoration(
+                  color: isDark ? AppColors.darkAppBar : null,
                 ),
+                todayTextStyle: textDecoration(color: AppColors.borderColor),
+                outsideTextStyle: textDecoration(
+                  color: isDark ? AppColors.borderColor : Color(0xFF525E6F),
+                ),
+                weekendTextStyle: textDecoration(
+                  color: isDark ? AppColors.darkAppBar : null,
+                ),
+                rangeHighlightColor: Color(0xFFD1B1C5),
+                withinRangeTextStyle: textDecoration(
+                  color: AppColors.borderColor,
+                ),
+              ),
             ),
           );
         }),
@@ -93,9 +98,7 @@ class CustomEventCalender extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       alignment: Alignment.center,
-      child: CustomTextSecondary(
-        text:  '$day',color: color,
-      ),
+      child: CustomTextSecondary(text: '$day', color: color),
     );
   }
 

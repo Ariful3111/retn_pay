@@ -1,42 +1,48 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/home/models/properties_model.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
 import 'package:renter_pay/shared/widgets/custom_rating/custom_rating_builder.dart';
 
 class ItemInfo extends StatelessWidget {
-  final VoidCallback onVR;
-  final ValueChanged<double> updateRating;
-  final VoidCallback? onTapDetails;
   final double initialRating;
   final double imageWidth;
+  final Property property;
   const ItemInfo({
     super.key,
-    required this.onVR,
-    required this.updateRating,
-    this.onTapDetails,
-    required this.initialRating, required this.imageWidth,
+    required this.initialRating,
+    required this.imageWidth,
+    required this.property,
   });
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
+    String size = property.buildingSize == '0.00'
+        ? '${property.landSize}sft'
+        : '${property.buildingSize}sft';
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         InkWell(
-          onTap: onTapDetails,
+          onTap: () {
+            HitTestBehavior.opaque;
+            Get.toNamed(AppRoutes.rentDetails);
+          },
           child: Row(
             children: [
               Image.asset(IconsPath.bed, height: 12.h, width: 12.w),
               SizedBox(width: 1.56.w),
               CustomTextSecondary(
-                text: 'Bed-04',
+                text: 'Bed-${property.bedrooms ?? 0}',
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.lightText,
@@ -51,7 +57,7 @@ class ItemInfo extends StatelessWidget {
               ),
               SizedBox(width: 2.w),
               CustomTextSecondary(
-                text: 'Bath-04',
+                text: 'Bath-${property.bathrooms ?? 0}',
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.lightText,
@@ -80,7 +86,7 @@ class ItemInfo extends StatelessWidget {
               ),
               SizedBox(width: 4.w),
               CustomTextSecondary(
-                text: '2500sft',
+                text: size,
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.lightText,
@@ -104,51 +110,67 @@ class ItemInfo extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              InkWell(
-                onTap: onTapDetails,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Image.asset(
-                          IconsPath.location,
-                          height: 14.h,
-                          width: 14.w,
-                          color: isDark ? null : AppColors.darkPrimary,
-                        ),
-                        SizedBox(width: 4.w),
-                        CustomTextPrimary(text: 'New York, USA', fontSize: 16.sp),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        CustomTextSpan(
-                          title: '\$280',
-                          spantext: '/week',
-                          spanColor: Color(0xFF505F79),
-                        ),
-                        SizedBox(width: 5.w,),
-                        Row(
-                          children: [
-                            Image.asset(
-                              IconsPath.appCurrency,
-                              height: 11.h,
-                              width: 11.h,
-                              color: isDark ? null : AppColors.darkPrimary,
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    HitTestBehavior.opaque;
+                    Get.toNamed(AppRoutes.rentDetails);
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Image.asset(
+                            IconsPath.location,
+                            height: 14.h,
+                            width: 14.w,
+                            color: isDark ? null : AppColors.darkPrimary,
+                          ),
+                          SizedBox(width: 4.w),
+                          Expanded(
+                            child: CustomTextPrimary(
+                              text: '${property.city}, ${property.country}',
+                              fontSize: 16.sp,
+                              textOverflow: TextOverflow.ellipsis,
                             ),
-                            SizedBox(width: 3.w),
+                          ),
+                        ],
+                      ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
                             CustomTextSpan(
-                              title: '280',
+                              title:
+                                  '\$${property.units!.first.rentAmount ?? 0}',
                               spantext: '/week',
                               spanColor: Color(0xFF505F79),
                             ),
+                            SizedBox(width: 5.w),
+                            Row(
+                              children: [
+                                Image.asset(
+                                  IconsPath.appCurrency,
+                                  height: 11.h,
+                                  width: 11.h,
+                                  color: isDark ? null : AppColors.darkPrimary,
+                                ),
+                                SizedBox(width: 3.w),
+                                CustomTextSpan(
+                                  title:
+                                      '${property.units!.first.rentAmount ?? 0}',
+                                  spantext: '/week',
+                                  spanColor: Color(0xFF505F79),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Column(
@@ -156,11 +178,11 @@ class ItemInfo extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   InkWell(
-                    onTap: onVR,
+                    onTap: () {},
                     child: Image.asset(IconsPath.vR, height: 16.h, width: 16.w),
                   ),
                   CustomRatingBuilder(
-                    onRating: updateRating,
+                    onRating: (value) {},
                     initialRating: initialRating,
                   ),
                 ],

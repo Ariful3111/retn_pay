@@ -1,36 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:renter_pay/core/constants/images_path.dart';
+import 'package:renter_pay/features/favorite/controller/favorite_controller.dart';
+import 'package:renter_pay/features/home/models/properties_model.dart';
+import 'package:renter_pay/features/rent/widgets/property_image_view.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_favorite_button.dart';
 import 'package:renter_pay/shared/widgets/item_info.dart';
 
 class ItemContainer extends StatelessWidget {
+  final Property property;
   final double imageHeight;
   final double imageWidth;
-  final String image;
-  final double? borderRadius;
   final EdgeInsetsGeometry padding;
-  final VoidCallback onVR;
-  final ValueChanged<double> updateRating;
-  final double initialRating;
-  final VoidCallback? onTapImage;
-  final VoidCallback? onTapDetails;
-  final VoidCallback onFavorite;
-  final bool isFavorite;
-  final BoxFit? fit;
+  final FavoriteController favoriteController;
   const ItemContainer({
     super.key,
     required this.imageHeight,
     required this.imageWidth,
-    required this.image,
-    this.borderRadius,
     required this.padding,
-    required this.onVR,
-    required this.updateRating,
-    required this.initialRating,
-    this.onTapImage,
-    required this.onFavorite,
-    required this.isFavorite,
-    this.onTapDetails, this.fit,
+    required this.favoriteController,
+    required this.property,
   });
 
   @override
@@ -42,33 +31,41 @@ class ItemContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           GestureDetector(
-            onTap: onTapImage,
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return Dialog(child: PropertyImageView());
+                },
+              );
+            },
             child: Container(
               height: imageHeight,
               width: imageWidth,
               padding: EdgeInsets.all(8.sp),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(borderRadius ?? 12.sp),
+                borderRadius: BorderRadius.circular(12.sp),
                 image: DecorationImage(
-                  image: AssetImage(image),
-                  fit:fit?? BoxFit.fill,
+                  image: AssetImage(ImagesPath.house),
+                  fit: BoxFit.fill,
                 ),
               ),
               child: Align(
                 alignment: Alignment.topRight,
                 child: CustomFavoriteButton(
-                  onTap: onFavorite,
-                  isFavorite: isFavorite,
+                  onTap: () {
+                    favoriteController.selectFavorite(id: 0);
+                  },
+                  isFavorite: true,
                 ),
               ),
             ),
           ),
           SizedBox(height: 4.h),
           ItemInfo(
-            onVR: onVR,
-            updateRating: updateRating,
-            initialRating: initialRating,
-            onTapDetails: onTapDetails, imageWidth: imageWidth,
+            property: property,
+            initialRating: double.parse(property.rating ?? '0'),
+            imageWidth: imageWidth,
           ),
         ],
       ),
