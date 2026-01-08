@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/features/auth/controllers/logout_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_info.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_items_list.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    LogoutController logoutController = Get.find();
     ProfileController profileController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
@@ -41,14 +44,18 @@ class ProfileView extends StatelessWidget {
                 ProfileInfo(controller: profileController),
                 SizedBox(height: 12.h),
                 ProfileItemsList(),
-                CustomPrimaryButton(
-                  height: 52.h,
-                  text: 'Logout',
-                  onPressed: () async {
-                    await profileController.logOut();
-                  },
-                ),
-                SizedBox(height: 8.h),
+                Obx(() {
+                  return logoutController.isLoading.value
+                      ? ButtonLoading()
+                      : CustomPrimaryButton(
+                          height: 52.h,
+                          text: 'Logout',
+                          onPressed: () async {
+                            await logoutController.logout();
+                          },
+                        );
+                }),
+                SizedBox(height: 20.h),
               ]),
             ),
           ),

@@ -60,6 +60,12 @@ class DashboardController extends GetxController {
       'routes': AppRoutes.inspectionRequestView,
     },
     {
+      'icon': IconsPath.application,
+      'title': 'Application Management',
+      'allowedUser': [1],
+      'routes': AppRoutes.applicationManagementView,
+    },
+    {
       'icon': IconsPath.drawerKey,
       'title': 'Key Release',
       'allowedUser': [0],
@@ -74,7 +80,7 @@ class DashboardController extends GetxController {
     {
       'icon': IconsPath.drawerActive,
       'title': 'Active Properties',
-      'allowedUser': [0, 1],
+      'allowedUser': [0],
       'routes': AppRoutes.activePropertiesView,
     },
     {
@@ -99,7 +105,7 @@ class DashboardController extends GetxController {
       'icon': IconsPath.dashboardCalender,
       'title': 'Calender',
       'allowedUser': [1],
-      'routes': AppRoutes.servicesView,
+      'routes': AppRoutes.landlordCalenderView,
     },
   ];
   List<Map<String, dynamic>> get userDrawerItems {

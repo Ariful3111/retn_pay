@@ -5,7 +5,6 @@ class RepairModel {
   final String type;
   final String date;
   final String status;
-
   RepairModel({
     required this.title,
     required this.type,
@@ -126,6 +125,7 @@ class RepairMaintenanceController extends GetxController {
     if (index >= 0 && index < expandedData.length) {
       expandedData[index] = !expandedData[index];
     }
+    expandedData.refresh();
   }
 
   @override

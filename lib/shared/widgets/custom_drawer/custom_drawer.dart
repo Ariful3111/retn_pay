@@ -24,7 +24,7 @@ class CustomDrawer extends StatelessWidget {
           right: 16.w,
         ),
         height:userIndex==1? 560:460.h,
-        width:userIndex==1? 270.w:260.w,
+        width:userIndex==1? 277.w:260.w,
         decoration: BoxDecoration(
           color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
           boxShadow: [
@@ -49,7 +49,7 @@ class CustomDrawer extends StatelessWidget {
                       height: 19.11.h,
                       width: 115.52.w,
                     ),
-                    GestureDetector(
+                    InkWell(
                       onTap: () {
                         Navigator.pop(context);
                       },

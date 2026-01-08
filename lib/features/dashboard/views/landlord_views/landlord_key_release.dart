@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/landlord_key_release_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
-import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/landlord_release_form.dart';
+import 'package:renter_pay/features/dashboard/widgets/key_release_widgets/landlord_key_release/landlord_release_form.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 

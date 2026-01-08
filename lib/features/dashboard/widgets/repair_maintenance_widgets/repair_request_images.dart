@@ -1,8 +1,7 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:renter_pay/features/dashboard/controllers/tenant_controller/add_repair_request_controller.dart';
+import 'package:renter_pay/core/constants/images_path.dart';
+import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/landlord_repair_maintenance/landlord_repair_maintenance_assign.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_request_service.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
@@ -11,7 +10,7 @@ class RepairRequestImages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AddRepairRequestController addRepairRequestController = Get.find();
+    int userIndex = 1;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -22,7 +21,7 @@ class RepairRequestImages extends StatelessWidget {
           child: ListView.builder(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: addRepairRequestController.repairImages.length,
+            itemCount: 10,
             itemBuilder: (context, index) {
               return Container(
                 margin: EdgeInsets.only(right: 6.w),
@@ -31,9 +30,7 @@ class RepairRequestImages extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.r),
                   image: DecorationImage(
-                    image: FileImage(
-                      File(addRepairRequestController.repairImages[index]),
-                    ),
+                    image: AssetImage(ImagesPath.service),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -42,7 +39,7 @@ class RepairRequestImages extends StatelessWidget {
           ),
         ),
         SizedBox(height: 24.h),
-        RepairRequestService(),
+      userIndex==1?LandlordRepairMaintenanceAssign() : RepairRequestService(),
       ],
     );
   }

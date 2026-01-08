@@ -18,13 +18,25 @@ class TableStatus extends StatelessWidget {
     } else if (status == "Pending") {
       bg = isDark ? AppColors.darkPendingBG : AppColors.pendingBG;
       text = isDark ? AppColors.pendingBG : AppColors.pendingText;
-    } else if (status == "Complete"|| status=='Booked'||status =='Resolved'||status=='Publish') {
+    } else if (status == "Complete"|| status=='Booked'||status =='Resolved'||status=='Publish'||status=='Submitted'|| status=='Completed') {
       bg = isDark ? AppColors.darkCompleteBG : AppColors.completeBG;
       text = isDark ? AppColors.completeBG : AppColors.completeText;
     }
-     else if(status == 'Rejected'){
+     else if(status == 'Rejected'||status=='Cancel'){
       bg = isDark ? AppColors.darkRejectBG : AppColors.rejectBG;
       text = isDark ? AppColors.rejectBG : AppColors.rejectText;
+    }
+    else if (status == "Credit Check Approved") {
+      bg = isDark ? AppColors.darkPendingBG : Color(0xFFFFEFDC);
+      text = isDark ? AppColors.pendingBG : Color(0xFFFA9B14);
+    }
+    else if (status == "Reference Checked") {
+      bg = isDark ? AppColors.darkPendingBG : Color(0xFFFFF7E6);
+      text = isDark ? AppColors.pendingBG : Color(0xFFFFAE00);
+    }
+    else if (status == "Assessed Rental Threshold") {
+       bg = isDark ? AppColors.darkApprovedBG : Color(0xFFEBEDF0);
+      text = isDark ? AppColors.approveBG : Color(0xFF243757);
     }
 
     return Container(

@@ -6,11 +6,19 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart
 
 class CustomFilterAppbar extends StatelessWidget {
   final VoidCallback onTap;
-  final String ?title;
-  final String ?icon;
-  final double ? height;
-  final double ? width;
-  const CustomFilterAppbar({super.key, required this.onTap, this.title, this.icon, this.height, this.width});
+  final String? title;
+  final String? icon;
+  final double? height;
+  final double? width;
+  final double? radius;
+  const CustomFilterAppbar({
+    super.key,
+    required this.onTap,
+    this.title,
+    this.icon,
+    this.height,
+    this.width, this.radius,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +27,7 @@ class CustomFilterAppbar extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 7.06.h, horizontal: 8.w),
-        height:height,
+        height: height,
         width: width,
         decoration: BoxDecoration(
           gradient: isDark
@@ -27,7 +35,7 @@ class CustomFilterAppbar extends StatelessWidget {
               : LinearGradient(
                   colors: [AppColors.whiteColor, AppColors.whiteColor],
                 ),
-          borderRadius: BorderRadius.circular(5.5.r),
+          borderRadius: BorderRadius.circular(radius?? 5.5.r),
           border: Border.all(
             width: 1.sp,
             color: isDark
@@ -47,7 +55,7 @@ class CustomFilterAppbar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomTextSecondary(
-              text:title?? 'Filter',
+              text: title ?? 'Filter',
               fontSize: 12.sp,
               color: isDark
                   ? AppColors.darkPrimary
@@ -55,7 +63,7 @@ class CustomFilterAppbar extends StatelessWidget {
             ),
             SizedBox(width: 8.h),
             Image.asset(
-             icon?? IconsPath.filter,
+              icon ?? IconsPath.filter,
               height: 14.h,
               width: 14.w,
               color: isDark ? AppColors.darkPrimary : null,

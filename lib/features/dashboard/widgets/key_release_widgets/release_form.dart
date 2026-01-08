@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_repair_request_widgets/landlord_signature.dart';
 import 'package:renter_pay/features/dashboard/widgets/room_info.dart';
-import 'package:renter_pay/features/dashboard/widgets/active_property_widgets/signature_draw.dart';
+import 'package:renter_pay/features/dashboard/widgets/key_release_widgets/landlord_key_release/signature_draw.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';

@@ -159,9 +159,9 @@ class IconsPath {
   static const String dashboardLandlordVirtual =
       'assets/icons/dashboard_landlord_virtual.png';
   static const String dashboardInspectionManagement =
-      'assets/icons/dashboard_inspection_management.png';
-  static const String dashboardPropertyManagement =
       'assets/icons/dashboard_property_management.png';
+  static const String dashboardPropertyManagement =
+      'assets/icons/dashboard_inspection_management.png';
   static const String dashboardCalender = 'assets/icons/dashboard_calender.png';
   static const String availability = 'assets/icons/availability.png';
   static const String rentAdjust = 'assets/icons/rent_adjust.png';
@@ -178,4 +178,7 @@ class IconsPath {
   static const String take = 'assets/icons/take.png';
   static const String remove = 'assets/icons/remove.png';
   static const String document = 'assets/icons/document.png';
+  static const String check = 'assets/icons/check.png';
+  static const String application = 'assets/icons/application.png';
+  static const String receiptUpload = 'assets/icons/receipt_upload.png';
 }

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/tenant_controller/add_repair_request_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
@@ -12,8 +9,6 @@ class RepairRequestInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AddRepairRequestController addRepairRequestController = Get.find();
-    final date = addRepairRequestController.selectedDate.value;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -29,16 +24,11 @@ class RepairRequestInfo extends StatelessWidget {
           children: [
             dateTime(
               title: 'Date:',
-              subTitle: DateFormat('d MMMM, yyyy').format(date!),
+              subTitle: '2 July, 2025',
             ),
             dateTime(
               title: 'Time:',
-              subTitle: addRepairRequestController.timeController.text.isEmpty
-                  ? addRepairRequestController
-                        .timePeriodList[addRepairRequestController
-                        .checkboxIndex
-                        .value]
-                  : addRepairRequestController.timeController.text,
+              subTitle: '12:30 p.m',
             ),
           ],
         ),

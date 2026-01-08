@@ -46,6 +46,7 @@ class PropertyManagementController extends GetxController {
   void setMenu(int index, MyMenu menu) {
     selectedMenu[index] = menu;
     final property = allRows[index];
+   
     switch (menu) {
       case MyMenu.share:
         Get.dialog(PropertyShare(property: property));
@@ -53,9 +54,11 @@ class PropertyManagementController extends GetxController {
       case MyMenu.insurance:
         Get.dialog(PropertyInsurance(property: property));
       case MyMenu.view:
-        Future.delayed(Duration(milliseconds: 300),() {
-          isViewProperty.value=!isViewProperty.value;
-        },);
+        Future.delayed(Duration(milliseconds: 300), () {
+         
+            isViewProperty.value = !isViewProperty.value;
+          
+        });
       default:
         null;
     }

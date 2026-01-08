@@ -5,6 +5,8 @@ import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_i
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_filter.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_table.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_type.dart';
+import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/landlord_inspection/landlord_inspection_search.dart';
+import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/landlord_inspection/landlord_inspection_table.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 
 class InspectionRequestView extends StatelessWidget {
@@ -13,11 +15,13 @@ class InspectionRequestView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    
+    int userIndex = 1;
     return CustomContainer(
       padding: EdgeInsets.only(top: 20.w, left: 20.w, right: 20.w),
       gradient: isDark
-          ? LinearGradient(colors: [AppColors.darkPrimary, AppColors.darkPrimary])
+          ? LinearGradient(
+              colors: [AppColors.darkPrimary, AppColors.darkPrimary],
+            )
           : AppColors.userBackground.withOpacity(0.5),
       child: ListView(
         children: [
@@ -25,11 +29,13 @@ class InspectionRequestView extends StatelessWidget {
           SizedBox(height: 24.h),
           InspectionType(),
           SizedBox(height: 12.h),
-          InspectionFilter(),
-          SizedBox(height: 20.h,),
-          InspectionTable(),
-          SizedBox(height: 20.h,),
-        ],  
+         if(userIndex==0) InspectionFilter(),
+         if(userIndex == 1) LandlordInspectionSearch(),
+          SizedBox(height: 20.h),
+         if(userIndex==0) InspectionTable(),
+         if(userIndex==1)LandlordInspectionTable(),
+          SizedBox(height: 20.h),
+        ],
       ),
     );
   }

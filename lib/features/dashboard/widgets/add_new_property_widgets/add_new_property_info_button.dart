@@ -29,7 +29,7 @@ class AddNewPropertyInfoButton extends StatelessWidget {
           text: 'Upload',
         ),
       ],
-    );
+    ); 
   }
 }
 

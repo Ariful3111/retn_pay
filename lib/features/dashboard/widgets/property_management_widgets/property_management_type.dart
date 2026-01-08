@@ -26,7 +26,7 @@ class PropertyManagementType extends StatelessWidget {
         focusBorderWidth: 1.r,
         borderRadius: 6.r,
         focusBorderRadius: 6.r,
-        contentPadding: EdgeInsets.zero,
+        contentPadding: EdgeInsets.only(left: 8.w),
         fontSize: 12.sp,
         menuFontSize: 12.sp,
         selectedTrailingIconColor: AppColors.secondaryTextColor,
