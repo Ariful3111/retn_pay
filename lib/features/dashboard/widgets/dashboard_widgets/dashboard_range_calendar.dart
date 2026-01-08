@@ -21,6 +21,7 @@ class DashboardRangeCalendar extends StatelessWidget {
         rangeStartDay: dashboardController.rangeStart.value,
         onDaySelected: (DateTime selectDay, DateTime focus) {
           dashboardController.focusedDay.value = focus;
+          dashboardController.selectedDay.value = selectDay;
           dashboardController.rangeStart.value = null;
           dashboardController.rangeEnd.value = null;
           dashboardController.rangeSelectionMode.value =
@@ -41,6 +42,7 @@ class DashboardRangeCalendar extends StatelessWidget {
             dashboardController.calendarFormat.value = format;
           }
         },
+        selectDay: dashboardController.selectedDay.value,
       ),
     );
   }

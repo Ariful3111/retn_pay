@@ -15,6 +15,8 @@ class BookedServiceModel {
 }
 
 class ServiceBookedController extends GetxController {
+  final selectedDay = DateTime.now().obs;
+  RxInt isDay = 0.obs;
   RxInt isBookedType = 0.obs;
   final List bookedTypeList = ['Scheduled', 'Pending', 'History'];
   RxList<BookedServiceModel> bookedList = <BookedServiceModel>[].obs;
