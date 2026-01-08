@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/favorite/controller/favorite_controller.dart';
-import 'package:renter_pay/features/home/controllers/home_controller.dart';
+import 'package:renter_pay/features/home/models/properties_model.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
@@ -19,7 +18,6 @@ class FavoriteView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FavoriteController favoriteController = Get.find();
-    HomeController homeController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -60,17 +58,9 @@ class FavoriteView extends StatelessWidget {
                     return ItemContainer(
                       imageHeight: 250.h,
                       imageWidth: MediaQuery.widthOf(context),
-                      image: ImagesPath.office,
                       padding: EdgeInsetsGeometry.only(bottom: 20.h),
-                      onVR: () {},
-                      updateRating: (value) {
-                        homeController.houseRating[index] = value;
-                      },
-                      initialRating: homeController.houseRating[index],
-                      onFavorite: () {
-                        favoriteController.favoriteItem.contains(index);
-                      },
-                      isFavorite: favoriteController.isFavorite(index),
+                      favoriteController: favoriteController,
+                      property: Property(),
                     );
                   },
                 )
