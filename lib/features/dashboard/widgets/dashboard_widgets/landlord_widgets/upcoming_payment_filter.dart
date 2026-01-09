@@ -40,7 +40,7 @@ class UpcomingPaymentFilter extends StatelessWidget {
           if (dashboardLandlordController.calendarFormat.value != format) {
             dashboardLandlordController.calendarFormat.value = format;
           }
-        },
+        }, selectDay: dashboardLandlordController.selectedDay.value,
       ),
     );
   }

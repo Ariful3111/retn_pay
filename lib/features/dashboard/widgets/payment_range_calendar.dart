@@ -16,11 +16,13 @@ class PaymentRangeCalendar extends StatelessWidget {
         lastDay: paymentManagementController.lastDay,
         focusedDay: paymentManagementController.focusedDay.value,
         calendarFormat: paymentManagementController.calendarFormat.value,
-        rangeSelectionMode: paymentManagementController.rangeSelectionMode.value,
+        rangeSelectionMode:
+            paymentManagementController.rangeSelectionMode.value,
         rangeEndDay: paymentManagementController.rangeEnd.value,
         rangeStartDay: paymentManagementController.rangeStart.value,
         onDaySelected: (DateTime selectDay, DateTime focus) {
           paymentManagementController.focusedDay.value = focus;
+          paymentManagementController.selectedDay.value = selectDay;
           paymentManagementController.rangeStart.value = null;
           paymentManagementController.rangeEnd.value = null;
           paymentManagementController.rangeSelectionMode.value =
@@ -41,6 +43,7 @@ class PaymentRangeCalendar extends StatelessWidget {
             paymentManagementController.calendarFormat.value = format;
           }
         },
+        selectDay: paymentManagementController.selectedDay.value,
       ),
     );
   }
