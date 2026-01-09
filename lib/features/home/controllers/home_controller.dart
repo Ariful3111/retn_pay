@@ -1,6 +1,6 @@
+import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:renter_pay/features/home/models/properties_model.dart';
@@ -17,36 +17,20 @@ class HomeController extends GetxController {
   RxBool isLoading = true.obs;
   TextEditingController searchController = TextEditingController();
   RxInt selectedCategory = 0.obs;
-  RxList apartmentRating = List<double>.filled(10, 1.0).obs;
-  RxList houseRating = List<double>.filled(10, 1.0).obs;
-  RxList officeRating = List<double>.filled(10, 1.0).obs;
-  RxList studioRating = List<double>.filled(10, 1.0).obs;
-  RxList vilaRating = List<double>.filled(10, 1.0).obs;
   Rx<SfRangeValues> range = SfRangeValues(300, 670000).obs;
   double minRange = 0;
   double maxRange = 700000;
   TextEditingController filterSearchController = TextEditingController();
-  final List<Map<String, dynamic>> categoryList = [
-    {'category': 'All', 'image': ImagesPath.allCategory},
-    {'category': 'House', 'image': ImagesPath.houseCategory},
-    {'category': 'Apartment', 'image': ImagesPath.apartmentCategory},
-    {'category': 'Vila', 'image': ImagesPath.vilaCategory},
-    {'category': 'Office', 'image': ImagesPath.officeCategory},
-    {'category': 'Studio Apartment', 'image': ImagesPath.studioCategory},
-  ];
   RxList<String> selectedFilterProperty = <String>[].obs;
   RxList<String> selectedAmenities = <String>[].obs;
   RxBool isShowPriceRange = true.obs;
   RxBool isShowAmenities = false.obs;
   RxBool isShowProperty = false.obs;
   RxBool isShowSearch = true.obs;
+  Timer? _debounce;
+
   @override
   void onInit() {
-    apartmentRating;
-    houseRating;
-    studioRating;
-    officeRating;
-    vilaRating;
     if (!scrollController.hasClients) {
       Get.find<GlobalScrollController>().listen(scrollController);
     }
@@ -54,10 +38,21 @@ class HomeController extends GetxController {
     super.onInit();
   }
 
-  Future<void> getProperties() async {
+  void onSearchChanged({required String value}) {
+    if (_debounce?.isActive ?? false) _debounce!.cancel();
+    _debounce = Timer(const Duration(milliseconds: 500), () {
+      getProperties(search: value);
+    });
+  }
+
+  Future<void> getProperties({String? search}) async {
     try {
+      isLoading.value = true;
       String token = await storage.read(key: storage.tokenKey);
-      final response = await getPropertiesRepository.execute(token: token);
+      final response = await getPropertiesRepository.execute(
+        token: token,
+        search: search,
+      );
       response.fold(
         (error) {
           ErrorSnackbar.show(description: error.message);
@@ -103,6 +98,7 @@ class HomeController extends GetxController {
 
   @override
   void onClose() {
+    _debounce?.cancel();
     scrollController.dispose();
     super.onClose();
   }
