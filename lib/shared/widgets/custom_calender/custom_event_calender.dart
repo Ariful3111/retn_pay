@@ -47,8 +47,13 @@ class CustomEventCalender extends StatelessWidget {
                 },
               ),
               calendarStyle: CalendarStyle(
-                 selectedTextStyle: textDecoration(color:isDark?AppColors.darkPrimary :AppColors.whiteColor),
-                selectedDecoration: BoxDecoration(gradient: AppColors.primaryColor,shape: BoxShape.circle),
+                selectedTextStyle: textDecoration(
+                  color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+                ),
+                selectedDecoration: BoxDecoration(
+                  gradient: AppColors.primaryColor,
+                  shape: BoxShape.circle,
+                ),
                 cellMargin: EdgeInsets.all(4.r),
                 defaultTextStyle: textDecoration(
                   color: isDark ? AppColors.darkAppBar : null,
