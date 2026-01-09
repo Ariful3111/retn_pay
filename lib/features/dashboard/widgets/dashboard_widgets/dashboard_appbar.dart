@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_range_calendar.dart';
+import 'package:renter_pay/shared/widgets/custom_calender/custom_calender_filter_helper.dart';
 import 'package:renter_pay/shared/widgets/custom_drawer/custom_drawer.dart';
 import 'package:renter_pay/shared/widgets/custom_calender/custom_calender_filter.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
@@ -17,6 +19,7 @@ class DashboardAppbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DashboardController dashboardController = Get.find();
     return SliverAppBar(
       backgroundColor: Colors.transparent,
       leading: CustomAppbarLeading(
@@ -47,7 +50,23 @@ class DashboardAppbar extends StatelessWidget {
             showDialog(
               context: context,
               builder: (context) {
-                return CustomCalenderFilter(widget: DashboardRangeCalendar());
+                return Obx(
+                  () => CustomCalenderFilter(
+                    widget: DashboardRangeCalendar(),
+                    isDay: dashboardController.isDay.value,
+                    onTap: (int index) {
+                      dashboardController.isDay.value = index;
+                      calenderFilter(
+                        index: index,
+                        selectedDay: dashboardController.selectedDay,
+                        rangeStart: dashboardController.rangeStart,
+                        rangeEnd: dashboardController.rangeEnd,
+                        rangeSelectionMode:
+                            dashboardController.rangeSelectionMode,
+                      );
+                    }, onApply: () {  },
+                  ),
+                );
               },
             );
           },

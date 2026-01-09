@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/home/controllers/home_controller.dart';
@@ -8,10 +7,10 @@ import 'package:renter_pay/features/home/widgets/home_filter.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
 class HomeSearch extends StatelessWidget {
-  const HomeSearch({super.key});
+  final HomeController controller;
+  const HomeSearch({super.key, required this.controller});
   @override
   Widget build(BuildContext context) {
-    HomeController homeController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,9 +26,7 @@ class HomeSearch extends StatelessWidget {
                   ? AppColors.darkBorderPrimary
                   : AppColors.secondaryBorder,
             ),
-            color: isDark
-                ? AppColors.darkSecondary
-                : AppColors.whiteColor,
+            color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
             boxShadow: [
               BoxShadow(
                 offset: Offset(0, 4),
@@ -54,7 +51,10 @@ class HomeSearch extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12.sp),
                 borderSide: BorderSide(color: Colors.transparent),
               ),
-              controller: homeController.searchController,
+              controller: controller.searchController,
+              onChanged: (value) {
+                controller.onSearchChanged(value: value);
+              },
               prefixIcon: Padding(
                 padding: EdgeInsets.only(left: 16.sp),
                 child: Image.asset(

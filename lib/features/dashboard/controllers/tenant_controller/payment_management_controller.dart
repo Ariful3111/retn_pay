@@ -2,6 +2,7 @@ import 'package:get/state_manager.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class PaymentManagementController extends GetxController {
+  final selectedDay = DateTime.now().obs;
   final List paymentType = [
     'Upcoming Payments',
     'Payment History',
@@ -14,7 +15,7 @@ class PaymentManagementController extends GetxController {
     'Payment Date',
     'Receipt',
   ];
-
+  RxInt isDay = 0.obs;
   late DateTime today;
   late DateTime firstDay;
   late DateTime lastDay;
@@ -31,4 +32,5 @@ class PaymentManagementController extends GetxController {
     lastDay = DateTime(today.year + 1, today.month, today.day);
     super.onInit();
   }
+  
 }
