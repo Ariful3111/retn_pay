@@ -35,7 +35,7 @@ class ItemInfo extends StatelessWidget {
         InkWell(
           onTap: () {
             HitTestBehavior.opaque;
-            Get.toNamed(AppRoutes.rentDetails);
+            Get.toNamed(AppRoutes.rentDetails, arguments: property.id);
           },
           child: Row(
             children: [
@@ -114,7 +114,7 @@ class ItemInfo extends StatelessWidget {
                 child: InkWell(
                   onTap: () {
                     HitTestBehavior.opaque;
-                    Get.toNamed(AppRoutes.rentDetails);
+                    Get.toNamed(AppRoutes.rentDetails, arguments: property.id);
                   },
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

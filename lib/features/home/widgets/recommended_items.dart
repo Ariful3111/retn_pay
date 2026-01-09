@@ -39,7 +39,10 @@ class RecommendedItems extends StatelessWidget {
                     return GestureDetector(
                       onTap: () {
                         HitTestBehavior.opaque;
-                        Get.toNamed(AppRoutes.rentDetails);
+                        Get.toNamed(
+                          AppRoutes.rentDetails,
+                          arguments: property.id,
+                        );
                       },
                       child: Container(
                         height: 284.h,
