@@ -17,13 +17,12 @@ import 'package:renter_pay/features/profile/controllers/profile_controller.dart'
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    final HomeController homeController = Get.find();
     return Obx(() {
       return CustomContainer(
         padding: EdgeInsets.symmetric(horizontal: 20.sp),
@@ -32,26 +31,30 @@ class HomeView extends StatelessWidget {
                 colors: [AppColors.darkPrimary, AppColors.darkPrimary],
               )
             : AppColors.userBackground.withOpacity(0.5),
-        child: homeController.isLoading.value
-            ? Center(child: ButtonLoading())
-            : ListView(
-                controller: homeController.scrollController,
-                children: [
-                  HomeAppbar(profileController: Get.find<ProfileController>()),
-                  SizedBox(height: 16.h),
-                  HomeSearch(),
-                  SizedBox(height: 20.h),
-                  CategoryList(),
-                  SizedBox(height: 24.h),
-                  RecommendedItems(homeController: homeController),
-                  PopularItems(homeController: homeController),
-                  HouseList(homeController: homeController),
-                  ApartmentList(homeController: homeController),
-                  VilaList(homeController: homeController),
-                  OfficeList(homeController: homeController),
-                  StudioList(homeController: homeController),
-                ],
-              ),
+        child: ListView(
+          controller: controller.scrollController,
+          children: [
+            HomeAppbar(profileController: Get.find<ProfileController>()),
+            SizedBox(height: 16.h),
+            HomeSearch(controller: controller),
+            SizedBox(height: 20.h),
+            CategoryList(),
+            SizedBox(height: 24.h),
+            controller.isLoading.value
+                ? Center(child: ButtonLoading())
+                : Column(
+                    children: [
+                      RecommendedItems(homeController: controller),
+                      PopularItems(homeController: controller),
+                      HouseList(homeController: controller),
+                      ApartmentList(homeController: controller),
+                      VilaList(homeController: controller),
+                      OfficeList(homeController: controller),
+                      StudioList(homeController: controller),
+                    ],
+                  ),
+          ],
+        ),
       );
     });
   }
