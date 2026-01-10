@@ -9,7 +9,7 @@ import 'package:renter_pay/shared/widgets/filter/price_range.dart';
 import 'package:renter_pay/shared/widgets/filter/reset_filter.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
-class CustomFilter extends StatelessWidget {
+class CustomFilter extends StatefulWidget {
   final SfRangeValues range;
   final String min;
   final String max;
@@ -32,7 +32,8 @@ class CustomFilter extends StatelessWidget {
   final RxBool isShowProperty;
   final RxBool isShowSearch;
   final RxBool isShowPriceRange;
-  
+  final VoidCallback? onFilterDispose;
+
   const CustomFilter({
     super.key,
     required this.range,
@@ -52,49 +53,70 @@ class CustomFilter extends StatelessWidget {
     required this.onAmenitiesChange,
     required this.onReset,
     required this.isProperty,
-    required this.onAmenities, required this.isShowAmenities, required this.isShowProperty, required this.isShowSearch, required this.isShowPriceRange,
-    
+    required this.onAmenities,
+    required this.isShowAmenities,
+    required this.isShowProperty,
+    required this.isShowSearch,
+    required this.isShowPriceRange,
+    this.onFilterDispose,
   });
+
+  @override
+  State<CustomFilter> createState() => _CustomFilterState();
+}
+
+class _CustomFilterState extends State<CustomFilter> {
+  @override
+  void dispose() {
+    if (widget.onFilterDispose != null) {
+      widget.onFilterDispose!();
+    }
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       width: 260.w,
-      color:isDark?AppColors.darkPrimary: AppColors.whiteColor,
+      color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ResetFilter(onTap: onReset),
+            ResetFilter(onTap: widget.onReset),
             SizedBox(height: 8.32),
             PriceRange(
-              range: range,
-              min: min,
-              max: max,
-              minRange: minRange,
-              maxRange: maxRange,
-              onChanged: onSliderChanged,
-              onTap: isSlider, isPriceShow: isShowPriceRange,
+              range: widget.range,
+              min: widget.min,
+              max: widget.max,
+              minRange: widget.minRange,
+              maxRange: widget.maxRange,
+              onChanged: widget.onSliderChanged,
+              onTap: widget.isSlider,
+              isPriceShow: widget.isShowPriceRange,
             ),
             SizedBox(height: 8.32),
             FilterSearch(
-              textEditingController: textEditingController,
-              onTap: isSearch, isSearchShow: isShowSearch,
+              textEditingController: widget.textEditingController,
+              onTap: widget.isSearch,
+              isSearchShow: widget.isShowSearch,
             ),
             SizedBox(height: 8.32),
             FilterProperty(
-              propertyItems: propertyItems,
-              selectedProperty: selectedProperty,
-              onChange: onPropertyChange,
-              onTap: isProperty, isPropertyShow: isShowProperty,
+              propertyItems: widget.propertyItems,
+              selectedProperty: widget.selectedProperty,
+              onChange: widget.onPropertyChange,
+              onTap: widget.isProperty,
+              isPropertyShow: widget.isShowProperty,
             ),
             SizedBox(height: 8.32),
-           FilterAmenities(
-              amenitiesItems: amenitiesItems,
-              selectedAmenities: selectedAmenities,
-              onAmenitiesChange: onAmenitiesChange,
-              onAmenities: onAmenities, isShowAmenities: isShowAmenities,
+            FilterAmenities(
+              amenitiesItems: widget.amenitiesItems,
+              selectedAmenities: widget.selectedAmenities,
+              onAmenitiesChange: widget.onAmenitiesChange,
+              onAmenities: widget.onAmenities,
+              isShowAmenities: widget.isShowAmenities,
             ),
           ],
         ),
