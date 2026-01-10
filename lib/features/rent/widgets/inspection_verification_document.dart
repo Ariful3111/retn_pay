@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -29,7 +31,7 @@ class InspectionVerificationDocument extends StatelessWidget {
                     ? CustomDottedBorder(
                         height: 201.h,
                         width: 312.w,
-                        image: frontImage,
+                        image:FileImage(File(frontImage.path)) ,
                       )
                     : DocumentUpload(
                         titleText: 'Front Image',
@@ -50,7 +52,7 @@ class InspectionVerificationDocument extends StatelessWidget {
                     ? CustomDottedBorder(
                         height: 201.h,
                         width: 312.w,
-                        image: backImage,
+                        image:FileImage(File(backImage.path)) ,
                       )
                     : DocumentUpload(
                         titleText: 'Back Side (Optional)',

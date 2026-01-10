@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -44,7 +46,7 @@ class DocumentVerification extends StatelessWidget {
               final frontImage =
                   documentVerificationController.frontImage.value;
               return frontImage != null
-                  ? CustomDottedBorder(image: frontImage)
+                  ? CustomDottedBorder(image:FileImage(File(frontImage.path)) )
                   : DocumentUpload(
                       titleText: 'Front Side',
                       onTap: () {
@@ -61,7 +63,7 @@ class DocumentVerification extends StatelessWidget {
             Obx(() {
               final backImage = documentVerificationController.backImage.value;
               return backImage != null
-                  ? CustomDottedBorder(image: backImage)
+                  ? CustomDottedBorder(image:FileImage(File(backImage.path)) )
                   : DocumentUpload(
                       titleText: 'Back Side (Optional)',
                       onTap: () {

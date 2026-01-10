@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_items.dart';
 
 class ProfileUserItems extends StatelessWidget {
@@ -11,10 +10,10 @@ class ProfileUserItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    UserRoleController userRoleController = Get.find();
+    int userIndex=2;
     return Column(
       children: [
-        if (userRoleController.selectedIndex.value == 1)
+        if (userIndex == 1)
           ProfileItems(
             image: IconsPath.profileCalendar,
             imageHeight: 23.h,
@@ -22,7 +21,7 @@ class ProfileUserItems extends StatelessWidget {
             title: 'Calendar',
             onTap: () {},
           ),
-        if (userRoleController.selectedIndex.value == 1) SizedBox(height: 8.h),
+        if (userIndex == 1) SizedBox(height: 8.h),
         ProfileItems(
           image: IconsPath.profilePayment,
           imageHeight: 23.h,

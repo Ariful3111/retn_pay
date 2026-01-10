@@ -86,4 +86,14 @@ class AppColors {
     end: Alignment.bottomCenter,
     colors: [Color(0xFF138BD7), Color(0xFF62AAFB)],
   );
+
+  static const eventColors = [
+    darkAppBar,
+    Color(0xFFFFF7E6),
+    Color(0xFFEBF1F2),
+    Color(0xFFFCE6E6),
+    Color(0xFFE8F8EE),
+    Color(0xFFEBEDF0),
+
+  ];
 }
