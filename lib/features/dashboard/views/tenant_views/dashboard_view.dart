@@ -19,7 +19,7 @@ class DashboardView extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     DashboardController dashboardController = Get.find();
-    int userIndex = 1;
+    int userIndex = 2;
     return CustomContainer(
       gradient: isDark
           ? LinearGradient(
@@ -38,15 +38,15 @@ class DashboardView extends StatelessWidget {
             ),
             sliver: SliverList(
               delegate: SliverChildListDelegate([
-               if(userIndex==1) Obx(
+               if(userIndex==1||userIndex==2) Obx(
                   () => CustomAnimatedSwitcher(
                     child: Stack(
                       key: ValueKey(dashboardController.isUpgrade.value),
                       children: [
                         DashboardProperties(),
-                        if (!dashboardController.isUpgrade.value)
-                          CustomShadowOverlayButton().shadow(context: context,imageFilter: ImageFilter.blur(sigmaX: 2,sigmaY: 2)),
-                        if (!dashboardController.isUpgrade.value)
+                        if (!dashboardController.isUpgrade.value&&userIndex==1)
+                         CustomShadowOverlayButton().shadow(context: context,imageFilter: ImageFilter.blur(sigmaX: 2,sigmaY: 2)),
+                        if (!dashboardController.isUpgrade.value&&userIndex==1)
                           Positioned(
                             top: 460.h,
                             left: 60.w,

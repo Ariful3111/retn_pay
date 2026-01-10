@@ -74,29 +74,42 @@ class ProfileEditDetails extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20.h),
-          Obx(()=>  Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-              ProfileEditField(
-              controller: profileEditController.nameController,
-              labelText: 'Name', readOnly: profileEditController.isEdit.value?false:true,
+            Obx(
+              () => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ProfileEditField(
+                    controller: profileEditController.nameController,
+                    labelText: 'First Name',
+                    readOnly: profileEditController.isEdit.value ? false : true,
+                  ),
+                  SizedBox(height: 16.h,),
+                  ProfileEditField(
+                    controller: profileEditController.lastNameController,
+                    labelText: 'Last Name',
+                    readOnly: profileEditController.isEdit.value ? false : true,
+                  ),
+                  SizedBox(height: 16.h),
+                  ProfileEditField(
+                    controller: profileEditController.emailController,
+                    labelText: 'Email',
+                    readOnly: profileEditController.isEdit.value ? false : true,
+                  ),
+                  SizedBox(height: 16.h),
+                  ProfileEditField(
+                    controller: profileEditController.phoneController,
+                    labelText: 'Phone',
+                    readOnly: profileEditController.isEdit.value ? false : true,
+                  ),
+                  SizedBox(height: 16.h),
+                  ProfileEditField(
+                    controller: profileEditController.passwordController,
+                    labelText: 'Password',
+                    readOnly: profileEditController.isEdit.value ? false : true,
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 16.h),
-            ProfileEditField(
-              controller: profileEditController.emailController,
-              labelText: 'Email', readOnly:  profileEditController.isEdit.value?false:true,
-            ),
-            SizedBox(height: 16.h),
-            ProfileEditField(
-              controller: profileEditController.phoneController,
-              labelText: 'Phone', readOnly:  profileEditController.isEdit.value?false:true,
-            ),
-            SizedBox(height: 16.h),
-            ProfileEditField(
-              controller: profileEditController.passwordController,
-              labelText: 'Password', readOnly:  profileEditController.isEdit.value?false:true,
-            ),
-            ],),)
           ],
         ),
       ),

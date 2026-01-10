@@ -7,6 +7,7 @@ import 'package:renter_pay/features/home/controllers/global_scroll_controller.da
 import 'package:table_calendar/table_calendar.dart';
 
 class DashboardController extends GetxController {
+   int userIndex = 2;
   final selectedDay = DateTime.now().obs;
   final scrollController = TrackingScrollController();
   RxBool isFavorite = false.obs;
@@ -51,13 +52,13 @@ class DashboardController extends GetxController {
     {
       'icon': IconsPath.dashboardPropertyManagement,
       'title': 'Property Management',
-      'allowedUser': [1],
+      'allowedUser': [1, 2],
       'routes': AppRoutes.propertyManagement,
     },
     {
       'icon': IconsPath.dashboardInspectionManagement,
       'title': 'Inspection Management',
-      'allowedUser': [1],
+      'allowedUser': [1, 2],
       'routes': AppRoutes.inspectionRequestView,
     },
     {
@@ -69,7 +70,7 @@ class DashboardController extends GetxController {
     {
       'icon': IconsPath.drawerKey,
       'title': 'Key Release',
-      'allowedUser': [0],
+      'allowedUser': [0, 2],
       'routes': AppRoutes.keyReleaseView,
     },
     {
@@ -86,31 +87,37 @@ class DashboardController extends GetxController {
     },
     {
       'icon': IconsPath.drawerPayment,
-      'title': 'Payment Management',
+      'title':'Payment Management',
       'allowedUser': [0, 1],
+      'routes': AppRoutes.paymentManagementView,
+    },
+    {
+      'icon': IconsPath.drawerPayment,
+      'title':'Rent Management',
+      'allowedUser': [2],
       'routes': AppRoutes.paymentManagementView,
     },
     {
       'icon': IconsPath.drawerRepair,
       'title': 'Repair & Maintenance',
-      'allowedUser': [0, 1],
+      'allowedUser': [0, 1,2],
       'routes': AppRoutes.repairMaintenanceView,
     },
     {
       'icon': IconsPath.drawerService,
       'title': 'Service',
-      'allowedUser': [0, 1],
+      'allowedUser': [0, 1,2],
       'routes': AppRoutes.servicesView,
     },
     {
       'icon': IconsPath.dashboardCalender,
       'title': 'Calender',
-      'allowedUser': [1],
+      'allowedUser': [1,2],
       'routes': AppRoutes.landlordCalenderView,
     },
   ];
+ 
   List<Map<String, dynamic>> get userDrawerItems {
-    int userIndex = 1;
     return drawerItems
         .where((user) => user['allowedUser'].contains(userIndex))
         .toList();
@@ -191,5 +198,4 @@ class DashboardController extends GetxController {
     descriptionController.dispose();
     super.dispose();
   }
-  
 }

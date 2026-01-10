@@ -6,9 +6,9 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/landlord_calender_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
 import 'package:renter_pay/features/dashboard/widgets/landlord_calender_widgets/landlord_calender_filter.dart';
+import 'package:renter_pay/features/dashboard/widgets/landlord_calender_widgets/landlord_event_calender.dart';
 import 'package:renter_pay/shared/widgets/custom_calender/custom_calender_filter.dart';
 import 'package:renter_pay/shared/widgets/custom_calender/custom_calender_filter_helper.dart';
-import 'package:renter_pay/shared/widgets/custom_calender/custom_event_calender.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_filter_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
@@ -110,7 +110,7 @@ class LandlordCalenderView extends StatelessWidget {
             ),
           ),
           SizedBox(height: 16.h),
-          CustomEventCalender(),
+          LandlordEventCalender(),
         ],
       ),
     );

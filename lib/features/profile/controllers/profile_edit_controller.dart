@@ -6,6 +6,7 @@ class ProfileEditController extends GetxController {
   ImagePicker picker = ImagePicker();
   Rxn<XFile> upload = Rxn<XFile>();
   TextEditingController nameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();

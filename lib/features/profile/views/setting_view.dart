@@ -13,7 +13,7 @@ class SettingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    int userIndex = 1;
+    int userIndex = 2;
     return CustomContainer(
       drawer: Drawer(),
       gradient: isDark

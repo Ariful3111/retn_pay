@@ -21,7 +21,7 @@ class DashboardProperties extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int userIndex = 1;
+    int userIndex = 2;
     DashboardController dashboardController = Get.find();
     return Column(
       children: [
@@ -45,10 +45,10 @@ class DashboardProperties extends StatelessWidget {
             );
           },
         ),
-        if (userIndex == 1) DashboardGraph(),
+        if (userIndex == 1|| userIndex==2) DashboardGraph(),
         SizedBox(height: 20.h),
         if (userIndex == 0) DashboardUpcomingPayment(),
-        if (userIndex == 1) LandlordUpcomingPayment(),
+        if (userIndex == 1||userIndex==2) LandlordUpcomingPayment(),
         SizedBox(height: 20.h),
         DashboardReminder(),
         Obx(
@@ -80,7 +80,7 @@ class DashboardProperties extends StatelessWidget {
                             DashboardKeyFeatures(),
                           ],
                         ),
-                      if (userIndex == 1) DashboardLandlordQuickAction(),
+                      if (userIndex == 1||userIndex==2) DashboardLandlordQuickAction(),
                     ],
                   ),
                 )
