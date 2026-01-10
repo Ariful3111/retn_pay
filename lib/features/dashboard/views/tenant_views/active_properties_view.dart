@@ -8,6 +8,7 @@ import 'package:renter_pay/features/dashboard/widgets/active_property_widgets/ac
 import 'package:renter_pay/features/dashboard/widgets/active_property_widgets/active_property_widgets.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_rent_notice.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
+import 'package:renter_pay/features/rent/models/property_details_model.dart';
 import 'package:renter_pay/shared/widgets/custom_animated_switcher.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
@@ -39,7 +40,7 @@ class ActivePropertiesView extends StatelessWidget {
                   SizedBox(height: 20.h),
                   ActivePropertyImage(),
                   SizedBox(height: 20.h),
-                  PropertyDetailsInfo(),
+                  PropertyDetailsInfo(propertyDetails: PropertyDetailsModel()),
                   SizedBox(height: 20.h),
                   DashboardRentNotice(),
                   SizedBox(height: 20.h),

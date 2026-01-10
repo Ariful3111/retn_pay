@@ -58,7 +58,8 @@ class PropertyView extends GetView<PropertyViewController> {
                         ),
                       ),
                       CustomTextSecondary(
-                        text: 'Maple Grove Garden House',
+                        text:
+                            controller.propertyDetails.value!.data!.title ?? '',
                         color: isDark
                             ? AppColors.darkAppBar
                             : AppColors.primaryTextColor,
@@ -67,9 +68,13 @@ class PropertyView extends GetView<PropertyViewController> {
                     ],
                   ),
                   SizedBox(height: 24.h),
-                  RentDetailsImage(),
+                  RentDetailsImage(
+                    propertyDetails: controller.propertyDetails.value!,
+                  ),
                   SizedBox(height: 16.h),
-                  PropertyDetailsInfo(),
+                  PropertyDetailsInfo(
+                    propertyDetails: controller.propertyDetails.value!,
+                  ),
                   SizedBox(height: 16.h),
                   InspectionRequestButton(),
                   SizedBox(height: 20.h),
@@ -79,7 +84,9 @@ class PropertyView extends GetView<PropertyViewController> {
                     fontWeight: FontWeight.w600,
                   ),
                   SizedBox(height: 8.h),
-                  PropertyDetailsList(),
+                  PropertyDetailsList(
+                    propertyDetails: controller.propertyDetails.value!,
+                  ),
                   SizedBox(height: 20.h),
                   CustomTextSecondary(
                     text: 'Key Features & Amenities',
@@ -87,7 +94,9 @@ class PropertyView extends GetView<PropertyViewController> {
                     fontWeight: FontWeight.w600,
                   ),
                   SizedBox(height: 16.h),
-                  PropertyKeyFeatures(),
+                  PropertyKeyFeatures(
+                    propertyDetails: controller.propertyDetails.value!,
+                  ),
                   SizedBox(height: 24.h),
                   CustomTextSecondary(
                     text: 'Location Information',
@@ -97,7 +106,9 @@ class PropertyView extends GetView<PropertyViewController> {
                         : AppColors.primaryTextColor,
                   ),
                   SizedBox(height: 8.h),
-                  LocationInfo(),
+                  LocationInfo(
+                    propertyDetails: controller.propertyDetails.value!,
+                  ),
                   SizedBox(height: 24.h),
                   PropertyCustomerReview(),
                   SizedBox(height: 24.h),

@@ -1,32 +1,41 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_utils/src/extensions/export.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/features/rent/models/property_details_model.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
 
 class PropertyDetailsInfo extends StatelessWidget {
-  const PropertyDetailsInfo({super.key});
+  final PropertyDetailsModel propertyDetails;
+  const PropertyDetailsInfo({super.key, required this.propertyDetails});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
+    String size = propertyDetails.data!.buildingSize == '0.00'
+        ? '${propertyDetails.data!.landSize}sft'
+        : '${propertyDetails.data!.buildingSize}sft';
     return SizedBox(
-      height: 88.4.h,
       width: MediaQuery.widthOf(context),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          CustomTextPrimary(text: 'New York, USA', fontSize: 24.sp),
+          CustomTextPrimary(
+            text:
+                '${propertyDetails.data!.city}, ${propertyDetails.data!.country}',
+            fontSize: 24.sp,
+          ),
           Row(
             children: [
               Image.asset(IconsPath.bed, height: 16.5.h, width: 16.5.w),
               SizedBox(width: 9.3.w),
               CustomTextSecondary(
-                text: 'Bed-04',
+                text: 'Bed-${propertyDetails.data!.bedrooms}',
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.lightText,
@@ -41,7 +50,7 @@ class PropertyDetailsInfo extends StatelessWidget {
               ),
               SizedBox(width: 2.w),
               CustomTextSecondary(
-                text: 'Bath-04',
+                text: 'Bath-${propertyDetails.data!.bathrooms}',
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.lightText,
@@ -70,7 +79,7 @@ class PropertyDetailsInfo extends StatelessWidget {
               ),
               SizedBox(width: 2.w),
               CustomTextSecondary(
-                text: '2500sft',
+                text: size,
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.lightText,
@@ -79,7 +88,7 @@ class PropertyDetailsInfo extends StatelessWidget {
               Image.asset(IconsPath.availability, height: 12.h, width: 12.w),
               SizedBox(width: 2.w),
               CustomTextSecondary(
-                text: 'Jan-26',
+                text: propertyDetails.data!.status ?? "",
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.lightText,
@@ -87,10 +96,12 @@ class PropertyDetailsInfo extends StatelessWidget {
             ],
           ),
           SizedBox(height: 4.h),
-          Row(
+          Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               CustomTextSpan(
-                title: '\$280',
+                title:
+                    '\$${propertyDetails.data!.units!.first.rentAmount ?? "0"}',
                 spantext: '/week',
                 spanColor: isDark
                     ? AppColors.lightText
@@ -98,18 +109,27 @@ class PropertyDetailsInfo extends StatelessWidget {
                 fontSize: 22.sp,
               ),
               SizedBox(width: 5.w),
-              Image.asset(IconsPath.appCurrency, height: 15.h, width: 15.h,color: isDark?null:AppColors.darkPrimary,),
+              Image.asset(
+                IconsPath.appCurrency,
+                height: 15.h,
+                width: 15.h,
+                color: isDark ? null : AppColors.darkPrimary,
+              ),
               SizedBox(width: 3.w),
               CustomTextSpan(
-                title: '280',
+                title:
+                    '\$${propertyDetails.data!.units!.first.rentAmount ?? "0"}',
                 spantext: '/week',
                 spanColor: isDark
                     ? AppColors.lightText
                     : AppColors.darkPrimary.withValues(alpha: 0.5),
                 fontSize: 22.sp,
               ),
-              Spacer(),
-              CustomTextSpan(title: 'Available From:', spantext: 'Jan-26',)
+              SizedBox(width: 10.w),
+              CustomTextSpan(
+                title: 'Available From: ',
+                spantext: propertyDetails.data!.status!.capitalizeFirst ?? "",
+              ),
             ],
           ),
         ],
