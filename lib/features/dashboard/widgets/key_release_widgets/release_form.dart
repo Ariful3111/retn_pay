@@ -1,31 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/key_release_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_repair_request_widgets/landlord_signature.dart';
-import 'package:renter_pay/features/dashboard/widgets/room_info.dart';
+import 'package:renter_pay/features/dashboard/widgets/key_release_widgets/room_info.dart';
 import 'package:renter_pay/features/dashboard/widgets/key_release_widgets/landlord_key_release/signature_draw.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
-import 'package:signature/signature.dart';
 
 class ReleaseForm extends StatelessWidget {
-  final RxString signatureMode;
-  final RxBool isDrawing;
-  final SignatureController signatureController;
-  final RxString typedText;
-  final TextEditingController textEditingController;
-  const ReleaseForm({
-    super.key,
-    required this.signatureMode,
-    required this.isDrawing,
-    required this.signatureController,
-    required this.typedText,
-    required this.textEditingController,
-  });
+  const ReleaseForm({super.key});
 
   @override
   Widget build(BuildContext context) {
+    int userIndex = 2;
+    KeyReleaseController keyReleaseController = Get.find();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -55,12 +45,12 @@ class ReleaseForm extends StatelessWidget {
         ),
         infoText(text: 'Resident Signature'),
         SizedBox(height: 14.h),
-        SignatureDraw(
-          signatureMode: signatureMode,
-          isDrawing: isDrawing,
-          signatureController: signatureController,
-          typedText: typedText,
-          textEditingController: textEditingController,
+       userIndex==2?LandlordSignature() :SignatureDraw(
+          signatureMode: keyReleaseController.signatureMode,
+          isDrawing: keyReleaseController.isDrawing,
+          signatureController: keyReleaseController.signatureController,
+          typedText: keyReleaseController.typedText,
+          textEditingController: keyReleaseController.drawController,
         ),
         SizedBox(height: 20.h),
         infoText(text: 'Landlord/Agent Signature'),

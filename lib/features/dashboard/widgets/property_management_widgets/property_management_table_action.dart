@@ -12,6 +12,7 @@ class PropertyManagementTableAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int userIndex = 2;
     PropertyManagementController propertyManagementController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Obx(() {
@@ -41,7 +42,7 @@ class PropertyManagementTableAction extends StatelessWidget {
               text: 'Insurance',
               select: selectedItem == MyMenu.insurance, context: context,
             ),
-            item(
+          userIndex==2? item(menu: MyMenu.conditionalReport, icon: IconsPath.conditional, text: 'Conditional Report', select: selectedItem==MyMenu.conditionalReport, context: context): item(
               menu: MyMenu.reEnlist,
               icon: IconsPath.enlist,
               text: 'Re-Enlist',

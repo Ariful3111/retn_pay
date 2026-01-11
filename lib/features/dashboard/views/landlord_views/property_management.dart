@@ -18,9 +18,11 @@ class PropertyManagement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int userIndex = 2;
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     AddNewPropertyController addNewPropertyController = Get.find();
     PropertyManagementController propertyManagementController = Get.find();
+
     return CustomContainer(
       padding: EdgeInsets.all(20.h),
       gradient: isDark
@@ -37,22 +39,24 @@ class PropertyManagement extends StatelessWidget {
               PropertyManagementType(),
             ],
           ),
-          Obx(
-            () => addNewPropertyController.isPropertyDetails.value
+          Obx(() {
+            bool isProperty =
+                propertyManagementController.selected.value == 'Property';
+            return addNewPropertyController.isPropertyDetails.value
                 ? PropertyManagementDetails()
                 : addNewPropertyController.isNewProperty.value
                 ? PropertyOwnerDocument()
                 : Column(
                     children: [
                       SizedBox(height: 16.h),
-                      PropertyManagementRow(),
+                      isProperty||userIndex==2 ? PropertyManagementRow() : SizedBox(),
                       SizedBox(height: 20.h),
                       propertyManagementController.isViewProperty.value
                           ? AddNewProperty()
                           : PropertyManagementTable(),
                     ],
-                  ),
-          ),
+                  );
+          }),
         ],
       ),
     );

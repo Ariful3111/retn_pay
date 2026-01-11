@@ -25,6 +25,7 @@ class ServiceBookedFilter extends StatelessWidget {
               builder: (context) {
                 return Obx(
                   () => CustomCalenderFilter(
+                    alignmentGeometry: Alignment(0, -0.3),
                     widget: CustomTableCalender(
                       firstDay: serviceBookedController.firstDay,
                       lastDay: serviceBookedController.lastDay,

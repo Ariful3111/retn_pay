@@ -15,6 +15,7 @@ class LandlordUpcomingPayment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int userIndex = 3;
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     DashboardLandlordController dashboardLandlordController = Get.find();
     return Column(
@@ -31,7 +32,7 @@ class LandlordUpcomingPayment extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CustomTextPrimary(text: 'Upcoming Payment', fontSize: 20.sp),
+              CustomTextPrimary(text:userIndex==3?'Upcoming Services': 'Upcoming Payment', fontSize: 20.sp),
               CustomFilterAppbar(
                 onTap: () {
                   showDialog(

@@ -15,6 +15,7 @@ class LandlordRepairMaintenanceTableContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int userIndex = 2;
     LandlordRepairMaintenanceController landlordRepairMaintenanceController =
         Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
@@ -22,8 +23,8 @@ class LandlordRepairMaintenanceTableContent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        info(text: 'Tenant Name:${item.tenantName}'),
-        SizedBox(height: 8.h),
+       if(userIndex==1) info(text: 'Tenant Name:${item.tenantName}'),
+       if(userIndex==1) SizedBox(height: 8.h),
         info(text: 'Urgency:${item.urgency}'),
         SizedBox(height: 8.h),
         Row(
@@ -33,8 +34,8 @@ class LandlordRepairMaintenanceTableContent extends StatelessWidget {
             TableStatus(status: item.status),
           ],
         ),
-        if (item.status == 'Completed') info(text: 'Receipt:'),
-        if (item.status == 'Completed')
+        if (item.status == 'Completed'&&userIndex==1) info(text: 'Receipt:'),
+        if (item.status == 'Completed'&&userIndex==1)
           Row(
             children: [
               TableActionButton(
@@ -57,7 +58,7 @@ class LandlordRepairMaintenanceTableContent extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 8.h,)
+        SizedBox(height: 8.h),
       ],
     );
   }

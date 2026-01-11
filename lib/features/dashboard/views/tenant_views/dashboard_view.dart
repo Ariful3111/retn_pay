@@ -19,7 +19,7 @@ class DashboardView extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     DashboardController dashboardController = Get.find();
-    int userIndex = 2;
+    int userIndex = 3;
     return CustomContainer(
       gradient: isDark
           ? LinearGradient(
@@ -38,34 +38,43 @@ class DashboardView extends StatelessWidget {
             ),
             sliver: SliverList(
               delegate: SliverChildListDelegate([
-               if(userIndex==1||userIndex==2) Obx(
-                  () => CustomAnimatedSwitcher(
-                    child: Stack(
-                      key: ValueKey(dashboardController.isUpgrade.value),
-                      children: [
-                        DashboardProperties(),
-                        if (!dashboardController.isUpgrade.value&&userIndex==1)
-                         CustomShadowOverlayButton().shadow(context: context,imageFilter: ImageFilter.blur(sigmaX: 2,sigmaY: 2)),
-                        if (!dashboardController.isUpgrade.value&&userIndex==1)
-                          Positioned(
-                            top: 460.h,
-                            left: 60.w,
-                            right: 60.w,
-                            child: CustomPrimaryButton(
-                              onPressed: () {
-                                dashboardController.isUpgrade.value =
-                                    !dashboardController.isUpgrade.value;
-                              },
-                              height: 48.h,
-                              width: 307.w,
-                              text: 'Upgrade Your Plan',
-                            ),
-                          ),
-                      ],
+                if (userIndex == 1 || userIndex == 2 || userIndex == 3)
+                  Obx(
+                    () => CustomAnimatedSwitcher(
+                      child: Stack(
+                        key: ValueKey(dashboardController.isUpgrade.value),
+                        children: [
+                          DashboardProperties(),
+                          if (userIndex == 1 || userIndex == 3)
+                            if (!dashboardController.isUpgrade.value)
+                              CustomShadowOverlayButton().shadow(
+                                context: context,
+                                imageFilter: ImageFilter.blur(
+                                  sigmaX: 2,
+                                  sigmaY: 2,
+                                ),
+                              ),
+                          if (userIndex == 1 || userIndex == 3)
+                            if (!dashboardController.isUpgrade.value)
+                              Positioned(
+                                top: 460.h,
+                                left: 60.w,
+                                right: 60.w,
+                                child: CustomPrimaryButton(
+                                  onPressed: () {
+                                    dashboardController.isUpgrade.value =
+                                        !dashboardController.isUpgrade.value;
+                                  },
+                                  height: 48.h,
+                                  width: 307.w,
+                                  text: 'Upgrade Your Plan',
+                                ),
+                              ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                if(userIndex==0) DashboardProperties(),
+                if (userIndex == 0) DashboardProperties(),
               ]),
             ),
           ),

@@ -40,11 +40,6 @@ class KeyReleaseView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.r),
               ),
               child: ReleaseForm(
-                signatureMode: keyReleaseController.signatureMode,
-                isDrawing: keyReleaseController.isDrawing,
-                signatureController: keyReleaseController.signatureController,
-                typedText: keyReleaseController.typedText,
-                textEditingController: keyReleaseController.drawController,
               ),
             ),
           ),

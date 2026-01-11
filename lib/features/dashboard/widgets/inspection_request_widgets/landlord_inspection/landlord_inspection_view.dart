@@ -30,7 +30,7 @@ class LandlordInspectionView extends StatelessWidget {
                 },
               ),
               SizedBox(width: 8.w),
-              CustomAppbar(title: 'Inspection Request'),
+              CustomAppbar(title: 'View Inspection '),
             ],
           ),
           SizedBox(height: 20.h),

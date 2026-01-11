@@ -360,5 +360,5 @@ final List<GetPage> appRoutes = [
   ),
   GetPage(name: AppRoutes.landlordInspectionView, page:()=> LandlordInspectionView()),
   GetPage(name: AppRoutes.applicationManagementView, page: ()=>ApplicationManagementView(),binding: DashboardBindings()),
-  GetPage(name: AppRoutes.landlordCalenderView, page: ()=>LandlordCalenderView(),binding: DashboardBindings())
+  GetPage(name: AppRoutes.landlordCalenderView, page: ()=>LandlordCalenderView(),binding: DashboardBindings()),
 ];

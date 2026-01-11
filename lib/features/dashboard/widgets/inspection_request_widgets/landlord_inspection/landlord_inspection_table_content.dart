@@ -11,6 +11,7 @@ class LandlordInspectionTableContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int userIndex = 2;
     LandlordInspectionRequestController landlordInspectionRequestController =
         Get.find();
     final item = landlordInspectionRequestController.allRows[index];
@@ -23,6 +24,8 @@ class LandlordInspectionTableContent extends StatelessWidget {
         SizedBox(height: 8.h),
         infoText(title: 'Phone No: ${item.phone}'),
         SizedBox(height: 8.h),
+       if(userIndex==2) infoText(title: 'Scheduled: ${item.scheduleDate}'),
+        if(userIndex==2) SizedBox(height: 8.h),
         Row(
           children: [
             infoText(title: "Status"),

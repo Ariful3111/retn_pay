@@ -181,4 +181,5 @@ class IconsPath {
   static const String check = 'assets/icons/check.png';
   static const String application = 'assets/icons/application.png';
   static const String receiptUpload = 'assets/icons/receipt_upload.png';
+  static const String conditional = 'assets/icons/conditional.png';
 }

@@ -43,22 +43,39 @@ String get selectedMonthLabel {
 }
 
   void applyFilter() {
-    DateTime start;
-    if (rangeStart.value != null) {
-      start = rangeStart.value!;
-    } else {
-      start = selectedDay.value;
-    }
+  filteredEvents.clear();
 
-    int month = start.month;
-    int year = start.year;
+  if (rangeStart.value != null && rangeEnd.value != null) {
+    final start = DateTime(
+      rangeStart.value!.year,
+      rangeStart.value!.month,
+      rangeStart.value!.day,
+    );
+    final end = DateTime(
+      rangeEnd.value!.year,
+      rangeEnd.value!.month,
+      rangeEnd.value!.day,
+      23, 59, 59,
+    );
 
-    filteredEvents.value = events.entries
-        .where((entry) => entry.key.month == month && entry.key.year == year)
-        .expand((entry) => entry.value)
-        .toList();
-    focusedDay.value = DateTime(year, month, 1);
+    events.forEach((date, eventList) {
+      final normalized = DateTime(date.year, date.month, date.day);
+
+      if (!normalized.isBefore(start) && !normalized.isAfter(end)) {
+        filteredEvents.addAll(eventList);
+      }
+    });
+  } else {
+    final day = DateTime(
+      selectedDay.value.year,
+      selectedDay.value.month,
+      selectedDay.value.day,
+    );
+
+    filteredEvents.assignAll(events[day] ?? []);
   }
+}
+
 
   late DateTime today;
   late DateTime firstDay;
