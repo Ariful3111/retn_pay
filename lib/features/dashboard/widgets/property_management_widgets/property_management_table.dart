@@ -18,9 +18,9 @@ class PropertyManagementTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+   int userIndex = 2;
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     PropertyManagementController propertyManagementController = Get.find();
-    
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
@@ -28,7 +28,7 @@ class PropertyManagementTable extends StatelessWidget {
       ),
       child: Obx(() {
         bool isProperty =
-        propertyManagementController.selected.value == 'Property';
+            propertyManagementController.selected.value == 'Property';
         final list = propertyManagementController.listData;
         final rowWidgets = List<List<Widget>>.generate(list.length, (index) {
           final item = list[index].value;
@@ -39,22 +39,35 @@ class PropertyManagementTable extends StatelessWidget {
               fontWeight: FontWeight.w500,
               textOverflow: TextOverflow.ellipsis,
             ),
-           isProperty? PropertyManagementTableData(index: index):CustomTextSecondary(text: '8 Aug, 2025',fontSize: 12.sp,fontWeight: FontWeight.w400,),
-           isProperty? item.verifyStatus == 'Approved'
-                ? PropertyManagementTableAction(index: index)
-                : SizedBox.shrink():CustomFilterAppbar(
-                  width: 100.w,
-                  height: 34.h,
-                  title: 'Download',
-                  icon: IconsPath.export,
-                  onTap: () {
-                  
-                },),
+            isProperty
+                ?userIndex==2?CustomTextSecondary(
+                    text: item.rent,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                  ) :PropertyManagementTableData(index: index)
+                : CustomTextSecondary(
+                    text: item.date,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
+            isProperty
+                ? item.verifyStatus == 'Approved'||userIndex==2
+                      ? PropertyManagementTableAction(index: index)
+                      : SizedBox.shrink()
+                : CustomFilterAppbar(
+                    width: 100.w,
+                    height: 34.h,
+                    title: 'Download',
+                    icon: IconsPath.export,
+                    onTap: () {},
+                  ),
           ];
         });
         final listIndex = list.map((e) => e.key).toList();
         return CustomTable(
-          column:isProperty? propertyManagementController.tableColumn:propertyManagementController.conditionReportTableColumn, 
+          column: isProperty
+              ?userIndex==2? propertyManagementController.agentTableColumn:propertyManagementController.tableColumn
+              : propertyManagementController.conditionReportTableColumn,
           row: rowWidgets,
           expandedTableBuilder: (index) {
             final item = list[index].value;
@@ -76,7 +89,7 @@ class PropertyManagementTable extends StatelessWidget {
           isExpandedTableBuilder: (index) {
             return propertyManagementController.expanded[listIndex[index]];
           },
-          isNeedLastCol:isProperty? true:false,
+          isNeedLastCol: isProperty ? true : false,
         );
       }),
     );

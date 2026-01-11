@@ -11,13 +11,15 @@ class CustomFilterAppbar extends StatelessWidget {
   final double? height;
   final double? width;
   final double? radius;
+  final Widget? child;
   const CustomFilterAppbar({
     super.key,
     required this.onTap,
     this.title,
     this.icon,
     this.height,
-    this.width, this.radius,
+    this.width,
+    this.radius, this.child,
   });
 
   @override
@@ -35,7 +37,7 @@ class CustomFilterAppbar extends StatelessWidget {
               : LinearGradient(
                   colors: [AppColors.whiteColor, AppColors.whiteColor],
                 ),
-          borderRadius: BorderRadius.circular(radius?? 5.5.r),
+          borderRadius: BorderRadius.circular(radius ?? 5.5.r),
           border: Border.all(
             width: 1.sp,
             color: isDark
@@ -51,7 +53,7 @@ class CustomFilterAppbar extends StatelessWidget {
             ),
           ],
         ),
-        child: Row(
+        child:child?? Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomTextSecondary(

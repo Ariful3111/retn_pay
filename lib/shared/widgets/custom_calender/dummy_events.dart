@@ -6,13 +6,13 @@ final Map<DateTime, List<CalendarEvent>> dummyEvents = {
       CalendarEvent(
         title: 'Today Inspection',
         subtitle: 'Inspection scheduled for today',
-        date: DateTime.now().add( Duration(hours: 2)),
+        date: DateTime(DateTime.now().year, DateTime.now().month, 18),
         color: Colors.blue,
       ),
       CalendarEvent(
         title: 'Today Inspection',
         subtitle: 'Inspection scheduled for today',
-        date: DateTime.now().add(const Duration(hours: 2)),
+        date: DateTime(DateTime.now().year, DateTime.now().month, 18),
         color: Colors.blue,
       ),
     ],
@@ -20,13 +20,13 @@ final Map<DateTime, List<CalendarEvent>> dummyEvents = {
       CalendarEvent(
         title: 'Today Inspection',
         subtitle: 'Inspection scheduled for today',
-        date: DateTime.now().add( Duration(hours: 2)),
-        color: Colors.yellow,
+        date:  DateTime(DateTime.now().year, DateTime.now().month, 15),
+        color: Colors.cyan,
       ),
       CalendarEvent(
         title: 'Today Inspection',
         subtitle: 'Inspection scheduled for today',
-        date: DateTime.now().add(const Duration(hours: 2)),
+        date: DateTime(DateTime.now().year, DateTime.now().month, 15),
         color: Colors.green,
       ),
     ],
@@ -35,31 +35,31 @@ final Map<DateTime, List<CalendarEvent>> dummyEvents = {
       CalendarEvent(
         title: 'Previous Month Event',
         subtitle: 'Old inspection',
-        date: DateTime.now(),
-        color: Colors.yellow,
+        date: DateTime(DateTime.now().year, DateTime.now().month - 1, 18),
+        color: Colors.cyan,
       ),
     ],
     DateTime(DateTime.now().year, DateTime.now().month - 1, 8): [
       CalendarEvent(
         title: 'Previous Month Event',
         subtitle: 'Old inspection',
-        date: DateTime.now(),
-        color: Colors.yellow,
+        date: DateTime(DateTime.now().year, DateTime.now().month - 1, 8),
+        color: Colors.cyan,
       ),
     ],
     DateTime(DateTime.now().year, DateTime.now().month - 1, 12): [
       CalendarEvent(
         title: 'Previous Month Event',
         subtitle: 'Old inspection',
-        date: DateTime.now(),
-        color: Colors.yellow,
+        date: DateTime(DateTime.now().year, DateTime.now().month - 1, 12),
+        color: Colors.cyan,
       ),
     ],
     DateTime(DateTime.now().year, DateTime.now().month - 1, 5): [
       CalendarEvent(
         title: 'Previous Month Event',
         subtitle: 'Old inspection',
-        date: DateTime.now(),
+        date:  DateTime(DateTime.now().year, DateTime.now().month - 1, 5),
         color: Colors.teal,
       ),
     ],
@@ -67,7 +67,7 @@ final Map<DateTime, List<CalendarEvent>> dummyEvents = {
       CalendarEvent(
         title: 'Previous Month Event',
         subtitle: 'Old inspection',
-        date: DateTime.now(),
+        date:  DateTime(DateTime.now().year, DateTime.now().month - 1, 10),
         color: Colors.teal,
       ),
     ],
@@ -75,7 +75,7 @@ final Map<DateTime, List<CalendarEvent>> dummyEvents = {
       CalendarEvent(
         title: 'Previous Month Event',
         subtitle: 'Old inspection',
-        date: DateTime.now(),
+        date: DateTime(DateTime.now().year, DateTime.now().month - 1, 6),
         color: Colors.teal,
       ),
     ],
@@ -83,7 +83,7 @@ final Map<DateTime, List<CalendarEvent>> dummyEvents = {
       CalendarEvent(
         title: 'Previous Month Event',
         subtitle: 'Old inspection',
-        date: DateTime.now(),
+        date: DateTime(DateTime.now().year, DateTime.now().month - 2, 23),
         color: Colors.green,
       ),
     ],
@@ -91,7 +91,7 @@ final Map<DateTime, List<CalendarEvent>> dummyEvents = {
       CalendarEvent(
         title: 'Previous Month Event',
         subtitle: 'Old inspection',
-        date: DateTime.now(),
+        date:  DateTime(DateTime.now().year, DateTime.now().month - 2, 15),
         color: Colors.green,
       ),
     ],
@@ -99,7 +99,7 @@ final Map<DateTime, List<CalendarEvent>> dummyEvents = {
       CalendarEvent(
         title: 'Previous Month Event',
         subtitle: 'Old inspection',
-        date: DateTime.now(),
+        date: DateTime(DateTime.now().year, DateTime.now().month - 2, 8),
         color: Colors.green,
       ),
     ],
@@ -108,7 +108,7 @@ final Map<DateTime, List<CalendarEvent>> dummyEvents = {
       CalendarEvent(
         title: 'Next Month Event',
         subtitle: 'Upcoming inspection',
-        date: DateTime.now(),
+        date: DateTime(DateTime.now().year, DateTime.now().month + 2, 4),
         color: Colors.blue,
       ),
     ],
@@ -116,7 +116,7 @@ final Map<DateTime, List<CalendarEvent>> dummyEvents = {
       CalendarEvent(
         title: 'Next Month Event',
         subtitle: 'Upcoming inspection',
-        date: DateTime.now(),
+        date: DateTime(DateTime.now().year, DateTime.now().month + 1, 6),
         color: Colors.blue,
       ),
     ],
@@ -124,7 +124,7 @@ final Map<DateTime, List<CalendarEvent>> dummyEvents = {
       CalendarEvent(
         title: 'Next Month Event',
         subtitle: 'Upcoming inspection',
-        date: DateTime.now(),
+        date: DateTime(DateTime.now().year, DateTime.now().month + 3, 10),
         color: Colors.blue,
       ),
     ],
@@ -132,8 +132,8 @@ final Map<DateTime, List<CalendarEvent>> dummyEvents = {
       CalendarEvent(
         title: 'Next Month Event',
         subtitle: 'Upcoming inspection',
-        date: DateTime.now(),
-        color: Colors.yellow,
+        date: DateTime(DateTime.now().year, DateTime.now().month + 1, 15),
+        color: Colors.cyan,
       ),
     ],
   };

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/features/dashboard/controllers/agent_controller/rent_management_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/payment_management_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
@@ -10,12 +11,13 @@ class PaymentTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int userIndex = 2;
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     PaymentManagementController paymentManagementController = Get.find();
+    RentManagementController rentManagementController = Get.find();
     return Container(
       padding: EdgeInsets.all(4.r),
       height: 45.h,
-      width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
         borderRadius: BorderRadius.circular(9.63.r),
@@ -23,7 +25,7 @@ class PaymentTab extends StatelessWidget {
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        itemCount: paymentManagementController.paymentType.length,
+        itemCount:userIndex==2?rentManagementController.rentType.length :paymentManagementController.paymentType.length,
         itemBuilder: (context, index) {
           return Obx(() {
             final isSelect =
@@ -41,7 +43,7 @@ class PaymentTab extends StatelessWidget {
                   color: isSelect ? AppColors.primaryColorDark : null,
                 ),
                 child: CustomTextSecondary(
-                  text: paymentManagementController.paymentType[index],
+                  text:userIndex==2? rentManagementController.rentType[index]:paymentManagementController.paymentType[index],
                   fontSize: 14.sp,
                   color: isSelect ? AppColors.whiteColor : null,
                 ),

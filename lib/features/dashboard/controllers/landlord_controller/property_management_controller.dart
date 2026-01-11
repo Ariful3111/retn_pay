@@ -24,17 +24,25 @@ class PropertyModel {
   });
 }
 
-enum MyMenu { view, share, insurance, reEnlist }
+enum MyMenu { view, share, insurance, reEnlist, conditionalReport }
 
 class PropertyManagementController extends GetxController {
   List manageType = ['Property', 'Conditional Report'];
   RxString selected = 'Property'.obs;
   TextEditingController shareController = TextEditingController();
+  RxString selectedProperty = ''.obs;
+  List propertyOption = ['Property 01','Property 02'];
+  RxList<String> imageList = <String>[].obs;
   RxBool isShare = false.obs;
   RxBool isViewProperty = false.obs;
   final List<String> tableColumn = [
     'Property Address',
     'Enlisting Status',
+    'Action',
+  ];
+  final List<String> agentTableColumn = [
+    'Property Address',
+    'Monthly Rent',
     'Action',
   ];
   final List<String> conditionReportTableColumn = [
@@ -46,7 +54,6 @@ class PropertyManagementController extends GetxController {
   void setMenu(int index, MyMenu menu) {
     selectedMenu[index] = menu;
     final property = allRows[index];
-   
     switch (menu) {
       case MyMenu.share:
         Get.dialog(PropertyShare(property: property));
@@ -55,9 +62,7 @@ class PropertyManagementController extends GetxController {
         Get.dialog(PropertyInsurance(property: property));
       case MyMenu.view:
         Future.delayed(Duration(milliseconds: 300), () {
-         
-            isViewProperty.value = !isViewProperty.value;
-          
+          isViewProperty.value = !isViewProperty.value;
         });
       default:
         null;
@@ -88,8 +93,8 @@ class PropertyManagementController extends GetxController {
         agent: 'Mehbubur Rahman ',
         enlistStatus: '-',
         date: '8 Aug, 2025',
-        email: 'Email: suriya123@gmail.com',
-        phoneNo: 'Phone No: +1234567890',
+        email: 'suriya123@gmail.com',
+        phoneNo: '+1234567890',
       ),
       PropertyModel(
         address: '789 Pine Road',
@@ -98,8 +103,8 @@ class PropertyManagementController extends GetxController {
         agent: 'Mehbubur Rahman',
         enlistStatus: '-',
         date: '8 Aug, 2025',
-        email: 'Email: suriya123@gmail.com',
-        phoneNo: 'Phone No: +1234567890',
+        email: 'suriya123@gmail.com',
+        phoneNo: '+1234567890',
       ),
       PropertyModel(
         address: '789 Pine Road',
@@ -108,8 +113,8 @@ class PropertyManagementController extends GetxController {
         agent: 'Mehbubur Rahman',
         enlistStatus: 'Publish',
         date: '8 Aug, 2025',
-        email: 'Email: suriya123@gmail.com',
-        phoneNo: 'Phone No: +1234567890',
+        email: 'suriya123@gmail.com',
+        phoneNo: '+1234567890',
       ),
       PropertyModel(
         address: '789 Pine Road',
@@ -118,8 +123,8 @@ class PropertyManagementController extends GetxController {
         agent: 'Mehbubur Rahman',
         enlistStatus: 'Publish',
         date: '8 Aug, 2025',
-        email: 'Email: suriya123@gmail.com',
-        phoneNo: 'Phone No: +1234567890',
+        email: 'suriya123@gmail.com',
+        phoneNo: '+1234567890',
       ),
       PropertyModel(
         address: '789 Pine Road',
@@ -128,8 +133,8 @@ class PropertyManagementController extends GetxController {
         agent: 'Mehbubur Rahman',
         enlistStatus: 'Publish',
         date: '8 Aug, 2025',
-        email: 'Email: suriya123@gmail.com',
-        phoneNo: 'Phone No: +1234567890',
+        email: 'suriya123@gmail.com',
+        phoneNo: '+1234567890',
       ),
       PropertyModel(
         address: '789 Pine Road',
@@ -138,8 +143,8 @@ class PropertyManagementController extends GetxController {
         agent: 'Mehbubur Rahman',
         enlistStatus: '-',
         date: '8 Aug, 2025',
-        email: 'Email: suriya123@gmail.com',
-        phoneNo: 'Phone No: +1234567890',
+        email: 'suriya123@gmail.com',
+        phoneNo: '+1234567890',
       ),
     ];
     expanded.value = List.generate(allRows.length, (_) => false);
