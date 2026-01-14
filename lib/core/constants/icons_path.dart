@@ -182,4 +182,8 @@ class IconsPath {
   static const String application = 'assets/icons/application.png';
   static const String receiptUpload = 'assets/icons/receipt_upload.png';
   static const String conditional = 'assets/icons/conditional.png';
+  static const String dashboardAddProperty = 'assets/icons/dashboard_add_property.png';
+  static const String dashboardService = 'assets/icons/dashboard_service.png';
+  static const String checkCircle = 'assets/icons/check_circle.png';
+  static const String drawerBook = 'assets/icons/drawer_book.png';
 }

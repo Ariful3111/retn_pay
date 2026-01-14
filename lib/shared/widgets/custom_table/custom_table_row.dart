@@ -6,7 +6,7 @@ class CustomTableRow extends StatelessWidget {
   final List<List<Widget>> row;
   final int rowIndex;
   final List<String> column;
-  final Widget expandedTable;
+  final Widget ? expandedTable;
   final VoidCallback onRowTap;
   final bool isExpandedTable;
   final bool isNeedLastCol;
@@ -15,7 +15,7 @@ class CustomTableRow extends StatelessWidget {
     required this.row,
     required this.rowIndex,
     required this.column,
-    required this.expandedTable,
+    this.expandedTable,
     required this.onRowTap,
     required this.isExpandedTable, required this.isNeedLastCol,
   });
@@ -62,9 +62,9 @@ class CustomTableRow extends StatelessWidget {
           ),
         ),
         AnimatedSize(
-          duration: const Duration(milliseconds: 250),
+          duration: Duration(milliseconds: 250),
           curve: Curves.easeInOut,
-          child: isExpandedTable ? expandedTable : const SizedBox.shrink(),
+          child: isExpandedTable ? expandedTable : SizedBox.shrink(),
         ),
       ],
     );

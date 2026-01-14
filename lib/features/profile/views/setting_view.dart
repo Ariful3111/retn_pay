@@ -5,6 +5,7 @@ import 'package:renter_pay/features/profile/widgets/settings_widgets/auto_pay_se
 import 'package:renter_pay/features/profile/widgets/settings_widgets/dark_mode_setting.dart';
 import 'package:renter_pay/features/profile/widgets/settings_widgets/landlord_settings.dart';
 import 'package:renter_pay/features/profile/widgets/settings_widgets/notification_setting.dart';
+import 'package:renter_pay/features/profile/widgets/settings_widgets/subscription_setting.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 
@@ -13,7 +14,7 @@ class SettingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    int userIndex = 2;
+    int userIndex = 3;
     return CustomContainer(
       drawer: Drawer(),
       gradient: isDark
@@ -50,8 +51,8 @@ class SettingView extends StatelessWidget {
                       SizedBox(height: 32.h),
                       DarkModeSetting(),
                       SizedBox(height: 32.h),
-                     if(userIndex!=2) AutoPaySetting(),
-                     if(userIndex!=2) SizedBox(height: 32.h),
+                     if(userIndex==1||userIndex==0) AutoPaySetting(),
+                     if(userIndex==3) SubscriptionSetting()
                     ],
                   ),
                 ),

@@ -15,6 +15,9 @@ class ProfileEditController extends GetxController {
   TextEditingController amountController = TextEditingController();
   TextEditingController bedroomController = TextEditingController();
   TextEditingController bathroomController = TextEditingController();
+  TextEditingController businessNameController = TextEditingController();
+  TextEditingController businessTypeController = TextEditingController();
+  TextEditingController businessLicenseController = TextEditingController();
   RxBool isPets = false.obs;
   RxBool isParking = false.obs;
   RxString initialPet = 'Pet Type'.obs;

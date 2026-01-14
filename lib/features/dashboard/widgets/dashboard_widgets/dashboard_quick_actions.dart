@@ -32,12 +32,11 @@ class DashboardQuickActions extends StatelessWidget {
           Obx(
             () => InkWell(
               onTap: () {
-                
                 dashboardController.isQuickActions.value =
                     !dashboardController.isQuickActions.value;
               },
               child: Padding(
-                padding:  EdgeInsets.all(8.r),
+                padding: EdgeInsets.all(8.r),
                 child: Center(
                   child: Image.asset(
                     dashboardController.isQuickActions.value
