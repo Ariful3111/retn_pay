@@ -10,7 +10,7 @@ class ProfileUserItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int userIndex=2;
+    int userIndex=3;
     return Column(
       children: [
         if (userIndex == 1)

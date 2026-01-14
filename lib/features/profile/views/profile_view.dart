@@ -36,7 +36,6 @@ class ProfileView extends StatelessWidget {
               return CustomAppbar(title: roleDetector());
             }),
           ),
-
           SliverPadding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             sliver: SliverList(

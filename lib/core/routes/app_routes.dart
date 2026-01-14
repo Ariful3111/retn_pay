@@ -43,4 +43,7 @@ class AppRoutes {
   static const String landlordInspectionView = '/landlordInspectionView';
   static const String applicationManagementView = '/applicationManagementView';
   static const String landlordCalenderView = '/landlordCalenderView';
+  static const String serviceManagementView = '/serviceManagementView';
+  static const String bookingManagementView = '/bookingManagementView';
+  static const String bookingManagementDetailsView = '/bookingManagementDetailsView';
 }

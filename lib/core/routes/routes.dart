@@ -4,10 +4,14 @@ import 'package:renter_pay/features/auth/bindings/document_verification_bindings
 import 'package:renter_pay/features/auth/bindings/first_onboarding_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/forgot_password_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/landlord_key_release_bindings.dart';
+import 'package:renter_pay/features/dashboard/bindings/service_vendor_bindings/service_vendor_bindings.dart';
 import 'package:renter_pay/features/dashboard/views/landlord_views/application_management_view.dart';
 import 'package:renter_pay/features/dashboard/views/landlord_views/landlord_calender_view.dart';
 import 'package:renter_pay/features/dashboard/views/landlord_views/landlord_key_release.dart';
 import 'package:renter_pay/features/dashboard/views/landlord_views/property_management_details.dart';
+import 'package:renter_pay/features/dashboard/views/service_vendor_views/booking_management.dart';
+import 'package:renter_pay/features/dashboard/views/service_vendor_views/booking_management_details.dart';
+import 'package:renter_pay/features/dashboard/views/service_vendor_views/service_management_view.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/landlord_inspection/landlord_inspection_view.dart';
 import 'package:renter_pay/features/home/bindings/logged_in_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/login_bindings.dart';
@@ -361,4 +365,7 @@ final List<GetPage> appRoutes = [
   GetPage(name: AppRoutes.landlordInspectionView, page:()=> LandlordInspectionView()),
   GetPage(name: AppRoutes.applicationManagementView, page: ()=>ApplicationManagementView(),binding: DashboardBindings()),
   GetPage(name: AppRoutes.landlordCalenderView, page: ()=>LandlordCalenderView(),binding: DashboardBindings()),
+  GetPage(name: AppRoutes.serviceManagementView, page: ()=>ServiceManagementView(),binding: ServiceVendorBindings()),
+  GetPage(name: AppRoutes.bookingManagementView, page: ()=>BookingManagement(),binding: ServiceVendorBindings()),
+  GetPage(name: AppRoutes.bookingManagementDetailsView, page: ()=>BookingManagementDetails())
 ];

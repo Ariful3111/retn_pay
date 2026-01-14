@@ -7,7 +7,6 @@ import 'package:renter_pay/features/home/controllers/global_scroll_controller.da
 import 'package:table_calendar/table_calendar.dart';
 
 class DashboardController extends GetxController {
-   int userIndex = 2;
   final selectedDay = DateTime.now().obs;
   final scrollController = TrackingScrollController();
   RxBool isFavorite = false.obs;
@@ -50,6 +49,18 @@ class DashboardController extends GetxController {
       'routes': AppRoutes.inspectionRequestView,
     },
     {
+      'icon': IconsPath.drawerService,
+      'title': 'Service Management',
+      'allowedUser': [3],
+      'routes': AppRoutes.serviceManagementView,
+    },
+    {
+      'icon': IconsPath.drawerBook,
+      'title': 'Booking Management',
+      'allowedUser': [3],
+      'routes': AppRoutes.bookingManagementView,
+    },
+    {
       'icon': IconsPath.dashboardPropertyManagement,
       'title': 'Property Management',
       'allowedUser': [1, 2],
@@ -88,11 +99,11 @@ class DashboardController extends GetxController {
     {
       'icon': IconsPath.drawerPayment,
       'title':'Payment Management',
-      'allowedUser': [0, 1],
+      'allowedUser': [0,1,3],
       'routes': AppRoutes.paymentManagementView,
     },
     {
-      'icon': IconsPath.drawerPayment,
+      'icon': IconsPath.drawerPayment, 
       'title':'Rent Management',
       'allowedUser': [2],
       'routes': AppRoutes.paymentManagementView,
@@ -106,17 +117,17 @@ class DashboardController extends GetxController {
     {
       'icon': IconsPath.drawerService,
       'title': 'Service',
-      'allowedUser': [0, 1,2],
+      'allowedUser': [0,1,2],
       'routes': AppRoutes.servicesView,
     },
     {
       'icon': IconsPath.dashboardCalender,
       'title': 'Calender',
-      'allowedUser': [1,2],
+      'allowedUser': [1,2,3],
       'routes': AppRoutes.landlordCalenderView,
     },
   ];
- 
+ int userIndex = 3;
   List<Map<String, dynamic>> get userDrawerItems {
     return drawerItems
         .where((user) => user['allowedUser'].contains(userIndex))

@@ -15,7 +15,7 @@ class ProfileEditDetails extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     ProfileEditController profileEditController = Get.find();
     return Container(
-      height: 443.h,
+      padding: EdgeInsets.all(16.r),
       width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
@@ -105,6 +105,24 @@ class ProfileEditDetails extends StatelessWidget {
                   ProfileEditField(
                     controller: profileEditController.passwordController,
                     labelText: 'Password',
+                    readOnly: profileEditController.isEdit.value ? false : true,
+                  ),
+                  SizedBox(height: 16.h),
+                  ProfileEditField(
+                    controller: profileEditController.businessNameController,
+                    labelText: 'Business Name',
+                    readOnly: profileEditController.isEdit.value ? false : true,
+                  ),
+                  SizedBox(height: 16.h),
+                  ProfileEditField(
+                    controller: profileEditController.businessTypeController,
+                    labelText: 'Business Type',
+                    readOnly: profileEditController.isEdit.value ? false : true,
+                  ),
+                  SizedBox(height: 16.h),
+                  ProfileEditField(
+                    controller: profileEditController.businessLicenseController,
+                    labelText: 'Business License No',
                     readOnly: profileEditController.isEdit.value ? false : true,
                   ),
                 ],

@@ -7,4 +7,5 @@ class SettingsController extends GetxController{
  RxBool isInsurance = false.obs;
  RxBool isSafety = false.obs;
  RxBool isUpgrade = false.obs;
+ RxBool isSubscription = false.obs;
 }

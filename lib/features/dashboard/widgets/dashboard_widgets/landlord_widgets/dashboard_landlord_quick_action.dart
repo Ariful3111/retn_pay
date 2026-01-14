@@ -7,6 +7,7 @@ class DashboardLandlordQuickAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int userIndex = 3;
     return Column(
       children: [
         DashboardLandlordQuickActionModel(
@@ -16,31 +17,44 @@ class DashboardLandlordQuickAction extends StatelessWidget {
           onTap: () {},
           buttonText: 'Open Calendar',
         ),
-        DashboardLandlordQuickActionModel(
-          icon: IconsPath.dashboardLandlordTask,
-          title: 'Task Management',
-          subTitle: 'Organize, track, and complete your tasks efficiently in one place.',
-          onTap: () {
-            
-          },
-          buttonText: 'View Task',
-        ),
+        if (userIndex == 1)
+          DashboardLandlordQuickActionModel(
+            icon: IconsPath.dashboardAddProperty,
+            title: 'Add New Properties',
+            subTitle: 'Expand your portfolio by adding a new rental property.',
+            onTap: () {},
+            buttonText: 'Add Property',
+          ),
+        if (userIndex == 2)
+          DashboardLandlordQuickActionModel(
+            icon: IconsPath.dashboardLandlordTask,
+            title: 'Task Management',
+            subTitle:
+                'Organize, track, and complete your tasks efficiently in one place.',
+            onTap: () {},
+            buttonText: 'View Task',
+          ),
+        if (userIndex == 3)
+          DashboardLandlordQuickActionModel(
+            icon: IconsPath.dashboardService,
+            title: 'Service Management',
+            subTitle:
+                'Organize, track, and complete your services efficiently in one place.',
+            onTap: () {},
+            buttonText: 'View Service',
+          ),
         DashboardLandlordQuickActionModel(
           icon: IconsPath.dashboardLandlordInspection,
           title: 'Scheduled Inspections',
           subTitle: 'View upcoming property inspections with ease.',
-          onTap: () {
-            
-          },
+          onTap: () {},
           buttonText: 'View Schedule ',
         ),
         DashboardLandlordQuickActionModel(
           icon: IconsPath.dashboardLandlordVirtual,
           title: 'Virtual Tour Request',
           subTitle: 'Quickly view the request for virtual tour',
-          onTap: () {
-            
-          },
+          onTap: () {},
           buttonText: 'View Request',
         ),
       ],

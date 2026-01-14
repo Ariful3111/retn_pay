@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/agent_controller/rent_management_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/services_vendor_controller/service_payment_management_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/payment_management_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/payment_management_widgets/payment_management_filter.dart';
 import 'package:renter_pay/features/dashboard/widgets/rent_management_widgets/rent_management_table_content.dart';
@@ -16,8 +17,11 @@ class RentManagementTable extends StatelessWidget {
   const RentManagementTable({super.key});
   @override
   Widget build(BuildContext context) {
+    int userIndex = 3;
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     RentManagementController rentManagementController = Get.find();
+    ServicePaymentManagementController servicePaymentManagementController =
+        Get.find();
     return Column(
       children: [
         PaymentManagementFilter(),
@@ -40,41 +44,57 @@ class RentManagementTable extends StatelessWidget {
               final item = list[index].value;
               return [
                 CustomTextPrimary(
-                  text: item.tenantName,
+                  text: userIndex == 3 ? item.plan : item.tenantName,
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w500,
                   textOverflow: TextOverflow.ellipsis,
                 ),
                 CustomTextPrimary(
-                  text: item.date,
+                  text:userIndex==3?item.amount :item.date,
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
                   textOverflow: TextOverflow.ellipsis,
                 ),
-                isRentHistory
-                    ? TableActionButton(icon: IconsPath.export, onTap: () {})
-                    : CustomTextPrimary(
-                        text: item.amount,
-                        fontSize: 12.sp,
-                        fontWeight: FontWeight.w400,
-                        textOverflow: TextOverflow.ellipsis,
+                if (userIndex == 2)
+                  isRentHistory
+                      ? TableActionButton(icon: IconsPath.export, onTap: () {})
+                      : CustomTextPrimary(
+                          text: item.amount,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                          textOverflow: TextOverflow.ellipsis,
+                        ),
+                if (userIndex == 3)
+                  Row(
+                    children: [
+                      TableActionButton(
+                        icon: IconsPath.actonView,
+                        onTap: () {},
                       ),
+                      TableActionButton(
+                        icon: IconsPath.export,
+                        onTap: () {},
+                      ),
+                    ],
+                  ),
               ];
             });
             final listIndex = list.map((e) => e.key).toList();
             return CustomTable(
-              column: rentManagementController.tableColumn,
+              column: userIndex == 3
+                  ? servicePaymentManagementController.tableColumn
+                  : rentManagementController.tableColumn,
               row: rowWidgets,
               expandedTableBuilder: (index) {
                 final item = list[index].value;
                 final rowIndex = listIndex[index];
                 return CustomTableExpanded(
-                  title: 'Property Address: ${item.propertyAddress}',
+                  title:userIndex==3? 'Payment Date: ${item.date}':'Property Address: ${item.propertyAddress}',
                   isOpen: rentManagementController.expanded[rowIndex],
                   onExpandedClose: () {
                     rentManagementController.toggleExpanded(rowIndex);
                   },
-                  expandedContent: RentManagementTableContent(index: rowIndex),
+                  expandedContent:userIndex==3? SizedBox():RentManagementTableContent(index: rowIndex),
                 );
               },
               onRowTap: (index) {

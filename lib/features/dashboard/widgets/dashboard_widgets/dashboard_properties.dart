@@ -15,6 +15,8 @@ import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/landlord_upcoming_payment.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/property_promotion.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/repair_request.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/service_vendor_widgets/service_request.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/service_vendor_widgets/service_vendor_ad.dart';
 
 class DashboardProperties extends StatelessWidget {
   const DashboardProperties({super.key});
@@ -58,7 +60,9 @@ class DashboardProperties extends StatelessWidget {
         ),
         if (userIndex == 1) PropertyPromotion(),
         if (userIndex == 1) DashboardLandlordPlan(),
-        DashboardRentNotice(),
+       if(userIndex==1||userIndex==2) DashboardRentNotice(),
+       if(userIndex==3) ServiceVendorAd(),
+       if(userIndex==3) ServiceRequest(),
         SizedBox(height: 20.h),
         DashboardQuickActions(),
         SizedBox(height: 20.h),
@@ -80,7 +84,7 @@ class DashboardProperties extends StatelessWidget {
                             DashboardKeyFeatures(),
                           ],
                         ),
-                      if (userIndex == 1 || userIndex == 2)
+                      if (userIndex == 1 || userIndex == 2||userIndex==3)
                         DashboardLandlordQuickAction(),
                     ],
                   ),

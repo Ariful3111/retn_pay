@@ -5,6 +5,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/dashboard_landlord_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/upcoming_payment_filter.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/upcoming_payment_table.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/service_vendor_widgets/upcoming_services.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_filter_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_calender/custom_calender_filter.dart';
 import 'package:renter_pay/shared/widgets/custom_calender/custom_calender_filter_helper.dart';
@@ -32,7 +33,10 @@ class LandlordUpcomingPayment extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CustomTextPrimary(text:userIndex==3?'Upcoming Services': 'Upcoming Payment', fontSize: 20.sp),
+              CustomTextPrimary(
+                text: userIndex == 3 ? 'Upcoming Services' : 'Upcoming Payment',
+                fontSize: 20.sp,
+              ),
               CustomFilterAppbar(
                 onTap: () {
                   showDialog(
@@ -46,14 +50,17 @@ class LandlordUpcomingPayment extends StatelessWidget {
                           onTap: (int index) {
                             dashboardLandlordController.isDay.value = index;
                             calenderFilter(
-                        index: index,
-                        selectedDay: dashboardLandlordController.selectedDay,
-                        rangeStart: dashboardLandlordController.rangeStart,
-                        rangeEnd: dashboardLandlordController.rangeEnd,
-                        rangeSelectionMode:
-                            dashboardLandlordController.rangeSelectionMode,
-                      );
-                          }, onApply: () {  },
+                              index: index,
+                              selectedDay:
+                                  dashboardLandlordController.selectedDay,
+                              rangeStart:
+                                  dashboardLandlordController.rangeStart,
+                              rangeEnd: dashboardLandlordController.rangeEnd,
+                              rangeSelectionMode: dashboardLandlordController
+                                  .rangeSelectionMode,
+                            );
+                          },
+                          onApply: () {},
                         ),
                       );
                     },
@@ -64,7 +71,8 @@ class LandlordUpcomingPayment extends StatelessWidget {
           ),
         ),
         SizedBox(height: 12.h),
-        UpcomingPaymentTable(),
+       if(userIndex==1||userIndex==2) UpcomingPaymentTable(),
+       if(userIndex==3) UpcomingServices()
       ],
     );
   }

@@ -38,7 +38,6 @@ class DashboardView extends StatelessWidget {
             ),
             sliver: SliverList(
               delegate: SliverChildListDelegate([
-                if (userIndex == 1 || userIndex == 2 || userIndex == 3)
                   Obx(
                     () => CustomAnimatedSwitcher(
                       child: Stack(
@@ -74,7 +73,6 @@ class DashboardView extends StatelessWidget {
                       ),
                     ),
                   ),
-                if (userIndex == 0) DashboardProperties(),
               ]),
             ),
           ),

@@ -8,7 +8,7 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart
 class CustomTable extends StatelessWidget {
   final List<String> column;
   final List<List<Widget>> row;
-  final Widget Function(int index) expandedTableBuilder;
+  final Widget Function(int index)? expandedTableBuilder;
   final Function(int index) onRowTap;
   final bool Function(int index) isExpandedTableBuilder;
   final bool isNeedLastCol;
@@ -18,7 +18,7 @@ class CustomTable extends StatelessWidget {
     required this.row,
     required this.onRowTap,
     required this.isExpandedTableBuilder,
-    required this.expandedTableBuilder, required this.isNeedLastCol,
+     this.expandedTableBuilder, required this.isNeedLastCol,
   });
 
   @override
@@ -63,7 +63,7 @@ class CustomTable extends StatelessWidget {
           row: row,
           rowIndex: rowIndex,
           column: column,
-          expandedTable: expandedTableBuilder(rowIndex),
+          expandedTable: expandedTableBuilder?.call(rowIndex),
           onRowTap: () => onRowTap(rowIndex),
           isExpandedTable: isExpandedTableBuilder(rowIndex),
           isNeedLastCol: isNeedLastCol,

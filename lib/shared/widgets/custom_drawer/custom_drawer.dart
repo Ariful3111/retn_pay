@@ -13,17 +13,21 @@ class CustomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     DashboardController dashboardController = Get.find();
-    int userIndex = 2;
+    int userIndex = 3;
     double drawerHeight;
     double drawerWidth;
     if (userIndex == 1) {
       drawerHeight = 560.h;
       drawerWidth = 277.w;
     }
-    if(userIndex==2){
+    if (userIndex == 2) {
       drawerHeight = 500.h;
       drawerWidth = 277.w;
-    }else{
+    }
+    if (userIndex == 3) {
+      drawerHeight = 350.h;
+      drawerWidth = 260.w;
+    } else {
       drawerHeight = 460.h;
       drawerWidth = 260.w;
     }
