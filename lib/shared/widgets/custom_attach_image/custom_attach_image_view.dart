@@ -1,7 +1,5 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 class CustomAttachImageView extends StatelessWidget {
   final double? height;
@@ -16,7 +14,8 @@ class CustomAttachImageView extends StatelessWidget {
     this.width,
     this.padding,
     this.radius,
-    this.sizeHeight, required this.imageList,
+    this.sizeHeight,
+    required this.imageList,
   });
 
   @override
@@ -24,28 +23,24 @@ class CustomAttachImageView extends StatelessWidget {
     return Expanded(
       child: SizedBox(
         height: sizeHeight ?? 52.h,
-        child: Obx(
-          () => ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: imageList.length,
-            itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.only(right: padding ?? 10.w),
-                height: height ?? 52.h,
-                width: width ?? 52.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(radius ?? 8.r),
-                  image: DecorationImage(
-                    image: FileImage(
-                      File(imageList[index]),
-                    ),
-                    fit: BoxFit.fill,
-                  ),
+        child: ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemCount: imageList.length,
+          itemBuilder: (context, index) {
+            return Container(
+              margin: EdgeInsets.only(right: padding ?? 10.w),
+              height: height ?? 52.h,
+              width: width ?? 52.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(radius ?? 8.r),
+                image: DecorationImage(
+                  image: AssetImage(imageList[index]),
+                  fit: BoxFit.fill,
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ),
     );

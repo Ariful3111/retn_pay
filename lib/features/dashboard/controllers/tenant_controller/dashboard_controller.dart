@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -111,7 +112,7 @@ class DashboardController extends GetxController {
     {
       'icon': IconsPath.drawerRepair,
       'title': 'Repair & Maintenance',
-      'allowedUser': [0, 1,2],
+      'allowedUser': [0,1,2],
       'routes': AppRoutes.repairMaintenanceView,
     },
     {
@@ -127,7 +128,6 @@ class DashboardController extends GetxController {
       'routes': AppRoutes.landlordCalenderView,
     },
   ];
- int userIndex = 3;
   List<Map<String, dynamic>> get userDrawerItems {
     return drawerItems
         .where((user) => user['allowedUser'].contains(userIndex))

@@ -45,7 +45,7 @@ class ServiceBookedTable extends StatelessWidget {
             final item = list[index].value;
             final rowIndex = listIndex[index];
             return CustomTableExpanded(
-              title: 'Property Address: ${item.serviceName}',
+              title: 'Service Name: ${item.serviceName}',
               isOpen: serviceBookedController.expandedData[rowIndex],
               onExpandedClose: () {
                 serviceBookedController.showExpandedData(rowIndex);

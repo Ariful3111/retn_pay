@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/notice_button_model.dart';
 
 class ViewNoticeButton extends StatelessWidget {
@@ -8,7 +9,6 @@ class ViewNoticeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int userIndex = 1;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

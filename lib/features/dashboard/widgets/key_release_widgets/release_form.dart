@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/key_release_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_repair_request_widgets/landlord_signature.dart';
 import 'package:renter_pay/features/dashboard/widgets/key_release_widgets/room_info.dart';
@@ -14,7 +15,6 @@ class ReleaseForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int userIndex = 2;
     KeyReleaseController keyReleaseController = Get.find();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

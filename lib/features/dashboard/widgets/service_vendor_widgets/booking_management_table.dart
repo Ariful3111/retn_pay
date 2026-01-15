@@ -5,7 +5,9 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/dashboard/controllers/services_vendor_controller/booking_management_controller.dart';
+import 'package:renter_pay/features/dashboard/widgets/service_vendor_widgets/booking_management_table_content.dart';
 import 'package:renter_pay/shared/widgets/custom_table/custom_table.dart';
+import 'package:renter_pay/shared/widgets/custom_table/custom_table_expanded.dart';
 import 'package:renter_pay/shared/widgets/custom_table/table_action_button.dart';
 import 'package:renter_pay/shared/widgets/custom_table/table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
@@ -46,7 +48,21 @@ class BookingManagementTable extends StatelessWidget {
         return CustomTable(
           column: bookingManagementController.tableColumn,
           row: rowWidgets,
-          onRowTap: (index) {},
+          expandedTableBuilder: (index) {
+            final item = list[index].value;
+            final rowIndex = listIndex[index];
+            return CustomTableExpanded(
+              title: 'Service Name: ${item.serviceName}',
+              isOpen: bookingManagementController.expanded[rowIndex],
+              onExpandedClose: () {
+                bookingManagementController.toggleExpanded(rowIndex);
+              },
+              expandedContent: BookingManagementTableContent(index: rowIndex),
+            );
+          },
+          onRowTap: (index) {
+            bookingManagementController.toggleExpanded(listIndex[index]);
+          },
           isExpandedTableBuilder: (index) {
             return bookingManagementController.expanded[listIndex[index]];
           },

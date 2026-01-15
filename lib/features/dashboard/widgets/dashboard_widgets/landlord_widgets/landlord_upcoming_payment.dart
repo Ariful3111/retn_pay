@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/dashboard_landlord_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/upcoming_payment_filter.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/upcoming_payment_table.dart';
@@ -16,7 +17,6 @@ class LandlordUpcomingPayment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int userIndex = 3;
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     DashboardLandlordController dashboardLandlordController = Get.find();
     return Column(
