@@ -12,7 +12,7 @@ class TableStatus extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     Color ?text;
     Color ?bg;
-    if (status == "Approved"||status == 'Assigned'||status == 'Open') {
+    if (status == "Approved"|| status == 'Assigned'||status == 'Open') {
       bg = isDark ? AppColors.darkApprovedBG : AppColors.approveBG;
       text = isDark ? AppColors.approveBG : AppColors.approveText;
     } else if (status == "Pending") {

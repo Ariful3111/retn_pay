@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_drawer/custom_drawer_item.dart';
 
@@ -13,18 +14,17 @@ class CustomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     DashboardController dashboardController = Get.find();
-    int userIndex = 3;
     double drawerHeight;
     double drawerWidth;
     if (userIndex == 1) {
       drawerHeight = 560.h;
       drawerWidth = 277.w;
     }
-    if (userIndex == 2) {
+    else if (userIndex == 2) {
       drawerHeight = 500.h;
       drawerWidth = 277.w;
     }
-    if (userIndex == 3) {
+    else if (userIndex == 3) {
       drawerHeight = 350.h;
       drawerWidth = 260.w;
     } else {

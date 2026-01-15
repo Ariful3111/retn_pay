@@ -56,7 +56,6 @@ class AppColors {
   static const pendingText = Color(0xFFE89E00);
   static const rejectBG = Color(0xFFFCE6E6);
   static const rejectText = Color(0xFFDF0101);
-
   static const darkPrimary = Color(0xFF000000);
   static const darkPrimaryText = Colors.white;
   static const darkSecondaryText = Color(0xFFC2C7D0);

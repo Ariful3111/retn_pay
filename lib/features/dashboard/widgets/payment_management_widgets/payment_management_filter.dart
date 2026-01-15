@@ -50,9 +50,13 @@ class PaymentManagementFilter extends StatelessWidget {
           icon: IconsPath.export,
           onTap: () {
             showDialog(
+              barrierColor: Colors.transparent,
               context: context,
               builder: (context) {
-                return PaymentManagementExport();
+                return PaymentManagementExport(
+                  exportList: paymentManagementController.exportType,
+                  selectedIndex: paymentManagementController.selectedExport,
+                );
               },
             );
           },

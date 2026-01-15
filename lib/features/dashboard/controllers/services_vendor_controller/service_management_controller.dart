@@ -3,7 +3,10 @@ import 'package:get/get.dart';
 class ServiceManagementModel {
   final String serviceName;
   final String status;
-  ServiceManagementModel({required this.serviceName, required this.status});
+  final String clientName;
+  final String address;
+  final String schedule;
+  ServiceManagementModel({required this.serviceName, required this.status, required this.clientName, required this.address, required this.schedule});
 }
 
 class ServiceManagementController extends GetxController {
@@ -42,21 +45,21 @@ class ServiceManagementController extends GetxController {
 
   void initRows() {
     allRows.value = [
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Approved'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Approved'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Approved'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Approved'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Approved'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Pending'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Pending'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Pending'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Pending'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Pending'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Rejected'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Rejected'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Rejected'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Rejected'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Rejected'),
+      ServiceManagementModel(serviceName: 'Plumbing', status: 'Approved', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
+      ServiceManagementModel(serviceName: 'Plumbing', status: 'Approved', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
+      ServiceManagementModel(serviceName: 'Plumbing', status: 'Approved', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
+      ServiceManagementModel(serviceName: 'Plumbing', status: 'Approved', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
+      ServiceManagementModel(serviceName: 'Plumbing', status: 'Approved', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
+      ServiceManagementModel(serviceName: 'Plumbing', status: 'Pending', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
+      ServiceManagementModel(serviceName: 'Plumbing', status: 'Pending', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
+      ServiceManagementModel(serviceName: 'Plumbing', status: 'Pending', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
+      ServiceManagementModel(serviceName: 'Plumbing', status: 'Pending', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
+      ServiceManagementModel(serviceName: 'Plumbing', status: 'Pending', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
+      ServiceManagementModel(serviceName: 'Plumbing', status: 'Rejected', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
+      ServiceManagementModel(serviceName: 'Plumbing', status: 'Rejected', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
+      ServiceManagementModel(serviceName: 'Plumbing', status: 'Rejected', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
+      ServiceManagementModel(serviceName: 'Plumbing', status: 'Rejected', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
+      ServiceManagementModel(serviceName: 'Plumbing', status: 'Rejected', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
     ];
     expanded.value = List.generate(allRows.length, (_) => false);
     update();

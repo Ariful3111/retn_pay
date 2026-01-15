@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/profile/widgets/settings_widgets/auto_pay_setting.dart';
 import 'package:renter_pay/features/profile/widgets/settings_widgets/dark_mode_setting.dart';
 import 'package:renter_pay/features/profile/widgets/settings_widgets/landlord_settings.dart';
@@ -14,7 +15,6 @@ class SettingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    int userIndex = 3;
     return CustomContainer(
       drawer: Drawer(),
       gradient: isDark

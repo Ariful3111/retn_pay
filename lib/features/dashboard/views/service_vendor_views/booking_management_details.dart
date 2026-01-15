@@ -3,8 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_request.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
+import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
@@ -31,43 +34,77 @@ class BookingManagementDetails extends StatelessWidget {
               CustomAppbar(title: 'Booking Management'),
             ],
           ),
-          SizedBox(height: 32.h,),
+          SizedBox(height: 32.h),
           Container(
-            padding: EdgeInsets.symmetric(vertical: 16.h,horizontal: 15.w),
+            padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 15.w),
             decoration: BoxDecoration(
-              color: isDark?AppColors.darkPrimary:AppColors.whiteColor,
+              color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
               borderRadius: BorderRadius.circular(12.r),
             ),
-            child: Column(children: [
-              Image.asset(ImagesPath.service,height: 211.h,width: MediaQuery.widthOf(context),),
-              SizedBox(height: 12.h,),
-              Row(
-            children: [
-              Image.asset(IconsPath.service, height: 33.83.h, width: 33.83.w),
-              SizedBox(width: 9.w),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
+              children: [
+                Image.asset(
+                  ImagesPath.service,
+                  height: 211.h,
+                  width: MediaQuery.widthOf(context),
+                ),
+                SizedBox(height: 12.h),
+                Row(
                   children: [
-                    CustomTextPrimary(
-                      text: 'ProFix Plumbing Solutions',
-                      fontSize: 20.sp,
-                      color: isDark
-                          ? AppColors.whiteColor
-                          : AppColors.darkContainer,
+                    Image.asset(
+                      IconsPath.service,
+                      height: 33.83.h,
+                      width: 33.83.w,
                     ),
-                    SizedBox(height: 4.h),
-                    CustomTextSecondary(
-                      text: 'Expert Plumbing Services for Homes & Businesses',
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w400,
+                    SizedBox(width: 9.w),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomTextPrimary(
+                            text: 'ProFix Plumbing Solutions',
+                            fontSize: 20.sp,
+                            color: isDark
+                                ? AppColors.whiteColor
+                                : AppColors.darkContainer,
+                          ),
+                          SizedBox(height: 4.h),
+                          CustomTextSecondary(
+                            text:
+                                'Expert Plumbing Services for Homes & Businesses',
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
+                SizedBox(height: 20.h),
+                ServiceBookedRequest(),
+              ],
+            ),
+          ),
+          SizedBox(height: 20.h),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CustomPrimaryButton(
+                onPressed: () {},
+                height: 40.h,
+                width: 100.w,
+                text: 'Accept',
+                borderRadius: BorderRadius.circular(6.r),
+              ),
+              SizedBox(width: 12.w),
+              CustomSecondaryButton(
+                onPressed: () {},
+                height: 40.h,
+                width: 100.w,
+                text: 'Reject',
+                borderRadius: BorderRadius.circular(6.r),
               ),
             ],
-          ),
-            ],),
           ),
         ],
       ),

@@ -24,59 +24,59 @@ class LandlordCalenderController extends GetxController {
   final focusedDay = DateTime.now().obs;
   final selectedDay = DateTime.now().obs;
 
-RxList<CalendarEvent> filteredEvents = <CalendarEvent>[].obs;
-String get selectedMonthLabel {
-  final df = DateFormat('MMMM, yyyy');
+  RxList<CalendarEvent> filteredEvents = <CalendarEvent>[].obs;
+  String get selectedMonthLabel {
+    final df = DateFormat('MMMM, yyyy');
 
-  if (rangeStart.value != null && rangeEnd.value != null) {
-    final start = rangeStart.value!;
-    final end = rangeEnd.value!;
+    if (rangeStart.value != null && rangeEnd.value != null) {
+      final start = rangeStart.value!;
+      final end = rangeEnd.value!;
 
-    if (start.year == end.year && start.month == end.month) {
-      return df.format(start);
+      if (start.year == end.year && start.month == end.month) {
+        return df.format(start);
+      }
+
+      return '${df.format(start)} - ${df.format(end)}';
     }
 
-    return '${df.format(start)} - ${df.format(end)}';
+    return df.format(selectedDay.value);
   }
-
-  return df.format(selectedDay.value);
-}
 
   void applyFilter() {
-  filteredEvents.clear();
+    filteredEvents.clear();
 
-  if (rangeStart.value != null && rangeEnd.value != null) {
-    final start = DateTime(
-      rangeStart.value!.year,
-      rangeStart.value!.month,
-      rangeStart.value!.day,
-    );
-    final end = DateTime(
-      rangeEnd.value!.year,
-      rangeEnd.value!.month,
-      rangeEnd.value!.day,
-      23, 59, 59,
-    );
+    if (rangeStart.value != null && rangeEnd.value != null) {
+      final start = DateTime(
+        rangeStart.value!.year,
+        rangeStart.value!.month,
+        rangeStart.value!.day,
+      );
+      final end = DateTime(
+        rangeEnd.value!.year,
+        rangeEnd.value!.month,
+        rangeEnd.value!.day,
+        23,
+        59,
+        59,
+      );
 
-    events.forEach((date, eventList) {
-      final normalized = DateTime(date.year, date.month, date.day);
+      events.forEach((date, eventList) {
+        final normalized = DateTime(date.year, date.month, date.day);
 
-      if (!normalized.isBefore(start) && !normalized.isAfter(end)) {
-        filteredEvents.addAll(eventList);
-      }
-    });
-  } else {
-    final day = DateTime(
-      selectedDay.value.year,
-      selectedDay.value.month,
-      selectedDay.value.day,
-    );
+        if (!normalized.isBefore(start) && !normalized.isAfter(end)) {
+          filteredEvents.addAll(eventList);
+        }
+      });
+    } else {
+      final day = DateTime(
+        selectedDay.value.year,
+        selectedDay.value.month,
+        selectedDay.value.day,
+      );
 
-    filteredEvents.assignAll(events[day] ?? []);
+      filteredEvents.assignAll(events[day] ?? []);
+    }
   }
-}
-
-
   late DateTime today;
   late DateTime firstDay;
   late DateTime lastDay;
@@ -91,6 +91,7 @@ String get selectedMonthLabel {
     firstDay = DateTime(today.year - 1, today.month, today.day);
     lastDay = DateTime(today.year + 1, today.month, today.day);
     events = dummyEvents;
+    applyFilter();
     super.onInit();
   }
 
@@ -115,6 +116,4 @@ String get selectedMonthLabel {
       selectedDay.value.day,
     );
   }
-
-  
 }

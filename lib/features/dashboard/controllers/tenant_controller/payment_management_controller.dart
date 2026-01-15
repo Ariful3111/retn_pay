@@ -3,7 +3,7 @@ import 'package:table_calendar/table_calendar.dart';
 
 class PaymentManagementController extends GetxController {
   final selectedDay = DateTime.now().obs;
-  List exportType = ['CSV', 'PDF'];
+  List<String> exportType = ['CSV', 'PDF'];
   RxInt selectedExport = 0.obs;
   final List paymentType = [
     'Upcoming Payments',

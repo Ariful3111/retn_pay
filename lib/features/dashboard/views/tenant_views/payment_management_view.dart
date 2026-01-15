@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/payment_management_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_upcoming_payment.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
@@ -16,7 +17,6 @@ class PaymentManagementView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int userIndex = 2;
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     PaymentManagementController paymentManagementController = Get.find();
     return CustomContainer(
@@ -34,7 +34,7 @@ class PaymentManagementView extends StatelessWidget {
           SizedBox(height: 20.h),
           Obx(() {
             if (paymentManagementController.paymentTypeIndex.value == 0) {
-              return userIndex==2?RentManagementTable() :DashboardUpcomingPayment(
+              return  userIndex==2 || userIndex==3?RentManagementTable() :DashboardUpcomingPayment(
                 widget: CustomPrimaryButton(
                   height: 40.h,
                   width: 120.w,

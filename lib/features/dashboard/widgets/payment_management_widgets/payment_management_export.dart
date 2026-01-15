@@ -2,18 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/tenant_controller/payment_management_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class PaymentManagementExport extends StatelessWidget {
-  const PaymentManagementExport({super.key});
+  final List<String> exportList;
+  final RxInt selectedIndex;
+  final AlignmentGeometry? alignmentGeometry;
+  const PaymentManagementExport({
+    super.key,
+    required this.exportList,
+    required this.selectedIndex, this.alignmentGeometry,
+  });
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    PaymentManagementController paymentManagementController = Get.find();
     return Align(
-      alignment: Alignment(0.9, -0.560),
+      alignment:alignmentGeometry?? Alignment(0.9, -0.560),
       child: Container(
         padding: EdgeInsets.all(16.r),
         height: 110.h,
@@ -31,39 +36,35 @@ class PaymentManagementExport extends StatelessWidget {
           ],
         ),
         child: Column(
-          children: List.generate(
-            paymentManagementController.exportType.length,
-            (index) {
-              return Obx(() {
-                final isSelected =
-                    paymentManagementController.selectedExport.value == index;
-                return GestureDetector(
-                  onTap: () {
-                    paymentManagementController.selectedExport.value = index;
-                    Get.back();
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(8.r),
-                    decoration: BoxDecoration(
-                      gradient: isSelected ? AppColors.primaryColor : null,
-                      borderRadius: BorderRadius.circular(8.r),
-                    ),
-                    child: Center(
-                      child: CustomTextSecondary(
-                        text: paymentManagementController.exportType[index],
-                        fontSize: 14.sp,
-                        color: isSelected
-                            ? AppColors.whiteColor
-                            : isDark
-                            ? AppColors.darkAppBar
-                            : AppColors.darkContainer,
-                      ),
+          children: List.generate(exportList.length, (index) {
+            return Obx(() {
+              final isSelected = selectedIndex.value == index;
+              return GestureDetector(
+                onTap: () {
+                  selectedIndex.value = index;
+                  Get.back();
+                },
+                child: Container(
+                  padding: EdgeInsets.all(8.r),
+                  decoration: BoxDecoration(
+                    gradient: isSelected ? AppColors.primaryColor : null,
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
+                  child: Center(
+                    child: CustomTextSecondary(
+                      text: exportList[index],
+                      fontSize: 14.sp,
+                      color: isSelected
+                          ? AppColors.whiteColor
+                          : isDark
+                          ? AppColors.darkAppBar
+                          : AppColors.darkContainer,
                     ),
                   ),
-                );
-              });
-            },
-          ),
+                ),
+              );
+            });
+          }),
         ),
       ),
     );

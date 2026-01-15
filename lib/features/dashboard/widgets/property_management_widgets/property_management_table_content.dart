@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/agent_widgets/property_management_reassignment.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_filter_appbar.dart';
@@ -15,7 +16,6 @@ class PropertyManagementTableContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int userIndex = 2;
     PropertyManagementController propertyManagementController = Get.find();
     bool isProperty = propertyManagementController.selected.value == 'Property';
     final item = propertyManagementController.allRows[rowIndex];

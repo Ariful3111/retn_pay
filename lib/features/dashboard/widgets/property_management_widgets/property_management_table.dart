@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_management_table_action.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_management_table_content.dart';
@@ -18,7 +19,6 @@ class PropertyManagementTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   int userIndex = 2;
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     PropertyManagementController propertyManagementController = Get.find();
     return Container(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_filter.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_table.dart';
@@ -15,7 +16,6 @@ class InspectionRequestView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    int userIndex = 1;
     return CustomContainer(
       padding: EdgeInsets.only(top: 20.w, left: 20.w, right: 20.w),
       gradient: isDark
@@ -30,10 +30,10 @@ class InspectionRequestView extends StatelessWidget {
           InspectionType(),
           SizedBox(height: 12.h),
          if(userIndex==0) InspectionFilter(),
-         if(userIndex == 1) LandlordInspectionSearch(),
+         if(userIndex == 1|| userIndex==2) LandlordInspectionSearch(),
           SizedBox(height: 20.h),
          if(userIndex==0) InspectionTable(),
-         if(userIndex==1)LandlordInspectionTable(),
+         if(userIndex==1|| userIndex==2)LandlordInspectionTable(),
           SizedBox(height: 20.h),
         ],
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/landlord_repair_maintenance/landlord_repair_maintenance_assign.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_request_service.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
@@ -10,7 +11,6 @@ class RepairRequestImages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int userIndex = 1;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

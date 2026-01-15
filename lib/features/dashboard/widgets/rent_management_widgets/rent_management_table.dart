@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/agent_controller/rent_management_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/services_vendor_controller/service_payment_management_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/payment_management_controller.dart';
@@ -17,7 +18,6 @@ class RentManagementTable extends StatelessWidget {
   const RentManagementTable({super.key});
   @override
   Widget build(BuildContext context) {
-    int userIndex = 3;
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     RentManagementController rentManagementController = Get.find();
     ServicePaymentManagementController servicePaymentManagementController =
