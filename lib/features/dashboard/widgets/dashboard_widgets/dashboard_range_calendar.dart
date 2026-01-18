@@ -20,14 +20,21 @@ class DashboardRangeCalendar extends StatelessWidget {
         rangeEndDay: dashboardController.rangeEnd.value,
         rangeStartDay: dashboardController.rangeStart.value,
         onDaySelected: (DateTime selectDay, DateTime focus) {
+          if (dashboardController.isDay.value != 6) {
+            dashboardController.isDay.value = 6;
+            dashboardController.rangeSelectionMode.value =
+              RangeSelectionMode.toggledOn;
+          }
           dashboardController.focusedDay.value = focus;
           dashboardController.selectedDay.value = selectDay;
-          dashboardController.rangeStart.value = null;
+          dashboardController.rangeStart.value = selectDay;
           dashboardController.rangeEnd.value = null;
-          dashboardController.rangeSelectionMode.value =
-              RangeSelectionMode.toggledOff;
+          
         },
         onRangeSelected: (DateTime? start, DateTime? end, DateTime focus) {
+          if (dashboardController.isDay.value != 6) {
+            dashboardController.isDay.value = 6;
+          }
           dashboardController.rangeStart.value = start;
           dashboardController.rangeEnd.value = end;
           dashboardController.focusedDay.value = focus;

@@ -22,13 +22,19 @@ class ServiceRequestFilter extends StatelessWidget {
         rangeEndDay: serviceVendorDashboardController.rangeEnd.value,
         rangeStartDay: serviceVendorDashboardController.rangeStart.value,
         onDaySelected: (DateTime selectDay, DateTime focus) {
+          if (serviceVendorDashboardController.isDay.value != 6) {
+            serviceVendorDashboardController.isDay.value = 6;
+            serviceVendorDashboardController.rangeSelectionMode.value =
+                RangeSelectionMode.toggledOn;
+          }
           serviceVendorDashboardController.focusedDay.value = focus;
           serviceVendorDashboardController.rangeStart.value = null;
           serviceVendorDashboardController.rangeEnd.value = null;
-          serviceVendorDashboardController.rangeSelectionMode.value =
-              RangeSelectionMode.toggledOff;
         },
         onRangeSelected: (DateTime? start, DateTime? end, DateTime focus) {
+          if (serviceVendorDashboardController.isDay.value != 6) {
+            serviceVendorDashboardController.isDay.value = 6;
+          }
           serviceVendorDashboardController.rangeStart.value = start;
           serviceVendorDashboardController.rangeEnd.value = end;
           serviceVendorDashboardController.focusedDay.value = focus;

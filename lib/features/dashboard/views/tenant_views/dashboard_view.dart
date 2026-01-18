@@ -26,57 +26,60 @@ class DashboardView extends StatelessWidget {
               colors: [AppColors.darkPrimary, AppColors.darkPrimary],
             )
           : AppColors.userBackground.withOpacity(0.5),
-      child: CustomScrollView(
-        controller: dashboardController.scrollController,
-        slivers: [
-          DashboardAppbar(),
-          SliverPadding(
-            padding: EdgeInsetsGeometry.only(
-              top: 20.h,
-              left: 20.w,
-              right: 20.w,
-            ),
-            sliver: SliverList(
-              delegate: SliverChildListDelegate([
-                  Obx(
-                    () => CustomAnimatedSwitcher(
-                      child: Stack(
-                        key: ValueKey(dashboardController.isUpgrade.value),
-                        children: [
-                          DashboardProperties(),
-                          if (userIndex == 1 || userIndex == 3)
-                            if (!dashboardController.isUpgrade.value)
-                              CustomShadowOverlayButton().shadow(
-                                context: context,
-                                imageFilter: ImageFilter.blur(
-                                  sigmaX: 2,
-                                  sigmaY: 2,
-                                ),
+      child: Obx(
+        () => CustomScrollView(
+          controller: dashboardController.scrollController,
+          physics:userIndex == 1&& dashboardController.isUpgrade.value || userIndex == 3&& dashboardController.isUpgrade.value ||userIndex==0||userIndex==2
+              ? AlwaysScrollableScrollPhysics()
+              : NeverScrollableScrollPhysics(),
+          slivers: [
+            DashboardAppbar(),
+            SliverPadding(
+              padding: EdgeInsetsGeometry.only(
+                top: 20.h,
+                left: 20.w,
+                right: 20.w,
+              ),
+              sliver: SliverList(
+                delegate: SliverChildListDelegate([
+                  CustomAnimatedSwitcher(
+                    child: Stack(
+                      key: ValueKey(dashboardController.isUpgrade.value),
+                      children: [
+                        DashboardProperties(),
+                        if (userIndex == 1 || userIndex == 3)
+                          if (!dashboardController.isUpgrade.value)
+                            CustomShadowOverlayButton().shadow(
+                              context: context,
+                              imageFilter: ImageFilter.blur(
+                                sigmaX: 2,
+                                sigmaY: 2,
                               ),
-                          if (userIndex == 1 || userIndex == 3)
-                            if (!dashboardController.isUpgrade.value)
-                              Positioned(
-                                top: 460.h,
-                                left: 60.w,
-                                right: 60.w,
-                                child: CustomPrimaryButton(
-                                  onPressed: () {
-                                    dashboardController.isUpgrade.value =
-                                        !dashboardController.isUpgrade.value;
-                                  },
-                                  height: 48.h,
-                                  width: 307.w,
-                                  text: 'Upgrade Your Plan',
-                                ),
+                            ),
+                        if (userIndex == 1 || userIndex == 3)
+                          if (!dashboardController.isUpgrade.value)
+                            Positioned(
+                              top: 460.h,
+                              left: 60.w,
+                              right: 60.w,
+                              child: CustomPrimaryButton(
+                                onPressed: () {
+                                  dashboardController.isUpgrade.value =
+                                      !dashboardController.isUpgrade.value;
+                                },
+                                height: 48.h,
+                                width: 307.w,
+                                text: 'Upgrade Your Plan',
                               ),
-                        ],
-                      ),
+                            ),
+                      ],
                     ),
                   ),
-              ]),
+                ]),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

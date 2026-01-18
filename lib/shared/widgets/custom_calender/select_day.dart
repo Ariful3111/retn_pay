@@ -21,7 +21,7 @@ class SelectDay extends StatelessWidget {
     ];
       return Container(
         padding: EdgeInsets.symmetric(vertical: 7.08.h, horizontal: 9.44.w),
-        width: 90,
+        width: 90.w,
         height: 165.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(7.08.r),
@@ -48,7 +48,6 @@ class SelectDay extends StatelessWidget {
             return GestureDetector(
               onTap: () => onTap(index),
               child: Container(
-      
                 margin: EdgeInsets.only(bottom: index == dateList.length-1 ? 0 : 2.36.h,),
                 padding: EdgeInsets.symmetric(
                   vertical: 2.36.h,

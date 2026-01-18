@@ -65,11 +65,9 @@ import 'package:renter_pay/features/profile/bindings/profile_edit_bindings.dart'
 import 'package:renter_pay/features/profile/bindings/support_bindings.dart';
 import 'package:renter_pay/features/profile/views/blog_view.dart';
 import 'package:renter_pay/features/profile/views/contact_us.dart';
-import 'package:renter_pay/features/profile/views/privacy_policy.dart';
 import 'package:renter_pay/features/profile/views/profile_edit.dart';
 import 'package:renter_pay/features/profile/widgets/blog_details.dart';
 import 'package:renter_pay/features/profile/views/support_view.dart';
-import 'package:renter_pay/features/profile/views/terms_and_condition.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/subscription_plan.dart';
 import 'package:renter_pay/features/profile/bindings/profile_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/settings_bindings.dart';
@@ -340,12 +338,6 @@ final List<GetPage> appRoutes = [
     name: AppRoutes.supportView,
     page: () => SupportView(),
     binding: SupportBindings(),
-  ),
-  GetPage(name: AppRoutes.termsAndCondition, page: () => TermsAndCondition()),
-  GetPage(
-    name: AppRoutes.privacyPolicy,
-    page: () => PrivacyPolicy(),
-    binding: ProfileBindings(),
   ),
   GetPage(
     name: AppRoutes.propertyManagement,

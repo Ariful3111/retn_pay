@@ -55,7 +55,7 @@ class CustomFaq extends StatelessWidget {
                   ),
                 ),
               ),
-              GestureDetector(
+              InkWell(
                 onTap: onTap,
                 child: Icon(
                   isShow ? Icons.add : Icons.remove,

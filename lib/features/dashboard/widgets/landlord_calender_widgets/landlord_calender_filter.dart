@@ -20,16 +20,21 @@ class LandlordCalenderFilter extends StatelessWidget {
         rangeEndDay: landlordCalenderController.rangeEnd.value,
         rangeStartDay: landlordCalenderController.rangeStart.value,
         onDaySelected: (DateTime selectDay, DateTime focus) {
-          landlordCalenderController.isDay.value = 6;
+          if (landlordCalenderController.isDay.value != 6) {
+            landlordCalenderController.isDay.value = 6;
+            landlordCalenderController.rangeSelectionMode.value =
+                RangeSelectionMode.toggledOn;
+          }
           landlordCalenderController.focusedDay.value = focus;
           landlordCalenderController.selectedDay.value = selectDay;
           landlordCalenderController.rangeStart.value = null;
           landlordCalenderController.rangeEnd.value = null;
-          landlordCalenderController.rangeSelectionMode.value =
-              RangeSelectionMode.toggledOn;
         },
         onRangeSelected: (DateTime? start, DateTime? end, DateTime focus) {
-           landlordCalenderController.isDay.value = 6;
+          if (landlordCalenderController.isDay.value != 6) {
+            landlordCalenderController.isDay.value = 6;
+          }
+          landlordCalenderController.isDay.value = 6;
           landlordCalenderController.rangeStart.value = start;
           landlordCalenderController.rangeEnd.value = end;
           landlordCalenderController.focusedDay.value = focus;

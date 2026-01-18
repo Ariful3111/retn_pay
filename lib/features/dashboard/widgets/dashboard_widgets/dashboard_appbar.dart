@@ -63,8 +63,10 @@ class DashboardAppbar extends StatelessWidget {
                         rangeEnd: dashboardController.rangeEnd,
                         rangeSelectionMode:
                             dashboardController.rangeSelectionMode,
+                        focusedDay: dashboardController.focusedDay,
                       );
-                    }, onApply: () {  },
+                    },
+                    onApply: () {},
                   ),
                 );
               },

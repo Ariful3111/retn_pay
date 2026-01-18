@@ -62,7 +62,6 @@ class LandlordCalenderController extends GetxController {
 
       events.forEach((date, eventList) {
         final normalized = DateTime(date.year, date.month, date.day);
-
         if (!normalized.isBefore(start) && !normalized.isAfter(end)) {
           filteredEvents.addAll(eventList);
         }

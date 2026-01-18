@@ -52,7 +52,7 @@ class SupportFaq extends StatelessWidget {
                       ? ""
                       : list['subTitle'],
                   onTap: () {
-                    HitTestBehavior.opaque;
+                   
                     supportController.isShowFAQ[index] =
                         !supportController.isShowFAQ[index];
                   },

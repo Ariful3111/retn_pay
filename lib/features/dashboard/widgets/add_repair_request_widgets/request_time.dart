@@ -54,6 +54,10 @@ class RequestTime extends StatelessWidget {
                     child: Center(
                       child: CustomTextField(
                         controller: addRepairRequestController.timeController,
+                        readOnly:
+                            addRepairRequestController.checkboxIndex.value == 3
+                            ? false
+                            : true,
                         labelText: 'Other',
                         floatingLabelBehavior: FloatingLabelBehavior.never,
                         fillColor: isDark

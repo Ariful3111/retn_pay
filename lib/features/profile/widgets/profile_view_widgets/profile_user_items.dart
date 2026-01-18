@@ -4,13 +4,14 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_items.dart';
+import 'package:renter_pay/shared/widgets/snackbars/success_snackbar.dart';
 
 class ProfileUserItems extends StatelessWidget {
   const ProfileUserItems({super.key});
 
   @override
   Widget build(BuildContext context) {
-    int userIndex=3;
+    int userIndex = 3;
     return Column(
       children: [
         if (userIndex == 1)
@@ -65,7 +66,9 @@ class ProfileUserItems extends StatelessWidget {
           imageHeight: 23.h,
           imageWidth: 21.w,
           title: 'Privacy Policy',
-          onTap: () {Get.toNamed(AppRoutes.privacyPolicy);},
+          onTap: () {
+            SuccessSnackbar.show(description: 'Navigate user to Web Privacy Policy');
+          },
         ),
         SizedBox(height: 8.h),
         ProfileItems(
@@ -73,7 +76,9 @@ class ProfileUserItems extends StatelessWidget {
           imageHeight: 23.h,
           imageWidth: 21.w,
           title: 'Terms and Condition',
-          onTap: () {Get.toNamed( AppRoutes.termsAndCondition);},
+          onTap: () {
+            SuccessSnackbar.show(description: 'Navigate user to Web Terms and Condition');
+          },
         ),
         SizedBox(height: 8.h),
       ],
