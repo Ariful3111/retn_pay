@@ -34,6 +34,19 @@ class DashboardQuickActions extends StatelessWidget {
               onTap: () {
                 dashboardController.isQuickActions.value =
                     !dashboardController.isQuickActions.value;
+                Future.delayed(Duration(milliseconds: 100),(){
+                  if (dashboardController.isQuickActions.value) {
+                  dashboardController.scrollController.animateTo(
+                    dashboardController
+                        .scrollController
+                        .position
+                        .maxScrollExtent,
+                    duration: const Duration(milliseconds: 800),
+                    curve: Curves.easeInOut,
+                  );
+                }
+                });
+                
               },
               child: Padding(
                 padding: EdgeInsets.all(8.r),

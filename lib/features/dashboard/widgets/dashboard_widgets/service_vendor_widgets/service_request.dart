@@ -57,7 +57,7 @@ class ServiceRequest extends StatelessWidget {
                                     serviceVendorDashboardController.rangeStart,
                                 rangeEnd: serviceVendorDashboardController.rangeEnd,
                                 rangeSelectionMode: serviceVendorDashboardController
-                                    .rangeSelectionMode,
+                                    .rangeSelectionMode, focusedDay: serviceVendorDashboardController.focusedDay,
                               );
                             },
                             onApply: () {},

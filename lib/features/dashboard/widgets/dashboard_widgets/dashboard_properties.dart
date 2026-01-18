@@ -60,10 +60,10 @@ class DashboardProperties extends StatelessWidget {
         ),
         if (userIndex == 1) PropertyPromotion(),
         if (userIndex == 1) DashboardLandlordPlan(),
-       if(userIndex==1||userIndex==2) DashboardRentNotice(),
+       if(userIndex==0||userIndex==1||userIndex==2) DashboardRentNotice(),
        if(userIndex==3) ServiceVendorAd(),
        if(userIndex==3) ServiceRequest(),
-        SizedBox(height: 20.h),
+       SizedBox(height: 20.h),
         DashboardQuickActions(),
         SizedBox(height: 20.h),
         Obx(

@@ -20,7 +20,6 @@ class InspectionFaq extends StatelessWidget {
           subtitle:
              inspectionFromController.isShowFAQ[index]? "":inspectionFromController.faqList[index]['subtitle'],
           onTap: () {
-            HitTestBehavior.opaque;
             inspectionFromController.isShowFAQ[index] =!inspectionFromController.isShowFAQ[index];
           },
           isShow: inspectionFromController.isShowFAQ[index],

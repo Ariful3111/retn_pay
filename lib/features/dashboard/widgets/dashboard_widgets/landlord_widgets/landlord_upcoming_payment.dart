@@ -57,7 +57,7 @@ class LandlordUpcomingPayment extends StatelessWidget {
                                   dashboardLandlordController.rangeStart,
                               rangeEnd: dashboardLandlordController.rangeEnd,
                               rangeSelectionMode: dashboardLandlordController
-                                  .rangeSelectionMode,
+                                  .rangeSelectionMode, focusedDay: dashboardLandlordController.focusedDay,
                             );
                           },
                           onApply: () {},

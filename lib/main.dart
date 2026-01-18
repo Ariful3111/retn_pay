@@ -33,9 +33,7 @@ class MyApp extends StatelessWidget {
                   ? LoggedInBindings()
                   : OnboardingBindings(),
               getPages: appRoutes,
-              initialRoute: token.isNotEmpty
-                  ? AppRoutes.mainHome
-                  : AppRoutes.onboarding,
+              initialRoute: AppRoutes.loginView,
               theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme,
               themeMode: controller.currentTheme,

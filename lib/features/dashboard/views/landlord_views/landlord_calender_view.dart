@@ -73,7 +73,7 @@ class LandlordCalenderView extends StatelessWidget {
                                     landlordCalenderController.rangeStart,
                                 rangeEnd: landlordCalenderController.rangeEnd,
                                 rangeSelectionMode: landlordCalenderController
-                                    .rangeSelectionMode,
+                                    .rangeSelectionMode, focusedDay: landlordCalenderController.focusedDay,
                               );
                             },
                             onApply: () {

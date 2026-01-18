@@ -35,8 +35,6 @@ class AppRoutes {
   static const String serviceBookedDetails = '/serviceBookedDetails';
   static const String serviceBookedView = '/serviceBookedView';
   static const String supportView = '/supportView';
-  static const String termsAndCondition = '/termsAndCondition';
-  static const String privacyPolicy = '/privacyPolicy';
   static const String propertyManagement = '/propertyManagement';
   static const String propertyManagementDetails = '/propertyManagementDetails';
   static const String landlordKeyRelease = '/landlordKeyRelease';

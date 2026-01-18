@@ -35,7 +35,7 @@ class PaymentManagementFilter extends StatelessWidget {
                       rangeStart: paymentManagementController.rangeStart,
                       rangeEnd: paymentManagementController.rangeEnd,
                       rangeSelectionMode:
-                          paymentManagementController.rangeSelectionMode,
+                          paymentManagementController.rangeSelectionMode, focusedDay: paymentManagementController.focusedDay,
                     );
                   },
                   onApply: () {},
