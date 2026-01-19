@@ -40,6 +40,7 @@ class ServiceAddressField extends StatelessWidget with ServiceFromField {
           ),
           SizedBox(height: 20.h),
            CustomDropdownMenu(
+            alignmentGeometry: Alignment(0.2, 1),
               onSelect: (value) {
                 serviceSearchController.state.value = value!;
               },

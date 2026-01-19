@@ -7,12 +7,13 @@ import 'package:renter_pay/features/chat/widgets/user_message.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class MessageBody extends StatelessWidget {
+  final ScrollController controller;
   final bool isMe;
-  const MessageBody({super.key, required this.isMe});
+  const MessageBody({super.key, required this.isMe, required this.controller});
 
   @override
   Widget build(BuildContext context) {
-        bool isDark = Theme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     final chatList = [
       'Hi, I noticed a leak under my kitchen sink this morning. Water is dripping constantly.',
       'Hi, I noticed a leak under my kitchen sink this morning. Water is dripping constantly.',
@@ -35,29 +36,43 @@ class MessageBody extends StatelessWidget {
           subtitleSize: 11.sp,
         ),
         SizedBox(height: 9.h),
-        Divider(height: 1.h, color:isDark? AppColors.secondaryTextColor:Color(0xFFDAE6E8).withValues(alpha: 0.8)),
-        SizedBox(height: 20.h,),
+        Divider(
+          height: 1.h,
+          color: isDark
+              ? AppColors.secondaryTextColor
+              : Color(0xFFDAE6E8).withValues(alpha: 0.8),
+        ),
+        SizedBox(height: 20.h),
         Expanded(
           child: ListView.builder(
+            controller: controller,
             itemCount: chatList.length,
+            shrinkWrap: true,
             itemBuilder: (context, index) {
               bool fromMe = isMe ? isMe : index.isOdd;
               return Padding(
-                padding: EdgeInsets.only( left:fromMe?0: 20.w, bottom: 20.h,right: fromMe?20.w:0),
+                padding: EdgeInsets.only(
+                  left: fromMe ? 0 : 20.w,
+                  bottom: 20.h,
+                  right: fromMe ? 20.w : 0,
+                ),
                 child: Row(
-                  mainAxisAlignment: fromMe?MainAxisAlignment.end:MainAxisAlignment.start,
+                  mainAxisAlignment: fromMe
+                      ? MainAxisAlignment.end
+                      : MainAxisAlignment.start,
                   children: [
-                  if(!fromMe)  Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.r),
-                        image: DecorationImage(
-                          image: AssetImage(ImagesPath.profile),
-                          fit: BoxFit.fill,
+                    if (!fromMe)
+                      Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30.r),
+                          image: DecorationImage(
+                            image: AssetImage(ImagesPath.profile),
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
-                    ),
                     SizedBox(width: 20.w),
                     Container(
                       padding: EdgeInsets.symmetric(
@@ -66,25 +81,52 @@ class MessageBody extends StatelessWidget {
                       ),
                       width: 264.w,
                       decoration: BoxDecoration(
-                        gradient: fromMe?AppColors.primaryColor:isDark? LinearGradient(colors: [AppColors.darkPrimary,AppColors.darkPrimary]):LinearGradient(colors: [Color(0xFFF0F1F4),Color(0xFFF0F1F4)]),
+                        gradient: fromMe
+                            ? AppColors.primaryColor
+                            : isDark
+                            ? LinearGradient(
+                                colors: [
+                                  AppColors.darkPrimary,
+                                  AppColors.darkPrimary,
+                                ],
+                              )
+                            : LinearGradient(
+                                colors: [Color(0xFFF0F1F4), Color(0xFFF0F1F4)],
+                              ),
                         borderRadius: fromMe
-                            ? 
-                            BorderRadius.only(
+                            ? BorderRadius.only(
                                 topLeft: Radius.circular(15.r),
                                 topRight: Radius.circular(15.r),
                                 bottomLeft: Radius.circular(15.r),
-                              ):BorderRadius.only(
+                              )
+                            : BorderRadius.only(
                                 topLeft: Radius.circular(15.r),
                                 topRight: Radius.circular(15.r),
                                 bottomRight: Radius.circular(15.r),
                               ),
-                        border: fromMe?Border.all(width: 1.r,color:isDark? Colors.transparent:Color(0xFFDAE6E8).withValues(alpha: 0.8)):Border.all(width: 1.r,color: isDark?AppColors.darkSecondary:Colors.transparent)
+                        border: fromMe
+                            ? Border.all(
+                                width: 1.r,
+                                color: isDark
+                                    ? Colors.transparent
+                                    : Color(0xFFDAE6E8).withValues(alpha: 0.8),
+                              )
+                            : Border.all(
+                                width: 1.r,
+                                color: isDark
+                                    ? AppColors.darkSecondary
+                                    : Colors.transparent,
+                              ),
                       ),
                       child: CustomTextPrimary(
                         text: chatList[index],
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w400,
-                        color: fromMe?AppColors.whiteColor:isDark? AppColors.whiteColor:AppColors.primaryDarkTextColor,
+                        color: fromMe
+                            ? AppColors.whiteColor
+                            : isDark
+                            ? AppColors.whiteColor
+                            : AppColors.primaryDarkTextColor,
                       ),
                     ),
                   ],

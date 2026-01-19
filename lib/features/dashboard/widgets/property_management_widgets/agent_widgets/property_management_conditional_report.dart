@@ -33,6 +33,8 @@ class PropertyManagementConditionalReport extends StatelessWidget {
           Divider(color: AppColors.whiteBorder),
           SizedBox(height: 13.12.h),
           CustomDropdownMenu(
+            alignmentGeometry: Alignment(0.5, 1),
+            offset: Offset(-70.w, 2.h),
             label: CustomTextSecondary(text: 'Selected Property'),
             textColor: AppColors.darkContainer,
             onSelect: (value) {

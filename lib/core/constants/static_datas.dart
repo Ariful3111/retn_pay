@@ -23,4 +23,4 @@ final amenityMap = <String, Map<String, dynamic>>{
   'pet_friendly': {'icon': IconsPath.pet, 'title': 'Pet Allowance'},
   'wifi': {'icon': IconsPath.security, 'title': 'High-speed Internet'},
 };
-int userIndex = 1;
+int userIndex = 0;

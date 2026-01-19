@@ -50,7 +50,7 @@ class SettingView extends StatelessWidget {
                       NotificationSetting(),
                       SizedBox(height: 32.h),
                       DarkModeSetting(),
-                      SizedBox(height: 32.h),
+                     if(userIndex!=2) SizedBox(height: 32.h),
                      if(userIndex==1||userIndex==0) AutoPaySetting(),
                      if(userIndex==3) SubscriptionSetting()
                     ],

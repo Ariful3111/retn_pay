@@ -67,7 +67,7 @@ class ProfileEditInfo extends StatelessWidget {
                       onTap: () {
                         UploadImage.sendImage(
                           picker: profileEditController.picker,
-                          pickImage: profileEditController.upload,
+                          pickImage: profileEditController.upload, context: context,
                         );
                       },
                       child: Container(

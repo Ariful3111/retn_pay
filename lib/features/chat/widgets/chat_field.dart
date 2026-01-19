@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/utils/image_picker.dart';
-import 'package:renter_pay/features/chat/controllers/chat_controller.dart';
+import 'package:renter_pay/features/chat/controllers/message_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
@@ -13,24 +13,33 @@ class ChatField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ChatController chatController = Get.find();
-        bool isDark = Theme.of(context).brightness == Brightness.dark;
+    MessageController messageController = Get.find();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Padding(
       padding: EdgeInsets.only(left: 12.w, right: 12.w, bottom: 20.h),
       child: CustomTextField(
-        controller: chatController.messageController,
-        fillColor:isDark?AppColors.darkPrimary: AppColors.whiteColor,
+        controller: messageController.messageController,
+        fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
         enableBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.r),
-          borderSide: BorderSide(color:isDark?AppColors.darkBorderPrimary: Color(0xFFE3E3E3), width: 1.r),
+          borderSide: BorderSide(
+            color: isDark ? AppColors.darkBorderPrimary : Color(0xFFE3E3E3),
+            width: 1.r,
+          ),
         ),
         focusBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.r),
-          borderSide: BorderSide(color:isDark?AppColors.darkBorderPrimary: Color(0xFFE3E3E3), width: 1.r),
+          borderSide: BorderSide(
+            color: isDark ? AppColors.darkBorderPrimary : Color(0xFFE3E3E3),
+            width: 1.r,
+          ),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.r),
-          borderSide: BorderSide(color:isDark?AppColors.darkBorderPrimary: Color(0xFFE3E3E3), width: 1.r),
+          borderSide: BorderSide(
+            color: isDark ? AppColors.darkBorderPrimary : Color(0xFFE3E3E3),
+            width: 1.r,
+          ),
         ),
         labelTextWidget: CustomTextPrimary(
           text: 'Write a reply...',
@@ -48,8 +57,8 @@ class ChatField extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   UploadImage.sendImage(
-                    picker: chatController.sendImage,
-                    pickImage: chatController.selectImage,
+                    picker: messageController.sendImage,
+                    pickImage: messageController.selectImage, context: context,
                   );
                 },
                 child: Image.asset(
@@ -60,9 +69,7 @@ class ChatField extends StatelessWidget {
               ),
               SizedBox(width: 13.w),
               GestureDetector(
-                onTap: () {
-                  
-                },
+                onTap: () {},
                 child: Image.asset(
                   IconsPath.sendMessage,
                   height: 18.h,

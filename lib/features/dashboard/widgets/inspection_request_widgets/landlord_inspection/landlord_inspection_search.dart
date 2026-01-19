@@ -11,6 +11,7 @@ class LandlordInspectionSearch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     LandlordInspectionRequestController landlordInspectionRequestController =
         Get.find();
     return SizedBox(
@@ -25,7 +26,7 @@ class LandlordInspectionSearch extends StatelessWidget {
         borderWidth: 1.r,
         enableBorderWidth: 1.r,
         labelText: 'Search',
-        fillColor: AppColors.whiteColor,
+        fillColor:isDark? AppColors.darkPrimary:AppColors.whiteColor,
         padding: EdgeInsets.zero,
       ),
     );

@@ -59,7 +59,7 @@ class CustomFaq extends StatelessWidget {
                 onTap: onTap,
                 child: Icon(
                   isShow ? Icons.add : Icons.remove,
-                  size: 15.sp,
+                  size: 18.sp,
                   color: isDark
                       ? AppColors.darkSecondaryText
                       : AppColors.primaryTextColor,
@@ -68,10 +68,10 @@ class CustomFaq extends StatelessWidget {
             ],
           ),
           SizedBox(height: 6.h,),
-          AnimatedSize(
+         AnimatedSize(
             duration: Duration(milliseconds: 300),
             curve: Curves.easeInOutCubic,
-            child: CustomTextSecondary(
+            child:isShow? SizedBox.shrink():CustomTextSecondary(
               text: subtitle,
               fontSize: subFontSize ?? 14.sp,
               fontWeight: subFontWeight ?? FontWeight.w400,
