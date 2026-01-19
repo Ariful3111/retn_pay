@@ -15,7 +15,7 @@ class ServiceDropdownMenu extends StatelessWidget {
       width: 170.w,
       child: Center(
         child: CustomDropdownMenu(
-          offset: Offset(1, 2),
+          alignmentGeometry: Alignment(-0.7, 1),
           onSelect: (value) {
             servicesController.selectedServiceType.value = value!;
             servicesController.isSelected.value = true;

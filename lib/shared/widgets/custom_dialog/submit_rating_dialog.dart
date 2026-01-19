@@ -32,6 +32,7 @@ class SubmitRatingDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return SuccessDialog(
+      isBG: false,
       height: 220.h,
       width: 380.w,
       widget: Column(

@@ -175,7 +175,7 @@ final List<GetPage> appRoutes = [
   GetPage(name: AppRoutes.contactUs, page: () => ContactUs()),
   GetPage(name: AppRoutes.blog, page: () => BlogView()),
   GetPage(name: AppRoutes.blogDetails, page: () => BlogDetails()),
-  GetPage(name: AppRoutes.messageView, page: () => MessageView()),
+  GetPage(name: AppRoutes.messageView, page: () => MessageView(),binding: ChatBindings()),
   GetPage(
     name: AppRoutes.activePropertiesView,
     page: () => ActivePropertiesView(),

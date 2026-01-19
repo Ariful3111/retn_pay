@@ -21,30 +21,35 @@ class KeyReleaseView extends StatelessWidget {
             )
           : AppColors.userBackground,
       padding: EdgeInsets.only(top: 20.h, left: 20.w, right: 20.w),
-      child:Obx(()=> ListView(
-        physics: keyReleaseController.isDrawing.value?NeverScrollableScrollPhysics():BouncingScrollPhysics(),
-        children: [
-          DrawerItemsAppbar(title: 'Key Release'),
-          SizedBox(height: 32.h),
-          MediaQuery(
-            data: MediaQueryData(
-              size: Size(
-                MediaQuery.widthOf(context),
-                MediaQuery.heightOf(context),
+      child: Obx(
+        () => ListView(
+          physics: keyReleaseController.isDrawing.value
+              ? NeverScrollableScrollPhysics()
+              : BouncingScrollPhysics(),
+          children: [
+            DrawerItemsAppbar(title: 'Key Release'),
+            SizedBox(height: 32.h),
+            MediaQuery(
+              data: MediaQueryData(
+                size: Size(
+                  MediaQuery.widthOf(context),
+                  MediaQuery.heightOf(context),
+                ),
+              ),
+              child: Container(
+                padding: EdgeInsets.all(20.r),
+                decoration: BoxDecoration(
+                  color: isDark
+                      ? AppColors.darkSecondary
+                      : AppColors.whiteColor,
+                  borderRadius: BorderRadius.circular(20.r),
+                ),
+                child: ReleaseForm(),
               ),
             ),
-            child: Container(
-              padding: EdgeInsets.all(20.r),
-              decoration: BoxDecoration(
-                color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
-                borderRadius: BorderRadius.circular(20.r),
-              ),
-              child: ReleaseForm(
-              ),
-            ),
-          ),
-        ],
-      ),),
+          ],
+        ),
+      ),
     );
   }
 }

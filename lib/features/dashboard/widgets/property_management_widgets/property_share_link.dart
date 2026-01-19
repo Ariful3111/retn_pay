@@ -35,6 +35,7 @@ class PropertyShareLink extends StatelessWidget {
          if(propertyManagementController.isShare.value) SizedBox(
             height: 40.h,
             child: CustomTextField(
+              readOnly: true,
               controller: propertyManagementController.shareController,
               fillColor: isDark?AppColors.darkPrimary:AppColors.whiteColor,
               padding: EdgeInsets.zero,
@@ -50,7 +51,7 @@ class PropertyShareLink extends StatelessWidget {
               onPressed: () {
               
             },),
-          )
+          ),
         ],
       ),
     );

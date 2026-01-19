@@ -21,7 +21,6 @@ class LoginController extends GetxController {
   }
 
   Future<void> userLogin({required GlobalKey<FormState> formKey}) async {
-     Get.offAllNamed(AppRoutes.mainHome);
     if (formKey.currentState?.validate() ?? false) {
       isLoading.value = true;
       final response = await loginRepository.execute(

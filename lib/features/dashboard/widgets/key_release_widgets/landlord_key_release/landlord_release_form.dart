@@ -76,7 +76,7 @@ class LandlordReleaseForm extends StatelessWidget {
           fillColor: Theme.of(context).brightness == Brightness.dark
               ? AppColors.darkPrimary
               : AppColors.whiteColor,
-          alignmentGeometry: Alignment(0.10, 0),
+          alignmentGeometry: Alignment(0.2, 1),
         ),
         SizedBox(height: 20.h),
         customField(

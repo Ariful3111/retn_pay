@@ -15,6 +15,8 @@ class PropertyManagementType extends StatelessWidget {
       height: 38.h,
       width: 136.w,
       child: CustomDropdownMenu(
+        alignmentGeometry: Alignment(-0.5, 0.5),
+        offset: Offset(-40.w, 6.h),
         expandedInsets: EdgeInsets.zero,
         onSelect: (value) {
           propertyManagementController.selected.value = value!;
