@@ -59,7 +59,7 @@ class ProfileEditInfo extends StatelessWidget {
                           : AssetImage(ImagesPath.profile),
                       fit: BoxFit.fill,
                     ),
-                    borderRadius: BorderRadius.circular(50.r),
+                    shape: BoxShape.circle
                   ),
                   child: Align(
                     alignment: Alignment(0.1, 1.5),
@@ -75,13 +75,14 @@ class ProfileEditInfo extends StatelessWidget {
                         width: 30.w,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.r),
-                          color: AppColors.whiteColor,
+                          color:isDark?AppColors.darkSecondary: AppColors.whiteColor,
                         ),
                         child: Center(
                           child: Image.asset(
                             IconsPath.upload,
                             height: 20.h,
                             width: 20.w,
+                            color: isDark?AppColors.darkAppBar:null,
                           ),
                         ),
                       ),

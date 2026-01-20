@@ -29,11 +29,11 @@ class NotificationAppbarActions extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Image.asset(IconsPath.mark, width: 10.64.w, height: 6.04.h),
+          Image.asset(IconsPath.mark, width: 10.64.w, height: 6.04.h,color: isDark?AppColors.darkPrimary:null,),
           CustomTextSecondary(
             text: 'Mark as read',
             fontSize: 12.sp,
-            color: Color(0xFF6B7280),
+            color:isDark?AppColors.darkPrimary: Color(0xFF6B7280),
           ),
         ],
       ),

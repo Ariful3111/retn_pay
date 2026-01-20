@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_filter_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_dialog/feedback_dialog.dart';
@@ -10,6 +11,7 @@ class PropertyManagementReassignment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomFilterAppbar(
       onTap: () {
         showDialog(
@@ -26,14 +28,19 @@ class PropertyManagementReassignment extends StatelessWidget {
                   width: 87.w,
                   text: 'Submit',
                   borderRadius: BorderRadius.circular(6.r),
-                  onPressed: () {}),
+                  onPressed: () {},
+                ),
               ),
             );
           },
         );
       },
       child: Center(
-        child: CustomTextSecondary(text: 'Reassignment', fontSize: 12.sp),
+        child: CustomTextSecondary(
+          text: 'Reassignment',
+          fontSize: 12.sp,
+          color: isDark?AppColors.darkPrimary:null,
+        ),
       ),
     );
   }

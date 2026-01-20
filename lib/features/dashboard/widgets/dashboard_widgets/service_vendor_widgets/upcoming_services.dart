@@ -47,9 +47,7 @@ class UpcomingServices extends StatelessWidget {
         return CustomTable(
           column: serviceVendorDashboardController.tableColumn,
           row: rowWidgets,
-          onRowTap: (index) {
-           
-          },
+          onRowTap: (index) {},
           isExpandedTableBuilder: (index) {
             return serviceVendorDashboardController
                 .expandedData[listIndex[index]];

@@ -35,14 +35,15 @@ class ServiceBookedComplete extends StatelessWidget {
                 writeReview: true,
                 controller: serviceBookedDetailsController.reviewController,
                 cancelButton: CustomSecondaryButton(
-                      text: 'Cancel',
-                      height: 40.h,
-                      width: 85.w,
-                      borderRadius: BorderRadius.circular(6.r),
-                      onPressed: () {
-                      
-                    },),
-                    buttonSpace: SizedBox(width: 16.w,),
+                  text: 'Cancel',
+                  height: 40.h,
+                  width: 85.w,
+                  borderRadius: BorderRadius.circular(6.r),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                buttonSpace: SizedBox(width: 16.w),
               );
             },
           );

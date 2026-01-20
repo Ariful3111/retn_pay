@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/profile/controllers/profile_edit_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_field.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
@@ -83,7 +84,7 @@ class ProfileEditDetails extends StatelessWidget {
                     labelText: 'First Name',
                     readOnly: profileEditController.isEdit.value ? false : true,
                   ),
-                  SizedBox(height: 16.h,),
+                  SizedBox(height: 16.h),
                   ProfileEditField(
                     controller: profileEditController.lastNameController,
                     labelText: 'Last Name',
@@ -107,24 +108,40 @@ class ProfileEditDetails extends StatelessWidget {
                     labelText: 'Password',
                     readOnly: profileEditController.isEdit.value ? false : true,
                   ),
-                  SizedBox(height: 16.h),
-                  ProfileEditField(
-                    controller: profileEditController.businessNameController,
-                    labelText: 'Business Name',
-                    readOnly: profileEditController.isEdit.value ? false : true,
-                  ),
-                  SizedBox(height: 16.h),
-                  ProfileEditField(
-                    controller: profileEditController.businessTypeController,
-                    labelText: 'Business Type',
-                    readOnly: profileEditController.isEdit.value ? false : true,
-                  ),
-                  SizedBox(height: 16.h),
-                  ProfileEditField(
-                    controller: profileEditController.businessLicenseController,
-                    labelText: 'Business License No',
-                    readOnly: profileEditController.isEdit.value ? false : true,
-                  ),
+
+                  if (userIndex == 3)
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 16.h),
+                        ProfileEditField(
+                          controller:
+                              profileEditController.businessNameController,
+                          labelText: 'Business Name',
+                          readOnly: profileEditController.isEdit.value
+                              ? false
+                              : true,
+                        ),
+                        SizedBox(height: 16.h),
+                        ProfileEditField(
+                          controller:
+                              profileEditController.businessTypeController,
+                          labelText: 'Business Type',
+                          readOnly: profileEditController.isEdit.value
+                              ? false
+                              : true,
+                        ),
+                        SizedBox(height: 16.h),
+                        ProfileEditField(
+                          controller:
+                              profileEditController.businessLicenseController,
+                          labelText: 'Business License No',
+                          readOnly: profileEditController.isEdit.value
+                              ? false
+                              : true,
+                        ),
+                      ],
+                    ),
                 ],
               ),
             ),

@@ -16,6 +16,7 @@ class CreateTicketField extends StatelessWidget {
     return Column(
       children: [
         CustomDropdownMenu(
+          alignmentGeometry: Alignment(0.2, 1),
           label: CustomTextSecondary(text: 'Select Category*'),
           onSelect: (value) {
             supportController.ticketCategory.value = value!;
