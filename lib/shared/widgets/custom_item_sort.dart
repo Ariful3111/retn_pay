@@ -35,7 +35,6 @@ class CustomItemSort extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.89.sp),
       ),
       child: Row(
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
@@ -53,6 +52,7 @@ class CustomItemSort extends StatelessWidget {
           SizedBox(width: 20.w),
           Expanded(
             child: CustomDropdownMenu(
+              alignmentGeometry: Alignment(-1, 1),
               onSelect: onSelect,
               option: option,
               isSelect: isSelect,
@@ -75,7 +75,7 @@ class CustomItemSort extends StatelessWidget {
               selectedTrailingIconColor: isDark
                   ? AppColors.darkAppBar
                   : AppColors.darkPrimary,
-              contentPadding: EdgeInsets.zero,
+              contentPadding: EdgeInsets.only(left: 8.w),
               expandedInsets: EdgeInsets.zero,
               textStyle: GoogleFonts.inter(
                 fontSize: 12.sp,

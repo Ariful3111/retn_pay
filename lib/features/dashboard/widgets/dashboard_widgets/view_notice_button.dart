@@ -14,8 +14,8 @@ class ViewNoticeButton extends StatelessWidget {
       children: [
         NoticeButtonModel(
           onTap: () {},
-          icon:userIndex==1? IconsPath.rentAdjust:IconsPath.renew,
-          text:userIndex==1? 'Adjust Rent':'Renew',
+          icon:userIndex==1||userIndex==2? IconsPath.rentAdjust:IconsPath.renew,
+          text:userIndex==1||userIndex==2? 'Adjust Rent':'Renew',
         ),
         SizedBox(width: 12.w),
         NoticeButtonModel(

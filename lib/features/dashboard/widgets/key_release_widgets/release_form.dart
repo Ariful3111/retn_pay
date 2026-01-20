@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/key_release_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_repair_request_widgets/landlord_signature.dart';
@@ -13,16 +12,13 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart
 import 'package:signature/signature.dart';
 
 class ReleaseForm extends StatelessWidget {
-  const ReleaseForm({super.key});
+  final SignatureController signatureController;
+  const ReleaseForm({super.key, required this.signatureController});
 
   @override
   Widget build(BuildContext context) {
     KeyReleaseController keyReleaseController = Get.find();
-    bool isDark = Theme.of(context).brightness == Brightness.dark;
-    final SignatureController signatureController = SignatureController(
-      penStrokeWidth: 3,
-      penColor: isDark ? AppColors.whiteColor : AppColors.darkPrimary,
-    );
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

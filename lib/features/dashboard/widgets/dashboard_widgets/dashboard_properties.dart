@@ -50,7 +50,8 @@ class DashboardProperties extends StatelessWidget {
         if (userIndex == 1 || userIndex == 2) DashboardGraph(),
         SizedBox(height: 20.h),
         if (userIndex == 0) DashboardUpcomingPayment(),
-        if (userIndex == 1 || userIndex == 2||userIndex==3) LandlordUpcomingPayment(),
+        if (userIndex == 1 || userIndex == 2 || userIndex == 3)
+          LandlordUpcomingPayment(),
         SizedBox(height: 20.h),
         DashboardReminder(),
         Obx(
@@ -60,19 +61,21 @@ class DashboardProperties extends StatelessWidget {
         ),
         if (userIndex == 1) PropertyPromotion(),
         if (userIndex == 1) DashboardLandlordPlan(),
-       if(userIndex==0||userIndex==1||userIndex==2) DashboardRentNotice(),
-       if(userIndex==3) ServiceVendorAd(),
-       if(userIndex==3) ServiceRequest(),
-       SizedBox(height: 20.h),
+        if (userIndex == 0 || userIndex == 1 || userIndex == 2)
+          DashboardRentNotice(),
+        if (userIndex == 3) ServiceVendorAd(),
+        if (userIndex == 3) ServiceRequest(),
+        SizedBox(height: 20.h),
         DashboardQuickActions(),
         SizedBox(height: 20.h),
         Obx(
-          () => dashboardController.isQuickActions.value
-              ? AnimatedSwitcher(
-                  duration: Duration(milliseconds: 300),
-                  switchInCurve: Curves.easeInOut,
-                  switchOutCurve: Curves.easeOut,
-                  child: Column(
+          () => AnimatedSwitcher(
+            duration: Duration(milliseconds: 300),
+            switchInCurve: Curves.easeInOut,
+            switchOutCurve: Curves.easeOut,
+            child: dashboardController.isQuickActions.value
+                ? Column(
+                  key: ValueKey('expanded'),
                     children: [
                       if (userIndex == 0)
                         Column(
@@ -84,12 +87,12 @@ class DashboardProperties extends StatelessWidget {
                             DashboardKeyFeatures(),
                           ],
                         ),
-                      if (userIndex == 1 || userIndex == 2||userIndex==3)
+                      if (userIndex == 1 || userIndex == 2 || userIndex == 3)
                         DashboardLandlordQuickAction(),
                     ],
-                  ),
-                )
-              : SizedBox(),
+                  )
+                : SizedBox(key: ValueKey('collapsed'),),
+          ),
         ),
       ],
     );

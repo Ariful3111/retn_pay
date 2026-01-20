@@ -53,7 +53,7 @@ class ServiceRequestForm extends StatelessWidget with ServiceFromField{
           myField(
             controller: serviceSearchController.numberController,
             context: context,
-            labelText:CustomTextSecondary(text: 'Resident Phone Number') ,
+            labelText:CustomTextSecondary(text: 'Resident Phone Number*') ,
           ),
           SizedBox(height: 24.h),
           ServiceAddressField(),

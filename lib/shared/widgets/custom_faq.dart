@@ -57,17 +57,21 @@ class CustomFaq extends StatelessWidget {
               ),
               InkWell(
                 onTap: onTap,
-                child: Icon(
-                  isShow ? Icons.add : Icons.remove,
-                  size: 18.sp,
-                  color: isDark
-                      ? AppColors.darkSecondaryText
-                      : AppColors.primaryTextColor,
+                child: SizedBox(
+                  height: 24.h,
+                  width: 24.w,
+                  child: Icon(
+                    isShow ? Icons.add : Icons.remove,
+                    size: 18.sp,
+                    color: isDark
+                        ? AppColors.darkSecondaryText
+                        : AppColors.primaryTextColor,
+                  ),
                 ),
               ),
             ],
           ),
-          SizedBox(height: 6.h,),
+         if(!isShow) SizedBox(height: 6.h,),
          AnimatedSize(
             duration: Duration(milliseconds: 300),
             curve: Curves.easeInOutCubic,

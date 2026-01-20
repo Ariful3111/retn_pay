@@ -22,7 +22,7 @@ class BasicPlan extends StatelessWidget {
         SizedBox(height: 12),
         BenefitsList(listText: 'Photography: 10-15 photos'),
         SizedBox(height: 12),
-        BenefitsList(listText: 'Video curation: 30-45 seconds'),
+        BenefitsList(listText: 'Video Duration: 30-45 seconds'),
         SizedBox(height: 12),
         BenefitsList(listText: 'Free rental appraisal'),
         SizedBox(height: 12),

@@ -39,7 +39,9 @@ class RepairRequestImages extends StatelessWidget {
           ),
         ),
         SizedBox(height: 24.h),
-      userIndex==1?LandlordRepairMaintenanceAssign() : RepairRequestService(),
+        userIndex == 1 || userIndex == 2
+            ? LandlordRepairMaintenanceAssign()
+            : RepairRequestService(),
       ],
     );
   }

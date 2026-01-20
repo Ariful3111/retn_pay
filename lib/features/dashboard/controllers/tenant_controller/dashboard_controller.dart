@@ -191,6 +191,7 @@ class DashboardController extends GetxController {
     if (!scrollController.hasClients) {
       Get.find<GlobalScrollController>().listen(scrollController);
     }
+    
     today = DateTime.now();
     firstDay = DateTime(today.year - 1, today.month, today.day);
     lastDay = DateTime(today.year + 1, today.month, today.day);
