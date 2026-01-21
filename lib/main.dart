@@ -29,13 +29,9 @@ class MyApp extends StatelessWidget {
             return GetMaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Renter Pay',
-              initialBinding: token.isNotEmpty
-                  ? LoggedInBindings()
-                  : OnboardingBindings(),
+              initialBinding: LoggedInBindings(),
               getPages: appRoutes,
-              initialRoute: token.isNotEmpty
-                  ? AppRoutes.mainHome
-                  : AppRoutes.onboarding,
+              initialRoute: AppRoutes.loginView,
               theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme,
               themeMode: controller.currentTheme,

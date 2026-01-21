@@ -20,7 +20,7 @@ class MainHomeView extends StatelessWidget {
             : AppColors.whiteColor,
         body: mainHomeController.pageList[mainHomeController.selectIndex.value],
         bottomNavigationBar: AnimatedContainer(
-          height: globalScrollController.isVisible.value?82.h:0,
+          height: globalScrollController.isVisible.value?90.h:0,
           duration: const Duration(milliseconds: 500),
           curve: Curves.easeInOut,
           child: AnimatedOpacity(

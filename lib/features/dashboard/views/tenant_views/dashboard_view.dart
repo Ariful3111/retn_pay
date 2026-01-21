@@ -18,8 +18,9 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = Theme.of(context).brightness == Brightness.dark;
     DashboardController dashboardController = Get.find();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
+
     return CustomContainer(
       gradient: isDark
           ? LinearGradient(
@@ -29,7 +30,11 @@ class DashboardView extends StatelessWidget {
       child: Obx(
         () => CustomScrollView(
           controller: dashboardController.scrollController,
-          physics:userIndex == 1&& dashboardController.isUpgrade.value || userIndex == 3&& dashboardController.isUpgrade.value ||userIndex==0||userIndex==2
+          physics:
+              userIndex == 1 && dashboardController.isUpgrade.value ||
+                  userIndex == 3 && dashboardController.isUpgrade.value ||
+                  userIndex == 0 ||
+                  userIndex == 2
               ? AlwaysScrollableScrollPhysics()
               : NeverScrollableScrollPhysics(),
           slivers: [

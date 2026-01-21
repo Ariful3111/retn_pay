@@ -18,7 +18,7 @@ class DashboardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      padding: EdgeInsets.only(top: 13.68.h, left: 15.86.w),
+      padding: EdgeInsets.only(top: 13.68.h, left: 15.86.w,right: 9.w,bottom: 13.86.h),
       height: 85.93.h,
       width: 188.39.w,
       decoration: BoxDecoration(
@@ -49,22 +49,24 @@ class DashboardItem extends StatelessWidget {
             ),
           ),
           SizedBox(width: 8.w),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomTextPrimary(
-                text: title,
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w400,
-              ),
-              SizedBox(height: 10.h),
-              CustomTextPrimary(
-                text: value,
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w600,
-              ),
-            ],
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomTextPrimary(
+                  text: title,
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w400,
+                  textOverflow: TextOverflow.ellipsis,
+                ),
+                SizedBox(height: 10.h),
+                CustomTextPrimary(
+                  text: value,
+                  fontSize: 20.sp,
+                ),
+              ],
+            ),
           ),
         ],
       ),

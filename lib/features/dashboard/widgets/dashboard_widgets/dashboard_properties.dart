@@ -27,7 +27,6 @@ class DashboardProperties extends StatelessWidget {
     DashboardController dashboardController = Get.find();
     return Column(
       children: [
-        SizedBox(height: 24.h),
         GridView.builder(
           itemCount: 4,
           shrinkWrap: true,
@@ -39,7 +38,7 @@ class DashboardProperties extends StatelessWidget {
             childAspectRatio: 188 / 85,
           ),
           itemBuilder: (context, index) {
-            final list = dashboardController.dashboardItem[index];
+            final list = dashboardController.userDashboardItems[index];
             return DashboardItem(
               icon: list['icon'],
               title: list['title'],
