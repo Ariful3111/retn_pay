@@ -22,7 +22,7 @@ class DashboardKeyFeatures extends StatelessWidget {
       padding: EdgeInsets.all(21.79.r),
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color:isDark?AppColors.darkPrimary: AppColors.whiteColor,
+        color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
         borderRadius: BorderRadius.circular(20.sp),
       ),
       child: Column(
@@ -38,7 +38,7 @@ class DashboardKeyFeatures extends StatelessWidget {
           SizedBox(height: 8.72.h),
           CustomTextSecondary(
             text:
-                'Bring your future home to life with Augmented Reality. Place 3D models of rooms or furniture inside your real environment using your phone’s camera. Explore how the property fits into your lifestyle before you move in.',
+                'Bring your future home to life with Augmented Reality. Place 3D models of rooms or furniture inside your real environment using your phone\'s camera. Explore how the property fits into your lifestyle before you move in.',
             fontWeight: FontWeight.w400,
           ),
           SizedBox(height: 13.07.h),
@@ -46,16 +46,21 @@ class DashboardKeyFeatures extends StatelessWidget {
           SizedBox(height: 8.72.h),
           ...List.generate(keyFeatures.length, (index) {
             return Padding(
-              padding: EdgeInsets.only(bottom:index==keyFeatures.length-1?  0:4.h),
+              padding: EdgeInsets.only(
+                bottom: index == keyFeatures.length - 1 ? 0 : 4.h,
+              ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
+                    margin: EdgeInsets.only(top: 8.h),
                     height: 6.h,
                     width: 6.w,
                     decoration: BoxDecoration(
-                      color:isDark? AppColors.darkSecondaryText:AppColors.secondaryTextColor,
+                      color: isDark
+                          ? AppColors.darkSecondaryText
+                          : AppColors.secondaryTextColor,
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -74,9 +79,9 @@ class DashboardKeyFeatures extends StatelessWidget {
           SizedBox(height: 26.h),
           CustomPrimaryButton(
             text: 'Launch AR View',
-            height: 54.h, onPressed: () {
-  
-          },)
+            height: 54.h,
+            onPressed: () {},
+          ),
         ],
       ),
     );

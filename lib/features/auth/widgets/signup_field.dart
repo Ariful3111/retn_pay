@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/auth/controllers/signup_controller.dart';
+import 'package:renter_pay/features/auth/widgets/service_vendor_fields.dart';
 import 'package:renter_pay/shared/extensions/Validators/confirm_password_validator.dart';
 import 'package:renter_pay/shared/extensions/Validators/email_validator.dart';
 import 'package:renter_pay/shared/extensions/Validators/name_validator.dart';
@@ -103,6 +105,7 @@ class SignupField extends StatelessWidget {
               ),
             );
           }),
+          if(userIndex==3) ServiceVendorFields()
         ],
       ),
     );

@@ -186,4 +186,5 @@ class IconsPath {
   static const String dashboardService = 'assets/icons/dashboard_service.png';
   static const String checkCircle = 'assets/icons/check_circle.png';
   static const String drawerBook = 'assets/icons/drawer_book.png';
+  static const String dashboardBoking = 'assets/icons/dashboard_boking.png';
 }
