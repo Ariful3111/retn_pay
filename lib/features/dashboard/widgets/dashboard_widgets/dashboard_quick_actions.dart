@@ -36,14 +36,14 @@ class DashboardQuickActions extends StatelessWidget {
                     !dashboardController.isQuickActions.value;
                 Future.delayed(Duration(milliseconds: 100), () {
                   if (dashboardController.isQuickActions.value) {
-                    dashboardController.scrollController.animateTo(
-                      dashboardController
-                          .scrollController
-                          .position
-                          .maxScrollExtent,
-                      duration: const Duration(milliseconds: 800),
-                      curve: Curves.easeInOut,
-                    );
+                    for (final position
+                        in dashboardController.scrollController.positions) {
+                      position.animateTo(
+                        position.maxScrollExtent,
+                        duration: const Duration(milliseconds: 800),
+                        curve: Curves.easeInOut,
+                      );
+                    }
                   } 
                 });
               },

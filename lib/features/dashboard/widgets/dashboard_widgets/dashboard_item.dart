@@ -18,8 +18,12 @@ class DashboardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      padding: EdgeInsets.only(top: 13.68.h, left: 15.86.w,right: 9.w,bottom: 13.86.h),
-      height: 85.93.h,
+      padding: EdgeInsets.only(
+        top: 13.68.h,
+        left: 15.86.w,
+        right: 9.w,
+        bottom: 13.86.h,
+      ),
       width: 188.39.w,
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
@@ -41,11 +45,7 @@ class DashboardItem extends StatelessWidget {
               color: isDark ? Color(0xFF323133) : Color(0xFFFBF5FF),
             ),
             child: Center(
-              child: Image.asset(
-                icon,
-                height: 15.86.h,
-                width: 15.86.w,
-              ),
+              child: Image.asset(icon, height: 15.86.h, width: 15.86.w),
             ),
           ),
           SizedBox(width: 8.w),
@@ -60,11 +60,8 @@ class DashboardItem extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                   textOverflow: TextOverflow.ellipsis,
                 ),
-                SizedBox(height: 10.h),
-                CustomTextPrimary(
-                  text: value,
-                  fontSize: 20.sp,
-                ),
+                SizedBox(height: 8.h),
+                CustomTextPrimary(text: value, fontSize: 20.sp),
               ],
             ),
           ),
