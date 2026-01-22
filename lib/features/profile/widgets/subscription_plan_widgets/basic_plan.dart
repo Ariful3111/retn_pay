@@ -36,12 +36,14 @@ class BasicPlan extends StatelessWidget {
         ),
         SizedBox(height: 12),
       ],
-      purchaseButton:purchaseButton?? CustomSecondaryButton(
-        onPressed: () {},
-        text: "Buy",
-        height: 52.h,
-        width: 286.w,
-      ),
+      purchaseButton:
+          purchaseButton ??
+          CustomSecondaryButton(
+            onPressed: () {},
+            text: "Buy",
+            height: 52.h,
+            width: 286.w,
+          ),
     );
   }
 }
