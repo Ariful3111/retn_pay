@@ -7,6 +7,7 @@ import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_i
 import 'package:renter_pay/features/dashboard/widgets/key_release_widgets/landlord_key_release/landlord_release_form.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
+import 'package:signature/signature.dart';
 
 class LandlordKeyRelease extends StatelessWidget {
   const LandlordKeyRelease({super.key});
@@ -14,6 +15,10 @@ class LandlordKeyRelease extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
+    final SignatureController signatureController = SignatureController(
+      penStrokeWidth: 3,
+      penColor: isDark ? AppColors.whiteColor : AppColors.darkPrimary,
+    );
     LandlordKeyReleaseController keyReleaseController = Get.find();
     return CustomContainer(
       gradient: isDark
@@ -48,7 +53,7 @@ class LandlordKeyRelease extends StatelessWidget {
                 child: LandlordReleaseForm(
                   signatureMode: keyReleaseController.signatureMode,
                   isDrawing: keyReleaseController.isDrawing,
-                  signatureController: keyReleaseController.signatureController,
+                  signatureController: signatureController,
                   typedText: keyReleaseController.typedText,
                   textEditingController: keyReleaseController.drawController,
                 ),

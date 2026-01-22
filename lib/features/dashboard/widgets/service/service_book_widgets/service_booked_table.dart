@@ -17,55 +17,50 @@ class ServiceBookedTable extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     ServiceBookedController serviceBookedController = Get.find();
-    return MediaQuery(
-      data: MediaQueryData(
-        size: Size(MediaQuery.widthOf(context), MediaQuery.heightOf(context)),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12.r),
+        color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
       ),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12.r),
-          color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
-        ),
-        child: Obx(() {
-          final list = serviceBookedController.filterRow;
-          final rowWidgets = List<List<Widget>>.generate(list.length, (index) {
+      child: Obx(() {
+        final list = serviceBookedController.filterRow;
+        final rowWidgets = List<List<Widget>>.generate(list.length, (index) {
+          final item = list[index].value;
+          return [
+            CustomTextPrimary(
+              text: item.serviceName,
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500,
+              textOverflow: TextOverflow.ellipsis,
+            ),
+            TableStatus(status: item.status),
+            ServiceBookedTableAction(),
+          ];
+        });
+        final listIndex = list.map((e) => e.key).toList();
+        return CustomTable(
+          column: serviceBookedController.tableColumn,
+          row: rowWidgets,
+          expandedTableBuilder: (index) {
             final item = list[index].value;
-            return [
-              CustomTextPrimary(
-                text: item.serviceName,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
-                textOverflow: TextOverflow.ellipsis,
-              ),
-              TableStatus(status: item.status),
-              ServiceBookedTableAction(),
-            ];
-          });
-          final listIndex = list.map((e) => e.key).toList();
-          return CustomTable(
-            column: serviceBookedController.tableColumn,
-            row: rowWidgets,
-            expandedTableBuilder: (index) {
-              final item = list[index].value;
-              final rowIndex = listIndex[index];
-              return CustomTableExpanded(
-                title: 'Property Address: ${item.serviceName}',
-                isOpen: serviceBookedController.expandedData[rowIndex],
-                onExpandedClose: () {
-                  serviceBookedController.showExpandedData(rowIndex);
-                },
-                expandedContent: ServiceBookedTableContent(rowIndex: rowIndex),
-              );
-            },
-            onRowTap: (index) {
-              serviceBookedController.showExpandedData(listIndex[index]);
-            },
-            isExpandedTableBuilder: (index) {
-              return serviceBookedController.expandedData[listIndex[index]];
-            }, isNeedLastCol: true,
-          );
-        }),
-      ),
+            final rowIndex = listIndex[index];
+            return CustomTableExpanded(
+              title: 'Service Name: ${item.serviceName}',
+              isOpen: serviceBookedController.expandedData[rowIndex],
+              onExpandedClose: () {
+                serviceBookedController.showExpandedData(rowIndex);
+              },
+              expandedContent: ServiceBookedTableContent(rowIndex: rowIndex),
+            );
+          },
+          onRowTap: (index) {
+            serviceBookedController.showExpandedData(listIndex[index]);
+          },
+          isExpandedTableBuilder: (index) {
+            return serviceBookedController.expandedData[listIndex[index]];
+          }, isNeedLastCol: true,
+        );
+      }),
     );
   }
 }

@@ -14,6 +14,7 @@ void calenderFilter({
   required Rx<DateTime?> rangeStart,
   required Rx<DateTime?> rangeEnd,
   required Rx<RangeSelectionMode> rangeSelectionMode,
+  required Rx<DateTime> focusedDay,
   Map<int, Map<String, dynamic>>? customFilters,
 }) {
   DateTime now = DateTime.now();
@@ -34,40 +35,48 @@ void calenderFilter({
         rangeStart.value = null;
         rangeEnd.value = null;
         rangeSelectionMode.value = RangeSelectionMode.toggledOff;
+        focusedDay.value = now;
         break;
 
       case 1:
-        selectedDay.value = now.subtract(const Duration(days: 1));
+      final d = now.subtract(const Duration(days: 1));
+        selectedDay.value = d;
         rangeStart.value = null;
         rangeEnd.value = null;
         rangeSelectionMode.value = RangeSelectionMode.toggledOff;
+        focusedDay.value = d;
         break;
 
       case 2:
         rangeStart.value = now.subtract(const Duration(days: 6));
         rangeEnd.value = now;
         rangeSelectionMode.value = RangeSelectionMode.toggledOn;
+        focusedDay.value = rangeEnd.value!;
         break;
 
       case 3:
         rangeStart.value = now.subtract(const Duration(days: 29));
         rangeEnd.value = now;
         rangeSelectionMode.value = RangeSelectionMode.toggledOn;
+        focusedDay.value = rangeEnd.value!;
         break;
-      case 4: 
+      case 4:
         rangeStart.value = DateTime(now.year, now.month, 1);
         rangeEnd.value = DateTime(now.year, now.month + 1, 0);
         rangeSelectionMode.value = RangeSelectionMode.toggledOn;
+        focusedDay.value = rangeEnd.value!;
         break;
-      case 5: 
+      case 5:
         rangeStart.value = DateTime(now.year, 1, 1);
         rangeEnd.value = DateTime(now.year, 12, 31);
         rangeSelectionMode.value = RangeSelectionMode.toggledOn;
+        focusedDay.value = rangeEnd.value!;
         break;
       case 6:
         rangeStart.value = null;
         rangeEnd.value = null;
         rangeSelectionMode.value = RangeSelectionMode.toggledOn;
+        focusedDay.value = now;
         break;
     }
   }

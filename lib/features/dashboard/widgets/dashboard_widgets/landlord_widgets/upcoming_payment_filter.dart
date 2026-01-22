@@ -16,17 +16,24 @@ class UpcomingPaymentFilter extends StatelessWidget {
         lastDay: dashboardLandlordController.lastDay,
         focusedDay: dashboardLandlordController.focusedDay.value,
         calendarFormat: dashboardLandlordController.calendarFormat.value,
-        rangeSelectionMode: dashboardLandlordController.rangeSelectionMode.value,
+        rangeSelectionMode:
+            dashboardLandlordController.rangeSelectionMode.value,
         rangeEndDay: dashboardLandlordController.rangeEnd.value,
         rangeStartDay: dashboardLandlordController.rangeStart.value,
         onDaySelected: (DateTime selectDay, DateTime focus) {
+          if (dashboardLandlordController.isDay.value != 6) {
+            dashboardLandlordController.isDay.value = 6;
+            dashboardLandlordController.rangeSelectionMode.value =
+                RangeSelectionMode.toggledOn;
+          }
           dashboardLandlordController.focusedDay.value = focus;
           dashboardLandlordController.rangeStart.value = null;
           dashboardLandlordController.rangeEnd.value = null;
-          dashboardLandlordController.rangeSelectionMode.value =
-              RangeSelectionMode.toggledOff;
         },
         onRangeSelected: (DateTime? start, DateTime? end, DateTime focus) {
+          if (dashboardLandlordController.isDay.value != 6) {
+            dashboardLandlordController.isDay.value = 6;
+          }
           dashboardLandlordController.rangeStart.value = start;
           dashboardLandlordController.rangeEnd.value = end;
           dashboardLandlordController.focusedDay.value = focus;
@@ -40,7 +47,8 @@ class UpcomingPaymentFilter extends StatelessWidget {
           if (dashboardLandlordController.calendarFormat.value != format) {
             dashboardLandlordController.calendarFormat.value = format;
           }
-        }, selectDay: dashboardLandlordController.selectedDay.value,
+        },
+        selectDay: dashboardLandlordController.selectedDay.value,
       ),
     );
   }

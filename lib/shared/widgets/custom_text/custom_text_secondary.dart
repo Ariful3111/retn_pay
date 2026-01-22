@@ -15,7 +15,8 @@ class CustomTextSecondary extends StatelessWidget {
   final TextAlign? textAlign;
   final TextOverflow ?textOverflow;
   final TextHeightBehavior ? textHeightBehavior;
-  const CustomTextSecondary({super.key, required this.text, this.fontSize, this.fontWeight, this.color, this.textDecoration, this.decorationColor, this.decorationThickness, this.decorationStyle, this.textAlign, this.textOverflow, this.textHeightBehavior});
+  final FontStyle ? fontStyle;
+  const CustomTextSecondary({super.key, required this.text, this.fontSize, this.fontWeight, this.color, this.textDecoration, this.decorationColor, this.decorationThickness, this.decorationStyle, this.textAlign, this.textOverflow, this.textHeightBehavior, this.fontStyle});
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +34,7 @@ class CustomTextSecondary extends StatelessWidget {
         decorationColor: decorationColor,
         decorationThickness: decorationThickness,
         decorationStyle: decorationStyle,
+        fontStyle: fontStyle
       ),
     );
   }

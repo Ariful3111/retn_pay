@@ -32,12 +32,23 @@ class DashboardQuickActions extends StatelessWidget {
           Obx(
             () => InkWell(
               onTap: () {
-                
                 dashboardController.isQuickActions.value =
                     !dashboardController.isQuickActions.value;
+                Future.delayed(Duration(milliseconds: 100), () {
+                  if (dashboardController.isQuickActions.value) {
+                    for (final position
+                        in dashboardController.scrollController.positions) {
+                      position.animateTo(
+                        position.maxScrollExtent,
+                        duration: const Duration(milliseconds: 800),
+                        curve: Curves.easeInOut,
+                      );
+                    }
+                  } 
+                });
               },
               child: Padding(
-                padding:  EdgeInsets.all(8.r),
+                padding: EdgeInsets.all(8.r),
                 child: Center(
                   child: Image.asset(
                     dashboardController.isQuickActions.value

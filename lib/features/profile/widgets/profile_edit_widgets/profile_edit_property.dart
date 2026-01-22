@@ -76,6 +76,7 @@ class ProfileEditProperty extends StatelessWidget {
           ProfileEditCheckbox(),
           SizedBox(height: 20.h),
           CustomDropdownMenu(
+            alignmentGeometry: Alignment(0.2, 1),
             selectedTrailingIconColor: AppColors.secondaryTextColor,
             trailingIconColor: AppColors.secondaryTextColor,
             onSelect: (value) {

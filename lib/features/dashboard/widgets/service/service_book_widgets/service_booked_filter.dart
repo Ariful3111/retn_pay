@@ -25,6 +25,7 @@ class ServiceBookedFilter extends StatelessWidget {
               builder: (context) {
                 return Obx(
                   () => CustomCalenderFilter(
+                    alignmentGeometry: Alignment(0, -0.3),
                     widget: CustomTableCalender(
                       firstDay: serviceBookedController.firstDay,
                       lastDay: serviceBookedController.lastDay,
@@ -36,15 +37,21 @@ class ServiceBookedFilter extends StatelessWidget {
                       rangeEndDay: serviceBookedController.rangeEnd.value,
                       rangeStartDay: serviceBookedController.rangeStart.value,
                       onDaySelected: (DateTime selectDay, DateTime focus) {
+                        if (serviceBookedController.isDay.value != 6) {
+                          serviceBookedController.isDay.value = 6;
+                          serviceBookedController.rangeSelectionMode.value =
+                              RangeSelectionMode.toggledOn;
+                        }
                         serviceBookedController.focusedDay.value = focus;
                         serviceBookedController.selectedDay.value = selectDay;
                         serviceBookedController.rangeStart.value = null;
                         serviceBookedController.rangeEnd.value = null;
-                        serviceBookedController.rangeSelectionMode.value =
-                            RangeSelectionMode.toggledOff;
                       },
                       onRangeSelected:
                           (DateTime? start, DateTime? end, DateTime focus) {
+                            if (serviceBookedController.isDay.value != 6) {
+                              serviceBookedController.isDay.value = 6;
+                            }
                             serviceBookedController.rangeStart.value = start;
                             serviceBookedController.rangeEnd.value = end;
                             serviceBookedController.focusedDay.value = focus;
@@ -73,8 +80,10 @@ class ServiceBookedFilter extends StatelessWidget {
                         rangeEnd: serviceBookedController.rangeEnd,
                         rangeSelectionMode:
                             serviceBookedController.rangeSelectionMode,
+                        focusedDay: serviceBookedController.focusedDay,
                       );
-                    }, onApply: () {  },
+                    },
+                    onApply: () {},
                   ),
                 );
               },

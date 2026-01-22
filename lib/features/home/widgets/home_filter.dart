@@ -64,6 +64,11 @@ class HomeFilter extends StatelessWidget {
             isShowProperty: homeController.isShowProperty,
             isShowSearch: homeController.isShowSearch,
             isShowPriceRange: homeController.isShowPriceRange,
+            onFilterDispose: () {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                homeController.getProperties();
+              });
+            },
           );
         }),
       ),

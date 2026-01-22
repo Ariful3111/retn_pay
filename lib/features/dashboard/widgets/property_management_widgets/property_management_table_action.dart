@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
@@ -41,7 +42,7 @@ class PropertyManagementTableAction extends StatelessWidget {
               text: 'Insurance',
               select: selectedItem == MyMenu.insurance, context: context,
             ),
-            item(
+          userIndex==2? item(menu: MyMenu.conditionalReport, icon: IconsPath.conditional, text: 'Conditional Report', select: selectedItem==MyMenu.conditionalReport, context: context): item(
               menu: MyMenu.reEnlist,
               icon: IconsPath.enlist,
               text: 'Re-Enlist',

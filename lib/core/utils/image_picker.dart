@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:renter_pay/core/constants/colors.dart';
 
 class UploadImage {
   static Future<void> pickDocument({
@@ -69,12 +70,14 @@ class UploadImage {
   static Future<void> sendImage({
     required ImagePicker picker,
     required Rxn<XFile> pickImage,
+    required BuildContext context,
   }) async {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     await Get.bottomSheet(
       Container(
-        padding: const EdgeInsets.all(16),
-        decoration: const BoxDecoration(
-          color: Colors.white,
+        padding:  EdgeInsets.all(16),
+        decoration:  BoxDecoration(
+          color:isDark? AppColors.darkPrimary:Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(16),
             topRight: Radius.circular(16),

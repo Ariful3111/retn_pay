@@ -38,7 +38,7 @@ class ForgotPassword extends StatelessWidget {
               );
             },
             child: CustomTextPrimary(
-              text: "Forgot Password",
+              text: "Forgot Password?",
               fontSize: 14.sp,
               fontWeight: FontWeight.w400,
             ),

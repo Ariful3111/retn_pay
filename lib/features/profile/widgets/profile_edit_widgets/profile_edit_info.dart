@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/utils/image_picker.dart';
 import 'package:renter_pay/features/profile/controllers/profile_edit_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
@@ -16,7 +17,6 @@ class ProfileEditInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int userIndex = 1;
     ProfileEditController profileEditController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
@@ -59,7 +59,7 @@ class ProfileEditInfo extends StatelessWidget {
                           : AssetImage(ImagesPath.profile),
                       fit: BoxFit.fill,
                     ),
-                    borderRadius: BorderRadius.circular(50.r),
+                    shape: BoxShape.circle
                   ),
                   child: Align(
                     alignment: Alignment(0.1, 1.5),
@@ -67,7 +67,7 @@ class ProfileEditInfo extends StatelessWidget {
                       onTap: () {
                         UploadImage.sendImage(
                           picker: profileEditController.picker,
-                          pickImage: profileEditController.upload,
+                          pickImage: profileEditController.upload, context: context,
                         );
                       },
                       child: Container(
@@ -75,13 +75,14 @@ class ProfileEditInfo extends StatelessWidget {
                         width: 30.w,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.r),
-                          color: AppColors.whiteColor,
+                          color:isDark?AppColors.darkSecondary: AppColors.whiteColor,
                         ),
                         child: Center(
                           child: Image.asset(
                             IconsPath.upload,
                             height: 20.h,
                             width: 20.w,
+                            color: isDark?AppColors.darkAppBar:null,
                           ),
                         ),
                       ),

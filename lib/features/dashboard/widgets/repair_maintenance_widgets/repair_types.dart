@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/landlord_repair_maintenance_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/repair_maintenance_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_request_button.dart';
@@ -16,7 +17,6 @@ class RepairTypes extends StatelessWidget {
     RepairMaintenanceController repairMaintenanceController = Get.find();
     LandlordRepairMaintenanceController landlordRepairMaintenanceController =
         Get.find();
-    int userIndex = 1;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -33,12 +33,12 @@ class RepairTypes extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(
-              userIndex == 1
+              userIndex == 1|| userIndex==2
                   ? landlordRepairMaintenanceController.repairType.length
                   : repairMaintenanceController.repairType.length,
               (index) {
                 return Obx(() {
-                  final isActive = userIndex == 1
+                  final isActive = userIndex == 1|| userIndex==2
                       ? landlordRepairMaintenanceController
                             .repairTypeIndex
                             .value == index
@@ -49,7 +49,7 @@ class RepairTypes extends StatelessWidget {
                       if (userIndex == 0) {
                         repairMaintenanceController.repairTypeIndex.value =
                             index;
-                      } else if (userIndex == 1) {
+                      } else if (userIndex == 1 || userIndex==2) {
                         landlordRepairMaintenanceController
                                 .repairTypeIndex
                                 .value =

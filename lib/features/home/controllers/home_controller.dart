@@ -17,7 +17,7 @@ class HomeController extends GetxController {
   RxBool isLoading = true.obs;
   TextEditingController searchController = TextEditingController();
   RxInt selectedCategory = 0.obs;
-  Rx<SfRangeValues> range = SfRangeValues(300, 670000).obs;
+  Rx<SfRangeValues> range = SfRangeValues(0, 700000).obs;
   double minRange = 0;
   double maxRange = 700000;
   TextEditingController filterSearchController = TextEditingController();
@@ -52,6 +52,8 @@ class HomeController extends GetxController {
       final response = await getPropertiesRepository.execute(
         token: token,
         search: search,
+        priceMin: range.value.start.toInt().toString(),
+        priceMax: range.value.end.toInt().toString(),
       );
       response.fold(
         (error) {

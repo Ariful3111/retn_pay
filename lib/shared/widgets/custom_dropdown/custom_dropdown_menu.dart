@@ -25,6 +25,7 @@ class CustomDropdownMenu extends StatelessWidget {
   final double? fontSize;
   final TextStyle? textStyle;
   final Color? fillColor;
+  final Color? textColor;
   final InputBorder? enableBorder;
   final InputBorder? focusBorder;
   final double? selectedTrailingIconHeight;
@@ -58,7 +59,7 @@ class CustomDropdownMenu extends StatelessWidget {
     this.selectedTrailingIconWidth,
     this.trailingIconHeight,
     this.trailingIconWidth,
-    this.menuFontSize, this.alignmentGeometry,
+    this.menuFontSize, this.alignmentGeometry, this.textColor,
   });
 
   @override
@@ -75,7 +76,7 @@ class CustomDropdownMenu extends StatelessWidget {
               fontWeight: FontWeight.w500,
               color: isDark
                   ? AppColors.darkSecondaryText
-                  : AppColors.secondaryTextColor,
+                  :textColor?? AppColors.secondaryTextColor,
             ),
         label: label,
         inputDecorationTheme: DropdownInputDecoration().inputDecoration(

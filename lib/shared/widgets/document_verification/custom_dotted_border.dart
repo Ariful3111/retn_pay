@@ -1,16 +1,19 @@
-import 'dart:io';
-
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 
 class CustomDottedBorder extends StatelessWidget {
-  final XFile image;
-  final double?height;
-  final double?width;
-  const CustomDottedBorder({super.key, required this.image, this.height, this.width});
+  final ImageProvider<Object> image;
+  final double? height;
+  final double? width;
+  final double? borderRadius;
+  const CustomDottedBorder({
+    super.key,
+    required this.image,
+    this.height,
+    this.width, this.borderRadius,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +25,11 @@ class CustomDottedBorder extends StatelessWidget {
         dashPattern: [3, 3],
       ),
       child: Container(
-        height: 225.h,
-        width: 350.w,
+        height: height ?? 225.h,
+        width: width ?? 350.w,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.sp),
-          image: DecorationImage(
-            image: FileImage(File(image.path)),
-            fit: BoxFit.fill,
-          ),
+          borderRadius: BorderRadius.circular(borderRadius?? 20.sp),
+          image: DecorationImage(image: image, fit: BoxFit.fill),
         ),
       ),
     );

@@ -55,23 +55,27 @@ class CustomFaq extends StatelessWidget {
                   ),
                 ),
               ),
-              GestureDetector(
+              InkWell(
                 onTap: onTap,
-                child: Icon(
-                  isShow ? Icons.add : Icons.remove,
-                  size: 15.sp,
-                  color: isDark
-                      ? AppColors.darkSecondaryText
-                      : AppColors.primaryTextColor,
+                child: SizedBox(
+                  height: 24.h,
+                  width: 24.w,
+                  child: Icon(
+                    isShow ? Icons.add : Icons.remove,
+                    size: 18.sp,
+                    color: isDark
+                        ? AppColors.darkSecondaryText
+                        : AppColors.primaryTextColor,
+                  ),
                 ),
               ),
             ],
           ),
-          SizedBox(height: 6.h,),
-          AnimatedSize(
+         if(!isShow) SizedBox(height: 6.h,),
+         AnimatedSize(
             duration: Duration(milliseconds: 300),
             curve: Curves.easeInOutCubic,
-            child: CustomTextSecondary(
+            child:isShow? SizedBox.shrink():CustomTextSecondary(
               text: subtitle,
               fontSize: subFontSize ?? 14.sp,
               fontWeight: subFontWeight ?? FontWeight.w400,

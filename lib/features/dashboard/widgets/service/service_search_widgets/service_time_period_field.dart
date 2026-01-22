@@ -28,6 +28,7 @@ class ServiceTimePeriodField extends StatelessWidget {
         child: CustomTextField(
           controller: serviceSearchController.timeController,
           labelText: 'Other',
+          readOnly: serviceSearchController.checkboxIndex.value == 3?false:true,
           floatingLabelBehavior: FloatingLabelBehavior.never,
           fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
           enableBorder: OutlineInputBorder(

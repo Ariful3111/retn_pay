@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/payment_management_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_upcoming_payment.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
-import 'package:renter_pay/features/dashboard/widgets/payment_history.dart';
-import 'package:renter_pay/features/dashboard/widgets/payment_tab.dart';
+import 'package:renter_pay/features/dashboard/widgets/payment_management_widgets/payment_history.dart';
+import 'package:renter_pay/features/dashboard/widgets/payment_management_widgets/payment_tab.dart';
+import 'package:renter_pay/features/dashboard/widgets/rent_management_widgets/rent_management_table.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 
@@ -24,8 +26,7 @@ class PaymentManagementView extends StatelessWidget {
               colors: [AppColors.darkPrimary, AppColors.darkPrimary],
             )
           : AppColors.userBackground,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: ListView(
         children: [
           DrawerItemsAppbar(title: 'Payment Management'),
           SizedBox(height: 24.h),
@@ -33,7 +34,7 @@ class PaymentManagementView extends StatelessWidget {
           SizedBox(height: 20.h),
           Obx(() {
             if (paymentManagementController.paymentTypeIndex.value == 0) {
-              return DashboardUpcomingPayment(
+              return  userIndex==2 || userIndex==3?RentManagementTable() :DashboardUpcomingPayment(
                 widget: CustomPrimaryButton(
                   height: 40.h,
                   width: 120.w,
@@ -45,7 +46,7 @@ class PaymentManagementView extends StatelessWidget {
               );
             } else if (paymentManagementController.paymentTypeIndex.value ==
                 1) {
-              return PaymentHistory();
+              return userIndex==2?RentManagementTable():PaymentHistory();
             } else {
               return Container();
             }

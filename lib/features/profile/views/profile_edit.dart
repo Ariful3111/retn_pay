@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
+import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/agent_document.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/landlord_profile_plan.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_details.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_info.dart';
@@ -15,7 +17,6 @@ class ProfileEdit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    int userIndex = 0;
     return CustomContainer(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       gradient: isDark
@@ -42,7 +43,8 @@ class ProfileEdit extends StatelessWidget {
           ProfileEditDetails(),
           SizedBox(height: 20.h),
           if (userIndex == 0) ProfileEditProperty(),
-          if (userIndex == 1) LandlordProfilePlan(),
+          if (userIndex == 1||userIndex==3) LandlordProfilePlan(),
+          if(userIndex==2) AgentDocument(),
         ],
       ),
     );

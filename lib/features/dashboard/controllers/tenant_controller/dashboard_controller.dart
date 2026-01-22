@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -25,15 +26,43 @@ class DashboardController extends GetxController {
     ImagesPath.vila,
   ];
   RxInt dialogImageIndex = 0.obs;
-  final List dashboardItem = [
-    {"icon": IconsPath.dashboardRent, "title": 'Rents', "value": '\$1200'},
+  List<Map<String, dynamic>> get userDashboardItems {
+    return dashboardItem
+        .where((user) => user['allowedUser'].contains(userIndex))
+        .toList();
+  }
+
+  final List<Map<String, dynamic>> dashboardItem = [
+    {
+      "icon": IconsPath.dashboardRent,
+      "title": 'Total Rent Paid',
+      'allowedUser': [0,1,2],
+      "value": '\$1200',
+    },
+    {
+      "icon": IconsPath.dashboardBoking,
+      "title": 'Total booking',
+      'allowedUser': [3],
+      "value": '1200',
+    },
     {
       "icon": IconsPath.dashboardInspection,
-      "title": 'Inspections',
+      "title": 'Inspection Request',
+      'allowedUser': [0,1,2,3],
       "value": '3',
     },
-    {"icon": IconsPath.dashboardApplication, "title": 'Rents', "value": '4'},
-    {"icon": IconsPath.dashboardRepair, "title": 'Inspections', "value": '3'},
+    {
+      "icon": IconsPath.dashboardApplication,
+      "title": 'Applications Submitted',
+      'allowedUser': [0,1,2,3],
+      "value": '4',
+    },
+    {
+      "icon": IconsPath.dashboardRepair,
+      "title": 'Repair Request',
+      'allowedUser': [0,1,2,3],
+      "value": '3',
+    },
   ];
   List<Map<String, dynamic>> drawerItems = [
     {
@@ -49,15 +78,27 @@ class DashboardController extends GetxController {
       'routes': AppRoutes.inspectionRequestView,
     },
     {
+      'icon': IconsPath.drawerService,
+      'title': 'Service Management',
+      'allowedUser': [3],
+      'routes': AppRoutes.serviceManagementView,
+    },
+    {
+      'icon': IconsPath.drawerBook,
+      'title': 'Booking Management',
+      'allowedUser': [3],
+      'routes': AppRoutes.bookingManagementView,
+    },
+    {
       'icon': IconsPath.dashboardPropertyManagement,
       'title': 'Property Management',
-      'allowedUser': [1],
+      'allowedUser': [1, 2],
       'routes': AppRoutes.propertyManagement,
     },
     {
       'icon': IconsPath.dashboardInspectionManagement,
       'title': 'Inspection Management',
-      'allowedUser': [1],
+      'allowedUser': [1, 2],
       'routes': AppRoutes.inspectionRequestView,
     },
     {
@@ -69,7 +110,7 @@ class DashboardController extends GetxController {
     {
       'icon': IconsPath.drawerKey,
       'title': 'Key Release',
-      'allowedUser': [0],
+      'allowedUser': [0, 2],
       'routes': AppRoutes.keyReleaseView,
     },
     {
@@ -87,30 +128,35 @@ class DashboardController extends GetxController {
     {
       'icon': IconsPath.drawerPayment,
       'title': 'Payment Management',
-      'allowedUser': [0, 1],
+      'allowedUser': [0, 1, 3],
+      'routes': AppRoutes.paymentManagementView,
+    },
+    {
+      'icon': IconsPath.drawerPayment,
+      'title': 'Rent Management',
+      'allowedUser': [2],
       'routes': AppRoutes.paymentManagementView,
     },
     {
       'icon': IconsPath.drawerRepair,
       'title': 'Repair & Maintenance',
-      'allowedUser': [0, 1],
+      'allowedUser': [0, 1, 2],
       'routes': AppRoutes.repairMaintenanceView,
     },
     {
       'icon': IconsPath.drawerService,
       'title': 'Service',
-      'allowedUser': [0, 1],
+      'allowedUser': [0, 1, 2],
       'routes': AppRoutes.servicesView,
     },
     {
       'icon': IconsPath.dashboardCalender,
       'title': 'Calender',
-      'allowedUser': [1],
+      'allowedUser': [1, 2, 3],
       'routes': AppRoutes.landlordCalenderView,
     },
   ];
   List<Map<String, dynamic>> get userDrawerItems {
-    int userIndex = 1;
     return drawerItems
         .where((user) => user['allowedUser'].contains(userIndex))
         .toList();
@@ -173,6 +219,7 @@ class DashboardController extends GetxController {
     if (!scrollController.hasClients) {
       Get.find<GlobalScrollController>().listen(scrollController);
     }
+
     today = DateTime.now();
     firstDay = DateTime(today.year - 1, today.month, today.day);
     lastDay = DateTime(today.year + 1, today.month, today.day);
@@ -191,5 +238,4 @@ class DashboardController extends GetxController {
     descriptionController.dispose();
     super.dispose();
   }
-  
 }

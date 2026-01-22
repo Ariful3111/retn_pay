@@ -29,7 +29,7 @@ class TableActionButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(6.r),
         ),
         child: Center(
-          child: Image.asset(icon, height: 24.h, width: 24.w, color: iconColor),
+          child: Image.asset(icon, height: 24.h, width: 24.w, color: isDark?iconColor??AppColors.whiteColor:iconColor),
         ),
       ),
     );

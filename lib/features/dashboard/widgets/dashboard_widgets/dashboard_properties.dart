@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_item.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_key_features.dart';
@@ -15,17 +16,17 @@ import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/landlord_upcoming_payment.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/property_promotion.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/repair_request.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/service_vendor_widgets/service_request.dart';
+import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/service_vendor_widgets/service_vendor_ad.dart';
 
 class DashboardProperties extends StatelessWidget {
   const DashboardProperties({super.key});
 
   @override
   Widget build(BuildContext context) {
-    int userIndex = 1;
     DashboardController dashboardController = Get.find();
     return Column(
       children: [
-        SizedBox(height: 24.h),
         GridView.builder(
           itemCount: 4,
           shrinkWrap: true,
@@ -37,7 +38,7 @@ class DashboardProperties extends StatelessWidget {
             childAspectRatio: 188 / 85,
           ),
           itemBuilder: (context, index) {
-            final list = dashboardController.dashboardItem[index];
+            final list = dashboardController.userDashboardItems[index];
             return DashboardItem(
               icon: list['icon'],
               title: list['title'],
@@ -45,10 +46,11 @@ class DashboardProperties extends StatelessWidget {
             );
           },
         ),
-        if (userIndex == 1) DashboardGraph(),
+        if (userIndex == 1 || userIndex == 2) DashboardGraph(),
         SizedBox(height: 20.h),
         if (userIndex == 0) DashboardUpcomingPayment(),
-        if (userIndex == 1) LandlordUpcomingPayment(),
+        if (userIndex == 1 || userIndex == 2 || userIndex == 3)
+          LandlordUpcomingPayment(),
         SizedBox(height: 20.h),
         DashboardReminder(),
         Obx(
@@ -58,17 +60,21 @@ class DashboardProperties extends StatelessWidget {
         ),
         if (userIndex == 1) PropertyPromotion(),
         if (userIndex == 1) DashboardLandlordPlan(),
-        DashboardRentNotice(),
+        if (userIndex == 0 || userIndex == 1 || userIndex == 2)
+          DashboardRentNotice(),
+        if (userIndex == 3) ServiceVendorAd(),
+        if (userIndex == 3) ServiceRequest(),
         SizedBox(height: 20.h),
         DashboardQuickActions(),
         SizedBox(height: 20.h),
         Obx(
-          () => dashboardController.isQuickActions.value
-              ? AnimatedSwitcher(
-                  duration: Duration(milliseconds: 300),
-                  switchInCurve: Curves.easeInOut,
-                  switchOutCurve: Curves.easeOut,
-                  child: Column(
+          () => AnimatedSwitcher(
+            duration: Duration(milliseconds: 300),
+            switchInCurve: Curves.easeInOut,
+            switchOutCurve: Curves.easeOut,
+            child: dashboardController.isQuickActions.value
+                ? Column(
+                  key: ValueKey('expanded'),
                     children: [
                       if (userIndex == 0)
                         Column(
@@ -80,11 +86,12 @@ class DashboardProperties extends StatelessWidget {
                             DashboardKeyFeatures(),
                           ],
                         ),
-                      if (userIndex == 1) DashboardLandlordQuickAction(),
+                      if (userIndex == 1 || userIndex == 2 || userIndex == 3)
+                        DashboardLandlordQuickAction(),
                     ],
-                  ),
-                )
-              : SizedBox(),
+                  )
+                : SizedBox(key: ValueKey('collapsed'),),
+          ),
         ),
       ],
     );

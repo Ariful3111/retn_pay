@@ -60,7 +60,6 @@ class ServiceSearchDetails extends StatelessWidget {
             widgetTitleList: serviceSearchController.widgetTitle,
             selectedWidget: serviceSearchController.selectedWidgetList,
           ),
-          SizedBox(height: 20.h),
           ServiceDetailsCommit(),
           SizedBox(height: 20.h),
           ServiceRequestForm(),

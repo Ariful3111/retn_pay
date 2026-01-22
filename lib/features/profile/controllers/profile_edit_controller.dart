@@ -6,6 +6,7 @@ class ProfileEditController extends GetxController {
   ImagePicker picker = ImagePicker();
   Rxn<XFile> upload = Rxn<XFile>();
   TextEditingController nameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -14,6 +15,9 @@ class ProfileEditController extends GetxController {
   TextEditingController amountController = TextEditingController();
   TextEditingController bedroomController = TextEditingController();
   TextEditingController bathroomController = TextEditingController();
+  TextEditingController businessNameController = TextEditingController();
+  TextEditingController businessTypeController = TextEditingController();
+  TextEditingController businessLicenseController = TextEditingController();
   RxBool isPets = false.obs;
   RxBool isParking = false.obs;
   RxString initialPet = 'Pet Type'.obs;

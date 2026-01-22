@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/features/dashboard/views/landlord_views/add_new_property.dart';
@@ -21,6 +22,7 @@ class PropertyManagement extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     AddNewPropertyController addNewPropertyController = Get.find();
     PropertyManagementController propertyManagementController = Get.find();
+
     return CustomContainer(
       padding: EdgeInsets.all(20.h),
       gradient: isDark
@@ -37,22 +39,24 @@ class PropertyManagement extends StatelessWidget {
               PropertyManagementType(),
             ],
           ),
-          Obx(
-            () => addNewPropertyController.isPropertyDetails.value
+          Obx(() {
+            bool isProperty =
+                propertyManagementController.selected.value == 'Property';
+            return addNewPropertyController.isPropertyDetails.value
                 ? PropertyManagementDetails()
                 : addNewPropertyController.isNewProperty.value
                 ? PropertyOwnerDocument()
                 : Column(
                     children: [
                       SizedBox(height: 16.h),
-                      PropertyManagementRow(),
+                      isProperty||userIndex==2 ? PropertyManagementRow() : SizedBox(),
                       SizedBox(height: 20.h),
                       propertyManagementController.isViewProperty.value
                           ? AddNewProperty()
                           : PropertyManagementTable(),
                     ],
-                  ),
-          ),
+                  );
+          }),
         ],
       ),
     );

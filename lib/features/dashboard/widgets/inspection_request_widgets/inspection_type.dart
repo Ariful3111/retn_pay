@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/landlord_inspection_request_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/inspection_request_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
@@ -10,7 +11,6 @@ class InspectionType extends StatelessWidget {
   const InspectionType({super.key});
   @override
   Widget build(BuildContext context) {
-    int userIndex = 1;
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     InspectionRequestController inspectionRequestController = Get.find();
     LandlordInspectionRequestController landlordInspectionRequestController =
@@ -32,11 +32,11 @@ class InspectionType extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(
-              userIndex == 1
+              userIndex == 1 || userIndex==2
                   ? landlordInspectionRequestController.inspectionType.length
                   : inspectionRequestController.inspectionTypeList.length,
               (index) {
-                final isSelected = userIndex == 1
+                final isSelected = userIndex == 1|| userIndex==2
                     ? landlordInspectionRequestController
                               .isLandlordInsPectionType
                               .value ==
@@ -50,7 +50,7 @@ class InspectionType extends StatelessWidget {
                           index;
                     }
 
-                    if (userIndex == 1) {
+                    if (userIndex == 1|| userIndex==2) {
                       landlordInspectionRequestController
                               .isLandlordInsPectionType
                               .value =
@@ -69,7 +69,7 @@ class InspectionType extends StatelessWidget {
                       color: isSelected ? AppColors.primaryColorDark : null,
                     ),
                     child: CustomTextSecondary(
-                      text: userIndex == 1
+                      text: userIndex == 1|| userIndex==2
                           ? landlordInspectionRequestController
                                 .inspectionType[index]
                           : inspectionRequestController

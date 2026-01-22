@@ -21,14 +21,22 @@ class PaymentRangeCalendar extends StatelessWidget {
         rangeEndDay: paymentManagementController.rangeEnd.value,
         rangeStartDay: paymentManagementController.rangeStart.value,
         onDaySelected: (DateTime selectDay, DateTime focus) {
+          if (paymentManagementController.isDay.value != 6) {
+            paymentManagementController.isDay.value = 6;
+            paymentManagementController.rangeSelectionMode.value =
+              RangeSelectionMode.toggledOn;
+          }
           paymentManagementController.focusedDay.value = focus;
           paymentManagementController.selectedDay.value = selectDay;
           paymentManagementController.rangeStart.value = null;
           paymentManagementController.rangeEnd.value = null;
-          paymentManagementController.rangeSelectionMode.value =
-              RangeSelectionMode.toggledOff;
+          
         },
         onRangeSelected: (DateTime? start, DateTime? end, DateTime focus) {
+          if (paymentManagementController.isDay.value != 6) {
+            paymentManagementController.isDay.value = 6;
+            
+          }
           paymentManagementController.rangeStart.value = start;
           paymentManagementController.rangeEnd.value = end;
           paymentManagementController.focusedDay.value = focus;

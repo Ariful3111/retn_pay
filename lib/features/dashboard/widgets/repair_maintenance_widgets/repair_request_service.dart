@@ -63,9 +63,10 @@ class RepairRequestService extends StatelessWidget {
                     width: 85.w,
                     borderRadius: BorderRadius.circular(6.r),
                     onPressed: () {
-                    
-                  },),
-                  buttonSpace: SizedBox(width: 16.w,),
+                      Navigator.pop(context);
+                    },
+                  ),
+                  buttonSpace: SizedBox(width: 16.w),
                 );
               },
             );

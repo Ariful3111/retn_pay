@@ -26,6 +26,7 @@ class CustomContainer extends StatelessWidget {
     return Scaffold(
       drawer: drawer,
       appBar: appbar,
+      resizeToAvoidBottomInset: true,
       body: Container(
         padding: padding,
         margin: margin,
