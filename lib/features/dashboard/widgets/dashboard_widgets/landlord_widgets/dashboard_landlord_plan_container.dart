@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
+import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/plan_info.dart';
 
 class DashboardLandlordPlanContainer extends StatelessWidget {
   const DashboardLandlordPlanContainer({super.key});
@@ -31,51 +29,11 @@ class DashboardLandlordPlanContainer extends StatelessWidget {
                 ),
               ],
             ),
-            child: Row(
-              children: [
-                Container(
-                  height: 49.43.h,
-                  width: 49.43.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(45.sp),
-                    gradient: AppColors.silverIconBG,
-                  ),
-                  child: Center(
-                    child: Image.asset(
-                      IconsPath.silverPlan,
-                      height: 30.h,
-                      width: 30.w,
-                    ),
-                  ),
-                ),
-                Column(
-                  children: [
-                    CustomTextPrimary(
-                      text: 'Silver',
-                      fontSize: 24.sp,
-                      color: AppColors.darkContainer,
-                    ),
-                    SizedBox(height: 10.h),
-                    CustomTextSecondary(
-                      text: '(Free 15 days for first-time users)',
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.subsPlanSubtitle,
-                    ),
-                    SizedBox(height: 14.h),
-                    CustomTextSpan(
-                      title: '\$799',
-                      fontSize: 36.sp,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.darkContainer,
-                      spantext: '/month',
-                      spanColor: AppColors.secondaryTextColor,
-                      spanFontSize: 14.sp,
-                      spanFontWeight: FontWeight.w400,
-                    ),
-                  ],
-                ),
-              ],
+            child: PlanInfo(
+              planIcon: IconsPath.silverPlan,
+              planIconBG: AppColors.silverIconBG,
+              planTitle: 'Silver',
+              price: '\$799',
             ),
           );
   }

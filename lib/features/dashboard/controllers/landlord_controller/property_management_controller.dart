@@ -28,10 +28,11 @@ enum MyMenu { view, share, insurance, reEnlist, conditionalReport }
 
 class PropertyManagementController extends GetxController {
   List manageType = ['Property', 'Conditional Report'];
+  ScrollController propertyScrollController = ScrollController();
   RxString selected = 'Property'.obs;
   TextEditingController shareController = TextEditingController();
   RxString selectedProperty = ''.obs;
-  List propertyOption = ['Property 01','Property 02'];
+  List propertyOption = ['Property 01', 'Property 02'];
   RxList<String> imageList = <String>[].obs;
   RxBool isShare = false.obs;
   RxBool isViewProperty = false.obs;
@@ -74,12 +75,21 @@ class PropertyManagementController extends GetxController {
   }
 
   RxList<PropertyModel> allRows = <PropertyModel>[].obs;
+  RxList<PropertyModel> conditionRows = <PropertyModel>[].obs;
   RxList<bool> expanded = <bool>[].obs;
+  RxList<bool> expandedCondition = <bool>[].obs;
 
   List<MapEntry<int, PropertyModel>> get listData {
     final tempRow = <MapEntry<int, PropertyModel>>[];
     for (int i = 0; i < allRows.length; i++) {
       tempRow.add(MapEntry(i, allRows[i]));
+    }
+    return tempRow;
+  }
+  List<MapEntry<int, PropertyModel>> get listConditionData {
+    final tempRow = <MapEntry<int, PropertyModel>>[];
+    for (int i = 0; i < conditionRows.length; i++) {
+      tempRow.add(MapEntry(i, conditionRows[i]));
     }
     return tempRow;
   }
@@ -147,13 +157,81 @@ class PropertyManagementController extends GetxController {
         phoneNo: '+1234567890',
       ),
     ];
+    conditionRows.value = [
+      PropertyModel(
+        address: '789 Pine Road',
+        verifyStatus: 'Pending',
+        rent: '\$650',
+        agent: 'Mehbubur Rahman ',
+        enlistStatus: '-',
+        date: '8 Aug, 2025',
+        email: 'suriya123@gmail.com',
+        phoneNo: '+1234567890',
+      ),
+      PropertyModel(
+        address: '789 Pine Road',
+        verifyStatus: 'Pending',
+        rent: '\$650',
+        agent: 'Mehbubur Rahman',
+        enlistStatus: '-',
+        date: '8 Aug, 2025',
+        email: 'suriya123@gmail.com',
+        phoneNo: '+1234567890',
+      ),
+      PropertyModel(
+        address: '789 Pine Road',
+        verifyStatus: 'Approved',
+        rent: '\$650',
+        agent: 'Mehbubur Rahman',
+        enlistStatus: 'Publish',
+        date: '8 Aug, 2025',
+        email: 'suriya123@gmail.com',
+        phoneNo: '+1234567890',
+      ),
+      PropertyModel(
+        address: '789 Pine Road',
+        verifyStatus: 'Approved',
+        rent: '\$650',
+        agent: 'Mehbubur Rahman',
+        enlistStatus: 'Publish',
+        date: '8 Aug, 2025',
+        email: 'suriya123@gmail.com',
+        phoneNo: '+1234567890',
+      ),
+      PropertyModel(
+        address: '789 Pine Road',
+        verifyStatus: 'Rejected',
+        rent: '\$650',
+        agent: 'Mehbubur Rahman',
+        enlistStatus: 'Publish',
+        date: '8 Aug, 2025',
+        email: 'suriya123@gmail.com',
+        phoneNo: '+1234567890',
+      ),
+      PropertyModel(
+        address: '789 Pine Road',
+        verifyStatus: 'Rejected',
+        rent: '\$650',
+        agent: 'Mehbubur Rahman',
+        enlistStatus: '-',
+        date: '8 Aug, 2025',
+        email: 'suriya123@gmail.com',
+        phoneNo: '+1234567890',
+      ),
+    ];
     expanded.value = List.generate(allRows.length, (_) => false);
+    expandedCondition.value = List.generate(conditionRows.length, (_) => false);
     update();
   }
 
   void toggleExpanded(int index) {
     if (index >= 0 && index < expanded.length) {
       expanded[index] = !expanded[index];
+    }
+  }
+  void toggleCondition(int index) {
+    if (index >= 0 && index < expandedCondition.length) {
+      expandedCondition[index] = !expandedCondition[index];
     }
   }
 

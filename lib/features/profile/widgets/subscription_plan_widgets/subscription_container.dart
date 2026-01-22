@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
+import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/plan_info.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
 
 class SubscriptionContainer extends StatelessWidget {
   final Color? planBG;
@@ -67,56 +66,13 @@ class SubscriptionContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: 56.h,
-                    width: 56.w,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(45.sp),
-                      gradient: planIconBG ?? AppColors.basicIconBG,
-                    ),
-                    child: Center(
-                      child: Image.asset(
-                        planIcon ?? IconsPath.basicPlan,
-                        height: 34.h,
-                        width: 33.w,
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 16.w),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomTextPrimary(
-                        text: planTitle ?? "Basic",
-                        color: AppColors.subsPlanTitle,
-                        fontSize: 28.sp,
-                      ),
-                      SizedBox(height: 12.h),
-                      CustomTextSecondary(
-                        text:
-                            planSubtitle ??
-                            "(Free 15 days for first-time users)",
-                        color: AppColors.subsPlanSubtitle,
-                        fontSize: 14.sp,
-                      ),
-                      SizedBox(height: 16.h),
-                      CustomTextSpan(
-                        title: price ?? '\$299',
-                        spantext: '/month',
-                        fontSize: 40.sp,
-                        spanFontSize: 14.sp,
-                        fontWeight: FontWeight.w600,
-                        spanFontWeight: FontWeight.w400,
-                        color: AppColors.subsPlanTitle,
-                        spanColor: AppColors.secondaryTextColor,
-                      ),
-                    ],
-                  ),
-                ],
+              PlanInfo(
+                planTitle: planTitle ?? "Basic",
+                planIcon: planIcon ?? IconsPath.basicPlan,
+                planIconBG: planIconBG ?? AppColors.basicIconBG,
+                planSubtitle:
+                    planSubtitle ?? "(Free 15 days for first-time users)",
+                price: price ?? '\$299',
               ),
               SizedBox(height: 12.h),
               Container(

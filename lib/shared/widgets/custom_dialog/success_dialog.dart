@@ -37,7 +37,7 @@ class SuccessDialog extends StatelessWidget {
         decoration: BoxDecoration(
           image:isBG? DecorationImage(
             image: AssetImage(ImagesPath.successBackground),
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
           ):null,
           boxShadow: [
             myShadow(dy: 200.63, alpha: 0.10),

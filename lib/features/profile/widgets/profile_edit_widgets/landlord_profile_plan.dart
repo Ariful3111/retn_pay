@@ -4,6 +4,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/basic_plan.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/platinum_plan.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/silver_plan.dart';
+import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/subscription_confirm_dialog.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
@@ -18,7 +19,12 @@ class LandlordProfilePlan extends StatelessWidget {
         SizedBox(height: 20.h),
         BasicPlan(
           purchaseButton: CustomSecondaryButton(
-            onPressed: () {},
+            onPressed: () {showDialog(
+                context: context,
+                builder: (context) {
+                  return SubscriptionConfirmDialog();
+                },
+              );},
             text: "Downgrade",
             height: 52.h,
             width: 286.w,

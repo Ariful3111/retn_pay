@@ -14,14 +14,13 @@ class PropertyInsurance extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return AlertDialog(
-      backgroundColor: isDark ? AppColors.darkSecondary : null,
+      backgroundColor: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
       constraints: BoxConstraints.tight(
         Size(MediaQuery.widthOf(context), 370.h),
       ),
       title: Align(
         alignment: Alignment.centerRight,
         child: CustomCloseButton(
-          color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
           onTap: () {
             Navigator.pop(context);
           },

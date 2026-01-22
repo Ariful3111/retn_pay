@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_dialog/success_dialog.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
@@ -13,6 +14,7 @@ class PropertyOwnerDocumentField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AddNewPropertyController addNewPropertyController = Get.find();
+    PropertyManagementController propertyManagementController = Get.find();
     return Column(
       children: [
         myField(
@@ -40,6 +42,13 @@ class PropertyOwnerDocumentField extends StatelessWidget {
                       Navigator.pop(context);
                       addNewPropertyController.isNewProperty.value =
                           !addNewPropertyController.isNewProperty.value;
+                      propertyManagementController.propertyScrollController
+                          .jumpTo(
+                            propertyManagementController
+                                .propertyScrollController
+                                .position
+                                .minScrollExtent,
+                          );
                     },
                     text: 'Back to Property Management',
                     height: 40.h,

@@ -52,7 +52,7 @@ class SilverPlan extends StatelessWidget {
             ],
           ),
           child: Center(
-            child:CustomTextPrimary(
+            child: CustomTextPrimary(
               text: "Most popular",
               fontSize: 12.sp,
               color: AppColors.whiteColor,
@@ -70,7 +70,8 @@ class SilverPlan extends StatelessWidget {
         BenefitsList(listText: 'List up to 3 properties'),
         SizedBox(height: 12),
         BenefitsList(
-          listText: 'Ads on RenterPay page + social media\n(free 30 days, T&C apply)',
+          listText:
+              'Ads on RenterPay page + social media\n(free 30 days, T&C apply)',
           fontSize: 14.sp,
         ),
         SizedBox(height: 12),
@@ -84,17 +85,20 @@ class SilverPlan extends StatelessWidget {
         SizedBox(height: 12),
         BenefitsList(listText: 'Sale/lease signage included'),
         SizedBox(height: 12),
-        BenefitsList(listText: '12 hours free legal advice (tenancies\nor sale))', fontSize: 14.sp),
+        BenefitsList(
+          listText: '12 hours free legal advice (tenancies\nor sale))',
+          fontSize: 14.sp,
+        ),
         SizedBox(height: 12),
       ],
-      purchaseButton:purchaseButton?? CustomSecondaryButton(
-                onPressed: () {
-                  
-                },
-                text: "Buy",
-                height: 52.h,
-                width: 286.w,
-              ),
+      purchaseButton:
+          purchaseButton ??
+          CustomSecondaryButton(
+            onPressed: () {},
+            text: "Buy",
+            height: 52.h,
+            width: 286.w,
+          ),
     );
   }
 }
