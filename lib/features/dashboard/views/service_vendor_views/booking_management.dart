@@ -36,6 +36,7 @@ class BookingManagement extends StatelessWidget {
                 height: 54.h,
                 width: 305.w,
                 child: CustomTextField(
+                  padding: EdgeInsets.zero,
                   controller: bookingManagementController.searchController,
                   labelText: 'Search',
                   fillColor: isDark ? null : AppColors.whiteColor,

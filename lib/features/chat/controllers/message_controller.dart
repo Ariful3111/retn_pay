@@ -28,7 +28,7 @@ class MessageController extends GetxController with WidgetsBindingObserver {
       Future.delayed(Duration(milliseconds: 100), () {
         messageScrollController.animateTo(
           messageScrollController.position.maxScrollExtent,
-          duration: Duration(milliseconds: 250),
+          duration: Duration(milliseconds: 100),
           curve: Curves.easeInOut,
         );
       });

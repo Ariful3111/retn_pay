@@ -53,7 +53,15 @@ class RentView extends StatelessWidget {
                 );
               },
             ),
-            CustomPagination(),
+           Obx(()=> CustomPagination(
+              list: rentController.pageNumber,
+              onTapPrev: rentController.previousPage,
+              onTapNext: rentController.nextPage,
+              onTapPage: (item) {
+                rentController.currentPage.value = item;
+              },
+              value: rentController.currentPage.value,
+            ),),
             SizedBox(height: 55.h),
           ],
         ),

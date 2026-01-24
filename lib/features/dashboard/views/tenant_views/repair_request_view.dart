@@ -20,7 +20,6 @@ class RepairRequestView extends StatelessWidget {
           : AppColors.userBackground,
       padding: EdgeInsets.all(20.r),
       child: Column(
-       
         children: [
           Row(
             children: [

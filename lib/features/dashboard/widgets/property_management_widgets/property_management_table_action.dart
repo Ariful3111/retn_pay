@@ -22,6 +22,8 @@ class PropertyManagementTableAction extends StatelessWidget {
         onSelected: (MyMenu menu) {
           propertyManagementController.setMenu(index, menu);
         },
+        position: PopupMenuPosition.under,
+        offset: Offset(100, 0),
         itemBuilder: (context) {
           return [
             item(

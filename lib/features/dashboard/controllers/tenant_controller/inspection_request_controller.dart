@@ -28,7 +28,7 @@ class InspectionRequestController extends GetxController {
   RxInt filterIndex = 0.obs;
   RxList<bool> expanded = <bool>[].obs;
   final List inspectionTypeList = ['Scheduled', 'Pending', 'History'];
-  final List filterList = ['All', 'Approved', 'Complete'];
+  final List filterList = ['All', 'Approved', 'Completed'];
   final List<String> tableColumn = ['Property Address', 'Status', 'Action'];
   RxList<InspectionModel> allRows = <InspectionModel>[].obs;
   List<MapEntry<int, InspectionModel>> get filterRow {
@@ -53,7 +53,7 @@ class InspectionRequestController extends GetxController {
             .where(
               (row) =>
                   row.value.status == 'Rejected' ||
-                  row.value.status == 'Complete' ||
+                  row.value.status == 'Completed' ||
                   row.value.status == 'Cancel',
             )
             .toList();
@@ -87,7 +87,7 @@ class InspectionRequestController extends GetxController {
         rent: "\$540/week",
         scheduleDate: "1 Aug, 2025 11:00 AM",
         type: "In-Person",
-        status: "Complete", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
+        status: "Completed", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
       ),
       InspectionModel(
         address: "789 Pine Crescent",
@@ -108,7 +108,7 @@ class InspectionRequestController extends GetxController {
         rent: "\$500/week",
         scheduleDate: "20 Jul, 2025 01:00 PM",
         type: "VR",
-        status: "Complete", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
+        status: "Completed", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
       ),
       InspectionModel(
         address: "501 Cedar Lane",
@@ -129,7 +129,7 @@ class InspectionRequestController extends GetxController {
         rent: "\$540/week",
         scheduleDate: "1 Aug, 2025 11:00 AM",
         type: "VR",
-        status: "Complete", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
+        status: "Completed", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
       ),
       InspectionModel(
         address: "789 Pine Crescent",
@@ -150,14 +150,14 @@ class InspectionRequestController extends GetxController {
         rent: "\$500/week",
         scheduleDate: "20 Jul, 2025 01:00 PM",
         type: "VR",
-        status: "Complete", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
+        status: "Completed", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
       ),
       InspectionModel(
         address: "654 Birch Street",
         rent: "\$500/week",
         scheduleDate: "20 Jul, 2025 01:00 PM",
         type: "VR",
-        status: "Complete", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
+        status: "Completed", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
       ),
       InspectionModel(
         address: "501 Cedar Lane",

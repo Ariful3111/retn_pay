@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/profile/widgets/contact_field.dart';
-import 'package:renter_pay/features/profile/widgets/contact_us_info.dart';
+import 'package:renter_pay/features/profile/widgets/contact_widegts/contact_field.dart';
+import 'package:renter_pay/features/profile/widgets/contact_widegts/contact_us_info.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 
@@ -13,7 +13,7 @@ class ContactUs extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
-      padding: EdgeInsets.only(top: 20.h),
+      padding: EdgeInsets.symmetric(vertical: 20.h),
       gradient:isDark? LinearGradient(colors: [
         AppColors.darkPrimary,
         AppColors.darkPrimary,

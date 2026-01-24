@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/profile/widgets/blog_item.dart';
+import 'package:renter_pay/features/profile/controllers/blog_controller.dart';
+import 'package:renter_pay/features/profile/widgets/blog_widgets/blog_item.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_pagination.dart';
@@ -13,38 +15,55 @@ class BlogView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        bool isDark = Theme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
+    BlogController blogController = Get.find();
     return CustomContainer(
-      padding: EdgeInsets.only(top: 20.h),
-      gradient:isDark? LinearGradient(colors: [
-        AppColors.darkPrimary,
-        AppColors.darkPrimary,
-      ]):AppColors.userBackground,
+      padding: EdgeInsets.symmetric(vertical: 20.h),
+      gradient: isDark
+          ? LinearGradient(
+              colors: [AppColors.darkPrimary, AppColors.darkPrimary],
+            )
+          : AppColors.userBackground,
       drawer: Drawer(),
       child: CustomScrollView(
         slivers: [
           SliverAppBar(
             backgroundColor: Colors.transparent,
             titleSpacing: 0.w,
-            title: CustomAppbar(
-              title: 'Blog',
+            title: CustomAppbar(title: 'Blog'),
+          ),
+          SliverPadding(
+            padding: EdgeInsetsGeometry.symmetric(horizontal: 20.w),
+            sliver: SliverList(
+              delegate: SliverChildListDelegate([
+                Column(
+                  children: [
+                    CustomTextPrimary(text: 'Our Blogs', fontSize: 24.sp),
+                    SizedBox(height: 8.h),
+                    CustomTextSecondary(
+                      text: 'Read our recent blogs',
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    SizedBox(height: 20.h),
+                    BlogItem(),
+                    SizedBox(height: 10),
+                  Obx(()=>  CustomPagination(
+                      list: blogController.pageNumber,
+                      onTapPrev: blogController.previousPage,
+                      onTapNext: blogController.nextPage,
+                      onTapPage: (item) {
+                        blogController.currentPage.value = item;
+                      },
+                      value: blogController.currentPage.value,
+                    ),),
+                  ],
+                ),
+              ]),
             ),
           ),
-          SliverPadding(padding: EdgeInsetsGeometry.symmetric(horizontal: 20.w),
-          sliver: SliverList(delegate: SliverChildListDelegate([
-            Column(children: [
-              CustomTextPrimary(text: 'Our Blogs',fontSize: 24.sp,),
-            SizedBox(height: 8.h,),
-            CustomTextSecondary(text: 'Read our recent blogs',fontSize: 14.sp,fontWeight: FontWeight.w400,),
-            SizedBox(height: 20.h,),
-            BlogItem(),
-            SizedBox(height: 10,),
-            CustomPagination(),
-            ],)
-          ])),
-          ),
-          
         ],
-      ));
+      ),
+    );
   }
 }

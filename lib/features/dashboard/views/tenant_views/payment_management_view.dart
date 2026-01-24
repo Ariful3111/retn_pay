@@ -28,7 +28,7 @@ class PaymentManagementView extends StatelessWidget {
           : AppColors.userBackground,
       child: ListView(
         children: [
-          DrawerItemsAppbar(title: 'Payment Management'),
+          DrawerItemsAppbar(title:userIndex==2? 'Rent Management':'Payment Management'),
           SizedBox(height: 24.h),
           PaymentTab(),
           SizedBox(height: 20.h),
