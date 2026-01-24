@@ -65,12 +65,16 @@ class AddNewPropertyDialog extends StatelessWidget {
                   addNewPropertyController.isPropertyDetails.value =
                       !addNewPropertyController.isPropertyDetails.value;
                   Navigator.pop(context);
-                  propertyManagementController.propertyScrollController.jumpTo(
-                    propertyManagementController
-                        .propertyScrollController
-                        .position
-                        .minScrollExtent,
-                  );
+                  for (final position
+                      in propertyManagementController
+                          .propertyScrollController
+                          .positions) {
+                    position.animateTo(
+                      position.minScrollExtent,
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.easeInOut,
+                    );
+                  }
                 },
                 text: 'Confirm & Update',
                 height: 40.h,

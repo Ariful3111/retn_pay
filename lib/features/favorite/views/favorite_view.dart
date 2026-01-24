@@ -71,7 +71,16 @@ class FavoriteView extends StatelessWidget {
                   ),
                 ),
           SizedBox(height: 20.h),
-          if (favoriteController.favoriteItem.isNotEmpty) CustomPagination(),
+          if (favoriteController.favoriteItem.isNotEmpty)
+           Obx(()=> CustomPagination(
+              list: favoriteController.pageNumber,
+              onTapPrev: favoriteController.previousPage,
+              onTapNext: favoriteController.nextPage,
+              onTapPage: (item) {
+                favoriteController.currentPage.value = item;
+              },
+              value: favoriteController.currentPage.value,
+            ),),
           SizedBox(height: 60.h),
         ],
       ),

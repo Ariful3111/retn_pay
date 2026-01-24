@@ -68,7 +68,7 @@ class RepairTypes extends StatelessWidget {
                         color: isActive ? AppColors.primaryColorDark : null,
                       ),
                       child: CustomTextSecondary(
-                        text:userIndex==1?landlordRepairMaintenanceController.repairType[index] :repairMaintenanceController.repairType[index],
+                        text:userIndex==1||userIndex==2?landlordRepairMaintenanceController.repairType[index] :repairMaintenanceController.repairType[index],
                         fontSize: 14.sp,
                         color: isActive
                             ? AppColors.whiteColor

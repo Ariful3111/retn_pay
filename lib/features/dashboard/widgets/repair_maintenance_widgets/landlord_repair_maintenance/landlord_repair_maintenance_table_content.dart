@@ -23,8 +23,8 @@ class LandlordRepairMaintenanceTableContent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-       if(userIndex==1) info(text: 'Tenant Name:${item.tenantName}'),
-       if(userIndex==1) SizedBox(height: 8.h),
+        info(text: 'Tenant Name:${item.address}'),
+        SizedBox(height: 8.h),
         info(text: 'Urgency:${item.urgency}'),
         SizedBox(height: 8.h),
         Row(

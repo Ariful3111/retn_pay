@@ -31,7 +31,7 @@ class LandlordRepairMaintenanceTable extends StatelessWidget {
           final listIndex = rowList.map((e) => e.key).toList();
           return [
             CustomTextPrimary(
-              text:userIndex==2?item.tenantName :item.issueName,
+              text:item.issueName,
               fontSize: 16.sp,
               fontWeight: FontWeight.w500,
               textOverflow: TextOverflow.ellipsis,
@@ -56,7 +56,7 @@ class LandlordRepairMaintenanceTable extends StatelessWidget {
           expandedTableBuilder: (index) {
             final item = rowList[index].value;
             return CustomTableExpanded(
-              title: 'Issue Title: ${item.issueName}',
+              title:userIndex==2?'Tenant Name: ${item.tenantName}' : 'Issue Title: ${item.issueName}',
               isOpen: landlordRepairMaintenanceController
                   .expandedData[listIndex[index]],
               onExpandedClose: () {

@@ -17,9 +17,9 @@ class UpcomingPaymentInfo extends StatelessWidget {
     DashboardController dashboardController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     List detailList = [
-      {'title': 'Property Address:', 'subtitle': '987 Birch Boulevard'},
-      {'title': 'Payment Date:', 'subtitle': '2 July, 2025'},
-      {'title': 'Monthly Rent:', 'subtitle': '\$450'},
+      {'title': 'Property Address: ', 'subtitle': '987 Birch Boulevard'},
+      {'title': 'Payment Date: ', 'subtitle': '2 July, 2025'},
+      {'title': 'Monthly Rent: ', 'subtitle': '\$450'},
     ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

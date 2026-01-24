@@ -26,7 +26,7 @@ class PropertyManagementTableContent extends StatelessWidget {
               userIndex == 2
                   ? Row(
                       children: [
-                        infoText(title: 'Reassignment Request'),
+                        infoText(title: 'Reassignment Request:'),
                         SizedBox(width: 4.w),
                         PropertyManagementReassignment(),
                       ],
@@ -80,8 +80,6 @@ class PropertyManagementTableContent extends StatelessWidget {
               ],
             ),
           ],
-
-        SizedBox(height: 16.h),
       ],
     );
   }

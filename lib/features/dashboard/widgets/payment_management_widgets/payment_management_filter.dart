@@ -23,7 +23,7 @@ class PaymentManagementFilter extends StatelessWidget {
             showDialog(
               context: context,
               builder: (context) {
-                return CustomCalenderFilter(
+                return Obx(()=> CustomCalenderFilter(
                   alignmentGeometry: Alignment(0, -0.3),
                   widget: PaymentRangeCalendar(),
                   isDay: paymentManagementController.isDay.value,
@@ -39,7 +39,7 @@ class PaymentManagementFilter extends StatelessWidget {
                     );
                   },
                   onApply: () {},
-                );
+                ),);
               },
             );
           },

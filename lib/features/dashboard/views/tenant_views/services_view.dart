@@ -3,8 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/services_controller.dart';
-import 'package:renter_pay/features/dashboard/views/tenant_views/service_booked_view.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_filter.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_table.dart';
+import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_type.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_dropdown_menu.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_review.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/services_search.dart';
@@ -44,22 +46,34 @@ class ServicesView extends StatelessWidget {
                 ServiceDropdownMenu(),
               ],
             ),
-              Expanded(
-                child:AnimatedSwitcher(duration: Duration(milliseconds: 300),
+            Expanded(
+              child: AnimatedSwitcher(
+                duration: Duration(milliseconds: 300),
                 switchInCurve: Curves.linear,
                 switchOutCurve: Curves.linear,
-                child: servicesController.selectedServiceType.value == 'Search' ?Column(
-                  key: ValueKey('Search'),
-                  children: [
-                    SizedBox(height: 16.h),
-                    ServicesSearch(),
-                    SizedBox(height: 12.h),
-                    ServiceReview(),
-                  ],
-                ):ServiceBookedView(key: ValueKey('Booked Service'),),
-                ) 
+                child: servicesController.selectedServiceType.value == 'Search'
+                    ? Column(
+                        key: ValueKey('Search'),
+                        children: [
+                          SizedBox(height: 16.h),
+                          ServicesSearch(),
+                          SizedBox(height: 12.h),
+                          ServiceReview(),
+                        ],
+                      )
+                    : Column(
+                        key: ValueKey('Booked Service'),
+                        children: [
+                          SizedBox(height: 16.h),
+                          ServiceBookedType(),
+                          SizedBox(height: 12.h),
+                          ServiceBookedFilter(),
+                          SizedBox(height: 20.h),
+                          ServiceBookedTable(),
+                        ],
+                      ),
               ),
-            
+            ),
           ],
         ),
       ),

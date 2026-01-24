@@ -64,6 +64,24 @@ class PropertyManagementController extends GetxController {
       case MyMenu.view:
         Future.delayed(Duration(milliseconds: 300), () {
           isViewProperty.value = !isViewProperty.value;
+          for (final position in propertyScrollController.positions) {
+            position.animateTo(
+              position.minScrollExtent,
+              duration: Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
+          }
+        });
+      case MyMenu.conditionalReport:
+        Future.delayed(Duration(milliseconds: 300), () {
+          selected.value = 'Conditional Report';
+          for (final position in propertyScrollController.positions) {
+            position.animateTo(
+              position.minScrollExtent,
+              duration: Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+            );
+          }
         });
       default:
         null;
@@ -86,6 +104,7 @@ class PropertyManagementController extends GetxController {
     }
     return tempRow;
   }
+
   List<MapEntry<int, PropertyModel>> get listConditionData {
     final tempRow = <MapEntry<int, PropertyModel>>[];
     for (int i = 0; i < conditionRows.length; i++) {
@@ -229,6 +248,7 @@ class PropertyManagementController extends GetxController {
       expanded[index] = !expanded[index];
     }
   }
+
   void toggleCondition(int index) {
     if (index >= 0 && index < expandedCondition.length) {
       expandedCondition[index] = !expandedCondition[index];

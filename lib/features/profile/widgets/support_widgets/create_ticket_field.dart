@@ -28,13 +28,13 @@ class CreateTicketField extends StatelessWidget {
         SizedBox(height: 20.h),
         myField(
           controller: supportController.issueController,
-          labelText: 'Issue Title',
+          labelText: 'Issue Title*',
           context: context,
         ),
         SizedBox(height: 20.h),
         myField(
           controller: supportController.descriptionController,
-          labelText: 'Description',
+          labelText: 'Description*',
           maxLines: 3,
           isAlignLabelWithHint: true,
           context: context,

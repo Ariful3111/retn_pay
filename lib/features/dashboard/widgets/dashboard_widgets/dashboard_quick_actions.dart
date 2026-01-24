@@ -40,7 +40,7 @@ class DashboardQuickActions extends StatelessWidget {
                         in dashboardController.scrollController.positions) {
                       position.animateTo(
                         position.maxScrollExtent,
-                        duration: const Duration(milliseconds: 800),
+                        duration:  Duration(milliseconds: 800),
                         curve: Curves.easeInOut,
                       );
                     }
