@@ -18,7 +18,7 @@ class ProfileEdit extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      padding: EdgeInsets.all(20.w),
       gradient: isDark
           ? LinearGradient(
               colors: [AppColors.darkPrimary, AppColors.darkPrimary],
@@ -43,8 +43,8 @@ class ProfileEdit extends StatelessWidget {
           ProfileEditDetails(),
           SizedBox(height: 20.h),
           if (userIndex == 0) ProfileEditProperty(),
-          if (userIndex == 1||userIndex==3) LandlordProfilePlan(),
-          if(userIndex==2) AgentDocument(),
+          if (userIndex == 1 || userIndex == 3) LandlordProfilePlan(),
+          if (userIndex == 2) AgentDocument(),
         ],
       ),
     );

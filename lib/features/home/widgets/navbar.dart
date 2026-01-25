@@ -15,7 +15,7 @@ class Navbar extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Obx(() {
       return Container(
-        margin: EdgeInsets.only(right: 8.w, left: 8.w,),
+        margin: EdgeInsets.only(right: 8.w, left: 8.w),
         padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 12.w),
         width: MediaQuery.widthOf(context),
         decoration: BoxDecoration(

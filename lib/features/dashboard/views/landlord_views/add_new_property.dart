@@ -49,9 +49,14 @@ class AddNewProperty extends StatelessWidget {
         PropertyMaintenanceInfo(),
         SizedBox(height: 20.h),
         AddNewPropertyFeatures(),
-        SizedBox(height: 20.h),
+
         Obx(() {
-         return addNewPropertyController.inspectionNo.value == 1
+          return addNewPropertyController.inspectionNo.value == 1
+              ? SizedBox(height: 20.h)
+              : SizedBox.shrink();
+        }),
+        Obx(() {
+          return addNewPropertyController.inspectionNo.value == 1
               ? AddNewPropertyVirtualTour()
               : SizedBox.shrink();
         }),

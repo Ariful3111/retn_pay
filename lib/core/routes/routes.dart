@@ -50,7 +50,6 @@ import 'package:renter_pay/features/dashboard/views/tenant_views/key_release_vie
 import 'package:renter_pay/features/dashboard/views/tenant_views/payment_management_view.dart';
 import 'package:renter_pay/features/dashboard/views/tenant_views/repair_request_view.dart';
 import 'package:renter_pay/features/dashboard/views/tenant_views/service_booked_details.dart';
-import 'package:renter_pay/features/dashboard/views/tenant_views/service_booked_view.dart';
 import 'package:renter_pay/features/dashboard/views/tenant_views/service_search_details.dart';
 import 'package:renter_pay/features/dashboard/views/tenant_views/services_view.dart';
 import 'package:renter_pay/features/dashboard/views/landlord_views/property_management.dart';
@@ -61,12 +60,13 @@ import 'package:renter_pay/features/home/views/home_view.dart';
 import 'package:renter_pay/features/home/views/main_home_view.dart';
 import 'package:renter_pay/features/notification/bindings/notification_bindings.dart';
 import 'package:renter_pay/features/notification/views/notification_view.dart';
+import 'package:renter_pay/features/profile/bindings/blog_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/profile_edit_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/support_bindings.dart';
 import 'package:renter_pay/features/profile/views/blog_view.dart';
 import 'package:renter_pay/features/profile/views/contact_us.dart';
 import 'package:renter_pay/features/profile/views/profile_edit.dart';
-import 'package:renter_pay/features/profile/widgets/blog_details.dart';
+import 'package:renter_pay/features/profile/widgets/blog_widgets/blog_details.dart';
 import 'package:renter_pay/features/profile/views/support_view.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/subscription_plan.dart';
 import 'package:renter_pay/features/profile/bindings/profile_bindings.dart';
@@ -173,7 +173,7 @@ final List<GetPage> appRoutes = [
   ),
   GetPage(name: AppRoutes.inspectionFrom, page: () => InspectionFrom()),
   GetPage(name: AppRoutes.contactUs, page: () => ContactUs()),
-  GetPage(name: AppRoutes.blog, page: () => BlogView()),
+  GetPage(name: AppRoutes.blog, page: () => BlogView(),binding: BlogBindings()),
   GetPage(name: AppRoutes.blogDetails, page: () => BlogDetails()),
   GetPage(name: AppRoutes.messageView, page: () => MessageView(),binding: ChatBindings()),
   GetPage(
@@ -219,11 +219,6 @@ final List<GetPage> appRoutes = [
       ServiceBookedDetailsBindings(),
       ServiceSearchBindings(),
     ],
-  ),
-  GetPage(
-    name: AppRoutes.serviceBookedView,
-    page: () => ServiceBookedView(),
-    bindings: [ServiceBookedBindings()],
   ),
   GetPage(
     name: AppRoutes.serviceSearchDetails,
@@ -323,11 +318,6 @@ final List<GetPage> appRoutes = [
       ServiceBookedDetailsBindings(),
       ServiceSearchBindings(),
     ],
-  ),
-  GetPage(
-    name: AppRoutes.serviceBookedView,
-    page: () => ServiceBookedView(),
-    bindings: [ServiceBookedBindings()],
   ),
   GetPage(
     name: AppRoutes.serviceSearchDetails,

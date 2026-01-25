@@ -9,7 +9,7 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart
 
 import '../../controllers/tenant_controller/service_search_controller.dart';
 
-class ServiceRequestFromDetails extends StatelessWidget with ServiceFromField{
+class ServiceRequestFromDetails extends StatelessWidget with ServiceFromField {
   const ServiceRequestFromDetails({super.key});
 
   @override
@@ -20,22 +20,33 @@ class ServiceRequestFromDetails extends StatelessWidget with ServiceFromField{
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomTextSecondary(
-            text: 'Service Request Details:',
-            color: isDark ? AppColors.whiteColor : AppColors.darkTextColor,
+          text: 'Service Request Details:',
+          color: isDark ? AppColors.whiteColor : AppColors.darkTextColor,
+        ),
+        SizedBox(height: 4.h,),
+        myField(
+          controller: serviceSearchController.problemController,
+          context: context,
+          labelText: CustomTextSecondary(text: 'Location of Problem*'),
+        ),
+        SizedBox(height: 20.h),
+        CustomTextPrimary(
+          text: 'Attached Photos',
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500,
+        ),
+        SizedBox(height: 4.h),
+        CustomAttachedImage(imageList: serviceSearchController.uploadedImage),
+        SizedBox(height: 20.h),
+        myField(
+          controller: serviceSearchController.descriptionController,
+          context: context,
+          labelText: CustomTextSecondary(
+            text: 'Please provide a brief description of the problem*',
           ),
-          myField(
-            controller: serviceSearchController.problemController,
-            context: context,
-            labelText:CustomTextSecondary(text: 'Location of Problem*') ,
-          ),
-          SizedBox(height: 20.h),
-          CustomTextPrimary(text: 'Attached Photos',fontSize: 16.sp,fontWeight: FontWeight.w500,),
-          SizedBox(height: 4.h),
-          CustomAttachedImage(imageList: serviceSearchController.uploadedImage,),
-          SizedBox(height: 20.h),
-          myField(controller: serviceSearchController.descriptionController, context: context, labelText: CustomTextSecondary(text: 'Please provide a brief description of the problem*'),isAlignLabelWithHint: true,maxLines: 3),
-          SizedBox(height: 20.h),
-
+          isAlignLabelWithHint: true,
+          maxLines: 3,
+        ),
       ],
     );
   }

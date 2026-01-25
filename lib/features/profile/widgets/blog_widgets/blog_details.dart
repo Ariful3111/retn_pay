@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/profile/widgets/blog_details_info.dart';
-import 'package:renter_pay/features/profile/widgets/blog_details_top.dart';
+import 'package:renter_pay/features/profile/widgets/blog_widgets/blog_details_info.dart';
+import 'package:renter_pay/features/profile/widgets/blog_widgets/blog_details_top.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';

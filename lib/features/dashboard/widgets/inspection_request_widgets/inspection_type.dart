@@ -32,11 +32,11 @@ class InspectionType extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(
-              userIndex == 1 || userIndex==2
+              userIndex == 1 || userIndex == 2
                   ? landlordInspectionRequestController.inspectionType.length
                   : inspectionRequestController.inspectionTypeList.length,
               (index) {
-                final isSelected = userIndex == 1|| userIndex==2
+                final isSelected = userIndex == 1 || userIndex == 2
                     ? landlordInspectionRequestController
                               .isLandlordInsPectionType
                               .value ==
@@ -50,7 +50,7 @@ class InspectionType extends StatelessWidget {
                           index;
                     }
 
-                    if (userIndex == 1|| userIndex==2) {
+                    if (userIndex == 1 || userIndex == 2) {
                       landlordInspectionRequestController
                               .isLandlordInsPectionType
                               .value =
@@ -69,7 +69,7 @@ class InspectionType extends StatelessWidget {
                       color: isSelected ? AppColors.primaryColorDark : null,
                     ),
                     child: CustomTextSecondary(
-                      text: userIndex == 1|| userIndex==2
+                      text: userIndex == 1 || userIndex == 2
                           ? landlordInspectionRequestController
                                 .inspectionType[index]
                           : inspectionRequestController

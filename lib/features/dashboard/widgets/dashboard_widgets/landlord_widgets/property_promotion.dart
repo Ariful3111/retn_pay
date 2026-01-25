@@ -17,17 +17,25 @@ class PropertyPromotion extends StatelessWidget {
         width: MediaQuery.widthOf(context),
         padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 20.w),
         decoration: BoxDecoration(
-          color: AppColors.basicPlanBG,
+          gradient: LinearGradient(
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+            colors: [
+            Color(0xFFFFFBF2).withValues(alpha: 0.0),
+            AppColors.basicPlanBG
+          ]),
           borderRadius: BorderRadius.circular(16.r),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomTextPrimary(
-              text: 'Free 30-Day\nProperty Promotion!',
-              fontSize: 24.sp,
-              color: AppColors.primaryColorDark,
-              textAlign: TextAlign.center,
+            Center(
+              child: CustomTextPrimary(
+                text: 'Free 30-Day\nProperty Promotion!',
+                fontSize: 24.sp,
+                color: AppColors.primaryColorDark,
+                textAlign: TextAlign.center,
+              ),
             ),
             SizedBox(height: 28.h),
             CustomTextSpan(

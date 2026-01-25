@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/auth/repositories/logout_repo.dart';
@@ -23,6 +24,8 @@ class LogoutController extends GetxController {
         (success) async {
           SuccessSnackbar.show(description: "Logout successfully");
           await storage.remove(key: storage.tokenKey);
+          await storage.remove(key: storage.roleKey);
+          setUserIndexFromRole(null);
           Get.offAllNamed(AppRoutes.userRole);
         },
       );

@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 
@@ -23,4 +25,38 @@ final amenityMap = <String, Map<String, dynamic>>{
   'pet_friendly': {'icon': IconsPath.pet, 'title': 'Pet Allowance'},
   'wifi': {'icon': IconsPath.security, 'title': 'High-speed Internet'},
 };
-int userIndex = 0;
+
+final RxInt _userIndexRx = 0.obs;
+
+int get userIndex => _userIndexRx.value;
+set userIndex(int value) => _userIndexRx.value = value;
+
+int userIndexFromRole(String? role) {
+  final normalized = role
+      ?.trim()
+      .toLowerCase()
+      .replaceAll('_', '-')
+      .replaceAll(' ', '-');
+  switch (normalized) {
+    case 'tenant':
+      return 0;
+    case 'landlord':
+      return 1;
+    case 'agent':
+      return 2;
+    case 'service-vendor':
+      return 3;
+    default:
+      return 0;
+  }
+}
+
+void setUserIndexFromRole(String? role) {
+  userIndex = userIndexFromRole(role);
+}
+
+Future<void> initUserIndexFromStorage() async {
+  final storage = Get.find<StorageService>();
+  final role = storage.read<String>(key: storage.roleKey);
+  setUserIndexFromRole(role);
+}

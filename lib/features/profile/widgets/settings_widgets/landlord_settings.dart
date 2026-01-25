@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/profile/controllers/settings_controller.dart';
 import 'package:renter_pay/features/profile/widgets/settings_widgets/landlord_setting_items.dart';
-import 'package:renter_pay/shared/widgets/custom_animated_switcher.dart';
-import 'package:renter_pay/shared/widgets/custom_shadow_overlay_button.dart';
+import 'package:renter_pay/shared/widgets/custom_animation/custom_animated_switcher.dart';
+import 'package:renter_pay/shared/widgets/custom_animation/custom_shadow_overlay_button.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 
 class LandlordSettings extends StatelessWidget {

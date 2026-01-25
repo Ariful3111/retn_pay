@@ -23,7 +23,7 @@ class RentController extends GetxController {
   RxBool isShowAmenities = false.obs;
   RxBool isShowProperty = false.obs;
   RxBool isShowSearch = true.obs;
-  var currentPage = 1.obs;
+  RxInt currentPage = 1.obs;
   int totalPage = 100;
   List dialogImageList = [
     ImagesPath.house,
@@ -53,7 +53,7 @@ class RentController extends GetxController {
     }
 
     if (page <= 3) {
-      return [1, 2, '...', totalPage - 1, totalPage];
+      return [1, 2,3, '...', totalPage - 1, totalPage];
     }
 
     if (page >= totalPage - 2) {

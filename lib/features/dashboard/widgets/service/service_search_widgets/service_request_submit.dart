@@ -42,6 +42,7 @@ class ServiceRequestSubmit extends StatelessWidget {
                 context: context,
                 builder: (context) {
                   return SuccessDialog(
+                    height: 250.h,
                     title1: 'Service Request Submitted',
                     subtitle:
                         'Your request has been successfully\nsubmitted for processing.',

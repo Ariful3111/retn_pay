@@ -54,13 +54,13 @@ class ContactField extends StatelessWidget {
             ),
             SizedBox(height: 15.h),
             userField(
-              controller: profileController.nameController,
+              controller: profileController.phoneController,
               label: 'Phone Number',
               hint: 'Enter Your Phone Number', context: context,
             ),
             SizedBox(height: 15.h),
             userField(
-              controller: profileController.nameController,
+              controller: profileController.messageController,
               label: 'Message',
               hint: 'Demo Message',
               maxLines: 3, context: context,

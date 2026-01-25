@@ -33,7 +33,6 @@ class AppRoutes {
   static const String repairRequestView = '/repairRequestView';
   static const String serviceSearchDetails = '/serviceSearchDetails';
   static const String serviceBookedDetails = '/serviceBookedDetails';
-  static const String serviceBookedView = '/serviceBookedView';
   static const String supportView = '/supportView';
   static const String propertyManagement = '/propertyManagement';
   static const String propertyManagementDetails = '/propertyManagementDetails';

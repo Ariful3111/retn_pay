@@ -8,10 +8,12 @@ import 'package:renter_pay/features/dashboard/controllers/landlord_controller/pr
 import 'package:renter_pay/features/dashboard/views/landlord_views/add_new_property.dart';
 import 'package:renter_pay/features/dashboard/views/landlord_views/property_management_details.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
+import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_conditional_report.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_management_row.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_management_table.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_management_type.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_owner_document_widgets/property_owner_document.dart';
+import 'package:renter_pay/shared/widgets/custom_animation/custom_table_animation.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 
 class PropertyManagement extends StatelessWidget {
@@ -31,6 +33,7 @@ class PropertyManagement extends StatelessWidget {
             )
           : AppColors.userBackground,
       child: ListView(
+        controller: propertyManagementController.propertyScrollController,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,20 +45,35 @@ class PropertyManagement extends StatelessWidget {
           Obx(() {
             bool isProperty =
                 propertyManagementController.selected.value == 'Property';
-            return addNewPropertyController.isPropertyDetails.value
-                ? PropertyManagementDetails()
-                : addNewPropertyController.isNewProperty.value
-                ? PropertyOwnerDocument()
-                : Column(
-                    children: [
-                      SizedBox(height: 16.h),
-                      isProperty||userIndex==2 ? PropertyManagementRow() : SizedBox(),
-                      SizedBox(height: 20.h),
-                      propertyManagementController.isViewProperty.value
-                          ? AddNewProperty()
-                          : PropertyManagementTable(),
-                    ],
-                  );
+            Widget child;
+            if (!isProperty) {
+              child = Padding(
+                padding: EdgeInsets.only(top: 20.h),
+                child: Column(
+                  children: [
+                    if (userIndex == 2) PropertyManagementRow(),
+                    if (userIndex == 2) SizedBox(height: 20.h),
+                    PropertyConditionalReport(),
+                  ],
+                ),
+              );
+            } else if (addNewPropertyController.isPropertyDetails.value) {
+              child = PropertyManagementDetails();
+            } else if (addNewPropertyController.isNewProperty.value) {
+              child = PropertyOwnerDocument();
+            } else {
+              child = Column(
+                children: [
+                  SizedBox(height: 16.h),
+                  PropertyManagementRow(),
+                  SizedBox(height: 20.h),
+                  propertyManagementController.isViewProperty.value
+                      ? AddNewProperty()
+                      : PropertyManagementTable(),
+                ],
+              );
+            }
+            return CustomTableAnimation(child: child);
           }),
         ],
       ),

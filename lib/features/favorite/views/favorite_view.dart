@@ -20,7 +20,7 @@ class FavoriteView extends StatelessWidget {
     FavoriteController favoriteController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
       gradient: isDark
           ? LinearGradient(
               colors: [AppColors.darkPrimary, AppColors.darkPrimary],
@@ -71,7 +71,16 @@ class FavoriteView extends StatelessWidget {
                   ),
                 ),
           SizedBox(height: 20.h),
-          if (favoriteController.favoriteItem.isNotEmpty) CustomPagination(),
+          if (favoriteController.favoriteItem.isNotEmpty)
+           Obx(()=> CustomPagination(
+              list: favoriteController.pageNumber,
+              onTapPrev: favoriteController.previousPage,
+              onTapNext: favoriteController.nextPage,
+              onTapPage: (item) {
+                favoriteController.currentPage.value = item;
+              },
+              value: favoriteController.currentPage.value,
+            ),),
           SizedBox(height: 60.h),
         ],
       ),
