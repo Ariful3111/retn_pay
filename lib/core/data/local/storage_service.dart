@@ -3,6 +3,7 @@ import 'package:get_storage/get_storage.dart';
 class StorageService {
   final _box = GetStorage();
   final String tokenKey = "token";
+  final String roleKey = "role";
 
   // Read
   T? read<T>({required String key}) {

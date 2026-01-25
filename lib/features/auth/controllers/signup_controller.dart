@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
@@ -77,10 +78,13 @@ class SignupController extends GetxController {
         ErrorSnackbar.show(description: error.message);
       },
       (data) async {
+        final savedRole = data.data?.user?.roles?.first ?? roleIdentifier();
         await storage.write(
           key: storage.tokenKey,
           value: data.data!.token.toString(),
         );
+        await storage.write(key: storage.roleKey, value: savedRole);
+        setUserIndexFromRole(savedRole);
         SuccessSnackbar.show(description: "Registration Successful");
         navigator();
       },

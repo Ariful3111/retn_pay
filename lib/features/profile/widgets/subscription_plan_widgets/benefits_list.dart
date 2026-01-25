@@ -8,7 +8,12 @@ class BenefitsList extends StatelessWidget {
   final String? image;
   final String listText;
   final double? fontSize;
-  const BenefitsList({super.key, this.image, required this.listText, this.fontSize});
+  const BenefitsList({
+    super.key,
+    this.image,
+    required this.listText,
+    this.fontSize,
+  });
 
   @override
   Widget build(BuildContext context) {

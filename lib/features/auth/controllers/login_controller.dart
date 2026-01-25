@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/auth/repositories/login_repo.dart';
@@ -33,10 +34,16 @@ class LoginController extends GetxController {
           ErrorSnackbar.show(description: error.message);
         },
         (data) async {
+          final savedRole = data.data?.user?.roles?.first ?? "";
           await storageService.write(
             key: storageService.tokenKey,
             value: data.data!.token.toString(),
           );
+          await storageService.write(
+            key: storageService.roleKey,
+            value: savedRole,
+          );
+          setUserIndexFromRole(savedRole);
           Get.offAllNamed(AppRoutes.mainHome);
         },
       );
