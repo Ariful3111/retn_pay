@@ -40,12 +40,12 @@ class HomeView extends GetView<HomeController> {
             SizedBox(height: 20.h),
             CategoryList(),
             SizedBox(height: 24.h),
+            RecommendedItems(recommendedController: Get.find()),
+            PopularItems(popularController: Get.find()),
             controller.isLoading.value
                 ? Center(child: ButtonLoading())
                 : Column(
                     children: [
-                      RecommendedItems(homeController: controller),
-                      PopularItems(homeController: controller),
                       HouseList(homeController: controller),
                       ApartmentList(homeController: controller),
                       VilaList(homeController: controller),
