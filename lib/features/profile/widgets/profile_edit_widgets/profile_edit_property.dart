@@ -94,7 +94,6 @@ class ProfileEditProperty extends StatelessWidget {
           ),
           SizedBox(height: 20),
           ProfileSaveButton(),
-          SizedBox(height: 20),
         ],
       ),
     );

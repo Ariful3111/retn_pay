@@ -28,7 +28,7 @@ class SubscriptionConfirmDialog extends StatelessWidget {
                 begin: AlignmentGeometry.bottomLeft,
                 end: Alignment.topRight,
                 colors: [
-                  Color(0xFFFFF2FA).withValues(alpha: 0.0),
+                  AppColors.whiteColor.withValues(alpha: 0.5),
                   AppColors.basicPlanBG,
                 ],
               ),
