@@ -21,8 +21,6 @@ class RepairRequestButton extends StatelessWidget {
             );
           },
           child: Container(
-            height: 41.h,
-            width: 148.w,
             padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 8.w),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6.r),
@@ -50,6 +48,7 @@ class RepairRequestButton extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                   color: isDark?AppColors.darkPrimary:null,
                 ),
+                SizedBox(width: 6.w,),
                 Image.asset(IconsPath.add, height: 20.h, width: 20.w,color: isDark?AppColors.darkPrimary:null,),
               ],
             ),

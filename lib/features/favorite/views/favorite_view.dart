@@ -20,7 +20,7 @@ class FavoriteView extends StatelessWidget {
     FavoriteController favoriteController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
       gradient: isDark
           ? LinearGradient(
               colors: [AppColors.darkPrimary, AppColors.darkPrimary],

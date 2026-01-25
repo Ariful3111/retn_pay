@@ -47,7 +47,6 @@ class ServiceRequestFromDetails extends StatelessWidget with ServiceFromField {
           isAlignLabelWithHint: true,
           maxLines: 3,
         ),
-        SizedBox(height: 20.h),
       ],
     );
   }

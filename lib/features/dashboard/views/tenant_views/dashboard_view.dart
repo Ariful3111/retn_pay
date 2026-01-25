@@ -8,10 +8,10 @@ import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_appbar.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_properties.dart';
-import 'package:renter_pay/shared/widgets/custom_animated_switcher.dart';
+import 'package:renter_pay/shared/widgets/custom_animation/custom_animated_switcher.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/custom_shadow_overlay_button.dart';
+import 'package:renter_pay/shared/widgets/custom_animation/custom_shadow_overlay_button.dart';
 
 class DashboardView extends StatelessWidget {
   const DashboardView({super.key});

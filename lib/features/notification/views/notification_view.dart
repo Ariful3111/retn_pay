@@ -16,7 +16,7 @@ class NotificationView extends StatelessWidget {
   Widget build(BuildContext context) {
     NotificationController notificationController = Get.find();
     return CustomContainer(
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
       child: ListView(
         children: [
           Row(

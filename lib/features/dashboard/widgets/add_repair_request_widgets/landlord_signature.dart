@@ -8,6 +8,7 @@ class LandlordSignature extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = Theme.of(context).brightness==Brightness.dark;
     return Container(
       height: 212.h,
       width: MediaQuery.widthOf(context),
@@ -16,7 +17,7 @@ class LandlordSignature extends StatelessWidget {
         border: Border.all(width: 0.85.r,color: AppColors.secondaryBorder),
       ),
       child: Center(
-        child: Image.asset(ImagesPath.landlordSignature,height: 109.h,width: 222.w,),
+        child: Image.asset(ImagesPath.landlordSignature,height: 109.h,width: 222.w,color: isDark?AppColors.whiteColor:AppColors.darkPrimary,),
       ),
     );
   }
