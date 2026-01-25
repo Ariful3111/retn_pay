@@ -23,7 +23,7 @@ class RecommendedItems extends StatelessWidget {
   Widget build(BuildContext context) {
     FavoriteController favoriteController = Get.find();
     return Obx(() {
-      final properties =
+      List<Property>? properties =
           recommendedController.recommendedProperties.value?.data;
       return recommendedController.isLoading.value
           ? ButtonLoading()
