@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/di/dependency_injection.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/core/routes/routes.dart';
@@ -12,6 +13,7 @@ import 'package:renter_pay/features/home/bindings/logged_in_bindings.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   String token = await DependencyInjection.init();
+  await initUserIndexFromStorage();
   runApp(MyApp(token: token));
 }
 
@@ -35,7 +37,7 @@ class MyApp extends StatelessWidget {
               getPages: appRoutes,
               initialRoute: token.isNotEmpty
                   ? AppRoutes.mainHome
-                  : AppRoutes.mainHome,
+                  : AppRoutes.onboarding,
               theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme,
               themeMode: controller.currentTheme,

@@ -12,6 +12,7 @@ class SubscriptionContainer extends StatelessWidget {
   final String? planTitle;
   final String? planSubtitle;
   final String? price;
+  final String? spanText;
   final String? planIcon;
   final Gradient? planIconBG;
   final List<Widget> widgetList;
@@ -26,6 +27,7 @@ class SubscriptionContainer extends StatelessWidget {
     this.planTitle,
     this.planSubtitle,
     this.price,
+    this.spanText,
     this.planIcon,
     required this.widgetList,
     this.stackList,
@@ -38,7 +40,6 @@ class SubscriptionContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 24.h),
-      height: height ?? 752.h,
       width: width ?? 390.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.sp),
@@ -46,16 +47,16 @@ class SubscriptionContainer extends StatelessWidget {
           begin: AlignmentGeometry.bottomLeft,
           end: Alignment.topRight,
           colors: [
-            Color(0xFFFFFBF2).withValues(alpha: 0.0),
+            Color(0xFFFFFBF2).withValues(alpha: 0.5),
             planBG ?? Color(0xFFFAEAC8),
           ],
         ),
         boxShadow: [
           BoxShadow(
-            offset: Offset(0, 4.sp),
-            blurRadius: 30.sp,
-            spreadRadius: 0.sp,
-            color: AppColors.primaryDarkTextColor.withValues(alpha: 0.15.sp),
+            offset: Offset(0, 4),
+            blurRadius: 30,
+            spreadRadius: 0,
+            color: AppColors.primaryDarkTextColor.withValues(alpha: 0.15),
           ),
         ],
       ),
@@ -73,6 +74,7 @@ class SubscriptionContainer extends StatelessWidget {
                 planSubtitle:
                     planSubtitle ?? "(Free 15 days for first-time users)",
                 price: price ?? '\$299',
+                spanText: spanText ?? '/month',
               ),
               SizedBox(height: 12.h),
               Container(
@@ -87,7 +89,7 @@ class SubscriptionContainer extends StatelessWidget {
               ),
               SizedBox(height: 14.h),
               Column(children: widgetList),
-              SizedBox(height: sizeBoxHeight ?? 84.h),
+              SizedBox(height: 50.h),
               Center(child: purchaseButton),
             ],
           ),
