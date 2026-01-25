@@ -70,10 +70,6 @@ class HomeController extends GetxController {
     }
   }
 
-  List<Property> get recommendedProperties => properties.value!.data!
-      .where((element) => element.type == "recommended")
-      .toList();
-
   List<Property> get popularProperties => properties.value!.data!
       .where((element) => element.type == "popular")
       .toList();
