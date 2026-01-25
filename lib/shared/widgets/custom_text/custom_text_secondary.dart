@@ -5,18 +5,36 @@ import 'package:renter_pay/core/constants/colors.dart';
 
 class CustomTextSecondary extends StatelessWidget {
   final String text;
-  final double ? fontSize;
-  final  FontWeight? fontWeight;
-  final  Color? color;
-  final  TextDecoration ? textDecoration;
-  final  Color ? decorationColor;
-  final  double ? decorationThickness;
-  final  TextDecorationStyle ? decorationStyle;
+  final double? fontSize;
+  final FontWeight? fontWeight;
+  final Color? color;
+  final TextDecoration? textDecoration;
+  final Color? decorationColor;
+  final double? decorationThickness;
+  final TextDecorationStyle? decorationStyle;
   final TextAlign? textAlign;
-  final TextOverflow ?textOverflow;
-  final TextHeightBehavior ? textHeightBehavior;
-  final FontStyle ? fontStyle;
-  const CustomTextSecondary({super.key, required this.text, this.fontSize, this.fontWeight, this.color, this.textDecoration, this.decorationColor, this.decorationThickness, this.decorationStyle, this.textAlign, this.textOverflow, this.textHeightBehavior, this.fontStyle});
+  final TextOverflow? textOverflow;
+  final int? maxLines;
+  final bool? softWrap;
+  final TextHeightBehavior? textHeightBehavior;
+  final FontStyle? fontStyle;
+  const CustomTextSecondary({
+    super.key,
+    required this.text,
+    this.fontSize,
+    this.fontWeight,
+    this.color,
+    this.textDecoration,
+    this.decorationColor,
+    this.decorationThickness,
+    this.decorationStyle,
+    this.textAlign,
+    this.textOverflow,
+    this.maxLines,
+    this.softWrap,
+    this.textHeightBehavior,
+    this.fontStyle,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +42,21 @@ class CustomTextSecondary extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
+      maxLines: maxLines,
+      softWrap: softWrap,
       overflow: textOverflow,
       textHeightBehavior: textHeightBehavior,
       style: GoogleFonts.inter(
-        fontSize:fontSize?? 16.sp,
-        fontWeight:fontWeight?? FontWeight.w500,
-        color:isDark? color??AppColors.darkSecondaryText : color??AppColors.secondaryTextColor,
+        fontSize: fontSize ?? 16.sp,
+        fontWeight: fontWeight ?? FontWeight.w500,
+        color: isDark
+            ? color ?? AppColors.darkSecondaryText
+            : color ?? AppColors.secondaryTextColor,
         decoration: textDecoration,
         decorationColor: decorationColor,
         decorationThickness: decorationThickness,
         decorationStyle: decorationStyle,
-        fontStyle: fontStyle
+        fontStyle: fontStyle,
       ),
     );
   }

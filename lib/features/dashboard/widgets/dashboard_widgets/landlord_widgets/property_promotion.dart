@@ -21,7 +21,7 @@ class PropertyPromotion extends StatelessWidget {
             begin: Alignment.bottomLeft,
             end: Alignment.topRight,
             colors: [
-            Color(0xFFFFFBF2).withValues(alpha: 0.0),
+            Color(0xFFFFFBF2).withValues(alpha: 1),
             AppColors.basicPlanBG
           ]),
           borderRadius: BorderRadius.circular(16.r),

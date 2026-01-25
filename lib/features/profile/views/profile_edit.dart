@@ -18,7 +18,6 @@ class ProfileEdit extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
-      padding: EdgeInsets.all(20.w),
       gradient: isDark
           ? LinearGradient(
               colors: [AppColors.darkPrimary, AppColors.darkPrimary],
@@ -26,25 +25,47 @@ class ProfileEdit extends StatelessWidget {
           : AppColors.userBackground,
       child: ListView(
         children: [
-          Row(
-            children: [
-              CustomAppbarLeading(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              SizedBox(width: 8.w),
-              CustomAppbar(title: "Edit Profile"),
-            ],
+          SizedBox(height: 20.h),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Row(
+              children: [
+                CustomAppbarLeading(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                SizedBox(width: 8.w),
+                CustomAppbar(title: "Edit Profile"),
+              ],
+            ),
           ),
           SizedBox(height: 24.h),
-          ProfileEditInfo(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: ProfileEditInfo(),
+          ),
           SizedBox(height: 20.h),
-          ProfileEditDetails(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: ProfileEditDetails(),
+          ),
           SizedBox(height: 20.h),
-          if (userIndex == 0) ProfileEditProperty(),
-          if (userIndex == 1 || userIndex == 3) LandlordProfilePlan(),
-          if (userIndex == 2) AgentDocument(),
+          if (userIndex == 0)
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: ProfileEditProperty(),
+            ),
+          if (userIndex == 1 || userIndex == 3)
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: LandlordProfilePlan(),
+            ),
+          if (userIndex == 2)
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: AgentDocument(),
+            ),
         ],
       ),
     );
