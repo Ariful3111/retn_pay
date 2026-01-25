@@ -11,11 +11,10 @@ class ProfileSaveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPrimaryButton(
-      padding: EdgeInsets.symmetric(vertical: 8.h,horizontal: 16.w),
+      padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
       height: 40.h,
       width: 102.w,
       borderRadius: BorderRadius.circular(8.r),
-      
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

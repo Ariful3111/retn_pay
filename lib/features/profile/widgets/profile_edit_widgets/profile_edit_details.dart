@@ -6,6 +6,7 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/profile/controllers/profile_edit_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_field.dart';
+import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_save_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class ProfileEditDetails extends StatelessWidget {
@@ -145,6 +146,10 @@ class ProfileEditDetails extends StatelessWidget {
                 ],
               ),
             ),
+            if (userIndex == 1 || userIndex == 2 || userIndex == 3)
+              SizedBox(height: 16.h),
+            if (userIndex == 1 || userIndex == 2 || userIndex == 3)
+              ProfileSaveButton(),
           ],
         ),
       ),

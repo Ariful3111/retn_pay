@@ -17,7 +17,7 @@ class DashboardLandlordPlanContainer extends StatelessWidget {
                 begin: Alignment.bottomLeft,
                 end: Alignment.topRight,
                 colors: [
-                  Color(0xFFFFF2FA).withValues(alpha: 0.0),
+                  Color(0xFFFFF2FA).withValues(alpha: 1),
                   AppColors.silverPlanBG,
                 ],
               ),
