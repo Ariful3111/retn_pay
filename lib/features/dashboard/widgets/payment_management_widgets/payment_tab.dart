@@ -24,13 +24,19 @@ class PaymentTab extends StatelessWidget {
         padding: EdgeInsets.all(4.r),
         height: 45.h,
         decoration: BoxDecoration(
-          color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+          gradient: isDark
+              ? AppColors.darkAppIcon
+              : LinearGradient(
+                  colors: [AppColors.whiteColor, AppColors.whiteColor],
+                ),
           borderRadius: BorderRadius.circular(9.63.r),
         ),
         child: ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          itemCount:userIndex==3?servicePaymentManagementController.serviceType.length: userIndex == 2
+          itemCount: userIndex == 3
+              ? servicePaymentManagementController.serviceType.length
+              : userIndex == 2
               ? rentManagementController.rentType.length
               : paymentManagementController.paymentType.length,
           itemBuilder: (context, index) {
@@ -53,11 +59,17 @@ class PaymentTab extends StatelessWidget {
                     color: isSelect ? AppColors.primaryColorDark : null,
                   ),
                   child: CustomTextSecondary(
-                    text: userIndex == 3?servicePaymentManagementController.serviceType[index]: userIndex == 2
+                    text: userIndex == 3
+                        ? servicePaymentManagementController.serviceType[index]
+                        : userIndex == 2
                         ? rentManagementController.rentType[index]
                         : paymentManagementController.paymentType[index],
                     fontSize: 14.sp,
-                    color: isSelect ? AppColors.whiteColor : null,
+                    color: isSelect
+                          ? AppColors.whiteColor
+                          : isDark
+                          ? AppColors.darkPrimary
+                          : null,
                   ),
                 ),
               );

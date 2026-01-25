@@ -99,7 +99,7 @@ class SuccessDialog extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                         textAlign: TextAlign.center,
                       ),
-                      SizedBox(height: 32.h),
+                      Spacer(),
                       ?button,
                     ],
                   ),

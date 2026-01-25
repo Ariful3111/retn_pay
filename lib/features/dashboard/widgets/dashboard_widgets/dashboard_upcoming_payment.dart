@@ -25,7 +25,7 @@ class DashboardUpcomingPayment extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 29.w, vertical: 24.h),
         decoration: BoxDecoration(
-          color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+          color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
           borderRadius: BorderRadius.circular(20.r),
         ),
         child: Column(
