@@ -37,9 +37,9 @@ class HomeView extends GetView<HomeController> {
             HomeAppbar(profileController: Get.find<ProfileController>()),
             SizedBox(height: 16.h),
             HomeSearch(controller: controller),
-            SizedBox(height: 20.h),
+            SizedBox(height: 10.h),
             CategoryList(),
-            SizedBox(height: 24.h),
+            SizedBox(height: 10.h),
             RecommendedItems(recommendedController: Get.find()),
             PopularItems(popularController: Get.find()),
             controller.isLoading.value

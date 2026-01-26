@@ -1,6 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/favorite/controller/favorite_controller.dart';
 import 'package:renter_pay/features/home/models/properties_model.dart';
 import 'package:renter_pay/features/rent/widgets/property_image_view.dart';
@@ -35,7 +35,13 @@ class ItemContainer extends StatelessWidget {
               showDialog(
                 context: context,
                 builder: (context) {
-                  return Dialog(child: PropertyImageView());
+                  return Dialog(
+                    child: PropertyImageView(
+                      images: property.images!
+                          .map((e) => e.imagePath.toString())
+                          .toList(),
+                    ),
+                  );
                 },
               );
             },
@@ -46,7 +52,9 @@ class ItemContainer extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12.sp),
                 image: DecorationImage(
-                  image: AssetImage(ImagesPath.house),
+                  image: CachedNetworkImageProvider(
+                    property.images?.first.imagePath ?? '',
+                  ),
                   fit: BoxFit.fill,
                 ),
               ),
