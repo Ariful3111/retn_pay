@@ -71,23 +71,23 @@ class HomeController extends GetxController {
   }
 
   List<Property> get houseProperties => properties.value!.data!
-      .where((element) => element.type == "house")
+      .where((element) => element.propertyType?.slug == "house")
       .toList();
 
   List<Property> get apartmentProperties => properties.value!.data!
-      .where((element) => element.type == "apartment")
+      .where((element) => element.propertyType?.slug == "apartment")
       .toList();
 
   List<Property> get vilaProperties => properties.value!.data!
-      .where((element) => element.type == "villa")
+      .where((element) => element.propertyType?.slug == "villa")
       .toList();
 
   List<Property> get officeProperties => properties.value!.data!
-      .where((element) => element.type == "office")
+      .where((element) => element.propertyType?.slug == "office")
       .toList();
 
   List<Property> get studioProperties => properties.value!.data!
-      .where((element) => element.type == "studio")
+      .where((element) => element.propertyType?.slug == "studio")
       .toList();
 
   @override

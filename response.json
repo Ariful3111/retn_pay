@@ -1,540 +1,3712 @@
 {
   "error": false,
   "code": 200,
-  "message": "Recommended properties retrieved successfully",
+  "message": "Properties retrieved successfully",
   "data": [
     {
-      "id": 70,
-      "landlord_id": 58,
-      "agent_id": 24,
-      "title": "Apartment in Adelaide #70",
-      "description": "Beautiful apartment located in Adelaide. Modern amenities and great location.",
-      "address": "4361 Main Street",
-      "city": "Adelaide",
-      "state": "SA",
-      "postal_code": "2197",
+      "id": 33,
+      "landlord_id": 57,
+      "agent_id": null,
+      "property_type_id": 1,
+      "title": "Apartment in Sydney - Collins Street",
+      "description": "Modern Apartment located in Sydney. Features 1 bedroom(s), 1 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "532/160 Chapel Street",
+      "city": "Sydney",
+      "state": "NSW",
+      "postal_code": "6365",
       "country": "Australia",
-      "latitude": "-33.91880000",
-      "longitude": "150.86930000",
-      "type": "apartment",
+      "latitude": "-33.40880000",
+      "longitude": "151.07930000",
+      "property_type": {
+        "id": 1,
+        "name": "Apartment",
+        "slug": "apartment",
+        "image": "https://picsum.photos/seed/apartment/800/600"
+      },
       "bedrooms": 1,
       "bathrooms": 1,
       "parking_spaces": 0,
-      "land_size": "0.00",
-      "building_size": "199.00",
-      "year_built": 1996,
+      "land_size": null,
+      "building_size": "65.00",
+      "year_built": 1994,
       "status": "active",
       "subscription_tier": "basic",
       "is_verified": true,
-      "has_ar_tour": true,
+      "has_ar_tour": false,
       "rating": "5.00",
-      "rating_count": 45,
+      "rating_count": 3,
+      "landlord": {
+        "id": 57,
+        "name": "Landlord User 6",
+        "email": "landlord6@example.com"
+      },
+      "agent": null,
       "units": [
         {
-          "id": 154,
-          "property_id": 70,
-          "unit_number": "Unit 3",
-          "unit_name": null,
-          "rent_amount": "4900.00",
+          "id": 53,
+          "property_id": 33,
+          "unit_number": "Unit 1",
+          "unit_name": "Apartment 1",
+          "rent_amount": "22710.00",
           "currency": "AUD",
-          "status": "available",
+          "status": "occupied",
           "bedrooms": 1,
           "bathrooms": 1,
-          "size": "49.75",
-          "description": null,
-          "created_at": "2026-01-24T06:57:09.000000Z",
-          "updated_at": "2026-01-24T06:57:09.000000Z"
+          "size": "21.67",
+          "description": "Spacious Apartment with modern fixtures",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 54,
+          "property_id": 33,
+          "unit_number": "Unit 2",
+          "unit_name": "Apartment 2",
+          "rent_amount": "16360.00",
+          "currency": "AUD",
+          "status": "reserved",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "size": "21.67",
+          "description": "Spacious Apartment with modern fixtures",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 55,
+          "property_id": 33,
+          "unit_number": "Unit 3",
+          "unit_name": "Apartment 3",
+          "rent_amount": "20080.00",
+          "currency": "AUD",
+          "status": "occupied",
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "size": "21.67",
+          "description": "Spacious Apartment with modern fixtures",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        }
+      ],
+      "images": [
+        {
+          "id": 153,
+          "property_id": 33,
+          "image_path": "https://picsum.photos/1200/800?random=331",
+          "type": "image",
+          "order": 1,
+          "is_primary": true,
+          "caption": "Bathroom",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 154,
+          "property_id": 33,
+          "image_path": "https://picsum.photos/1200/800?random=332",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "Bedroom",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
         },
         {
           "id": 155,
-          "property_id": 70,
-          "unit_number": "Unit 4",
-          "unit_name": null,
-          "rent_amount": "14040.00",
-          "currency": "AUD",
-          "status": "occupied",
-          "bedrooms": 1,
-          "bathrooms": 1,
-          "size": "49.75",
-          "description": null,
-          "created_at": "2026-01-24T06:57:09.000000Z",
-          "updated_at": "2026-01-24T06:57:09.000000Z"
-        },
-        {
-          "id": 152,
-          "property_id": 70,
-          "unit_number": "Unit 1",
-          "unit_name": null,
-          "rent_amount": "19790.00",
-          "currency": "AUD",
-          "status": "maintenance",
-          "bedrooms": 1,
-          "bathrooms": 1,
-          "size": "49.75",
-          "description": null,
-          "created_at": "2026-01-24T06:57:08.000000Z",
-          "updated_at": "2026-01-24T06:57:08.000000Z"
-        },
-        {
-          "id": 153,
-          "property_id": 70,
-          "unit_number": "Unit 2",
-          "unit_name": null,
-          "rent_amount": "7920.00",
-          "currency": "AUD",
-          "status": "maintenance",
-          "bedrooms": 1,
-          "bathrooms": 1,
-          "size": "49.75",
-          "description": null,
-          "created_at": "2026-01-24T06:57:09.000000Z",
-          "updated_at": "2026-01-24T06:57:09.000000Z"
-        }
-      ],
-      "created_at": "2026-01-24T06:57:08.000000Z",
-      "updated_at": "2026-01-24T06:57:08.000000Z"
-    },
-    {
-      "id": 16,
-      "landlord_id": 60,
-      "agent_id": 22,
-      "title": "Other in Gold Coast #16",
-      "description": "Beautiful other located in Gold Coast. Modern amenities and great location.",
-      "address": "8967 Oak Avenue",
-      "city": "Gold Coast",
-      "state": "TAS",
-      "postal_code": "6664",
-      "country": "Australia",
-      "latitude": "-33.54880000",
-      "longitude": "151.49930000",
-      "type": "other",
-      "bedrooms": 1,
-      "bathrooms": 2,
-      "parking_spaces": 3,
-      "land_size": "0.00",
-      "building_size": "63.00",
-      "year_built": 2021,
-      "status": "active",
-      "subscription_tier": "basic",
-      "is_verified": true,
-      "has_ar_tour": false,
-      "rating": "5.00",
-      "rating_count": 47,
-      "units": [
-        {
-          "id": 37,
-          "property_id": 16,
-          "unit_number": "Unit 1",
-          "unit_name": null,
-          "rent_amount": "3290.00",
-          "currency": "AUD",
-          "status": "occupied",
-          "bedrooms": 1,
-          "bathrooms": 2,
-          "size": "63.00",
-          "description": null,
-          "created_at": "2026-01-24T06:57:00.000000Z",
-          "updated_at": "2026-01-24T06:57:00.000000Z"
-        }
-      ],
-      "created_at": "2026-01-24T06:57:00.000000Z",
-      "updated_at": "2026-01-24T06:57:00.000000Z"
-    },
-    {
-      "id": 67,
-      "landlord_id": 62,
-      "agent_id": null,
-      "title": "Other in Perth #67",
-      "description": "Beautiful other located in Perth. Modern amenities and great location.",
-      "address": "821 Oak Avenue",
-      "city": "Perth",
-      "state": "WA",
-      "postal_code": "4842",
-      "country": "Australia",
-      "latitude": "-34.84880000",
-      "longitude": "151.39930000",
-      "type": "other",
-      "bedrooms": 4,
-      "bathrooms": 3,
-      "parking_spaces": 1,
-      "land_size": "0.00",
-      "building_size": "184.00",
-      "year_built": 2002,
-      "status": "active",
-      "subscription_tier": "basic",
-      "is_verified": true,
-      "has_ar_tour": false,
-      "rating": "3.90",
-      "rating_count": 25,
-      "units": [
-        {
-          "id": 146,
-          "property_id": 67,
-          "unit_number": "Unit 1",
-          "unit_name": null,
-          "rent_amount": "7970.00",
-          "currency": "AUD",
-          "status": "occupied",
-          "bedrooms": 4,
-          "bathrooms": 3,
-          "size": "61.33",
-          "description": null,
-          "created_at": "2026-01-24T06:57:08.000000Z",
-          "updated_at": "2026-01-24T06:57:08.000000Z"
-        },
-        {
-          "id": 147,
-          "property_id": 67,
-          "unit_number": "Unit 2",
-          "unit_name": null,
-          "rent_amount": "3750.00",
-          "currency": "AUD",
-          "status": "occupied",
-          "bedrooms": 4,
-          "bathrooms": 3,
-          "size": "61.33",
-          "description": null,
-          "created_at": "2026-01-24T06:57:08.000000Z",
-          "updated_at": "2026-01-24T06:57:08.000000Z"
-        },
-        {
-          "id": 148,
-          "property_id": 67,
-          "unit_number": "Unit 3",
-          "unit_name": null,
-          "rent_amount": "6800.00",
-          "currency": "AUD",
-          "status": "occupied",
-          "bedrooms": 4,
-          "bathrooms": 3,
-          "size": "61.33",
-          "description": null,
-          "created_at": "2026-01-24T06:57:08.000000Z",
-          "updated_at": "2026-01-24T06:57:08.000000Z"
-        }
-      ],
-      "created_at": "2026-01-24T06:57:08.000000Z",
-      "updated_at": "2026-01-24T06:57:08.000000Z"
-    },
-    {
-      "id": 19,
-      "landlord_id": 52,
-      "agent_id": 63,
-      "title": "Studio in Brisbane #19",
-      "description": "Beautiful studio located in Brisbane. Modern amenities and great location.",
-      "address": "4126 Beach Road",
-      "city": "Brisbane",
-      "state": "QLD",
-      "postal_code": "9064",
-      "country": "Australia",
-      "latitude": "-32.90880000",
-      "longitude": "151.36930000",
-      "type": "studio",
-      "bedrooms": 0,
-      "bathrooms": 1,
-      "parking_spaces": 3,
-      "land_size": "0.00",
-      "building_size": "147.00",
-      "year_built": 2019,
-      "status": "active",
-      "subscription_tier": "basic",
-      "is_verified": true,
-      "has_ar_tour": true,
-      "rating": "3.90",
-      "rating_count": 5,
-      "units": [
-        {
-          "id": 43,
-          "property_id": 19,
-          "unit_number": "Unit 1",
-          "unit_name": null,
-          "rent_amount": "12140.00",
-          "currency": "AUD",
-          "status": "occupied",
-          "bedrooms": 0,
-          "bathrooms": 1,
-          "size": "147.00",
-          "description": null,
-          "created_at": "2026-01-24T06:57:00.000000Z",
-          "updated_at": "2026-01-24T06:57:00.000000Z"
-        }
-      ],
-      "created_at": "2026-01-24T06:57:00.000000Z",
-      "updated_at": "2026-01-24T06:57:00.000000Z"
-    },
-    {
-      "id": 33,
-      "landlord_id": 54,
-      "agent_id": null,
-      "title": "Unit in Perth #33",
-      "description": "Beautiful unit located in Perth. Modern amenities and great location.",
-      "address": "8379 Garden Street",
-      "city": "Perth",
-      "state": "WA",
-      "postal_code": "6073",
-      "country": "Australia",
-      "latitude": "-33.12880000",
-      "longitude": "150.66930000",
-      "type": "unit",
-      "bedrooms": 2,
-      "bathrooms": 1,
-      "parking_spaces": 0,
-      "land_size": "0.00",
-      "building_size": "199.00",
-      "year_built": 1997,
-      "status": "active",
-      "subscription_tier": "basic",
-      "is_verified": true,
-      "has_ar_tour": true,
-      "rating": "3.80",
-      "rating_count": 22,
-      "units": [
-        {
-          "id": 70,
           "property_id": 33,
-          "unit_number": "Unit 1",
-          "unit_name": null,
-          "rent_amount": "17640.00",
-          "currency": "AUD",
-          "status": "occupied",
-          "bedrooms": 2,
-          "bathrooms": 1,
-          "size": "66.33",
-          "description": null,
-          "created_at": "2026-01-24T06:57:02.000000Z",
-          "updated_at": "2026-01-24T06:57:02.000000Z"
+          "image_path": "https://picsum.photos/1200/800?random=333",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "View",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
         },
         {
-          "id": 71,
+          "id": 156,
           "property_id": 33,
-          "unit_number": "Unit 2",
-          "unit_name": null,
-          "rent_amount": "7940.00",
-          "currency": "AUD",
-          "status": "occupied",
-          "bedrooms": 2,
-          "bathrooms": 1,
-          "size": "66.33",
-          "description": null,
-          "created_at": "2026-01-24T06:57:02.000000Z",
-          "updated_at": "2026-01-24T06:57:02.000000Z"
+          "image_path": "https://picsum.photos/1200/800?random=334",
+          "type": "image",
+          "order": 4,
+          "is_primary": false,
+          "caption": "View",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
         },
         {
-          "id": 72,
+          "id": 157,
           "property_id": 33,
-          "unit_number": "Unit 3",
-          "unit_name": null,
-          "rent_amount": "14000.00",
-          "currency": "AUD",
-          "status": "occupied",
-          "bedrooms": 2,
-          "bathrooms": 1,
-          "size": "66.33",
-          "description": null,
-          "created_at": "2026-01-24T06:57:02.000000Z",
-          "updated_at": "2026-01-24T06:57:02.000000Z"
+          "image_path": "https://picsum.photos/1200/800?random=335",
+          "type": "image",
+          "order": 5,
+          "is_primary": false,
+          "caption": "Exterior",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 158,
+          "property_id": 33,
+          "image_path": "https://picsum.photos/1200/800?random=336",
+          "type": "image",
+          "order": 6,
+          "is_primary": false,
+          "caption": "View",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
         }
       ],
-      "created_at": "2026-01-24T06:57:02.000000Z",
-      "updated_at": "2026-01-24T06:57:02.000000Z"
-    },
-    {
-      "id": 86,
-      "landlord_id": 57,
-      "agent_id": null,
-      "title": "Other in Gold Coast #86",
-      "description": "Beautiful other located in Gold Coast. Modern amenities and great location.",
-      "address": "1825 Park Lane",
-      "city": "Gold Coast",
-      "state": "TAS",
-      "postal_code": "5482",
-      "country": "Australia",
-      "latitude": "-33.52880000",
-      "longitude": "151.44930000",
-      "type": "other",
-      "bedrooms": 3,
-      "bathrooms": 2,
-      "parking_spaces": 0,
-      "land_size": "0.00",
-      "building_size": "77.00",
-      "year_built": 2015,
-      "status": "active",
-      "subscription_tier": "platinum",
-      "is_verified": true,
-      "has_ar_tour": true,
-      "rating": "3.60",
-      "rating_count": 46,
-      "units": [
+      "amenities": [
         {
           "id": 193,
-          "property_id": 86,
-          "unit_number": "Unit 1",
-          "unit_name": null,
-          "rent_amount": "15600.00",
-          "currency": "AUD",
-          "status": "occupied",
-          "bedrooms": 3,
-          "bathrooms": 2,
-          "size": "25.67",
-          "description": null,
-          "created_at": "2026-01-24T06:57:10.000000Z",
-          "updated_at": "2026-01-24T06:57:10.000000Z"
-        },
-        {
-          "id": 195,
-          "property_id": 86,
-          "unit_number": "Unit 3",
-          "unit_name": null,
-          "rent_amount": "4160.00",
-          "currency": "AUD",
-          "status": "occupied",
-          "bedrooms": 3,
-          "bathrooms": 2,
-          "size": "25.67",
-          "description": null,
-          "created_at": "2026-01-24T06:57:10.000000Z",
-          "updated_at": "2026-01-24T06:57:10.000000Z"
+          "property_id": 33,
+          "amenity_type_id": 1,
+          "amenity_type": {
+            "id": 1,
+            "name": "Air Conditioning",
+            "slug": "air-conditioning",
+            "icon": "https://picsum.photos/seed/air-conditioning/200",
+            "description": "Air conditioning system for climate control"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
         },
         {
           "id": 194,
-          "property_id": 86,
-          "unit_number": "Unit 2",
-          "unit_name": null,
-          "rent_amount": "17260.00",
+          "property_id": 33,
+          "amenity_type_id": 3,
+          "amenity_type": {
+            "id": 3,
+            "name": "Dishwasher",
+            "slug": "dishwasher",
+            "icon": "https://picsum.photos/seed/dishwasher/200",
+            "description": "Built-in dishwasher"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 195,
+          "property_id": 33,
+          "amenity_type_id": 5,
+          "amenity_type": {
+            "id": 5,
+            "name": "Built-in Wardrobes",
+            "slug": "built-in-wardrobes",
+            "icon": "https://picsum.photos/seed/wardrobes/200",
+            "description": "Built-in wardrobe storage"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 196,
+          "property_id": 33,
+          "amenity_type_id": 9,
+          "amenity_type": {
+            "id": 9,
+            "name": "Garden",
+            "slug": "garden",
+            "icon": "https://picsum.photos/seed/garden/200",
+            "description": "Private or communal garden"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 197,
+          "property_id": 33,
+          "amenity_type_id": 10,
+          "amenity_type": {
+            "id": 10,
+            "name": "BBQ Area",
+            "slug": "bbq-area",
+            "icon": "https://picsum.photos/seed/bbq/200",
+            "description": "Outdoor BBQ facilities"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 198,
+          "property_id": 33,
+          "amenity_type_id": 11,
+          "amenity_type": {
+            "id": 11,
+            "name": "Parking",
+            "slug": "parking",
+            "icon": "https://picsum.photos/seed/parking/200",
+            "description": "Dedicated parking space"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 199,
+          "property_id": 33,
+          "amenity_type_id": 12,
+          "amenity_type": {
+            "id": 12,
+            "name": "Garage",
+            "slug": "garage",
+            "icon": "https://picsum.photos/seed/garage/200",
+            "description": "Secure garage parking"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 200,
+          "property_id": 33,
+          "amenity_type_id": 14,
+          "amenity_type": {
+            "id": 14,
+            "name": "Intercom",
+            "slug": "intercom",
+            "icon": "https://picsum.photos/seed/intercom/200",
+            "description": "Intercom system"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 201,
+          "property_id": 33,
+          "amenity_type_id": 20,
+          "amenity_type": {
+            "id": 20,
+            "name": "Study Room",
+            "slug": "study-room",
+            "icon": "https://picsum.photos/seed/study/200",
+            "description": "Dedicated study or office space"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 3,
+        "average_rating": "5.00"
+      },
+      "created_at": "2026-01-26T03:35:38.000000Z",
+      "updated_at": "2026-01-26T03:35:42.000000Z"
+    },
+    {
+      "id": 92,
+      "landlord_id": 62,
+      "agent_id": null,
+      "property_type_id": 1,
+      "title": "Apartment in Melbourne - Flinders Street",
+      "description": "Modern Apartment located in Melbourne. Features 3 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "490/80 Swanston Street",
+      "city": "Melbourne",
+      "state": "VIC",
+      "postal_code": "2845",
+      "country": "Australia",
+      "latitude": "-37.99360000",
+      "longitude": "144.92310000",
+      "property_type": {
+        "id": 1,
+        "name": "Apartment",
+        "slug": "apartment",
+        "image": "https://picsum.photos/seed/apartment/800/600"
+      },
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "parking_spaces": 0,
+      "land_size": null,
+      "building_size": "83.00",
+      "year_built": 1991,
+      "status": "active",
+      "subscription_tier": "basic",
+      "is_verified": true,
+      "has_ar_tour": false,
+      "rating": "3.91",
+      "rating_count": 11,
+      "landlord": {
+        "id": 62,
+        "name": "Multi Role 1",
+        "email": "multi1@example.com"
+      },
+      "agent": null,
+      "units": [
+        {
+          "id": 163,
+          "property_id": 92,
+          "unit_number": "Unit 1",
+          "unit_name": "Apartment 1",
+          "rent_amount": "14940.00",
           "currency": "AUD",
           "status": "reserved",
           "bedrooms": 3,
           "bathrooms": 2,
-          "size": "25.67",
-          "description": null,
-          "created_at": "2026-01-24T06:57:10.000000Z",
-          "updated_at": "2026-01-24T06:57:10.000000Z"
+          "size": "27.67",
+          "description": "Spacious Apartment with modern fixtures",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 164,
+          "property_id": 92,
+          "unit_number": "Unit 2",
+          "unit_name": "Apartment 2",
+          "rent_amount": "13320.00",
+          "currency": "AUD",
+          "status": "reserved",
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "size": "27.67",
+          "description": "Spacious Apartment with modern fixtures",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 165,
+          "property_id": 92,
+          "unit_number": "Unit 3",
+          "unit_name": "Apartment 3",
+          "rent_amount": "22710.00",
+          "currency": "AUD",
+          "status": "reserved",
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "size": "27.67",
+          "description": "Spacious Apartment with modern fixtures",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
         }
       ],
-      "created_at": "2026-01-24T06:57:10.000000Z",
-      "updated_at": "2026-01-24T06:57:10.000000Z"
+      "images": [
+        {
+          "id": 442,
+          "property_id": 92,
+          "image_path": "https://picsum.photos/1200/800?random=921",
+          "type": "image",
+          "order": 1,
+          "is_primary": true,
+          "caption": "Backyard",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 443,
+          "property_id": 92,
+          "image_path": "https://picsum.photos/1200/800?random=922",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "Living Room",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 444,
+          "property_id": 92,
+          "image_path": "https://picsum.photos/1200/800?random=923",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "View",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 445,
+          "property_id": 92,
+          "image_path": "https://picsum.photos/1200/800?random=924",
+          "type": "image",
+          "order": 4,
+          "is_primary": false,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 446,
+          "property_id": 92,
+          "image_path": "https://picsum.photos/1200/800?random=925",
+          "type": "image",
+          "order": 5,
+          "is_primary": false,
+          "caption": "View",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        }
+      ],
+      "amenities": [
+        {
+          "id": 579,
+          "property_id": 92,
+          "amenity_type_id": 1,
+          "amenity_type": {
+            "id": 1,
+            "name": "Air Conditioning",
+            "slug": "air-conditioning",
+            "icon": "https://picsum.photos/seed/air-conditioning/200",
+            "description": "Air conditioning system for climate control"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 580,
+          "property_id": 92,
+          "amenity_type_id": 6,
+          "amenity_type": {
+            "id": 6,
+            "name": "Furnished",
+            "slug": "furnished",
+            "icon": "https://picsum.photos/seed/furnished/200",
+            "description": "Fully or partially furnished"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 581,
+          "property_id": 92,
+          "amenity_type_id": 15,
+          "amenity_type": {
+            "id": 15,
+            "name": "Internet",
+            "slug": "internet",
+            "icon": "https://picsum.photos/seed/internet/200",
+            "description": "High-speed internet included"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 582,
+          "property_id": 92,
+          "amenity_type_id": 19,
+          "amenity_type": {
+            "id": 19,
+            "name": "Playground",
+            "slug": "playground",
+            "icon": "https://picsum.photos/seed/playground/200",
+            "description": "Children's playground"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 583,
+          "property_id": 92,
+          "amenity_type_id": 20,
+          "amenity_type": {
+            "id": 20,
+            "name": "Study Room",
+            "slug": "study-room",
+            "icon": "https://picsum.photos/seed/study/200",
+            "description": "Dedicated study or office space"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 584,
+          "property_id": 92,
+          "amenity_type_id": 21,
+          "amenity_type": {
+            "id": 21,
+            "name": "Laundry",
+            "slug": "laundry",
+            "icon": "https://picsum.photos/seed/laundry/200",
+            "description": "Laundry facilities"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 11,
+        "average_rating": "3.91"
+      },
+      "created_at": "2026-01-26T03:35:41.000000Z",
+      "updated_at": "2026-01-26T03:35:43.000000Z"
+    },
+    {
+      "id": 70,
+      "landlord_id": 57,
+      "agent_id": 26,
+      "property_type_id": 2,
+      "title": "House in Adelaide - Ocean Drive",
+      "description": "Modern House located in Adelaide. Features 4 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "775/168 King Street",
+      "city": "Adelaide",
+      "state": "SA",
+      "postal_code": "5399",
+      "country": "Australia",
+      "latitude": "-34.89850000",
+      "longitude": "138.64070000",
+      "property_type": {
+        "id": 2,
+        "name": "House",
+        "slug": "house",
+        "image": "https://picsum.photos/seed/house/800/600"
+      },
+      "bedrooms": 4,
+      "bathrooms": 2,
+      "parking_spaces": 1,
+      "land_size": "343.00",
+      "building_size": "232.00",
+      "year_built": 1995,
+      "status": "active",
+      "subscription_tier": "basic",
+      "is_verified": true,
+      "has_ar_tour": false,
+      "rating": "3.70",
+      "rating_count": 10,
+      "landlord": {
+        "id": 57,
+        "name": "Landlord User 6",
+        "email": "landlord6@example.com"
+      },
+      "agent": {
+        "id": 26,
+        "name": "Agent User 5",
+        "email": "agent5@example.com"
+      },
+      "units": [
+        {
+          "id": 120,
+          "property_id": 70,
+          "unit_number": "Unit 1",
+          "unit_name": "House",
+          "rent_amount": "7940.00",
+          "currency": "AUD",
+          "status": "occupied",
+          "bedrooms": 4,
+          "bathrooms": 2,
+          "size": "232.00",
+          "description": "Spacious House with modern fixtures",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        }
+      ],
+      "images": [
+        {
+          "id": 343,
+          "property_id": 70,
+          "image_path": "https://picsum.photos/1200/800?random=701",
+          "type": "image",
+          "order": 1,
+          "is_primary": true,
+          "caption": "Exterior",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 344,
+          "property_id": 70,
+          "image_path": "https://picsum.photos/1200/800?random=702",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 345,
+          "property_id": 70,
+          "image_path": "https://picsum.photos/1200/800?random=703",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        }
+      ],
+      "amenities": [
+        {
+          "id": 439,
+          "property_id": 70,
+          "amenity_type_id": 3,
+          "amenity_type": {
+            "id": 3,
+            "name": "Dishwasher",
+            "slug": "dishwasher",
+            "icon": "https://picsum.photos/seed/dishwasher/200",
+            "description": "Built-in dishwasher"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 440,
+          "property_id": 70,
+          "amenity_type_id": 5,
+          "amenity_type": {
+            "id": 5,
+            "name": "Built-in Wardrobes",
+            "slug": "built-in-wardrobes",
+            "icon": "https://picsum.photos/seed/wardrobes/200",
+            "description": "Built-in wardrobe storage"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 441,
+          "property_id": 70,
+          "amenity_type_id": 7,
+          "amenity_type": {
+            "id": 7,
+            "name": "Swimming Pool",
+            "slug": "swimming-pool",
+            "icon": "https://picsum.photos/seed/swimming-pool/200",
+            "description": "Swimming pool on premises"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 442,
+          "property_id": 70,
+          "amenity_type_id": 9,
+          "amenity_type": {
+            "id": 9,
+            "name": "Garden",
+            "slug": "garden",
+            "icon": "https://picsum.photos/seed/garden/200",
+            "description": "Private or communal garden"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 10,
+        "average_rating": "3.70"
+      },
+      "created_at": "2026-01-26T03:35:40.000000Z",
+      "updated_at": "2026-01-26T03:35:43.000000Z"
+    },
+    {
+      "id": 79,
+      "landlord_id": 55,
+      "agent_id": null,
+      "property_type_id": 2,
+      "title": "House in Canberra - Albert Street",
+      "description": "Modern House located in Canberra. Features 4 bedroom(s), 1 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "352/56 Bourke Street",
+      "city": "Canberra",
+      "state": "ACT",
+      "postal_code": "6626",
+      "country": "Australia",
+      "latitude": "-35.68090000",
+      "longitude": "149.53000000",
+      "property_type": {
+        "id": 2,
+        "name": "House",
+        "slug": "house",
+        "image": "https://picsum.photos/seed/house/800/600"
+      },
+      "bedrooms": 4,
+      "bathrooms": 1,
+      "parking_spaces": 3,
+      "land_size": "751.00",
+      "building_size": "272.00",
+      "year_built": 2008,
+      "status": "active",
+      "subscription_tier": "silver",
+      "is_verified": true,
+      "has_ar_tour": true,
+      "rating": "5.00",
+      "rating_count": 2,
+      "landlord": {
+        "id": 55,
+        "name": "Landlord User 4",
+        "email": "landlord4@example.com"
+      },
+      "agent": null,
+      "units": [
+        {
+          "id": 140,
+          "property_id": 79,
+          "unit_number": "Unit 1",
+          "unit_name": "House 1",
+          "rent_amount": "19600.00",
+          "currency": "AUD",
+          "status": "reserved",
+          "bedrooms": 4,
+          "bathrooms": 1,
+          "size": "136.00",
+          "description": "Spacious House with modern fixtures",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 141,
+          "property_id": 79,
+          "unit_number": "Unit 2",
+          "unit_name": "House 2",
+          "rent_amount": "20650.00",
+          "currency": "AUD",
+          "status": "available",
+          "bedrooms": 4,
+          "bathrooms": 1,
+          "size": "136.00",
+          "description": "Spacious House with modern fixtures",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        }
+      ],
+      "images": [
+        {
+          "id": 383,
+          "property_id": 79,
+          "image_path": "https://picsum.photos/1200/800?random=791",
+          "type": "ar_tour",
+          "order": 1,
+          "is_primary": true,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 384,
+          "property_id": 79,
+          "image_path": "https://picsum.photos/1200/800?random=792",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "Bedroom",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 385,
+          "property_id": 79,
+          "image_path": "https://picsum.photos/1200/800?random=793",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "Living Room",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        }
+      ],
+      "amenities": [
+        {
+          "id": 489,
+          "property_id": 79,
+          "amenity_type_id": 9,
+          "amenity_type": {
+            "id": 9,
+            "name": "Garden",
+            "slug": "garden",
+            "icon": "https://picsum.photos/seed/garden/200",
+            "description": "Private or communal garden"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 490,
+          "property_id": 79,
+          "amenity_type_id": 18,
+          "amenity_type": {
+            "id": 18,
+            "name": "Pet Friendly",
+            "slug": "pet-friendly",
+            "icon": "https://picsum.photos/seed/pet-friendly/200",
+            "description": "Pets allowed"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 491,
+          "property_id": 79,
+          "amenity_type_id": 20,
+          "amenity_type": {
+            "id": 20,
+            "name": "Study Room",
+            "slug": "study-room",
+            "icon": "https://picsum.photos/seed/study/200",
+            "description": "Dedicated study or office space"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 492,
+          "property_id": 79,
+          "amenity_type_id": 21,
+          "amenity_type": {
+            "id": 21,
+            "name": "Laundry",
+            "slug": "laundry",
+            "icon": "https://picsum.photos/seed/laundry/200",
+            "description": "Laundry facilities"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 2,
+        "average_rating": "5.00"
+      },
+      "created_at": "2026-01-26T03:35:41.000000Z",
+      "updated_at": "2026-01-26T03:35:43.000000Z"
+    },
+    {
+      "id": 91,
+      "landlord_id": 58,
+      "agent_id": null,
+      "property_type_id": 2,
+      "title": "House in Gold Coast - Lonsdale Street",
+      "description": "Modern House located in Gold Coast. Features 4 bedroom(s), 3 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "752/38 Chapel Street",
+      "city": "Gold Coast",
+      "state": "QLD",
+      "postal_code": "4003",
+      "country": "Australia",
+      "latitude": "-27.55670000",
+      "longitude": "153.10000000",
+      "property_type": {
+        "id": 2,
+        "name": "House",
+        "slug": "house",
+        "image": "https://picsum.photos/seed/house/800/600"
+      },
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "parking_spaces": 3,
+      "land_size": "532.00",
+      "building_size": "176.00",
+      "year_built": 1990,
+      "status": "active",
+      "subscription_tier": "platinum",
+      "is_verified": true,
+      "has_ar_tour": false,
+      "rating": "4.00",
+      "rating_count": 1,
+      "landlord": {
+        "id": 58,
+        "name": "Landlord User 7",
+        "email": "landlord7@example.com"
+      },
+      "agent": null,
+      "units": [
+        {
+          "id": 160,
+          "property_id": 91,
+          "unit_number": "Unit 1",
+          "unit_name": "House 1",
+          "rent_amount": "23780.00",
+          "currency": "AUD",
+          "status": "available",
+          "bedrooms": 4,
+          "bathrooms": 3,
+          "size": "58.67",
+          "description": "Spacious House with modern fixtures",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 161,
+          "property_id": 91,
+          "unit_number": "Unit 2",
+          "unit_name": "House 2",
+          "rent_amount": "28600.00",
+          "currency": "AUD",
+          "status": "available",
+          "bedrooms": 4,
+          "bathrooms": 3,
+          "size": "58.67",
+          "description": "Spacious House with modern fixtures",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 162,
+          "property_id": 91,
+          "unit_number": "Unit 3",
+          "unit_name": "House 3",
+          "rent_amount": "18950.00",
+          "currency": "AUD",
+          "status": "maintenance",
+          "bedrooms": 4,
+          "bathrooms": 3,
+          "size": "58.67",
+          "description": "Spacious House with modern fixtures",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        }
+      ],
+      "images": [
+        {
+          "id": 436,
+          "property_id": 91,
+          "image_path": "https://picsum.photos/1200/800?random=911",
+          "type": "image",
+          "order": 1,
+          "is_primary": true,
+          "caption": "Backyard",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 437,
+          "property_id": 91,
+          "image_path": "https://picsum.photos/1200/800?random=912",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "Exterior",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 438,
+          "property_id": 91,
+          "image_path": "https://picsum.photos/1200/800?random=913",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "Living Room",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 439,
+          "property_id": 91,
+          "image_path": "https://picsum.photos/1200/800?random=914",
+          "type": "image",
+          "order": 4,
+          "is_primary": false,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 440,
+          "property_id": 91,
+          "image_path": "https://picsum.photos/1200/800?random=915",
+          "type": "image",
+          "order": 5,
+          "is_primary": false,
+          "caption": "Backyard",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 441,
+          "property_id": 91,
+          "image_path": "https://picsum.photos/1200/800?random=916",
+          "type": "image",
+          "order": 6,
+          "is_primary": false,
+          "caption": "Bedroom",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        }
+      ],
+      "amenities": [
+        {
+          "id": 571,
+          "property_id": 91,
+          "amenity_type_id": 1,
+          "amenity_type": {
+            "id": 1,
+            "name": "Air Conditioning",
+            "slug": "air-conditioning",
+            "icon": "https://picsum.photos/seed/air-conditioning/200",
+            "description": "Air conditioning system for climate control"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 572,
+          "property_id": 91,
+          "amenity_type_id": 4,
+          "amenity_type": {
+            "id": 4,
+            "name": "Balcony",
+            "slug": "balcony",
+            "icon": "https://picsum.photos/seed/balcony/200",
+            "description": "Private balcony or terrace"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 573,
+          "property_id": 91,
+          "amenity_type_id": 7,
+          "amenity_type": {
+            "id": 7,
+            "name": "Swimming Pool",
+            "slug": "swimming-pool",
+            "icon": "https://picsum.photos/seed/swimming-pool/200",
+            "description": "Swimming pool on premises"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 574,
+          "property_id": 91,
+          "amenity_type_id": 8,
+          "amenity_type": {
+            "id": 8,
+            "name": "Gym",
+            "slug": "gym",
+            "icon": "https://picsum.photos/seed/gym/200",
+            "description": "Fitness center or gym"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 575,
+          "property_id": 91,
+          "amenity_type_id": 10,
+          "amenity_type": {
+            "id": 10,
+            "name": "BBQ Area",
+            "slug": "bbq-area",
+            "icon": "https://picsum.photos/seed/bbq/200",
+            "description": "Outdoor BBQ facilities"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 576,
+          "property_id": 91,
+          "amenity_type_id": 14,
+          "amenity_type": {
+            "id": 14,
+            "name": "Intercom",
+            "slug": "intercom",
+            "icon": "https://picsum.photos/seed/intercom/200",
+            "description": "Intercom system"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 577,
+          "property_id": 91,
+          "amenity_type_id": 16,
+          "amenity_type": {
+            "id": 16,
+            "name": "Solar Panels",
+            "slug": "solar-panels",
+            "icon": "https://picsum.photos/seed/solar/200",
+            "description": "Solar power system"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 578,
+          "property_id": 91,
+          "amenity_type_id": 22,
+          "amenity_type": {
+            "id": 22,
+            "name": "Storage",
+            "slug": "storage",
+            "icon": "https://picsum.photos/seed/storage/200",
+            "description": "Additional storage space"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 1,
+        "average_rating": "4.00"
+      },
+      "created_at": "2026-01-26T03:35:41.000000Z",
+      "updated_at": "2026-01-26T03:35:43.000000Z"
+    },
+    {
+      "id": 10,
+      "landlord_id": 54,
+      "agent_id": 30,
+      "property_type_id": 4,
+      "title": "Unit in Gold Coast - Chapel Street",
+      "description": "Modern Unit located in Gold Coast. Features 2 bedroom(s), 1 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "441/36 Elizabeth Street",
+      "city": "Gold Coast",
+      "state": "QLD",
+      "postal_code": "2867",
+      "country": "Australia",
+      "latitude": "-28.02670000",
+      "longitude": "153.04000000",
+      "property_type": {
+        "id": 4,
+        "name": "Unit",
+        "slug": "unit",
+        "image": "https://picsum.photos/seed/unit/800/600"
+      },
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "parking_spaces": 1,
+      "land_size": null,
+      "building_size": "77.00",
+      "year_built": 1990,
+      "status": "active",
+      "subscription_tier": "silver",
+      "is_verified": true,
+      "has_ar_tour": true,
+      "rating": "3.86",
+      "rating_count": 7,
+      "landlord": {
+        "id": 54,
+        "name": "Landlord User 3",
+        "email": "landlord3@example.com"
+      },
+      "agent": {
+        "id": 30,
+        "name": "Agent User 9",
+        "email": "agent9@example.com"
+      },
+      "units": [
+        {
+          "id": 17,
+          "property_id": 10,
+          "unit_number": "Unit 1",
+          "unit_name": "Unit",
+          "rent_amount": "8570.00",
+          "currency": "AUD",
+          "status": "maintenance",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "size": "77.00",
+          "description": "Spacious Unit with modern fixtures",
+          "created_at": "2026-01-26T03:35:37.000000Z",
+          "updated_at": "2026-01-26T03:35:37.000000Z"
+        }
+      ],
+      "images": [
+        {
+          "id": 37,
+          "property_id": 10,
+          "image_path": "https://picsum.photos/1200/800?random=101",
+          "type": "ar_tour",
+          "order": 1,
+          "is_primary": true,
+          "caption": "Exterior",
+          "created_at": "2026-01-26T03:35:37.000000Z",
+          "updated_at": "2026-01-26T03:35:37.000000Z"
+        },
+        {
+          "id": 38,
+          "property_id": 10,
+          "image_path": "https://picsum.photos/1200/800?random=102",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "Bedroom",
+          "created_at": "2026-01-26T03:35:37.000000Z",
+          "updated_at": "2026-01-26T03:35:37.000000Z"
+        },
+        {
+          "id": 39,
+          "property_id": 10,
+          "image_path": "https://picsum.photos/1200/800?random=103",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "Bathroom",
+          "created_at": "2026-01-26T03:35:37.000000Z",
+          "updated_at": "2026-01-26T03:35:37.000000Z"
+        },
+        {
+          "id": 40,
+          "property_id": 10,
+          "image_path": "https://picsum.photos/1200/800?random=104",
+          "type": "image",
+          "order": 4,
+          "is_primary": false,
+          "caption": "Exterior",
+          "created_at": "2026-01-26T03:35:37.000000Z",
+          "updated_at": "2026-01-26T03:35:37.000000Z"
+        },
+        {
+          "id": 41,
+          "property_id": 10,
+          "image_path": "https://picsum.photos/1200/800?random=105",
+          "type": "image",
+          "order": 5,
+          "is_primary": false,
+          "caption": "Exterior",
+          "created_at": "2026-01-26T03:35:37.000000Z",
+          "updated_at": "2026-01-26T03:35:37.000000Z"
+        },
+        {
+          "id": 42,
+          "property_id": 10,
+          "image_path": "https://picsum.photos/1200/800?random=106",
+          "type": "image",
+          "order": 6,
+          "is_primary": false,
+          "caption": "Exterior",
+          "created_at": "2026-01-26T03:35:37.000000Z",
+          "updated_at": "2026-01-26T03:35:37.000000Z"
+        }
+      ],
+      "amenities": [
+        {
+          "id": 57,
+          "property_id": 10,
+          "amenity_type_id": 10,
+          "amenity_type": {
+            "id": 10,
+            "name": "BBQ Area",
+            "slug": "bbq-area",
+            "icon": "https://picsum.photos/seed/bbq/200",
+            "description": "Outdoor BBQ facilities"
+          },
+          "created_at": "2026-01-26T03:35:37.000000Z",
+          "updated_at": "2026-01-26T03:35:37.000000Z"
+        },
+        {
+          "id": 58,
+          "property_id": 10,
+          "amenity_type_id": 11,
+          "amenity_type": {
+            "id": 11,
+            "name": "Parking",
+            "slug": "parking",
+            "icon": "https://picsum.photos/seed/parking/200",
+            "description": "Dedicated parking space"
+          },
+          "created_at": "2026-01-26T03:35:37.000000Z",
+          "updated_at": "2026-01-26T03:35:37.000000Z"
+        },
+        {
+          "id": 59,
+          "property_id": 10,
+          "amenity_type_id": 20,
+          "amenity_type": {
+            "id": 20,
+            "name": "Study Room",
+            "slug": "study-room",
+            "icon": "https://picsum.photos/seed/study/200",
+            "description": "Dedicated study or office space"
+          },
+          "created_at": "2026-01-26T03:35:37.000000Z",
+          "updated_at": "2026-01-26T03:35:37.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 7,
+        "average_rating": "3.86"
+      },
+      "created_at": "2026-01-26T03:35:37.000000Z",
+      "updated_at": "2026-01-26T03:35:42.000000Z"
+    },
+    {
+      "id": 65,
+      "landlord_id": 52,
+      "agent_id": 64,
+      "property_type_id": 4,
+      "title": "Unit in Melbourne - Victoria Street",
+      "description": "Modern Unit located in Melbourne. Features 3 bedroom(s), 1 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "504/96 Beach Road",
+      "city": "Melbourne",
+      "state": "VIC",
+      "postal_code": "2819",
+      "country": "Australia",
+      "latitude": "-37.52360000",
+      "longitude": "145.22310000",
+      "property_type": {
+        "id": 4,
+        "name": "Unit",
+        "slug": "unit",
+        "image": "https://picsum.photos/seed/unit/800/600"
+      },
+      "bedrooms": 3,
+      "bathrooms": 1,
+      "parking_spaces": 0,
+      "land_size": null,
+      "building_size": "147.00",
+      "year_built": 2021,
+      "status": "active",
+      "subscription_tier": "platinum",
+      "is_verified": true,
+      "has_ar_tour": false,
+      "rating": "3.86",
+      "rating_count": 7,
+      "landlord": {
+        "id": 52,
+        "name": "Landlord User 1",
+        "email": "landlord1@example.com"
+      },
+      "agent": {
+        "id": 64,
+        "name": "Multi Role 3",
+        "email": "multi3@example.com"
+      },
+      "units": [
+        {
+          "id": 111,
+          "property_id": 65,
+          "unit_number": "Unit 1",
+          "unit_name": "Unit",
+          "rent_amount": "4950.00",
+          "currency": "AUD",
+          "status": "reserved",
+          "bedrooms": 3,
+          "bathrooms": 1,
+          "size": "147.00",
+          "description": "Spacious Unit with modern fixtures",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        }
+      ],
+      "images": [
+        {
+          "id": 322,
+          "property_id": 65,
+          "image_path": "https://picsum.photos/1200/800?random=651",
+          "type": "image",
+          "order": 1,
+          "is_primary": true,
+          "caption": "View",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 323,
+          "property_id": 65,
+          "image_path": "https://picsum.photos/1200/800?random=652",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 324,
+          "property_id": 65,
+          "image_path": "https://picsum.photos/1200/800?random=653",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "Bathroom",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        }
+      ],
+      "amenities": [
+        {
+          "id": 400,
+          "property_id": 65,
+          "amenity_type_id": 3,
+          "amenity_type": {
+            "id": 3,
+            "name": "Dishwasher",
+            "slug": "dishwasher",
+            "icon": "https://picsum.photos/seed/dishwasher/200",
+            "description": "Built-in dishwasher"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 401,
+          "property_id": 65,
+          "amenity_type_id": 4,
+          "amenity_type": {
+            "id": 4,
+            "name": "Balcony",
+            "slug": "balcony",
+            "icon": "https://picsum.photos/seed/balcony/200",
+            "description": "Private balcony or terrace"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 402,
+          "property_id": 65,
+          "amenity_type_id": 6,
+          "amenity_type": {
+            "id": 6,
+            "name": "Furnished",
+            "slug": "furnished",
+            "icon": "https://picsum.photos/seed/furnished/200",
+            "description": "Fully or partially furnished"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 403,
+          "property_id": 65,
+          "amenity_type_id": 7,
+          "amenity_type": {
+            "id": 7,
+            "name": "Swimming Pool",
+            "slug": "swimming-pool",
+            "icon": "https://picsum.photos/seed/swimming-pool/200",
+            "description": "Swimming pool on premises"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 404,
+          "property_id": 65,
+          "amenity_type_id": 10,
+          "amenity_type": {
+            "id": 10,
+            "name": "BBQ Area",
+            "slug": "bbq-area",
+            "icon": "https://picsum.photos/seed/bbq/200",
+            "description": "Outdoor BBQ facilities"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 405,
+          "property_id": 65,
+          "amenity_type_id": 12,
+          "amenity_type": {
+            "id": 12,
+            "name": "Garage",
+            "slug": "garage",
+            "icon": "https://picsum.photos/seed/garage/200",
+            "description": "Secure garage parking"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 406,
+          "property_id": 65,
+          "amenity_type_id": 15,
+          "amenity_type": {
+            "id": 15,
+            "name": "Internet",
+            "slug": "internet",
+            "icon": "https://picsum.photos/seed/internet/200",
+            "description": "High-speed internet included"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 407,
+          "property_id": 65,
+          "amenity_type_id": 16,
+          "amenity_type": {
+            "id": 16,
+            "name": "Solar Panels",
+            "slug": "solar-panels",
+            "icon": "https://picsum.photos/seed/solar/200",
+            "description": "Solar power system"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 408,
+          "property_id": 65,
+          "amenity_type_id": 19,
+          "amenity_type": {
+            "id": 19,
+            "name": "Playground",
+            "slug": "playground",
+            "icon": "https://picsum.photos/seed/playground/200",
+            "description": "Children's playground"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 409,
+          "property_id": 65,
+          "amenity_type_id": 22,
+          "amenity_type": {
+            "id": 22,
+            "name": "Storage",
+            "slug": "storage",
+            "icon": "https://picsum.photos/seed/storage/200",
+            "description": "Additional storage space"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 7,
+        "average_rating": "3.86"
+      },
+      "created_at": "2026-01-26T03:35:40.000000Z",
+      "updated_at": "2026-01-26T03:35:43.000000Z"
     },
     {
       "id": 94,
       "landlord_id": 63,
-      "agent_id": null,
-      "title": "Studio in Brisbane #94",
-      "description": "Beautiful studio located in Brisbane. Modern amenities and great location.",
-      "address": "180 Main Street",
-      "city": "Brisbane",
-      "state": "QLD",
-      "postal_code": "3452",
+      "agent_id": 23,
+      "property_type_id": 4,
+      "title": "Unit in Perth - Collins Street",
+      "description": "Modern Unit located in Perth. Features 1 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "494/189 Victoria Street",
+      "city": "Perth",
+      "state": "WA",
+      "postal_code": "3379",
       "country": "Australia",
-      "latitude": "-34.75880000",
-      "longitude": "151.64930000",
-      "type": "studio",
-      "bedrooms": 0,
-      "bathrooms": 1,
-      "parking_spaces": 3,
-      "land_size": "0.00",
-      "building_size": "110.00",
-      "year_built": 2006,
-      "status": "active",
-      "subscription_tier": "platinum",
-      "is_verified": true,
-      "has_ar_tour": true,
-      "rating": "3.50",
-      "rating_count": 37,
-      "units": [
-        {
-          "id": 210,
-          "property_id": 94,
-          "unit_number": "Unit 1",
-          "unit_name": null,
-          "rent_amount": "18310.00",
-          "currency": "AUD",
-          "status": "available",
-          "bedrooms": 0,
-          "bathrooms": 1,
-          "size": "110.00",
-          "description": null,
-          "created_at": "2026-01-24T06:57:10.000000Z",
-          "updated_at": "2026-01-24T06:57:10.000000Z"
-        }
-      ],
-      "created_at": "2026-01-24T06:57:10.000000Z",
-      "updated_at": "2026-01-24T06:57:10.000000Z"
-    },
-    {
-      "id": 76,
-      "landlord_id": 64,
-      "agent_id": 64,
-      "title": "Other in Canberra #76",
-      "description": "Beautiful other located in Canberra. Modern amenities and great location.",
-      "address": "36 Oak Avenue",
-      "city": "Canberra",
-      "state": "ACT",
-      "postal_code": "2859",
-      "country": "Australia",
-      "latitude": "-33.35880000",
-      "longitude": "150.38930000",
-      "type": "other",
-      "bedrooms": 2,
+      "latitude": "-31.84050000",
+      "longitude": "116.07050000",
+      "property_type": {
+        "id": 4,
+        "name": "Unit",
+        "slug": "unit",
+        "image": "https://picsum.photos/seed/unit/800/600"
+      },
+      "bedrooms": 1,
       "bathrooms": 2,
-      "parking_spaces": 2,
-      "land_size": "0.00",
-      "building_size": "162.00",
-      "year_built": 2024,
+      "parking_spaces": 0,
+      "land_size": null,
+      "building_size": "253.00",
+      "year_built": 2016,
       "status": "active",
       "subscription_tier": "silver",
       "is_verified": true,
       "has_ar_tour": false,
-      "rating": "3.50",
-      "rating_count": 44,
+      "rating": "3.00",
+      "rating_count": 4,
+      "landlord": {
+        "id": 63,
+        "name": "Multi Role 2",
+        "email": "multi2@example.com"
+      },
+      "agent": {
+        "id": 23,
+        "name": "Agent User 2",
+        "email": "agent2@example.com"
+      },
       "units": [
         {
-          "id": 170,
-          "property_id": 76,
+          "id": 168,
+          "property_id": 94,
           "unit_number": "Unit 1",
-          "unit_name": null,
-          "rent_amount": "15410.00",
+          "unit_name": "Unit",
+          "rent_amount": "20950.00",
           "currency": "AUD",
-          "status": "available",
-          "bedrooms": 2,
+          "status": "maintenance",
+          "bedrooms": 1,
           "bathrooms": 2,
-          "size": "54.00",
-          "description": null,
-          "created_at": "2026-01-24T06:57:09.000000Z",
-          "updated_at": "2026-01-24T06:57:09.000000Z"
-        },
-        {
-          "id": 171,
-          "property_id": 76,
-          "unit_number": "Unit 2",
-          "unit_name": null,
-          "rent_amount": "14760.00",
-          "currency": "AUD",
-          "status": "available",
-          "bedrooms": 2,
-          "bathrooms": 2,
-          "size": "54.00",
-          "description": null,
-          "created_at": "2026-01-24T06:57:09.000000Z",
-          "updated_at": "2026-01-24T06:57:09.000000Z"
-        },
-        {
-          "id": 172,
-          "property_id": 76,
-          "unit_number": "Unit 3",
-          "unit_name": null,
-          "rent_amount": "3370.00",
-          "currency": "AUD",
-          "status": "occupied",
-          "bedrooms": 2,
-          "bathrooms": 2,
-          "size": "54.00",
-          "description": null,
-          "created_at": "2026-01-24T06:57:09.000000Z",
-          "updated_at": "2026-01-24T06:57:09.000000Z"
+          "size": "253.00",
+          "description": "Spacious Unit with modern fixtures",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
         }
       ],
-      "created_at": "2026-01-24T06:57:09.000000Z",
-      "updated_at": "2026-01-24T06:57:09.000000Z"
+      "images": [
+        {
+          "id": 453,
+          "property_id": 94,
+          "image_path": "https://picsum.photos/1200/800?random=941",
+          "type": "image",
+          "order": 1,
+          "is_primary": true,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 454,
+          "property_id": 94,
+          "image_path": "https://picsum.photos/1200/800?random=942",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "Living Room",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 455,
+          "property_id": 94,
+          "image_path": "https://picsum.photos/1200/800?random=943",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "Backyard",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 456,
+          "property_id": 94,
+          "image_path": "https://picsum.photos/1200/800?random=944",
+          "type": "image",
+          "order": 4,
+          "is_primary": false,
+          "caption": "Bathroom",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 457,
+          "property_id": 94,
+          "image_path": "https://picsum.photos/1200/800?random=945",
+          "type": "image",
+          "order": 5,
+          "is_primary": false,
+          "caption": "Bathroom",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        }
+      ],
+      "amenities": [
+        {
+          "id": 588,
+          "property_id": 94,
+          "amenity_type_id": 8,
+          "amenity_type": {
+            "id": 8,
+            "name": "Gym",
+            "slug": "gym",
+            "icon": "https://picsum.photos/seed/gym/200",
+            "description": "Fitness center or gym"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 589,
+          "property_id": 94,
+          "amenity_type_id": 10,
+          "amenity_type": {
+            "id": 10,
+            "name": "BBQ Area",
+            "slug": "bbq-area",
+            "icon": "https://picsum.photos/seed/bbq/200",
+            "description": "Outdoor BBQ facilities"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 590,
+          "property_id": 94,
+          "amenity_type_id": 11,
+          "amenity_type": {
+            "id": 11,
+            "name": "Parking",
+            "slug": "parking",
+            "icon": "https://picsum.photos/seed/parking/200",
+            "description": "Dedicated parking space"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 591,
+          "property_id": 94,
+          "amenity_type_id": 14,
+          "amenity_type": {
+            "id": 14,
+            "name": "Intercom",
+            "slug": "intercom",
+            "icon": "https://picsum.photos/seed/intercom/200",
+            "description": "Intercom system"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 592,
+          "property_id": 94,
+          "amenity_type_id": 15,
+          "amenity_type": {
+            "id": 15,
+            "name": "Internet",
+            "slug": "internet",
+            "icon": "https://picsum.photos/seed/internet/200",
+            "description": "High-speed internet included"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 593,
+          "property_id": 94,
+          "amenity_type_id": 19,
+          "amenity_type": {
+            "id": 19,
+            "name": "Playground",
+            "slug": "playground",
+            "icon": "https://picsum.photos/seed/playground/200",
+            "description": "Children's playground"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 594,
+          "property_id": 94,
+          "amenity_type_id": 22,
+          "amenity_type": {
+            "id": 22,
+            "name": "Storage",
+            "slug": "storage",
+            "icon": "https://picsum.photos/seed/storage/200",
+            "description": "Additional storage space"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 4,
+        "average_rating": "3.00"
+      },
+      "created_at": "2026-01-26T03:35:41.000000Z",
+      "updated_at": "2026-01-26T03:35:43.000000Z"
+    },
+    {
+      "id": 39,
+      "landlord_id": 59,
+      "agent_id": null,
+      "property_type_id": 5,
+      "title": "Studio in Newcastle - Albert Street",
+      "description": "Modern Studio located in Newcastle. Features 0 bedroom(s), 1 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "154/65 Beach Road",
+      "city": "Newcastle",
+      "state": "NSW",
+      "postal_code": "2962",
+      "country": "Australia",
+      "latitude": "-32.54830000",
+      "longitude": "151.69170000",
+      "property_type": {
+        "id": 5,
+        "name": "Studio",
+        "slug": "studio",
+        "image": "https://picsum.photos/seed/studio/800/600"
+      },
+      "bedrooms": 0,
+      "bathrooms": 1,
+      "parking_spaces": 0,
+      "land_size": null,
+      "building_size": "61.00",
+      "year_built": 1990,
+      "status": "active",
+      "subscription_tier": "basic",
+      "is_verified": true,
+      "has_ar_tour": true,
+      "rating": "3.50",
+      "rating_count": 8,
+      "landlord": {
+        "id": 59,
+        "name": "Landlord User 8",
+        "email": "landlord8@example.com"
+      },
+      "agent": null,
+      "units": [
+        {
+          "id": 64,
+          "property_id": 39,
+          "unit_number": "Unit 1",
+          "unit_name": "Studio",
+          "rent_amount": "16190.00",
+          "currency": "AUD",
+          "status": "maintenance",
+          "bedrooms": 0,
+          "bathrooms": 1,
+          "size": "61.00",
+          "description": "Spacious Studio with modern fixtures",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        }
+      ],
+      "images": [
+        {
+          "id": 188,
+          "property_id": 39,
+          "image_path": "https://picsum.photos/1200/800?random=391",
+          "type": "ar_tour",
+          "order": 1,
+          "is_primary": true,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 189,
+          "property_id": 39,
+          "image_path": "https://picsum.photos/1200/800?random=392",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "View",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 190,
+          "property_id": 39,
+          "image_path": "https://picsum.photos/1200/800?random=393",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "Living Room",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        }
+      ],
+      "amenities": [
+        {
+          "id": 235,
+          "property_id": 39,
+          "amenity_type_id": 1,
+          "amenity_type": {
+            "id": 1,
+            "name": "Air Conditioning",
+            "slug": "air-conditioning",
+            "icon": "https://picsum.photos/seed/air-conditioning/200",
+            "description": "Air conditioning system for climate control"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 236,
+          "property_id": 39,
+          "amenity_type_id": 3,
+          "amenity_type": {
+            "id": 3,
+            "name": "Dishwasher",
+            "slug": "dishwasher",
+            "icon": "https://picsum.photos/seed/dishwasher/200",
+            "description": "Built-in dishwasher"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 237,
+          "property_id": 39,
+          "amenity_type_id": 12,
+          "amenity_type": {
+            "id": 12,
+            "name": "Garage",
+            "slug": "garage",
+            "icon": "https://picsum.photos/seed/garage/200",
+            "description": "Secure garage parking"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 238,
+          "property_id": 39,
+          "amenity_type_id": 14,
+          "amenity_type": {
+            "id": 14,
+            "name": "Intercom",
+            "slug": "intercom",
+            "icon": "https://picsum.photos/seed/intercom/200",
+            "description": "Intercom system"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 239,
+          "property_id": 39,
+          "amenity_type_id": 15,
+          "amenity_type": {
+            "id": 15,
+            "name": "Internet",
+            "slug": "internet",
+            "icon": "https://picsum.photos/seed/internet/200",
+            "description": "High-speed internet included"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 240,
+          "property_id": 39,
+          "amenity_type_id": 19,
+          "amenity_type": {
+            "id": 19,
+            "name": "Playground",
+            "slug": "playground",
+            "icon": "https://picsum.photos/seed/playground/200",
+            "description": "Children's playground"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 241,
+          "property_id": 39,
+          "amenity_type_id": 20,
+          "amenity_type": {
+            "id": 20,
+            "name": "Study Room",
+            "slug": "study-room",
+            "icon": "https://picsum.photos/seed/study/200",
+            "description": "Dedicated study or office space"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 8,
+        "average_rating": "3.50"
+      },
+      "created_at": "2026-01-26T03:35:38.000000Z",
+      "updated_at": "2026-01-26T03:35:42.000000Z"
+    },
+    {
+      "id": 46,
+      "landlord_id": 59,
+      "agent_id": 24,
+      "property_type_id": 5,
+      "title": "Studio in Canberra - James Street",
+      "description": "Modern Studio located in Canberra. Features 0 bedroom(s), 1 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "314/167 Flinders Street",
+      "city": "Canberra",
+      "state": "ACT",
+      "postal_code": "3317",
+      "country": "Australia",
+      "latitude": "-35.29090000",
+      "longitude": "149.59000000",
+      "property_type": {
+        "id": 5,
+        "name": "Studio",
+        "slug": "studio",
+        "image": "https://picsum.photos/seed/studio/800/600"
+      },
+      "bedrooms": 0,
+      "bathrooms": 1,
+      "parking_spaces": 1,
+      "land_size": null,
+      "building_size": "230.00",
+      "year_built": 2003,
+      "status": "active",
+      "subscription_tier": "platinum",
+      "is_verified": true,
+      "has_ar_tour": true,
+      "rating": "4.00",
+      "rating_count": 5,
+      "landlord": {
+        "id": 59,
+        "name": "Landlord User 8",
+        "email": "landlord8@example.com"
+      },
+      "agent": {
+        "id": 24,
+        "name": "Agent User 3",
+        "email": "agent3@example.com"
+      },
+      "units": [
+        {
+          "id": 77,
+          "property_id": 46,
+          "unit_number": "Unit 1",
+          "unit_name": "Studio",
+          "rent_amount": "16650.00",
+          "currency": "AUD",
+          "status": "reserved",
+          "bedrooms": 0,
+          "bathrooms": 1,
+          "size": "230.00",
+          "description": "Spacious Studio with modern fixtures",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        }
+      ],
+      "images": [
+        {
+          "id": 224,
+          "property_id": 46,
+          "image_path": "https://picsum.photos/1200/800?random=461",
+          "type": "ar_tour",
+          "order": 1,
+          "is_primary": true,
+          "caption": "Backyard",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 225,
+          "property_id": 46,
+          "image_path": "https://picsum.photos/1200/800?random=462",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "Bathroom",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 226,
+          "property_id": 46,
+          "image_path": "https://picsum.photos/1200/800?random=463",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 227,
+          "property_id": 46,
+          "image_path": "https://picsum.photos/1200/800?random=464",
+          "type": "image",
+          "order": 4,
+          "is_primary": false,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 228,
+          "property_id": 46,
+          "image_path": "https://picsum.photos/1200/800?random=465",
+          "type": "image",
+          "order": 5,
+          "is_primary": false,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 229,
+          "property_id": 46,
+          "image_path": "https://picsum.photos/1200/800?random=466",
+          "type": "image",
+          "order": 6,
+          "is_primary": false,
+          "caption": "Bedroom",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 230,
+          "property_id": 46,
+          "image_path": "https://picsum.photos/1200/800?random=467",
+          "type": "image",
+          "order": 7,
+          "is_primary": false,
+          "caption": "Exterior",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        }
+      ],
+      "amenities": [
+        {
+          "id": 279,
+          "property_id": 46,
+          "amenity_type_id": 2,
+          "amenity_type": {
+            "id": 2,
+            "name": "Heating",
+            "slug": "heating",
+            "icon": "https://picsum.photos/seed/heating/200",
+            "description": "Central heating or other heating systems"
+          },
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 280,
+          "property_id": 46,
+          "amenity_type_id": 4,
+          "amenity_type": {
+            "id": 4,
+            "name": "Balcony",
+            "slug": "balcony",
+            "icon": "https://picsum.photos/seed/balcony/200",
+            "description": "Private balcony or terrace"
+          },
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 281,
+          "property_id": 46,
+          "amenity_type_id": 11,
+          "amenity_type": {
+            "id": 11,
+            "name": "Parking",
+            "slug": "parking",
+            "icon": "https://picsum.photos/seed/parking/200",
+            "description": "Dedicated parking space"
+          },
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 282,
+          "property_id": 46,
+          "amenity_type_id": 21,
+          "amenity_type": {
+            "id": 21,
+            "name": "Laundry",
+            "slug": "laundry",
+            "icon": "https://picsum.photos/seed/laundry/200",
+            "description": "Laundry facilities"
+          },
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 5,
+        "average_rating": "4.00"
+      },
+      "created_at": "2026-01-26T03:35:39.000000Z",
+      "updated_at": "2026-01-26T03:35:42.000000Z"
+    },
+    {
+      "id": 2,
+      "landlord_id": 58,
+      "agent_id": null,
+      "property_type_id": 6,
+      "title": "Villa in Adelaide - Beach Road",
+      "description": "Modern Villa located in Adelaide. Features 5 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "246/51 Garden Avenue",
+      "city": "Adelaide",
+      "state": "SA",
+      "postal_code": "6358",
+      "country": "Australia",
+      "latitude": "-34.43850000",
+      "longitude": "138.98070000",
+      "property_type": {
+        "id": 6,
+        "name": "Villa",
+        "slug": "villa",
+        "image": "https://picsum.photos/seed/villa/800/600"
+      },
+      "bedrooms": 5,
+      "bathrooms": 2,
+      "parking_spaces": 2,
+      "land_size": "667.00",
+      "building_size": "274.00",
+      "year_built": 1994,
+      "status": "active",
+      "subscription_tier": "silver",
+      "is_verified": true,
+      "has_ar_tour": true,
+      "rating": "4.20",
+      "rating_count": 5,
+      "landlord": {
+        "id": 58,
+        "name": "Landlord User 7",
+        "email": "landlord7@example.com"
+      },
+      "agent": null,
+      "units": [
+        {
+          "id": 3,
+          "property_id": 2,
+          "unit_number": "Unit 1",
+          "unit_name": "Villa",
+          "rent_amount": "24950.00",
+          "currency": "AUD",
+          "status": "reserved",
+          "bedrooms": 5,
+          "bathrooms": 2,
+          "size": "274.00",
+          "description": "Spacious Villa with modern fixtures",
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        }
+      ],
+      "images": [
+        {
+          "id": 6,
+          "property_id": 2,
+          "image_path": "https://picsum.photos/1200/800?random=21",
+          "type": "ar_tour",
+          "order": 1,
+          "is_primary": true,
+          "caption": "Bedroom",
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 7,
+          "property_id": 2,
+          "image_path": "https://picsum.photos/1200/800?random=22",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "Living Room",
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 8,
+          "property_id": 2,
+          "image_path": "https://picsum.photos/1200/800?random=23",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "Bedroom",
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        }
+      ],
+      "amenities": [
+        {
+          "id": 6,
+          "property_id": 2,
+          "amenity_type_id": 6,
+          "amenity_type": {
+            "id": 6,
+            "name": "Furnished",
+            "slug": "furnished",
+            "icon": "https://picsum.photos/seed/furnished/200",
+            "description": "Fully or partially furnished"
+          },
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 7,
+          "property_id": 2,
+          "amenity_type_id": 9,
+          "amenity_type": {
+            "id": 9,
+            "name": "Garden",
+            "slug": "garden",
+            "icon": "https://picsum.photos/seed/garden/200",
+            "description": "Private or communal garden"
+          },
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 8,
+          "property_id": 2,
+          "amenity_type_id": 13,
+          "amenity_type": {
+            "id": 13,
+            "name": "Security",
+            "slug": "security",
+            "icon": "https://picsum.photos/seed/security/200",
+            "description": "Security system or gated access"
+          },
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 9,
+          "property_id": 2,
+          "amenity_type_id": 14,
+          "amenity_type": {
+            "id": 14,
+            "name": "Intercom",
+            "slug": "intercom",
+            "icon": "https://picsum.photos/seed/intercom/200",
+            "description": "Intercom system"
+          },
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 10,
+          "property_id": 2,
+          "amenity_type_id": 19,
+          "amenity_type": {
+            "id": 19,
+            "name": "Playground",
+            "slug": "playground",
+            "icon": "https://picsum.photos/seed/playground/200",
+            "description": "Children's playground"
+          },
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 11,
+          "property_id": 2,
+          "amenity_type_id": 21,
+          "amenity_type": {
+            "id": 21,
+            "name": "Laundry",
+            "slug": "laundry",
+            "icon": "https://picsum.photos/seed/laundry/200",
+            "description": "Laundry facilities"
+          },
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 5,
+        "average_rating": "4.20"
+      },
+      "created_at": "2026-01-26T03:35:36.000000Z",
+      "updated_at": "2026-01-26T03:35:42.000000Z"
+    },
+    {
+      "id": 34,
+      "landlord_id": 54,
+      "agent_id": 23,
+      "property_type_id": 6,
+      "title": "Villa in Canberra - King Street",
+      "description": "Modern Villa located in Canberra. Features 5 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "899/17 Park Road",
+      "city": "Canberra",
+      "state": "ACT",
+      "postal_code": "4493",
+      "country": "Australia",
+      "latitude": "-35.27090000",
+      "longitude": "149.03000000",
+      "property_type": {
+        "id": 6,
+        "name": "Villa",
+        "slug": "villa",
+        "image": "https://picsum.photos/seed/villa/800/600"
+      },
+      "bedrooms": 5,
+      "bathrooms": 2,
+      "parking_spaces": 2,
+      "land_size": "746.00",
+      "building_size": "175.00",
+      "year_built": 1994,
+      "status": "active",
+      "subscription_tier": "platinum",
+      "is_verified": true,
+      "has_ar_tour": false,
+      "rating": "4.00",
+      "rating_count": 2,
+      "landlord": {
+        "id": 54,
+        "name": "Landlord User 3",
+        "email": "landlord3@example.com"
+      },
+      "agent": {
+        "id": 23,
+        "name": "Agent User 2",
+        "email": "agent2@example.com"
+      },
+      "units": [
+        {
+          "id": 56,
+          "property_id": 34,
+          "unit_number": "Unit 1",
+          "unit_name": "Villa 1",
+          "rent_amount": "9680.00",
+          "currency": "AUD",
+          "status": "reserved",
+          "bedrooms": 5,
+          "bathrooms": 2,
+          "size": "58.33",
+          "description": "Spacious Villa with modern fixtures",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 57,
+          "property_id": 34,
+          "unit_number": "Unit 2",
+          "unit_name": "Villa 2",
+          "rent_amount": "26500.00",
+          "currency": "AUD",
+          "status": "occupied",
+          "bedrooms": 5,
+          "bathrooms": 2,
+          "size": "58.33",
+          "description": "Spacious Villa with modern fixtures",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 58,
+          "property_id": 34,
+          "unit_number": "Unit 3",
+          "unit_name": "Villa 3",
+          "rent_amount": "13290.00",
+          "currency": "AUD",
+          "status": "reserved",
+          "bedrooms": 5,
+          "bathrooms": 2,
+          "size": "58.33",
+          "description": "Spacious Villa with modern fixtures",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        }
+      ],
+      "images": [
+        {
+          "id": 159,
+          "property_id": 34,
+          "image_path": "https://picsum.photos/1200/800?random=341",
+          "type": "image",
+          "order": 1,
+          "is_primary": true,
+          "caption": "View",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 160,
+          "property_id": 34,
+          "image_path": "https://picsum.photos/1200/800?random=342",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "Living Room",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 161,
+          "property_id": 34,
+          "image_path": "https://picsum.photos/1200/800?random=343",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 162,
+          "property_id": 34,
+          "image_path": "https://picsum.photos/1200/800?random=344",
+          "type": "image",
+          "order": 4,
+          "is_primary": false,
+          "caption": "Exterior",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 163,
+          "property_id": 34,
+          "image_path": "https://picsum.photos/1200/800?random=345",
+          "type": "image",
+          "order": 5,
+          "is_primary": false,
+          "caption": "Backyard",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 164,
+          "property_id": 34,
+          "image_path": "https://picsum.photos/1200/800?random=346",
+          "type": "image",
+          "order": 6,
+          "is_primary": false,
+          "caption": "View",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 165,
+          "property_id": 34,
+          "image_path": "https://picsum.photos/1200/800?random=347",
+          "type": "image",
+          "order": 7,
+          "is_primary": false,
+          "caption": "Living Room",
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        }
+      ],
+      "amenities": [
+        {
+          "id": 202,
+          "property_id": 34,
+          "amenity_type_id": 3,
+          "amenity_type": {
+            "id": 3,
+            "name": "Dishwasher",
+            "slug": "dishwasher",
+            "icon": "https://picsum.photos/seed/dishwasher/200",
+            "description": "Built-in dishwasher"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 203,
+          "property_id": 34,
+          "amenity_type_id": 6,
+          "amenity_type": {
+            "id": 6,
+            "name": "Furnished",
+            "slug": "furnished",
+            "icon": "https://picsum.photos/seed/furnished/200",
+            "description": "Fully or partially furnished"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 204,
+          "property_id": 34,
+          "amenity_type_id": 9,
+          "amenity_type": {
+            "id": 9,
+            "name": "Garden",
+            "slug": "garden",
+            "icon": "https://picsum.photos/seed/garden/200",
+            "description": "Private or communal garden"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 205,
+          "property_id": 34,
+          "amenity_type_id": 10,
+          "amenity_type": {
+            "id": 10,
+            "name": "BBQ Area",
+            "slug": "bbq-area",
+            "icon": "https://picsum.photos/seed/bbq/200",
+            "description": "Outdoor BBQ facilities"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 206,
+          "property_id": 34,
+          "amenity_type_id": 11,
+          "amenity_type": {
+            "id": 11,
+            "name": "Parking",
+            "slug": "parking",
+            "icon": "https://picsum.photos/seed/parking/200",
+            "description": "Dedicated parking space"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 207,
+          "property_id": 34,
+          "amenity_type_id": 15,
+          "amenity_type": {
+            "id": 15,
+            "name": "Internet",
+            "slug": "internet",
+            "icon": "https://picsum.photos/seed/internet/200",
+            "description": "High-speed internet included"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 208,
+          "property_id": 34,
+          "amenity_type_id": 16,
+          "amenity_type": {
+            "id": 16,
+            "name": "Solar Panels",
+            "slug": "solar-panels",
+            "icon": "https://picsum.photos/seed/solar/200",
+            "description": "Solar power system"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        },
+        {
+          "id": 209,
+          "property_id": 34,
+          "amenity_type_id": 22,
+          "amenity_type": {
+            "id": 22,
+            "name": "Storage",
+            "slug": "storage",
+            "icon": "https://picsum.photos/seed/storage/200",
+            "description": "Additional storage space"
+          },
+          "created_at": "2026-01-26T03:35:38.000000Z",
+          "updated_at": "2026-01-26T03:35:38.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 2,
+        "average_rating": "4.00"
+      },
+      "created_at": "2026-01-26T03:35:38.000000Z",
+      "updated_at": "2026-01-26T03:35:42.000000Z"
+    },
+    {
+      "id": 50,
+      "landlord_id": 60,
+      "agent_id": null,
+      "property_type_id": 6,
+      "title": "Villa in Melbourne - George Street",
+      "description": "Modern Villa located in Melbourne. Features 4 bedroom(s), 3 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "667/180 Pitt Street",
+      "city": "Melbourne",
+      "state": "VIC",
+      "postal_code": "6239",
+      "country": "Australia",
+      "latitude": "-38.17360000",
+      "longitude": "145.36310000",
+      "property_type": {
+        "id": 6,
+        "name": "Villa",
+        "slug": "villa",
+        "image": "https://picsum.photos/seed/villa/800/600"
+      },
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "parking_spaces": 2,
+      "land_size": "302.00",
+      "building_size": "94.00",
+      "year_built": 2012,
+      "status": "active",
+      "subscription_tier": "basic",
+      "is_verified": true,
+      "has_ar_tour": true,
+      "rating": "3.14",
+      "rating_count": 7,
+      "landlord": {
+        "id": 60,
+        "name": "Landlord User 9",
+        "email": "landlord9@example.com"
+      },
+      "agent": null,
+      "units": [
+        {
+          "id": 83,
+          "property_id": 50,
+          "unit_number": "Unit 1",
+          "unit_name": "Villa 1",
+          "rent_amount": "26830.00",
+          "currency": "AUD",
+          "status": "maintenance",
+          "bedrooms": 4,
+          "bathrooms": 3,
+          "size": "31.33",
+          "description": "Spacious Villa with modern fixtures",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 84,
+          "property_id": 50,
+          "unit_number": "Unit 2",
+          "unit_name": "Villa 2",
+          "rent_amount": "9370.00",
+          "currency": "AUD",
+          "status": "reserved",
+          "bedrooms": 4,
+          "bathrooms": 3,
+          "size": "31.33",
+          "description": "Spacious Villa with modern fixtures",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 85,
+          "property_id": 50,
+          "unit_number": "Unit 3",
+          "unit_name": "Villa 3",
+          "rent_amount": "21380.00",
+          "currency": "AUD",
+          "status": "available",
+          "bedrooms": 4,
+          "bathrooms": 3,
+          "size": "31.33",
+          "description": "Spacious Villa with modern fixtures",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        }
+      ],
+      "images": [
+        {
+          "id": 246,
+          "property_id": 50,
+          "image_path": "https://picsum.photos/1200/800?random=501",
+          "type": "ar_tour",
+          "order": 1,
+          "is_primary": true,
+          "caption": "Bedroom",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 247,
+          "property_id": 50,
+          "image_path": "https://picsum.photos/1200/800?random=502",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "Backyard",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 248,
+          "property_id": 50,
+          "image_path": "https://picsum.photos/1200/800?random=503",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "Backyard",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        }
+      ],
+      "amenities": [
+        {
+          "id": 300,
+          "property_id": 50,
+          "amenity_type_id": 7,
+          "amenity_type": {
+            "id": 7,
+            "name": "Swimming Pool",
+            "slug": "swimming-pool",
+            "icon": "https://picsum.photos/seed/swimming-pool/200",
+            "description": "Swimming pool on premises"
+          },
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 301,
+          "property_id": 50,
+          "amenity_type_id": 9,
+          "amenity_type": {
+            "id": 9,
+            "name": "Garden",
+            "slug": "garden",
+            "icon": "https://picsum.photos/seed/garden/200",
+            "description": "Private or communal garden"
+          },
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 302,
+          "property_id": 50,
+          "amenity_type_id": 15,
+          "amenity_type": {
+            "id": 15,
+            "name": "Internet",
+            "slug": "internet",
+            "icon": "https://picsum.photos/seed/internet/200",
+            "description": "High-speed internet included"
+          },
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 7,
+        "average_rating": "3.14"
+      },
+      "created_at": "2026-01-26T03:35:39.000000Z",
+      "updated_at": "2026-01-26T03:35:42.000000Z"
+    },
+    {
+      "id": 7,
+      "landlord_id": 58,
+      "agent_id": 24,
+      "property_type_id": 7,
+      "title": "Duplex in Melbourne - King Street",
+      "description": "Modern Duplex located in Melbourne. Features 3 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "334/87 Bourke Street",
+      "city": "Melbourne",
+      "state": "VIC",
+      "postal_code": "4715",
+      "country": "Australia",
+      "latitude": "-37.84360000",
+      "longitude": "145.09310000",
+      "property_type": {
+        "id": 7,
+        "name": "Duplex",
+        "slug": "duplex",
+        "image": "https://picsum.photos/seed/duplex/800/600"
+      },
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "parking_spaces": 0,
+      "land_size": "607.00",
+      "building_size": "278.00",
+      "year_built": 2005,
+      "status": "active",
+      "subscription_tier": "platinum",
+      "is_verified": true,
+      "has_ar_tour": false,
+      "rating": "3.88",
+      "rating_count": 8,
+      "landlord": {
+        "id": 58,
+        "name": "Landlord User 7",
+        "email": "landlord7@example.com"
+      },
+      "agent": {
+        "id": 24,
+        "name": "Agent User 3",
+        "email": "agent3@example.com"
+      },
+      "units": [
+        {
+          "id": 12,
+          "property_id": 7,
+          "unit_number": "Unit 1",
+          "unit_name": "Duplex",
+          "rent_amount": "10170.00",
+          "currency": "AUD",
+          "status": "reserved",
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "size": "278.00",
+          "description": "Spacious Duplex with modern fixtures",
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        }
+      ],
+      "images": [
+        {
+          "id": 24,
+          "property_id": 7,
+          "image_path": "https://picsum.photos/1200/800?random=71",
+          "type": "image",
+          "order": 1,
+          "is_primary": true,
+          "caption": "Backyard",
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 25,
+          "property_id": 7,
+          "image_path": "https://picsum.photos/1200/800?random=72",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "Living Room",
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 26,
+          "property_id": 7,
+          "image_path": "https://picsum.photos/1200/800?random=73",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "Backyard",
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 27,
+          "property_id": 7,
+          "image_path": "https://picsum.photos/1200/800?random=74",
+          "type": "image",
+          "order": 4,
+          "is_primary": false,
+          "caption": "Bathroom",
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        }
+      ],
+      "amenities": [
+        {
+          "id": 36,
+          "property_id": 7,
+          "amenity_type_id": 2,
+          "amenity_type": {
+            "id": 2,
+            "name": "Heating",
+            "slug": "heating",
+            "icon": "https://picsum.photos/seed/heating/200",
+            "description": "Central heating or other heating systems"
+          },
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 37,
+          "property_id": 7,
+          "amenity_type_id": 3,
+          "amenity_type": {
+            "id": 3,
+            "name": "Dishwasher",
+            "slug": "dishwasher",
+            "icon": "https://picsum.photos/seed/dishwasher/200",
+            "description": "Built-in dishwasher"
+          },
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 38,
+          "property_id": 7,
+          "amenity_type_id": 4,
+          "amenity_type": {
+            "id": 4,
+            "name": "Balcony",
+            "slug": "balcony",
+            "icon": "https://picsum.photos/seed/balcony/200",
+            "description": "Private balcony or terrace"
+          },
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 39,
+          "property_id": 7,
+          "amenity_type_id": 8,
+          "amenity_type": {
+            "id": 8,
+            "name": "Gym",
+            "slug": "gym",
+            "icon": "https://picsum.photos/seed/gym/200",
+            "description": "Fitness center or gym"
+          },
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 40,
+          "property_id": 7,
+          "amenity_type_id": 11,
+          "amenity_type": {
+            "id": 11,
+            "name": "Parking",
+            "slug": "parking",
+            "icon": "https://picsum.photos/seed/parking/200",
+            "description": "Dedicated parking space"
+          },
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 41,
+          "property_id": 7,
+          "amenity_type_id": 13,
+          "amenity_type": {
+            "id": 13,
+            "name": "Security",
+            "slug": "security",
+            "icon": "https://picsum.photos/seed/security/200",
+            "description": "Security system or gated access"
+          },
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 42,
+          "property_id": 7,
+          "amenity_type_id": 16,
+          "amenity_type": {
+            "id": 16,
+            "name": "Solar Panels",
+            "slug": "solar-panels",
+            "icon": "https://picsum.photos/seed/solar/200",
+            "description": "Solar power system"
+          },
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 43,
+          "property_id": 7,
+          "amenity_type_id": 19,
+          "amenity_type": {
+            "id": 19,
+            "name": "Playground",
+            "slug": "playground",
+            "icon": "https://picsum.photos/seed/playground/200",
+            "description": "Children's playground"
+          },
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        },
+        {
+          "id": 44,
+          "property_id": 7,
+          "amenity_type_id": 21,
+          "amenity_type": {
+            "id": 21,
+            "name": "Laundry",
+            "slug": "laundry",
+            "icon": "https://picsum.photos/seed/laundry/200",
+            "description": "Laundry facilities"
+          },
+          "created_at": "2026-01-26T03:35:36.000000Z",
+          "updated_at": "2026-01-26T03:35:36.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 8,
+        "average_rating": "3.88"
+      },
+      "created_at": "2026-01-26T03:35:36.000000Z",
+      "updated_at": "2026-01-26T03:35:42.000000Z"
+    },
+    {
+      "id": 74,
+      "landlord_id": 59,
+      "agent_id": null,
+      "property_type_id": 7,
+      "title": "Duplex in Sydney - Chapel Street",
+      "description": "Modern Duplex located in Sydney. Features 3 bedroom(s), 1 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "755/188 Lonsdale Street",
+      "city": "Sydney",
+      "state": "NSW",
+      "postal_code": "5528",
+      "country": "Australia",
+      "latitude": "-34.20880000",
+      "longitude": "151.59930000",
+      "property_type": {
+        "id": 7,
+        "name": "Duplex",
+        "slug": "duplex",
+        "image": "https://picsum.photos/seed/duplex/800/600"
+      },
+      "bedrooms": 3,
+      "bathrooms": 1,
+      "parking_spaces": 2,
+      "land_size": "507.00",
+      "building_size": "262.00",
+      "year_built": 2000,
+      "status": "active",
+      "subscription_tier": "platinum",
+      "is_verified": true,
+      "has_ar_tour": false,
+      "rating": "4.09",
+      "rating_count": 11,
+      "landlord": {
+        "id": 59,
+        "name": "Landlord User 8",
+        "email": "landlord8@example.com"
+      },
+      "agent": null,
+      "units": [
+        {
+          "id": 129,
+          "property_id": 74,
+          "unit_number": "Unit 1",
+          "unit_name": "Duplex 1",
+          "rent_amount": "17960.00",
+          "currency": "AUD",
+          "status": "occupied",
+          "bedrooms": 3,
+          "bathrooms": 1,
+          "size": "87.33",
+          "description": "Spacious Duplex with modern fixtures",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 130,
+          "property_id": 74,
+          "unit_number": "Unit 2",
+          "unit_name": "Duplex 2",
+          "rent_amount": "29550.00",
+          "currency": "AUD",
+          "status": "maintenance",
+          "bedrooms": 3,
+          "bathrooms": 1,
+          "size": "87.33",
+          "description": "Spacious Duplex with modern fixtures",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 131,
+          "property_id": 74,
+          "unit_number": "Unit 3",
+          "unit_name": "Duplex 3",
+          "rent_amount": "18650.00",
+          "currency": "AUD",
+          "status": "reserved",
+          "bedrooms": 3,
+          "bathrooms": 1,
+          "size": "87.33",
+          "description": "Spacious Duplex with modern fixtures",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        }
+      ],
+      "images": [
+        {
+          "id": 359,
+          "property_id": 74,
+          "image_path": "https://picsum.photos/1200/800?random=741",
+          "type": "image",
+          "order": 1,
+          "is_primary": true,
+          "caption": "Bedroom",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 360,
+          "property_id": 74,
+          "image_path": "https://picsum.photos/1200/800?random=742",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "Living Room",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 361,
+          "property_id": 74,
+          "image_path": "https://picsum.photos/1200/800?random=743",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "View",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 362,
+          "property_id": 74,
+          "image_path": "https://picsum.photos/1200/800?random=744",
+          "type": "image",
+          "order": 4,
+          "is_primary": false,
+          "caption": "Bathroom",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 363,
+          "property_id": 74,
+          "image_path": "https://picsum.photos/1200/800?random=745",
+          "type": "image",
+          "order": 5,
+          "is_primary": false,
+          "caption": "Backyard",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 364,
+          "property_id": 74,
+          "image_path": "https://picsum.photos/1200/800?random=746",
+          "type": "image",
+          "order": 6,
+          "is_primary": false,
+          "caption": "Living Room",
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        }
+      ],
+      "amenities": [
+        {
+          "id": 462,
+          "property_id": 74,
+          "amenity_type_id": 2,
+          "amenity_type": {
+            "id": 2,
+            "name": "Heating",
+            "slug": "heating",
+            "icon": "https://picsum.photos/seed/heating/200",
+            "description": "Central heating or other heating systems"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 463,
+          "property_id": 74,
+          "amenity_type_id": 9,
+          "amenity_type": {
+            "id": 9,
+            "name": "Garden",
+            "slug": "garden",
+            "icon": "https://picsum.photos/seed/garden/200",
+            "description": "Private or communal garden"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        },
+        {
+          "id": 464,
+          "property_id": 74,
+          "amenity_type_id": 16,
+          "amenity_type": {
+            "id": 16,
+            "name": "Solar Panels",
+            "slug": "solar-panels",
+            "icon": "https://picsum.photos/seed/solar/200",
+            "description": "Solar power system"
+          },
+          "created_at": "2026-01-26T03:35:40.000000Z",
+          "updated_at": "2026-01-26T03:35:40.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 11,
+        "average_rating": "4.09"
+      },
+      "created_at": "2026-01-26T03:35:40.000000Z",
+      "updated_at": "2026-01-26T03:35:43.000000Z"
+    },
+    {
+      "id": 54,
+      "landlord_id": 61,
+      "agent_id": null,
+      "property_type_id": 8,
+      "title": "Penthouse in Newcastle - Elizabeth Street",
+      "description": "Modern Penthouse located in Newcastle. Features 4 bedroom(s), 1 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "867/162 Garden Avenue",
+      "city": "Newcastle",
+      "state": "NSW",
+      "postal_code": "6100",
+      "country": "Australia",
+      "latitude": "-32.55830000",
+      "longitude": "152.22170000",
+      "property_type": {
+        "id": 8,
+        "name": "Penthouse",
+        "slug": "penthouse",
+        "image": "https://picsum.photos/seed/penthouse/800/600"
+      },
+      "bedrooms": 4,
+      "bathrooms": 1,
+      "parking_spaces": 0,
+      "land_size": null,
+      "building_size": "251.00",
+      "year_built": 2010,
+      "status": "active",
+      "subscription_tier": "platinum",
+      "is_verified": true,
+      "has_ar_tour": true,
+      "rating": "4.40",
+      "rating_count": 5,
+      "landlord": {
+        "id": 61,
+        "name": "Landlord User 10",
+        "email": "landlord10@example.com"
+      },
+      "agent": null,
+      "units": [
+        {
+          "id": 92,
+          "property_id": 54,
+          "unit_number": "Unit 1",
+          "unit_name": "Penthouse",
+          "rent_amount": "6250.00",
+          "currency": "AUD",
+          "status": "available",
+          "bedrooms": 4,
+          "bathrooms": 1,
+          "size": "251.00",
+          "description": "Spacious Penthouse with modern fixtures",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        }
+      ],
+      "images": [
+        {
+          "id": 264,
+          "property_id": 54,
+          "image_path": "https://picsum.photos/1200/800?random=541",
+          "type": "ar_tour",
+          "order": 1,
+          "is_primary": true,
+          "caption": "Bathroom",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 265,
+          "property_id": 54,
+          "image_path": "https://picsum.photos/1200/800?random=542",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 266,
+          "property_id": 54,
+          "image_path": "https://picsum.photos/1200/800?random=543",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "View",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 267,
+          "property_id": 54,
+          "image_path": "https://picsum.photos/1200/800?random=544",
+          "type": "image",
+          "order": 4,
+          "is_primary": false,
+          "caption": "Living Room",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 268,
+          "property_id": 54,
+          "image_path": "https://picsum.photos/1200/800?random=545",
+          "type": "image",
+          "order": 5,
+          "is_primary": false,
+          "caption": "Exterior",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 269,
+          "property_id": 54,
+          "image_path": "https://picsum.photos/1200/800?random=546",
+          "type": "image",
+          "order": 6,
+          "is_primary": false,
+          "caption": "Living Room",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 270,
+          "property_id": 54,
+          "image_path": "https://picsum.photos/1200/800?random=547",
+          "type": "image",
+          "order": 7,
+          "is_primary": false,
+          "caption": "Exterior",
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        }
+      ],
+      "amenities": [
+        {
+          "id": 329,
+          "property_id": 54,
+          "amenity_type_id": 1,
+          "amenity_type": {
+            "id": 1,
+            "name": "Air Conditioning",
+            "slug": "air-conditioning",
+            "icon": "https://picsum.photos/seed/air-conditioning/200",
+            "description": "Air conditioning system for climate control"
+          },
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 330,
+          "property_id": 54,
+          "amenity_type_id": 11,
+          "amenity_type": {
+            "id": 11,
+            "name": "Parking",
+            "slug": "parking",
+            "icon": "https://picsum.photos/seed/parking/200",
+            "description": "Dedicated parking space"
+          },
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 331,
+          "property_id": 54,
+          "amenity_type_id": 13,
+          "amenity_type": {
+            "id": 13,
+            "name": "Security",
+            "slug": "security",
+            "icon": "https://picsum.photos/seed/security/200",
+            "description": "Security system or gated access"
+          },
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 332,
+          "property_id": 54,
+          "amenity_type_id": 17,
+          "amenity_type": {
+            "id": 17,
+            "name": "Water Tank",
+            "slug": "water-tank",
+            "icon": "https://picsum.photos/seed/water-tank/200",
+            "description": "Rainwater collection tank"
+          },
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        },
+        {
+          "id": 333,
+          "property_id": 54,
+          "amenity_type_id": 19,
+          "amenity_type": {
+            "id": 19,
+            "name": "Playground",
+            "slug": "playground",
+            "icon": "https://picsum.photos/seed/playground/200",
+            "description": "Children's playground"
+          },
+          "created_at": "2026-01-26T03:35:39.000000Z",
+          "updated_at": "2026-01-26T03:35:39.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 5,
+        "average_rating": "4.40"
+      },
+      "created_at": "2026-01-26T03:35:39.000000Z",
+      "updated_at": "2026-01-26T03:35:42.000000Z"
+    },
+    {
+      "id": 87,
+      "landlord_id": 64,
+      "agent_id": null,
+      "property_type_id": 8,
+      "title": "Penthouse in Adelaide - Albert Street",
+      "description": "Modern Penthouse located in Adelaide. Features 3 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "89/40 Elizabeth Street",
+      "city": "Adelaide",
+      "state": "SA",
+      "postal_code": "4167",
+      "country": "Australia",
+      "latitude": "-35.09850000",
+      "longitude": "138.25070000",
+      "property_type": {
+        "id": 8,
+        "name": "Penthouse",
+        "slug": "penthouse",
+        "image": "https://picsum.photos/seed/penthouse/800/600"
+      },
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "parking_spaces": 2,
+      "land_size": null,
+      "building_size": "108.00",
+      "year_built": 1992,
+      "status": "active",
+      "subscription_tier": "basic",
+      "is_verified": true,
+      "has_ar_tour": false,
+      "rating": "3.38",
+      "rating_count": 8,
+      "landlord": {
+        "id": 64,
+        "name": "Multi Role 3",
+        "email": "multi3@example.com"
+      },
+      "agent": null,
+      "units": [
+        {
+          "id": 152,
+          "property_id": 87,
+          "unit_number": "Unit 1",
+          "unit_name": "Penthouse 1",
+          "rent_amount": "4520.00",
+          "currency": "AUD",
+          "status": "occupied",
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "size": "36.00",
+          "description": "Spacious Penthouse with modern fixtures",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 153,
+          "property_id": 87,
+          "unit_number": "Unit 2",
+          "unit_name": "Penthouse 2",
+          "rent_amount": "10330.00",
+          "currency": "AUD",
+          "status": "reserved",
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "size": "36.00",
+          "description": "Spacious Penthouse with modern fixtures",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 154,
+          "property_id": 87,
+          "unit_number": "Unit 3",
+          "unit_name": "Penthouse 3",
+          "rent_amount": "26100.00",
+          "currency": "AUD",
+          "status": "occupied",
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "size": "36.00",
+          "description": "Spacious Penthouse with modern fixtures",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        }
+      ],
+      "images": [
+        {
+          "id": 420,
+          "property_id": 87,
+          "image_path": "https://picsum.photos/1200/800?random=871",
+          "type": "image",
+          "order": 1,
+          "is_primary": true,
+          "caption": "Bathroom",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 421,
+          "property_id": 87,
+          "image_path": "https://picsum.photos/1200/800?random=872",
+          "type": "image",
+          "order": 2,
+          "is_primary": false,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 422,
+          "property_id": 87,
+          "image_path": "https://picsum.photos/1200/800?random=873",
+          "type": "image",
+          "order": 3,
+          "is_primary": false,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 423,
+          "property_id": 87,
+          "image_path": "https://picsum.photos/1200/800?random=874",
+          "type": "image",
+          "order": 4,
+          "is_primary": false,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 424,
+          "property_id": 87,
+          "image_path": "https://picsum.photos/1200/800?random=875",
+          "type": "image",
+          "order": 5,
+          "is_primary": false,
+          "caption": "Kitchen",
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        }
+      ],
+      "amenities": [
+        {
+          "id": 544,
+          "property_id": 87,
+          "amenity_type_id": 3,
+          "amenity_type": {
+            "id": 3,
+            "name": "Dishwasher",
+            "slug": "dishwasher",
+            "icon": "https://picsum.photos/seed/dishwasher/200",
+            "description": "Built-in dishwasher"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 545,
+          "property_id": 87,
+          "amenity_type_id": 5,
+          "amenity_type": {
+            "id": 5,
+            "name": "Built-in Wardrobes",
+            "slug": "built-in-wardrobes",
+            "icon": "https://picsum.photos/seed/wardrobes/200",
+            "description": "Built-in wardrobe storage"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 546,
+          "property_id": 87,
+          "amenity_type_id": 7,
+          "amenity_type": {
+            "id": 7,
+            "name": "Swimming Pool",
+            "slug": "swimming-pool",
+            "icon": "https://picsum.photos/seed/swimming-pool/200",
+            "description": "Swimming pool on premises"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 547,
+          "property_id": 87,
+          "amenity_type_id": 9,
+          "amenity_type": {
+            "id": 9,
+            "name": "Garden",
+            "slug": "garden",
+            "icon": "https://picsum.photos/seed/garden/200",
+            "description": "Private or communal garden"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 548,
+          "property_id": 87,
+          "amenity_type_id": 10,
+          "amenity_type": {
+            "id": 10,
+            "name": "BBQ Area",
+            "slug": "bbq-area",
+            "icon": "https://picsum.photos/seed/bbq/200",
+            "description": "Outdoor BBQ facilities"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        },
+        {
+          "id": 549,
+          "property_id": 87,
+          "amenity_type_id": 19,
+          "amenity_type": {
+            "id": 19,
+            "name": "Playground",
+            "slug": "playground",
+            "icon": "https://picsum.photos/seed/playground/200",
+            "description": "Children's playground"
+          },
+          "created_at": "2026-01-26T03:35:41.000000Z",
+          "updated_at": "2026-01-26T03:35:41.000000Z"
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 8,
+        "average_rating": "3.38"
+      },
+      "created_at": "2026-01-26T03:35:41.000000Z",
+      "updated_at": "2026-01-26T03:35:43.000000Z"
     }
   ],
   "errors": null

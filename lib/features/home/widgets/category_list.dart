@@ -15,7 +15,7 @@ class CategoryList extends StatelessWidget {
     HomeController homeController = Get.find();
     ThemeController themeController = Get.find();
     return SizedBox(
-      height: 44.h,
+      height: 64.h,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: categoryList.length,
@@ -29,7 +29,7 @@ class CategoryList extends StatelessWidget {
                 homeController.selectedCategory.value = index;
               },
               child: Container(
-                margin: EdgeInsets.only(right: 8.w),
+                margin: EdgeInsets.only(right: 8.w, top: 10.h, bottom: 10.h),
                 padding: EdgeInsets.only(
                   top: 2.h,
                   bottom: 2.h,
@@ -53,8 +53,8 @@ class CategoryList extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12.sp),
                   boxShadow: [
                     BoxShadow(
-                      offset: Offset(0, 4),
-                      blurRadius: 30,
+                      offset: Offset(0, 2),
+                      blurRadius: 2,
                       color: AppColors.darkPrimary.withValues(alpha: 0.10),
                     ),
                   ],

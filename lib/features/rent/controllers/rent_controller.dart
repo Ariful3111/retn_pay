@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
@@ -10,7 +9,7 @@ class RentController extends GetxController {
   double minRange = 0;
   double maxRange = 700000;
   RxString initialSort = 'sortBy'.obs;
-  List sortList = ['Low To High','High to Low'];
+  List sortList = ['Low To High', 'High to Low'];
   TextEditingController filterSearchController = TextEditingController();
   RxList<String> selectedFilterProperty = <String>[].obs;
   RxList<String> selectedAmenities = <String>[].obs;
@@ -25,13 +24,7 @@ class RentController extends GetxController {
   RxBool isShowSearch = true.obs;
   RxInt currentPage = 1.obs;
   int totalPage = 100;
-  List dialogImageList = [
-    ImagesPath.house,
-    ImagesPath.apartment,
-    ImagesPath.office,
-    ImagesPath.studio,
-    ImagesPath.vila,
-  ];
+
   RxInt dialogImageIndex = 0.obs;
   void dialogSelectedIndex(int index) {
     dialogImageIndex.value = index;
@@ -53,7 +46,7 @@ class RentController extends GetxController {
     }
 
     if (page <= 3) {
-      return [1, 2,3, '...', totalPage - 1, totalPage];
+      return [1, 2, 3, '...', totalPage - 1, totalPage];
     }
 
     if (page >= totalPage - 2) {
