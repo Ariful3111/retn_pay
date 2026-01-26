@@ -16,9 +16,18 @@ class PropertyDetailsInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    String size = propertyDetails.data!.buildingSize == '0.00'
-        ? '${propertyDetails.data!.landSize}sft'
-        : '${propertyDetails.data!.buildingSize}sft';
+    final data = propertyDetails.data;
+    if (data == null) {
+      return SizedBox();
+    }
+    final buildingSize = data.buildingSize ?? '';
+    final landSize = data.landSize ?? '';
+    final size = buildingSize == '0.00' || buildingSize.isEmpty
+        ? '${landSize}sft'
+        : '${buildingSize}sft';
+    final rentAmount = (data.units?.isNotEmpty ?? false)
+        ? (data.units!.first.rentAmount ?? '0')
+        : '0';
     return SizedBox(
       width: MediaQuery.widthOf(context),
       child: Column(
@@ -27,7 +36,7 @@ class PropertyDetailsInfo extends StatelessWidget {
         children: [
           CustomTextPrimary(
             text:
-                '${propertyDetails.data!.city}, ${propertyDetails.data!.country}',
+                '${data.city ?? ''}, ${data.country ?? ''}',
             fontSize: 24.sp,
           ),
           Row(
@@ -35,7 +44,7 @@ class PropertyDetailsInfo extends StatelessWidget {
               Image.asset(IconsPath.bed, height: 16.5.h, width: 16.5.w),
               SizedBox(width: 9.3.w),
               CustomTextSecondary(
-                text: 'Bed-${propertyDetails.data!.bedrooms}',
+                text: 'Bed-${data.bedrooms ?? 0}',
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.lightText,
@@ -50,7 +59,7 @@ class PropertyDetailsInfo extends StatelessWidget {
               ),
               SizedBox(width: 2.w),
               CustomTextSecondary(
-                text: 'Bath-${propertyDetails.data!.bathrooms}',
+                text: 'Bath-${data.bathrooms ?? 0}',
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.lightText,
@@ -88,7 +97,7 @@ class PropertyDetailsInfo extends StatelessWidget {
               Image.asset(IconsPath.availability, height: 12.h, width: 12.w),
               SizedBox(width: 2.w),
               CustomTextSecondary(
-                text: propertyDetails.data!.status ?? "",
+                text: data.status ?? "",
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: AppColors.lightText,
@@ -100,8 +109,7 @@ class PropertyDetailsInfo extends StatelessWidget {
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               CustomTextSpan(
-                title:
-                    '\$${propertyDetails.data!.units!.first.rentAmount ?? "0"}',
+                title: '\$$rentAmount',
                 spantext: '/week',
                 spanColor: isDark
                     ? AppColors.lightText
@@ -117,8 +125,7 @@ class PropertyDetailsInfo extends StatelessWidget {
               ),
               SizedBox(width: 3.w),
               CustomTextSpan(
-                title:
-                    '\$${propertyDetails.data!.units!.first.rentAmount ?? "0"}',
+                title: '\$$rentAmount',
                 spantext: '/week',
                 spanColor: isDark
                     ? AppColors.lightText
@@ -128,7 +135,7 @@ class PropertyDetailsInfo extends StatelessWidget {
               SizedBox(width: 10.w),
               CustomTextSpan(
                 title: 'Available From: ',
-                spantext: propertyDetails.data!.status!.capitalizeFirst ?? "",
+                spantext: data.status?.capitalizeFirst ?? "",
               ),
             ],
           ),

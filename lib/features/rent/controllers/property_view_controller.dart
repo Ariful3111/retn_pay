@@ -23,19 +23,24 @@ class PropertyViewController extends GetxController {
   }
 
   Future<void> getPropertyDetails({required String propertyID}) async {
-    String token = await storage.read(key: storage.tokenKey);
-    final response = await propertyDetailsRepository.execute(
-      token: token,
-      propertyID: propertyID,
-    );
-    isLoading.value = false;
-    response.fold(
-      (error) {
-        ErrorSnackbar.show(description: error.message);
-      },
-      (data) {
-        propertyDetails.value = data;
-      },
-    );
+    try {
+      isLoading.value = true;
+      String token = await storage.read(key: storage.tokenKey);
+      final response = await propertyDetailsRepository.execute(
+        token: token,
+        propertyID: propertyID,
+      );
+      response.fold(
+        (error) {
+          ErrorSnackbar.show(description: error.message);
+          propertyDetails.value = null;
+        },
+        (data) {
+          propertyDetails.value = data;
+        },
+      );
+    } finally {
+      isLoading.value = false;
+    }
   }
 }
