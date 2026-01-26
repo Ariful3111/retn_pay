@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
+import 'package:renter_pay/features/home/controllers/home_controller.dart';
 import 'package:renter_pay/features/home/controllers/property_category_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
@@ -14,6 +15,7 @@ class CategoryList extends GetView<PropertyCategoryController> {
   @override
   Widget build(BuildContext context) {
     ThemeController themeController = Get.find();
+    HomeController homeController = Get.find();
     return Obx(() {
       final selectedIndex = controller.selectedCategory.value;
       return controller.isLoading.value
@@ -31,8 +33,14 @@ class CategoryList extends GetView<PropertyCategoryController> {
                       controller.propertyCategories.value?.data?[index].name;
                   final isSelected = selectedIndex == index;
                   return GestureDetector(
-                    onTap: () {
-                      controller.selectedCategory.value = index;
+                    onTap: () async {
+                      if (isSelected) {
+                        controller.selectedCategory.value = -1;
+                        await homeController.getProperties();
+                      } else {
+                        controller.selectedCategory.value = index;
+                        await homeController.getProperties();
+                      }
                     },
                     child: Container(
                       margin: EdgeInsets.only(

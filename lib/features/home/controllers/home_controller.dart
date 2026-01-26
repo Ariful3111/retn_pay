@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
+import 'package:renter_pay/features/home/controllers/property_category_controller.dart';
 import 'package:renter_pay/features/home/models/properties_model.dart';
 import 'package:renter_pay/features/home/repositories/get_properties_repo.dart';
 import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
@@ -48,9 +49,13 @@ class HomeController extends GetxController {
     try {
       isLoading.value = true;
       String token = await storage.read(key: storage.tokenKey);
+      String? selectedType = Get.find<PropertyCategoryController>()
+          .getSelectedSlug();
+
       final response = await getPropertiesRepository.execute(
         token: token,
         search: search,
+        type: selectedType,
         priceMin: range.value.start.toInt().toString(),
         priceMax: range.value.end.toInt().toString(),
       );

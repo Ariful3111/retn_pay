@@ -26,6 +26,16 @@ class PropertyCategoryController extends GetxController {
     );
   }
 
+  String? getSelectedSlug() {
+    final categories = propertyCategories.value?.data;
+    if (selectedCategory.value >= 0 &&
+        categories != null &&
+        selectedCategory.value < categories.length) {
+      return categories[selectedCategory.value].slug;
+    }
+    return null;
+  }
+
   @override
   void onInit() {
     super.onInit();
