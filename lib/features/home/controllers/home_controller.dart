@@ -16,7 +16,6 @@ class HomeController extends GetxController {
   final storage = Get.find<StorageService>();
   RxBool isLoading = true.obs;
   TextEditingController searchController = TextEditingController();
-  RxInt selectedCategory = 0.obs;
   Rx<SfRangeValues> range = SfRangeValues(0, 700000).obs;
   double minRange = 0;
   double maxRange = 700000;
