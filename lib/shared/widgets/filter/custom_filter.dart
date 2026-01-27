@@ -19,10 +19,10 @@ class CustomFilter extends StatefulWidget {
   final TextEditingController textEditingController;
   final VoidCallback isSlider;
   final VoidCallback isSearch;
-  final List propertyItems;
+  final List<String> propertyItems;
   final RxList<String> selectedProperty;
   final Function(List<String>) onPropertyChange;
-  final List amenitiesItems;
+  final List<String> amenitiesItems;
   final RxList<String> selectedAmenities;
   final Function(List<String>) onAmenitiesChange;
   final VoidCallback onReset;

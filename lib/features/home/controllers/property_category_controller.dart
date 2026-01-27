@@ -11,6 +11,7 @@ class PropertyCategoryController extends GetxController {
   final propertyCategories = Rxn<PropertyCategoryModel>();
   RxBool isLoading = true.obs;
   RxInt selectedCategory = (-1).obs;
+  RxList<String> filterSelectedNames = <String>[].obs;
 
   Future<void> getPropertyCategories() async {
     final response = await propertyCategoryRepository.execute();
@@ -26,14 +27,41 @@ class PropertyCategoryController extends GetxController {
     );
   }
 
+  List<String> get filterPropertyNames =>
+      propertyCategories.value?.data
+          ?.map((c) => c.name)
+          .whereType<String>()
+          .where((name) => name.trim().isNotEmpty)
+          .toList() ??
+      [];
+
+  void onFilterPropertyChanged(List<String> names) {
+    filterSelectedNames.assignAll(names);
+  }
+
+  String? getFilterTypeParam() {
+    final categories = propertyCategories.value?.data;
+    if (categories != null && filterSelectedNames.isNotEmpty) {
+      final slugs = categories
+          .where((c) => filterSelectedNames.contains(c.name))
+          .map((c) => c.slug)
+          .whereType<String>()
+          .where((s) => s.isNotEmpty)
+          .toList();
+      if (slugs.isNotEmpty) {
+        return slugs.join(',');
+      }
+    }
+    return getSelectedSlug();
+  }
+
   String? getSelectedSlug() {
     final categories = propertyCategories.value?.data;
-    if (selectedCategory.value >= 0 &&
-        categories != null &&
-        selectedCategory.value < categories.length) {
-      return categories[selectedCategory.value].slug;
+    final index = selectedCategory.value;
+    if (categories == null || index < 0 || index >= categories.length) {
+      return null;
     }
-    return null;
+    return categories[index].slug;
   }
 
   @override

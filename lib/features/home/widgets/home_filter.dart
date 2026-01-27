@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/features/home/controllers/home_controller.dart';
 import 'package:renter_pay/features/home/controllers/property_address_controller.dart';
+import 'package:renter_pay/features/home/controllers/property_category_controller.dart';
 import 'package:renter_pay/shared/widgets/filter/custom_filter.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
@@ -12,6 +13,7 @@ class HomeFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeController homeController = Get.find();
+    PropertyCategoryController categoryController = Get.find();
     return Align(
       alignment: Alignment(0.8, -0.1),
       child: ConstrainedBox(
@@ -40,9 +42,9 @@ class HomeFilter extends StatelessWidget {
               homeController.isShowSearch.value =
                   !homeController.isShowSearch.value;
             },
-            propertyItems: ['Apartment', 'Studio', 'House', 'Villa', 'Office'],
-            selectedProperty: homeController.selectedFilterProperty,
-            onPropertyChange: (value) {},
+            propertyItems: categoryController.filterPropertyNames,
+            selectedProperty: categoryController.filterSelectedNames,
+            onPropertyChange: categoryController.onFilterPropertyChanged,
             amenitiesItems: [
               'Parking',
               'Pet-friendly',

@@ -21,7 +21,6 @@ class HomeController extends GetxController {
   Rx<SfRangeValues> range = SfRangeValues(0, 700000).obs;
   double minRange = 0;
   double maxRange = 700000;
-  RxList<String> selectedFilterProperty = <String>[].obs;
   RxList<String> selectedAmenities = <String>[].obs;
   RxBool isShowPriceRange = true.obs;
   RxBool isShowAmenities = false.obs;
@@ -50,7 +49,7 @@ class HomeController extends GetxController {
       isLoading.value = true;
       String token = await storage.read(key: storage.tokenKey);
       String? selectedType = Get.find<PropertyCategoryController>()
-          .getSelectedSlug();
+          .getFilterTypeParam();
       final (city, state, postalCode) = Get.find<PropertyAddressController>()
           .extractFilterInfos();
 
