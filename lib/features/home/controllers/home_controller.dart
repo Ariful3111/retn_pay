@@ -5,6 +5,7 @@ import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:renter_pay/features/home/controllers/property_address_controller.dart';
 import 'package:renter_pay/features/home/controllers/property_category_controller.dart';
+import 'package:renter_pay/features/home/controllers/property_amenities_controller.dart';
 import 'package:renter_pay/features/home/models/properties_model.dart';
 import 'package:renter_pay/features/home/repositories/get_properties_repo.dart';
 import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
@@ -21,7 +22,6 @@ class HomeController extends GetxController {
   Rx<SfRangeValues> range = SfRangeValues(0, 700000).obs;
   double minRange = 0;
   double maxRange = 700000;
-  RxList<String> selectedAmenities = <String>[].obs;
   RxBool isShowPriceRange = true.obs;
   RxBool isShowAmenities = false.obs;
   RxBool isShowProperty = false.obs;
@@ -50,6 +50,8 @@ class HomeController extends GetxController {
       String token = await storage.read(key: storage.tokenKey);
       String? selectedType = Get.find<PropertyCategoryController>()
           .getFilterTypeParam();
+      String? selectedAmenities = Get.find<PropertyAmenitiesController>()
+          .getAmenitiesParam();
       final (city, state, postalCode) = Get.find<PropertyAddressController>()
           .extractFilterInfos();
 
@@ -57,6 +59,7 @@ class HomeController extends GetxController {
         token: token,
         search: search,
         type: selectedType,
+        amenities: selectedAmenities,
         priceMin: range.value.start.toInt().toString(),
         priceMax: range.value.end.toInt().toString(),
         city: city,
