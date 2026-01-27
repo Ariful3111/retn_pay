@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/home/controllers/home_controller.dart';
@@ -74,7 +75,7 @@ class HomeSearch extends StatelessWidget {
             showDialog(
               context: context,
               builder: (context) {
-                return HomeFilter();
+                return HomeFilter(propertyAddressController: Get.find());
               },
             );
           },

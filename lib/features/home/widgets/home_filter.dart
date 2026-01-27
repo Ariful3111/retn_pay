@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/features/home/controllers/home_controller.dart';
+import 'package:renter_pay/features/home/controllers/property_address_controller.dart';
 import 'package:renter_pay/shared/widgets/filter/custom_filter.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class HomeFilter extends StatelessWidget {
-  const HomeFilter({super.key});
+  final PropertyAddressController propertyAddressController;
+  const HomeFilter({super.key, required this.propertyAddressController});
   @override
   Widget build(BuildContext context) {
     HomeController homeController = Get.find();
@@ -29,7 +31,7 @@ class HomeFilter extends StatelessWidget {
             onSliderChanged: (SfRangeValues value) {
               homeController.range.value = value;
             },
-            textEditingController: homeController.filterSearchController,
+            textEditingController: propertyAddressController.addressController,
             isSlider: () {
               homeController.isShowPriceRange.value =
                   !homeController.isShowPriceRange.value;
