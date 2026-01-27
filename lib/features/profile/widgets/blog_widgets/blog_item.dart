@@ -28,7 +28,10 @@ class BlogItem extends GetWidget<BlogController> {
                 final blog = controller.blogs.value?.data?[index];
                 return GestureDetector(
                   onTap: () {
-                    Get.toNamed(AppRoutes.blogDetails);
+                    Get.toNamed(
+                      AppRoutes.blogDetails,
+                      arguments: blog.slug.toString(),
+                    );
                   },
                   child: Container(
                     margin: EdgeInsets.only(bottom: 14.44.h),
