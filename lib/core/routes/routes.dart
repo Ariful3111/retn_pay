@@ -66,7 +66,7 @@ import 'package:renter_pay/features/profile/bindings/support_bindings.dart';
 import 'package:renter_pay/features/profile/views/blog_view.dart';
 import 'package:renter_pay/features/profile/views/contact_us.dart';
 import 'package:renter_pay/features/profile/views/profile_edit.dart';
-import 'package:renter_pay/features/profile/widgets/blog_widgets/blog_details.dart';
+import 'package:renter_pay/features/profile/views/blog_details.dart';
 import 'package:renter_pay/features/profile/views/support_view.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/subscription_plan.dart';
 import 'package:renter_pay/features/profile/bindings/profile_bindings.dart';

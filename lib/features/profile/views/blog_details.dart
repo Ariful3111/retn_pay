@@ -12,10 +12,14 @@ class BlogDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        bool isDark = Theme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
       padding: EdgeInsets.only(top: 20.h),
-      gradient:isDark? LinearGradient(colors: [AppColors.darkPrimary,AppColors.darkPrimary]):AppColors.userBackground.withOpacity(0.5),
+      gradient: isDark
+          ? LinearGradient(
+              colors: [AppColors.darkPrimary, AppColors.darkPrimary],
+            )
+          : AppColors.userBackground.withOpacity(0.5),
       child: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -32,9 +36,9 @@ class BlogDetails extends StatelessWidget {
             padding: EdgeInsetsGeometry.symmetric(horizontal: 20.w),
             sliver: SliverList(
               delegate: SliverChildListDelegate([
-              BlogDetailsTop(),
-              SizedBox(height: 20.h,),
-              BlogDetailsInfo(),
+                BlogDetailsTop(),
+                SizedBox(height: 20.h),
+                BlogDetailsInfo(),
               ]),
             ),
           ),
