@@ -1,22 +1,26 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:renter_pay/core/data/local/theme_service.dart';
+import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  TestWidgetsFlutterBinding.ensureInitialized();
+
+  setUpAll(() async {
+    await GetStorage.init();
+    Get.put(ThemeService());
+    Get.put(ThemeController());
+  });
+
+  tearDownAll(() {
+    Get.reset();
+  });
+
+  testWidgets('App builds smoke test', (WidgetTester tester) async {
     await tester.pumpWidget(const MyApp(token: ''));
-
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
-
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    await tester.pumpAndSettle();
+    expect(find.byType(GetMaterialApp), findsOneWidget);
   });
 }

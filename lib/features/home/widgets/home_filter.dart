@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/features/home/controllers/home_controller.dart';
+import 'package:renter_pay/features/home/controllers/property_address_controller.dart';
+import 'package:renter_pay/features/home/controllers/property_category_controller.dart';
+import 'package:renter_pay/features/home/controllers/property_amenities_controller.dart';
 import 'package:renter_pay/shared/widgets/filter/custom_filter.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 class HomeFilter extends StatelessWidget {
-  const HomeFilter({super.key});
+  final PropertyAddressController propertyAddressController;
+  const HomeFilter({super.key, required this.propertyAddressController});
   @override
   Widget build(BuildContext context) {
     HomeController homeController = Get.find();
+    PropertyCategoryController categoryController = Get.find();
+    PropertyAmenitiesController amenitiesController = Get.find();
     return Align(
       alignment: Alignment(0.8, -0.1),
       child: ConstrainedBox(
@@ -29,7 +35,7 @@ class HomeFilter extends StatelessWidget {
             onSliderChanged: (SfRangeValues value) {
               homeController.range.value = value;
             },
-            textEditingController: homeController.filterSearchController,
+            textEditingController: propertyAddressController.addressController,
             isSlider: () {
               homeController.isShowPriceRange.value =
                   !homeController.isShowPriceRange.value;
@@ -38,19 +44,12 @@ class HomeFilter extends StatelessWidget {
               homeController.isShowSearch.value =
                   !homeController.isShowSearch.value;
             },
-            propertyItems: ['Apartment', 'Studio', 'House', 'Villa', 'Office'],
-            selectedProperty: homeController.selectedFilterProperty,
-            onPropertyChange: (value) {},
-            amenitiesItems: [
-              'Parking',
-              'Pet-friendly',
-              'Private pool',
-              'Gym/Fitness Center',
-              'Garden/Outdoor space',
-              '24/7 Security',
-            ],
-            selectedAmenities: homeController.selectedAmenities,
-            onAmenitiesChange: (value) {},
+            propertyItems: categoryController.filterPropertyNames,
+            selectedProperty: categoryController.filterSelectedNames,
+            onPropertyChange: categoryController.onFilterPropertyChanged,
+            amenitiesItems: amenitiesController.filterAmenitiesNames,
+            selectedAmenities: amenitiesController.filterSelectedNames,
+            onAmenitiesChange: amenitiesController.onFilterAmenitiesChanged,
             onReset: () {},
             isProperty: () {
               homeController.isShowProperty.value =

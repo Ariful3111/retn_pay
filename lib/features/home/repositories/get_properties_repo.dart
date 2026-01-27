@@ -12,6 +12,7 @@ class GetPropertiesRepository {
     String? perPage,
     String? status,
     String? type,
+    String? amenities,
     String? city,
     String? state,
     String? postalCode,
@@ -43,6 +44,7 @@ class GetPropertiesRepository {
     addParam(key: "per_page", value: perPage);
     addParam(key: "status", value: status);
     addParam(key: "type", value: type);
+    addParam(key: "amenities", value: amenities);
     addParam(key: "city", value: city);
     addParam(key: "state", value: state);
     addParam(key: "postal_code", value: postalCode);

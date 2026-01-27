@@ -3,6 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
+import 'package:renter_pay/features/home/controllers/property_address_controller.dart';
+import 'package:renter_pay/features/home/controllers/property_category_controller.dart';
+import 'package:renter_pay/features/home/controllers/property_amenities_controller.dart';
 import 'package:renter_pay/features/home/models/properties_model.dart';
 import 'package:renter_pay/features/home/repositories/get_properties_repo.dart';
 import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
@@ -16,13 +19,9 @@ class HomeController extends GetxController {
   final storage = Get.find<StorageService>();
   RxBool isLoading = true.obs;
   TextEditingController searchController = TextEditingController();
-  RxInt selectedCategory = 0.obs;
   Rx<SfRangeValues> range = SfRangeValues(0, 700000).obs;
   double minRange = 0;
   double maxRange = 700000;
-  TextEditingController filterSearchController = TextEditingController();
-  RxList<String> selectedFilterProperty = <String>[].obs;
-  RxList<String> selectedAmenities = <String>[].obs;
   RxBool isShowPriceRange = true.obs;
   RxBool isShowAmenities = false.obs;
   RxBool isShowProperty = false.obs;
@@ -49,11 +48,23 @@ class HomeController extends GetxController {
     try {
       isLoading.value = true;
       String token = await storage.read(key: storage.tokenKey);
+      String? selectedType = Get.find<PropertyCategoryController>()
+          .getFilterTypeParam();
+      String? selectedAmenities = Get.find<PropertyAmenitiesController>()
+          .getAmenitiesParam();
+      final (city, state, postalCode) = Get.find<PropertyAddressController>()
+          .extractFilterInfos();
+
       final response = await getPropertiesRepository.execute(
         token: token,
         search: search,
+        type: selectedType,
+        amenities: selectedAmenities,
         priceMin: range.value.start.toInt().toString(),
         priceMax: range.value.end.toInt().toString(),
+        city: city,
+        state: state,
+        postalCode: postalCode,
       );
       response.fold(
         (error) {
@@ -70,25 +81,35 @@ class HomeController extends GetxController {
     }
   }
 
-  List<Property> get houseProperties => properties.value!.data!
-      .where((element) => element.propertyType?.slug == "house")
-      .toList();
+  List<Property> get houseProperties =>
+      properties.value?.data
+          ?.where((element) => element.propertyType?.slug == "house")
+          .toList() ??
+      [];
 
-  List<Property> get apartmentProperties => properties.value!.data!
-      .where((element) => element.propertyType?.slug == "apartment")
-      .toList();
+  List<Property> get apartmentProperties =>
+      properties.value?.data
+          ?.where((element) => element.propertyType?.slug == "apartment")
+          .toList() ??
+      [];
 
-  List<Property> get vilaProperties => properties.value!.data!
-      .where((element) => element.propertyType?.slug == "villa")
-      .toList();
+  List<Property> get vilaProperties =>
+      properties.value?.data
+          ?.where((element) => element.propertyType?.slug == "villa")
+          .toList() ??
+      [];
 
-  List<Property> get officeProperties => properties.value!.data!
-      .where((element) => element.propertyType?.slug == "office")
-      .toList();
+  List<Property> get officeProperties =>
+      properties.value?.data
+          ?.where((element) => element.propertyType?.slug == "office")
+          .toList() ??
+      [];
 
-  List<Property> get studioProperties => properties.value!.data!
-      .where((element) => element.propertyType?.slug == "studio")
-      .toList();
+  List<Property> get studioProperties =>
+      properties.value?.data
+          ?.where((element) => element.propertyType?.slug == "studio")
+          .toList() ??
+      [];
 
   @override
   void onClose() {

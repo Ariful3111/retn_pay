@@ -13,14 +13,16 @@ class PropertyDetailsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    List detailsList = propertyDetails.data!.amenities!
+    final detailsList = (propertyDetails.data?.amenities ?? [])
         .map((element) => element.description)
+        .whereType<String>()
+        .where((value) => value.isNotEmpty)
         .toList();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomTextSecondary(
-          text: propertyDetails.data!.description ?? '',
+          text: propertyDetails.data?.description ?? '',
           color: isDark
               ? AppColors.darkSecondaryText.withValues(alpha: 0.5)
               : AppColors.darkPrimary.withValues(alpha: 0.5),

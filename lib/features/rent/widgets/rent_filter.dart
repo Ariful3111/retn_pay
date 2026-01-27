@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/features/home/controllers/property_address_controller.dart';
 import 'package:renter_pay/features/rent/controllers/rent_controller.dart';
 import 'package:renter_pay/shared/widgets/filter/custom_filter.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
@@ -11,6 +12,10 @@ class RentFilter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
         RentController rentController = Get.find();
+        final propertyAddressController =
+            Get.isRegistered<PropertyAddressController>()
+                ? Get.find<PropertyAddressController>()
+                : null;
     return Align(
       alignment: Alignment(0.8, -0.7),
       child: ConstrainedBox(
@@ -30,7 +35,8 @@ class RentFilter extends StatelessWidget {
             onSliderChanged: (SfRangeValues value) {
               rentController.range.value = value;
             },
-            textEditingController: rentController.filterSearchController,
+            textEditingController: propertyAddressController?.addressController ??
+                rentController.filterSearchController,
             isSlider: () {
               rentController.isShowPriceRange.value =!rentController.isShowPriceRange.value;
             },

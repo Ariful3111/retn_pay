@@ -19,6 +19,7 @@ class GetNetwork {
           response.statusCode == 202) {
         return Right(fromJson(jsonDecode(response.body)));
       }
+
       try {
         return left(
           ErrorModel.fromHttp(
@@ -31,7 +32,7 @@ class GetNetwork {
         return left(ErrorModel.fromUnknown());
       }
     } catch (error) {
-      return left(error as ErrorModel);
+      return left(ErrorModel.fromUnknown());
     }
   }
 }
