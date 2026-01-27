@@ -5,7 +5,7 @@ import 'package:renter_pay/shared/widgets/custom_check_box.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class FilterCheckbox extends StatelessWidget {
-  final List propertyItems;
+  final List<String> propertyItems;
   final RxList<String> selectedProperty;
   final Function(List<String>) onChange;
   const FilterCheckbox({
@@ -28,8 +28,10 @@ class FilterCheckbox extends StatelessWidget {
           children: [
             Obx(() {
               final isChecked = selectedProperty.contains(title);
-              return CustomCheckBox(isChecked: isChecked, onChange: (value) {
-                  if (value == true) {
+              return CustomCheckBox(
+                isChecked: isChecked,
+                onChange: (checked) {
+                  if (checked == true) {
                     if (!selectedProperty.contains(title)) {
                       selectedProperty.add(title);
                     }
@@ -37,10 +39,11 @@ class FilterCheckbox extends StatelessWidget {
                     selectedProperty.remove(title);
                   }
                   onChange(selectedProperty.toList());
-                });
+                },
+              );
             }),
             CustomTextPrimary(
-              text: propertyItems[index],
+              text: title,
               fontSize: 12.27.sp,
               fontWeight: FontWeight.w500,
             ),

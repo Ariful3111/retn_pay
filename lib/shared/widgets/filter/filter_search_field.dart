@@ -32,6 +32,7 @@ class FilterSearchField extends StatelessWidget {
           labelText: 'Search Address',
           floatingLabelBehavior: FloatingLabelBehavior.never,
           isFilled: true,
+          maxLines: 1,
           enableBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(24.54.sp),
             borderSide: BorderSide(

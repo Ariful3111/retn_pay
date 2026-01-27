@@ -11,6 +11,12 @@ class LocationInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final data = propertyDetails.data;
+    if (data == null) {
+      return SizedBox();
+    }
+    final lat = double.tryParse(data.latitude ?? '0') ?? 0;
+    final lng = double.tryParse(data.longitude ?? '0') ?? 0;
     return Container(
       height: 290.h,
       width: MediaQuery.widthOf(context),
@@ -21,8 +27,8 @@ class LocationInfo extends StatelessWidget {
       child: FlutterMap(
         options: MapOptions(
           initialCenter: LatLng(
-            double.tryParse(propertyDetails.data!.latitude ?? '0') ?? 0,
-            double.tryParse(propertyDetails.data!.longitude ?? '0') ?? 0,
+            lat,
+            lng,
           ),
           initialZoom: 13,
           interactionOptions: InteractionOptions(flags: InteractiveFlag.all),
@@ -36,8 +42,8 @@ class LocationInfo extends StatelessWidget {
             markers: [
               Marker(
                 point: LatLng(
-                  double.tryParse(propertyDetails.data!.latitude ?? '0') ?? 0,
-                  double.tryParse(propertyDetails.data!.longitude ?? '0') ?? 0,
+                  lat,
+                  lng,
                 ),
                 child: Icon(
                   Icons.location_on_outlined,

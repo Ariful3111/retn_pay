@@ -23,6 +23,8 @@ class PropertyView extends GetView<PropertyViewController> {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Obx(() {
+      final details = controller.propertyDetails.value;
+      final data = details?.data;
       return CustomContainer(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         gradient: isDark
@@ -57,24 +59,24 @@ class PropertyView extends GetView<PropertyViewController> {
                           ),
                         ),
                       ),
-                      CustomTextSecondary(
-                        text:
-                            controller.propertyDetails.value!.data!.title ?? '',
-                        color: isDark
-                            ? AppColors.darkAppBar
-                            : AppColors.primaryTextColor,
-                        fontSize: 20.sp,
+                      Expanded(
+                        child: CustomTextSecondary(
+                          text: data?.title ?? '',
+                          color: isDark
+                              ? AppColors.darkAppBar
+                              : AppColors.primaryTextColor,
+                          fontSize: 20.sp,
+                          maxLines: 1,
+                          textOverflow: TextOverflow.ellipsis,
+                          softWrap: false,
+                        ),
                       ),
                     ],
                   ),
                   SizedBox(height: 24.h),
-                  RentDetailsImage(
-                    propertyDetails: controller.propertyDetails.value!,
-                  ),
+                  RentDetailsImage(propertyDetails: details!),
                   SizedBox(height: 16.h),
-                  PropertyDetailsInfo(
-                    propertyDetails: controller.propertyDetails.value!,
-                  ),
+                  PropertyDetailsInfo(propertyDetails: details),
                   SizedBox(height: 16.h),
                   InspectionRequestButton(),
                   SizedBox(height: 20.h),
@@ -84,9 +86,7 @@ class PropertyView extends GetView<PropertyViewController> {
                     fontWeight: FontWeight.w600,
                   ),
                   SizedBox(height: 8.h),
-                  PropertyDetailsList(
-                    propertyDetails: controller.propertyDetails.value!,
-                  ),
+                  PropertyDetailsList(propertyDetails: details),
                   SizedBox(height: 20.h),
                   CustomTextSecondary(
                     text: 'Key Features & Amenities',
@@ -94,9 +94,7 @@ class PropertyView extends GetView<PropertyViewController> {
                     fontWeight: FontWeight.w600,
                   ),
                   SizedBox(height: 16.h),
-                  PropertyKeyFeatures(
-                    propertyDetails: controller.propertyDetails.value!,
-                  ),
+                  PropertyKeyFeatures(propertyDetails: details),
                   SizedBox(height: 24.h),
                   CustomTextSecondary(
                     text: 'Location Information',
@@ -106,9 +104,7 @@ class PropertyView extends GetView<PropertyViewController> {
                         : AppColors.primaryTextColor,
                   ),
                   SizedBox(height: 8.h),
-                  LocationInfo(
-                    propertyDetails: controller.propertyDetails.value!,
-                  ),
+                  LocationInfo(propertyDetails: details),
                   SizedBox(height: 24.h),
                   PropertyCustomerReview(),
                   SizedBox(height: 24.h),

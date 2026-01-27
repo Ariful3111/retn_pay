@@ -12,6 +12,11 @@ class RentDetailsImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final images = propertyDetails.data?.images ?? const <Images>[];
+    final itemCount = images.length > 4 ? 4 : images.length;
+    if (itemCount == 0) {
+      return SizedBox();
+    }
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -21,9 +26,7 @@ class RentDetailsImage extends StatelessWidget {
       ),
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
-      itemCount: (propertyDetails.data!.images?.length ?? 0) > 4
-          ? 4
-          : propertyDetails.data!.images?.length ?? 0,
+      itemCount: itemCount,
       itemBuilder: (BuildContext context, int index) {
         return Container(
           decoration: BoxDecoration(
@@ -77,7 +80,7 @@ class RentDetailsImage extends StatelessWidget {
                   child: Container(
                     margin: EdgeInsets.only(left: 9.59.w, bottom: 8.75.h),
                     child: CustomTextSecondary(
-                      text: propertyDetails.data!.address ?? '',
+                      text: propertyDetails.data?.address ?? '',
                       fontSize: 8.38,
                       fontWeight: FontWeight.w400,
                       color: AppColors.whiteColor,

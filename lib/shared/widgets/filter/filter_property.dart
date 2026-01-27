@@ -6,7 +6,7 @@ import 'package:renter_pay/shared/widgets/filter/filter_checkbox.dart';
 import 'package:renter_pay/shared/widgets/filter/filter_titles.dart';
 
 class FilterProperty extends StatelessWidget {
-  final List propertyItems;
+  final List<String> propertyItems;
   final RxList<String> selectedProperty;
   final Function(List<String>) onChange;
   final VoidCallback onTap;

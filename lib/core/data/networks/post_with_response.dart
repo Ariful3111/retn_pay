@@ -36,7 +36,7 @@ class PostWithResponse {
         return left(ErrorModel.fromUnknown());
       }
     } catch (error) {
-      return left(error as ErrorModel);
+      return left(ErrorModel.fromUnknown());
     }
   }
 }

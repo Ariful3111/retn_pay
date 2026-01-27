@@ -43,6 +43,8 @@ class Property {
   int? id;
   int? landlordId;
   int? agentId;
+  int? propertyTypeId;
+  PropertyType? propertyType;
   String? title;
   String? description;
   String? address;
@@ -52,7 +54,6 @@ class Property {
   String? country;
   String? latitude;
   String? longitude;
-  String? type;
   int? bedrooms;
   int? bathrooms;
   int? parkingSpaces;
@@ -76,6 +77,8 @@ class Property {
     this.id,
     this.landlordId,
     this.agentId,
+    this.propertyTypeId,
+    this.propertyType,
     this.title,
     this.description,
     this.address,
@@ -85,7 +88,6 @@ class Property {
     this.country,
     this.latitude,
     this.longitude,
-    this.type,
     this.bedrooms,
     this.bathrooms,
     this.parkingSpaces,
@@ -110,6 +112,10 @@ class Property {
     id = json['id'];
     landlordId = json['landlord_id'];
     agentId = json['agent_id'];
+    propertyTypeId = json['property_type_id'];
+    propertyType = json['property_type'] != null
+        ? PropertyType.fromJson(json['property_type'])
+        : null;
     title = json['title'];
     description = json['description'];
     address = json['address'];
@@ -119,7 +125,6 @@ class Property {
     country = json['country'];
     latitude = json['latitude'];
     longitude = json['longitude'];
-    type = json['type'];
     bedrooms = json['bedrooms'];
     bathrooms = json['bathrooms'];
     parkingSpaces = json['parking_spaces'];
@@ -157,6 +162,10 @@ class Property {
     data['id'] = id;
     data['landlord_id'] = landlordId;
     data['agent_id'] = agentId;
+    data['property_type_id'] = propertyTypeId;
+    if (propertyType != null) {
+      data['property_type'] = propertyType!.toJson();
+    }
     data['title'] = title;
     data['description'] = description;
     data['address'] = address;
@@ -166,7 +175,6 @@ class Property {
     data['country'] = country;
     data['latitude'] = latitude;
     data['longitude'] = longitude;
-    data['type'] = type;
     data['bedrooms'] = bedrooms;
     data['bathrooms'] = bathrooms;
     data['parking_spaces'] = parkingSpaces;
@@ -193,6 +201,31 @@ class Property {
     }
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
+    return data;
+  }
+}
+
+class PropertyType {
+  int? id;
+  String? name;
+  String? slug;
+  String? image;
+
+  PropertyType({this.id, this.name, this.slug, this.image});
+
+  PropertyType.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    slug = json['slug'];
+    image = json['image'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['slug'] = slug;
+    data['image'] = image;
     return data;
   }
 }
