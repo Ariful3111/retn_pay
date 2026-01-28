@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -9,12 +12,27 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUpAll(() async {
+    const channel = MethodChannel('plugins.flutter.io/path_provider');
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, (call) async {
+      switch (call.method) {
+        case 'getApplicationDocumentsDirectory':
+        case 'getApplicationSupportDirectory':
+        case 'getTemporaryDirectory':
+          return Directory.systemTemp.createTempSync().path;
+      }
+      return null;
+    });
+
     await GetStorage.init();
     Get.put(ThemeService());
     Get.put(ThemeController());
   });
 
   tearDownAll(() {
+    const channel = MethodChannel('plugins.flutter.io/path_provider');
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, null);
     Get.reset();
   });
 

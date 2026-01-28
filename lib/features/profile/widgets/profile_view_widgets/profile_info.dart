@@ -18,7 +18,7 @@ class ProfileInfo extends StatelessWidget {
     return Obx(() {
       String contact = controller.profileData.value?.data?.email ?? '';
       String profilePic =
-          controller.profileData.value?.data?.avatar.toString() ?? '';
+          controller.profileData.value?.data?.image.toString() ?? '';
       if (contact.isEmpty || contact == 'null') {
         contact = controller.profileData.value?.data?.phone ?? '';
       }

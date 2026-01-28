@@ -1,23 +1,28 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/core/constants/images_path.dart';
-import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/utils/image_picker.dart';
+import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_edit_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class ProfileEditInfo extends StatelessWidget {
-  const ProfileEditInfo({super.key});
+  final ProfileEditController profileEditController;
+  final ProfileController profileController;
+  const ProfileEditInfo({
+    super.key,
+    required this.profileEditController,
+    required this.profileController,
+  });
 
   @override
   Widget build(BuildContext context) {
-    ProfileEditController profileEditController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: EdgeInsets.only(
@@ -56,10 +61,14 @@ class ProfileEditInfo extends StatelessWidget {
                           ? FileImage(
                               File(profileEditController.upload.value!.path),
                             )
-                          : AssetImage(ImagesPath.profile),
+                          : CachedNetworkImageProvider(
+                              profileController.profileData.value?.data?.image
+                                      .toString() ??
+                                  '',
+                            ),
                       fit: BoxFit.fill,
                     ),
-                    shape: BoxShape.circle
+                    shape: BoxShape.circle,
                   ),
                   child: Align(
                     alignment: Alignment(0.1, 1.5),
@@ -67,7 +76,8 @@ class ProfileEditInfo extends StatelessWidget {
                       onTap: () {
                         UploadImage.sendImage(
                           picker: profileEditController.picker,
-                          pickImage: profileEditController.upload, context: context,
+                          pickImage: profileEditController.upload,
+                          context: context,
                         );
                       },
                       child: Container(
@@ -75,14 +85,16 @@ class ProfileEditInfo extends StatelessWidget {
                         width: 30.w,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.r),
-                          color:isDark?AppColors.darkSecondary: AppColors.whiteColor,
+                          color: isDark
+                              ? AppColors.darkSecondary
+                              : AppColors.whiteColor,
                         ),
                         child: Center(
                           child: Image.asset(
                             IconsPath.upload,
                             height: 20.h,
                             width: 20.w,
-                            color: isDark?AppColors.darkAppBar:null,
+                            color: isDark ? AppColors.darkAppBar : null,
                           ),
                         ),
                       ),
@@ -95,13 +107,20 @@ class ProfileEditInfo extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomTextPrimary(
-                    text: 'Ariful Islam',
+                    text: profileController.profileData.value?.data?.name ?? '',
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                   ),
                   SizedBox(height: 8.h),
                   CustomTextPrimary(
-                    text: profileEditController.userType[userIndex],
+                    text:
+                        profileController
+                            .profileData
+                            .value
+                            ?.data
+                            ?.roles
+                            ?.first ??
+                        '',
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                   ),

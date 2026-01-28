@@ -6,7 +6,8 @@ import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.da
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class ProfileSaveButton extends StatelessWidget {
-  const ProfileSaveButton({super.key});
+  final VoidCallback? onPressed;
+  const ProfileSaveButton({super.key, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +16,7 @@ class ProfileSaveButton extends StatelessWidget {
       height: 40.h,
       width: 102.w,
       borderRadius: BorderRadius.circular(8.r),
+      onPressed: onPressed ?? () {},
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -22,7 +24,6 @@ class ProfileSaveButton extends StatelessWidget {
           CustomTextSecondary(text: 'Save', color: AppColors.whiteColor),
         ],
       ),
-      onPressed: () {},
     );
   }
 }
