@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/profile/controllers/profile_edit_controller.dart';
+import 'package:renter_pay/features/profile/controllers/preference_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class ProfileEditCheckbox extends StatelessWidget {
@@ -10,23 +10,23 @@ class ProfileEditCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ProfileEditController profileEditController = Get.find();
+    PreferenceController preferenceController = Get.find();
     return Obx(() {
       return Row(
         children: [
           checkBox(
-            value: profileEditController.isPets.value,
+            value: preferenceController.isPets.value,
             onChanged: (value) {
-              profileEditController.isPets.value = value!;
+              preferenceController.isPets.value = value!;
             },
             gradient: AppColors.checkBox,
             borderRadius: 5.r, title: 'Pets',
           ),
           SizedBox(width: 51.w,),
           checkBox(
-            value: profileEditController.isParking.value,
+            value: preferenceController.isParking.value,
             onChanged: (value) {
-              profileEditController.isParking.value = value!;
+              preferenceController.isParking.value = value!;
             },
             gradient: AppColors.checkBox,
             borderRadius: 5.r, title: 'Parking',
