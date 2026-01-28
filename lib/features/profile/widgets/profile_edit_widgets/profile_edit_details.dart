@@ -158,6 +158,10 @@ class ProfileEditDetails extends StatelessWidget {
                 ],
               ),
             ),
+            if (userIndex == 1 || userIndex == 2 || userIndex == 3)
+              SizedBox(height: 16.h),
+            if (userIndex == 1 || userIndex == 2 || userIndex == 3)
+              ProfileSaveButton(),
           ],
         ),
       ),
