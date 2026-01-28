@@ -36,7 +36,7 @@ class DashboardController extends GetxController {
     {
       "icon": IconsPath.dashboardRent,
       "title": 'Total Rent Paid',
-      'allowedUser': [0,1,2],
+      'allowedUser': [0, 1, 2],
       "value": '\$1200',
     },
     {
@@ -48,19 +48,19 @@ class DashboardController extends GetxController {
     {
       "icon": IconsPath.dashboardInspection,
       "title": 'Inspection Request',
-      'allowedUser': [0,1,2,3],
+      'allowedUser': [0, 1, 2, 3],
       "value": '3',
     },
     {
       "icon": IconsPath.dashboardApplication,
       "title": 'Applications Submitted',
-      'allowedUser': [0,1,2,3],
+      'allowedUser': [0, 1, 2, 3],
       "value": '4',
     },
     {
       "icon": IconsPath.dashboardRepair,
       "title": 'Repair Request',
-      'allowedUser': [0,1,2,3],
+      'allowedUser': [0, 1, 2, 3],
       "value": '3',
     },
   ];
@@ -69,7 +69,9 @@ class DashboardController extends GetxController {
       'icon': IconsPath.dashboard,
       'title': 'Dashboard',
       'allowedUser': [0, 1, 2, 3],
-      'routes': AppRoutes.mainHome,
+      userIndex == 0 ? 'routes' : 'navIndex': userIndex == 0
+          ? AppRoutes.mainHome
+          : 0,
     },
     {
       'icon': IconsPath.drawerInspection,
@@ -87,7 +89,7 @@ class DashboardController extends GetxController {
       'icon': IconsPath.drawerBook,
       'title': 'Booking Management',
       'allowedUser': [3],
-      'routes': AppRoutes.bookingManagementView,
+      'navIndex': 1,
     },
     {
       'icon': IconsPath.dashboardPropertyManagement,
@@ -153,7 +155,7 @@ class DashboardController extends GetxController {
       'icon': IconsPath.dashboardCalender,
       'title': 'Calender',
       'allowedUser': [1, 2, 3],
-      'routes': AppRoutes.landlordCalenderView,
+     userIndex==0?'routes': 'navIndex':userIndex==0?AppRoutes.landlordCalenderView:3,
     },
   ];
   List<Map<String, dynamic>> get userDrawerItems {
