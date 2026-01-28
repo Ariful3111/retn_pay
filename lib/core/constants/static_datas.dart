@@ -14,15 +14,15 @@ int userIndexFromRole(String? role) {
       .replaceAll(' ', '-');
   switch (normalized) {
     case 'tenant':
-      return 2;
+      return 0;
     case 'landlord':
-      return 2;
+      return 1;
     case 'agent':
       return 2;
     case 'service-vendor':
-      return 2;
+      return 3;
     default:
-      return 2;
+      return 0;
   }
 }
 
