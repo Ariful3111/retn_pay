@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/agent_document.dart';
@@ -41,15 +42,12 @@ class ProfileEdit extends StatelessWidget {
             ),
           ),
           SizedBox(height: 24.h),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: ProfileEditInfo(),
+          ProfileEditInfo(
+            profileEditController: Get.find(),
+            profileController: Get.find(),
           ),
           SizedBox(height: 20.h),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: ProfileEditDetails(),
-          ),
+          ProfileEditDetails(profileEditController: Get.find()),
           SizedBox(height: 20.h),
           if (userIndex == 0)
             Padding(

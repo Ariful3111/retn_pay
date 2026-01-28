@@ -8,14 +8,16 @@ import 'package:renter_pay/features/profile/controllers/profile_edit_controller.
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_field.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_save_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
 class ProfileEditDetails extends StatelessWidget {
-  const ProfileEditDetails({super.key});
+  final ProfileEditController profileEditController;
+  const ProfileEditDetails({super.key, required this.profileEditController});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    ProfileEditController profileEditController = Get.find();
+
     return Container(
       padding: EdgeInsets.all(16.r),
       width: MediaQuery.widthOf(context),
@@ -103,13 +105,13 @@ class ProfileEditDetails extends StatelessWidget {
                     labelText: 'Phone',
                     readOnly: profileEditController.isEdit.value ? false : true,
                   ),
-                  SizedBox(height: 16.h),
-                  ProfileEditField(
-                    controller: profileEditController.passwordController,
-                    labelText: 'Password',
-                    readOnly: profileEditController.isEdit.value ? false : true,
-                  ),
 
+                  // SizedBox(height: 16.h),
+                  // ProfileEditField(
+                  //   controller: profileEditController.passwordController,
+                  //   labelText: 'Password',
+                  //   readOnly: profileEditController.isEdit.value ? false : true,
+                  // ),
                   if (userIndex == 3)
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -143,6 +145,16 @@ class ProfileEditDetails extends StatelessWidget {
                         ),
                       ],
                     ),
+                  SizedBox(height: 20.h),
+                  profileEditController.isLoading.value
+                      ? ButtonLoading()
+                      : ProfileSaveButton(
+                          onPressed: () async {
+                            if (profileEditController.isEdit.value) {
+                              await profileEditController.updateProfile();
+                            }
+                          },
+                        ),
                 ],
               ),
             ),

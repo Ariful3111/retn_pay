@@ -61,12 +61,13 @@ import 'package:renter_pay/features/home/views/main_home_view.dart';
 import 'package:renter_pay/features/notification/bindings/notification_bindings.dart';
 import 'package:renter_pay/features/notification/views/notification_view.dart';
 import 'package:renter_pay/features/profile/bindings/blog_bindings.dart';
+import 'package:renter_pay/features/profile/bindings/blog_details_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/profile_edit_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/support_bindings.dart';
 import 'package:renter_pay/features/profile/views/blog_view.dart';
 import 'package:renter_pay/features/profile/views/contact_us.dart';
 import 'package:renter_pay/features/profile/views/profile_edit.dart';
-import 'package:renter_pay/features/profile/widgets/blog_widgets/blog_details.dart';
+import 'package:renter_pay/features/profile/views/blog_details.dart';
 import 'package:renter_pay/features/profile/views/support_view.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/subscription_plan.dart';
 import 'package:renter_pay/features/profile/bindings/profile_bindings.dart';
@@ -173,108 +174,21 @@ final List<GetPage> appRoutes = [
   ),
   GetPage(name: AppRoutes.inspectionFrom, page: () => InspectionFrom()),
   GetPage(name: AppRoutes.contactUs, page: () => ContactUs()),
-  GetPage(name: AppRoutes.blog, page: () => BlogView(),binding: BlogBindings()),
-  GetPage(name: AppRoutes.blogDetails, page: () => BlogDetails()),
-  GetPage(name: AppRoutes.messageView, page: () => MessageView(),binding: ChatBindings()),
   GetPage(
-    name: AppRoutes.activePropertiesView,
-    page: () => ActivePropertiesView(),
-    bindings: [ActivePropertiesBindings()],
+    name: AppRoutes.blog,
+    page: () => BlogView(),
+    binding: BlogBindings(),
   ),
   GetPage(
-    name: AppRoutes.inspectionRequestView,
-    page: () => InspectionRequestView(),
-    bindings: [InspectionRequestBindings()],
+    name: AppRoutes.blogDetails,
+    page: () => BlogDetails(),
+    binding: BlogDetailsBindings(),
   ),
   GetPage(
-    name: AppRoutes.keyReleaseView,
-    page: () => KeyReleaseView(),
-    bindings: [KeyReleaseBindings()],
+    name: AppRoutes.messageView,
+    page: () => MessageView(),
+    binding: ChatBindings(),
   ),
-  GetPage(
-    name: AppRoutes.paymentManagementView,
-    page: () => PaymentManagementView(),
-    bindings: [PaymentManagementBindings()],
-  ),
-  GetPage(
-    name: AppRoutes.repairMaintenanceView,
-    page: () => RepairMaintenanceView(),
-    bindings: [RepairMaintenanceBindings(), AddRepairRequestBindings()],
-  ),
-  GetPage(
-    name: AppRoutes.servicesView,
-    page: () => ServicesView(),
-    bindings: [ServicesBindings(), ServiceBookedBindings()],
-  ),
-  GetPage(
-    name: AppRoutes.repairRequestView,
-    page: () => RepairRequestView(),
-    bindings: [RepairRequestBindings(), AddRepairRequestBindings()],
-  ),
-  GetPage(
-    name: AppRoutes.serviceBookedDetails,
-    page: () => ServiceBookedDetails(),
-    bindings: [
-      ServiceBookedBindings(),
-      ServiceBookedDetailsBindings(),
-      ServiceSearchBindings(),
-    ],
-  ),
-  GetPage(
-    name: AppRoutes.serviceSearchDetails,
-    page: () => ServiceSearchDetails(),
-    bindings: [ServiceSearchBindings(), ServicesBindings()],
-  ),
-  GetPage(
-    name: AppRoutes.supportView,
-    page: () => SupportView(),
-    binding: SupportBindings(),
-  ),
-  GetPage(
-    name: AppRoutes.rent,
-    page: () => RentView(),
-    bindings: [RentBindings()],
-  ),
-  GetPage(
-    name: AppRoutes.dashboard,
-    page: () => DashboardView(),
-    bindings: [DashboardBindings()],
-  ),
-  GetPage(
-    name: AppRoutes.chat,
-    page: () => ChatView(),
-    bindings: [ChatBindings()],
-  ),
-  GetPage(
-    name: AppRoutes.settings,
-    page: () => SettingView(),
-    bindings: [SettingsBindings()],
-  ),
-  GetPage(
-    name: AppRoutes.notification,
-    page: () => NotificationView(),
-    bindings: [NotificationBindings()],
-  ),
-  GetPage(
-    name: AppRoutes.profileEdit,
-    page: () => ProfileEdit(),
-    bindings: [ProfileEditBindings()],
-  ),
-  GetPage(
-    name: AppRoutes.rentDetails,
-    page: () => PropertyView(),
-    bindings: [RentDetailsBindings()],
-  ),
-  GetPage(
-    name: AppRoutes.favorite,
-    page: () => FavoriteView(),
-    bindings: [FavoriteBindings()],
-  ),
-  GetPage(name: AppRoutes.inspectionFrom, page: () => InspectionFrom()),
-  GetPage(name: AppRoutes.contactUs, page: () => ContactUs()),
-  GetPage(name: AppRoutes.blog, page: () => BlogView()),
-  GetPage(name: AppRoutes.blogDetails, page: () => BlogDetails()),
-  GetPage(name: AppRoutes.messageView, page: () => MessageView()),
   GetPage(
     name: AppRoutes.activePropertiesView,
     page: () => ActivePropertiesView(),
@@ -344,10 +258,32 @@ final List<GetPage> appRoutes = [
     page: () => LandlordKeyRelease(),
     binding: LandlordKeyReleaseBindings(),
   ),
-  GetPage(name: AppRoutes.landlordInspectionView, page:()=> LandlordInspectionView()),
-  GetPage(name: AppRoutes.applicationManagementView, page: ()=>ApplicationManagementView(),binding: DashboardBindings()),
-  GetPage(name: AppRoutes.landlordCalenderView, page: ()=>LandlordCalenderView(),binding: DashboardBindings()),
-  GetPage(name: AppRoutes.serviceManagementView, page: ()=>ServiceManagementView(),binding: ServiceVendorBindings()),
-  GetPage(name: AppRoutes.bookingManagementView, page: ()=>BookingManagement(),binding: ServiceVendorBindings()),
-  GetPage(name: AppRoutes.bookingManagementDetailsView, page: ()=>BookingManagementDetails())
+  GetPage(
+    name: AppRoutes.landlordInspectionView,
+    page: () => LandlordInspectionView(),
+  ),
+  GetPage(
+    name: AppRoutes.applicationManagementView,
+    page: () => ApplicationManagementView(),
+    binding: DashboardBindings(),
+  ),
+  GetPage(
+    name: AppRoutes.landlordCalenderView,
+    page: () => LandlordCalenderView(),
+    binding: DashboardBindings(),
+  ),
+  GetPage(
+    name: AppRoutes.serviceManagementView,
+    page: () => ServiceManagementView(),
+    binding: ServiceVendorBindings(),
+  ),
+  GetPage(
+    name: AppRoutes.bookingManagementView,
+    page: () => BookingManagement(),
+    binding: ServiceVendorBindings(),
+  ),
+  GetPage(
+    name: AppRoutes.bookingManagementDetailsView,
+    page: () => BookingManagementDetails(),
+  ),
 ];
