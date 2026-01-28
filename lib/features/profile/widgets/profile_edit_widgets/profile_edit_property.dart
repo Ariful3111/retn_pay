@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/home/controllers/property_address_controller.dart';
+import 'package:renter_pay/features/profile/controllers/get_preference_controller.dart';
 import 'package:renter_pay/features/profile/controllers/preference_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_edit_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_checkbox.dart';
@@ -12,14 +13,19 @@ import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
-class ProfileEditProperty extends StatelessWidget {
-  const ProfileEditProperty({super.key});
+class ProfileEditProperty extends GetView<GetPreferenceController> {
+  final ProfileEditController profileEditController;
+  final PreferenceController preferenceController;
+  const ProfileEditProperty({
+    super.key,
+    required this.profileEditController,
+    required this.preferenceController,
+  });
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    ProfileEditController profileEditController = Get.find();
-    PreferenceController preferenceController = Get.find();
+
     final propertyAddressController =
         Get.isRegistered<PropertyAddressController>()
         ? Get.find<PropertyAddressController>()

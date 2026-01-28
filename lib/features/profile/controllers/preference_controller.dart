@@ -87,6 +87,24 @@ class PreferenceController extends GetxController {
     showSuburbSuggestions.value = false;
   }
 
+  void setValues({
+    required String rent,
+    required String subs,
+    required String amount,
+    required String bedroom,
+    required String bathroom,
+    required bool pets,
+    required bool parking,
+  }) {
+    rentController.text = rent;
+    subsController.text = subs;
+    amountController.text = amount;
+    bedroomController.text = bedroom;
+    bathroomController.text = bathroom;
+    isPets.value = pets;
+    isParking.value = parking;
+  }
+
   @override
   void onClose() {
     suburbFocusNode.dispose();
