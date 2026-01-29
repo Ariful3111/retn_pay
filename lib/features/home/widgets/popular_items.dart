@@ -6,6 +6,8 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/favorite/controllers/add_favorite_controller.dart';
+import 'package:renter_pay/features/favorite/controllers/favorite_delete_controller.dart';
 import 'package:renter_pay/features/home/controllers/popular_controller.dart';
 import 'package:renter_pay/features/home/models/properties_model.dart';
 import 'package:renter_pay/features/home/widgets/category.dart';
@@ -68,9 +70,27 @@ class PopularItems extends StatelessWidget {
                             children: [
                               Align(
                                 alignment: Alignment.topRight,
-                                child: CustomFavoriteButton(
-                                  onTap: () {},
-                                  isFavorite: property.isFavourite!,
+                                child: Obx(
+                                  () => CustomFavoriteButton(
+                                    onTap: () async {
+                                      if (property.isFavourite.value == false) {
+                                        await Get.find<AddFavoriteController>()
+                                            .addFavorite(
+                                              propertyID: property.id!,
+                                              index: 1,
+                                            );
+                                      } else {
+                                        await Get.find<
+                                              DeleteFavoriteController
+                                            >()
+                                            .deleteFavorite(
+                                              propertyID: property.id!,
+                                              index: 1,
+                                            );
+                                      }
+                                    },
+                                    isFavorite: property.isFavourite.value,
+                                  ),
                                 ),
                               ),
                               Spacer(),

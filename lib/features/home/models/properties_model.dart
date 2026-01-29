@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 class PropertiesModel {
   bool? error;
   int? code;
@@ -95,7 +97,7 @@ class Property {
   String? subscriptionTier;
   bool? isVerified;
   bool? hasArTour;
-  bool? isFavourite;
+  RxBool isFavourite = false.obs;
   List<String>? features;
   String? rating;
   int? ratingCount;
@@ -134,7 +136,7 @@ class Property {
     this.subscriptionTier,
     this.isVerified,
     this.hasArTour,
-    this.isFavourite,
+    bool? isFavourite,
     this.features,
     this.rating,
     this.ratingCount,
@@ -146,7 +148,9 @@ class Property {
     this.reviewSummary,
     this.createdAt,
     this.updatedAt,
-  });
+  }) {
+    this.isFavourite.value = isFavourite ?? false;
+  }
 
   Property.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -176,7 +180,7 @@ class Property {
     subscriptionTier = json['subscription_tier'];
     isVerified = json['is_verified'];
     hasArTour = json['has_ar_tour'];
-    isFavourite = json['is_favourite'];
+    isFavourite.value = json['is_favourite'] ?? false;
     if (json['features'] != null && json['features'] is List) {
       features = json['features'].cast<String>();
     }
@@ -240,7 +244,7 @@ class Property {
     data['subscription_tier'] = subscriptionTier;
     data['is_verified'] = isVerified;
     data['has_ar_tour'] = hasArTour;
-    data['is_favourite'] = isFavourite;
+    data['is_favourite'] = isFavourite.value;
     data['features'] = features;
     data['rating'] = rating;
     data['rating_count'] = ratingCount;
