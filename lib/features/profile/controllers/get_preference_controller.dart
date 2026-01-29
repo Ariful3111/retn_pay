@@ -30,7 +30,7 @@ class GetPreferenceController extends GetxController {
           rent: '',
           subs: data.data?.preferredSuburbs?.first ?? '',
           amount: data.data?.budgetMax ?? '',
-          bedroom: data.data?.minBedrooms.toString() ?? '',
+          bedroom: data.data?.maxBedrooms.toString() ?? '',
           bathroom: data.data?.maxBathrooms.toString() ?? '',
           pets: data.data?.petsAllowed ?? false,
           parking: false,

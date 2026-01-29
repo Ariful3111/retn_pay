@@ -24,6 +24,8 @@ class ProfileEditProperty extends GetView<GetPreferenceController> {
 
   @override
   Widget build(BuildContext context) {
+    // Trigger GetPreferenceController initialization
+    final _ = controller;
     bool isDark = Theme.of(context).brightness == Brightness.dark;
 
     final propertyAddressController =
