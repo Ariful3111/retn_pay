@@ -52,7 +52,10 @@ class ProfileEdit extends StatelessWidget {
           if (userIndex == 0)
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: ProfileEditProperty(),
+              child: ProfileEditProperty(
+                profileEditController: Get.find(),
+                preferenceController: Get.find(),
+              ),
             ),
           if (userIndex == 1 || userIndex == 3)
             Padding(

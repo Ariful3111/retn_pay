@@ -6,7 +6,8 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/features/favorite/controller/favorite_controller.dart';
+import 'package:renter_pay/features/favorite/controllers/add_favorite_controller.dart';
+import 'package:renter_pay/features/favorite/controllers/favorite_delete_controller.dart';
 import 'package:renter_pay/features/home/controllers/popular_controller.dart';
 import 'package:renter_pay/features/home/models/properties_model.dart';
 import 'package:renter_pay/features/home/widgets/category.dart';
@@ -21,10 +22,9 @@ class PopularItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FavoriteController favoriteController = Get.find();
     return Obx(() {
       List<Property>? properties =
-          popularController.popularProperties.value?.data;
+          popularController.popularProperties.value?.data?.data;
       return popularController.isLoading.value
           ? ButtonLoading()
           : Column(
@@ -68,21 +68,31 @@ class PopularItems extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Obx(() {
-                                return Align(
-                                  alignment: Alignment.topRight,
-                                  child: CustomFavoriteButton(
-                                    onTap: () {
-                                      favoriteController.selectFavorite(
-                                        id: index,
-                                      );
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: Obx(
+                                  () => CustomFavoriteButton(
+                                    onTap: () async {
+                                      if (property.isFavourite.value == false) {
+                                        await Get.find<AddFavoriteController>()
+                                            .addFavorite(
+                                              propertyID: property.id!,
+                                              index: 1,
+                                            );
+                                      } else {
+                                        await Get.find<
+                                              DeleteFavoriteController
+                                            >()
+                                            .deleteFavorite(
+                                              propertyID: property.id!,
+                                              index: 1,
+                                            );
+                                      }
                                     },
-                                    isFavorite: favoriteController.isFavorite(
-                                      index,
-                                    ),
+                                    isFavorite: property.isFavourite.value,
                                   ),
-                                );
-                              }),
+                                ),
+                              ),
                               Spacer(),
                               Row(
                                 children: [

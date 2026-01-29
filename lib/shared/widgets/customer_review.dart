@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,8 +6,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/rent/controllers/property_review_controller.dart';
+import 'package:renter_pay/features/rent/controllers/property_view_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
@@ -73,10 +74,11 @@ class CustomerReview extends GetView<PropertyReviewController> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Image.asset(
-                    ImagesPath.profile,
+                  CachedNetworkImage(
+                    imageUrl: review.user?.image ?? "",
                     height: 86.27.h,
                     width: 81.12.w,
+                    fit: BoxFit.cover,
                   ),
                   SizedBox(width: 10.w),
                   SizedBox(
@@ -114,11 +116,11 @@ class CustomerReview extends GetView<PropertyReviewController> {
                                   fontWeight: FontWeight.w500,
                                 ),
                                 CustomTextSecondary(
-                                  text: "Dhaka, Bangladesh",
+                                  text:
+                                      "${Get.find<PropertyViewController>().propertyDetails.value?.data?.state ?? 'State'}, ${Get.find<PropertyViewController>().propertyDetails.value?.data?.country ?? 'Country'}",
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w400,
                                 ),
-
                                 RatingBarIndicator(
                                   rating: review.rating?.toDouble() ?? 0.0,
                                   itemCount: 5,

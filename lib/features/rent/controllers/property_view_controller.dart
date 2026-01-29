@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/features/rent/models/property_details_model.dart';
 import 'package:renter_pay/features/rent/repositories/property_details_repo.dart';
@@ -11,10 +10,6 @@ class PropertyViewController extends GetxController {
   final storage = Get.find<StorageService>();
   final propertyDetails = Rxn<PropertyDetailsModel>();
   RxBool isLoading = true.obs;
-
-  ImagePicker picker = ImagePicker();
-  Rxn<XFile> frontImage = Rxn<XFile>();
-  Rxn<XFile> backImage = Rxn<XFile>();
 
   @override
   void onInit() {

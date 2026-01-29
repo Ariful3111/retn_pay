@@ -32,14 +32,14 @@ class PropertyKeyFeatures extends StatelessWidget {
           child: Row(
             children: [
               CachedNetworkImage(
-                imageUrl: feature.icon ?? '',
+                imageUrl: feature.amenityType?.icon ?? '',
                 height: 20.h,
                 width: 20.w,
                 color: isDark ? AppColors.darkAppBar : null,
               ),
               SizedBox(width: 9.75.w),
               CustomTextSecondary(
-                text: feature.name ?? '',
+                text: feature.amenityType?.name ?? '',
                 color: isDark
                     ? AppColors.darkAppBar
                     : AppColors.primaryTextColor,

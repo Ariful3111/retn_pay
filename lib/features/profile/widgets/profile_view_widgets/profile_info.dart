@@ -55,28 +55,28 @@ class ProfileInfo extends StatelessWidget {
               ),
             ),
             SizedBox(width: 16.w),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomTextPrimary(
-                  text: controller.profileData.value?.data?.name ?? '',
-                  color: AppColors.whiteColor,
-                  fontSize: 20.sp,
-                ),
-                SizedBox(height: 8.h),
-                SizedBox(
-                  width: 240.w,
-                  child: CustomTextPrimary(
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomTextPrimary(
+                    text: controller.profileData.value?.data?.name ?? '',
+                    color: AppColors.whiteColor,
+                    fontSize: 20.sp,
+                    textOverflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: 8.h),
+                  CustomTextPrimary(
                     text: contact,
                     color: AppColors.whiteColor,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w400,
                     textOverflow: TextOverflow.ellipsis,
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-            Spacer(),
             GestureDetector(
               behavior: HitTestBehavior.opaque,
               onTap: () {
