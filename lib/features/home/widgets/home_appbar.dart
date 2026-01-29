@@ -33,29 +33,32 @@ class HomeAppbar extends StatelessWidget {
                 else
                   Image.asset(ImagesPath.homeAppbar, height: 44.h, width: 44.w),
                 SizedBox(width: 8.w),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomTextPrimary(
-                      text:
-                          'Hi,${profileController.profileData.value?.data?.name ?? ''}',
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    CustomTextSecondary(
-                      text: 'Welcome to Renterpay',
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? AppColors.darkSecondaryText
-                          : AppColors.primaryDarkTextColor.withValues(
-                              alpha: 0.80,
-                            ),
-                    ),
-                  ],
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomTextPrimary(
+                        text:
+                            'Hi,${profileController.profileData.value?.data?.name ?? ''}',
+                        fontSize: 20.sp,
+                        fontWeight: FontWeight.w500,
+                        textOverflow: TextOverflow.ellipsis,
+                      ),
+                      CustomTextSecondary(
+                        text: 'Welcome to Renterpay',
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w400,
+                        textOverflow: TextOverflow.ellipsis,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.darkSecondaryText
+                            : AppColors.primaryDarkTextColor.withValues(
+                                alpha: 0.80,
+                              ),
+                      ),
+                    ],
+                  ),
                 ),
-                Spacer(),
                 CustomNotificationButton(),
               ],
             );

@@ -3,25 +3,24 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/features/rent/controllers/property_view_controller.dart';
+import 'package:renter_pay/features/rent/controllers/upload_document_controller.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_verification_document.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 
-class InspectionVerification extends StatelessWidget {
+class InspectionVerification extends GetView<UploadDocumentController> {
   const InspectionVerification({super.key});
 
   @override
   Widget build(BuildContext context) {
-    PropertyViewController propertyViewController = Get.find();
-        bool isDark = Theme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       padding: EdgeInsets.all(21.56.r),
       height: 666.h,
       width: 360.w,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.78.r),
-        color:isDark? AppColors.darkPrimary:AppColors.whiteColor,
+        color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
       ),
       child: ListView(
         shrinkWrap: true,
@@ -42,9 +41,9 @@ class InspectionVerification extends StatelessWidget {
                     borderRadius: BorderRadius.circular(6.57.r),
                     borderWidth: 0.82,
                     onPressed: () {
-                     Navigator.pop(context);
-                      propertyViewController.frontImage.value = null;
-                      propertyViewController.backImage.value = null;
+                      Navigator.pop(context);
+                      controller.frontImage.value = null;
+                      controller.backImage.value = null;
                     },
                   ),
                   SizedBox(width: 15.w),
@@ -54,7 +53,7 @@ class InspectionVerification extends StatelessWidget {
                     width: 85.w,
                     text: 'Upload',
                     onPressed: () {
-                      if (propertyViewController.frontImage.value == null) {
+                      if (controller.frontImage.value == null) {
                         Get.toNamed(AppRoutes.inspectionFrom);
                       } else {
                         Get.toNamed(AppRoutes.inspectionFrom);

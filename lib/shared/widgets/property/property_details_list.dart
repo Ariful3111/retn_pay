@@ -13,11 +13,7 @@ class PropertyDetailsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    final detailsList = (propertyDetails.data?.amenities ?? [])
-        .map((element) => element.description)
-        .whereType<String>()
-        .where((value) => value.isNotEmpty)
-        .toList();
+    final detailsList = propertyDetails.data?.features ?? [];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -33,21 +29,27 @@ class PropertyDetailsList extends StatelessWidget {
           physics: NeverScrollableScrollPhysics(),
           itemCount: detailsList.length,
           itemBuilder: (context, index) {
-            return SizedBox(
-              height: 27.h,
+            return Padding(
+              padding: EdgeInsets.only(bottom: 12.h),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(
-                    IconsPath.propertyCheck,
-                    height: 15.h,
-                    width: 15.w,
-                    color: isDark ? AppColors.whiteColor : null,
+                  Padding(
+                    padding: EdgeInsets.only(top: 5.h),
+                    child: Image.asset(
+                      IconsPath.propertyCheck,
+                      height: 15.h,
+                      width: 15.w,
+                      color: isDark ? AppColors.whiteColor : null,
+                    ),
                   ),
                   SizedBox(width: 8.w),
-                  CustomTextPrimary(
-                    text: detailsList[index],
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w500,
+                  Expanded(
+                    child: CustomTextPrimary(
+                      text: detailsList[index],
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ],
               ),

@@ -6,6 +6,7 @@ import 'package:renter_pay/features/profile/controllers/blog_controller.dart';
 import 'package:renter_pay/features/profile/widgets/blog_widgets/blog_item.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
+import 'package:renter_pay/shared/widgets/custom_pagination.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
@@ -46,17 +47,17 @@ class BlogView extends GetView<BlogController> {
                     SizedBox(height: 20.h),
                     BlogItem(),
                     SizedBox(height: 10),
-                    // Obx(
-                    //   () => CustomPagination(
-                    //     list: blogController.pageNumber,
-                    //     onTapPrev: blogController.previousPage,
-                    //     onTapNext: blogController.nextPage,
-                    //     onTapPage: (item) {
-                    //       blogController.currentPage.value = item;
-                    //     },
-                    //     value: blogController.currentPage.value,
-                    //   ),
-                    // ),
+                    Obx(
+                      () => CustomPagination(
+                        list: controller.pageNumber,
+                        onTapPrev: controller.previousPage,
+                        onTapNext: controller.nextPage,
+                        onTapPage: (item) {
+                          controller.currentPage.value = item;
+                        },
+                        value: controller.currentPage.value,
+                      ),
+                    ),
                   ],
                 ),
               ]),

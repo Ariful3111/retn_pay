@@ -84,7 +84,29 @@ class PreferenceController extends GetxController {
     final (city, _, _) = propertyAddressController.extractFilterInfos();
     final selectedCity = (city ?? address.city ?? '').trim();
     subsController.text = selectedCity;
+    propertyAddressController.addressController.text = selectedCity;
     showSuburbSuggestions.value = false;
+  }
+
+  void setValues({
+    required String rent,
+    required String subs,
+    required String amount,
+    required String bedroom,
+    required String bathroom,
+    required bool pets,
+    required bool parking,
+  }) {
+    rentController.text = rent;
+    subsController.text = subs;
+    if (Get.isRegistered<PropertyAddressController>()) {
+      Get.find<PropertyAddressController>().addressController.text = subs;
+    }
+    amountController.text = amount;
+    bedroomController.text = bedroom;
+    bathroomController.text = bathroom;
+    isPets.value = pets;
+    isParking.value = parking;
   }
 
   @override

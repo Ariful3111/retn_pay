@@ -2,7 +2,7 @@ class BlogDetailsModel {
   bool? error;
   int? code;
   String? message;
-  BlogDetails? data;
+  Data? data;
 
   BlogDetailsModel({this.error, this.code, this.message, this.data});
 
@@ -10,7 +10,7 @@ class BlogDetailsModel {
     error = json['error'];
     code = json['code'];
     message = json['message'];
-    data = json['data'] != null ? BlogDetails.fromJson(json['data']) : null;
+    data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -25,7 +25,7 @@ class BlogDetailsModel {
   }
 }
 
-class BlogDetails {
+class Data {
   int? id;
   String? title;
   String? slug;
@@ -35,13 +35,15 @@ class BlogDetails {
   Category? category;
   Author? author;
   int? order;
+  int? readingTimeMinutes;
+  String? readingTimeLabel;
   bool? isPublished;
   String? publishedAt;
   String? createdAt;
   String? updatedAt;
   String? url;
 
-  BlogDetails({
+  Data({
     this.id,
     this.title,
     this.slug,
@@ -51,6 +53,8 @@ class BlogDetails {
     this.category,
     this.author,
     this.order,
+    this.readingTimeMinutes,
+    this.readingTimeLabel,
     this.isPublished,
     this.publishedAt,
     this.createdAt,
@@ -58,7 +62,7 @@ class BlogDetails {
     this.url,
   });
 
-  BlogDetails.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     slug = json['slug'];
@@ -70,6 +74,8 @@ class BlogDetails {
         : null;
     author = json['author'] != null ? Author.fromJson(json['author']) : null;
     order = json['order'];
+    readingTimeMinutes = json['reading_time_minutes'];
+    readingTimeLabel = json['reading_time_label'];
     isPublished = json['is_published'];
     publishedAt = json['published_at'];
     createdAt = json['created_at'];
@@ -92,6 +98,8 @@ class BlogDetails {
       data['author'] = author!.toJson();
     }
     data['order'] = order;
+    data['reading_time_minutes'] = readingTimeMinutes;
+    data['reading_time_label'] = readingTimeLabel;
     data['is_published'] = isPublished;
     data['published_at'] = publishedAt;
     data['created_at'] = createdAt;
@@ -124,14 +132,14 @@ class Category {
 }
 
 class Author {
-  int? id;
+  String? id;
   String? name;
   String? email;
 
   Author({this.id, this.name, this.email});
 
   Author.fromJson(Map<String, dynamic> json) {
-    id = json['id'] ?? 0;
+    id = json['id'].toString();
     name = json['name'].toString();
     email = json['email'].toString();
   }

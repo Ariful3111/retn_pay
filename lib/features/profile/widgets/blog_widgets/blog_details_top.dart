@@ -75,7 +75,7 @@ class BlogDetailsTop extends GetWidget<BlogDetailsController> {
               color: AppColors.darkLightText,
             ),
             CustomTextSecondary(
-              text: '2 min read',
+              text: '${controller.blogDetails.value?.data?.readingTimeLabel}',
               fontSize: 12.sp,
               color: AppColors.darkLightText,
             ),

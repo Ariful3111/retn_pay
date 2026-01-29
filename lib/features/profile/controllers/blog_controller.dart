@@ -8,7 +8,8 @@ class BlogController extends GetxController {
   BlogController({required this.getBlogRepository});
 
   RxInt currentPage = 1.obs;
-  int totalPage = 100;
+  RxInt totalPage = 1.obs;
+  static const int perPage = 20;
 
   final blogs = Rxn<BlogsModel>();
   RxBool isLoading = true.obs;
@@ -17,10 +18,15 @@ class BlogController extends GetxController {
   void onInit() {
     super.onInit();
     getBlogs();
+    ever(currentPage, (_) => getBlogs());
   }
 
   Future<void> getBlogs() async {
-    final response = await getBlogRepository.execute();
+    isLoading.value = true;
+    final response = await getBlogRepository.execute(
+      page: currentPage.value,
+      perPage: perPage,
+    );
     isLoading.value = false;
     response.fold(
       (error) {
@@ -28,33 +34,35 @@ class BlogController extends GetxController {
       },
       (data) {
         blogs.value = data;
+        totalPage.value = data.data?.meta?.lastPage ?? 1;
       },
     );
   }
 
-  // void previousPage() {
-  //   if (currentPage > 1) currentPage.value--;
-  // }
+  void previousPage() {
+    if (currentPage.value > 1) currentPage.value--;
+  }
 
-  // void nextPage() {
-  //   if (currentPage < totalPage) currentPage++;
-  // }
+  void nextPage() {
+    if (currentPage.value < totalPage.value) currentPage.value++;
+  }
 
-  // List<dynamic> get pageNumber {
-  //   int page = currentPage.value;
+  List<dynamic> get pageNumber {
+    int page = currentPage.value;
+    int total = totalPage.value;
 
-  //   if (totalPage <= 6) {
-  //     return List.generate(totalPage, (i) => i + 1);
-  //   }
+    if (total <= 6) {
+      return List.generate(total, (i) => i + 1);
+    }
 
-  //   if (page <= 3) {
-  //     return [1, 2, 3,'...', totalPage - 1, totalPage];
-  //   }
+    if (page <= 3) {
+      return [1, 2, 3, '...', total - 1, total];
+    }
 
-  //   if (page >= totalPage - 2) {
-  //     return [1, 2, '...', totalPage - 1, totalPage];
-  //   }
+    if (page >= total - 2) {
+      return [1, 2, '...', total - 1, total];
+    }
 
-  //   return [1, '...', page - 1, page, page + 1, '...', totalPage];
-  // }
+    return [1, '...', page - 1, page, page + 1, '...', total];
+  }
 }

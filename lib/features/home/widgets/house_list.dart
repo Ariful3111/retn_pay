@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/features/favorite/controller/favorite_controller.dart';
 import 'package:renter_pay/features/home/controllers/home_controller.dart';
 import 'package:renter_pay/features/home/models/properties_model.dart';
 import 'package:renter_pay/features/home/widgets/category.dart';
@@ -34,7 +33,6 @@ class HouseList extends StatelessWidget {
                       imageHeight: 220.h,
                       imageWidth: 300.w,
                       padding: EdgeInsetsGeometry.only(right: 12.w),
-                      favoriteController: Get.find<FavoriteController>(),
                     );
                   },
                 ),
