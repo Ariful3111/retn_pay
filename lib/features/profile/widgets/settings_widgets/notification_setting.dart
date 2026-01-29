@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/features/profile/controllers/settings_controller.dart';
+import 'package:renter_pay/features/profile/controllers/update_settings_controller.dart';
 import 'package:renter_pay/features/profile/widgets/settings_widgets/settings_item_model.dart';
 
 class NotificationSetting extends StatelessWidget {
@@ -15,8 +16,9 @@ class NotificationSetting extends StatelessWidget {
         subTitle:
             'Stay updated with instant alerts and important reminders right on your device.',
         isOn: settingsController.isNotification.value,
-        onChanged: (value) {
+        onChanged: (value) async {
           settingsController.isNotification.value = value;
+          await Get.find<UpdateSettingsController>().updateSettings();
         },
       ),
     );
