@@ -1,287 +1,201 @@
 {
   "error": false,
   "code": 200,
-  "message": "Property retrieved successfully",
+  "message": "Blogs retrieved successfully",
   "data": {
-    "id": 78,
-    "landlord_id": 53,
-    "agent_id": null,
-    "property_type_id": 1,
-    "title": "Apartment in Canberra - Swanston Street",
-    "name": "Apartment in Canberra - Swanston Street",
-    "description": "Modern Apartment located in Canberra. Features 2 bedroom(s), 1 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
-    "address": "485/56 Collins Street",
-    "city": "Canberra",
-    "state": "ACT",
-    "postal_code": "3927",
-    "country": "Australia",
-    "latitude": "-35.44090000",
-    "longitude": "149.58000000",
-    "property_type": {
-      "id": 1,
-      "name": "Apartment",
-      "slug": "apartment",
-      "image": "https://picsum.photos/seed/apartment/800/600"
-    },
-    "bedrooms": 2,
-    "bathrooms": 1,
-    "parking_spaces": 1,
-    "land_size": null,
-    "building_size": "75.00",
-    "year_built": 2012,
-    "status": "active",
-    "subscription_tier": "silver",
-    "is_verified": true,
-    "has_ar_tour": true,
-    "is_favourite": false,
-    "features": [
-      "Private balcony or terrace with outdoor seating space.",
-      "Modern kitchen with stone benchtops and quality appliances."
-    ],
-    "rating": "4.14",
-    "rating_count": 7,
-    "landlord": {
-      "id": 53,
-      "name": "Landlord User 2",
-      "email": "landlord2@example.com"
-    },
-    "agent": null,
-    "units": [
+    "data": [
       {
-        "id": 135,
-        "property_id": 78,
-        "unit_number": "Unit 2",
-        "unit_name": "Apartment 2",
-        "rent_amount": "20620.00",
-        "currency": "AUD",
-        "status": "occupied",
-        "bedrooms": 2,
-        "bathrooms": 1,
-        "size": "25.00",
-        "description": "Spacious Apartment with modern fixtures",
-        "created_at": "2026-01-26T09:43:50.000000Z",
-        "updated_at": "2026-01-26T09:43:50.000000Z"
-      },
-      {
-        "id": 136,
-        "property_id": 78,
-        "unit_number": "Unit 3",
-        "unit_name": "Apartment 3",
-        "rent_amount": "14800.00",
-        "currency": "AUD",
-        "status": "maintenance",
-        "bedrooms": 2,
-        "bathrooms": 1,
-        "size": "25.00",
-        "description": "Spacious Apartment with modern fixtures",
-        "created_at": "2026-01-26T09:43:50.000000Z",
-        "updated_at": "2026-01-26T09:43:50.000000Z"
-      },
-      {
-        "id": 134,
-        "property_id": 78,
-        "unit_number": "Unit 1",
-        "unit_name": "Apartment 1",
-        "rent_amount": "20820.00",
-        "currency": "AUD",
-        "status": "reserved",
-        "bedrooms": 2,
-        "bathrooms": 1,
-        "size": "25.00",
-        "description": "Spacious Apartment with modern fixtures",
-        "created_at": "2026-01-26T09:43:50.000000Z",
-        "updated_at": "2026-01-26T09:43:50.000000Z"
-      }
-    ],
-    "images": [
-      {
-        "id": 361,
-        "property_id": 78,
-        "image_path": "https://picsum.photos/1200/800?random=781",
-        "type": "ar_tour",
+        "id": 5,
+        "title": "Scheduled Maintenance: System Upgrade on March 15th",
+        "slug": "scheduled-maintenance-march-2026",
+        "excerpt": "RenterPay will undergo scheduled maintenance on March 15th from 2:00 AM to 6:00 AM. Learn what to expect during this period.",
+        "content": "Dear RenterPay Users,\n\nWe will be performing scheduled system maintenance and upgrades on March 15th, 2026, from 2:00 AM to 6:00 AM (local time).\n\nDuring this maintenance window:\n- The platform will be temporarily unavailable\n- Payment processing will be paused\n- Scheduled notifications may be delayed\n- Mobile apps may not function properly\n\nWhat's being upgraded:\n- Enhanced security features\n- Improved payment processing speed\n- New dashboard features\n- Bug fixes and performance improvements\n\nWe recommend:\n- Completing any urgent payments before 2:00 AM on March 15th\n- Downloading important documents or reports in advance\n- Informing your tenants/landlords about the maintenance window\n\nWe apologize for any inconvenience this may cause. If you have any urgent concerns, please contact our support team before the maintenance period.\n\nThank you for your patience and understanding!\n\nThe RenterPay Team",
+        "featured_image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=400&fit=crop",
+        "category": {
+          "id": 3,
+          "name": "Announcement",
+          "slug": "announcement"
+        },
+        "author": {
+          "id": null,
+          "name": null,
+          "email": null
+        },
         "order": 1,
-        "is_primary": true,
-        "caption": "Kitchen",
-        "created_at": "2026-01-26T09:43:50.000000Z",
-        "updated_at": "2026-01-26T09:43:50.000000Z"
+        "reading_time_minutes": 1,
+        "reading_time_label": "1 min read",
+        "is_published": true,
+        "published_at": "2026-01-21 15:43:53",
+        "created_at": "2026-01-26 15:43:53",
+        "updated_at": "2026-01-26 15:43:53",
+        "url": "https://renter-pay.mahfuz.click/api/v1/blogs/scheduled-maintenance-march-2026"
       },
       {
-        "id": 362,
-        "property_id": 78,
-        "image_path": "https://picsum.photos/1200/800?random=782",
-        "type": "image",
+        "id": 6,
+        "title": "10 Tips for First-Time Renters",
+        "slug": "tips-for-first-time-renters",
+        "excerpt": "Renting your first property can be overwhelming. Here are 10 essential tips to help you navigate the rental process with confidence.",
+        "content": "Renting your first property is an exciting milestone! Here are 10 essential tips to help you get started:\n\n1. Set a Realistic Budget\nYour rent should not exceed 30% of your monthly income. Don't forget to factor in utilities, internet, and other expenses.\n\n2. Research Neighborhoods\nVisit potential neighborhoods at different times of day. Check proximity to work, schools, shops, and public transportation.\n\n3. Understand the Lease Agreement\nRead every clause carefully. Pay attention to lease duration, renewal terms, maintenance responsibilities, and early termination conditions.\n\n4. Document Everything\nTake photos and videos of the property before moving in. This protects you from being charged for pre-existing damage.\n\n5. Know Your Rights\nFamiliarize yourself with tenant rights in your area. Understand your landlord's obligations regarding repairs, privacy, and security deposits.\n\n6. Get Renters Insurance\nProtect your belongings with renters insurance. It's affordable and provides peace of mind.\n\n7. Inspect Before Signing\nCarefully inspect the property during viewings. Test appliances, check for leaks, and assess overall condition.\n\n8. Communicate Clearly\nMaintain good communication with your landlord. Report issues promptly and keep records of all correspondence.\n\n9. Pay Rent on Time\nSet up automatic payments to avoid late fees. A good payment history helps with future rental applications.\n\n10. Be a Good Neighbor\nRespect quiet hours, maintain cleanliness in common areas, and be friendly with neighbors.\n\nRemember, RenterPay makes the rental process easier with features like automated payments, maintenance requests, and digital documentation. Good luck with your rental journey!",
+        "featured_image": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=400&fit=crop",
+        "category": {
+          "id": 4,
+          "name": "General",
+          "slug": "general"
+        },
+        "author": {
+          "id": null,
+          "name": null,
+          "email": null
+        },
+        "order": 1,
+        "reading_time_minutes": 2,
+        "reading_time_label": "2 min read",
+        "is_published": true,
+        "published_at": "2026-01-16 15:43:53",
+        "created_at": "2026-01-26 15:43:53",
+        "updated_at": "2026-01-26 15:43:53",
+        "url": "https://renter-pay.mahfuz.click/api/v1/blogs/tips-for-first-time-renters"
+      },
+      {
+        "id": 3,
+        "title": "How to Create Your RenterPay Account: A Step-by-Step Guide",
+        "slug": "create-renterpay-account-guide",
+        "excerpt": "Learn how to set up your RenterPay account in just a few simple steps and start managing your rental properties or searching for your dream home.",
+        "content": "Getting started with RenterPay is quick and easy! Follow this step-by-step guide to create your account:\n\nStep 1: Visit the RenterPay website\nNavigate to www.renterpay.com and click the 'Sign Up' button in the top right corner.\n\nStep 2: Choose your account type\nSelect the account type that best describes you:\n- Tenant: Looking to rent a property\n- Landlord: Managing rental properties\n- Agent: Real estate professional\n- Service Vendor: Offering property services\n\nStep 3: Fill in your details\nProvide your basic information including name, email, phone number, and create a secure password.\n\nStep 4: Verify your account\nCheck your email for a verification code and enter it on the verification page. You may also receive an SMS verification code.\n\nStep 5: Complete your profile\nAdd additional details to your profile such as your address, photo, and any relevant documentation (ID, business license, etc.).\n\nStep 6: Start using RenterPay!\nYou're all set! Explore the platform and discover all the features available to you.\n\nIf you encounter any issues during registration, our support team is here to help 24/7.",
+        "featured_image": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=400&fit=crop",
+        "category": {
+          "id": 2,
+          "name": "Tutorial",
+          "slug": "tutorial"
+        },
+        "author": {
+          "id": null,
+          "name": null,
+          "email": null
+        },
+        "order": 1,
+        "reading_time_minutes": 1,
+        "reading_time_label": "1 min read",
+        "is_published": true,
+        "published_at": "2026-01-01 15:43:53",
+        "created_at": "2026-01-26 15:43:53",
+        "updated_at": "2026-01-26 15:43:53",
+        "url": "https://renter-pay.mahfuz.click/api/v1/blogs/create-renterpay-account-guide"
+      },
+      {
+        "id": 1,
+        "title": "Welcome to RenterPay - Your Complete Rental Management Solution",
+        "slug": "welcome-to-renterpay",
+        "excerpt": "We are excited to introduce RenterPay, a revolutionary platform designed to simplify property rental management for tenants, landlords, agents, and service vendors.",
+        "content": "We are thrilled to announce the launch of RenterPay, a comprehensive rental management platform that brings together all stakeholders in the rental ecosystem. Our platform offers seamless rent payment processing, property management tools, inspection scheduling, and much more.\n\nWhether you're a tenant looking for your next home, a landlord managing multiple properties, a real estate agent helping clients, or a service vendor offering maintenance services, RenterPay has been designed with you in mind.\n\nKey features include:\n- Secure online rent payments with multiple payment options\n- Property listing and search functionality\n- Automated inspection scheduling\n- Maintenance request management\n- Digital lease agreements\n- Real-time notifications and updates\n\nJoin us today and experience the future of rental management!",
+        "featured_image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=400&fit=crop",
+        "category": {
+          "id": 1,
+          "name": "News",
+          "slug": "news"
+        },
+        "author": {
+          "id": null,
+          "name": null,
+          "email": null
+        },
+        "order": 1,
+        "reading_time_minutes": 1,
+        "reading_time_label": "1 min read",
+        "is_published": true,
+        "published_at": "2025-12-27 15:43:53",
+        "created_at": "2026-01-26 15:43:53",
+        "updated_at": "2026-01-26 15:43:53",
+        "url": "https://renter-pay.mahfuz.click/api/v1/blogs/welcome-to-renterpay"
+      },
+      {
+        "id": 2,
+        "title": "New Payment Options Added: Cryptocurrency Support",
+        "slug": "cryptocurrency-payment-support",
+        "excerpt": "RenterPay now supports cryptocurrency payments, giving users more flexibility in how they pay rent and manage their finances.",
+        "content": "We are pleased to announce that RenterPay now supports cryptocurrency payments! Tenants can now pay their rent using popular cryptocurrencies including Bitcoin, Ethereum, and USDT.\n\nThis new feature offers several benefits:\n- Lower transaction fees compared to traditional payment methods\n- Faster international payments\n- Enhanced privacy and security\n- Support for multiple blockchain networks\n\nTo use cryptocurrency payments, simply connect your crypto wallet in the payment settings. All transactions are processed securely through our verified payment partners, and landlords can choose to receive payments in crypto or have them automatically converted to their local currency.\n\nStay tuned for more updates as we continue to expand our payment options!",
+        "featured_image": "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800&h=400&fit=crop",
+        "category": {
+          "id": 1,
+          "name": "News",
+          "slug": "news"
+        },
+        "author": {
+          "id": null,
+          "name": null,
+          "email": null
+        },
         "order": 2,
-        "is_primary": false,
-        "caption": "Backyard",
-        "created_at": "2026-01-26T09:43:50.000000Z",
-        "updated_at": "2026-01-26T09:43:50.000000Z"
+        "reading_time_minutes": 1,
+        "reading_time_label": "1 min read",
+        "is_published": true,
+        "published_at": "2026-01-11 15:43:53",
+        "created_at": "2026-01-26 15:43:53",
+        "updated_at": "2026-01-26 15:43:53",
+        "url": "https://renter-pay.mahfuz.click/api/v1/blogs/cryptocurrency-payment-support"
       },
       {
-        "id": 363,
-        "property_id": 78,
-        "image_path": "https://picsum.photos/1200/800?random=783",
-        "type": "image",
-        "order": 3,
-        "is_primary": false,
-        "caption": "View",
-        "created_at": "2026-01-26T09:43:50.000000Z",
-        "updated_at": "2026-01-26T09:43:50.000000Z"
-      },
-      {
-        "id": 364,
-        "property_id": 78,
-        "image_path": "https://picsum.photos/1200/800?random=784",
-        "type": "image",
-        "order": 4,
-        "is_primary": false,
-        "caption": "Living Room",
-        "created_at": "2026-01-26T09:43:50.000000Z",
-        "updated_at": "2026-01-26T09:43:50.000000Z"
+        "id": 4,
+        "title": "Scheduling Property Inspections: A Complete Guide",
+        "slug": "scheduling-property-inspections-guide",
+        "excerpt": "Master the art of scheduling property inspections on RenterPay. Learn the best practices and tips for a smooth inspection experience.",
+        "content": "Property inspections are a crucial part of the rental process. Here's how to schedule and prepare for inspections on RenterPay:\n\n1. Finding Properties\nBrowse available properties using our advanced search filters. You can filter by location, price range, property type, and amenities.\n\n2. Requesting an Inspection\nOnce you find a property you like, click the 'Request Inspection' button. Select your preferred date and time from the available slots.\n\n3. Preparing for the Inspection\n- Arrive 5-10 minutes early\n- Bring a valid photo ID\n- Prepare a list of questions\n- Take notes and photos if permitted\n\n4. During the Inspection\n- Check all rooms, appliances, and facilities\n- Test water pressure, electrical outlets, and heating/cooling\n- Ask about utilities, maintenance, and neighborhood\n- Take measurements if you're bringing furniture\n\n5. After the Inspection\n- Submit feedback through your dashboard\n- Rate your experience\n- If interested, proceed with the rental application\n\nPro Tips:\n- Schedule inspections during different times of day to assess natural lighting\n- Check public transportation and parking availability\n- Talk to current residents if possible\n- Don't rush - take your time to evaluate the property thoroughly\n\nRemember, you can reschedule or cancel inspections up to 24 hours in advance through your dashboard.",
+        "featured_image": "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=400&fit=crop",
+        "category": {
+          "id": 2,
+          "name": "Tutorial",
+          "slug": "tutorial"
+        },
+        "author": {
+          "id": null,
+          "name": null,
+          "email": null
+        },
+        "order": 2,
+        "reading_time_minutes": 2,
+        "reading_time_label": "2 min read",
+        "is_published": true,
+        "published_at": "2026-01-06 15:43:53",
+        "created_at": "2026-01-26 15:43:53",
+        "updated_at": "2026-01-26 15:43:53",
+        "url": "https://renter-pay.mahfuz.click/api/v1/blogs/scheduling-property-inspections-guide"
       }
     ],
-    "amenities": [
-      {
-        "id": 495,
-        "property_id": 78,
-        "amenity_type_id": 11,
-        "amenity_type": {
-          "id": 11,
-          "name": "Parking",
-          "slug": "parking",
-          "icon": "https://picsum.photos/seed/parking/200",
-          "description": "Dedicated parking space"
-        },
-        "created_at": "2026-01-26T09:43:50.000000Z",
-        "updated_at": "2026-01-26T09:43:50.000000Z"
-      },
-      {
-        "id": 496,
-        "property_id": 78,
-        "amenity_type_id": 14,
-        "amenity_type": {
-          "id": 14,
-          "name": "Intercom",
-          "slug": "intercom",
-          "icon": "https://picsum.photos/seed/intercom/200",
-          "description": "Intercom system"
-        },
-        "created_at": "2026-01-26T09:43:50.000000Z",
-        "updated_at": "2026-01-26T09:43:50.000000Z"
-      },
-      {
-        "id": 497,
-        "property_id": 78,
-        "amenity_type_id": 16,
-        "amenity_type": {
-          "id": 16,
-          "name": "Solar Panels",
-          "slug": "solar-panels",
-          "icon": "https://picsum.photos/seed/solar/200",
-          "description": "Solar power system"
-        },
-        "created_at": "2026-01-26T09:43:50.000000Z",
-        "updated_at": "2026-01-26T09:43:50.000000Z"
-      },
-      {
-        "id": 498,
-        "property_id": 78,
-        "amenity_type_id": 19,
-        "amenity_type": {
-          "id": 19,
-          "name": "Playground",
-          "slug": "playground",
-          "icon": "https://picsum.photos/seed/playground/200",
-          "description": "Children's playground"
-        },
-        "created_at": "2026-01-26T09:43:50.000000Z",
-        "updated_at": "2026-01-26T09:43:50.000000Z"
-      },
-      {
-        "id": 499,
-        "property_id": 78,
-        "amenity_type_id": 20,
-        "amenity_type": {
-          "id": 20,
-          "name": "Study Room",
-          "slug": "study-room",
-          "icon": "https://picsum.photos/seed/study/200",
-          "description": "Dedicated study or office space"
-        },
-        "created_at": "2026-01-26T09:43:50.000000Z",
-        "updated_at": "2026-01-26T09:43:50.000000Z"
-      },
-      {
-        "id": 500,
-        "property_id": 78,
-        "amenity_type_id": 22,
-        "amenity_type": {
-          "id": 22,
-          "name": "Storage",
-          "slug": "storage",
-          "icon": "https://picsum.photos/seed/storage/200",
-          "description": "Additional storage space"
-        },
-        "created_at": "2026-01-26T09:43:50.000000Z",
-        "updated_at": "2026-01-26T09:43:50.000000Z"
-      }
-    ],
-    "documents": [
-      {
-        "id": 177,
-        "property_id": 78,
-        "document_type": "ownership_certificate",
-        "file_path": "https://renter-pay.mahfuz.click/storage/documents/properties/78/ownership_certificate.pdf",
-        "file_name": "Ownership certificate.pdf",
-        "mime_type": "application/pdf",
-        "file_size": 1731022,
-        "verified_at": "2026-01-26T09:43:50.000000Z",
-        "verified_by": 1,
-        "verification_notes": "Document verified successfully",
-        "created_at": "2026-01-26T09:43:50.000000Z",
-        "updated_at": "2026-01-26T09:43:50.000000Z"
-      },
-      {
-        "id": 178,
-        "property_id": 78,
-        "document_type": "insurance",
-        "file_path": "https://renter-pay.mahfuz.click/storage/documents/properties/78/insurance.pdf",
-        "file_name": "Insurance.pdf",
-        "mime_type": "application/pdf",
-        "file_size": 3353405,
-        "verified_at": "2026-01-26T09:43:50.000000Z",
-        "verified_by": 1,
-        "verification_notes": "Document verified successfully",
-        "created_at": "2026-01-26T09:43:50.000000Z",
-        "updated_at": "2026-01-26T09:43:50.000000Z"
-      }
-    ],
-    "maintenance_profile": {
-      "id": 55,
-      "property_id": 78,
-      "fire_alarm_date": "2025-08-25T18:00:00.000000Z",
-      "fire_alarm_expiry": "2027-01-25T18:00:00.000000Z",
-      "electrical_cert_date": "2025-02-25T18:00:00.000000Z",
-      "electrical_cert_expiry": "2026-07-25T18:00:00.000000Z",
-      "plumbing_cert_date": "2025-12-25T18:00:00.000000Z",
-      "plumbing_cert_expiry": "2026-12-25T18:00:00.000000Z",
-      "gas_safety_date": "2025-10-25T18:00:00.000000Z",
-      "gas_safety_expiry": "2026-07-25T18:00:00.000000Z",
-      "building_inspection_date": "2025-11-25T18:00:00.000000Z",
-      "building_inspection_expiry": "2026-10-25T18:00:00.000000Z",
-      "notes": "All safety certificates current and compliant",
-      "deleted_at": null,
-      "created_by": null,
-      "updated_by": null,
-      "created_at": "2026-01-26T09:43:50.000000Z",
-      "updated_at": "2026-01-26T09:43:50.000000Z"
+    "links": {
+      "first": "https://renter-pay.mahfuz.click/api/v1/blogs?page=1",
+      "last": "https://renter-pay.mahfuz.click/api/v1/blogs?page=1",
+      "prev": null,
+      "next": null
     },
-    "review_summary": {
-      "total_reviews": 7,
-      "average_rating": "4.14"
-    },
-    "my_review": null,
-    "created_at": "2026-01-26T09:43:50.000000Z",
-    "updated_at": "2026-01-29T07:50:21.000000Z"
+    "meta": {
+      "current_page": 1,
+      "from": 1,
+      "last_page": 1,
+      "links": [
+        {
+          "url": null,
+          "label": "&laquo; Previous",
+          "page": null,
+          "active": false
+        },
+        {
+          "url": "https://renter-pay.mahfuz.click/api/v1/blogs?page=1",
+          "label": "1",
+          "page": 1,
+          "active": true
+        },
+        {
+          "url": null,
+          "label": "Next &raquo;",
+          "page": null,
+          "active": false
+        }
+      ],
+      "path": "https://renter-pay.mahfuz.click/api/v1/blogs",
+      "per_page": 20,
+      "to": 6,
+      "total": 6
+    }
   },
   "errors": null
 }

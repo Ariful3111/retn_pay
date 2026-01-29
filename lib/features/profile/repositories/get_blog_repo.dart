@@ -10,9 +10,9 @@ class GetBlogRepository {
   final GetNetwork getNetwork;
   const GetBlogRepository({required this.getNetwork});
 
-  Future<Either<ErrorModel, BlogsModel>> execute() async {
+  Future<Either<ErrorModel, BlogsModel>> execute({int page = 1, int perPage = 20}) async {
     final response = await getNetwork.getData<BlogsModel>(
-      url: "/api/${NetworkLinks.version}/blogs",
+      url: "/api/${NetworkLinks.version}/blogs?page=$page&per_page=$perPage",
       headers: {
         "Accept": "application/json",
         "Authorization":
