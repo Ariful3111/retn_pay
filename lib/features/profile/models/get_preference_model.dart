@@ -68,7 +68,9 @@ class Preferences {
     budgetMin = json['budget_min'];
     budgetMax = json['budget_max'];
     currency = json['currency'];
-    preferredSuburbs = json['preferred_suburbs'].cast<String>();
+    if (json['preferred_suburbs'] != null) {
+      preferredSuburbs = json['preferred_suburbs'].cast<String>();
+    }
     moveInDate = json['move_in_date'];
     petsAllowed = json['pets_allowed'];
     minBedrooms = json['min_bedrooms'];

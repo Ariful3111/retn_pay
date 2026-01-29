@@ -23,9 +23,9 @@ class BlogItem extends GetWidget<BlogController> {
           : ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: controller.blogs.value?.data?.length ?? 0,
+              itemCount: controller.blogs.value?.data?.data?.length ?? 0,
               itemBuilder: (context, index) {
-                final blog = controller.blogs.value?.data?[index];
+                final blog = controller.blogs.value?.data?.data?[index];
                 return GestureDetector(
                   onTap: () {
                     Get.toNamed(
@@ -84,7 +84,7 @@ class BlogItem extends GetWidget<BlogController> {
                               color: AppColors.darkLightText,
                             ),
                             CustomTextSecondary(
-                              text: '2 min read',
+                              text: blog?.readingTimeLabel ?? '2 min read',
                               fontSize: 12.sp,
                               color: AppColors.darkLightText,
                             ),

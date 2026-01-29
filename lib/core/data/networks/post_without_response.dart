@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:http/http.dart' as http;
 import 'package:renter_pay/core/constants/networks_path.dart';
@@ -19,6 +20,7 @@ class PostWithoutResponse {
         Uri.parse(baseUrl + url),
         body: jsonEncode(body),
       );
+      debugPrint('Response: ${response.body}');
       if (response.statusCode == 200 ||
           response.statusCode == 201 ||
           response.statusCode == 202) {

@@ -66,6 +66,9 @@ class Property {
   bool? hasArTour;
   String? rating;
   int? ratingCount;
+  bool? isFavourite;
+  List<Amenities>? amenities;
+  ReviewSummary? reviewSummary;
   Landlord? landlord;
   Landlord? agent;
   List<Units>? units;
@@ -100,6 +103,9 @@ class Property {
     this.hasArTour,
     this.rating,
     this.ratingCount,
+    this.isFavourite,
+    this.amenities,
+    this.reviewSummary,
     this.landlord,
     this.agent,
     this.units,
@@ -137,6 +143,16 @@ class Property {
     hasArTour = json['has_ar_tour'];
     rating = json['rating'];
     ratingCount = json['rating_count'];
+    isFavourite = json['is_favourite'];
+    if (json['amenities'] != null) {
+      amenities = <Amenities>[];
+      json['amenities'].forEach((v) {
+        amenities!.add(Amenities.fromJson(v));
+      });
+    }
+    reviewSummary = json['review_summary'] != null
+        ? ReviewSummary.fromJson(json['review_summary'])
+        : null;
     landlord = json['landlord'] != null
         ? Landlord.fromJson(json['landlord'])
         : null;
@@ -187,6 +203,13 @@ class Property {
     data['has_ar_tour'] = hasArTour;
     data['rating'] = rating;
     data['rating_count'] = ratingCount;
+    data['is_favourite'] = isFavourite;
+    if (amenities != null) {
+      data['amenities'] = amenities!.map((v) => v.toJson()).toList();
+    }
+    if (reviewSummary != null) {
+      data['review_summary'] = reviewSummary!.toJson();
+    }
     if (landlord != null) {
       data['landlord'] = landlord!.toJson();
     }
@@ -201,6 +224,95 @@ class Property {
     }
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
+    return data;
+  }
+}
+
+class Amenities {
+  int? id;
+  int? propertyId;
+  int? amenityTypeId;
+  AmenityType? amenityType;
+  String? createdAt;
+  String? updatedAt;
+
+  Amenities({
+    this.id,
+    this.propertyId,
+    this.amenityTypeId,
+    this.amenityType,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  Amenities.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    propertyId = json['property_id'];
+    amenityTypeId = json['amenity_type_id'];
+    amenityType = json['amenity_type'] != null
+        ? AmenityType.fromJson(json['amenity_type'])
+        : null;
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['property_id'] = propertyId;
+    data['amenity_type_id'] = amenityTypeId;
+    if (amenityType != null) {
+      data['amenity_type'] = amenityType!.toJson();
+    }
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    return data;
+  }
+}
+
+class AmenityType {
+  int? id;
+  String? name;
+  String? slug;
+  String? icon;
+  String? description;
+
+  AmenityType({this.id, this.name, this.slug, this.icon, this.description});
+
+  AmenityType.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    slug = json['slug'];
+    icon = json['icon'];
+    description = json['description'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['slug'] = slug;
+    data['icon'] = icon;
+    data['description'] = description;
+    return data;
+  }
+}
+
+class ReviewSummary {
+  int? totalReviews;
+  String? averageRating;
+
+  ReviewSummary({this.totalReviews, this.averageRating});
+
+  ReviewSummary.fromJson(Map<String, dynamic> json) {
+    totalReviews = json['total_reviews'];
+    averageRating = json['average_rating'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['total_reviews'] = totalReviews;
+    data['average_rating'] = averageRating;
     return data;
   }
 }
