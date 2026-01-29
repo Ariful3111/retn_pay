@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/data/local/theme_service.dart';
 
-class ThemeController extends GetxController{
- 
+class ThemeController extends GetxController {
   RxBool isDarkMode = false.obs;
   late final ThemeService themeService;
   @override
@@ -12,14 +11,12 @@ class ThemeController extends GetxController{
     isDarkMode.value = themeService.getIsDark();
     super.onInit();
   }
-  
 
-  void changeTheme(bool value){
-    isDarkMode.value=!isDarkMode.value;
+  void changeTheme(bool value) {
+    isDarkMode.value = value;
     themeService.saveThemeToStorage(value);
   }
 
-  ThemeMode get currentTheme => isDarkMode.value?ThemeMode.dark:ThemeMode.light;
-
-  
+  ThemeMode get currentTheme =>
+      isDarkMode.value ? ThemeMode.dark : ThemeMode.light;
 }

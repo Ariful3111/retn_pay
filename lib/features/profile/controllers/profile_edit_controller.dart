@@ -5,6 +5,7 @@ import 'package:renter_pay/core/data/global_models/profile_model.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/profile/repositories/profile_edit_repo.dart';
 import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
+import 'package:renter_pay/shared/widgets/snackbars/success_snackbar.dart';
 
 class ProfileEditController extends GetxController {
   final ProfileEditRepository profileEditRepository;
@@ -61,6 +62,7 @@ class ProfileEditController extends GetxController {
           if (success) {
             isEdit.value = false;
             await Get.find<ProfileController>().getProfile();
+            SuccessSnackbar.show(description: 'Profile updated successfully');
           }
         },
       );
