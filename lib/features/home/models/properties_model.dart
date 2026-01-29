@@ -2,8 +2,8 @@ class PropertiesModel {
   bool? error;
   int? code;
   String? message;
-  List<Property>? data;
-  String? errors;
+  PropertyPaginationData? data;
+  dynamic errors;
 
   PropertiesModel({
     this.error,
@@ -17,13 +17,10 @@ class PropertiesModel {
     error = json['error'];
     code = json['code'];
     message = json['message'];
-    if (json['data'] != null) {
-      data = <Property>[];
-      json['data'].forEach((v) {
-        data!.add(Property.fromJson(v));
-      });
-    }
-    errors = json['errors'].toString();
+    data = json['data'] != null
+        ? PropertyPaginationData.fromJson(json['data'])
+        : null;
+    errors = json['errors'];
   }
 
   Map<String, dynamic> toJson() {
@@ -32,9 +29,42 @@ class PropertiesModel {
     data['code'] = code;
     data['message'] = message;
     if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
+      data['data'] = this.data!.toJson();
     }
     data['errors'] = errors;
+    return data;
+  }
+}
+
+class PropertyPaginationData {
+  List<Property>? data;
+  Links? links;
+  Meta? meta;
+
+  PropertyPaginationData({this.data, this.links, this.meta});
+
+  PropertyPaginationData.fromJson(Map<String, dynamic> json) {
+    if (json['data'] != null) {
+      data = <Property>[];
+      json['data'].forEach((v) {
+        data!.add(Property.fromJson(v));
+      });
+    }
+    links = json['links'] != null ? Links.fromJson(json['links']) : null;
+    meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (this.data != null) {
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
+    }
+    if (links != null) {
+      data['links'] = links!.toJson();
+    }
+    if (meta != null) {
+      data['meta'] = meta!.toJson();
+    }
     return data;
   }
 }
@@ -44,8 +74,8 @@ class Property {
   int? landlordId;
   int? agentId;
   int? propertyTypeId;
-  PropertyType? propertyType;
   String? title;
+  String? name;
   String? description;
   String? address;
   String? city;
@@ -54,6 +84,7 @@ class Property {
   String? country;
   String? latitude;
   String? longitude;
+  PropertyType? propertyType;
   int? bedrooms;
   int? bathrooms;
   int? parkingSpaces;
@@ -64,15 +95,16 @@ class Property {
   String? subscriptionTier;
   bool? isVerified;
   bool? hasArTour;
+  bool? isFavourite;
+  List<String>? features;
   String? rating;
   int? ratingCount;
-  bool? isFavourite;
-  List<Amenities>? amenities;
-  ReviewSummary? reviewSummary;
   Landlord? landlord;
   Landlord? agent;
   List<Units>? units;
   List<Images>? images;
+  List<Amenities>? amenities;
+  ReviewSummary? reviewSummary;
   String? createdAt;
   String? updatedAt;
 
@@ -81,8 +113,8 @@ class Property {
     this.landlordId,
     this.agentId,
     this.propertyTypeId,
-    this.propertyType,
     this.title,
+    this.name,
     this.description,
     this.address,
     this.city,
@@ -91,6 +123,7 @@ class Property {
     this.country,
     this.latitude,
     this.longitude,
+    this.propertyType,
     this.bedrooms,
     this.bathrooms,
     this.parkingSpaces,
@@ -101,15 +134,16 @@ class Property {
     this.subscriptionTier,
     this.isVerified,
     this.hasArTour,
+    this.isFavourite,
+    this.features,
     this.rating,
     this.ratingCount,
-    this.isFavourite,
-    this.amenities,
-    this.reviewSummary,
     this.landlord,
     this.agent,
     this.units,
     this.images,
+    this.amenities,
+    this.reviewSummary,
     this.createdAt,
     this.updatedAt,
   });
@@ -119,10 +153,8 @@ class Property {
     landlordId = json['landlord_id'];
     agentId = json['agent_id'];
     propertyTypeId = json['property_type_id'];
-    propertyType = json['property_type'] != null
-        ? PropertyType.fromJson(json['property_type'])
-        : null;
     title = json['title'];
+    name = json['name'];
     description = json['description'];
     address = json['address'];
     city = json['city'];
@@ -131,6 +163,9 @@ class Property {
     country = json['country'];
     latitude = json['latitude'];
     longitude = json['longitude'];
+    propertyType = json['property_type'] != null
+        ? PropertyType.fromJson(json['property_type'])
+        : null;
     bedrooms = json['bedrooms'];
     bathrooms = json['bathrooms'];
     parkingSpaces = json['parking_spaces'];
@@ -141,10 +176,29 @@ class Property {
     subscriptionTier = json['subscription_tier'];
     isVerified = json['is_verified'];
     hasArTour = json['has_ar_tour'];
+    isFavourite = json['is_favourite'];
+    if (json['features'] != null && json['features'] is List) {
+      features = json['features'].cast<String>();
+    }
     rating = json['rating'];
     ratingCount = json['rating_count'];
-    isFavourite = json['is_favourite'];
-    if (json['amenities'] != null) {
+    landlord = json['landlord'] != null
+        ? Landlord.fromJson(json['landlord'])
+        : null;
+    agent = json['agent'] != null ? Landlord.fromJson(json['agent']) : null;
+    if (json['units'] != null && json['units'] is List) {
+      units = <Units>[];
+      json['units'].forEach((v) {
+        units!.add(Units.fromJson(v));
+      });
+    }
+    if (json['images'] != null && json['images'] is List) {
+      images = <Images>[];
+      json['images'].forEach((v) {
+        images!.add(Images.fromJson(v));
+      });
+    }
+    if (json['amenities'] != null && json['amenities'] is List) {
       amenities = <Amenities>[];
       json['amenities'].forEach((v) {
         amenities!.add(Amenities.fromJson(v));
@@ -153,22 +207,6 @@ class Property {
     reviewSummary = json['review_summary'] != null
         ? ReviewSummary.fromJson(json['review_summary'])
         : null;
-    landlord = json['landlord'] != null
-        ? Landlord.fromJson(json['landlord'])
-        : null;
-    agent = json['agent'] != null ? Landlord.fromJson(json['agent']) : null;
-    if (json['units'] != null) {
-      units = <Units>[];
-      json['units'].forEach((v) {
-        units!.add(Units.fromJson(v));
-      });
-    }
-    if (json['images'] != null) {
-      images = <Images>[];
-      json['images'].forEach((v) {
-        images!.add(Images.fromJson(v));
-      });
-    }
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
@@ -179,10 +217,8 @@ class Property {
     data['landlord_id'] = landlordId;
     data['agent_id'] = agentId;
     data['property_type_id'] = propertyTypeId;
-    if (propertyType != null) {
-      data['property_type'] = propertyType!.toJson();
-    }
     data['title'] = title;
+    data['name'] = name;
     data['description'] = description;
     data['address'] = address;
     data['city'] = city;
@@ -191,6 +227,9 @@ class Property {
     data['country'] = country;
     data['latitude'] = latitude;
     data['longitude'] = longitude;
+    if (propertyType != null) {
+      data['property_type'] = propertyType!.toJson();
+    }
     data['bedrooms'] = bedrooms;
     data['bathrooms'] = bathrooms;
     data['parking_spaces'] = parkingSpaces;
@@ -201,15 +240,10 @@ class Property {
     data['subscription_tier'] = subscriptionTier;
     data['is_verified'] = isVerified;
     data['has_ar_tour'] = hasArTour;
+    data['is_favourite'] = isFavourite;
+    data['features'] = features;
     data['rating'] = rating;
     data['rating_count'] = ratingCount;
-    data['is_favourite'] = isFavourite;
-    if (amenities != null) {
-      data['amenities'] = amenities!.map((v) => v.toJson()).toList();
-    }
-    if (reviewSummary != null) {
-      data['review_summary'] = reviewSummary!.toJson();
-    }
     if (landlord != null) {
       data['landlord'] = landlord!.toJson();
     }
@@ -222,97 +256,14 @@ class Property {
     if (images != null) {
       data['images'] = images!.map((v) => v.toJson()).toList();
     }
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    return data;
-  }
-}
-
-class Amenities {
-  int? id;
-  int? propertyId;
-  int? amenityTypeId;
-  AmenityType? amenityType;
-  String? createdAt;
-  String? updatedAt;
-
-  Amenities({
-    this.id,
-    this.propertyId,
-    this.amenityTypeId,
-    this.amenityType,
-    this.createdAt,
-    this.updatedAt,
-  });
-
-  Amenities.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    propertyId = json['property_id'];
-    amenityTypeId = json['amenity_type_id'];
-    amenityType = json['amenity_type'] != null
-        ? AmenityType.fromJson(json['amenity_type'])
-        : null;
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['property_id'] = propertyId;
-    data['amenity_type_id'] = amenityTypeId;
-    if (amenityType != null) {
-      data['amenity_type'] = amenityType!.toJson();
+    if (amenities != null) {
+      data['amenities'] = amenities!.map((v) => v.toJson()).toList();
+    }
+    if (reviewSummary != null) {
+      data['review_summary'] = reviewSummary!.toJson();
     }
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
-    return data;
-  }
-}
-
-class AmenityType {
-  int? id;
-  String? name;
-  String? slug;
-  String? icon;
-  String? description;
-
-  AmenityType({this.id, this.name, this.slug, this.icon, this.description});
-
-  AmenityType.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    slug = json['slug'];
-    icon = json['icon'];
-    description = json['description'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['slug'] = slug;
-    data['icon'] = icon;
-    data['description'] = description;
-    return data;
-  }
-}
-
-class ReviewSummary {
-  int? totalReviews;
-  String? averageRating;
-
-  ReviewSummary({this.totalReviews, this.averageRating});
-
-  ReviewSummary.fromJson(Map<String, dynamic> json) {
-    totalReviews = json['total_reviews'];
-    averageRating = json['average_rating'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['total_reviews'] = totalReviews;
-    data['average_rating'] = averageRating;
     return data;
   }
 }
@@ -476,6 +427,198 @@ class Images {
     data['caption'] = caption;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
+    return data;
+  }
+}
+
+class Amenities {
+  int? id;
+  int? propertyId;
+  int? amenityTypeId;
+  AmenityType? amenityType;
+  String? createdAt;
+  String? updatedAt;
+
+  Amenities({
+    this.id,
+    this.propertyId,
+    this.amenityTypeId,
+    this.amenityType,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  Amenities.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    propertyId = json['property_id'];
+    amenityTypeId = json['amenity_type_id'];
+    amenityType = json['amenity_type'] != null
+        ? AmenityType.fromJson(json['amenity_type'])
+        : null;
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['property_id'] = propertyId;
+    data['amenity_type_id'] = amenityTypeId;
+    if (amenityType != null) {
+      data['amenity_type'] = amenityType!.toJson();
+    }
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    return data;
+  }
+}
+
+class AmenityType {
+  int? id;
+  String? name;
+  String? slug;
+  String? icon;
+  String? description;
+
+  AmenityType({this.id, this.name, this.slug, this.icon, this.description});
+
+  AmenityType.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    slug = json['slug'];
+    icon = json['icon'];
+    description = json['description'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['slug'] = slug;
+    data['icon'] = icon;
+    data['description'] = description;
+    return data;
+  }
+}
+
+class ReviewSummary {
+  int? totalReviews;
+  String? averageRating;
+
+  ReviewSummary({this.totalReviews, this.averageRating});
+
+  ReviewSummary.fromJson(Map<String, dynamic> json) {
+    totalReviews = json['total_reviews'];
+    averageRating = json['average_rating'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['total_reviews'] = totalReviews;
+    data['average_rating'] = averageRating;
+    return data;
+  }
+}
+
+class Links {
+  String? first;
+  String? last;
+  String? prev;
+  String? next;
+
+  Links({this.first, this.last, this.prev, this.next});
+
+  Links.fromJson(Map<String, dynamic> json) {
+    first = json['first'];
+    last = json['last'];
+    prev = json['prev'];
+    next = json['next'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['first'] = first;
+    data['last'] = last;
+    data['prev'] = prev;
+    data['next'] = next;
+    return data;
+  }
+}
+
+class Meta {
+  int? currentPage;
+  int? from;
+  int? lastPage;
+  List<MetaLink>? links;
+  String? path;
+  int? perPage;
+  int? to;
+  int? total;
+
+  Meta({
+    this.currentPage,
+    this.from,
+    this.lastPage,
+    this.links,
+    this.path,
+    this.perPage,
+    this.to,
+    this.total,
+  });
+
+  Meta.fromJson(Map<String, dynamic> json) {
+    currentPage = json['current_page'];
+    from = json['from'];
+    lastPage = json['last_page'];
+    if (json['links'] != null) {
+      links = <MetaLink>[];
+      json['links'].forEach((v) {
+        links!.add(MetaLink.fromJson(v));
+      });
+    }
+    path = json['path'];
+    perPage = json['per_page'];
+    to = json['to'];
+    total = json['total'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['current_page'] = currentPage;
+    data['from'] = from;
+    data['last_page'] = lastPage;
+    if (links != null) {
+      data['links'] = links!.map((v) => v.toJson()).toList();
+    }
+    data['path'] = path;
+    data['per_page'] = perPage;
+    data['to'] = to;
+    data['total'] = total;
+    return data;
+  }
+}
+
+class MetaLink {
+  String? url;
+  String? label;
+  String? page;
+  bool? active;
+
+  MetaLink({this.url, this.label, this.page, this.active});
+
+  MetaLink.fromJson(Map<String, dynamic> json) {
+    url = json['url'];
+    label = json['label'];
+    page = json['page'].toString();
+    active = json['active'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['url'] = url;
+    data['label'] = label;
+    data['page'] = page;
+    data['active'] = active;
     return data;
   }
 }

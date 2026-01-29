@@ -1,13 +1,13 @@
 import 'package:get/get.dart';
 
-class FavoriteController extends GetxController{
-  RxList<int> favoriteItem=<int>[].obs;
-RxString initialSort = 'sortBy'.obs;
-  List sortList = ['Low To High','High to Low'];
-  void selectFavorite({required int id}){
-    if(favoriteItem.contains(id)){
+class FavoriteController extends GetxController {
+  RxList<int> favoriteItem = <int>[].obs;
+  RxString initialSort = 'sortBy'.obs;
+  List sortList = ['Low To High', 'High to Low'];
+  void selectFavorite({required int id}) {
+    if (favoriteItem.contains(id)) {
       favoriteItem.remove(id);
-    }else{
+    } else {
       favoriteItem.add(id);
     }
   }
@@ -34,11 +34,11 @@ RxString initialSort = 'sortBy'.obs;
     }
 
     if (page >= totalPage - 2) {
-      return [1, 2,3, '...', totalPage - 1, totalPage];
+      return [1, 2, 3, '...', totalPage - 1, totalPage];
     }
 
     return [1, '...', page - 1, page, page + 1, '...', totalPage];
   }
 
-  bool  isFavorite(int item)=>favoriteItem.contains(item);
+  bool isFavorite(int item) => favoriteItem.contains(item);
 }

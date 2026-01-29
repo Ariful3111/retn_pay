@@ -6,7 +6,6 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/features/favorite/controllers/favorite_controller.dart';
 import 'package:renter_pay/features/home/controllers/recommended_controller.dart';
 import 'package:renter_pay/features/home/models/properties_model.dart';
 import 'package:renter_pay/features/home/widgets/category.dart';
@@ -21,10 +20,9 @@ class RecommendedItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FavoriteController favoriteController = Get.find();
     return Obx(() {
       List<Property>? properties =
-          recommendedController.recommendedProperties.value?.data;
+          recommendedController.recommendedProperties.value?.data?.data;
       return recommendedController.isLoading.value
           ? ButtonLoading()
           : Column(
@@ -77,21 +75,13 @@ class RecommendedItems extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Obx(() {
-                                return Align(
-                                  alignment: Alignment.topRight,
-                                  child: CustomFavoriteButton(
-                                    onTap: () {
-                                      favoriteController.selectFavorite(
-                                        id: index,
-                                      );
-                                    },
-                                    isFavorite: favoriteController.isFavorite(
-                                      index,
-                                    ),
-                                  ),
-                                );
-                              }),
+                              Align(
+                                alignment: Alignment.topRight,
+                                child: CustomFavoriteButton(
+                                  onTap: () {},
+                                  isFavorite: property.isFavourite!,
+                                ),
+                              ),
                               Spacer(),
 
                               Row(

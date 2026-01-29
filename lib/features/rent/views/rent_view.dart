@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/favorite/controllers/favorite_controller.dart';
 import 'package:renter_pay/features/home/models/properties_model.dart';
 import 'package:renter_pay/features/rent/controllers/rent_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_pagination.dart';
@@ -48,20 +47,21 @@ class RentView extends StatelessWidget {
                   imageHeight: 250.h,
                   imageWidth: MediaQuery.widthOf(context),
                   padding: EdgeInsetsGeometry.only(bottom: 24.h),
-                  favoriteController: Get.find<FavoriteController>(),
                   property: Property(),
                 );
               },
             ),
-           Obx(()=> CustomPagination(
-              list: rentController.pageNumber,
-              onTapPrev: rentController.previousPage,
-              onTapNext: rentController.nextPage,
-              onTapPage: (item) {
-                rentController.currentPage.value = item;
-              },
-              value: rentController.currentPage.value,
-            ),),
+            Obx(
+              () => CustomPagination(
+                list: rentController.pageNumber,
+                onTapPrev: rentController.previousPage,
+                onTapNext: rentController.nextPage,
+                onTapPage: (item) {
+                  rentController.currentPage.value = item;
+                },
+                value: rentController.currentPage.value,
+              ),
+            ),
             SizedBox(height: 55.h),
           ],
         ),
