@@ -62,6 +62,7 @@ import 'package:renter_pay/features/notification/bindings/notification_bindings.
 import 'package:renter_pay/features/notification/views/notification_view.dart';
 import 'package:renter_pay/features/profile/bindings/blog_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/blog_details_bindings.dart';
+import 'package:renter_pay/features/profile/bindings/contact_us_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/profile_edit_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/support_bindings.dart';
 import 'package:renter_pay/features/profile/views/blog_view.dart';
@@ -173,7 +174,11 @@ final List<GetPage> appRoutes = [
     bindings: [FavoriteBindings()],
   ),
   GetPage(name: AppRoutes.inspectionFrom, page: () => InspectionFrom()),
-  GetPage(name: AppRoutes.contactUs, page: () => ContactUs()),
+  GetPage(
+    name: AppRoutes.contactUs,
+    page: () => ContactUs(),
+    binding: ContactUsBindings(),
+  ),
   GetPage(
     name: AppRoutes.blog,
     page: () => BlogView(),

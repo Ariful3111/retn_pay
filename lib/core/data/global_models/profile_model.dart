@@ -62,7 +62,7 @@ class Data {
     image = json['image'];
     gender = json['gender'];
     email = json['email'];
-    phone = json['phone'].toString();
+    phone = json['phone'];
     isActive = json['is_active'];
     roles = json['roles'].cast<String>();
     providerId = json['provider_id'].toString();
