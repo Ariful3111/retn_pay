@@ -40,19 +40,12 @@ class ProfileEditController extends GetxController {
       final response = await profileEditRepository.execute(
         firstName: nameController.text,
         lastName: lastNameController.text,
+
         // email: emailController.text,
         // phone: phoneController.text,
         // businessName: businessNameController.text,
         // businessType: businessTypeController.text,
         // abn: businessLicenseController.text,
-        role:
-            Get.find<ProfileController>()
-                .profileData
-                .value
-                ?.data
-                ?.roles
-                ?.first ??
-            '',
       );
       response.fold(
         (error) {

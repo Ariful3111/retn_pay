@@ -6,7 +6,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/features/favorite/controller/favorite_controller.dart';
+import 'package:renter_pay/features/favorite/controllers/favorite_controller.dart';
 import 'package:renter_pay/features/home/controllers/recommended_controller.dart';
 import 'package:renter_pay/features/home/models/properties_model.dart';
 import 'package:renter_pay/features/home/widgets/category.dart';
