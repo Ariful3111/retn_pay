@@ -10,9 +10,13 @@ class GetFavoriteRepository {
   final GetNetwork getNetwork;
   const GetFavoriteRepository({required this.getNetwork});
 
-  Future<Either<ErrorModel, PropertiesModel>> execute() async {
+  Future<Either<ErrorModel, PropertiesModel>> execute({
+    int page = 1,
+    int perPage = 20,
+  }) async {
     final response = await getNetwork.getData<PropertiesModel>(
-      url: "/api/${NetworkLinks.version}/properties/favourites",
+      url:
+          "/api/${NetworkLinks.version}/properties/favourites?page=$page&per_page=$perPage",
       headers: {
         "Accept": "application/json",
         "Authorization":

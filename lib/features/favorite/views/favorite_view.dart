@@ -46,6 +46,8 @@ class FavoriteView extends GetView<GetFavoriteController> {
                   SizedBox(height: 8.h),
                   CustomItemSort(
                     title: 'Favorite',
+                    info:
+                        ' Showing ${controller.favoriteProperties.value?.data?.data?.length ?? 0} result',
                     option: favoriteController.sortList,
                     onSelect: (value) {
                       favoriteController.initialSort.value = value!;
@@ -98,13 +100,13 @@ class FavoriteView extends GetView<GetFavoriteController> {
                       false)
                     Obx(
                       () => CustomPagination(
-                        list: favoriteController.pageNumber,
-                        onTapPrev: favoriteController.previousPage,
-                        onTapNext: favoriteController.nextPage,
+                        list: controller.pageNumber,
+                        onTapPrev: controller.previousPage,
+                        onTapNext: controller.nextPage,
                         onTapPage: (item) {
-                          favoriteController.currentPage.value = item;
+                          controller.currentPage.value = item;
                         },
-                        value: favoriteController.currentPage.value,
+                        value: controller.currentPage.value,
                       ),
                     ),
                   SizedBox(height: 60.h),

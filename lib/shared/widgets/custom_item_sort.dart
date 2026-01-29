@@ -9,6 +9,7 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart
 
 class CustomItemSort extends StatelessWidget {
   final String title;
+  final String info;
   final List option;
   final void Function(String?) onSelect;
   final RxString isSelect;
@@ -18,6 +19,7 @@ class CustomItemSort extends StatelessWidget {
     required this.option,
     required this.onSelect,
     required this.isSelect,
+    required this.info,
   });
 
   @override
@@ -42,7 +44,7 @@ class CustomItemSort extends StatelessWidget {
             children: [
               CustomTextPrimary(text: title, fontSize: 16.sp),
               CustomTextSecondary(
-                text: '---  Showing  result- (12)',
+                text: info,
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
                 color: Color(0xFF697483),

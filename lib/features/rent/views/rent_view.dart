@@ -32,6 +32,7 @@ class RentView extends StatelessWidget {
             CustomItemSort(
               title: 'Property',
               option: rentController.sortList,
+              info: "",
               onSelect: (value) {
                 rentController.initialSort.value = value!;
               },
