@@ -11,8 +11,8 @@ import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.da
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
-class InspectionFrom extends StatelessWidget {
-  const InspectionFrom({super.key});
+class InspectionForm extends StatelessWidget {
+  const InspectionForm({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -77,7 +77,8 @@ import 'package:renter_pay/features/profile/views/profile_view.dart';
 import 'package:renter_pay/features/profile/views/setting_view.dart';
 import 'package:renter_pay/features/rent/bindings/rent_bindings.dart';
 import 'package:renter_pay/features/rent/bindings/rent_details_bindings.dart';
-import 'package:renter_pay/features/rent/views/inspection_from.dart';
+import 'package:renter_pay/features/rent/bindings/inspection_from_binding.dart';
+import 'package:renter_pay/features/rent/views/inspection_form.dart';
 import 'package:renter_pay/features/rent/views/rent_view.dart';
 import 'package:renter_pay/features/rent/views/property_view.dart';
 
@@ -173,7 +174,11 @@ final List<GetPage> appRoutes = [
     page: () => FavoriteView(),
     bindings: [FavoriteBindings()],
   ),
-  GetPage(name: AppRoutes.inspectionFrom, page: () => InspectionFrom()),
+  GetPage(
+    name: AppRoutes.inspectionFrom,
+    page: () => InspectionForm(),
+    binding: InspectionFromBinding(),
+  ),
   GetPage(
     name: AppRoutes.contactUs,
     page: () => ContactUs(),

@@ -4,6 +4,7 @@ import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/core/data/local/theme_service.dart';
 import 'package:renter_pay/core/data/networks/delete_network.dart';
 import 'package:renter_pay/core/data/networks/get_network.dart';
+import 'package:renter_pay/core/data/networks/image_without_response.dart';
 import 'package:renter_pay/core/data/networks/patch_without_response.dart';
 import 'package:renter_pay/core/data/networks/post_with_response.dart';
 import 'package:renter_pay/core/data/networks/post_without_response.dart';
@@ -24,6 +25,7 @@ class DependencyInjection {
     Get.put<PatchWithoutResponse>(PatchWithoutResponse(), permanent: true);
     Get.put<UpdateWithoutResponse>(UpdateWithoutResponse(), permanent: true);
     Get.put<DeleteNetwork>(DeleteNetwork(), permanent: true);
+    Get.put<ImageWithoutResponse>(ImageWithoutResponse(), permanent: true);
 
     return Get.find<StorageService>().read(
           key: Get.find<StorageService>().tokenKey,

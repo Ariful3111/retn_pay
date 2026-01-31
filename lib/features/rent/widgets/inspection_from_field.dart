@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/utils/date_picker.dart';
 import 'package:renter_pay/core/utils/time_picker.dart';
-import 'package:renter_pay/features/rent/controllers/inspection_from_controller.dart';
+import 'package:renter_pay/features/rent/controllers/inspection_form_controller.dart';
 import 'package:renter_pay/shared/extensions/Validators/email_validator.dart';
 import 'package:renter_pay/shared/extensions/Validators/phone_validator.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_date_field.dart';
@@ -13,26 +13,25 @@ import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_time_field.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
-class InspectionFromField extends StatelessWidget {
+class InspectionFromField extends GetWidget<InspectionFormController> {
   const InspectionFromField({super.key});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    InspectionFromController inspectionFromController = Get.find();
     return Column(
       children: [
         CustomTextField(
-          fillColor:isDark? AppColors.darkPrimary:AppColors.whiteColor,
-          controller: inspectionFromController.nameController,
+          fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+          controller: controller.nameController,
           labelText: 'Full Name*',
           hintText: 'Enter Your Full Name',
           textColor: AppColors.secondaryTextColor,
         ),
         SizedBox(height: 15.66.h),
         CustomTextField(
-          fillColor: isDark? AppColors.darkPrimary:AppColors.whiteColor,
-          controller: inspectionFromController.emailController,
+          fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+          controller: controller.emailController,
           labelText: 'Email Address*',
           hintText: 'Enter Your Email Address',
           validator: emailValidation,
@@ -41,8 +40,8 @@ class InspectionFromField extends StatelessWidget {
         ),
         SizedBox(height: 15.66.h),
         CustomTextField(
-          fillColor: isDark? AppColors.darkPrimary:AppColors.whiteColor,
-          controller: inspectionFromController.phoneController,
+          fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+          controller: controller.phoneController,
           labelText: 'Phone Number*',
           hintText: 'Enter Your Phone Number',
           validator: phoneValidation,
@@ -51,14 +50,14 @@ class InspectionFromField extends StatelessWidget {
         ),
         SizedBox(height: 15.66.h),
         CustomDateField(
-          fillColor: isDark? AppColors.darkPrimary:AppColors.whiteColor,
-          controller: inspectionFromController.dateController,
+          fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+          controller: controller.dateController,
           onTap: () {
             DatePicker.pickDate(
               context: context,
               onDateSelected: (date) {
-                inspectionFromController.selectedDate.value = date;
-                inspectionFromController.dateController.text =
+                controller.selectedDate.value = date;
+                controller.dateController.text =
                     "${date.day.toString().padLeft(2, '0')}/"
                     "${date.month.toString().padLeft(2, '0')}/"
                     "${date.year}";
@@ -69,16 +68,15 @@ class InspectionFromField extends StatelessWidget {
         ),
         SizedBox(height: 15.66.h),
         CustomTimeField(
-          fillColor: isDark? AppColors.darkPrimary:AppColors.whiteColor,
-          controller: inspectionFromController.timeController,
+          fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+          controller: controller.timeController,
           onTap: () {
             TimePicker.pickTime(
               context: context,
               onTimeSelected: (time) {
-                inspectionFromController.selectedTime.value = time;
-                inspectionFromController.timeController.text = time.format(
-                  context,
-                );
+                controller.selectedTime.value = time;
+                controller.timeController.text = time.format(context);
+                debugPrint(controller.selectedTime.value.toString());
               },
             );
           },
@@ -87,11 +85,11 @@ class InspectionFromField extends StatelessWidget {
         SizedBox(height: 15.66.h),
         CustomDropdownMenu(
           onSelect: (value) {
-            inspectionFromController.selectedInspection.value = value!;
-            inspectionFromController.isSelectedInspection.value = true;
+            controller.selectedInspection.value = value!;
+            controller.isSelectedInspection.value = true;
           },
-          option: inspectionFromController.inspectOption,
-          isSelect: inspectionFromController.selectedInspection,
+          option: controller.inspectOption,
+          isSelect: controller.selectedInspection,
           label: CustomTextSecondary(
             text: 'Inspection Type*',
             fontSize: 12.sp,

@@ -10,9 +10,9 @@ class PropertyAddressModel {
     error = json['error'];
     code = json['code'];
     message = json['message'];
-    if (json['data'] != null) {
+    if (json['data'] != null && json['data']['data'] != null) {
       data = <PropertyAddress>[];
-      json['data'].forEach((v) {
+      json['data']['data'].forEach((v) {
         data!.add(PropertyAddress.fromJson(v));
       });
     }
@@ -24,7 +24,7 @@ class PropertyAddressModel {
     data['code'] = code;
     data['message'] = message;
     if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
+      data['data'] = {'data': this.data!.map((v) => v.toJson()).toList()};
     }
     return data;
   }

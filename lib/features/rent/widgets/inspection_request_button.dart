@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_verification.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
@@ -23,12 +26,21 @@ class InspectionRequestButton extends StatelessWidget {
           height: 40.h,
           width: 176.w,
           onPressed: () {
-            showDialog(
-              context: context,
-              builder: (context) {
-                return Dialog(child: InspectionVerification());
-              },
-            );
+            if (Get.find<ProfileController>()
+                .profileData
+                .value!
+                .data!
+                .documents!
+                .isNotEmpty) {
+              Get.toNamed(AppRoutes.inspectionFrom);
+            } else {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return Dialog(child: InspectionVerification());
+                },
+              );
+            }
           },
           text: 'Inspection Request',
           borderRadius: BorderRadius.circular(8.r),

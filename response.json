@@ -1,252 +1,26 @@
 {
   "error": false,
   "code": 200,
-  "message": "Favourite properties retrieved successfully",
+  "message": "Addresses retrieved successfully",
   "data": {
     "data": [
       {
-        "id": 63,
-        "landlord_id": 54,
-        "agent_id": 28,
-        "property_type_id": 8,
-        "title": "Penthouse in Adelaide - Garden Avenue",
-        "name": "Penthouse in Adelaide - Garden Avenue",
-        "description": "Modern Penthouse located in Adelaide. Features 2 bedroom(s), 1 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
-        "address": "251/136 Collins Street",
+        "id": 81,
+        "address": "631/173 Collins Street",
+        "full_address": "631/173 Collins Street, Adelaide, SA, 5531",
         "city": "Adelaide",
         "state": "SA",
-        "postal_code": "5559",
-        "country": "Australia",
-        "latitude": "-34.86850000",
-        "longitude": "138.51070000",
-        "property_type": {
-          "id": 8,
-          "name": "Penthouse",
-          "slug": "penthouse",
-          "image": "https://picsum.photos/seed/penthouse/800/600"
-        },
-        "bedrooms": 2,
-        "bathrooms": 1,
-        "parking_spaces": 2,
-        "land_size": null,
-        "building_size": "288.00",
-        "year_built": 2016,
-        "status": "active",
-        "subscription_tier": "platinum",
-        "is_verified": true,
-        "has_ar_tour": false,
-        "is_favourite": true,
-        "features": [
-          "Secure underground parking with direct lift access to the building.",
-          "Modern kitchen with stone benchtops and quality appliances.",
-          "Ducted air conditioning and heating for year-round comfort.",
-          "Dedicated study or home office space with built-in desk.",
-          "Low-maintenance garden with native plants and irrigation."
-        ],
-        "rating": "4.40",
-        "rating_count": 10,
-        "landlord": {
-          "id": 54,
-          "name": "Landlord User 3",
-          "email": "landlord3@example.com"
-        },
-        "agent": {
-          "id": 28,
-          "name": "Agent User 7",
-          "email": "agent7@example.com"
-        },
-        "units": [
-          {
-            "id": 111,
-            "property_id": 63,
-            "unit_number": "Unit 1",
-            "unit_name": "Penthouse",
-            "rent_amount": "22470.00",
-            "currency": "AUD",
-            "status": "occupied",
-            "bedrooms": 2,
-            "bathrooms": 1,
-            "size": "288.00",
-            "description": "Spacious Penthouse with modern fixtures",
-            "created_at": "2026-01-26T09:43:49.000000Z",
-            "updated_at": "2026-01-26T09:43:49.000000Z"
-          }
-        ],
-        "images": [
-          {
-            "id": 292,
-            "property_id": 63,
-            "image_path": "https://picsum.photos/1200/800?random=631",
-            "type": "image",
-            "order": 1,
-            "is_primary": true,
-            "caption": "View",
-            "created_at": "2026-01-26T09:43:49.000000Z",
-            "updated_at": "2026-01-26T09:43:49.000000Z"
-          },
-          {
-            "id": 293,
-            "property_id": 63,
-            "image_path": "https://picsum.photos/1200/800?random=632",
-            "type": "image",
-            "order": 2,
-            "is_primary": false,
-            "caption": "Backyard",
-            "created_at": "2026-01-26T09:43:49.000000Z",
-            "updated_at": "2026-01-26T09:43:49.000000Z"
-          },
-          {
-            "id": 294,
-            "property_id": 63,
-            "image_path": "https://picsum.photos/1200/800?random=633",
-            "type": "image",
-            "order": 3,
-            "is_primary": false,
-            "caption": "View",
-            "created_at": "2026-01-26T09:43:49.000000Z",
-            "updated_at": "2026-01-26T09:43:49.000000Z"
-          },
-          {
-            "id": 295,
-            "property_id": 63,
-            "image_path": "https://picsum.photos/1200/800?random=634",
-            "type": "image",
-            "order": 4,
-            "is_primary": false,
-            "caption": "Bathroom",
-            "created_at": "2026-01-26T09:43:49.000000Z",
-            "updated_at": "2026-01-26T09:43:49.000000Z"
-          }
-        ],
-        "amenities": [
-          {
-            "id": 394,
-            "property_id": 63,
-            "amenity_type_id": 4,
-            "amenity_type": {
-              "id": 4,
-              "name": "Balcony",
-              "slug": "balcony",
-              "icon": "https://picsum.photos/seed/balcony/200",
-              "description": "Private balcony or terrace"
-            },
-            "created_at": "2026-01-26T09:43:49.000000Z",
-            "updated_at": "2026-01-26T09:43:49.000000Z"
-          },
-          {
-            "id": 395,
-            "property_id": 63,
-            "amenity_type_id": 11,
-            "amenity_type": {
-              "id": 11,
-              "name": "Parking",
-              "slug": "parking",
-              "icon": "https://picsum.photos/seed/parking/200",
-              "description": "Dedicated parking space"
-            },
-            "created_at": "2026-01-26T09:43:49.000000Z",
-            "updated_at": "2026-01-26T09:43:49.000000Z"
-          },
-          {
-            "id": 396,
-            "property_id": 63,
-            "amenity_type_id": 15,
-            "amenity_type": {
-              "id": 15,
-              "name": "Internet",
-              "slug": "internet",
-              "icon": "https://picsum.photos/seed/internet/200",
-              "description": "High-speed internet included"
-            },
-            "created_at": "2026-01-26T09:43:49.000000Z",
-            "updated_at": "2026-01-26T09:43:49.000000Z"
-          },
-          {
-            "id": 397,
-            "property_id": 63,
-            "amenity_type_id": 16,
-            "amenity_type": {
-              "id": 16,
-              "name": "Solar Panels",
-              "slug": "solar-panels",
-              "icon": "https://picsum.photos/seed/solar/200",
-              "description": "Solar power system"
-            },
-            "created_at": "2026-01-26T09:43:49.000000Z",
-            "updated_at": "2026-01-26T09:43:49.000000Z"
-          },
-          {
-            "id": 398,
-            "property_id": 63,
-            "amenity_type_id": 17,
-            "amenity_type": {
-              "id": 17,
-              "name": "Water Tank",
-              "slug": "water-tank",
-              "icon": "https://picsum.photos/seed/water-tank/200",
-              "description": "Rainwater collection tank"
-            },
-            "created_at": "2026-01-26T09:43:49.000000Z",
-            "updated_at": "2026-01-26T09:43:49.000000Z"
-          },
-          {
-            "id": 399,
-            "property_id": 63,
-            "amenity_type_id": 19,
-            "amenity_type": {
-              "id": 19,
-              "name": "Playground",
-              "slug": "playground",
-              "icon": "https://picsum.photos/seed/playground/200",
-              "description": "Children's playground"
-            },
-            "created_at": "2026-01-26T09:43:49.000000Z",
-            "updated_at": "2026-01-26T09:43:49.000000Z"
-          }
-        ],
-        "review_summary": {
-          "total_reviews": 10,
-          "average_rating": "4.40"
-        },
-        "created_at": "2026-01-26T09:43:49.000000Z",
-        "updated_at": "2026-01-29T07:50:20.000000Z"
+        "postal_code": "5531"
+      },
+      {
+        "id": 63,
+        "address": "251/136 Collins Street",
+        "full_address": "251/136 Collins Street, Adelaide, SA, 5559",
+        "city": "Adelaide",
+        "state": "SA",
+        "postal_code": "5559"
       }
-    ],
-    "links": {
-      "first": "https://renter-pay.mahfuz.click/api/v1/properties/favourites?page=1",
-      "last": "https://renter-pay.mahfuz.click/api/v1/properties/favourites?page=1",
-      "prev": null,
-      "next": null
-    },
-    "meta": {
-      "current_page": 1,
-      "from": 1,
-      "last_page": 1,
-      "links": [
-        {
-          "url": null,
-          "label": "&laquo; Previous",
-          "page": null,
-          "active": false
-        },
-        {
-          "url": "https://renter-pay.mahfuz.click/api/v1/properties/favourites?page=1",
-          "label": "1",
-          "page": 1,
-          "active": true
-        },
-        {
-          "url": null,
-          "label": "Next &raquo;",
-          "page": null,
-          "active": false
-        }
-      ],
-      "path": "https://renter-pay.mahfuz.click/api/v1/properties/favourites",
-      "per_page": 20,
-      "to": 1,
-      "total": 1
-    }
+    ]
   },
   "errors": null
 }
