@@ -50,6 +50,8 @@ class Data {
   String? status;
   String? subscriptionTier;
   bool? isVerified;
+  bool? isInPersonInspectionAvailable;
+  bool? isVirtualInspectionAvailable;
   bool? hasArTour;
   bool? isFavourite;
   List<String>? features;
@@ -57,11 +59,14 @@ class Data {
   int? ratingCount;
   Landlord? landlord;
   Landlord? agent;
+  List<AssignedAgent>? assignedAgents;
   List<Units>? units;
   List<Images>? images;
   List<Amenities>? amenities;
+  List<Documents>? documents;
   MaintenanceProfile? maintenanceProfile;
   ReviewSummary? reviewSummary;
+  dynamic myReview;
   String? createdAt;
   String? updatedAt;
 
@@ -90,6 +95,8 @@ class Data {
     this.status,
     this.subscriptionTier,
     this.isVerified,
+    this.isInPersonInspectionAvailable,
+    this.isVirtualInspectionAvailable,
     this.hasArTour,
     this.isFavourite,
     this.features,
@@ -97,11 +104,14 @@ class Data {
     this.ratingCount,
     this.landlord,
     this.agent,
+    this.assignedAgents,
     this.units,
     this.images,
     this.amenities,
+    this.documents,
     this.maintenanceProfile,
     this.reviewSummary,
+    this.myReview,
     this.createdAt,
     this.updatedAt,
   });
@@ -127,21 +137,31 @@ class Data {
     bedrooms = json['bedrooms'];
     bathrooms = json['bathrooms'];
     parkingSpaces = json['parking_spaces'];
-    landSize = json['land_size'].toString();
+    landSize = json['land_size']?.toString();
     buildingSize = json['building_size'];
     yearBuilt = json['year_built'];
     status = json['status'];
     subscriptionTier = json['subscription_tier'];
     isVerified = json['is_verified'];
+    isInPersonInspectionAvailable = json['is_in_person_inspection_available'];
+    isVirtualInspectionAvailable = json['is_virtual_inspection_available'];
     hasArTour = json['has_ar_tour'];
     isFavourite = json['is_favourite'];
-    features = json['features'].cast<String>();
+    if (json['features'] != null && json['features'] is List) {
+      features = json['features'].cast<String>();
+    }
     rating = json['rating'];
     ratingCount = json['rating_count'];
     landlord = json['landlord'] != null
         ? Landlord.fromJson(json['landlord'])
         : null;
     agent = json['agent'] != null ? Landlord.fromJson(json['agent']) : null;
+    if (json['assigned_agents'] != null && json['assigned_agents'] is List) {
+      assignedAgents = <AssignedAgent>[];
+      json['assigned_agents'].forEach((v) {
+        assignedAgents!.add(AssignedAgent.fromJson(v));
+      });
+    }
     if (json['units'] != null) {
       units = <Units>[];
       json['units'].forEach((v) {
@@ -160,6 +180,12 @@ class Data {
         amenities!.add(Amenities.fromJson(v));
       });
     }
+    if (json['documents'] != null) {
+      documents = <Documents>[];
+      json['documents'].forEach((v) {
+        documents!.add(Documents.fromJson(v));
+      });
+    }
 
     maintenanceProfile = json['maintenance_profile'] != null
         ? MaintenanceProfile.fromJson(json['maintenance_profile'])
@@ -167,6 +193,7 @@ class Data {
     reviewSummary = json['review_summary'] != null
         ? ReviewSummary.fromJson(json['review_summary'])
         : null;
+    myReview = json['my_review'];
 
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
@@ -200,6 +227,8 @@ class Data {
     data['status'] = status;
     data['subscription_tier'] = subscriptionTier;
     data['is_verified'] = isVerified;
+    data['is_in_person_inspection_available'] = isInPersonInspectionAvailable;
+    data['is_virtual_inspection_available'] = isVirtualInspectionAvailable;
     data['has_ar_tour'] = hasArTour;
     data['is_favourite'] = isFavourite;
     data['features'] = features;
@@ -211,6 +240,9 @@ class Data {
     if (agent != null) {
       data['agent'] = agent!.toJson();
     }
+    if (assignedAgents != null) {
+      data['assigned_agents'] = assignedAgents!.map((v) => v.toJson()).toList();
+    }
     if (units != null) {
       data['units'] = units!.map((v) => v.toJson()).toList();
     }
@@ -220,6 +252,9 @@ class Data {
     if (amenities != null) {
       data['amenities'] = amenities!.map((v) => v.toJson()).toList();
     }
+    if (documents != null) {
+      data['documents'] = documents!.map((v) => v.toJson()).toList();
+    }
 
     if (maintenanceProfile != null) {
       data['maintenance_profile'] = maintenanceProfile!.toJson();
@@ -227,6 +262,7 @@ class Data {
     if (reviewSummary != null) {
       data['review_summary'] = reviewSummary!.toJson();
     }
+    data['my_review'] = myReview;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     return data;
@@ -280,12 +316,41 @@ class Landlord {
   }
 }
 
+class AssignedAgent {
+  int? id;
+  int? userId;
+  String? name;
+  String? email;
+
+  AssignedAgent({this.id, this.userId, this.name, this.email});
+
+  AssignedAgent.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    userId = json['user_id'];
+    name = json['name'];
+    email = json['email'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['user_id'] = userId;
+    data['name'] = name;
+    data['email'] = email;
+    return data;
+  }
+}
+
 class Units {
   int? id;
   int? propertyId;
   String? unitNumber;
   String? unitName;
   String? rentAmount;
+  RentType? rentType;
+  Currency? currencyObj;
+  int? displayRentAmount;
+  Currency? displayCurrency;
   String? currency;
   String? status;
   int? bedrooms;
@@ -301,6 +366,10 @@ class Units {
     this.unitNumber,
     this.unitName,
     this.rentAmount,
+    this.rentType,
+    this.currencyObj,
+    this.displayRentAmount,
+    this.displayCurrency,
     this.currency,
     this.status,
     this.bedrooms,
@@ -316,8 +385,30 @@ class Units {
     propertyId = json['property_id'];
     unitNumber = json['unit_number'];
     unitName = json['unit_name'];
-    rentAmount = json['rent_amount'];
-    currency = json['currency'];
+    rentAmount = json['rent_amount']?.toString();
+    rentType = json['rent_type'] != null
+        ? RentType.fromJson(json['rent_type'])
+        : null;
+
+    final dynamic currencyValue = json['currency'];
+    if (currencyValue is Map<String, dynamic>) {
+      currencyObj = Currency.fromJson(currencyValue);
+      currency = currencyObj?.code;
+    } else if (currencyValue is String) {
+      currency = currencyValue;
+    }
+
+    final dynamic displayRentValue = json['display_rent_amount'];
+    if (displayRentValue is num) {
+      displayRentAmount = displayRentValue.toInt();
+    } else if (displayRentValue is String) {
+      displayRentAmount = int.tryParse(displayRentValue);
+    }
+
+    final dynamic displayCurrencyValue = json['display_currency'];
+    if (displayCurrencyValue is Map<String, dynamic>) {
+      displayCurrency = Currency.fromJson(displayCurrencyValue);
+    }
     status = json['status'];
     bedrooms = json['bedrooms'];
     bathrooms = json['bathrooms'];
@@ -334,12 +425,155 @@ class Units {
     data['unit_number'] = unitNumber;
     data['unit_name'] = unitName;
     data['rent_amount'] = rentAmount;
-    data['currency'] = currency;
+    if (rentType != null) {
+      data['rent_type'] = rentType!.toJson();
+    }
+    if (currencyObj != null) {
+      data['currency'] = currencyObj!.toJson();
+    } else {
+      data['currency'] = currency;
+    }
+    data['display_rent_amount'] = displayRentAmount;
+    if (displayCurrency != null) {
+      data['display_currency'] = displayCurrency!.toJson();
+    }
     data['status'] = status;
     data['bedrooms'] = bedrooms;
     data['bathrooms'] = bathrooms;
     data['size'] = size;
     data['description'] = description;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    return data;
+  }
+}
+
+class RentType {
+  int? id;
+  String? name;
+  String? slug;
+  int? rentDays;
+
+  RentType({this.id, this.name, this.slug, this.rentDays});
+
+  RentType.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    slug = json['slug'];
+    rentDays = json['rent_days'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['slug'] = slug;
+    data['rent_days'] = rentDays;
+    return data;
+  }
+}
+
+class Currency {
+  int? id;
+  String? code;
+  String? name;
+  String? symbol;
+  String? logo;
+  String? type;
+
+  Currency({this.id, this.code, this.name, this.symbol, this.logo, this.type});
+
+  Currency.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    code = json['code'];
+    name = json['name'];
+    symbol = json['symbol'];
+    logo = json['logo'];
+    type = json['type'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['code'] = code;
+    data['name'] = name;
+    data['symbol'] = symbol;
+    data['logo'] = logo;
+    data['type'] = type;
+    return data;
+  }
+}
+
+class Documents {
+  int? id;
+  int? propertyId;
+  String? documentType;
+  String? filePath;
+  String? fileName;
+  String? mimeType;
+  int? fileSize;
+  bool? isVerified;
+  String? verifiedAt;
+  int? verifiedBy;
+  String? verificationNotes;
+  String? createdAt;
+  String? updatedAt;
+
+  Documents({
+    this.id,
+    this.propertyId,
+    this.documentType,
+    this.filePath,
+    this.fileName,
+    this.mimeType,
+    this.fileSize,
+    this.isVerified,
+    this.verifiedAt,
+    this.verifiedBy,
+    this.verificationNotes,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  Documents.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    propertyId = json['property_id'];
+    documentType = json['document_type'];
+    filePath = json['file_path'];
+    fileName = json['file_name'];
+    mimeType = json['mime_type'];
+    final dynamic sizeValue = json['file_size'];
+    if (sizeValue is num) {
+      fileSize = sizeValue.toInt();
+    } else if (sizeValue is String) {
+      fileSize = int.tryParse(sizeValue);
+    }
+    isVerified = json['is_verified'];
+    verifiedAt = json['verified_at']?.toString();
+    final dynamic verifiedByValue = json['verified_by'];
+    if (verifiedByValue is num) {
+      verifiedBy = verifiedByValue.toInt();
+    } else if (verifiedByValue is String) {
+      verifiedBy = int.tryParse(verifiedByValue);
+    }
+    verificationNotes = json['verification_notes']?.toString();
+    createdAt = json['created_at']?.toString();
+    updatedAt = json['updated_at']?.toString();
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['property_id'] = propertyId;
+    data['document_type'] = documentType;
+    data['file_path'] = filePath;
+    data['file_name'] = fileName;
+    data['mime_type'] = mimeType;
+    data['file_size'] = fileSize;
+    data['is_verified'] = isVerified;
+    data['verified_at'] = verifiedAt;
+    data['verified_by'] = verifiedBy;
+    data['verification_notes'] = verificationNotes;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     return data;
@@ -521,11 +755,11 @@ class MaintenanceProfile {
     buildingInspectionDate = json['building_inspection_date'];
     buildingInspectionExpiry = json['building_inspection_expiry'];
     notes = json['notes'];
-    deletedAt = json['deleted_at'].toString();
-    createdBy = json['created_by'].toString();
-    updatedBy = json['updated_by'].toString();
-    createdAt = json['created_at'].toString();
-    updatedAt = json['updated_at'].toString();
+    deletedAt = json['deleted_at']?.toString();
+    createdBy = json['created_by']?.toString();
+    updatedBy = json['updated_by']?.toString();
+    createdAt = json['created_at']?.toString();
+    updatedAt = json['updated_at']?.toString();
   }
 
   Map<String, dynamic> toJson() {

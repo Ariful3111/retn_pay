@@ -96,6 +96,8 @@ class Property {
   String? status;
   String? subscriptionTier;
   bool? isVerified;
+  bool? isInPersonInspectionAvailable;
+  bool? isVirtualInspectionAvailable;
   bool? hasArTour;
   RxBool isFavourite = false.obs;
   List<String>? features;
@@ -103,6 +105,7 @@ class Property {
   int? ratingCount;
   Landlord? landlord;
   Landlord? agent;
+  List<AssignedAgent>? assignedAgents;
   List<Units>? units;
   List<Images>? images;
   List<Amenities>? amenities;
@@ -135,6 +138,8 @@ class Property {
     this.status,
     this.subscriptionTier,
     this.isVerified,
+    this.isInPersonInspectionAvailable,
+    this.isVirtualInspectionAvailable,
     this.hasArTour,
     bool? isFavourite,
     this.features,
@@ -142,6 +147,7 @@ class Property {
     this.ratingCount,
     this.landlord,
     this.agent,
+    this.assignedAgents,
     this.units,
     this.images,
     this.amenities,
@@ -179,6 +185,8 @@ class Property {
     status = json['status'];
     subscriptionTier = json['subscription_tier'];
     isVerified = json['is_verified'];
+    isInPersonInspectionAvailable = json['is_in_person_inspection_available'];
+    isVirtualInspectionAvailable = json['is_virtual_inspection_available'];
     hasArTour = json['has_ar_tour'];
     isFavourite.value = json['is_favourite'] ?? false;
     if (json['features'] != null && json['features'] is List) {
@@ -190,6 +198,12 @@ class Property {
         ? Landlord.fromJson(json['landlord'])
         : null;
     agent = json['agent'] != null ? Landlord.fromJson(json['agent']) : null;
+    if (json['assigned_agents'] != null && json['assigned_agents'] is List) {
+      assignedAgents = <AssignedAgent>[];
+      json['assigned_agents'].forEach((v) {
+        assignedAgents!.add(AssignedAgent.fromJson(v));
+      });
+    }
     if (json['units'] != null && json['units'] is List) {
       units = <Units>[];
       json['units'].forEach((v) {
@@ -243,6 +257,8 @@ class Property {
     data['status'] = status;
     data['subscription_tier'] = subscriptionTier;
     data['is_verified'] = isVerified;
+    data['is_in_person_inspection_available'] = isInPersonInspectionAvailable;
+    data['is_virtual_inspection_available'] = isVirtualInspectionAvailable;
     data['has_ar_tour'] = hasArTour;
     data['is_favourite'] = isFavourite.value;
     data['features'] = features;
@@ -253,6 +269,9 @@ class Property {
     }
     if (agent != null) {
       data['agent'] = agent!.toJson();
+    }
+    if (assignedAgents != null) {
+      data['assigned_agents'] = assignedAgents!.map((v) => v.toJson()).toList();
     }
     if (units != null) {
       data['units'] = units!.map((v) => v.toJson()).toList();
@@ -319,12 +338,41 @@ class Landlord {
   }
 }
 
+class AssignedAgent {
+  int? id;
+  int? userId;
+  String? name;
+  String? email;
+
+  AssignedAgent({this.id, this.userId, this.name, this.email});
+
+  AssignedAgent.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    userId = json['user_id'];
+    name = json['name'];
+    email = json['email'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['user_id'] = userId;
+    data['name'] = name;
+    data['email'] = email;
+    return data;
+  }
+}
+
 class Units {
   int? id;
   int? propertyId;
   String? unitNumber;
   String? unitName;
   String? rentAmount;
+  RentType? rentType;
+  Currency? currencyObj;
+  int? displayRentAmount;
+  Currency? displayCurrency;
   String? currency;
   String? status;
   int? bedrooms;
@@ -340,6 +388,10 @@ class Units {
     this.unitNumber,
     this.unitName,
     this.rentAmount,
+    this.rentType,
+    this.currencyObj,
+    this.displayRentAmount,
+    this.displayCurrency,
     this.currency,
     this.status,
     this.bedrooms,
@@ -355,8 +407,29 @@ class Units {
     propertyId = json['property_id'];
     unitNumber = json['unit_number'];
     unitName = json['unit_name'];
-    rentAmount = json['rent_amount'];
-    currency = json['currency'];
+    rentAmount = json['rent_amount']?.toString();
+    rentType =
+        json['rent_type'] != null ? RentType.fromJson(json['rent_type']) : null;
+
+    final dynamic currencyValue = json['currency'];
+    if (currencyValue is Map<String, dynamic>) {
+      currencyObj = Currency.fromJson(currencyValue);
+      currency = currencyObj?.code;
+    } else if (currencyValue is String) {
+      currency = currencyValue;
+    }
+
+    final dynamic displayRentValue = json['display_rent_amount'];
+    if (displayRentValue is num) {
+      displayRentAmount = displayRentValue.toInt();
+    } else if (displayRentValue is String) {
+      displayRentAmount = int.tryParse(displayRentValue);
+    }
+
+    final dynamic displayCurrencyValue = json['display_currency'];
+    if (displayCurrencyValue is Map<String, dynamic>) {
+      displayCurrency = Currency.fromJson(displayCurrencyValue);
+    }
     status = json['status'];
     bedrooms = json['bedrooms'];
     bathrooms = json['bathrooms'];
@@ -373,7 +446,18 @@ class Units {
     data['unit_number'] = unitNumber;
     data['unit_name'] = unitName;
     data['rent_amount'] = rentAmount;
-    data['currency'] = currency;
+    if (rentType != null) {
+      data['rent_type'] = rentType!.toJson();
+    }
+    if (currencyObj != null) {
+      data['currency'] = currencyObj!.toJson();
+    } else {
+      data['currency'] = currency;
+    }
+    data['display_rent_amount'] = displayRentAmount;
+    if (displayCurrency != null) {
+      data['display_currency'] = displayCurrency!.toJson();
+    }
     data['status'] = status;
     data['bedrooms'] = bedrooms;
     data['bathrooms'] = bathrooms;
@@ -381,6 +465,62 @@ class Units {
     data['description'] = description;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
+    return data;
+  }
+}
+
+class RentType {
+  int? id;
+  String? name;
+  String? slug;
+  int? rentDays;
+
+  RentType({this.id, this.name, this.slug, this.rentDays});
+
+  RentType.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    slug = json['slug'];
+    rentDays = json['rent_days'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['slug'] = slug;
+    data['rent_days'] = rentDays;
+    return data;
+  }
+}
+
+class Currency {
+  int? id;
+  String? code;
+  String? name;
+  String? symbol;
+  String? logo;
+  String? type;
+
+  Currency({this.id, this.code, this.name, this.symbol, this.logo, this.type});
+
+  Currency.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    code = json['code'];
+    name = json['name'];
+    symbol = json['symbol'];
+    logo = json['logo'];
+    type = json['type'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['code'] = code;
+    data['name'] = name;
+    data['symbol'] = symbol;
+    data['logo'] = logo;
+    data['type'] = type;
     return data;
   }
 }

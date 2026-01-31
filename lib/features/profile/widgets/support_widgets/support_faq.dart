@@ -48,15 +48,13 @@ class SupportFaq extends StatelessWidget {
                   subFontSize: 12.sp,
                   subFontWeight: FontWeight.w500,
                   title: list['title'],
-                  subtitle: supportController.isShowFAQ[index]
-                      ? ""
-                      : list['subTitle'],
+                  subtitle: list['subTitle'],
                   onTap: () {
                     HitTestBehavior.opaque;
                     supportController.isShowFAQ[index] =
                         !supportController.isShowFAQ[index];
                   },
-                  isShow: supportController.isShowFAQ[index],
+                  isExpanded: supportController.isShowFAQ[index],
                 ),
               );
             }),
