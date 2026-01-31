@@ -21,12 +21,12 @@ class HomeAppbar extends StatelessWidget {
           ? ButtonLoading()
           : Row(
               children: [
-                if (profileController.profileData.value?.data?.avatar
+                if (profileController.profileData.value?.data?.image
                         .toString() !=
                     "null")
                   CachedNetworkImage(
                     imageUrl:
-                        profileController.profileData.value?.data?.avatar ?? '',
+                        profileController.profileData.value?.data?.image ?? '',
                     height: 44.h,
                     width: 44.w,
                   )
