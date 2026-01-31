@@ -7,7 +7,7 @@ class CustomFaq extends StatelessWidget {
   final String title;
   final String subtitle;
   final VoidCallback onTap;
-  final bool isShow;
+  final bool isExpanded;
   final double? fontSize;
   final FontWeight? fontWeight;
   final double? subFontSize;
@@ -17,7 +17,7 @@ class CustomFaq extends StatelessWidget {
     required this.title,
     required this.subtitle,
     required this.onTap,
-    required this.isShow,
+    required this.isExpanded,
     this.fontSize,
     this.fontWeight,
     this.subFontSize,
@@ -61,7 +61,7 @@ class CustomFaq extends StatelessWidget {
                   height: 24.h,
                   width: 24.w,
                   child: Icon(
-                    isShow ? Icons.add : Icons.remove,
+                    isExpanded ? Icons.remove : Icons.add,
                     size: 18.sp,
                     color: isDark
                         ? AppColors.darkSecondaryText
@@ -71,18 +71,26 @@ class CustomFaq extends StatelessWidget {
               ),
             ],
           ),
-         if(!isShow) SizedBox(height: 6.h,),
-         AnimatedSize(
+          AnimatedSize(
             duration: Duration(milliseconds: 300),
             curve: Curves.easeInOutCubic,
-            child:isShow? SizedBox.shrink():CustomTextSecondary(
-              text: subtitle,
-              fontSize: subFontSize ?? 14.sp,
-              fontWeight: subFontWeight ?? FontWeight.w400,
-              color: isDark
-                  ? AppColors.darkSecondaryText
-                  : AppColors.primaryTextColor,
-            ),
+            alignment: Alignment.topCenter,
+            child: isExpanded
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 6.h),
+                      CustomTextSecondary(
+                        text: subtitle,
+                        fontSize: subFontSize ?? 14.sp,
+                        fontWeight: subFontWeight ?? FontWeight.w400,
+                        color: isDark
+                            ? AppColors.darkSecondaryText
+                            : AppColors.primaryTextColor,
+                      ),
+                    ],
+                  )
+                : SizedBox.shrink(),
           ),
         ],
       ),

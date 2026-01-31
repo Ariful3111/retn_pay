@@ -11,6 +11,8 @@ import 'package:renter_pay/features/home/repositories/property_address_repo.dart
 import 'package:renter_pay/features/home/repositories/property_amenities_repo.dart';
 import 'package:renter_pay/features/home/repositories/property_category_repo.dart';
 import 'package:renter_pay/features/home/repositories/recommended_repo.dart';
+import 'package:renter_pay/features/rent/controllers/faq_controller.dart';
+import 'package:renter_pay/features/rent/repositories/faq_repo.dart';
 
 class HomeBindings implements Bindings {
   @override
@@ -21,6 +23,7 @@ class HomeBindings implements Bindings {
     Get.lazyPut(() => PropertyCategoryRepository(getNetwork: Get.find()));
     Get.lazyPut(() => PropertyAddressRepository(getNetwork: Get.find()));
     Get.lazyPut(() => PropertyAmenitiesRepository(getNetwork: Get.find()));
+    Get.lazyPut(() => FAQRepository(getNetwork: Get.find()));
     Get.lazyPut(() => HomeController(getPropertiesRepository: Get.find()));
     Get.lazyPut(
       () => RecommendedController(getRecommendedRepository: Get.find()),
@@ -36,5 +39,6 @@ class HomeBindings implements Bindings {
       () =>
           PropertyAmenitiesController(propertyAmenitiesRepository: Get.find()),
     );
+    Get.lazyPut(() => FAQController(faqRepository: Get.find()));
   }
 }

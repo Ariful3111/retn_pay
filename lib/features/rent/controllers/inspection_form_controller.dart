@@ -26,35 +26,10 @@ class InspectionFormController extends GetxController {
   Rx<TimeOfDay?> selectedTime = Rx<TimeOfDay?>(null);
   RxBool isAgree = false.obs;
   final user = Get.find<ProfileController>().profileData.value;
-
-  RxList<bool> isShowFAQ = <bool>[].obs;
   RxBool isLoading = false.obs;
 
-  List<Map<String, dynamic>> faqList = [
-    {
-      'title': 'How long does an inspection take?',
-      'subtitle':
-          'Most inspections take 20-45 minutes, depending on\nthe size of the property. Our agent will guide you\nthrough each feature and answer your questions\nduring the visit.',
-    },
-    {
-      'title': 'Can I reschedule my appointment?',
-      'subtitle':
-          'Most inspections take 20-45 minutes, depending on\nthe size of the property. Our agent will guide you\nthrough each feature and answer your questions\nduring the visit.',
-    },
-    {
-      'title': 'Do I need to bring documents?',
-      'subtitle':
-          'Most inspections take 20-45 minutes, depending on\nthe size of the property. Our agent will guide you\nthrough each feature and answer your questions\nduring the visit.',
-    },
-    {
-      'title': 'Is there any cost for booking an inspection?',
-      'subtitle':
-          'Most inspections take 20-45 minutes, depending on\nthe size of the property. Our agent will guide you\nthrough each feature and answer your questions\nduring the visit.',
-    },
-  ];
   @override
   void onInit() {
-    isShowFAQ.value = List.filled(faqList.length + 1, true);
     nameController.text = user?.data?.name ?? '';
     emailController.text = user?.data?.email ?? '';
     phoneController.text = user?.data?.phone ?? '';

@@ -26,11 +26,13 @@ class MessageController extends GetxController with WidgetsBindingObserver {
   void didChangeMetrics() {
     if (messageScrollController.hasClients) {
       Future.delayed(Duration(milliseconds: 100), () {
-        messageScrollController.animateTo(
-          messageScrollController.position.maxScrollExtent,
-          duration: Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
-        );
+        if (messageScrollController.hasClients) {
+          messageScrollController.animateTo(
+            messageScrollController.position.maxScrollExtent,
+            duration: Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
+          );
+        }
       });
     }
     super.didChangeMetrics();
