@@ -30,6 +30,7 @@ class UploadImage {
                   Get.back();
                   final XFile? image = await picker.pickImage(
                     source: ImageSource.camera,
+                    imageQuality: 25,
                   );
                   if (image != null) {
                     if (type == 'front') {
@@ -47,6 +48,7 @@ class UploadImage {
                   Get.back();
                   final XFile? image = await picker.pickImage(
                     source: ImageSource.gallery,
+                    imageQuality: 25,
                   );
                   if (image != null) {
                     if (type == 'front') {
@@ -75,9 +77,9 @@ class UploadImage {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     await Get.bottomSheet(
       Container(
-        padding:  EdgeInsets.all(16),
-        decoration:  BoxDecoration(
-          color:isDark? AppColors.darkPrimary:Colors.white,
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: isDark ? AppColors.darkPrimary : Colors.white,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(16),
             topRight: Radius.circular(16),
@@ -92,6 +94,7 @@ class UploadImage {
                 Get.back();
                 final XFile? image = await picker.pickImage(
                   source: ImageSource.camera,
+                  imageQuality: 25,
                 );
                 if (image != null) {
                   pickImage.value = image;
@@ -105,6 +108,7 @@ class UploadImage {
                 Get.back();
                 final XFile? image = await picker.pickImage(
                   source: ImageSource.gallery,
+                  imageQuality: 25,
                 );
                 if (image != null) {
                   pickImage.value = image;

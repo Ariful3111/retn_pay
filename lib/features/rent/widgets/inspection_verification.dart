@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/rent/controllers/upload_document_controller.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_verification_document.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
 class InspectionVerification extends GetView<UploadDocumentController> {
   const InspectionVerification({super.key});
@@ -47,19 +47,19 @@ class InspectionVerification extends GetView<UploadDocumentController> {
                     },
                   ),
                   SizedBox(width: 15.w),
-                  CustomPrimaryButton(
-                    borderRadius: BorderRadius.circular(6.57.r),
-                    height: 44.h,
-                    width: 85.w,
-                    text: 'Upload',
-                    onPressed: () {
-                      if (controller.frontImage.value == null) {
-                        Get.toNamed(AppRoutes.inspectionFrom);
-                      } else {
-                        Get.toNamed(AppRoutes.inspectionFrom);
-                      }
-                    },
-                  ),
+                  Obx(() {
+                    return controller.isLoading.value
+                        ? ButtonLoading()
+                        : CustomPrimaryButton(
+                            borderRadius: BorderRadius.circular(6.57.r),
+                            height: 44.h,
+                            width: 85.w,
+                            text: 'Upload',
+                            onPressed: () async {
+                              await controller.uploadDocument();
+                            },
+                          );
+                  }),
                 ],
               ),
             ],
