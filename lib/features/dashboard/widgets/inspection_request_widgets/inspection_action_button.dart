@@ -35,12 +35,15 @@ class InspectionActionButton extends StatelessWidget {
           onPressed: () {},
         ),
         SizedBox(width: 8.w),
-        if (item.status != 'Completed' &&
-            item.status != 'Rejected' &&
+        if (item.status != 'Rejected' &&
             item.status != 'Cancel' &&
-            item.status !='Pending'&&
+            item.status != 'Pending' &&
             item.type == 'VR')
-          vRButton(text: item.type),
+          Padding(
+            padding: EdgeInsetsGeometry.only(right: 8.w),
+            child: vRButton(text: item.type),
+          ),
+
         if (item.status == 'Completed')
           CustomPrimaryButton(
             borderRadius: BorderRadius.circular(6.r),

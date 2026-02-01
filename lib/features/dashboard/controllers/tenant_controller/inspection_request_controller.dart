@@ -178,17 +178,6 @@ class InspectionRequestController extends GetxController {
     expanded.refresh();
   }
 
-  void updateStatus(int index, String newStatus) {
-    final old = allRows[index];
-    allRows[index] = InspectionModel(
-      address: old.address,
-      rent: old.rent,
-      scheduleDate: old.scheduleDate,
-      type: old.type,
-      status: newStatus, id: old.id, name: old.name, email: old.email, phone: old.phone,
-    );
-    allRows.refresh();
-  }
 
   @override
   void onReady() {

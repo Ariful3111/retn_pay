@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
-import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_filter.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_table.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_type.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/landlord_inspection/landlord_inspection_search.dart';
@@ -29,7 +28,7 @@ class InspectionRequestView extends StatelessWidget {
           SizedBox(height: 24.h),
           InspectionType(),
           SizedBox(height: 12.h),
-         if(userIndex==0) InspectionFilter(),
+        //  if(userIndex==0) InspectionFilter(),
          if(userIndex == 1|| userIndex==2) LandlordInspectionSearch(),
           SizedBox(height: 20.h),
          if(userIndex==0) InspectionTable(),
