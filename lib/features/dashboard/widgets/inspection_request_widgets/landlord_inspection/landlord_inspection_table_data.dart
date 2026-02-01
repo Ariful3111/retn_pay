@@ -25,7 +25,7 @@ class LandlordInspectionTableData extends StatelessWidget {
       children: [
         if (isValue.status == 'Pending' ||
             isValue.status == 'Approved' ||
-            isValue.status == 'Complete')
+            isValue.status == 'Completed')
           TableActionButton(
             icon: IconsPath.actonView,
             onTap: () {

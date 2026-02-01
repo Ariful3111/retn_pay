@@ -22,8 +22,8 @@ class InspectionTableData extends StatelessWidget {
           TableActionButton(icon: IconsPath.tableClose, onTap: () {}),
         ],
 
-        if (isValue.status == 'Complete') ...[
-          TableActionButton(icon: IconsPath.tableClose, onTap: () {}),
+        if (isValue.status == 'Completed') ...[
+          
           TableActionButton(
             icon: IconsPath.tableUpload,
             color: AppColors.tableUpload,
@@ -31,21 +31,12 @@ class InspectionTableData extends StatelessWidget {
           ),
         ],
         if (isValue.status == 'Pending') ...[
-          TableActionButton(
-            icon: IconsPath.tableClose,
-            onTap: () {
-              inspectionRequestController.updateStatus(
-                list[index].key,
-                'Cancel',
-              );
-            },
-          ),
+          TableActionButton(icon: IconsPath.tableClose, onTap: () {}),
         ],
-        if (isValue.type == "VR" &&
-            isValue.status != 'Complete' &&
-            isValue.status != 'Rejected' &&
+        if (isValue.status != 'Rejected' &&
             isValue.status != 'Cancel' &&
-            isValue.status != 'Pending') ...[
+            isValue.status != 'Pending' &&isValue.type == "VR"
+           ) ...[
           TableActionButton(
             icon: IconsPath.tableInspection,
             color: AppColors.borderColor,
