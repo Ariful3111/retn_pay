@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/networks_path.dart';
@@ -19,6 +20,9 @@ class GetProfileRepository {
             "Bearer ${Get.find<StorageService>().read(key: Get.find<StorageService>().tokenKey)}",
       },
       fromJson: (json) => ProfileModel.fromJson(json),
+    );
+    debugPrint(
+      "Token: ${Get.find<StorageService>().read(key: Get.find<StorageService>().tokenKey)}",
     );
     return response;
   }
