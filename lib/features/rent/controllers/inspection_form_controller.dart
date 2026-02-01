@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
+import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/rent/controllers/property_view_controller.dart';
 import 'package:renter_pay/features/rent/repositories/create_inspect_repo.dart';
@@ -100,6 +102,11 @@ class InspectionFormController extends GetxController {
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,
                     onPressed: () {
+                      Get.back();
+                      Get.find<GlobalScrollController>().isVisible.value = true;
+                      if (Get.isRegistered<MainHomeController>()) {
+                        Get.find<MainHomeController>().selectIndex.value = 0;
+                      }
                       Get.offAllNamed(AppRoutes.mainHome);
                     },
                   ),
