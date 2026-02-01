@@ -1,14 +1,14 @@
 import 'package:renter_pay/features/home/models/properties_model.dart'
     as home_models;
 
-class TenantInspectModel {
+class InspectionModel {
   bool? error;
   int? code;
   String? message;
   List<TenantInspection>? data;
   dynamic errors;
 
-  TenantInspectModel({
+  InspectionModel({
     this.error,
     this.code,
     this.message,
@@ -16,7 +16,7 @@ class TenantInspectModel {
     this.errors,
   });
 
-  TenantInspectModel.fromJson(Map<String, dynamic> json) {
+  InspectionModel.fromJson(Map<String, dynamic> json) {
     error = json['error'];
     code = json['code'];
     message = json['message'];

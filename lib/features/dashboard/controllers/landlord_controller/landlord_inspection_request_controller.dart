@@ -1,7 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
-import 'package:renter_pay/features/dashboard/controllers/tenant_controller/inspection_request_controller.dart';
+
+class InspectionModel {
+  final String address;
+  final String rent;
+  final String scheduleDate;
+  final String type;
+  final String status;
+  final String id;
+  final String name;
+  final String email;
+  final String phone;
+
+  InspectionModel({
+    required this.address,
+    required this.rent,
+    required this.scheduleDate,
+    required this.type,
+    required this.status,
+    required this.id,
+    required this.name,
+    required this.email,
+    required this.phone,
+  });
+}
 
 class LandlordInspectionRequestController extends GetxController {
   List inspectionType = ['Pending', 'Schedule', 'History'];
@@ -24,7 +47,11 @@ class LandlordInspectionRequestController extends GetxController {
         break;
       case 1:
         tabFiltered = tempRow
-            .where((row) => row.value.status == 'Approved'||row.value.status=='Complete')
+            .where(
+              (row) =>
+                  row.value.status == 'Approved' ||
+                  row.value.status == 'Complete',
+            )
             .toList();
         break;
       case 2:
@@ -199,7 +226,6 @@ class LandlordInspectionRequestController extends GetxController {
     }
     expanded.refresh();
   }
-
 
   @override
   void onReady() {

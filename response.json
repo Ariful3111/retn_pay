@@ -4,90 +4,52 @@
   "message": "Inspections retrieved successfully",
   "data": [
     {
-      "id": 101,
-      "property_id": 5,
+      "id": 111,
+      "property_id": 105,
       "tenant_id": 67,
-      "inspection_date": "2026-02-28 06:30:00",
+      "inspection_date": "2026-02-25 18:30:00",
       "type": "in_person",
-      "status": "pending",
+      "status": "scheduled",
       "notes": null,
-      "is_approved": false,
-      "approved_by": null,
-      "approved_at": null,
+      "is_approved": true,
+      "approved_by": 68,
+      "approved_at": "2026-02-01 16:28:36",
       "rejection_reason": null,
       "property": {
-        "id": 5,
-        "landlord_id": 62,
-        "property_type_id": 1,
-        "title": "Apartment in Newcastle - Main Street",
-        "name": "Apartment in Newcastle - Main Street",
-        "description": "Modern Apartment located in Newcastle. Features 1 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
-        "address": "950/57 Collins Street",
-        "city": "Newcastle",
-        "state": "NSW",
-        "postal_code": "5811",
+        "id": 105,
+        "landlord_id": 68,
+        "property_type_id": 2,
+        "title": "badsha house",
+        "name": "badsha house",
+        "description": "test",
+        "address": "Badsha Bari, Ushnabad, Raipura, Narsingdi.",
+        "city": "Raipura",
+        "state": "Texas",
+        "postal_code": "1630",
         "country": "Australia",
-        "latitude": "-33.32830000",
-        "longitude": "152.14170000",
-        "bedrooms": 1,
-        "bathrooms": 2,
-        "parking_spaces": 2,
+        "latitude": null,
+        "longitude": null,
+        "bedrooms": 36,
+        "bathrooms": 9,
+        "parking_spaces": null,
         "land_size": null,
-        "building_size": "258.00",
-        "year_built": 2015,
+        "building_size": null,
+        "year_built": null,
         "status": "active",
         "is_verified": true,
         "is_in_person_inspection_available": false,
         "is_virtual_inspection_available": false,
         "is_favourite": false,
-        "features": [
-          "Dedicated study or home office space with built-in desk.",
-          "Low-maintenance garden with native plants and irrigation."
-        ],
-        "rating": "3.75",
-        "rating_count": 4,
+        "features": ["onek shundor"],
+        "rating": "0.00",
+        "rating_count": 0,
         "units": [
           {
-            "id": 10,
-            "property_id": 5,
-            "unit_number": "Unit 2",
-            "unit_name": "Apartment 2",
-            "rent_amount": "4760.00",
-            "rent_type": {
-              "id": 4,
-              "name": "Yearly",
-              "slug": "yearly",
-              "rent_days": 365
-            },
-            "currency": {
-              "id": 1,
-              "code": "AUD",
-              "name": "Australian Dollar",
-              "symbol": "A$",
-              "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-              "type": "fiat"
-            },
-            "display_rent_amount": 4760,
-            "display_currency": {
-              "id": 1,
-              "code": "AUD",
-              "name": "Australian Dollar",
-              "symbol": "A$",
-              "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-              "type": "fiat"
-            },
-            "status": "occupied",
-            "bedrooms": 1,
-            "bathrooms": 2,
-            "size": "129.00",
-            "description": "Spacious Apartment with modern fixtures"
-          },
-          {
-            "id": 9,
-            "property_id": 5,
-            "unit_number": "Unit 1",
-            "unit_name": "Apartment 1",
-            "rent_amount": "26690.00",
+            "id": 182,
+            "property_id": 105,
+            "unit_number": "badsha house",
+            "unit_name": null,
+            "rent_amount": "12345.00",
             "rent_type": {
               "id": 1,
               "name": "Daily",
@@ -102,7 +64,7 @@
               "logo": "https://renter-pay.mahfuz.click/images/currency.png",
               "type": "fiat"
             },
-            "display_rent_amount": 26690,
+            "display_rent_amount": 12345,
             "display_currency": {
               "id": 1,
               "code": "AUD",
@@ -111,28 +73,190 @@
               "logo": "https://renter-pay.mahfuz.click/images/currency.png",
               "type": "fiat"
             },
-            "status": "reserved",
-            "bedrooms": 1,
-            "bathrooms": 2,
-            "size": "129.00",
-            "description": "Spacious Apartment with modern fixtures"
+            "status": "available",
+            "bedrooms": 36,
+            "bathrooms": 9,
+            "size": null,
+            "description": null
           }
         ],
         "review_summary": {
-          "total_reviews": 4,
-          "average_rating": "3.75"
+          "total_reviews": 0,
+          "average_rating": "0.00"
         },
-        "created_at": "2026-02-01T04:51:42.000000Z",
-        "updated_at": "2026-02-01T04:51:49.000000Z"
+        "created_at": "2026-02-01T07:40:44.000000Z",
+        "updated_at": "2026-02-01T10:00:08.000000Z"
       },
       "tenant": {
         "id": 67,
         "name": "Rafi Ahmed",
         "email": null
       },
-      "approved_by_user": null,
-      "created_at": "2026-02-01 11:12:37",
-      "updated_at": "2026-02-01 11:12:37"
+      "approved_by_user": {
+        "id": 68,
+        "name": "Tanvir Badsha",
+        "email": "mstanvir55@gmail.com"
+      },
+      "created_at": "2026-02-01 16:21:57",
+      "updated_at": "2026-02-01 16:28:36"
+    },
+    {
+      "id": 110,
+      "property_id": 104,
+      "tenant_id": 67,
+      "inspection_date": "2026-12-15 10:00:00",
+      "type": "in_person",
+      "status": "scheduled",
+      "notes": null,
+      "is_approved": true,
+      "approved_by": 68,
+      "approved_at": "2026-02-01 16:28:12",
+      "rejection_reason": null,
+      "property": {
+        "id": 104,
+        "landlord_id": 68,
+        "property_type_id": 4,
+        "title": "tanvir unit",
+        "name": "tanvir unit",
+        "description": "test",
+        "address": "Badsha Bari, Ushnabad, Raipura, Narsingdi.",
+        "city": "Raipura",
+        "state": "California",
+        "postal_code": "1630",
+        "country": "Australia",
+        "latitude": null,
+        "longitude": null,
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "parking_spaces": null,
+        "land_size": null,
+        "building_size": null,
+        "year_built": null,
+        "status": "active",
+        "is_verified": true,
+        "is_in_person_inspection_available": false,
+        "is_virtual_inspection_available": false,
+        "is_favourite": false,
+        "features": ["onek shundor"],
+        "rating": "0.00",
+        "rating_count": 0,
+        "units": [
+          {
+            "id": 181,
+            "property_id": 104,
+            "unit_number": "Unit 101",
+            "unit_name": null,
+            "rent_amount": "1500.00",
+            "rent_type": {
+              "id": 1,
+              "name": "Daily",
+              "slug": "daily",
+              "rent_days": 1
+            },
+            "currency": {
+              "id": 1,
+              "code": "AUD",
+              "name": "Australian Dollar",
+              "symbol": "A$",
+              "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+              "type": "fiat"
+            },
+            "display_rent_amount": 1500,
+            "display_currency": {
+              "id": 1,
+              "code": "AUD",
+              "name": "Australian Dollar",
+              "symbol": "A$",
+              "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+              "type": "fiat"
+            },
+            "status": "available",
+            "bedrooms": 2,
+            "bathrooms": 1,
+            "size": null,
+            "description": null
+          }
+        ],
+        "review_summary": {
+          "total_reviews": 0,
+          "average_rating": "0.00"
+        },
+        "created_at": "2026-02-01T06:46:53.000000Z",
+        "updated_at": "2026-02-01T10:00:21.000000Z"
+      },
+      "tenant": {
+        "id": 67,
+        "name": "Rafi Ahmed",
+        "email": null
+      },
+      "approved_by_user": {
+        "id": 68,
+        "name": "Tanvir Badsha",
+        "email": "mstanvir55@gmail.com"
+      },
+      "created_at": "2026-02-01 16:13:18",
+      "updated_at": "2026-02-01 16:28:12"
+    },
+    {
+      "id": 109,
+      "property_id": 103,
+      "tenant_id": 67,
+      "inspection_date": "2026-12-15 10:00:00",
+      "type": "in_person",
+      "status": "scheduled",
+      "notes": null,
+      "is_approved": true,
+      "approved_by": 68,
+      "approved_at": "2026-02-01 16:28:26",
+      "rejection_reason": null,
+      "property": {
+        "id": 103,
+        "landlord_id": 68,
+        "property_type_id": 1,
+        "title": "tanvir apartment",
+        "name": "tanvir apartment",
+        "description": "testing details",
+        "address": "Badsha Bari, Ushnabad, Raipura, Narsingdi.",
+        "city": "Raipura",
+        "state": "California",
+        "postal_code": "1630",
+        "country": "Australia",
+        "latitude": null,
+        "longitude": null,
+        "bedrooms": 5,
+        "bathrooms": 3,
+        "parking_spaces": null,
+        "land_size": null,
+        "building_size": null,
+        "year_built": null,
+        "status": "active",
+        "is_verified": false,
+        "is_in_person_inspection_available": false,
+        "is_virtual_inspection_available": false,
+        "is_favourite": false,
+        "features": ["onek shundor", "aro shundor"],
+        "rating": "0.00",
+        "rating_count": 0,
+        "units": [],
+        "review_summary": {
+          "total_reviews": 0,
+          "average_rating": "0.00"
+        },
+        "created_at": "2026-02-01T05:21:53.000000Z",
+        "updated_at": "2026-02-01T05:21:53.000000Z"
+      },
+      "tenant": {
+        "id": 67,
+        "name": "Rafi Ahmed",
+        "email": null
+      },
+      "approved_by_user": {
+        "id": 68,
+        "name": "Tanvir Badsha",
+        "email": "mstanvir55@gmail.com"
+      },
+      "created_at": "2026-02-01 16:13:02",
+      "updated_at": "2026-02-01 16:28:26"
     }
   ],
   "errors": null

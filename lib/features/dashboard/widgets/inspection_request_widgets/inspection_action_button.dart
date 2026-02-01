@@ -8,15 +8,16 @@ import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.da
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
-class InspectionActionButton extends StatelessWidget {
-  final int rowIndex;
-  const InspectionActionButton({super.key, required this.rowIndex});
+class InspectionActionButton extends GetWidget<InspectionRequestController> {
+  final int id;
+  const InspectionActionButton({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    final controller = Get.find<InspectionRequestController>();
-    final item = controller.allRows[rowIndex];
+    final item = controller.inspections.value!.data!.firstWhere(
+      (element) => element.id == id,
+    );
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
@@ -35,16 +36,16 @@ class InspectionActionButton extends StatelessWidget {
           onPressed: () {},
         ),
         SizedBox(width: 8.w),
-        if (item.status != 'Rejected' &&
-            item.status != 'Cancel' &&
-            item.status != 'Pending' &&
-            item.type == 'VR')
+        if (item.status?.capitalizeFirst != 'Rejected' &&
+            item.status?.capitalizeFirst != 'Cancel' &&
+            item.status?.capitalizeFirst != 'Pending' &&
+            item.type?.capitalizeFirst == 'Virtual')
           Padding(
             padding: EdgeInsetsGeometry.only(right: 8.w),
-            child: vRButton(text: item.type),
+            child: vRButton(),
           ),
 
-        if (item.status == 'Completed')
+        if (item.status?.capitalizeFirst == 'Completed')
           CustomPrimaryButton(
             borderRadius: BorderRadius.circular(6.r),
             height: 36.h,
@@ -62,7 +63,7 @@ class InspectionActionButton extends StatelessWidget {
     );
   }
 
-  vRButton({required String text}) {
+  vRButton() {
     return CustomPrimaryButton(
       borderRadius: BorderRadius.circular(6.r),
       height: 36.h,
@@ -72,7 +73,7 @@ class InspectionActionButton extends StatelessWidget {
         children: [
           Image.asset(IconsPath.tableInspection, height: 18.h, width: 18.w),
           CustomTextPrimary(
-            text: text,
+            text: "VR",
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             color: AppColors.darkAppBar,

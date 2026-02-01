@@ -55,8 +55,8 @@ class InspectionFormController extends GetxController {
           .propertyDetails
           .value!
           .data!
-          .propertyTypeId
-          .toString(),
+          .id!
+          .toInt(),
       type: selectedInspection.value == 'In-Person Visit'
           ? 'in_person'
           : 'virtual',

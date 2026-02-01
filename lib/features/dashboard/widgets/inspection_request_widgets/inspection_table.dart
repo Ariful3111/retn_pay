@@ -10,12 +10,11 @@ import 'package:renter_pay/shared/widgets/custom_table/custom_table_expanded.dar
 import 'package:renter_pay/shared/widgets/custom_table/table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
-class InspectionTable extends StatelessWidget {
+class InspectionTable extends GetWidget<InspectionRequestController> {
   const InspectionTable({super.key});
 
   @override
   Widget build(BuildContext context) {
-    InspectionRequestController inspectionRequestController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       decoration: BoxDecoration(
@@ -23,42 +22,46 @@ class InspectionTable extends StatelessWidget {
         color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
       ),
       child: Obx(() {
-        final list = inspectionRequestController.filterRow;
-        final rowWidgets = List<List<Widget>>.generate(list.length, (index) {
-        final item = list[index].value;
-          return [
-            CustomTextPrimary(
-              text: item.address,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
-              textOverflow: TextOverflow.ellipsis,
-            ),
-            TableStatus(status: item.status),
-            InspectionTableData(index: index),
-          ];
-        });
-        final listIndex = list.map((e) => e.key).toList();
+        final rowWidgets = List<List<Widget>>.generate(
+          controller.inspections.value!.data!.length,
+          (index) {
+            final item = controller.inspections.value!.data![index];
+            return [
+              CustomTextPrimary(
+                text: item.property?.address ?? '',
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w400,
+                textOverflow: TextOverflow.ellipsis,
+              ),
+              TableStatus(status: item.status?.capitalizeFirst ?? ''),
+              InspectionTableData(id: item.id ?? 0),
+            ];
+          },
+        );
+
         return CustomTable(
-          column: inspectionRequestController.tableColumn,
+          column: controller.tableColumn,
           row: rowWidgets,
           expandedTableBuilder: (index) {
-            final item = list[index].value;
-            final rowIndex = listIndex[index];
+            final item = controller.inspections.value!.data![index];
             return CustomTableExpanded(
-              title: 'Property Address: ${item.address}',
-              isOpen: inspectionRequestController.expanded[rowIndex],
+              title: 'Property Address: ${item.property?.address ?? ''}',
+              isOpen: controller.expanded.contains(item.id ?? 0),
               onExpandedClose: () {
-                inspectionRequestController.toggleExpanded(rowIndex);
+                controller.expanded.remove(item.id ?? 0);
               },
-              expandedContent: InspectionTableContent(rowIndex: rowIndex),
+              expandedContent: InspectionTableContent(id: item.id ?? 0),
             );
           },
           onRowTap: (index) {
-            inspectionRequestController.toggleExpanded(listIndex[index]);
+            final item = controller.inspections.value!.data![index];
+            controller.toggleExpanded(id: item.id ?? 0);
           },
           isExpandedTableBuilder: (index) {
-            return inspectionRequestController.expanded[listIndex[index]];
-          }, isNeedLastCol: true,
+            final item = controller.inspections.value!.data![index];
+            return controller.expanded.contains(item.id ?? 0);
+          },
+          isNeedLastCol: true,
         );
       }),
     );

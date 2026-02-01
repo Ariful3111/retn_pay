@@ -6,35 +6,43 @@ import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets
 import 'package:renter_pay/shared/widgets/custom_table/table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
-class InspectionTableContent extends StatelessWidget {
-  final int rowIndex;
-  const InspectionTableContent({super.key, required this.rowIndex});
+class InspectionTableContent extends GetWidget<InspectionRequestController> {
+  final int id;
+  const InspectionTableContent({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<InspectionRequestController>();
-    final item = controller.allRows[rowIndex];
+    final list = controller.inspections.value?.data ?? [];
+    final itemIndex = list.indexWhere((element) => element.id == id);
+    if (itemIndex == -1) {
+      return SizedBox.shrink();
+    }
+    final item = list[itemIndex];
+    final units = item.property?.units ?? [];
+    final monthlyRent = units.isNotEmpty ? units.first.rentAmount : null;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 8.h),
-        infoText(title: "Monthly Rent: ${item.rent}"),
+        infoText(
+          title: "Monthly Rent: ${monthlyRent ?? 'N/A'}",
+        ),
         SizedBox(height: 8.h),
-        infoText(title: "Scheduled: ${item.scheduleDate}"),
+        infoText(title: "Scheduled: ${item.inspectionDate}"),
         SizedBox(height: 8.h),
-        infoText(title: "Inspection Type: ${item.type}"),
+        infoText(title: "Inspection Type: ${item.type?.capitalizeFirst ?? ""}"),
         SizedBox(height: 8.h),
         Row(
           children: [
             infoText(title: "Status"),
             SizedBox(width: 8.w),
-            TableStatus(status: item.status),
+            TableStatus(status: item.status?.capitalizeFirst ?? ""),
           ],
         ),
         SizedBox(height: 8.h),
         infoText(title: "Action"),
         SizedBox(height: 8.h),
-        InspectionActionButton(rowIndex: rowIndex),
+        InspectionActionButton(id: id),
         SizedBox(height: 12.h),
       ],
     );

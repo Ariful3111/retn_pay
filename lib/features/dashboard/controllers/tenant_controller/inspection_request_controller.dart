@@ -1,187 +1,58 @@
 import 'package:get/get.dart';
-import 'package:renter_pay/core/constants/images_path.dart';
-
-class InspectionModel {
-  final String address;
-  final String rent;
-  final String scheduleDate;
-  final String type;
-  final String status;
-  final String id;
-  final String name;
-  final String email;
-  final String phone;
-  
-
-  InspectionModel({
-    required this.address,
-    required this.rent,
-    required this.scheduleDate,
-    required this.type,
-    required this.status, required this.id, required this.name, required this.email, required this.phone,
-  });
-}
+import 'package:renter_pay/features/dashboard/models/inspection_model.dart';
+import 'package:renter_pay/features/dashboard/repositories/get_inspections_repo.dart';
+import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
 class InspectionRequestController extends GetxController {
+  final GetInspectionsRepository getInspectionsRepository;
+  InspectionRequestController({required this.getInspectionsRepository});
+  final inspections = Rxn<InspectionModel>();
   RxInt isInspectionType = 0.obs;
-  RxBool isFilter = false.obs;
-  RxInt filterIndex = 0.obs;
-  RxList<bool> expanded = <bool>[].obs;
+  RxList<int> expanded = <int>[].obs;
   final List inspectionTypeList = ['Scheduled', 'Pending', 'History'];
-  final List filterList = ['All', 'Approved', 'Completed'];
   final List<String> tableColumn = ['Property Address', 'Status', 'Action'];
-  RxList<InspectionModel> allRows = <InspectionModel>[].obs;
-  List<MapEntry<int, InspectionModel>> get filterRow {
-    final tempRow = <MapEntry<int, InspectionModel>>[];
-    for (int i = 0; i < allRows.length; i++) {
-      tempRow.add(MapEntry(i, allRows[i]));
-    }
-    List<MapEntry<int, InspectionModel>> tabFiltered;
-    switch (isInspectionType.value) {
-      case 0:
-        tabFiltered = tempRow
-            .where((row) => row.value.status == 'Approved')
-            .toList();
-        break;
-      case 1:
-        tabFiltered = tempRow
-            .where((row) => row.value.status == 'Pending')
-            .toList();
-        break;
-      case 2:
-        tabFiltered = tempRow
-            .where(
-              (row) =>
-                  row.value.status == 'Rejected' ||
-                  row.value.status == 'Completed' ||
-                  row.value.status == 'Cancel',
-            )
-            .toList();
-        break;
-      default:
-        tabFiltered = tempRow;
-    }
-    if (filterIndex.value == 1) {
-      tabFiltered = tabFiltered
-          .where((row) => row.value.status == 'Approved')
-          .toList();
-    } else if (filterIndex.value == 2) {
-      tabFiltered = tabFiltered
-          .where((row) => row.value.status == 'Complete')
-          .toList();
-    }
-    return tabFiltered;
-  }
-
-  void initRows() {
-    allRows.value = [
-      InspectionModel(
-        address: "123 Elm Street",
-        rent: "\$450/week",
-        scheduleDate: "8 Aug, 2025 10:00 AM",
-        type: "VR",
-        status: "Approved", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
-      ),
-      InspectionModel(
-        address: "456 Oak Avenue",
-        rent: "\$540/week",
-        scheduleDate: "1 Aug, 2025 11:00 AM",
-        type: "In-Person",
-        status: "Completed", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
-      ),
-      InspectionModel(
-        address: "789 Pine Crescent",
-        rent: "\$390/week",
-        scheduleDate: "10 Aug, 2025 9:00 AM",
-        type: "VR",
-        status: "Pending", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
-      ),
-      InspectionModel(
-        address: "321 Maple Road",
-        rent: "\$620/week",
-        scheduleDate: "12 Aug, 2025 02:00 PM",
-        type: "In-Person",
-        status: "Rejected", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
-      ),
-      InspectionModel(
-        address: "654 Birch Street",
-        rent: "\$500/week",
-        scheduleDate: "20 Jul, 2025 01:00 PM",
-        type: "VR",
-        status: "Completed", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
-      ),
-      InspectionModel(
-        address: "501 Cedar Lane",
-        rent: "\$480/week",
-        scheduleDate: "30 Jul, 2025 01:00 PM",
-        type: "VR",
-        status: "Cancel", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
-      ),
-      InspectionModel(
-        address: "123 Elm Street",
-        rent: "\$450/week",
-        scheduleDate: "8 Aug, 2025 10:00 AM",
-        type: "In-Person",
-        status: "Approved", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
-      ),
-      InspectionModel(
-        address: "456 Oak Avenue",
-        rent: "\$540/week",
-        scheduleDate: "1 Aug, 2025 11:00 AM",
-        type: "VR",
-        status: "Completed", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
-      ),
-      InspectionModel(
-        address: "789 Pine Crescent",
-        rent: "\$390/week",
-        scheduleDate: "10 Aug, 2025 9:00 AM",
-        type: "VR",
-        status: "Pending", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
-      ),
-      InspectionModel(
-        address: "321 Maple Road",
-        rent: "\$620/week",
-        scheduleDate: "12 Aug, 2025 02:00 PM",
-        type: "VR",
-        status: "Rejected", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
-      ),
-      InspectionModel(
-        address: "654 Birch Street",
-        rent: "\$500/week",
-        scheduleDate: "20 Jul, 2025 01:00 PM",
-        type: "VR",
-        status: "Completed", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
-      ),
-      InspectionModel(
-        address: "654 Birch Street",
-        rent: "\$500/week",
-        scheduleDate: "20 Jul, 2025 01:00 PM",
-        type: "VR",
-        status: "Completed", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
-      ),
-      InspectionModel(
-        address: "501 Cedar Lane",
-        rent: "\$480/week",
-        scheduleDate: "30 Jul, 2025 01:00 PM",
-        type: "In-Person",
-        status: "Approved", id: ImagesPath.profile, name: 'Ariful', email: 'arif@gmail.com', phone: '01566336323',
-      ),
-    ];
-    expanded.value = List.generate(allRows.length, (_) => false);
-    update();
-  }
-
-  void toggleExpanded(int index) {
-    if (index >= 0 && index < expanded.length) {
-      expanded[index] = !expanded[index];
-    }
-    expanded.refresh();
-  }
-
+  RxBool isLoading = true.obs;
 
   @override
-  void onReady() {
-    initRows();
-    super.onReady();
+  void onInit() {
+    super.onInit();
+    getInspections();
+  }
+
+  Future<void> getInspections() async {
+    isLoading.value = true;
+    final response = await getInspectionsRepository.execute(
+      status: getInspectionStatus(status: isInspectionType.value),
+    );
+    isLoading.value = false;
+    response.fold(
+      (error) {
+        ErrorSnackbar.show(description: error.message);
+      },
+      (data) {
+        inspections.value = data;
+      },
+    );
+  }
+
+  void toggleExpanded({required int id}) {
+    if (expanded.contains(id)) {
+      expanded.remove(id);
+    } else {
+      expanded.add(id);
+    }
+  }
+
+  String getInspectionStatus({required int status}) {
+    switch (status) {
+      case 0:
+        return "scheduled";
+      case 1:
+        return "pending";
+      case 2:
+        return "";
+      default:
+        return "";
+    }
   }
 }

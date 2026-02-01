@@ -5,38 +5,42 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/inspection_request_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_table/table_action_button.dart';
 
-class InspectionTableData extends StatelessWidget {
-  final int index;
-  const InspectionTableData({super.key, required this.index});
+class InspectionTableData extends GetWidget<InspectionRequestController> {
+  final int id;
+  const InspectionTableData({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
-    InspectionRequestController inspectionRequestController = Get.find();
-    final list = inspectionRequestController.filterRow;
-    final value = list[index].key;
-    final isValue = inspectionRequestController.allRows[value];
+    final list = controller.inspections.value?.data ?? [];
+    final itemIndex = list.indexWhere((element) => element.id == id);
+    if (itemIndex == -1) {
+      return SizedBox.shrink();
+    }
+    final isValue = list[itemIndex];
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        if (isValue.status == 'Approved') ...[
+        if (isValue.status?.capitalizeFirst == 'Approved' ||
+            isValue.status?.capitalizeFirst == 'Assigned' ||
+            isValue.status?.capitalizeFirst == 'Open' ||
+            isValue.status?.capitalizeFirst == 'Scheduled') ...[
           TableActionButton(icon: IconsPath.tableClose, onTap: () {}),
         ],
 
-        if (isValue.status == 'Completed') ...[
-          
+        if (isValue.status?.capitalizeFirst == 'Completed') ...[
           TableActionButton(
             icon: IconsPath.tableUpload,
             color: AppColors.tableUpload,
             onTap: () {},
           ),
         ],
-        if (isValue.status == 'Pending') ...[
+        if (isValue.status?.capitalizeFirst == 'Pending') ...[
           TableActionButton(icon: IconsPath.tableClose, onTap: () {}),
         ],
-        if (isValue.status != 'Rejected' &&
-            isValue.status != 'Cancel' &&
-            isValue.status != 'Pending' &&isValue.type == "VR"
-           ) ...[
+        if (isValue.status?.capitalizeFirst != 'Rejected' &&
+            isValue.status?.capitalizeFirst != 'Cancel' &&
+            isValue.status?.capitalizeFirst != 'Pending' &&
+            isValue.type?.capitalizeFirst == "Virtual") ...[
           TableActionButton(
             icon: IconsPath.tableInspection,
             color: AppColors.borderColor,
