@@ -9,8 +9,7 @@ class RegisterRepository {
   const RegisterRepository({required this.postWithResponse});
 
   Future<Either<ErrorModel, RegisterModel>> execute({
-    required String firstName,
-    required String lastName,
+    required String name,
     required String phone,
     required String email,
     required String password,
@@ -26,8 +25,7 @@ class RegisterRepository {
         "Accept": "application/json",
       },
       body: {
-        "first_name": firstName,
-        if (phoneCode.isNotEmpty) "last_name": lastName,
+        "last_name": name,
         if (phone.isNotEmpty) "phone": phone,
         if (email.isNotEmpty) "email": email,
         "password": password,

@@ -41,6 +41,7 @@ class UploadDocumentController extends GetxController {
         },
         (data) {
           SuccessSnackbar.show(description: "Document uploaded successfully");
+          Get.back();
           Get.toNamed(AppRoutes.inspectionFrom);
         },
       );

@@ -1,236 +1,83 @@
 {
   "error": false,
   "code": 200,
-  "message": "Property retrieved successfully",
+  "message": "Property reviews retrieved successfully",
   "data": {
-    "id": 89,
-    "landlord_id": 53,
-    "property_type_id": 4,
-    "title": "Unit in Newcastle - George Street",
-    "name": "Unit in Newcastle - George Street",
-    "description": "Modern Unit located in Newcastle. Features 1 bedroom(s), 1 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
-    "address": "820/136 Albert Street",
-    "city": "Newcastle",
-    "state": "NSW",
-    "postal_code": "5053",
-    "country": "Australia",
-    "latitude": "-33.25830000",
-    "longitude": "151.52170000",
-    "property_type": {
-      "id": 4,
-      "name": "Unit",
-      "slug": "unit",
-      "image": "https://picsum.photos/seed/unit/800/600"
+    "property": {
+      "id": 1,
+      "title": "Unit in Perth - Ocean Drive",
+      "my_review": null
     },
-    "bedrooms": 1,
-    "bathrooms": 1,
-    "parking_spaces": 0,
-    "land_size": null,
-    "building_size": "101.00",
-    "year_built": 2001,
-    "status": "active",
-    "is_verified": true,
-    "is_in_person_inspection_available": true,
-    "is_virtual_inspection_available": false,
-    "is_favourite": false,
-    "features": [
-      "Secure underground parking with direct lift access to the building.",
-      "Private balcony or terrace with outdoor seating space.",
-      "Ducted air conditioning and heating for year-round comfort.",
-      "Built-in wardrobes and ample storage in all bedrooms.",
-      "Solar panels and rainwater tank for reduced running costs.",
-      "Double garage with internal access and additional storage."
-    ],
-    "rating": "3.64",
-    "rating_count": 11,
-    "landlord": {
-      "id": 53,
-      "name": "Landlord User 2",
-      "email": "landlord2@example.com"
-    },
-    "assigned_agents": [
-      {
-        "id": 4,
-        "user_id": 25,
-        "name": "Agent User 4",
-        "email": "agent4@example.com"
-      }
-    ],
-    "units": [
-      {
-        "id": 155,
-        "property_id": 89,
-        "unit_number": "Unit 1",
-        "unit_name": "Unit",
-        "rent_amount": "9150.00",
-        "rent_type": {
-          "id": 3,
-          "name": "Monthly",
-          "slug": "monthly",
-          "rent_days": 30
-        },
-        "currency": {
+    "reviews": {
+      "data": [
+        {
           "id": 1,
-          "code": "AUD",
-          "name": "Australian Dollar",
-          "symbol": "A$",
-          "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-          "type": "fiat"
-        },
-        "display_rent_amount": 9150,
-        "display_currency": {
-          "id": 1,
-          "code": "AUD",
-          "name": "Australian Dollar",
-          "symbol": "A$",
-          "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-          "type": "fiat"
-        },
-        "status": "available",
-        "bedrooms": 1,
-        "bathrooms": 1,
-        "size": "101.00",
-        "description": "Spacious Unit with modern fixtures"
+          "property_id": 1,
+          "user_id": 16,
+          "user": {
+            "id": 16,
+            "name": "Tenant User 15",
+            "email": "tenant15@example.com",
+            "image": "https://renter-pay.mahfuz.click/images/person.png"
+          },
+          "rating": 5,
+          "title": "Outstanding property management",
+          "comment": "This is the best rental property I've lived in. Everything is exactly as described in the listing. Very happy with my choice!",
+          "status": "approved",
+          "admin_notes": null,
+          "approved_by": 1,
+          "approved_at": "2026-01-29T04:51:48.000000Z",
+          "created_at": "2026-01-17T04:51:48.000000Z",
+          "updated_at": "2026-01-13T04:51:48.000000Z"
+        }
+      ],
+      "links": {
+        "first": "https://renter-pay.mahfuz.click/api/v1/properties/1/reviews?page=1",
+        "last": "https://renter-pay.mahfuz.click/api/v1/properties/1/reviews?page=1",
+        "prev": null,
+        "next": null
+      },
+      "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
+          {
+            "url": null,
+            "label": "&laquo; Previous",
+            "page": null,
+            "active": false
+          },
+          {
+            "url": "https://renter-pay.mahfuz.click/api/v1/properties/1/reviews?page=1",
+            "label": "1",
+            "page": 1,
+            "active": true
+          },
+          {
+            "url": null,
+            "label": "Next &raquo;",
+            "page": null,
+            "active": false
+          }
+        ],
+        "path": "https://renter-pay.mahfuz.click/api/v1/properties/1/reviews",
+        "per_page": 20,
+        "to": 1,
+        "total": 1
       }
-    ],
-    "images": [
-      {
-        "id": 418,
-        "property_id": 89,
-        "image_path": "https://picsum.photos/1200/800?random=891",
-        "type": "image",
-        "order": 1,
-        "is_primary": true,
-        "caption": "Kitchen",
-        "created_at": "2026-01-31T12:58:14.000000Z",
-        "updated_at": "2026-01-31T12:58:14.000000Z"
-      },
-      {
-        "id": 419,
-        "property_id": 89,
-        "image_path": "https://picsum.photos/1200/800?random=892",
-        "type": "image",
-        "order": 2,
-        "is_primary": false,
-        "caption": "Kitchen",
-        "created_at": "2026-01-31T12:58:14.000000Z",
-        "updated_at": "2026-01-31T12:58:14.000000Z"
-      },
-      {
-        "id": 420,
-        "property_id": 89,
-        "image_path": "https://picsum.photos/1200/800?random=893",
-        "type": "image",
-        "order": 3,
-        "is_primary": false,
-        "caption": "Backyard",
-        "created_at": "2026-01-31T12:58:14.000000Z",
-        "updated_at": "2026-01-31T12:58:14.000000Z"
-      }
-    ],
-    "amenities": [
-      {
-        "id": 577,
-        "property_id": 89,
-        "amenity_type_id": 5,
-        "amenity_type": {
-          "id": 5,
-          "name": "Built-in Wardrobes",
-          "slug": "built-in-wardrobes",
-          "icon": "https://picsum.photos/seed/wardrobes/200",
-          "description": "Built-in wardrobe storage"
-        },
-        "created_at": "2026-01-31T12:58:14.000000Z",
-        "updated_at": "2026-01-31T12:58:14.000000Z"
-      },
-      {
-        "id": 578,
-        "property_id": 89,
-        "amenity_type_id": 8,
-        "amenity_type": {
-          "id": 8,
-          "name": "Gym",
-          "slug": "gym",
-          "icon": "https://picsum.photos/seed/gym/200",
-          "description": "Fitness center or gym"
-        },
-        "created_at": "2026-01-31T12:58:14.000000Z",
-        "updated_at": "2026-01-31T12:58:14.000000Z"
-      },
-      {
-        "id": 579,
-        "property_id": 89,
-        "amenity_type_id": 13,
-        "amenity_type": {
-          "id": 13,
-          "name": "Security",
-          "slug": "security",
-          "icon": "https://picsum.photos/seed/security/200",
-          "description": "Security system or gated access"
-        },
-        "created_at": "2026-01-31T12:58:14.000000Z",
-        "updated_at": "2026-01-31T12:58:14.000000Z"
-      }
-    ],
-    "documents": [
-      {
-        "id": 205,
-        "property_id": 89,
-        "document_type": "ownership_certificate",
-        "file_path": "https://renter-pay.mahfuz.click/storage/documents/properties/89/ownership_certificate.pdf",
-        "file_name": "Ownership certificate.pdf",
-        "mime_type": "application/pdf",
-        "file_size": 3053351,
-        "is_verified": true,
-        "verified_at": "2026-01-31 18:58:14",
-        "verified_by": 1,
-        "verification_notes": "Document verified successfully",
-        "created_at": "2026-01-31 18:58:14",
-        "updated_at": "2026-01-31 18:58:14"
-      },
-      {
-        "id": 206,
-        "property_id": 89,
-        "document_type": "insurance",
-        "file_path": "https://renter-pay.mahfuz.click/storage/documents/properties/89/insurance.pdf",
-        "file_name": "Insurance.pdf",
-        "mime_type": "application/pdf",
-        "file_size": 144158,
-        "is_verified": false,
-        "verified_at": null,
-        "verified_by": null,
-        "verification_notes": null,
-        "created_at": "2026-01-31 18:58:14",
-        "updated_at": "2026-01-31 18:58:14"
-      }
-    ],
-    "maintenance_profile": {
-      "id": 64,
-      "property_id": 89,
-      "fire_alarm_date": "2025-03-30T18:00:00.000000Z",
-      "fire_alarm_expiry": "2026-12-30T18:00:00.000000Z",
-      "electrical_cert_date": "2025-05-30T18:00:00.000000Z",
-      "electrical_cert_expiry": "2026-06-30T18:00:00.000000Z",
-      "plumbing_cert_date": "2025-09-30T18:00:00.000000Z",
-      "plumbing_cert_expiry": "2026-12-30T18:00:00.000000Z",
-      "gas_safety_date": "2025-11-30T18:00:00.000000Z",
-      "gas_safety_expiry": "2026-07-30T18:00:00.000000Z",
-      "building_inspection_date": "2025-12-30T18:00:00.000000Z",
-      "building_inspection_expiry": "2026-03-02T18:00:00.000000Z",
-      "notes": "All safety certificates current and compliant",
-      "deleted_at": null,
-      "created_by": null,
-      "updated_by": null,
-      "created_at": "2026-01-31T12:58:14.000000Z",
-      "updated_at": "2026-01-31T12:58:14.000000Z"
     },
-    "review_summary": {
-      "total_reviews": 11,
-      "average_rating": "3.64"
-    },
-    "my_review": null,
-    "created_at": "2026-01-31T12:58:14.000000Z",
-    "updated_at": "2026-01-31T12:58:16.000000Z"
+    "summary": {
+      "total_reviews": 1,
+      "average_rating": "5.00",
+      "rating_distribution": {
+        "5": 1,
+        "4": 0,
+        "3": 0,
+        "2": 0,
+        "1": 0
+      }
+    }
   },
   "errors": null
 }
