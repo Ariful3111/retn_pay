@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.renter.pay</string>
+	<string>com.example.project</string>
 	<key>PROJECT_ID</key>
 	<string>renter-pay-a2136</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:127878788563:ios:26db349eacc04d20e96b26</string>
+	<string>1:127878788563:ios:d28dc36a0c0b6c37e96b26</string>
 </dict>
 </plist>

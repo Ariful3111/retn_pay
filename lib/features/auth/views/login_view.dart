@@ -5,6 +5,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/auth/controllers/login_controller.dart';
+import 'package:renter_pay/features/auth/controllers/social_login_controller.dart';
 import 'package:renter_pay/features/auth/widgets/forgot_password.dart';
 import 'package:renter_pay/features/auth/widgets/login_field.dart';
 import 'package:renter_pay/features/auth/widgets/auth_option.dart';
@@ -43,7 +44,9 @@ class LoginView extends StatelessWidget {
               AuthOption(
                 title: "Continue with Google",
                 image: IconsPath.google,
-                onTap: () {},
+                onTap: () async {
+                  await Get.find<SocialLoginController>().googleLogin();
+                },
               ),
               SizedBox(height: 20.h),
               AuthOption(

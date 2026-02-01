@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -9,9 +10,11 @@ import 'package:renter_pay/core/themes/app_theme.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/auth/bindings/onboarding_bindings.dart';
 import 'package:renter_pay/features/home/bindings/logged_in_bindings.dart';
+import 'package:renter_pay/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   String token = await DependencyInjection.init();
   await initUserIndexFromStorage();
   runApp(MyApp(token: token));

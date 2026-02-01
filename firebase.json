@@ -1,0 +1,41 @@
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "renter-pay-a2136",
+          "appId": "1:127878788563:android:238fa1e02c043fb1e96b26",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "ios": {
+        "default": {
+          "projectId": "renter-pay-a2136",
+          "appId": "1:127878788563:ios:26db349eacc04d20e96b26",
+          "uploadDebugSymbols": false,
+          "fileOutput": "ios/Runner/GoogleService-Info.plist"
+        }
+      },
+      "macos": {
+        "default": {
+          "projectId": "renter-pay-a2136",
+          "appId": "1:127878788563:ios:d28dc36a0c0b6c37e96b26",
+          "uploadDebugSymbols": false,
+          "fileOutput": "macos/Runner/GoogleService-Info.plist"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "renter-pay-a2136",
+          "configurations": {
+            "android": "1:127878788563:android:238fa1e02c043fb1e96b26",
+            "ios": "1:127878788563:ios:26db349eacc04d20e96b26",
+            "macos": "1:127878788563:ios:d28dc36a0c0b6c37e96b26",
+            "web": "1:127878788563:web:b1fc293aed4f6f1de96b26",
+            "windows": "1:127878788563:web:78e47e9c612fe849e96b26"
+          }
+        }
+      }
+    }
+  }
+}
