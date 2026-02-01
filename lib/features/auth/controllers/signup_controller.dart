@@ -6,7 +6,6 @@ import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/auth/controllers/user_role_controller.dart';
 import 'package:renter_pay/features/auth/repositories/register_repo.dart';
 import 'package:renter_pay/features/auth/repositories/verification_repo.dart';
-import 'package:renter_pay/shared/extensions/Extractors/name_extractor.dart';
 import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 import 'package:renter_pay/shared/widgets/snackbars/success_snackbar.dart';
 
@@ -59,12 +58,9 @@ class SignupController extends GetxController {
   }) async {
     isLoading.value = true;
 
-    final (firstName, lastName) = nameController.text.extractNameParts();
-
     final response = await registerRepository.execute(
       role: roleIdentifier(),
-      firstName: firstName,
-      lastName: lastName,
+      name: nameController.text,
       phone: phoneCode.isNotEmpty ? phoneController.text : "",
       email: emailCode.isNotEmpty ? emailController.text : "",
       password: passwordController.text,
