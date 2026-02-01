@@ -1,83 +1,139 @@
 {
   "error": false,
   "code": 200,
-  "message": "Property reviews retrieved successfully",
-  "data": {
-    "property": {
-      "id": 1,
-      "title": "Unit in Perth - Ocean Drive",
-      "my_review": null
-    },
-    "reviews": {
-      "data": [
-        {
-          "id": 1,
-          "property_id": 1,
-          "user_id": 16,
-          "user": {
-            "id": 16,
-            "name": "Tenant User 15",
-            "email": "tenant15@example.com",
-            "image": "https://renter-pay.mahfuz.click/images/person.png"
-          },
-          "rating": 5,
-          "title": "Outstanding property management",
-          "comment": "This is the best rental property I've lived in. Everything is exactly as described in the listing. Very happy with my choice!",
-          "status": "approved",
-          "admin_notes": null,
-          "approved_by": 1,
-          "approved_at": "2026-01-29T04:51:48.000000Z",
-          "created_at": "2026-01-17T04:51:48.000000Z",
-          "updated_at": "2026-01-13T04:51:48.000000Z"
-        }
-      ],
-      "links": {
-        "first": "https://renter-pay.mahfuz.click/api/v1/properties/1/reviews?page=1",
-        "last": "https://renter-pay.mahfuz.click/api/v1/properties/1/reviews?page=1",
-        "prev": null,
-        "next": null
-      },
-      "meta": {
-        "current_page": 1,
-        "from": 1,
-        "last_page": 1,
-        "links": [
+  "message": "Inspections retrieved successfully",
+  "data": [
+    {
+      "id": 101,
+      "property_id": 5,
+      "tenant_id": 67,
+      "inspection_date": "2026-02-28 06:30:00",
+      "type": "in_person",
+      "status": "pending",
+      "notes": null,
+      "is_approved": false,
+      "approved_by": null,
+      "approved_at": null,
+      "rejection_reason": null,
+      "property": {
+        "id": 5,
+        "landlord_id": 62,
+        "property_type_id": 1,
+        "title": "Apartment in Newcastle - Main Street",
+        "name": "Apartment in Newcastle - Main Street",
+        "description": "Modern Apartment located in Newcastle. Features 1 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+        "address": "950/57 Collins Street",
+        "city": "Newcastle",
+        "state": "NSW",
+        "postal_code": "5811",
+        "country": "Australia",
+        "latitude": "-33.32830000",
+        "longitude": "152.14170000",
+        "bedrooms": 1,
+        "bathrooms": 2,
+        "parking_spaces": 2,
+        "land_size": null,
+        "building_size": "258.00",
+        "year_built": 2015,
+        "status": "active",
+        "is_verified": true,
+        "is_in_person_inspection_available": false,
+        "is_virtual_inspection_available": false,
+        "is_favourite": false,
+        "features": [
+          "Dedicated study or home office space with built-in desk.",
+          "Low-maintenance garden with native plants and irrigation."
+        ],
+        "rating": "3.75",
+        "rating_count": 4,
+        "units": [
           {
-            "url": null,
-            "label": "&laquo; Previous",
-            "page": null,
-            "active": false
+            "id": 10,
+            "property_id": 5,
+            "unit_number": "Unit 2",
+            "unit_name": "Apartment 2",
+            "rent_amount": "4760.00",
+            "rent_type": {
+              "id": 4,
+              "name": "Yearly",
+              "slug": "yearly",
+              "rent_days": 365
+            },
+            "currency": {
+              "id": 1,
+              "code": "AUD",
+              "name": "Australian Dollar",
+              "symbol": "A$",
+              "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+              "type": "fiat"
+            },
+            "display_rent_amount": 4760,
+            "display_currency": {
+              "id": 1,
+              "code": "AUD",
+              "name": "Australian Dollar",
+              "symbol": "A$",
+              "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+              "type": "fiat"
+            },
+            "status": "occupied",
+            "bedrooms": 1,
+            "bathrooms": 2,
+            "size": "129.00",
+            "description": "Spacious Apartment with modern fixtures"
           },
           {
-            "url": "https://renter-pay.mahfuz.click/api/v1/properties/1/reviews?page=1",
-            "label": "1",
-            "page": 1,
-            "active": true
-          },
-          {
-            "url": null,
-            "label": "Next &raquo;",
-            "page": null,
-            "active": false
+            "id": 9,
+            "property_id": 5,
+            "unit_number": "Unit 1",
+            "unit_name": "Apartment 1",
+            "rent_amount": "26690.00",
+            "rent_type": {
+              "id": 1,
+              "name": "Daily",
+              "slug": "daily",
+              "rent_days": 1
+            },
+            "currency": {
+              "id": 1,
+              "code": "AUD",
+              "name": "Australian Dollar",
+              "symbol": "A$",
+              "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+              "type": "fiat"
+            },
+            "display_rent_amount": 26690,
+            "display_currency": {
+              "id": 1,
+              "code": "AUD",
+              "name": "Australian Dollar",
+              "symbol": "A$",
+              "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+              "type": "fiat"
+            },
+            "status": "reserved",
+            "bedrooms": 1,
+            "bathrooms": 2,
+            "size": "129.00",
+            "description": "Spacious Apartment with modern fixtures"
           }
         ],
-        "path": "https://renter-pay.mahfuz.click/api/v1/properties/1/reviews",
-        "per_page": 20,
-        "to": 1,
-        "total": 1
-      }
-    },
-    "summary": {
-      "total_reviews": 1,
-      "average_rating": "5.00",
-      "rating_distribution": {
-        "5": 1,
-        "4": 0,
-        "3": 0,
-        "2": 0,
-        "1": 0
-      }
+        "review_summary": {
+          "total_reviews": 4,
+          "average_rating": "3.75"
+        },
+        "created_at": "2026-02-01T04:51:42.000000Z",
+        "updated_at": "2026-02-01T04:51:49.000000Z"
+      },
+      "tenant": {
+        "id": 67,
+        "name": "Rafi Ahmed",
+        "email": null
+      },
+      "approved_by_user": null,
+      "created_at": "2026-02-01 11:12:37",
+      "updated_at": "2026-02-01 11:12:37"
     }
-  },
+  ],
   "errors": null
 }
