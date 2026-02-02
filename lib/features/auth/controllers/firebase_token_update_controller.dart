@@ -4,7 +4,6 @@ import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/core/services/firebase_token_service.dart';
 import 'package:renter_pay/core/services/uuid_service.dart';
 import 'package:renter_pay/features/auth/repositories/firebase_token_update_repo.dart';
-import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
 class FirebaseTokenUpdateController extends GetxController {
   final FirebaseTokenUpdateRepository firebaseTokenUpdateRepository;
@@ -23,14 +22,9 @@ class FirebaseTokenUpdateController extends GetxController {
         firebaseToken: firebaseToken,
       );
       isLoading.value = false;
-      response.fold(
-        (error) {
-          ErrorSnackbar.show(description: error.message);
-        },
-        (data) {
-          debugPrint("Token Updated");
-        },
-      );
+      response.fold((error) {}, (data) {
+        debugPrint("Token Updated");
+      });
     }
   }
 }

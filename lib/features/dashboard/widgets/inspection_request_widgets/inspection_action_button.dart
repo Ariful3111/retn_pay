@@ -3,10 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/features/dashboard/controllers/inspection_update_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/inspection_request_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
 class InspectionActionButton extends GetWidget<InspectionRequestController> {
   final int id;
@@ -21,20 +23,31 @@ class InspectionActionButton extends GetWidget<InspectionRequestController> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        CustomSecondaryButton(
-          borderRadius: BorderRadius.circular(6.r),
-          height: 36.h,
-          width: 80.w,
-          borderColor: isDark
-              ? AppColors.darkBorderPrimary
-              : AppColors.whiteBorder,
-          color: isDark ? AppColors.darkContainer : AppColors.whiteColor,
-          text: 'Cancel',
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w400,
-          textColor: isDark ? AppColors.whiteColor : AppColors.darkContainer,
-          onPressed: () {},
-        ),
+        Obx(() {
+          return Get.find<InspectionUpdateController>().isLoading.value
+              ? ButtonLoading(loadingSize: 10.sp)
+              : CustomSecondaryButton(
+                  borderRadius: BorderRadius.circular(6.r),
+                  height: 36.h,
+                  width: 80.w,
+                  borderColor: isDark
+                      ? AppColors.darkBorderPrimary
+                      : AppColors.whiteBorder,
+                  color: isDark
+                      ? AppColors.darkContainer
+                      : AppColors.whiteColor,
+                  text: 'Cancel',
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                  textColor: isDark
+                      ? AppColors.whiteColor
+                      : AppColors.darkContainer,
+                  onPressed: () async {
+                    await Get.find<InspectionUpdateController>()
+                        .updateInspection(status: "cancelled", id: id);
+                  },
+                );
+        }),
         SizedBox(width: 8.w),
         if (item.status?.capitalizeFirst != 'Rejected' &&
             item.status?.capitalizeFirst != 'Cancel' &&

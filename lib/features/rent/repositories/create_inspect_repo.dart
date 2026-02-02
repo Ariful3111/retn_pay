@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/networks_path.dart';
@@ -15,9 +14,6 @@ class CreateInspectionRepository {
     required String type,
     required String inspectionDate,
   }) async {
-    debugPrint(
-      "propertyID: $propertyID, type: $type, inspectionDate: $inspectionDate",
-    );
     final response = await postWithoutResponse.postData(
       url: "/api/${NetworkLinks.version}/inspections",
       headers: {

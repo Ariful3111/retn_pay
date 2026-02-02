@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -25,9 +28,15 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -40,49 +49,22 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCEZ_YoeqYmxxM-h5rkdhBVfHreZGnm8zE',
-    appId: '1:127878788563:web:b1fc293aed4f6f1de96b26',
-    messagingSenderId: '127878788563',
-    projectId: 'renter-pay-a2136',
-    authDomain: 'renter-pay-a2136.firebaseapp.com',
-    storageBucket: 'renter-pay-a2136.firebasestorage.app',
-    measurementId: 'G-E557GZ24F5',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyA1NR5UfKLMiRVEbhIA6Oq9OSewVZTr7QY',
-    appId: '1:127878788563:android:238fa1e02c043fb1e96b26',
-    messagingSenderId: '127878788563',
-    projectId: 'renter-pay-a2136',
-    storageBucket: 'renter-pay-a2136.firebasestorage.app',
+    apiKey: 'AIzaSyA6f-GxJPGxjTl9UyirfKjVOBK0ohobYbk',
+    appId: '1:945407931386:android:1007c21c9d0b1ea6e4ea43',
+    messagingSenderId: '945407931386',
+    projectId: 'renter-pay',
+    storageBucket: 'renter-pay.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAWldnjhScH7-p9gwnU_0DzjkT65wCgPH8',
-    appId: '1:127878788563:ios:26db349eacc04d20e96b26',
-    messagingSenderId: '127878788563',
-    projectId: 'renter-pay-a2136',
-    storageBucket: 'renter-pay-a2136.firebasestorage.app',
+    apiKey: 'AIzaSyAE_2e_3bYGYPzTw50VnLI1dYgMtrfnsIY',
+    appId: '1:945407931386:ios:23d7f496d9621329e4ea43',
+    messagingSenderId: '945407931386',
+    projectId: 'renter-pay',
+    storageBucket: 'renter-pay.firebasestorage.app',
+    androidClientId: '945407931386-ok4jok83iupl9n28o5ib80vgf101128g.apps.googleusercontent.com',
+    iosClientId: '945407931386-1cmu4fu4mc30tlo6k8osfoods747dt53.apps.googleusercontent.com',
     iosBundleId: 'com.renter.pay',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAWldnjhScH7-p9gwnU_0DzjkT65wCgPH8',
-    appId: '1:127878788563:ios:d28dc36a0c0b6c37e96b26',
-    messagingSenderId: '127878788563',
-    projectId: 'renter-pay-a2136',
-    storageBucket: 'renter-pay-a2136.firebasestorage.app',
-    iosBundleId: 'com.example.project',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCEZ_YoeqYmxxM-h5rkdhBVfHreZGnm8zE',
-    appId: '1:127878788563:web:78e47e9c612fe849e96b26',
-    messagingSenderId: '127878788563',
-    projectId: 'renter-pay-a2136',
-    authDomain: 'renter-pay-a2136.firebaseapp.com',
-    storageBucket: 'renter-pay-a2136.firebasestorage.app',
-    measurementId: 'G-V65TTT16SD',
   );
 }

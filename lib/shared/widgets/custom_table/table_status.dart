@@ -29,7 +29,7 @@ class TableStatus extends StatelessWidget {
         status == 'Completed') {
       bg = isDark ? AppColors.darkCompleteBG : AppColors.completeBG;
       text = isDark ? AppColors.completeBG : AppColors.completeText;
-    } else if (status == 'Rejected' || status == 'Cancel') {
+    } else if (status == 'Rejected' || status == 'Cancelled') {
       bg = isDark ? AppColors.darkRejectBG : AppColors.rejectBG;
       text = isDark ? AppColors.rejectBG : AppColors.rejectText;
     } else if (status == "Credit Check Approved") {

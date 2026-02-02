@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/features/dashboard/controllers/inspection_update_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/inspection_request_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_table/table_action_button.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
 class InspectionTableData extends GetWidget<InspectionRequestController> {
   final int id;
@@ -24,18 +27,36 @@ class InspectionTableData extends GetWidget<InspectionRequestController> {
             isValue.status?.capitalizeFirst == 'Assigned' ||
             isValue.status?.capitalizeFirst == 'Open' ||
             isValue.status?.capitalizeFirst == 'Scheduled') ...[
-          TableActionButton(icon: IconsPath.tableClose, onTap: () {}),
+          Obx(() {
+            return Get.find<InspectionUpdateController>().isLoading.value
+                ? ButtonLoading(loadingSize: 10.sp)
+                : TableActionButton(
+                    icon: IconsPath.tableClose,
+                    onTap: () async {
+                      await Get.find<InspectionUpdateController>()
+                          .updateInspection(status: "cancelled", id: id);
+                    },
+                  );
+          }),
         ],
 
         if (isValue.status?.capitalizeFirst == 'Completed') ...[
           TableActionButton(
             icon: IconsPath.tableUpload,
             color: AppColors.tableUpload,
-            onTap: () {},
+            onTap: () async {},
           ),
         ],
         if (isValue.status?.capitalizeFirst == 'Pending') ...[
-          TableActionButton(icon: IconsPath.tableClose, onTap: () {}),
+          TableActionButton(
+            icon: IconsPath.tableClose,
+            onTap: () async {
+              await Get.find<InspectionUpdateController>().updateInspection(
+                status: "cancelled",
+                id: id,
+              );
+            },
+          ),
         ],
         if (isValue.status?.capitalizeFirst != 'Rejected' &&
             isValue.status?.capitalizeFirst != 'Cancel' &&
