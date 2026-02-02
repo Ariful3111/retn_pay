@@ -79,9 +79,7 @@ class _SupportFaqState extends State<SupportFaq> {
                     onTap: () {
                       faqController.toggleExpend(id: faq.id ?? 0);
                     },
-                    isExpanded: faqController.expendedIDs.contains(
-                      faq.id ?? 0,
-                    ),
+                    isExpanded: faqController.expendedIDs.contains(faq.id ?? 0),
                   ),
                 );
               }),

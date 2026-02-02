@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/services/url_service.dart';
 import 'package:renter_pay/features/dashboard/controllers/inspection_update_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/inspection_request_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
@@ -70,7 +71,12 @@ class InspectionActionButton extends GetWidget<InspectionRequestController> {
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             textColor: AppColors.whiteColor,
-            onPressed: () {},
+            onPressed: () async {
+              await URLService.launchURL(
+                url:
+                    "https://cantech.site/dashboard/applications/${item.propertyId}",
+              );
+            },
           ),
       ],
     );
