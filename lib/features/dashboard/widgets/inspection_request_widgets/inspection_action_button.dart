@@ -74,7 +74,8 @@ class InspectionActionButton extends GetWidget<InspectionRequestController> {
             onPressed: () async {
               await URLService.launchURL(
                 url:
-                    "https://cantech.site/dashboard/applications/${item.propertyId}",
+                    "https://renter-pay-web.vercel.app/dashboard/applications/${item.propertyId}",
+                isExternal: false,
               );
             },
           ),

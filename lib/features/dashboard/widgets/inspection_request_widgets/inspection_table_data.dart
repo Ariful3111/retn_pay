@@ -48,7 +48,8 @@ class InspectionTableData extends GetWidget<InspectionRequestController> {
             onTap: () async {
               await URLService.launchURL(
                 url:
-                    "https://cantech.site/dashboard/applications/${isValue.propertyId}",
+                    "https://renter-pay-web.vercel.app/dashboard/applications/${isValue.propertyId}",
+                isExternal: false,
               );
             },
           ),
