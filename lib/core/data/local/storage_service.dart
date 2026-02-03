@@ -4,6 +4,7 @@ class StorageService {
   final _box = GetStorage();
   final String tokenKey = "token";
   final String roleKey = "role";
+  final String deviceIDKey = "deviceID";
 
   // Read
   T? read<T>({required String key}) {

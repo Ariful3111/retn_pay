@@ -44,7 +44,7 @@ class InspectionType extends StatelessWidget {
                     : inspectionRequestController.isInspectionType.value ==
                           index;
                 return GestureDetector(
-                  onTap: () {
+                  onTap: () async {
                     if (userIndex == 0) {
                       inspectionRequestController.isInspectionType.value =
                           index;
@@ -56,6 +56,7 @@ class InspectionType extends StatelessWidget {
                               .value =
                           index;
                     }
+                    await inspectionRequestController.getInspections();
                   },
                   child: AnimatedContainer(
                     duration: Duration(milliseconds: 300),

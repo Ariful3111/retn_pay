@@ -1,51 +1,74 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/services/url_service.dart';
+import 'package:renter_pay/features/dashboard/controllers/inspection_update_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/inspection_request_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_table/table_action_button.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
-class InspectionTableData extends StatelessWidget {
-  final int index;
-  const InspectionTableData({super.key, required this.index});
+class InspectionTableData extends GetWidget<InspectionRequestController> {
+  final int id;
+  const InspectionTableData({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
-    InspectionRequestController inspectionRequestController = Get.find();
-    final list = inspectionRequestController.filterRow;
-    final value = list[index].key;
-    final isValue = inspectionRequestController.allRows[value];
+    final list = controller.inspections.value?.data ?? [];
+    final itemIndex = list.indexWhere((element) => element.id == id);
+    if (itemIndex == -1) {
+      return SizedBox.shrink();
+    }
+    final isValue = list[itemIndex];
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        if (isValue.status == 'Approved') ...[
-          TableActionButton(icon: IconsPath.tableClose, onTap: () {}),
+        if (isValue.status?.capitalizeFirst == 'Approved' ||
+            isValue.status?.capitalizeFirst == 'Assigned' ||
+            isValue.status?.capitalizeFirst == 'Open' ||
+            isValue.status?.capitalizeFirst == 'Scheduled') ...[
+          Obx(() {
+            return Get.find<InspectionUpdateController>().isLoading.value
+                ? ButtonLoading(loadingSize: 10.sp)
+                : TableActionButton(
+                    icon: IconsPath.tableClose,
+                    onTap: () async {
+                      await Get.find<InspectionUpdateController>()
+                          .updateInspection(status: "cancelled", id: id);
+                    },
+                  );
+          }),
         ],
 
-        if (isValue.status == 'Complete') ...[
-          TableActionButton(icon: IconsPath.tableClose, onTap: () {}),
+        if (isValue.status?.capitalizeFirst == 'Completed') ...[
           TableActionButton(
             icon: IconsPath.tableUpload,
             color: AppColors.tableUpload,
-            onTap: () {},
-          ),
-        ],
-        if (isValue.status == 'Pending') ...[
-          TableActionButton(
-            icon: IconsPath.tableClose,
-            onTap: () {
-              inspectionRequestController.updateStatus(
-                list[index].key,
-                'Cancel',
+            onTap: () async {
+              await URLService.launchURL(
+                url:
+                    "https://renter-pay-web.vercel.app/dashboard/applications/${isValue.propertyId}",
+                isExternal: false,
               );
             },
           ),
         ],
-        if (isValue.type == "VR" &&
-            isValue.status != 'Complete' &&
-            isValue.status != 'Rejected' &&
-            isValue.status != 'Cancel' &&
-            isValue.status != 'Pending') ...[
+        if (isValue.status?.capitalizeFirst == 'Pending') ...[
+          TableActionButton(
+            icon: IconsPath.tableClose,
+            onTap: () async {
+              await Get.find<InspectionUpdateController>().updateInspection(
+                status: "cancelled",
+                id: id,
+              );
+            },
+          ),
+        ],
+        if (isValue.status?.capitalizeFirst != 'Rejected' &&
+            isValue.status?.capitalizeFirst != 'Cancel' &&
+            isValue.status?.capitalizeFirst != 'Pending' &&
+            isValue.type?.capitalizeFirst == "Virtual") ...[
           TableActionButton(
             icon: IconsPath.tableInspection,
             color: AppColors.borderColor,

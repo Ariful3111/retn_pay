@@ -24,19 +24,21 @@ class ActivePropertiesView extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     ActivePropertyController activePropertyController = Get.find();
-    return CustomContainer(
-      padding: EdgeInsets.all(20.r),
-      gradient: isDark
-          ? LinearGradient(
-              colors: [AppColors.darkPrimary, AppColors.darkPrimary],
-            )
-          : AppColors.userBackground,
-      child: ListView(
-        physics: activePropertyController.isAccess.value?AlwaysScrollableScrollPhysics():NeverScrollableScrollPhysics(),
-        children: [
-          DrawerItemsAppbar(title: 'Active Properties'),
-          Obx(
-            () => CustomAnimatedSwitcher(
+    return Obx(() {
+      return CustomContainer(
+        padding: EdgeInsets.all(20.r),
+        gradient: isDark
+            ? LinearGradient(
+                colors: [AppColors.darkPrimary, AppColors.darkPrimary],
+              )
+            : AppColors.userBackground,
+        child: ListView(
+          physics: activePropertyController.isAccess.value
+              ? AlwaysScrollableScrollPhysics()
+              : NeverScrollableScrollPhysics(),
+          children: [
+            DrawerItemsAppbar(title: 'Active Properties'),
+            CustomAnimatedSwitcher(
               child: Stack(
                 key: ValueKey(activePropertyController.isAccess.value),
                 children: [
@@ -45,7 +47,9 @@ class ActivePropertiesView extends StatelessWidget {
                       SizedBox(height: 20.h),
                       ActivePropertyImage(),
                       SizedBox(height: 20.h),
-                      PropertyDetailsInfo(propertyDetails: PropertyDetailsModel()),
+                      PropertyDetailsInfo(
+                        propertyDetails: PropertyDetailsModel(),
+                      ),
                       SizedBox(height: 20.h),
                       DashboardRentNotice(),
                       SizedBox(height: 20.h),
@@ -53,7 +57,10 @@ class ActivePropertiesView extends StatelessWidget {
                     ],
                   ),
                   if (!activePropertyController.isAccess.value)
-                    CustomShadowOverlayButton().shadow(context: context,imageFilter: ImageFilter.blur(sigmaX: 1.5,sigmaY: 1.5)),
+                    CustomShadowOverlayButton().shadow(
+                      context: context,
+                      imageFilter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+                    ),
                   if (!activePropertyController.isAccess.value)
                     Positioned(
                       top: 370.h,
@@ -86,9 +93,9 @@ class ActivePropertiesView extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    });
   }
 }

@@ -20,12 +20,18 @@ class BenefitsList extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.asset(IconsPath.element, height: 17.h, width: 17.w),
+        Padding(
+          padding: EdgeInsets.only(top: 3.h),
+          child: Image.asset(IconsPath.element, height: 17.h, width: 17.w),
+        ),
         SizedBox(width: 8.w),
-        CustomTextSecondary(
-          text: listText,
-          color: AppColors.subsPlanSubtitle,
-          fontSize: fontSize ?? 16.sp,
+        Expanded(
+          child: CustomTextSecondary(
+            text: listText,
+            color: AppColors.subsPlanSubtitle,
+            fontSize: fontSize ?? 16.sp,
+            softWrap: true,
+          ),
         ),
       ],
     );

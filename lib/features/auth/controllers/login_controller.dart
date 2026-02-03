@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/auth/controllers/firebase_token_update_controller.dart';
 import 'package:renter_pay/features/auth/repositories/login_repo.dart';
 import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
@@ -28,9 +29,10 @@ class LoginController extends GetxController {
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
-      isLoading.value = false;
+
       response.fold(
         (error) {
+          isLoading.value = false;
           ErrorSnackbar.show(description: error.message);
         },
         (data) async {
@@ -43,6 +45,8 @@ class LoginController extends GetxController {
             key: storageService.roleKey,
             value: savedRole,
           );
+          await Get.find<FirebaseTokenUpdateController>().updateToken();
+          isLoading.value = false;
           setUserIndexFromRole(savedRole);
           Get.offAllNamed(AppRoutes.mainHome);
         },

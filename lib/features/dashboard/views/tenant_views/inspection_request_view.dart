@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/inspection_request_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
-import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_filter.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_table.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/inspection_type.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/landlord_inspection/landlord_inspection_search.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/landlord_inspection/landlord_inspection_table.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
-class InspectionRequestView extends StatelessWidget {
+class InspectionRequestView extends GetView<InspectionRequestController> {
   const InspectionRequestView({super.key});
 
   @override
@@ -29,12 +31,22 @@ class InspectionRequestView extends StatelessWidget {
           SizedBox(height: 24.h),
           InspectionType(),
           SizedBox(height: 12.h),
-         if(userIndex==0) InspectionFilter(),
-         if(userIndex == 1|| userIndex==2) LandlordInspectionSearch(),
+          if (userIndex == 1 || userIndex == 2) LandlordInspectionSearch(),
           SizedBox(height: 20.h),
-         if(userIndex==0) InspectionTable(),
-         if(userIndex==1|| userIndex==2)LandlordInspectionTable(),
-          SizedBox(height: 20.h),
+          Obx(() {
+            return controller.isLoading.value
+                ? ButtonLoading()
+                : Column(
+                    children: [
+                      if (userIndex == 0) InspectionTable(),
+                      if (userIndex == 1 || userIndex == 2)
+                        LandlordInspectionTable(),
+                      SizedBox(height: 20.h),
+                    ],
+                  );
+          }),
+
+          //  if(userIndex==0) InspectionFilter(),
         ],
       ),
     );

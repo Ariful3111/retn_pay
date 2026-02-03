@@ -25,6 +25,7 @@ class LogoutController extends GetxController {
           SuccessSnackbar.show(description: "Logout successfully");
           await storage.remove(key: storage.tokenKey);
           await storage.remove(key: storage.roleKey);
+          await storage.remove(key: storage.deviceIDKey);
           setUserIndexFromRole(null);
           Get.offAllNamed(AppRoutes.userRole);
         },

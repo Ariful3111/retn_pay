@@ -10,6 +10,8 @@ class CustomTextPrimary extends StatelessWidget {
   final Color? color;
   final TextAlign? textAlign;
   final TextOverflow? textOverflow;
+  final int? maxLines;
+  final bool? softWrap;
   const CustomTextPrimary({
     super.key,
     required this.text,
@@ -18,6 +20,8 @@ class CustomTextPrimary extends StatelessWidget {
     this.color,
     this.textAlign,
     this.textOverflow,
+    this.maxLines,
+    this.softWrap,
   });
 
   @override
@@ -26,6 +30,8 @@ class CustomTextPrimary extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
+      maxLines: maxLines,
+      softWrap: softWrap,
       overflow: textOverflow,
       style: GoogleFonts.inter(
         fontSize: fontSize ?? 32.sp,

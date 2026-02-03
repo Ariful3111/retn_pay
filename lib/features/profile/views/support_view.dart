@@ -39,7 +39,7 @@ class SupportView extends StatelessWidget {
             ],
           ),
           SizedBox(height: 24.h),
-         SupportTypes(),
+          SupportTypes(),
           SizedBox(height: 24.h),
           Obx(
             () => Column(
