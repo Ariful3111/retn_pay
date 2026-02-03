@@ -9,16 +9,16 @@ import 'package:renter_pay/core/utils/image_picker.dart';
 import 'package:renter_pay/features/auth/controllers/document_verification_controller.dart';
 import 'package:renter_pay/features/auth/widgets/verification_button.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
+import 'package:renter_pay/shared/widgets/custom_dropdown/custom_dropdown_menu.dart';
 import 'package:renter_pay/shared/widgets/document_verification/custom_dotted_border.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/document_verification/document_upload.dart';
 
-class DocumentVerification extends StatelessWidget {
+class DocumentVerification extends GetView<DocumentVerificationController> {
   const DocumentVerification({super.key});
 
   @override
   Widget build(BuildContext context) {
-    DocumentVerificationController documentVerificationController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
       gradient: isDark
@@ -42,42 +42,49 @@ class DocumentVerification extends StatelessWidget {
               fontWeight: FontWeight.w500,
             ),
             SizedBox(height: 20.h),
+            CustomDropdownMenu(
+              onSelect: (value) {
+                controller.selectedDocument.value = value ?? 'NID';
+              },
+              option: const ['NID', 'Passport'],
+              isSelect: controller.selectedDocument,
+            ),
+            SizedBox(height: 20.h),
             Obx(() {
-              final frontImage =
-                  documentVerificationController.frontImage.value;
+              final frontImage = controller.frontImage.value;
               return frontImage != null
-                  ? CustomDottedBorder(image:FileImage(File(frontImage.path)) )
+                  ? CustomDottedBorder(image: FileImage(File(frontImage.path)))
                   : DocumentUpload(
                       titleText: 'Front Side',
                       onTap: () {
                         UploadImage.pickDocument(
                           type: 'front',
-                          frontImage: documentVerificationController.frontImage,
-                          backImage: documentVerificationController.backImage,
-                          picker: documentVerificationController.picker,
+                          frontImage: controller.frontImage,
+                          backImage: controller.backImage,
+                          picker: controller.picker,
                         );
                       },
                     );
             }),
             SizedBox(height: 20.h),
             Obx(() {
-              final backImage = documentVerificationController.backImage.value;
+              final backImage = controller.backImage.value;
               return backImage != null
-                  ? CustomDottedBorder(image:FileImage(File(backImage.path)) )
+                  ? CustomDottedBorder(image: FileImage(File(backImage.path)))
                   : DocumentUpload(
                       titleText: 'Back Side (Optional)',
                       onTap: () {
                         UploadImage.pickDocument(
                           type: 'back',
-                          frontImage: documentVerificationController.frontImage,
-                          backImage: documentVerificationController.backImage,
-                          picker: documentVerificationController.picker,
+                          frontImage: controller.frontImage,
+                          backImage: controller.backImage,
+                          picker: controller.picker,
                         );
                       },
                     );
             }),
             SizedBox(height: 24.h),
-            VerificationButton()
+            VerificationButton(),
           ],
         ),
       ),

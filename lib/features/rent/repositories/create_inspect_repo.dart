@@ -10,7 +10,7 @@ class CreateInspectionRepository {
   const CreateInspectionRepository({required this.postWithoutResponse});
 
   Future<Either<ErrorModel, bool>> execute({
-    required String propertyID,
+    required int propertyID,
     required String type,
     required String inspectionDate,
   }) async {

@@ -64,6 +64,7 @@ import 'package:renter_pay/features/profile/bindings/blog_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/blog_details_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/contact_us_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/profile_edit_bindings.dart';
+import 'package:renter_pay/features/profile/bindings/subscription_plan_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/support_bindings.dart';
 import 'package:renter_pay/features/profile/views/blog_view.dart';
 import 'package:renter_pay/features/profile/views/contact_us.dart';
@@ -128,7 +129,11 @@ final List<GetPage> appRoutes = [
     page: () => DocumentVerification(),
     bindings: [DocumentVerificationBindings()],
   ),
-  GetPage(name: AppRoutes.subsPlan, page: () => SubscriptionPlan()),
+  GetPage(
+    name: AppRoutes.subsPlan,
+    page: () => SubscriptionPlan(),
+    binding: SubscriptionPlanBindings(),
+  ),
   GetPage(
     name: AppRoutes.profile,
     page: () => ProfileView(),

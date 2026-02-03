@@ -1,45 +1,185 @@
 import 'package:renter_pay/features/home/models/properties_model.dart'
     as home_models;
 
-class TenantInspectModel {
+class InspectionModel {
   bool? error;
   int? code;
   String? message;
   List<TenantInspection>? data;
+  InspectionLinks? links;
+  InspectionMeta? meta;
   dynamic errors;
 
-  TenantInspectModel({
+  InspectionModel({
     this.error,
     this.code,
     this.message,
     this.data,
+    this.links,
+    this.meta,
     this.errors,
   });
 
-  TenantInspectModel.fromJson(Map<String, dynamic> json) {
+  InspectionModel.fromJson(Map<String, dynamic> json) {
     error = json['error'];
     code = json['code'];
     message = json['message'];
-    if (json['data'] != null && json['data'] is List) {
-      data = <TenantInspection>[];
-      json['data'].forEach((v) {
-        if (v is Map<String, dynamic>) {
-          data!.add(TenantInspection.fromJson(v));
-        }
-      });
+    final dynamic rawData = json['data'];
+    if (rawData is List) {
+      data = _parseInspectionList(rawData);
+    } else if (rawData is Map<String, dynamic>) {
+      final dynamic rawList = rawData['data'];
+      if (rawList is List) {
+        data = _parseInspectionList(rawList);
+      }
+
+      final dynamic rawLinks = rawData['links'];
+      if (rawLinks is Map<String, dynamic>) {
+        links = InspectionLinks.fromJson(rawLinks);
+      }
+
+      final dynamic rawMeta = rawData['meta'];
+      if (rawMeta is Map<String, dynamic>) {
+        meta = InspectionMeta.fromJson(rawMeta);
+      }
     }
     errors = json['errors'];
   }
 
+  static List<TenantInspection> _parseInspectionList(List rawList) {
+    final parsed = <TenantInspection>[];
+    for (final v in rawList) {
+      if (v is Map<String, dynamic>) {
+        parsed.add(TenantInspection.fromJson(v));
+      }
+    }
+    return parsed;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = <String, dynamic>{};
+    json['error'] = error;
+    json['code'] = code;
+    json['message'] = message;
+    if (links != null || meta != null) {
+      json['data'] = {
+        'data': data?.map((v) => v.toJson()).toList() ?? [],
+        'links': links?.toJson(),
+        'meta': meta?.toJson(),
+      };
+    } else if (data != null) {
+      json['data'] = data!.map((v) => v.toJson()).toList();
+    }
+    json['errors'] = errors;
+    return json;
+  }
+}
+
+class InspectionLinks {
+  String? first;
+  String? last;
+  dynamic prev;
+  dynamic next;
+
+  InspectionLinks({this.first, this.last, this.prev, this.next});
+
+  InspectionLinks.fromJson(Map<String, dynamic> json) {
+    first = json['first']?.toString();
+    last = json['last']?.toString();
+    prev = json['prev'];
+    next = json['next'];
+  }
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['error'] = error;
-    data['code'] = code;
-    data['message'] = message;
-    if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
+    data['first'] = first;
+    data['last'] = last;
+    data['prev'] = prev;
+    data['next'] = next;
+    return data;
+  }
+}
+
+class InspectionMeta {
+  int? currentPage;
+  int? from;
+  int? lastPage;
+  List<InspectionMetaLink>? links;
+  String? path;
+  int? perPage;
+  int? to;
+  int? total;
+
+  InspectionMeta({
+    this.currentPage,
+    this.from,
+    this.lastPage,
+    this.links,
+    this.path,
+    this.perPage,
+    this.to,
+    this.total,
+  });
+
+  InspectionMeta.fromJson(Map<String, dynamic> json) {
+    currentPage = _toInt(json['current_page']);
+    from = _toInt(json['from']);
+    lastPage = _toInt(json['last_page']);
+    if (json['links'] is List) {
+      links = <InspectionMetaLink>[];
+      for (final v in (json['links'] as List)) {
+        if (v is Map<String, dynamic>) {
+          links!.add(InspectionMetaLink.fromJson(v));
+        }
+      }
     }
-    data['errors'] = errors;
+    path = json['path']?.toString();
+    perPage = _toInt(json['per_page']);
+    to = _toInt(json['to']);
+    total = _toInt(json['total']);
+  }
+
+  static int? _toInt(dynamic v) {
+    if (v is num) return v.toInt();
+    if (v is String) return int.tryParse(v);
+    return null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['current_page'] = currentPage;
+    data['from'] = from;
+    data['last_page'] = lastPage;
+    data['links'] = links?.map((v) => v.toJson()).toList();
+    data['path'] = path;
+    data['per_page'] = perPage;
+    data['to'] = to;
+    data['total'] = total;
+    return data;
+  }
+}
+
+class InspectionMetaLink {
+  dynamic url;
+  String? label;
+  int? page;
+  bool? active;
+
+  InspectionMetaLink({this.url, this.label, this.page, this.active});
+
+  InspectionMetaLink.fromJson(Map<String, dynamic> json) {
+    url = json['url'];
+    label = json['label']?.toString();
+    page = InspectionMeta._toInt(json['page']);
+    active = json['active'] == true;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['url'] = url;
+    data['label'] = label;
+    data['page'] = page;
+    data['active'] = active;
     return data;
   }
 }

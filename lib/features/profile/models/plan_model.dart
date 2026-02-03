@@ -38,7 +38,7 @@ class Plan {
   String? billingCycle;
   int? trialPeriodDays;
   bool? isActive;
-  List<String>? features;
+  List<PlanFeature>? features;
 
   Plan({
     this.id,
@@ -52,14 +52,25 @@ class Plan {
   });
 
   Plan.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    forRole = json['for_role'];
-    name = json['name'];
-    price = json['price'];
-    billingCycle = json['billing_cycle'];
-    trialPeriodDays = json['trial_period_days'];
-    isActive = json['is_active'];
-    features = json['features'].cast<String>();
+    id = int.tryParse(json['id']?.toString() ?? '');
+    forRole = json['for_role']?.toString();
+    name = json['name']?.toString();
+    price = int.tryParse(json['price']?.toString() ?? '');
+    billingCycle = json['billing_cycle']?.toString();
+    trialPeriodDays = int.tryParse(json['trial_period_days']?.toString() ?? '');
+    isActive = json['is_active'] == true;
+
+    final rawFeatures = json['features'];
+    if (rawFeatures is List) {
+      features = <PlanFeature>[];
+      for (final v in rawFeatures) {
+        if (v is Map<String, dynamic>) {
+          features!.add(PlanFeature.fromJson(v));
+        } else if (v != null) {
+          features!.add(PlanFeature(title: v.toString()));
+        }
+      }
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -71,6 +82,35 @@ class Plan {
     data['billing_cycle'] = billingCycle;
     data['trial_period_days'] = trialPeriodDays;
     data['is_active'] = isActive;
+    if (features != null) {
+      data['features'] = features!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class PlanFeature {
+  String? title;
+  String? value;
+  List<String>? features;
+
+  PlanFeature({this.title, this.value, this.features});
+
+  PlanFeature.fromJson(Map<String, dynamic> json) {
+    title = json['title'];
+    value = json['value']?.toString();
+    if (json['features'] != null) {
+      features = <String>[];
+      json['features'].forEach((v) {
+        features!.add(v.toString());
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['title'] = title;
+    data['value'] = value;
     data['features'] = features;
     return data;
   }

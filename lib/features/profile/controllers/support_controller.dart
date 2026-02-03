@@ -131,48 +131,10 @@ class SupportController extends GetxController {
     return filterData;
   }
 
-  final List fAQ = [
-    {
-      'title': 'How do I pay my rent online?',
-      'subTitle':
-          'Go to the Payments tab, choose your preferred method (card, bank, or wallet), and confirm the transaction securely.',
-    },
-    {
-      'title': ' How do I submit a repair request?',
-      'subTitle':
-          'Go to the Payments tab, choose your preferred method (card, bank, or wallet), and confirm the transaction securely.',
-    },
-    {
-      'title': 'Can I track my past payments?',
-      'subTitle':
-          'Go to the Payments tab, choose your preferred method (card, bank, or wallet), and confirm the transaction securely.',
-    },
-    {
-      'title': 'How can I contact my landlord?',
-      'subTitle':
-          'Go to the Payments tab, choose your preferred method (card, bank, or wallet), and confirm the transaction securely.',
-    },
-    {
-      'title': 'What happens if I miss a rent payment?',
-      'subTitle':
-          'Go to the Payments tab, choose your preferred method (card, bank, or wallet), and confirm the transaction securely.',
-    },
-    {
-      'title': 'Can I review my landlord after moving out?',
-      'subTitle':
-          'Go to the Payments tab, choose your preferred method (card, bank, or wallet), and confirm the transaction securely.',
-    },
-  ];
   void showExpandedData(int index) {
     if (index >= 0 && index < expandedData.length) {
       expandedData[index] = !expandedData[index];
     }
-  }
-
-  @override
-  void onInit() {
-    isShowFAQ.value = List.filled(fAQ.length + 1, true);
-    super.onInit();
   }
 
   @override

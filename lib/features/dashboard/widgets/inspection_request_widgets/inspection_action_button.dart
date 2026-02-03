@@ -3,48 +3,63 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/services/url_service.dart';
+import 'package:renter_pay/features/dashboard/controllers/inspection_update_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/inspection_request_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
-class InspectionActionButton extends StatelessWidget {
-  final int rowIndex;
-  const InspectionActionButton({super.key, required this.rowIndex});
+class InspectionActionButton extends GetWidget<InspectionRequestController> {
+  final int id;
+  const InspectionActionButton({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    final controller = Get.find<InspectionRequestController>();
-    final item = controller.allRows[rowIndex];
+    final item = controller.inspections.value!.data!.firstWhere(
+      (element) => element.id == id,
+    );
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        CustomSecondaryButton(
-          borderRadius: BorderRadius.circular(6.r),
-          height: 36.h,
-          width: 80.w,
-          borderColor: isDark
-              ? AppColors.darkBorderPrimary
-              : AppColors.whiteBorder,
-          color: isDark ? AppColors.darkContainer : AppColors.whiteColor,
-          text: 'Cancel',
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w400,
-          textColor: isDark ? AppColors.whiteColor : AppColors.darkContainer,
-          onPressed: () {},
-        ),
+        Obx(() {
+          return Get.find<InspectionUpdateController>().isLoading.value
+              ? ButtonLoading(loadingSize: 10.sp)
+              : CustomSecondaryButton(
+                  borderRadius: BorderRadius.circular(6.r),
+                  height: 36.h,
+                  width: 80.w,
+                  borderColor: isDark
+                      ? AppColors.darkBorderPrimary
+                      : AppColors.whiteBorder,
+                  color: isDark
+                      ? AppColors.darkContainer
+                      : AppColors.whiteColor,
+                  text: 'Cancel',
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                  textColor: isDark
+                      ? AppColors.whiteColor
+                      : AppColors.darkContainer,
+                  onPressed: () async {
+                    await Get.find<InspectionUpdateController>()
+                        .updateInspection(status: "cancelled", id: id);
+                  },
+                );
+        }),
         SizedBox(width: 8.w),
-        if (item.status != 'Rejected' &&
-            item.status != 'Cancel' &&
-            item.status != 'Pending' &&
-            item.type == 'VR')
+        if (item.status?.capitalizeFirst != 'Rejected' &&
+            item.status?.capitalizeFirst != 'Cancel' &&
+            item.status?.capitalizeFirst != 'Pending' &&
+            item.type?.capitalizeFirst == 'Virtual')
           Padding(
             padding: EdgeInsetsGeometry.only(right: 8.w),
-            child: vRButton(text: item.type),
+            child: vRButton(),
           ),
 
-        if (item.status == 'Completed')
+        if (item.status?.capitalizeFirst == 'Completed')
           CustomPrimaryButton(
             borderRadius: BorderRadius.circular(6.r),
             height: 36.h,
@@ -56,13 +71,19 @@ class InspectionActionButton extends StatelessWidget {
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             textColor: AppColors.whiteColor,
-            onPressed: () {},
+            onPressed: () async {
+              await URLService.launchURL(
+                url:
+                    "https://renter-pay-web.vercel.app/dashboard/applications/${item.propertyId}",
+                isExternal: false,
+              );
+            },
           ),
       ],
     );
   }
 
-  vRButton({required String text}) {
+  vRButton() {
     return CustomPrimaryButton(
       borderRadius: BorderRadius.circular(6.r),
       height: 36.h,
@@ -72,7 +93,7 @@ class InspectionActionButton extends StatelessWidget {
         children: [
           Image.asset(IconsPath.tableInspection, height: 18.h, width: 18.w),
           CustomTextPrimary(
-            text: text,
+            text: "VR",
             fontSize: 14.sp,
             fontWeight: FontWeight.w400,
             color: AppColors.darkAppBar,

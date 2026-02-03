@@ -30,13 +30,19 @@ class CustomTableExpanded extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomTextPrimary(
-                          text: title,
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w500,
+                        Expanded(
+                          child: CustomTextPrimary(
+                            text: title,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500,
+                            maxLines: 2,
+                            softWrap: true,
+                            textOverflow: TextOverflow.ellipsis,
+                          ),
                         ),
+                        SizedBox(width: 12.w),
                         CustomCloseButton(
                           onTap: onExpandedClose,
                           color: isDark
