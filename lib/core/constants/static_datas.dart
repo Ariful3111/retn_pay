@@ -26,6 +26,48 @@ int userIndexFromRole(String? role) {
   }
 }
 
+String roleForApiFromUserIndex(int index) {
+  switch (index) {
+    case 0:
+      return 'tenant';
+    case 1:
+      return 'landlord';
+    case 2:
+      return 'agent';
+    case 3:
+      return 'service_vendor';
+    default:
+      return 'tenant';
+  }
+}
+
+String normalizeRoleForApi(String? role) {
+  final normalized = role
+      ?.trim()
+      .toLowerCase()
+      .replaceAll('_', '-')
+      .replaceAll(' ', '-');
+  switch (normalized) {
+    case 'service-vendor':
+      return 'service_vendor';
+    case 'tenant':
+    case 'landlord':
+    case 'agent':
+      return normalized!;
+    default:
+      return roleForApiFromUserIndex(userIndex);
+  }
+}
+
+String currentUserRoleForApi() {
+  final storage = Get.find<StorageService>();
+  final role = storage.read<String>(key: storage.roleKey);
+  if (role == null || role.trim().isEmpty) {
+    return roleForApiFromUserIndex(userIndex);
+  }
+  return normalizeRoleForApi(role);
+}
+
 void setUserIndexFromRole(String? role) {
   userIndex = userIndexFromRole(role);
 }

@@ -20,6 +20,7 @@ class PlanController extends GetxController {
   }
 
   Future<void> getPlans() async {
+    isLoading.value = true;
     final response = await planRepository.execute();
     isLoading.value = false;
     response.fold(

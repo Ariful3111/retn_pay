@@ -1,722 +1,126 @@
 {
   "error": false,
   "code": 200,
-  "message": "Inspections retrieved successfully",
+  "message": "User Details",
   "data": {
-    "data": [
-      {
-        "id": 112,
-        "property_id": 106,
-        "tenant_id": 67,
-        "inspection_date": "2026-02-28 18:30:00",
-        "type": "virtual",
-        "status": "scheduled",
-        "notes": null,
-        "is_approved": true,
-        "approved_by": 68,
-        "approved_at": "2026-02-01 17:55:17",
-        "rejection_reason": null,
-        "property": {
-          "id": 106,
-          "landlord_id": 68,
-          "property_type_id": 2,
-          "title": "Test Property Title",
-          "name": "Test Property Title",
-          "description": "test description",
-          "address": "Badsha Bari, Ushnabad, Raipura, Narsingdi.",
-          "city": "Raipura",
-          "state": "Dhaka",
-          "postal_code": "1630",
-          "country": "Australia",
-          "latitude": null,
-          "longitude": null,
-          "bedrooms": 11,
-          "bathrooms": 7,
-          "parking_spaces": null,
-          "land_size": null,
-          "building_size": null,
-          "year_built": null,
-          "status": "active",
-          "is_verified": true,
-          "is_in_person_inspection_available": false,
-          "is_virtual_inspection_available": false,
-          "is_favourite": false,
-          "features": ["onek shundor", "aro shundor"],
-          "rating": "0.00",
-          "rating_count": 0,
-          "units": [
-            {
-              "id": 183,
-              "property_id": 106,
-              "unit_number": "Test Property Title",
-              "unit_name": null,
-              "rent_amount": "78952.00",
-              "rent_type": {
-                "id": 1,
-                "name": "Daily",
-                "slug": "daily",
-                "rent_days": 1
-              },
-              "currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "display_rent_amount": 78952,
-              "display_currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "status": "available",
-              "bedrooms": 11,
-              "bathrooms": 7,
-              "size": null,
-              "description": null
-            }
-          ],
-          "review_summary": {
-            "total_reviews": 0,
-            "average_rating": "0.00"
-          },
-          "created_at": "2026-02-01T08:57:53.000000Z",
-          "updated_at": "2026-02-01T09:59:36.000000Z"
-        },
-        "tenant": {
-          "id": 67,
-          "name": "Rafi Ahmed",
-          "email": null
-        },
-        "approved_by_user": {
-          "id": 68,
-          "name": "Tanvir Badsha",
-          "email": "mstanvir55@gmail.com"
-        },
-        "created_at": "2026-02-01 17:05:50",
-        "updated_at": "2026-02-01 17:55:17"
-      },
-      {
-        "id": 111,
-        "property_id": 105,
-        "tenant_id": 67,
-        "inspection_date": "2026-02-25 18:30:00",
-        "type": "in_person",
-        "status": "completed",
-        "notes": null,
-        "is_approved": true,
-        "approved_by": 68,
-        "approved_at": "2026-02-01 16:28:36",
-        "rejection_reason": null,
-        "property": {
-          "id": 105,
-          "landlord_id": 68,
-          "property_type_id": 2,
-          "title": "badsha house",
-          "name": "badsha house",
-          "description": "test",
-          "address": "Badsha Bari, Ushnabad, Raipura, Narsingdi.",
-          "city": "Raipura",
-          "state": "Texas",
-          "postal_code": "1630",
-          "country": "Australia",
-          "latitude": null,
-          "longitude": null,
-          "bedrooms": 36,
-          "bathrooms": 9,
-          "parking_spaces": null,
-          "land_size": null,
-          "building_size": null,
-          "year_built": null,
-          "status": "active",
-          "is_verified": true,
-          "is_in_person_inspection_available": false,
-          "is_virtual_inspection_available": false,
-          "is_favourite": false,
-          "features": ["onek shundor"],
-          "rating": "0.00",
-          "rating_count": 0,
-          "units": [
-            {
-              "id": 182,
-              "property_id": 105,
-              "unit_number": "badsha house",
-              "unit_name": null,
-              "rent_amount": "12345.00",
-              "rent_type": {
-                "id": 1,
-                "name": "Daily",
-                "slug": "daily",
-                "rent_days": 1
-              },
-              "currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "display_rent_amount": 12345,
-              "display_currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "status": "available",
-              "bedrooms": 36,
-              "bathrooms": 9,
-              "size": null,
-              "description": null
-            }
-          ],
-          "review_summary": {
-            "total_reviews": 0,
-            "average_rating": "0.00"
-          },
-          "created_at": "2026-02-01T07:40:44.000000Z",
-          "updated_at": "2026-02-01T10:00:08.000000Z"
-        },
-        "tenant": {
-          "id": 67,
-          "name": "Rafi Ahmed",
-          "email": null
-        },
-        "approved_by_user": {
-          "id": 68,
-          "name": "Tanvir Badsha",
-          "email": "mstanvir55@gmail.com"
-        },
-        "created_at": "2026-02-01 16:21:57",
-        "updated_at": "2026-02-01 17:51:12"
-      },
-      {
-        "id": 110,
-        "property_id": 104,
-        "tenant_id": 67,
-        "inspection_date": "2026-12-15 10:00:00",
-        "type": "in_person",
-        "status": "completed",
-        "notes": null,
-        "is_approved": true,
-        "approved_by": 68,
-        "approved_at": "2026-02-01 16:28:12",
-        "rejection_reason": null,
-        "property": {
-          "id": 104,
-          "landlord_id": 68,
-          "property_type_id": 4,
-          "title": "tanvir unit",
-          "name": "tanvir unit",
-          "description": "test",
-          "address": "Badsha Bari, Ushnabad, Raipura, Narsingdi.",
-          "city": "Raipura",
-          "state": "California",
-          "postal_code": "1630",
-          "country": "Australia",
-          "latitude": null,
-          "longitude": null,
-          "bedrooms": 4,
-          "bathrooms": 3,
-          "parking_spaces": null,
-          "land_size": null,
-          "building_size": null,
-          "year_built": null,
-          "status": "active",
-          "is_verified": true,
-          "is_in_person_inspection_available": false,
-          "is_virtual_inspection_available": false,
-          "is_favourite": false,
-          "features": ["onek shundor"],
-          "rating": "0.00",
-          "rating_count": 0,
-          "units": [
-            {
-              "id": 181,
-              "property_id": 104,
-              "unit_number": "Unit 101",
-              "unit_name": null,
-              "rent_amount": "1500.00",
-              "rent_type": {
-                "id": 1,
-                "name": "Daily",
-                "slug": "daily",
-                "rent_days": 1
-              },
-              "currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "display_rent_amount": 1500,
-              "display_currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "status": "available",
-              "bedrooms": 2,
-              "bathrooms": 1,
-              "size": null,
-              "description": null
-            }
-          ],
-          "review_summary": {
-            "total_reviews": 0,
-            "average_rating": "0.00"
-          },
-          "created_at": "2026-02-01T06:46:53.000000Z",
-          "updated_at": "2026-02-01T10:00:21.000000Z"
-        },
-        "tenant": {
-          "id": 67,
-          "name": "Rafi Ahmed",
-          "email": null
-        },
-        "approved_by_user": {
-          "id": 68,
-          "name": "Tanvir Badsha",
-          "email": "mstanvir55@gmail.com"
-        },
-        "created_at": "2026-02-01 16:13:18",
-        "updated_at": "2026-02-01 17:51:22"
-      },
-      {
-        "id": 109,
-        "property_id": 103,
-        "tenant_id": 67,
-        "inspection_date": "2026-12-15 10:00:00",
-        "type": "in_person",
-        "status": "completed",
-        "notes": null,
-        "is_approved": true,
-        "approved_by": 68,
-        "approved_at": "2026-02-01 16:28:26",
-        "rejection_reason": null,
-        "property": {
-          "id": 103,
-          "landlord_id": 68,
-          "property_type_id": 1,
-          "title": "tanvir apartment",
-          "name": "tanvir apartment",
-          "description": "testing details",
-          "address": "Badsha Bari, Ushnabad, Raipura, Narsingdi.",
-          "city": "Raipura",
-          "state": "California",
-          "postal_code": "1630",
-          "country": "Australia",
-          "latitude": null,
-          "longitude": null,
-          "bedrooms": 5,
-          "bathrooms": 3,
-          "parking_spaces": null,
-          "land_size": null,
-          "building_size": null,
-          "year_built": null,
-          "status": "active",
-          "is_verified": false,
-          "is_in_person_inspection_available": false,
-          "is_virtual_inspection_available": false,
-          "is_favourite": false,
-          "features": ["onek shundor", "aro shundor"],
-          "rating": "0.00",
-          "rating_count": 0,
-          "units": [],
-          "review_summary": {
-            "total_reviews": 0,
-            "average_rating": "0.00"
-          },
-          "created_at": "2026-02-01T05:21:53.000000Z",
-          "updated_at": "2026-02-01T05:21:53.000000Z"
-        },
-        "tenant": {
-          "id": 67,
-          "name": "Rafi Ahmed",
-          "email": null
-        },
-        "approved_by_user": {
-          "id": 68,
-          "name": "Tanvir Badsha",
-          "email": "mstanvir55@gmail.com"
-        },
-        "created_at": "2026-02-01 16:13:02",
-        "updated_at": "2026-02-01 17:52:07"
-      },
-      {
-        "id": 108,
-        "property_id": 2,
-        "tenant_id": 67,
-        "inspection_date": "2026-02-20 18:30:00",
-        "type": "in_person",
-        "status": "pending",
-        "notes": null,
-        "is_approved": false,
-        "approved_by": null,
-        "approved_at": null,
-        "rejection_reason": null,
-        "property": {
-          "id": 2,
-          "landlord_id": 63,
-          "property_type_id": 4,
-          "title": "Unit in Adelaide - Albert Street",
-          "name": "Unit in Adelaide - Albert Street",
-          "description": "Modern Unit located in Adelaide. Features 3 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
-          "address": "1/59 Queen Street",
-          "city": "Adelaide",
-          "state": "SA",
-          "postal_code": "3761",
-          "country": "Australia",
-          "latitude": "-35.36850000",
-          "longitude": "138.34070000",
-          "bedrooms": 3,
-          "bathrooms": 2,
-          "parking_spaces": 3,
-          "land_size": null,
-          "building_size": "206.00",
-          "year_built": 2009,
-          "status": "draft",
-          "is_verified": false,
-          "is_in_person_inspection_available": true,
-          "is_virtual_inspection_available": true,
-          "is_favourite": false,
+    "id": 81,
+    "name": "Rafi Ahmed",
+    "first_name": "",
+    "last_name": "Rafi Ahmed",
+    "gender": "",
+    "image": "https://renter-pay.mahfuz.click/images/person.png",
+    "email": null,
+    "phone": "8801776179243",
+    "is_active": true,
+    "provider": null,
+    "provider_id": null,
+    "roles": ["landlord"],
+    "landlord_profile": {
+      "id": 23,
+      "description": null,
+      "is_verified": false,
+      "created_at": "2026-02-03T07:20:43.000000Z",
+      "updated_at": "2026-02-03T07:20:43.000000Z",
+      "subscription": {
+        "id": 51,
+        "user_id": 81,
+        "role": "landlord",
+        "plan_id": 1,
+        "start_date": "2026-02-02T18:00:00.000000Z",
+        "end_date": "2026-02-17T18:00:00.000000Z",
+        "is_trial": true,
+        "trial_ends_at": "2026-02-17T18:00:00.000000Z",
+        "status": "active",
+        "auto_renew": true,
+        "plan": {
+          "id": 1,
+          "for_role": "landlord",
+          "name": "Basic",
+          "price": 299,
+          "billing_cycle": "monthly",
+          "trial_period_days": 15,
+          "is_active": true,
           "features": [
-            "Ducted air conditioning and heating for year-round comfort.",
-            "Swimming pool and communal BBQ area for residents.",
-            "Intercom and secure building entry with video surveillance.",
-            "Double garage with internal access and additional storage."
-          ],
-          "rating": "4.60",
-          "rating_count": 55,
-          "units": [
             {
-              "id": 2,
-              "property_id": 2,
-              "unit_number": "Unit 1",
-              "unit_name": "Unit",
-              "rent_amount": "29480.00",
-              "rent_type": {
-                "id": 2,
-                "name": "Weekly",
-                "slug": "weekly",
-                "rent_days": 7
-              },
-              "currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "display_rent_amount": 29480,
-              "display_currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "status": "maintenance",
-              "bedrooms": 3,
-              "bathrooms": 2,
-              "size": "206.00",
-              "description": "Spacious Unit with modern fixtures"
-            }
-          ],
-          "review_summary": {
-            "total_reviews": 55,
-            "average_rating": "4.60"
-          },
-          "created_at": "2026-02-01T04:51:42.000000Z",
-          "updated_at": "2026-02-01T04:51:48.000000Z"
-        },
-        "tenant": {
-          "id": 67,
-          "name": "Rafi Ahmed",
-          "email": null
-        },
-        "approved_by_user": null,
-        "created_at": "2026-02-01 16:03:25",
-        "updated_at": "2026-02-01 16:03:25"
-      },
-      {
-        "id": 107,
-        "property_id": 6,
-        "tenant_id": 67,
-        "inspection_date": "2026-02-10 21:30:00",
-        "type": "virtual",
-        "status": "pending",
-        "notes": null,
-        "is_approved": false,
-        "approved_by": null,
-        "approved_at": null,
-        "rejection_reason": null,
-        "property": {
-          "id": 6,
-          "landlord_id": 58,
-          "property_type_id": 3,
-          "title": "Townhouse in Brisbane - Swanston Street",
-          "name": "Townhouse in Brisbane - Swanston Street",
-          "description": "Modern Townhouse located in Brisbane. Features 3 bedroom(s), 1 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
-          "address": "591/141 Park Road",
-          "city": "Brisbane",
-          "state": "QLD",
-          "postal_code": "2302",
-          "country": "Australia",
-          "latitude": "-27.77050000",
-          "longitude": "153.52600000",
-          "bedrooms": 3,
-          "bathrooms": 1,
-          "parking_spaces": 1,
-          "land_size": null,
-          "building_size": "173.00",
-          "year_built": 1998,
-          "status": "draft",
-          "is_verified": true,
-          "is_in_person_inspection_available": false,
-          "is_virtual_inspection_available": false,
-          "is_favourite": false,
-          "features": [
-            "Private balcony or terrace with outdoor seating space.",
-            "Low-maintenance garden with native plants and irrigation."
-          ],
-          "rating": "3.50",
-          "rating_count": 74,
-          "units": [
-            {
-              "id": 11,
-              "property_id": 6,
-              "unit_number": "Unit 1",
-              "unit_name": "Townhouse",
-              "rent_amount": "25620.00",
-              "rent_type": {
-                "id": 4,
-                "name": "Yearly",
-                "slug": "yearly",
-                "rent_days": 365
-              },
-              "currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "display_rent_amount": 25620,
-              "display_currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "status": "occupied",
-              "bedrooms": 3,
-              "bathrooms": 1,
-              "size": "173.00",
-              "description": "Spacious Townhouse with modern fixtures"
-            }
-          ],
-          "review_summary": {
-            "total_reviews": 74,
-            "average_rating": "3.50"
-          },
-          "created_at": "2026-02-01T04:51:42.000000Z",
-          "updated_at": "2026-02-01T04:51:48.000000Z"
-        },
-        "tenant": {
-          "id": 67,
-          "name": "Rafi Ahmed",
-          "email": null
-        },
-        "approved_by_user": null,
-        "created_at": "2026-02-01 15:49:36",
-        "updated_at": "2026-02-01 15:49:36"
-      },
-      {
-        "id": 101,
-        "property_id": 5,
-        "tenant_id": 67,
-        "inspection_date": "2026-02-28 06:30:00",
-        "type": "in_person",
-        "status": "pending",
-        "notes": null,
-        "is_approved": false,
-        "approved_by": null,
-        "approved_at": null,
-        "rejection_reason": null,
-        "property": {
-          "id": 5,
-          "landlord_id": 62,
-          "property_type_id": 1,
-          "title": "Apartment in Newcastle - Main Street",
-          "name": "Apartment in Newcastle - Main Street",
-          "description": "Modern Apartment located in Newcastle. Features 1 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
-          "address": "950/57 Collins Street",
-          "city": "Newcastle",
-          "state": "NSW",
-          "postal_code": "5811",
-          "country": "Australia",
-          "latitude": "-33.32830000",
-          "longitude": "152.14170000",
-          "bedrooms": 1,
-          "bathrooms": 2,
-          "parking_spaces": 2,
-          "land_size": null,
-          "building_size": "258.00",
-          "year_built": 2015,
-          "status": "active",
-          "is_verified": true,
-          "is_in_person_inspection_available": false,
-          "is_virtual_inspection_available": false,
-          "is_favourite": false,
-          "features": [
-            "Dedicated study or home office space with built-in desk.",
-            "Low-maintenance garden with native plants and irrigation."
-          ],
-          "rating": "3.75",
-          "rating_count": 4,
-          "units": [
-            {
-              "id": 10,
-              "property_id": 5,
-              "unit_number": "Unit 2",
-              "unit_name": "Apartment 2",
-              "rent_amount": "4760.00",
-              "rent_type": {
-                "id": 4,
-                "name": "Yearly",
-                "slug": "yearly",
-                "rent_days": 365
-              },
-              "currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "display_rent_amount": 4760,
-              "display_currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "status": "occupied",
-              "bedrooms": 1,
-              "bathrooms": 2,
-              "size": "129.00",
-              "description": "Spacious Apartment with modern fixtures"
+              "title": "Property Limit",
+              "value": "1",
+              "features": null
             },
             {
-              "id": 9,
-              "property_id": 5,
-              "unit_number": "Unit 1",
-              "unit_name": "Apartment 1",
-              "rent_amount": "26690.00",
-              "rent_type": {
-                "id": 1,
-                "name": "Daily",
-                "slug": "daily",
-                "rent_days": 1
-              },
-              "currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "display_rent_amount": 26690,
-              "display_currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "status": "reserved",
-              "bedrooms": 1,
-              "bathrooms": 2,
-              "size": "129.00",
-              "description": "Spacious Apartment with modern fixtures"
+              "title": "Photography Limit",
+              "value": "15",
+              "features": null
+            },
+            {
+              "title": "Video Duration Limit",
+              "value": "45",
+              "features": null
+            },
+            {
+              "title": "List Property",
+              "value": "1",
+              "features": null
+            },
+            {
+              "title": "Ads Strategy",
+              "value": null,
+              "features": ["RenterPay page", "Social media (free 30 days)"]
+            },
+            {
+              "title": "Photography",
+              "value": null,
+              "features": ["10-15 photos"]
+            },
+            {
+              "title": "Video curation",
+              "value": null,
+              "features": ["30-45 seconds"]
+            },
+            {
+              "title": "Rental Appraisal",
+              "value": null,
+              "features": ["Free"]
+            },
+            {
+              "title": "Documentation",
+              "value": null,
+              "features": ["Online Access"]
+            },
+            {
+              "title": "Signage",
+              "value": null,
+              "features": ["Sale/Lease included"]
+            },
+            {
+              "title": "Legal Advice",
+              "value": null,
+              "features": ["4 hours (first contract duration)"]
             }
-          ],
-          "review_summary": {
-            "total_reviews": 4,
-            "average_rating": "3.75"
-          },
-          "created_at": "2026-02-01T04:51:42.000000Z",
-          "updated_at": "2026-02-01T04:51:49.000000Z"
-        },
-        "tenant": {
-          "id": 67,
-          "name": "Rafi Ahmed",
-          "email": null
-        },
-        "approved_by_user": null,
-        "created_at": "2026-02-01 11:12:37",
-        "updated_at": "2026-02-01 11:12:37"
+          ]
+        }
+      }
+    },
+    "documents": [
+      {
+        "id": 6,
+        "user_id": 81,
+        "document_type": "nid",
+        "document_number": null,
+        "file_path": "https://renter-pay.mahfuz.click/storage/documents/users/FKk5Qrj0LhlQU5eHatLBlhqaGvStz9V5x86gqF5w.jpg",
+        "file_url": "https://renter-pay.mahfuz.click/storage/documents/users/FKk5Qrj0LhlQU5eHatLBlhqaGvStz9V5x86gqF5w.jpg",
+        "back_file_path": "https://renter-pay.mahfuz.click/storage/documents/users/v5j66fe3940EPLXyVPdHiZlR9Q8MnRRo58vJ3cPZ.jpg",
+        "back_file_url": "https://renter-pay.mahfuz.click/storage/documents/users/v5j66fe3940EPLXyVPdHiZlR9Q8MnRRo58vJ3cPZ.jpg",
+        "expiry_date": null,
+        "status": "pending",
+        "rejection_reason": null,
+        "is_verified": false,
+        "verified_at": null,
+        "created_at": "2026-02-03 13:20:56",
+        "updated_at": "2026-02-03 13:54:59"
       }
     ],
-    "links": {
-      "first": "https://renter-pay.mahfuz.click/api/v1/inspections?page=1",
-      "last": "https://renter-pay.mahfuz.click/api/v1/inspections?page=1",
-      "prev": null,
-      "next": null
-    },
-    "meta": {
-      "current_page": 1,
-      "from": 1,
-      "last_page": 1,
-      "links": [
-        {
-          "url": null,
-          "label": "&laquo; Previous",
-          "page": null,
-          "active": false
-        },
-        {
-          "url": "https://renter-pay.mahfuz.click/api/v1/inspections?page=1",
-          "label": "1",
-          "page": 1,
-          "active": true
-        },
-        {
-          "url": null,
-          "label": "Next &raquo;",
-          "page": null,
-          "active": false
-        }
-      ],
-      "path": "https://renter-pay.mahfuz.click/api/v1/inspections",
-      "per_page": 20,
-      "to": 7,
-      "total": 7
-    }
+    "created_at": "2026-02-03 13:20:43",
+    "updated_at": "2026-02-03 13:20:43"
   },
   "errors": null
 }
