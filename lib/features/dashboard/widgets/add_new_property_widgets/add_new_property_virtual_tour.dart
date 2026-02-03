@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/utils/image_picker.dart';
+import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_container.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_info_button.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_info_images.dart';
@@ -13,6 +16,7 @@ class AddNewPropertyVirtualTour extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AddNewPropertyController addNewPropertyController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return AddNewPropertyContainer(
       child: Column(
@@ -23,20 +27,29 @@ class AddNewPropertyVirtualTour extends StatelessWidget {
             color: isDark ? null : AppColors.darkContainer,
           ),
           SizedBox(height: 20.h),
-          AddNewPropertyUploadImage(onTap: () {}, isTitle: true),
+          AddNewPropertyUploadImage(
+            onTap: () {
+              UploadImage.sendImage(
+                picker: addNewPropertyController.vrPicker,
+                pickImage: addNewPropertyController.vrImages,
+                context: context,
+              );
+            },
+            isTitle: true,
+            image: addNewPropertyController.vrImages,
+          ),
           SizedBox(height: 16.h),
           AddNewPropertyInfoButton(onAdd: () {}, onUpload: () {}),
-          SizedBox(height: 20.h,),
+          SizedBox(height: 20.h),
           AddNewPropertyInfoImages(),
-          SizedBox(height: 20.h,),
+          SizedBox(height: 20.h),
           CustomPrimaryButton(
             height: 52.h,
             width: 100.w,
             borderRadius: BorderRadius.circular(8.r),
             text: 'Go',
-            onPressed: () {
-            
-          },)
+            onPressed: () {},
+          ),
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/utils/image_picker.dart';
 import 'package:renter_pay/shared/widgets/custom_attach_image/custom_attach_image_view.dart';
@@ -8,7 +9,7 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart
 import 'package:renter_pay/shared/widgets/document_verification/document_upload_button.dart';
 
 class CustomAttachedImage extends StatelessWidget {
-  final RxList<String> imageList;
+  final RxList<XFile> imageList;
   final double? height;
   final double? width;
   final double? verticalPadding;
@@ -65,7 +66,7 @@ class CustomAttachedImage extends StatelessWidget {
           ),
         ),
         SizedBox(width: 10.w),
-        CustomAttachImageView(imageList: imageList),
+        CustomAttachImageView(imageList: imageList.map((e) => e.path).toList()),
       ],
     );
   }

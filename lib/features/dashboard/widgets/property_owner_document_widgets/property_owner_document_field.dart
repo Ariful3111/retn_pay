@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_document_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_dialog/success_dialog.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
@@ -15,16 +16,17 @@ class PropertyOwnerDocumentField extends StatelessWidget {
   Widget build(BuildContext context) {
     AddNewPropertyController addNewPropertyController = Get.find();
     PropertyManagementController propertyManagementController = Get.find();
+    PropertyManagementDocumentController propertyManagementDocumentController = Get.find();
     return Column(
       children: [
         myField(
-          controller: addNewPropertyController.propertyNameController,
+          controller: propertyManagementDocumentController.propertyNameController,
           label: 'Property Name',
           context: context,
         ),
         SizedBox(height: 20.h),
         myField(
-          controller: addNewPropertyController.propertyAddressController,
+          controller: propertyManagementDocumentController.propertyAddressController,
           label: 'Address',
           context: context,
         ),
@@ -40,8 +42,9 @@ class PropertyOwnerDocumentField extends StatelessWidget {
                   button: CustomPrimaryButton(
                     onPressed: () {
                       Navigator.pop(context);
-                      addNewPropertyController.isNewProperty.value =
-                          !addNewPropertyController.isNewProperty.value;
+                      propertyManagementController.isViewProperty.value = false;
+                      addNewPropertyController.isPropertyDetails.value = false;
+                      addNewPropertyController.isNewProperty.value = false;
                       propertyManagementController.propertyScrollController
                           .jumpTo(
                             propertyManagementController

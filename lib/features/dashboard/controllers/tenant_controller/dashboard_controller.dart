@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
@@ -14,7 +15,7 @@ class DashboardController extends GetxController {
   RxBool isAutoPay = false.obs;
   RxInt isDay = 0.obs;
   RxBool isUpgrade = false.obs;
-  RxList<String> repairImages = <String>[].obs;
+  RxList<XFile> repairImages = <XFile>[].obs;
   TextEditingController addressController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   RxBool isQuickActions = false.obs;

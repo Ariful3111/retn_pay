@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/utils/image_picker.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_container.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_info_button.dart';
@@ -17,7 +18,16 @@ class AddNewPropertyInfo extends StatelessWidget {
     return AddNewPropertyContainer(
       child: Column(
         children: [
-          AddNewPropertyUploadImage(onTap: () {  }, isTitle: true,),
+          AddNewPropertyUploadImage(
+            onTap: () {
+              UploadImage.sendImage(
+                picker: addNewPropertyController.picker,
+                pickImage: addNewPropertyController.images,
+                context: context,
+              );
+            },
+            isTitle: true, image: addNewPropertyController.images,
+          ),
           SizedBox(height: 12.h),
           AddNewPropertyInfoField(
             maxLine: 5,
