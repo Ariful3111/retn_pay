@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class MaintenanceModel {
   final String tenantName;
@@ -24,7 +25,7 @@ class LandlordRepairMaintenanceController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController numberController = TextEditingController();
   RxList<bool> expandedData = <bool>[].obs;
-  RxList<String> imageList = <String>[].obs;
+  RxList<XFile> imageList = <XFile>[].obs;
   List<MapEntry<int, MaintenanceModel>> get tableData {
     final tempData = <MapEntry<int, MaintenanceModel>>[];
     for (int i = 0; i < dataList.length; i++) {

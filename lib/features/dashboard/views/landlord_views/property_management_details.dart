@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
-import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/active_property_widgets/active_property_image.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/view_notice.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_details_widgets/property_management_details_widgets.dart';
@@ -15,7 +14,6 @@ class PropertyManagementDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    PropertyManagementController propertyManagementController = Get.find();
     AddNewPropertyController addNewPropertyController = Get.find();
     return Column(
       children: [
@@ -30,8 +28,7 @@ class PropertyManagementDetails extends StatelessWidget {
         SizedBox(height: 24.h),
         CustomPrimaryButton(
           onPressed: () {
-            propertyManagementController.isViewProperty.value = false;
-            addNewPropertyController.isPropertyDetails.value = false;
+            addNewPropertyController.isNewProperty.value = true;
           },
           height: 52.h,
           width: 163.w,

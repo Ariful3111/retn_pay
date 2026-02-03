@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_insurance.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_share.dart';
 
@@ -33,7 +34,7 @@ class PropertyManagementController extends GetxController {
   TextEditingController shareController = TextEditingController();
   RxString selectedProperty = ''.obs;
   List propertyOption = ['Property 01', 'Property 02'];
-  RxList<String> imageList = <String>[].obs;
+  RxList<XFile> imageList = <XFile>[].obs;
   RxBool isShare = false.obs;
   RxBool isViewProperty = false.obs;
   final List<String> tableColumn = [

@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 
 class TicketModel {
@@ -27,7 +28,7 @@ class SupportController extends GetxController {
   final List ticketCategoryList = ['Payments', 'Repairs', 'Lease'];
   final List supportType = ['FAQ', 'Tickets', 'Contact Support'];
   final filterList = ['All', 'Open', 'In Progress', 'Resolved'];
-  RxList<String> uploadImage = <String>[].obs;
+  RxList<XFile> uploadImage = <XFile>[].obs;
   RxList<TicketModel> tableData = <TicketModel>[].obs;
   RxList<bool> expandedData = <bool>[].obs;
   TextEditingController issueController = TextEditingController();

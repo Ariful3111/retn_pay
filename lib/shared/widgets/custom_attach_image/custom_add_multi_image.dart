@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 
@@ -17,7 +18,7 @@ class CustomAddMultiImage extends StatelessWidget {
   final double? imageRadius;
   final VoidCallback onTap;
   final int item;
-  final List<String> imagesPath;
+  final List<XFile> imagesPath;
   final double? sizedBox;
   final double? margin;
   const CustomAddMultiImage({
@@ -83,7 +84,7 @@ class CustomAddMultiImage extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(imageRadius?? 4.39.r),
                     image: DecorationImage(
-                      image: FileImage(File(imagesPath[index])),
+                      image: FileImage(File(imagesPath[index].path)),
                       fit: BoxFit.cover,
                     ),
                   ),

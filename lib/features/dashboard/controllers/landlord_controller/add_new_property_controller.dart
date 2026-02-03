@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddNewPropertyController extends GetxController {
   RxBool isNewProperty = false.obs;
@@ -16,15 +17,17 @@ class AddNewPropertyController extends GetxController {
   TextEditingController descriptionController = TextEditingController();
   TextEditingController featureController = TextEditingController();
   TextEditingController dateController = TextEditingController();
-  TextEditingController propertyNameController = TextEditingController();
-  TextEditingController propertyAddressController = TextEditingController();
+  TextEditingController stateController = TextEditingController();
   Rx<DateTime> selectedDate = DateTime.now().obs;
   RxString selectedProperty = ''.obs;
-  RxString selectedState = ''.obs;
   List propertyType = ['House', 'Vila', 'Studio', 'Office', 'Apartment'];
-  List stateType = ['Dhaka', 'Khulna'];
   RxInt inspectionNo = 0.obs;
   RxList<int> selectedFeature = <int>[].obs;
+  ImagePicker picker = ImagePicker();
+  Rxn<XFile> images = Rxn<XFile>();
+  ImagePicker vrPicker = ImagePicker();
+  Rxn<XFile> vrImages = Rxn<XFile>();
+
   List featureList = [
     'Swimming Pool',
     '24/7 Security',
@@ -38,4 +41,22 @@ class AddNewPropertyController extends GetxController {
   RxString selectedAgent = ''.obs;
   List agentList = ['Ariful', 'Rafi', 'Shanto'];
   List inspectionType = ['In-Person Inspection', 'Virtual Tour'];
+
+  @override
+  void dispose() {
+    imageDescriptionController.dispose();
+    areaController.dispose();
+    rentController.dispose();
+    bedController.dispose();
+    bathController.dispose();
+    address1Controller.dispose();
+    address2Controller.dispose();
+    cityController.dispose();
+    zipController.dispose();
+    descriptionController.dispose();
+    featureController.dispose();
+    dateController.dispose();
+    stateController.dispose();
+    super.dispose();
+  }
 }
