@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_insurance.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_share.dart';
 
@@ -27,13 +28,13 @@ class PropertyModel {
 enum MyMenu { view, share, insurance, reEnlist, conditionalReport }
 
 class PropertyManagementController extends GetxController {
-  List manageType = ['Property', 'Conditional Report'];
+  List<String> manageType = ['Property', 'Conditional Report'];
   ScrollController propertyScrollController = ScrollController();
   RxString selected = 'Property'.obs;
   TextEditingController shareController = TextEditingController();
   RxString selectedProperty = ''.obs;
-  List propertyOption = ['Property 01', 'Property 02'];
-  RxList<String> imageList = <String>[].obs;
+  List<String> propertyOption = ['Property 01', 'Property 02'];
+  RxList<XFile> imageList = <XFile>[].obs;
   RxBool isShare = false.obs;
   RxBool isViewProperty = false.obs;
   final List<String> tableColumn = [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/service_search_certification.dart';
@@ -22,10 +23,10 @@ class ServiceSearchController extends GetxController {
   TextEditingController dateController = TextEditingController();
   TextEditingController timeController = TextEditingController();
 
-  RxList<String> uploadedImage = <String>[].obs;
+  RxList<XFile> uploadedImage = <XFile>[].obs;
   RxList<bool> selectedWidgetList = <bool>[].obs;
   RxString state = 'State*'.obs;
-  RxList stateList = ['Dhaka', 'Khulna', 'Rajshahi'].obs;
+  RxList<String> stateList = ['Dhaka', 'Khulna', 'Rajshahi'].obs;
   Rx<DateTime?> selectedDate = Rx<DateTime?>(null);
   RxInt checkboxIndex = 0.obs;
   RxBool isCheck = false.obs;
@@ -130,6 +131,7 @@ class ServiceSearchController extends GetxController {
     timeController.dispose();
     super.dispose();
   }
+
   @override
   void onInit() {
     selectedWidgetList.value = List.generate(widgetList.length, (_) => false);

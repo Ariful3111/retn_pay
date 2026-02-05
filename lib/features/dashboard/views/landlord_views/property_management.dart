@@ -58,17 +58,28 @@ class PropertyManagement extends StatelessWidget {
                 ),
               );
             } else if (addNewPropertyController.isPropertyDetails.value) {
-              child = PropertyManagementDetails();
-            } else if (addNewPropertyController.isNewProperty.value) {
               child = PropertyOwnerDocument();
-            } else {
+            } else if (addNewPropertyController.isNewProperty.value) {
               child = Column(
                 children: [
                   SizedBox(height: 16.h),
                   PropertyManagementRow(),
                   SizedBox(height: 20.h),
+                  AddNewProperty(),
+                ],
+              );
+            } else {
+              child = Column(
+                children: [
+                if(!propertyManagementController.isViewProperty.value)  Column(
+                    children: [
+                      SizedBox(height: 16.h),
+                      PropertyManagementRow(),
+                      SizedBox(height: 20.h),
+                    ],
+                  ),
                   propertyManagementController.isViewProperty.value
-                      ? AddNewProperty()
+                      ? PropertyManagementDetails()
                       : PropertyManagementTable(),
                 ],
               );

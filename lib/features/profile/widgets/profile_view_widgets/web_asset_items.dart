@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
+import 'package:renter_pay/core/services/url_service.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_items.dart';
 
 class WebAssetItems extends StatelessWidget {
@@ -25,9 +26,14 @@ class WebAssetItems extends StatelessWidget {
             imageHeight: 24.h,
             imageWidth: 24.w,
             title: 'Agent Management',
-            onTap: () {},
+            onTap: () async {
+              await URLService.launchURL(
+                url:
+                    "https://renter-pay-web.vercel.app/landlord/dashboard/agent-management",
+              );
+            },
           ),
-        if (userIndex == 0||userIndex == 1 ||userIndex==2)
+        if (userIndex == 0 || userIndex == 1 || userIndex == 2)
           ProfileItems(
             image: IconsPath.profileApplication,
             imageHeight: 17.h,
@@ -35,7 +41,7 @@ class WebAssetItems extends StatelessWidget {
             title: 'Application Management',
             onTap: () {},
           ),
-        if (userIndex == 0||userIndex == 1 ||userIndex==2)
+        if (userIndex == 0 || userIndex == 1 || userIndex == 2)
           ProfileItems(
             image: IconsPath.profileAgreement,
             imageHeight: 23.h,
@@ -51,7 +57,7 @@ class WebAssetItems extends StatelessWidget {
             title: 'Tenant Management',
             onTap: () {},
           ),
-        if (userIndex == 1||userIndex==2)
+        if (userIndex == 1 || userIndex == 2)
           ProfileItems(
             image: IconsPath.profileReport,
             imageHeight: 23.h,

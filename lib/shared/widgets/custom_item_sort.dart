@@ -10,7 +10,7 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart
 class CustomItemSort extends StatelessWidget {
   final String title;
   final String info;
-  final List option;
+  final List<String> option;
   final void Function(String?) onSelect;
   final RxString isSelect;
   const CustomItemSort({

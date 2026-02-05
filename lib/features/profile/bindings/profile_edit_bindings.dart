@@ -5,9 +5,11 @@ import 'package:renter_pay/features/profile/controllers/get_preference_controlle
 import 'package:renter_pay/features/profile/controllers/plan_controller.dart';
 import 'package:renter_pay/features/profile/controllers/preference_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_edit_controller.dart';
+import 'package:renter_pay/features/profile/controllers/subscribe_plan_controller.dart';
 import 'package:renter_pay/features/profile/repositories/get_plan_repo.dart';
 import 'package:renter_pay/features/profile/repositories/get_preference_repo.dart';
 import 'package:renter_pay/features/profile/repositories/profile_edit_repo.dart';
+import 'package:renter_pay/features/profile/repositories/subscribe_plan_repo.dart';
 import 'package:renter_pay/features/profile/repositories/update_preference_repo.dart';
 
 class ProfileEditBindings implements Bindings {
@@ -35,5 +37,15 @@ class ProfileEditBindings implements Bindings {
     Get.lazyPut(
       () => GetPreferenceController(getPreferenceRepository: Get.find()),
     );
+    if (!Get.isRegistered<SubscribePlanRepository>()) {
+      Get.lazyPut(
+        () => SubscribePlanRepository(postWithoutResponse: Get.find()),
+      );
+    }
+    if (!Get.isRegistered<SubscribePlanController>()) {
+      Get.lazyPut(
+        () => SubscribePlanController(subscribePlanRepository: Get.find()),
+      );
+    }
   }
 }

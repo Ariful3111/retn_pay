@@ -12,7 +12,8 @@ class AddNewPropertyUploadImage extends StatelessWidget {
   const AddNewPropertyUploadImage({
     super.key,
     this.height,
-    required this.onTap, required this.isTitle,
+    required this.onTap,
+    required this.isTitle,
   });
 
   @override
@@ -31,12 +32,16 @@ class AddNewPropertyUploadImage extends StatelessWidget {
       ),
       child: Column(
         children: [
-         isTitle? CustomTextPrimary(
-            text: 'Upload Property Image',
-            color:isDark? AppColors.darkPrimaryText:AppColors.primaryTextColor,
-            fontSize: 16.sp,
-          ):SizedBox.shrink(),
-          SizedBox(height:isTitle? 70.h:52.h),
+          isTitle
+              ? CustomTextPrimary(
+                  text: 'Upload Property Image',
+                  color: isDark
+                      ? AppColors.darkPrimaryText
+                      : AppColors.primaryTextColor,
+                  fontSize: 16.sp,
+                )
+              : SizedBox.shrink(),
+          SizedBox(height: isTitle ? 70.h : 52.h),
           DocumentUploadButton(onTap: onTap),
           SizedBox(height: 16.h),
           CustomTextSpan(

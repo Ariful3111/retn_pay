@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddRepairRequestController extends GetxController {
-  RxList<String> repairImages = <String>[].obs;
+  RxList<XFile> repairImages = <XFile>[].obs;
   final List requestType = <String>['Urgent', 'Non - Urgent'];
   RxInt selectedIndex = 0.obs;
   TextEditingController dateController = TextEditingController();

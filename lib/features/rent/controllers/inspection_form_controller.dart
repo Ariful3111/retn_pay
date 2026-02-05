@@ -21,7 +21,7 @@ class InspectionFormController extends GetxController {
   TextEditingController phoneController = TextEditingController();
   TextEditingController dateController = TextEditingController();
   TextEditingController timeController = TextEditingController();
-  RxList inspectOption = ['In-Person Visit', 'Virtual Tour'].obs;
+  RxList<String> inspectOption = ['In-Person Visit', 'Virtual Tour'].obs;
   RxString selectedInspection = 'In-Person Visit'.obs;
   RxBool isSelectedInspection = false.obs;
   Rx<DateTime?> selectedDate = Rx<DateTime?>(null);

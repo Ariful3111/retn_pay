@@ -8,12 +8,11 @@ import 'package:renter_pay/shared/widgets/custom_check_box.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
-class AddNewPropertyInspection extends StatelessWidget {
+class AddNewPropertyInspection extends GetWidget<AddNewPropertyController> {
   const AddNewPropertyInspection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    AddNewPropertyController addNewPropertyController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return AddNewPropertyContainer(
       child: Column(
@@ -25,21 +24,22 @@ class AddNewPropertyInspection extends StatelessWidget {
             color: isDark ? null : AppColors.darkContainer,
           ),
           SizedBox(height: 12.h),
-          ...List.generate(addNewPropertyController.inspectionType.length, (
-            index,
-          ) {
-           return Obx(() {
-              bool isChecked =
-                  addNewPropertyController.inspectionNo.value == index;
+          ...List.generate(controller.inspectionType.length, (index) {
+            return Obx(() {
+              bool isChecked = controller.inspectionChecked[index];
               return Row(
                 children: [
                   CustomCheckBox(
                     isChecked: isChecked,
                     onChange: (value) {
-                      addNewPropertyController.inspectionNo.value = index;
+                      controller.inspectionChecked[index] = value;
                     },
                   ),
-                  CustomTextSecondary(text: addNewPropertyController.inspectionType[index],fontSize: 14.sp,fontWeight: FontWeight.w400,)
+                  CustomTextSecondary(
+                    text: controller.inspectionType[index],
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ],
               );
             });

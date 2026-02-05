@@ -8,11 +8,14 @@ class AddNewPropertyInfoField extends StatelessWidget {
   final bool? isAlignLabelWithHint;
   final TextEditingController controller;
   final String label;
+  final TextInputType? keyboardType;
   const AddNewPropertyInfoField({
     super.key,
     this.maxLine,
     this.isAlignLabelWithHint,
-    required this.controller, required this.label,
+    required this.controller,
+    required this.label,
+    this.keyboardType,
   });
 
   @override
@@ -26,6 +29,7 @@ class AddNewPropertyInfoField extends StatelessWidget {
       labelText: label,
       fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
       isAlignLabelWithHint: isAlignLabelWithHint,
+      keyboardType: keyboardType,
     );
   }
 }

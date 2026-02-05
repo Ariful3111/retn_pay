@@ -8,13 +8,12 @@ import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/a
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_info_field.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
-class AddNewPropertyDetails extends StatelessWidget {
+class AddNewPropertyDetails extends GetWidget<AddNewPropertyController> {
   const AddNewPropertyDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    AddNewPropertyController addNewPropertyController = Get.find();
     return AddNewPropertyContainer(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,18 +25,41 @@ class AddNewPropertyDetails extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           AddNewPropertyInfoField(
-            controller: addNewPropertyController.descriptionController,
+            controller: controller.descriptionController,
             label: 'Property Description*',
             maxLine: 9,
             isAlignLabelWithHint: true,
           ),
           SizedBox(height: 20.h),
           AddNewPropertyInfoField(
-            controller: addNewPropertyController.featureController,
+            controller: controller.featureController,
             label: 'Property Feature*',
           ),
           SizedBox(height: 12.h),
-          addMoreButton(onAdd: () {}),
+          addMoreButton(onAdd: controller.addFeature),
+          Obx(() {
+            if (controller.featureList.isEmpty) {
+              return SizedBox.shrink();
+            }
+            return Padding(
+              padding: EdgeInsets.only(top: 12.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: List.generate(controller.featureList.length, (index) {
+                  final feature = controller.featureList[index];
+                  return Padding(
+                    padding: EdgeInsets.only(bottom: 8.h),
+                    child: CustomTextPrimary(
+                      text: '${index + 1}. $feature',
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: isDark ? null : AppColors.darkContainer,
+                    ),
+                  );
+                }),
+              ),
+            );
+          }),
         ],
       ),
     );
