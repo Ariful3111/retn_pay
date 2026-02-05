@@ -4,20 +4,18 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
-import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_dialog/success_dialog.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
-class AddNewPropertyDialog extends StatelessWidget {
+class AddNewPropertyDialog extends GetWidget<AddNewPropertyController> {
   const AddNewPropertyDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
-    AddNewPropertyController addNewPropertyController = Get.find();
-    PropertyManagementController propertyManagementController = Get.find();
     return SuccessDialog(
       isBG: false,
       widget: Column(
@@ -26,8 +24,7 @@ class AddNewPropertyDialog extends StatelessWidget {
           Image.asset(IconsPath.error, height: 46.h, width: 46.w),
           SizedBox(height: 14.h),
           CustomTextPrimary(
-            text:
-                'Rent Amount: \$${addNewPropertyController.rentController.text}',
+            text: 'Rent Amount: \$${controller.rentController.text}',
             fontSize: 18.sp,
             color: Color(0xFFB57C00),
           ),
@@ -60,27 +57,19 @@ class AddNewPropertyDialog extends StatelessWidget {
                 borderRadius: BorderRadius.circular(6.r),
               ),
               SizedBox(width: 16.w),
-              CustomPrimaryButton(
-                onPressed: () {
-                  addNewPropertyController.isPropertyDetails.value =
-                      !addNewPropertyController.isPropertyDetails.value;
-                  Navigator.pop(context);
-                  for (final position
-                      in propertyManagementController
-                          .propertyScrollController
-                          .positions) {
-                    position.animateTo(
-                      position.minScrollExtent,
-                      duration: Duration(milliseconds: 500),
-                      curve: Curves.easeInOut,
-                    );
-                  }
-                },
-                text: 'Confirm & Update',
-                height: 40.h,
-                width: 166.w,
-                borderRadius: BorderRadius.circular(6.r),
-              ),
+              Obx(() {
+                return controller.isLoadingAddProperty.value
+                    ? ButtonLoading()
+                    : CustomPrimaryButton(
+                        onPressed: () async {
+                          await controller.addProperty();
+                        },
+                        text: 'Confirm & Update',
+                        height: 40.h,
+                        width: 166.w,
+                        borderRadius: BorderRadius.circular(6.r),
+                      );
+              }),
             ],
           ),
         ],

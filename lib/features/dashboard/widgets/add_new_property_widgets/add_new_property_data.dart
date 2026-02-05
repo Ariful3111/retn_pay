@@ -47,21 +47,25 @@ class AddNewPropertyData extends GetWidget<AddNewPropertyController> {
           AddNewPropertyInfoField(
             controller: controller.areaController,
             label: 'Area Size(sft)',
+            keyboardType: TextInputType.number,
           ),
           SizedBox(height: 20.h),
           AddNewPropertyInfoField(
             controller: controller.rentController,
             label: 'Monthly Rent',
+            keyboardType: TextInputType.number,
           ),
           SizedBox(height: 20.h),
           AddNewPropertyInfoField(
             controller: controller.bedController,
             label: 'Bed',
+            keyboardType: TextInputType.number,
           ),
           SizedBox(height: 20.h),
           AddNewPropertyInfoField(
             controller: controller.bathController,
             label: 'BathRoom',
+            keyboardType: TextInputType.number,
           ),
         ],
       ),

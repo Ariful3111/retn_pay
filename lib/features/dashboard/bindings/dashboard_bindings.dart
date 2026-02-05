@@ -9,6 +9,7 @@ import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dash
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/dashboard_landlord_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_details_controller.dart';
+import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/create_property_repo.dart';
 import 'package:renter_pay/features/home/controllers/property_amenities_controller.dart';
 import 'package:renter_pay/features/home/controllers/property_category_controller.dart';
 import 'package:renter_pay/features/home/repositories/property_amenities_repo.dart';
@@ -17,10 +18,15 @@ import 'package:renter_pay/features/home/repositories/property_category_repo.dar
 class DashboardBindings implements Bindings {
   @override
   void dependencies() {
+    Get.lazyPut(
+      () => CreatePropertyRepository(imageWithoutResponse: Get.find()),
+    );
     Get.lazyPut(() => DashboardController());
     Get.lazyPut(() => DashboardLandlordController());
     Get.lazyPut(() => PropertyManagementController());
-    Get.lazyPut(() => AddNewPropertyController());
+    Get.lazyPut(
+      () => AddNewPropertyController(createPropertyRepository: Get.find()),
+    );
     Get.lazyPut(() => PropertyManagementDocumentController());
     Get.lazyPut(() => PropertyManagementDetailsController());
     Get.lazyPut(() => ApplicationManagementController());

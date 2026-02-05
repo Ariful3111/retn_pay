@@ -54,12 +54,12 @@ class AddNewProperty extends GetView<AddNewPropertyController> {
                 AddNewPropertyFeatures(),
 
                 Obx(() {
-                  return controller.inspectionNo.value == 1
+                  return controller.inspectionChecked[1] == true
                       ? SizedBox(height: 20.h)
                       : SizedBox.shrink();
                 }),
                 Obx(() {
-                  return controller.inspectionNo.value == 1
+                  return controller.inspectionChecked[1] == true
                       ? AddNewPropertyVirtualTour()
                       : SizedBox.shrink();
                 }),

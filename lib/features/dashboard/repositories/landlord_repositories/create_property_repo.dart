@@ -20,8 +20,8 @@ class CreatePropertyRepository {
     required String state,
     required String postalCode,
     required String type,
-    required int bedroom,
-    required int bathroom,
+    int? bedroom,
+    int? bathroom,
     required String status,
     List<int> amenities = const [],
     required int isInPerson,
@@ -33,7 +33,7 @@ class CreatePropertyRepository {
     String? currency,
     int? unitBedroom,
     int? unitBathroom,
-    int? unitSize,
+    double? unitSize,
     String? unitStatus,
     int? primaryIndex,
   }) async {
@@ -41,6 +41,15 @@ class CreatePropertyRepository {
         .map((e) => e.trim())
         .where((e) => e.isNotEmpty)
         .toList();
+
+    final hasUnitData =
+        (unitNUmber != null && unitNUmber.trim().isNotEmpty) ||
+        rent != null ||
+        (currency != null && currency.trim().isNotEmpty) ||
+        unitBedroom != null ||
+        unitBathroom != null ||
+        unitSize != null ||
+        (unitStatus != null && unitStatus.trim().isNotEmpty);
 
     final clampedPrimaryIndex = images.isEmpty
         ? 0
@@ -69,12 +78,19 @@ class CreatePropertyRepository {
       "state": state,
       "postal_code": postalCode,
       "type": type,
-      "bedrooms": bedroom.toString(),
-      "bathrooms": bathroom.toString(),
       "status": status,
       "is_in_person_inspection_available": isInPerson.toString(),
       "is_virtual_inspection_available": isVirtual.toString(),
     };
+
+    if (!hasUnitData) {
+      if (bedroom != null) {
+        fields["bedrooms"] = bedroom.toString();
+      }
+      if (bathroom != null) {
+        fields["bathrooms"] = bathroom.toString();
+      }
+    }
 
     if (unitNUmber != null && unitNUmber.trim().isNotEmpty) {
       fields["units[0][unit_number]"] = unitNUmber.trim();
