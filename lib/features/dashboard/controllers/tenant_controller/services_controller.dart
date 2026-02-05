@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ServicesController extends GetxController {
-  RxList serviceType = ['Search', 'Booked Services'].obs;
+  RxList<String> serviceType = ['Search', 'Booked Services'].obs;
   RxString selectedServiceType = 'Search'.obs;
   RxBool isSelected = false.obs;
   RxBool isSearchFocus = false.obs;

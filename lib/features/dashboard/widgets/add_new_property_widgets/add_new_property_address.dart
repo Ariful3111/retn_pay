@@ -7,13 +7,12 @@ import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/a
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_info_field.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
-class AddNewPropertyAddress extends StatelessWidget {
+class AddNewPropertyAddress extends GetWidget<AddNewPropertyController> {
   const AddNewPropertyAddress({super.key});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    AddNewPropertyController addNewPropertyController = Get.find();
     return AddNewPropertyContainer(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,28 +23,28 @@ class AddNewPropertyAddress extends StatelessWidget {
           ),
           SizedBox(height: 12.h),
           AddNewPropertyInfoField(
-            controller: addNewPropertyController.address1Controller,
+            controller: controller.address1Controller,
             label: 'Address Line1*',
           ),
           SizedBox(height: 20.h),
           AddNewPropertyInfoField(
-            controller: addNewPropertyController.address2Controller,
+            controller: controller.address2Controller,
             label: 'Address Line2',
           ),
           SizedBox(height: 20.h),
           AddNewPropertyInfoField(
-            controller: addNewPropertyController.cityController,
+            controller: controller.cityController,
             label: 'City*',
           ),
           SizedBox(height: 20.h),
           AddNewPropertyInfoField(
-            controller: addNewPropertyController.stateController,
+            controller: controller.stateController,
             label: 'State*',
           ),
           SizedBox(height: 20.h),
           AddNewPropertyInfoField(
-            controller: addNewPropertyController.zipController,
-            label: 'Zip Code*',
+            controller: controller.postalCodeController,
+            label: 'Postal Code*',
           ),
         ],
       ),

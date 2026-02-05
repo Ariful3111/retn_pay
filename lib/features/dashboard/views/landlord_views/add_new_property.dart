@@ -15,67 +15,71 @@ import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/p
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_dropdown/custom_dropdown_menu.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
-class AddNewProperty extends StatelessWidget {
+class AddNewProperty extends GetView<AddNewPropertyController> {
   const AddNewProperty({super.key});
 
   @override
   Widget build(BuildContext context) {
-    AddNewPropertyController addNewPropertyController = Get.find();
-    return Column(
-      children: [
-        AddNewPropertyInfo(),
-        SizedBox(height: 20.h),
-        AddNewPropertyData(),
-        SizedBox(height: 20.h),
-        AddNewPropertyAddress(),
-        SizedBox(height: 20.h),
-        AddNewPropertyDetails(),
-        SizedBox(height: 20.h),
-        AddNewPropertyInspection(),
-        SizedBox(height: 20.h),
-        AddNewPropertyContainer(
-          child: CustomDropdownMenu(
-            alignmentGeometry: Alignment(0.2, 1),
-            onSelect: (value) {
-              addNewPropertyController.selectedAgent.value = value!;
-            },
-            option: addNewPropertyController.agentList,
-            isSelect: addNewPropertyController.selectedAgent,
-            label: CustomTextSecondary(text: 'Assign Agent'),
-          ),
-        ),
-        SizedBox(height: 20.h),
-        PropertyMaintenanceInfo(),
-        SizedBox(height: 20.h),
-        AddNewPropertyFeatures(),
+    return Obx(() {
+      return controller.isLoading.value
+          ? Center(child: ButtonLoading())
+          : Column(
+              children: [
+                AddNewPropertyInfo(),
+                SizedBox(height: 20.h),
+                AddNewPropertyData(),
+                SizedBox(height: 20.h),
+                AddNewPropertyAddress(),
+                SizedBox(height: 20.h),
+                AddNewPropertyDetails(),
+                SizedBox(height: 20.h),
+                AddNewPropertyInspection(),
+                SizedBox(height: 20.h),
+                AddNewPropertyContainer(
+                  child: CustomDropdownMenu(
+                    alignmentGeometry: Alignment(0.2, 1),
+                    onSelect: (value) {
+                      controller.selectedAgent.value = value!;
+                    },
+                    option: controller.agentList,
+                    isSelect: controller.selectedAgent,
+                    label: CustomTextSecondary(text: 'Assign Agent'),
+                  ),
+                ),
+                SizedBox(height: 20.h),
+                PropertyMaintenanceInfo(),
+                SizedBox(height: 20.h),
+                AddNewPropertyFeatures(),
 
-        Obx(() {
-          return addNewPropertyController.inspectionNo.value == 1
-              ? SizedBox(height: 20.h)
-              : SizedBox.shrink();
-        }),
-        Obx(() {
-          return addNewPropertyController.inspectionNo.value == 1
-              ? AddNewPropertyVirtualTour()
-              : SizedBox.shrink();
-        }),
-        SizedBox(height: 24.h),
-        CustomPrimaryButton(
-          onPressed: () {
-            showDialog(
-              context: context,
-              builder: (context) {
-                return AddNewPropertyDialog();
-              },
+                Obx(() {
+                  return controller.inspectionChecked[1] == true
+                      ? SizedBox(height: 20.h)
+                      : SizedBox.shrink();
+                }),
+                Obx(() {
+                  return controller.inspectionChecked[1] == true
+                      ? AddNewPropertyVirtualTour()
+                      : SizedBox.shrink();
+                }),
+                SizedBox(height: 24.h),
+                CustomPrimaryButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AddNewPropertyDialog();
+                      },
+                    );
+                  },
+                  height: 52.h,
+                  width: 180.w,
+                  borderRadius: BorderRadius.circular(8.r),
+                  text: 'Submit',
+                ),
+              ],
             );
-          },
-          height: 52.h,
-          width: 180.w,
-          borderRadius: BorderRadius.circular(8.r),
-          text: 'Submit',
-        ),
-      ],
-    );
+    });
   }
 }

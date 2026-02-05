@@ -26,7 +26,7 @@ class ServiceSearchController extends GetxController {
   RxList<XFile> uploadedImage = <XFile>[].obs;
   RxList<bool> selectedWidgetList = <bool>[].obs;
   RxString state = 'State*'.obs;
-  RxList stateList = ['Dhaka', 'Khulna', 'Rajshahi'].obs;
+  RxList<String> stateList = ['Dhaka', 'Khulna', 'Rajshahi'].obs;
   Rx<DateTime?> selectedDate = Rx<DateTime?>(null);
   RxInt checkboxIndex = 0.obs;
   RxBool isCheck = false.obs;
@@ -131,6 +131,7 @@ class ServiceSearchController extends GetxController {
     timeController.dispose();
     super.dispose();
   }
+
   @override
   void onInit() {
     selectedWidgetList.value = List.generate(widgetList.length, (_) => false);
