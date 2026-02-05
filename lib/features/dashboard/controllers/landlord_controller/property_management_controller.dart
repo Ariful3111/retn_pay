@@ -28,12 +28,12 @@ class PropertyModel {
 enum MyMenu { view, share, insurance, reEnlist, conditionalReport }
 
 class PropertyManagementController extends GetxController {
-  List manageType = ['Property', 'Conditional Report'];
+  List<String> manageType = ['Property', 'Conditional Report'];
   ScrollController propertyScrollController = ScrollController();
   RxString selected = 'Property'.obs;
   TextEditingController shareController = TextEditingController();
   RxString selectedProperty = ''.obs;
-  List propertyOption = ['Property 01', 'Property 02'];
+  List<String> propertyOption = ['Property 01', 'Property 02'];
   RxList<XFile> imageList = <XFile>[].obs;
   RxBool isShare = false.obs;
   RxBool isViewProperty = false.obs;

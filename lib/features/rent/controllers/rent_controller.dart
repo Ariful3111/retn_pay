@@ -9,7 +9,7 @@ class RentController extends GetxController {
   double minRange = 0;
   double maxRange = 700000;
   RxString initialSort = 'sortBy'.obs;
-  List sortList = ['Low To High', 'High to Low'];
+  List<String> sortList = ['Low To High', 'High to Low'];
   TextEditingController filterSearchController = TextEditingController();
   RxList<String> selectedFilterProperty = <String>[].obs;
   RxList<String> selectedAmenities = <String>[].obs;

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:renter_pay/features/home/controllers/property_amenities_controller.dart';
+import 'package:renter_pay/features/home/controllers/property_category_controller.dart';
 
 class AddNewPropertyController extends GetxController {
   RxBool isNewProperty = false.obs;
@@ -22,25 +24,24 @@ class AddNewPropertyController extends GetxController {
   TextEditingController stateController = TextEditingController();
   Rx<DateTime> selectedDate = DateTime.now().obs;
   RxString selectedProperty = ''.obs;
-  List propertyType = ['House', 'Vila', 'Studio', 'Office', 'Apartment'];
   RxInt inspectionNo = 0.obs;
   RxList<int> selectedFeature = <int>[].obs;
   RxList<XFile> images = <XFile>[].obs;
   RxList<XFile> vrImages = <XFile>[].obs;
+  RxBool isLoading = false.obs;
 
-  List featureList = [
-    'Swimming Pool',
-    '24/7 Security',
-    'Close to Schools',
-    'Gym & Fitness Center',
-    'Garden & Outdoor Space',
-    'Close to Hospital',
-    'Close to Restaurant',
-    'Pet Allowance',
-  ];
   RxString selectedAgent = ''.obs;
-  List agentList = ['Ariful', 'Rafi', 'Shanto'];
-  List inspectionType = ['In-Person Inspection', 'Virtual Tour'];
+  List<String> agentList = ['Ariful', 'Rafi', 'Shanto'];
+  List<String> inspectionType = ['In-Person Inspection', 'Virtual Tour'];
+
+  @override
+  void onInit() async {
+    super.onInit();
+    isLoading.value = true;
+    await Get.find<PropertyCategoryController>().getPropertyCategories();
+    await Get.find<PropertyAmenitiesController>().getPropertyAmenities();
+    isLoading.value = false;
+  }
 
   @override
   void dispose() {

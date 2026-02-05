@@ -9,6 +9,10 @@ import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dash
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/dashboard_landlord_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_details_controller.dart';
+import 'package:renter_pay/features/home/controllers/property_amenities_controller.dart';
+import 'package:renter_pay/features/home/controllers/property_category_controller.dart';
+import 'package:renter_pay/features/home/repositories/property_amenities_repo.dart';
+import 'package:renter_pay/features/home/repositories/property_category_repo.dart';
 
 class DashboardBindings implements Bindings {
   @override
@@ -23,5 +27,25 @@ class DashboardBindings implements Bindings {
     Get.lazyPut(() => LandlordCalenderController());
     Get.lazyPut(() => ServiceVendorDashboardController());
     Get.lazyPut(() => BookingManagementController());
+
+    if (!Get.isRegistered<PropertyCategoryRepository>()) {
+      Get.lazyPut(() => PropertyCategoryRepository(getNetwork: Get.find()));
+    }
+    if (!Get.isRegistered<PropertyCategoryController>()) {
+      Get.lazyPut(
+        () =>
+            PropertyCategoryController(propertyCategoryRepository: Get.find()),
+      );
+    }
+    if (!Get.isRegistered<PropertyAmenitiesRepository>()) {
+      Get.lazyPut(() => PropertyAmenitiesRepository(getNetwork: Get.find()));
+    }
+    if (!Get.isRegistered<PropertyAmenitiesController>()) {
+      Get.lazyPut(
+        () => PropertyAmenitiesController(
+          propertyAmenitiesRepository: Get.find(),
+        ),
+      );
+    }
   }
 }

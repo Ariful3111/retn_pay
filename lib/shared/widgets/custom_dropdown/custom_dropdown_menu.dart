@@ -8,7 +8,7 @@ import 'package:renter_pay/shared/widgets/custom_dropdown/dropdown_input_decorat
 import 'package:renter_pay/shared/widgets/custom_dropdown/dropdown_menu_items.dart';
 
 class CustomDropdownMenu extends StatelessWidget {
-  final List option;
+  final List<String> option;
   final void Function(String? value) onSelect;
   final RxString isSelect;
   final Widget? label;
@@ -59,7 +59,9 @@ class CustomDropdownMenu extends StatelessWidget {
     this.selectedTrailingIconWidth,
     this.trailingIconHeight,
     this.trailingIconWidth,
-    this.menuFontSize, this.alignmentGeometry, this.textColor,
+    this.menuFontSize,
+    this.alignmentGeometry,
+    this.textColor,
   });
 
   @override
@@ -76,7 +78,7 @@ class CustomDropdownMenu extends StatelessWidget {
               fontWeight: FontWeight.w500,
               color: isDark
                   ? AppColors.darkSecondaryText
-                  :textColor?? AppColors.secondaryTextColor,
+                  : textColor ?? AppColors.secondaryTextColor,
             ),
         label: label,
         inputDecorationTheme: DropdownInputDecoration().inputDecoration(
@@ -106,7 +108,7 @@ class CustomDropdownMenu extends StatelessWidget {
         width: MediaQuery.widthOf(context),
         menuStyle: MenuStyle(
           maximumSize: WidgetStatePropertyAll(Size(144.w, 115.h)),
-          alignment:alignmentGeometry?? Alignment.bottomRight,
+          alignment: alignmentGeometry ?? Alignment.bottomRight,
           elevation: WidgetStateProperty.all(6),
           backgroundColor: WidgetStateProperty.all(Colors.white),
           shape: WidgetStateProperty.all(
