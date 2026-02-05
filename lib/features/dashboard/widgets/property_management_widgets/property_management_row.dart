@@ -45,7 +45,7 @@ class PropertyManagementRow extends StatelessWidget {
                 color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
                 borderRadius: BorderRadius.circular(12.r),
               ),
-              child: propertyManagementController.isViewProperty.value
+              child: addNewPropertyController.isNewProperty.value
                   ? Center(
                       child: CustomTextPrimary(
                         text: 'Property Information',
