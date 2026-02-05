@@ -20,13 +20,11 @@ class AddNewPropertyInfo extends StatelessWidget {
         children: [
           AddNewPropertyUploadImage(
             onTap: () {
-              UploadImage.sendImage(
-                picker: addNewPropertyController.picker,
-                pickImage: addNewPropertyController.images,
-                context: context,
+              UploadImage.pickMultipleImage(
+                allImages: addNewPropertyController.images,
               );
             },
-            isTitle: true, image: addNewPropertyController.images,
+            isTitle: true,
           ),
           SizedBox(height: 12.h),
           AddNewPropertyInfoField(

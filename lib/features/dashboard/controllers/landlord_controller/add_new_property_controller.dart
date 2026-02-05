@@ -7,6 +7,8 @@ class AddNewPropertyController extends GetxController {
   RxBool isPropertyDetails = false.obs;
   TextEditingController imageDescriptionController = TextEditingController();
   TextEditingController areaController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController unitController = TextEditingController();
   TextEditingController rentController = TextEditingController();
   TextEditingController bedController = TextEditingController();
   TextEditingController bathController = TextEditingController();
@@ -23,10 +25,8 @@ class AddNewPropertyController extends GetxController {
   List propertyType = ['House', 'Vila', 'Studio', 'Office', 'Apartment'];
   RxInt inspectionNo = 0.obs;
   RxList<int> selectedFeature = <int>[].obs;
-  ImagePicker picker = ImagePicker();
-  Rxn<XFile> images = Rxn<XFile>();
-  ImagePicker vrPicker = ImagePicker();
-  Rxn<XFile> vrImages = Rxn<XFile>();
+  RxList<XFile> images = <XFile>[].obs;
+  RxList<XFile> vrImages = <XFile>[].obs;
 
   List featureList = [
     'Swimming Pool',
@@ -46,6 +46,8 @@ class AddNewPropertyController extends GetxController {
   void dispose() {
     imageDescriptionController.dispose();
     areaController.dispose();
+    nameController.dispose();
+    unitController.dispose();
     rentController.dispose();
     bedController.dispose();
     bathController.dispose();
@@ -57,6 +59,8 @@ class AddNewPropertyController extends GetxController {
     featureController.dispose();
     dateController.dispose();
     stateController.dispose();
+    images.clear();
+    vrImages.clear();
     super.dispose();
   }
 }

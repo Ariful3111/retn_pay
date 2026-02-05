@@ -6,8 +6,8 @@ import 'package:renter_pay/core/utils/image_picker.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_container.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_info_button.dart';
-import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_info_images.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_upload_image.dart';
+import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_vr_image.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
@@ -29,19 +29,16 @@ class AddNewPropertyVirtualTour extends StatelessWidget {
           SizedBox(height: 20.h),
           AddNewPropertyUploadImage(
             onTap: () {
-              UploadImage.sendImage(
-                picker: addNewPropertyController.vrPicker,
-                pickImage: addNewPropertyController.vrImages,
-                context: context,
+              UploadImage.pickMultipleImage(
+                allImages: addNewPropertyController.vrImages,
               );
             },
             isTitle: true,
-            image: addNewPropertyController.vrImages,
           ),
           SizedBox(height: 16.h),
           AddNewPropertyInfoButton(onAdd: () {}, onUpload: () {}),
           SizedBox(height: 20.h),
-          AddNewPropertyInfoImages(),
+          AddNewPropertyVrImage(),
           SizedBox(height: 20.h),
           CustomPrimaryButton(
             height: 52.h,
