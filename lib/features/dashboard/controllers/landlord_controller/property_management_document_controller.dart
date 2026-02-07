@@ -8,7 +8,7 @@ class PropertyManagementDocumentController extends GetxController {
   RxList<XFile> electricalImage = <XFile>[].obs;
   RxList<XFile> signImage = <XFile>[].obs;
   RxList<XFile> plumbingImage = <XFile>[].obs;
-    TextEditingController propertyNameController = TextEditingController();
+  TextEditingController propertyNameController = TextEditingController();
   TextEditingController propertyAddressController = TextEditingController();
 
   @override

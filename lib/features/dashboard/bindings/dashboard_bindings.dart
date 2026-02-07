@@ -18,9 +18,7 @@ import 'package:renter_pay/features/home/repositories/property_category_repo.dar
 class DashboardBindings implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(
-      () => CreatePropertyRepository(imageWithoutResponse: Get.find()),
-    );
+    Get.lazyPut(() => CreatePropertyRepository(imageWithResponse: Get.find()));
     Get.lazyPut(() => DashboardController());
     Get.lazyPut(() => DashboardLandlordController());
     Get.lazyPut(() => PropertyManagementController());

@@ -42,6 +42,7 @@ class DashboardLandlordController extends GetxController {
     lastDay = DateTime(today.year + 1, today.month, today.day);
     super.onInit();
   }
+
   final List<ChartData> data = [
     ChartData('Mar', 6000, 5200, 4800),
     ChartData('Apr', 6500, 6000, 5800),
@@ -100,5 +101,4 @@ class DashboardLandlordController extends GetxController {
       amount: '\$450',
     ),
   ];
-  
 }
