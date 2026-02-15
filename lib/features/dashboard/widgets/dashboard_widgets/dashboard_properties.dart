@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
+import 'package:renter_pay/features/dashboard/controllers/dashboard_metric_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_item.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_key_features.dart';
@@ -18,34 +19,40 @@ import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/repair_request.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/service_vendor_widgets/service_request.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/service_vendor_widgets/service_vendor_ad.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
 class DashboardProperties extends StatelessWidget {
-  const DashboardProperties({super.key});
+  final DashboardMetricController metricController;
+  const DashboardProperties({super.key, required this.metricController});
 
   @override
   Widget build(BuildContext context) {
     DashboardController dashboardController = Get.find();
     return Column(
       children: [
-        GridView.builder(
-          itemCount: 4,
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 12.w,
-            mainAxisSpacing: 12.h,
-            childAspectRatio: 188 / 85,
-          ),
-          itemBuilder: (context, index) {
-            final list = dashboardController.userDashboardItems[index];
-            return DashboardItem(
-              icon: list['icon'],
-              title: list['title'],
-              value: list['value'],
-            );
-          },
-        ),
+        Obx(() {
+          return metricController.isLoading.value
+              ? ButtonLoading()
+              : GridView.builder(
+                  itemCount: 4,
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 12.w,
+                    mainAxisSpacing: 12.h,
+                    childAspectRatio: 188 / 85,
+                  ),
+                  itemBuilder: (context, index) {
+                    final list = dashboardController.userDashboardItems[index];
+                    return DashboardItem(
+                      icon: list['icon'],
+                      title: list['title'],
+                      value: list['value'],
+                    );
+                  },
+                );
+        }),
         if (userIndex == 1 || userIndex == 2) DashboardGraph(),
         SizedBox(height: 20.h),
         if (userIndex == 0) DashboardUpcomingPayment(),
@@ -74,7 +81,7 @@ class DashboardProperties extends StatelessWidget {
             switchOutCurve: Curves.easeOut,
             child: dashboardController.isQuickActions.value
                 ? Column(
-                  key: ValueKey('expanded'),
+                    key: ValueKey('expanded'),
                     children: [
                       if (userIndex == 0)
                         Column(
@@ -90,7 +97,7 @@ class DashboardProperties extends StatelessWidget {
                         DashboardLandlordQuickAction(),
                     ],
                   )
-                : SizedBox(key: ValueKey('collapsed'),),
+                : SizedBox(key: ValueKey('collapsed')),
           ),
         ),
       ],

@@ -5,6 +5,7 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/dashboard/controllers/dashboard_metric_controller.dart';
 import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -33,38 +34,48 @@ class DashboardController extends GetxController {
         .toList();
   }
 
-  final List<Map<String, dynamic>> dashboardItem = [
-    {
-      "icon": IconsPath.dashboardRent,
-      "title": 'Total Rent Paid',
-      'allowedUser': [0, 1, 2],
-      "value": '\$1200',
-    },
-    {
-      "icon": IconsPath.dashboardBoking,
-      "title": 'Total booking',
-      'allowedUser': [3],
-      "value": '1200',
-    },
-    {
-      "icon": IconsPath.dashboardInspection,
-      "title": 'Inspection Request',
-      'allowedUser': [0, 1, 2, 3],
-      "value": '3',
-    },
-    {
-      "icon": IconsPath.dashboardApplication,
-      "title": 'Applications Submitted',
-      'allowedUser': [0, 1, 2, 3],
-      "value": '4',
-    },
-    {
-      "icon": IconsPath.dashboardRepair,
-      "title": 'Repair Request',
-      'allowedUser': [0, 1, 2, 3],
-      "value": '3',
-    },
-  ];
+  List<Map<String, dynamic>> get dashboardItem {
+    final metricData =
+        Get.find<DashboardMetricController>().dashboardMetric.value?.data;
+    final totalRentPaid = metricData?.totalRentPaid ?? 0;
+    final inspectionRequests = metricData?.inspectionRequests ?? 0;
+    final applicationsSubmitted = metricData?.applicationsSubmitted ?? 0;
+    final repairRequests = metricData?.repairRequests ?? 0;
+
+    return [
+      {
+        "icon": IconsPath.dashboardRent,
+        "title": 'Total Rent Paid',
+        'allowedUser': [0, 1, 2],
+        "value": '\$$totalRentPaid',
+      },
+      {
+        "icon": IconsPath.dashboardBoking,
+        "title": 'Total booking',
+        'allowedUser': [3],
+        "value": '1200',
+      },
+      {
+        "icon": IconsPath.dashboardInspection,
+        "title": 'Inspection Request',
+        'allowedUser': [0, 1, 2, 3],
+        "value": '$inspectionRequests',
+      },
+      {
+        "icon": IconsPath.dashboardApplication,
+        "title": 'Applications Submitted',
+        'allowedUser': [0, 1, 2, 3],
+        "value": '$applicationsSubmitted',
+      },
+      {
+        "icon": IconsPath.dashboardRepair,
+        "title": 'Repair Request',
+        'allowedUser': [0, 1, 2, 3],
+        "value": '$repairRequests',
+      },
+    ];
+  }
+
   List<Map<String, dynamic>> drawerItems = [
     {
       'icon': IconsPath.dashboard,
@@ -156,7 +167,9 @@ class DashboardController extends GetxController {
       'icon': IconsPath.dashboardCalender,
       'title': 'Calender',
       'allowedUser': [1, 2, 3],
-     userIndex==0?'routes': 'navIndex':userIndex==0?AppRoutes.landlordCalenderView:3,
+      userIndex == 0 ? 'routes' : 'navIndex': userIndex == 0
+          ? AppRoutes.landlordCalenderView
+          : 3,
     },
   ];
   List<Map<String, dynamic>> get userDrawerItems {
