@@ -18,7 +18,8 @@ class CustomTable extends StatelessWidget {
     required this.row,
     required this.onRowTap,
     required this.isExpandedTableBuilder,
-     this.expandedTableBuilder, required this.isNeedLastCol,
+    this.expandedTableBuilder,
+    required this.isNeedLastCol,
   });
 
   @override
@@ -58,8 +59,8 @@ class CustomTable extends StatelessWidget {
 
   List<Widget> buildRow() {
     return List.generate(row.length, (rowIndex) {
-     
-        return Obx(()=> CustomTableRow(
+      return Obx(
+        () => CustomTableRow(
           row: row,
           rowIndex: rowIndex,
           column: column,
@@ -67,7 +68,8 @@ class CustomTable extends StatelessWidget {
           onRowTap: () => onRowTap(rowIndex),
           isExpandedTable: isExpandedTableBuilder(rowIndex),
           isNeedLastCol: isNeedLastCol,
-        ),);
-      });
+        ),
+      );
+    });
   }
 }

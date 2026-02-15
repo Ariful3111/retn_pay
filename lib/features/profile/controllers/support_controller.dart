@@ -2,24 +2,16 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-
-class TicketModel {
-  final String ticketID;
-  final String category;
-  final String issueTitle;
-  final String status;
-  final String issueDate;
-
-  TicketModel({
-    required this.ticketID,
-    required this.category,
-    required this.issueTitle,
-    required this.status,
-    required this.issueDate,
-  });
-}
+import 'package:renter_pay/features/profile/models/support_ticket_model.dart';
+import 'package:renter_pay/features/profile/repositories/get_support_repo.dart';
+import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
 class SupportController extends GetxController {
+  final GetSupportTicketRepository getSupportTicketRepository;
+  SupportController({required this.getSupportTicketRepository});
+  final tickets = Rxn<SupportTicketModel>();
+  RxBool isLoading = true.obs;
+  RxBool isLoadingMore = false.obs;
   RxInt selectedIndex = 0.obs;
   RxInt filterIndex = 0.obs;
   RxList<bool> isShowFAQ = <bool>[].obs;
@@ -28,14 +20,63 @@ class SupportController extends GetxController {
   final List<String> ticketCategoryList = ['Payments', 'Repairs', 'Lease'];
   final List<String> supportType = ['FAQ', 'Tickets', 'Contact Support'];
   final List<String> filterList = ['All', 'Open', 'In Progress', 'Resolved'];
+  final List<String> _statusValues = ['', 'open', 'in_progress', 'resolved'];
   RxList<XFile> uploadImage = <XFile>[].obs;
-  RxList<TicketModel> tableData = <TicketModel>[].obs;
-  RxList<bool> expandedData = <bool>[].obs;
+  RxList<int> expandedTickets = <int>[].obs;
   TextEditingController issueController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+
+  late final Worker _filterWorker;
+
+  Future<void> getSupportTickets({bool loadMore = false}) async {
+    final status =
+        (filterIndex.value >= 0 && filterIndex.value < _statusValues.length)
+        ? _statusValues[filterIndex.value]
+        : '';
+
+    final meta = tickets.value?.data?.meta;
+    if (loadMore) {
+      if (isLoadingMore.value) return;
+      if ((meta?.currentPage ?? 1) >= (meta?.lastPage ?? 1)) return;
+      isLoadingMore.value = true;
+    } else {
+      isLoading.value = true;
+      expandedTickets.clear();
+    }
+
+    final response = await getSupportTicketRepository.execute(
+      page: loadMore ? (meta?.currentPage ?? 1) + 1 : 1,
+      perPage: 20,
+      status: status,
+    );
+    response.fold(
+      (error) {
+        ErrorSnackbar.show(description: error.message);
+      },
+      (data) {
+        if (!loadMore) {
+          tickets.value = data;
+        } else {
+          final existingPayload = tickets.value?.data;
+          if (existingPayload == null) {
+            tickets.value = data;
+          } else {
+            existingPayload.data ??= <SupportTicket>[];
+            existingPayload.data!.addAll(data.data?.data ?? const []);
+            existingPayload.links = data.data?.links;
+            existingPayload.meta = data.data?.meta;
+            tickets.refresh();
+          }
+        }
+      },
+    );
+    isLoading.value = false;
+    isLoadingMore.value = false;
+  }
+
   final List<String> tableColumn = [
     'Ticket ID',
-    'Category',
+    'Priority',
     'Status',
     'Action',
   ];
@@ -59,89 +100,28 @@ class SupportController extends GetxController {
       'action': 'Number: +880-XXX-XXX-XXXX',
     },
   ];
-  void initRows() {
-    tableData.value = [
-      TicketModel(
-        ticketID: '1',
-        category: 'Payments',
-        issueTitle: 'Payment not going through',
-        status: 'Open',
-        issueDate: 'Sep 12, 2025',
-      ),
-      TicketModel(
-        ticketID: '2',
-        category: 'Repairs',
-        issueTitle: 'Payment not going through',
-        status: 'In Progress',
-        issueDate: 'Sep 12, 2025',
-      ),
-      TicketModel(
-        ticketID: '3',
-        category: 'Lease',
-        issueTitle: 'Payment not going through',
-        status: 'Resolved',
-        issueDate: 'Sep 12, 2025',
-      ),
-      TicketModel(
-        ticketID: '4',
-        category: 'Payments',
-        issueTitle: 'Payment not going through',
-        status: 'Open',
-        issueDate: 'Sep 12, 2025',
-      ),
-    ];
-    expandedData.value = List.generate(tableData.length, (_) => false);
-    update();
-  }
 
-  List<MapEntry<int, TicketModel>> get filterData {
-    final tempData = <MapEntry<int, TicketModel>>[];
-    for (int i = 0; i < tableData.length; i++) {
-      tempData.add(MapEntry(i, tableData[i]));
-    }
-    List<MapEntry<int, TicketModel>> filterData;
-    switch (filterIndex.value) {
-      case 0:
-        filterData = tempData
-            .where(
-              (data) =>
-                  data.value.status == 'Open' ||
-                  data.value.status == 'Resolved' ||
-                  data.value.status == 'In Progress',
-            )
-            .toList();
-        break;
-      case 1:
-        filterData = tempData
-            .where((data) => data.value.status == 'Open')
-            .toList();
-        break;
-      case 2:
-        filterData = tempData
-            .where((data) => data.value.status == 'In Progress')
-            .toList();
-        break;
-      case 3:
-        filterData = tempData
-            .where((data) => data.value.status == 'Resolved')
-            .toList();
-        break;
-      default:
-        filterData = tempData;
-    }
-    return filterData;
-  }
-
-  void showExpandedData(int index) {
-    if (index >= 0 && index < expandedData.length) {
-      expandedData[index] = !expandedData[index];
+  void toggleExpandedTicket({required int id}) {
+    if (expandedTickets.contains(id)) {
+      expandedTickets.remove(id);
+    } else {
+      expandedTickets.add(id);
     }
   }
 
   @override
-  void onReady() {
-    initRows();
-    super.onReady();
+  void onInit() {
+    super.onInit();
+    _filterWorker = ever(filterIndex, (_) {
+      getSupportTickets();
+    });
+    getSupportTickets();
+  }
+
+  @override
+  void onClose() {
+    _filterWorker.dispose();
+    super.onClose();
   }
 
   @override
