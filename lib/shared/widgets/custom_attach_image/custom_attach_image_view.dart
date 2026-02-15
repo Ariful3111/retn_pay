@@ -1,5 +1,8 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CustomAttachImageView extends StatelessWidget {
   final double? height;
@@ -7,7 +10,7 @@ class CustomAttachImageView extends StatelessWidget {
   final double? padding;
   final double? sizeHeight;
   final double? radius;
-  final List<String> imageList;
+  final RxList<XFile> imageList;
   const CustomAttachImageView({
     super.key,
     this.height,
@@ -21,7 +24,7 @@ class CustomAttachImageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: SizedBox(
+      child:Obx(()=> SizedBox(
         height: sizeHeight ?? 52.h,
         child: ListView.builder(
           shrinkWrap: true,
@@ -35,14 +38,14 @@ class CustomAttachImageView extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(radius ?? 8.r),
                 image: DecorationImage(
-                  image: AssetImage(imageList[index]),
+                  image: FileImage(File(imageList[index].path)),
                   fit: BoxFit.fill,
                 ),
               ),
             );
           },
         ),
-      ),
+      )),
     );
   }
 }

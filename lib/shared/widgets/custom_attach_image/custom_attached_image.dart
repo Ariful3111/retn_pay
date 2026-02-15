@@ -53,7 +53,6 @@ class CustomAttachedImage extends StatelessWidget {
                   radius: 2.7.r,
                   iconHeight: 13.86.h,
                   iconWidth: 11.74.w,
-                  onTap: () {},
                 ),
                 SizedBox(width: 8.w),
                 CustomTextSecondary(
@@ -66,7 +65,7 @@ class CustomAttachedImage extends StatelessWidget {
           ),
         ),
         SizedBox(width: 10.w),
-        CustomAttachImageView(imageList: imageList.map((e) => e.path).toList()),
+        CustomAttachImageView(imageList: imageList),
       ],
     );
   }

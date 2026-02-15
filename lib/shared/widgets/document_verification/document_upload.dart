@@ -44,7 +44,9 @@ class DocumentUpload extends StatelessWidget {
                   color:isDark? AppColors.primaryColorDark: AppColors.primaryTextColor,
                 ),
                 SizedBox(height: 28.5.h),
-                DocumentUploadButton(onTap: onTap),
+                GestureDetector(
+                  onTap: onTap,
+                  child: DocumentUploadButton()),
                 SizedBox(height: 16.h),
                 CustomTextSpan(
                   title: "Press The Button To Upload",
