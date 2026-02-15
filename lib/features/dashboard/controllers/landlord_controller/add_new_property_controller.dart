@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/create_property_repo.dart';
 import 'package:renter_pay/features/home/controllers/property_amenities_controller.dart';
@@ -43,6 +44,7 @@ class AddNewPropertyController extends GetxController {
   List<String> agentList = ['Ariful', 'Rafi', 'Shanto'];
   List<String> inspectionType = ['In-Person Inspection', 'Virtual Tour'];
   RxList<String> featureList = <String>[].obs;
+  final storage = Get.find<StorageService>();
 
   void addFeature() {
     final value = featureController.text.trim();
@@ -177,22 +179,29 @@ class AddNewPropertyController extends GetxController {
         unitSize: unitSize,
         images: images.map((e) => File(e.path)).toList(),
       );
-      response.fold((error) => ErrorSnackbar.show(description: error.message), (
-        data,
-      ) {
-        isPropertyDetails.value = !isPropertyDetails.value;
-        Get.back();
-        for (final position
-            in Get.find<PropertyManagementController>()
-                .propertyScrollController
-                .positions) {
-          position.animateTo(
-            position.minScrollExtent,
-            duration: Duration(milliseconds: 500),
-            curve: Curves.easeInOut,
+      response.fold(
+        (error) {
+          ErrorSnackbar.show(description: error.message);
+        },
+        (data) async {
+          isPropertyDetails.value = !isPropertyDetails.value;
+          await storage.write(
+            key: storage.propertyIDKey,
+            value: data.data?.id?.toInt() ?? 0,
           );
-        }
-      });
+          Get.back();
+          for (final position
+              in Get.find<PropertyManagementController>()
+                  .propertyScrollController
+                  .positions) {
+            position.animateTo(
+              position.minScrollExtent,
+              duration: Duration(milliseconds: 500),
+              curve: Curves.easeInOut,
+            );
+          }
+        },
+      );
     } finally {
       isLoadingAddProperty.value = false;
     }

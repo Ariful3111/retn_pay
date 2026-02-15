@@ -4,13 +4,14 @@ import 'package:fpdart/fpdart.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/data/global_models/error_model.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
-import 'package:renter_pay/core/data/networks/image_without_response.dart';
+import 'package:renter_pay/core/data/networks/image_with_response.dart';
+import 'package:renter_pay/features/dashboard/models/landlord_models/add_property_model.dart';
 
 class CreatePropertyRepository {
-  final ImageWithoutResponse imageWithoutResponse;
-  const CreatePropertyRepository({required this.imageWithoutResponse});
+  final ImageWithResponse imageWithResponse;
+  const CreatePropertyRepository({required this.imageWithResponse});
 
-  Future<Either<ErrorModel, bool>> execute({
+  Future<Either<ErrorModel, AddPropertyModel>> execute({
     required String title,
     required String description,
     List<String> features = const [],
@@ -83,6 +84,14 @@ class CreatePropertyRepository {
       "is_virtual_inspection_available": isVirtual.toString(),
     };
 
+    for (int i = 0; i < trimmedFeatures.length; i++) {
+      fields["features[$i]"] = trimmedFeatures[i];
+    }
+
+    for (int i = 0; i < amenities.length; i++) {
+      fields["amenities[$i]"] = amenities[i].toString();
+    }
+
     if (!hasUnitData) {
       if (bedroom != null) {
         fields["bedrooms"] = bedroom.toString();
@@ -114,13 +123,9 @@ class CreatePropertyRepository {
       fields["units[0][status]"] = unitStatus.trim();
     }
 
-    final body = <String, dynamic>{
-      "features": trimmedFeatures,
-      "amenities": amenities,
-      "images": imageList,
-    };
+    final body = <String, dynamic>{"images": imageList};
 
-    final response = await imageWithoutResponse.upload(
+    final response = await imageWithResponse.upload(
       url: "/api/v1/properties",
       headers: {
         "Accept": "application/json",
@@ -131,6 +136,7 @@ class CreatePropertyRepository {
       imageParameters: imageParameters,
       fields: fields,
       body: body,
+      fromJson: (json) => AddPropertyModel.fromJson(json),
     );
     return response;
   }

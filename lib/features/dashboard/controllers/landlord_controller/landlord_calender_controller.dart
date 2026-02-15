@@ -76,6 +76,7 @@ class LandlordCalenderController extends GetxController {
       filteredEvents.assignAll(events[day] ?? []);
     }
   }
+
   late DateTime today;
   late DateTime firstDay;
   late DateTime lastDay;

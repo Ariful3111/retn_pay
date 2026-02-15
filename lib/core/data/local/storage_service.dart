@@ -5,6 +5,7 @@ class StorageService {
   final String tokenKey = "token";
   final String roleKey = "role";
   final String deviceIDKey = "deviceID";
+  final String propertyIDKey = "propertyID";
 
   // Read
   T? read<T>({required String key}) {
