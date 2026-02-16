@@ -1,126 +1,215 @@
 {
   "error": false,
   "code": 200,
-  "message": "User Details",
+  "message": "Notifications fetched successfully",
   "data": {
-    "id": 81,
-    "name": "Rafi Ahmed",
-    "first_name": "",
-    "last_name": "Rafi Ahmed",
-    "gender": "",
-    "image": "https://renter-pay.mahfuz.click/images/person.png",
-    "email": null,
-    "phone": "8801776179243",
-    "is_active": true,
-    "provider": null,
-    "provider_id": null,
-    "roles": ["landlord"],
-    "landlord_profile": {
-      "id": 23,
-      "description": null,
-      "is_verified": false,
-      "created_at": "2026-02-03T07:20:43.000000Z",
-      "updated_at": "2026-02-03T07:20:43.000000Z",
-      "subscription": {
-        "id": 51,
-        "user_id": 81,
-        "role": "landlord",
-        "plan_id": 1,
-        "start_date": "2026-02-02T18:00:00.000000Z",
-        "end_date": "2026-02-17T18:00:00.000000Z",
-        "is_trial": true,
-        "trial_ends_at": "2026-02-17T18:00:00.000000Z",
-        "status": "active",
-        "auto_renew": true,
-        "plan": {
-          "id": 1,
-          "for_role": "landlord",
-          "name": "Basic",
-          "price": 299,
-          "billing_cycle": "monthly",
-          "trial_period_days": 15,
-          "is_active": true,
-          "features": [
-            {
-              "title": "Property Limit",
-              "value": "1",
-              "features": null
-            },
-            {
-              "title": "Photography Limit",
-              "value": "15",
-              "features": null
-            },
-            {
-              "title": "Video Duration Limit",
-              "value": "45",
-              "features": null
-            },
-            {
-              "title": "List Property",
-              "value": "1",
-              "features": null
-            },
-            {
-              "title": "Ads Strategy",
-              "value": null,
-              "features": ["RenterPay page", "Social media (free 30 days)"]
-            },
-            {
-              "title": "Photography",
-              "value": null,
-              "features": ["10-15 photos"]
-            },
-            {
-              "title": "Video curation",
-              "value": null,
-              "features": ["30-45 seconds"]
-            },
-            {
-              "title": "Rental Appraisal",
-              "value": null,
-              "features": ["Free"]
-            },
-            {
-              "title": "Documentation",
-              "value": null,
-              "features": ["Online Access"]
-            },
-            {
-              "title": "Signage",
-              "value": null,
-              "features": ["Sale/Lease included"]
-            },
-            {
-              "title": "Legal Advice",
-              "value": null,
-              "features": ["4 hours (first contract duration)"]
-            }
-          ]
-        }
-      }
-    },
-    "documents": [
+    "data": [
       {
-        "id": 6,
-        "user_id": 81,
-        "document_type": "nid",
-        "document_number": null,
-        "file_path": "https://renter-pay.mahfuz.click/storage/documents/users/FKk5Qrj0LhlQU5eHatLBlhqaGvStz9V5x86gqF5w.jpg",
-        "file_url": "https://renter-pay.mahfuz.click/storage/documents/users/FKk5Qrj0LhlQU5eHatLBlhqaGvStz9V5x86gqF5w.jpg",
-        "back_file_path": "https://renter-pay.mahfuz.click/storage/documents/users/v5j66fe3940EPLXyVPdHiZlR9Q8MnRRo58vJ3cPZ.jpg",
-        "back_file_url": "https://renter-pay.mahfuz.click/storage/documents/users/v5j66fe3940EPLXyVPdHiZlR9Q8MnRRo58vJ3cPZ.jpg",
-        "expiry_date": null,
-        "status": "pending",
-        "rejection_reason": null,
-        "is_verified": false,
-        "verified_at": null,
-        "created_at": "2026-02-03 13:20:56",
-        "updated_at": "2026-02-03 13:54:59"
+        "id": "019c6625-6972-73af-bfec-d5421f05bda9",
+        "type": "support",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 74,
+        "data": {
+          "title": "Support ticket created",
+          "body": "Your support ticket \"Very Small issue\" has been created. Ticket #5.",
+          "data": {
+            "support_ticket_id": 5
+          }
+        },
+        "is_read": false,
+        "read_at": null,
+        "created_at": "2026-02-16T11:10:53.000000Z",
+        "updated_at": "2026-02-16T11:10:53.000000Z"
+      },
+      {
+        "id": "019c6625-61c3-7105-83db-23aac05f23b2",
+        "type": "support",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 74,
+        "data": {
+          "title": "Support ticket created",
+          "body": "Your support ticket \"Very Small issue\" has been created. Ticket #5.",
+          "data": {
+            "support_ticket_id": 5
+          }
+        },
+        "is_read": false,
+        "read_at": null,
+        "created_at": "2026-02-16T11:10:51.000000Z",
+        "updated_at": "2026-02-16T11:10:51.000000Z"
+      },
+      {
+        "id": "019c6624-b5d9-72a3-9edb-10572665cb6b",
+        "type": "support",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 74,
+        "data": {
+          "title": "Support ticket created",
+          "body": "Your support ticket \"Very Small issue\" has been created. Ticket #4.",
+          "data": {
+            "support_ticket_id": 4
+          }
+        },
+        "is_read": false,
+        "read_at": null,
+        "created_at": "2026-02-16T11:10:07.000000Z",
+        "updated_at": "2026-02-16T11:10:07.000000Z"
+      },
+      {
+        "id": "019c6624-add3-70b1-9ff2-55ff3c2c5357",
+        "type": "support",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 74,
+        "data": {
+          "title": "Support ticket created",
+          "body": "Your support ticket \"Very Small issue\" has been created. Ticket #4.",
+          "data": {
+            "support_ticket_id": 4
+          }
+        },
+        "is_read": false,
+        "read_at": null,
+        "created_at": "2026-02-16T11:10:05.000000Z",
+        "updated_at": "2026-02-16T11:10:05.000000Z"
+      },
+      {
+        "id": "019c6622-8a2f-7158-becc-93c78703699c",
+        "type": "support",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 74,
+        "data": {
+          "title": "Support ticket created",
+          "body": "Your support ticket \"Big issue\" has been created. Ticket #3.",
+          "data": {
+            "support_ticket_id": 3
+          }
+        },
+        "is_read": false,
+        "read_at": null,
+        "created_at": "2026-02-16T11:07:45.000000Z",
+        "updated_at": "2026-02-16T11:07:45.000000Z"
+      },
+      {
+        "id": "019c6622-833a-718c-abb3-a95b64b5f105",
+        "type": "support",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 74,
+        "data": {
+          "title": "Support ticket created",
+          "body": "Your support ticket \"Big issue\" has been created. Ticket #3.",
+          "data": {
+            "support_ticket_id": 3
+          }
+        },
+        "is_read": false,
+        "read_at": null,
+        "created_at": "2026-02-16T11:07:43.000000Z",
+        "updated_at": "2026-02-16T11:07:43.000000Z"
+      },
+      {
+        "id": "019c6622-1da8-737a-a7b2-95b0a4214620",
+        "type": "support",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 74,
+        "data": {
+          "title": "Support ticket created",
+          "body": "Your support ticket \"Big issue\" has been created. Ticket #2.",
+          "data": {
+            "support_ticket_id": 2
+          }
+        },
+        "is_read": false,
+        "read_at": null,
+        "created_at": "2026-02-16T11:07:17.000000Z",
+        "updated_at": "2026-02-16T11:07:17.000000Z"
+      },
+      {
+        "id": "019c6622-0dec-737a-ae52-ba340554eef1",
+        "type": "support",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 74,
+        "data": {
+          "title": "Support ticket created",
+          "body": "Your support ticket \"Big issue\" has been created. Ticket #2.",
+          "data": {
+            "support_ticket_id": 2
+          }
+        },
+        "is_read": false,
+        "read_at": null,
+        "created_at": "2026-02-16T11:07:13.000000Z",
+        "updated_at": "2026-02-16T11:07:13.000000Z"
+      },
+      {
+        "id": "019c6039-286c-72eb-bc31-9993fe10b93c",
+        "type": "support",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 74,
+        "data": {
+          "title": "Support ticket created",
+          "body": "Your support ticket \"Cannot access my lease document\" has been created. Ticket #1.",
+          "data": {
+            "support_ticket_id": 1
+          }
+        },
+        "is_read": false,
+        "read_at": null,
+        "created_at": "2026-02-15T07:34:44.000000Z",
+        "updated_at": "2026-02-15T07:34:44.000000Z"
+      },
+      {
+        "id": "019c6039-1b0a-70d4-9e37-a33003885f0f",
+        "type": "support",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 74,
+        "data": {
+          "title": "Support ticket created",
+          "body": "Your support ticket \"Cannot access my lease document\" has been created. Ticket #1.",
+          "data": {
+            "support_ticket_id": 1
+          }
+        },
+        "is_read": false,
+        "read_at": null,
+        "created_at": "2026-02-15T07:34:41.000000Z",
+        "updated_at": "2026-02-15T07:34:41.000000Z"
       }
     ],
-    "created_at": "2026-02-03 13:20:43",
-    "updated_at": "2026-02-03 13:20:43"
+    "links": {
+      "first": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=1",
+      "last": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=1",
+      "prev": null,
+      "next": null
+    },
+    "meta": {
+      "current_page": 1,
+      "from": 1,
+      "last_page": 1,
+      "links": [
+        {
+          "url": null,
+          "label": "&laquo; Previous",
+          "page": null,
+          "active": false
+        },
+        {
+          "url": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=1",
+          "label": "1",
+          "page": 1,
+          "active": true
+        },
+        {
+          "url": null,
+          "label": "Next &raquo;",
+          "page": null,
+          "active": false
+        }
+      ],
+      "path": "https://renter-pay.mahfuz.click/api/v1/notification",
+      "per_page": 20,
+      "to": 10,
+      "total": 10
+    }
   },
   "errors": null
 }

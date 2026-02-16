@@ -16,6 +16,7 @@ class AddSupportTicketRepository {
     required String subject,
     required String description,
     required String priority,
+    required String category,
   }) async {
     final response = await imageWithoutResponse.upload(
       url: "/api/${NetworkLinks.version}/support-tickets",
@@ -33,6 +34,7 @@ class AddSupportTicketRepository {
         "subject": subject,
         "description": description,
         "priority": priority,
+        "category": category,
       },
     );
     return response;

@@ -13,49 +13,51 @@ class NotificationItem extends StatelessWidget {
     super.key,
     required this.notificationIcon,
     required this.notificationText,
-    required this.notificationTime, required this.onTap, required this.isSelect,
+    required this.notificationTime,
+    required this.onTap,
+    required this.isSelect,
   });
 
   @override
   Widget build(BuildContext context) {
-bool isDark = Theme.of(context).brightness == Brightness.dark;
-      return GestureDetector(
-        onTap: onTap,
-        child: Container(
-          margin: EdgeInsets.only(bottom: 15.88.h),
-          width: MediaQuery.widthOf(context),
-          height: 105.h,
-          decoration: BoxDecoration(
-            color: isSelect
-                ?isDark?AppColors.darkSecondary :AppColors.darkAppBar
-                : null,
-            borderRadius: BorderRadius.circular(
-              isSelect ? 8.sp : 0.sp,
-            ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                height: 49.62.h,
-                width: 49.62.w,
-                decoration: BoxDecoration(
-                  color: isSelect
-                      ? Color(0xFFD1B1C5)
-                      : AppColors.darkAppBar,
-                  borderRadius: BorderRadius.circular(99.sp),
-                ),
-                child: Center(
-                  child: Image.asset(
-                    notificationIcon,
-                    height: 23.82.h,
-                    width: 23.82.w,
-                    color: isSelect?Color(0xFF3B0225):Color(0xFF4D0330),
-                  ),
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
+        width: MediaQuery.widthOf(context),
+        height: 105.h,
+        decoration: BoxDecoration(
+          color: isSelect
+              ? isDark
+                    ? AppColors.darkSecondary
+                    : AppColors.darkAppBar
+              : null,
+          borderRadius: BorderRadius.circular(isSelect ? 8.sp : 0.sp),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              height: 49.62.h,
+              width: 49.62.w,
+              decoration: BoxDecoration(
+                color: isSelect ? Color(0xFFD1B1C5) : AppColors.darkAppBar,
+                borderRadius: BorderRadius.circular(99.sp),
+              ),
+              child: Center(
+                child: Image.asset(
+                  notificationIcon,
+                  height: 23.82.h,
+                  width: 23.82.w,
+                  color: isSelect ? Color(0xFF3B0225) : Color(0xFF4D0330),
                 ),
               ),
-              Column(
+            ),
+            SizedBox(width: 8.w),
+            Expanded(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -63,19 +65,26 @@ bool isDark = Theme.of(context).brightness == Brightness.dark;
                     text: notificationText,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
+                    maxLines: 2,
+                    softWrap: true,
+                    textOverflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.left,
                   ),
                   CustomTextPrimary(
                     text: notificationTime,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,
                     color: Color(0xFF6F6F6F),
+                    maxLines: 1,
+                    softWrap: false,
+                    textOverflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      );
-    
+      ),
+    );
   }
 }

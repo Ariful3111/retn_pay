@@ -108,6 +108,7 @@ class SupportController extends GetxController {
       subject: issueController.text,
       description: descriptionController.text,
       priority: selectedPriority,
+      category: ticketCategory.value,
     );
 
     response.fold(
