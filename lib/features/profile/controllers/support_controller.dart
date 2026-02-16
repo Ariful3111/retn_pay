@@ -1,30 +1,45 @@
+import 'dart:io';
+
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/profile/models/support_ticket_model.dart';
+import 'package:renter_pay/features/profile/repositories/add_support_repo.dart';
 import 'package:renter_pay/features/profile/repositories/get_support_repo.dart';
 import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
+import 'package:renter_pay/shared/widgets/snackbars/success_snackbar.dart';
 
 class SupportController extends GetxController {
   final GetSupportTicketRepository getSupportTicketRepository;
-  SupportController({required this.getSupportTicketRepository});
+  final AddSupportTicketRepository addSupportTicketRepository;
+  SupportController({
+    required this.getSupportTicketRepository,
+    required this.addSupportTicketRepository,
+  });
   final tickets = Rxn<SupportTicketModel>();
   RxBool isLoading = true.obs;
+  RxBool isSubmitLoading = false.obs;
   RxBool isLoadingMore = false.obs;
   RxInt selectedIndex = 0.obs;
   RxInt filterIndex = 0.obs;
   RxList<bool> isShowFAQ = <bool>[].obs;
   RxBool isCreateTicket = false.obs;
-  RxString ticketCategory = 'Inspection Type*'.obs;
+  RxString ticketCategory = "".obs;
+  RxInt priorityIndex = 1.obs;
   final List<String> ticketCategoryList = ['Payments', 'Repairs', 'Lease'];
   final List<String> supportType = ['FAQ', 'Tickets', 'Contact Support'];
   final List<String> filterList = ['All', 'Open', 'In Progress', 'Resolved'];
   final List<String> _statusValues = ['', 'open', 'in_progress', 'resolved'];
+  final List<String> priorityList = ['Low', 'Medium', 'High'];
+  final List<String> _priorityValues = ['low', 'medium', 'high'];
   RxList<XFile> uploadImage = <XFile>[].obs;
   RxList<int> expandedTickets = <int>[].obs;
   TextEditingController issueController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+
+  String get selectedPriority =>
+      _priorityValues[priorityIndex.value.clamp(0, _priorityValues.length - 1)];
 
   late final Worker _filterWorker;
 
@@ -72,6 +87,41 @@ class SupportController extends GetxController {
     );
     isLoading.value = false;
     isLoadingMore.value = false;
+  }
+
+  Future<void> submitSupportTicket() async {
+    if (issueController.text.isEmpty) {
+      ErrorSnackbar.show(description: 'Please enter your issue.');
+      return;
+    }
+    if (descriptionController.text.isEmpty) {
+      ErrorSnackbar.show(description: 'Please enter your description.');
+      return;
+    }
+    if (ticketCategory.value.isEmpty) {
+      ErrorSnackbar.show(description: 'Please select a category.');
+      return;
+    }
+    isSubmitLoading.value = true;
+    final response = await addSupportTicketRepository.execute(
+      images: uploadImage.map((e) => File(e.path)).toList(),
+      subject: issueController.text,
+      description: descriptionController.text,
+      priority: selectedPriority,
+    );
+
+    response.fold(
+      (error) {
+        ErrorSnackbar.show(description: error.message);
+        isSubmitLoading.value = false;
+      },
+      (data) async {
+        await getSupportTickets();
+        SuccessSnackbar.show(description: 'Ticket submitted successfully.');
+        isCreateTicket.value = !isCreateTicket.value;
+        isSubmitLoading.value = false;
+      },
+    );
   }
 
   final List<String> tableColumn = [

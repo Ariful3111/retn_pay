@@ -13,7 +13,13 @@ class CustomAttachedImage extends StatelessWidget {
   final double? height;
   final double? width;
   final double? verticalPadding;
-  const CustomAttachedImage({super.key, required this.imageList, this.height, this.width, this.verticalPadding});
+  const CustomAttachedImage({
+    super.key,
+    required this.imageList,
+    this.height,
+    this.width,
+    this.verticalPadding,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +32,10 @@ class CustomAttachedImage extends StatelessWidget {
             await UploadImage.pickMultipleImage(allImages: imageList);
           },
           child: Container(
-            padding: EdgeInsets.symmetric(vertical:verticalPadding?? 10.5.h, horizontal: 12.w),
+            padding: EdgeInsets.symmetric(
+              vertical: verticalPadding ?? 10.5.h,
+              horizontal: 12.w,
+            ),
             height: height,
             width: width,
             decoration: BoxDecoration(
