@@ -11,9 +11,11 @@ import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dash
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/dashboard_landlord_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_details_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/lease_agreement_controller.dart';
 import 'package:renter_pay/features/dashboard/repositories/dashboard_metrics_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/create_property_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/property_document_repo.dart';
+import 'package:renter_pay/features/dashboard/repositories/lease_agreement_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/reminder_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/tenant_repositories/rent_notice_repo.dart';
 import 'package:renter_pay/features/home/controllers/property_amenities_controller.dart';
@@ -61,6 +63,15 @@ class DashboardBindings implements Bindings {
     }
     if (!Get.isRegistered<RentNoticeController>()) {
       Get.lazyPut(() => RentNoticeController(rentNoticeRepository: Get.find()));
+    }
+
+    if (!Get.isRegistered<LeaseAgreementRepository>()) {
+      Get.lazyPut(() => LeaseAgreementRepository(getNetwork: Get.find()));
+    }
+    if (!Get.isRegistered<LeaseAgreementController>()) {
+      Get.lazyPut(
+        () => LeaseAgreementController(leaseAgreementRepository: Get.find()),
+      );
     }
 
     if (!Get.isRegistered<PropertyCategoryRepository>()) {
