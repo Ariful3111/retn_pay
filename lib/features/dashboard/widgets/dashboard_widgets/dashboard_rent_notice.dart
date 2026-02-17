@@ -80,7 +80,7 @@ class DashboardRentNotice extends GetWidget<RentNoticeController> {
                             ),
                             SizedBox(width: 13.07.w),
                             CustomTextPrimary(
-                              text: 'Apt 102 Green Street',
+                              text: notice.leaseAgreement?.property?.name ?? '',
                               fontSize: 16.sp,
                               fontWeight: FontWeight.w500,
                             ),

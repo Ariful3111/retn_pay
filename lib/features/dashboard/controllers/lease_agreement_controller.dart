@@ -11,6 +11,7 @@ class LeaseAgreementController extends GetxController {
   final isLoading = true.obs;
 
   Future<void> getLeaseAgreements() async {
+    isLoading.value = true;
     final response = await leaseAgreementRepository.execute(perPage: 15);
     response.fold(
       (error) {

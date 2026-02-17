@@ -1,49 +1,69 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/notice_button_model.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class ActivePropertyContact extends StatelessWidget {
-  const ActivePropertyContact({super.key,});
+  final String name;
+  final String phone;
+  final String description;
+  final String leaseDurationLabel;
+  final String leaseDurationValue;
+  final String imageUrl;
+  final VoidCallback? onChatTap;
+  final bool showChat;
+
+  const ActivePropertyContact({
+    super.key,
+    this.name = 'Ariful Islam',
+    this.phone = '+233844423443334',
+    this.description =
+        'A landlord is an individual or entity that owns property and rents it out to tenants. They are responsible for maintaining the property, ensuring...',
+    this.leaseDurationLabel = 'Lease Duration',
+    this.leaseDurationValue = '23 Aug 2025',
+    this.onChatTap,
+    this.showChat = true,
+    this.imageUrl = '',
+  });
 
   @override
   Widget build(BuildContext context) {
-   bool isDark = Theme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
+    final leaseText = leaseDurationValue.trim().isEmpty
+        ? '23 Aug 2025'
+        : leaseDurationValue;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 8.h,),
+        SizedBox(height: 8.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Image.asset(ImagesPath.house, height: 43.58.h, width: 43.58.w),
+            CachedNetworkImage(
+              imageUrl: imageUrl,
+              height: 43.58.h,
+              width: 43.58.w,
+            ),
             SizedBox(width: 13.07.w),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomTextPrimary(
-                  text: 'Ariful Islam',
+                  text: name,
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w500,
                 ),
-                CustomTextSecondary(
-                  text: '+233844423443334',
-                  fontWeight: FontWeight.w400,
-                ),
+                CustomTextSecondary(text: phone, fontWeight: FontWeight.w400),
               ],
             ),
           ],
         ),
-        SizedBox(height: 20.h,),
-        CustomTextSecondary(
-          text:
-              'A landlord is an individual or entity that owns property and rents it out to tenants. They are responsible for maintaining the property, ensuring...',
-          fontWeight: FontWeight.w400,
-        ),
+        SizedBox(height: 20.h),
+        CustomTextSecondary(text: description, fontWeight: FontWeight.w400),
         SizedBox(height: 20.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,27 +71,30 @@ class ActivePropertyContact extends StatelessWidget {
             Column(
               children: [
                 CustomTextSecondary(
-                  text: 'Lease Duration',
+                  text: leaseDurationLabel,
                   fontWeight: FontWeight.w400,
                   color: AppColors.lightText,
                 ),
                 SizedBox(height: 5.h),
                 CustomTextSecondary(
                   fontSize: 20.sp,
-                  text: '23 Aug 2025',
-                  color:isDark?AppColors.darkSecondaryText :AppColors.darkContainer,
+                  text: leaseText,
+                  color: isDark
+                      ? AppColors.darkSecondaryText
+                      : AppColors.darkContainer,
                 ),
               ],
             ),
-            NoticeButtonModel(
-              onTap: () {},
-              icon: IconsPath.dashboardChat,
-              text: 'Chat',
-              borderColorDark: AppColors.secondaryTextColor,
-              shadowColor: AppColors.buttonShadowColor.withValues(
-                alpha: 0.06,
+            if (showChat)
+              NoticeButtonModel(
+                onTap: onChatTap ?? () {},
+                icon: IconsPath.dashboardChat,
+                text: 'Chat',
+                borderColorDark: AppColors.secondaryTextColor,
+                shadowColor: AppColors.buttonShadowColor.withValues(
+                  alpha: 0.06,
+                ),
               ),
-            ),
           ],
         ),
       ],
