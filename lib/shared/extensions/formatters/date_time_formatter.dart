@@ -18,6 +18,26 @@ extension DateTimeFormatterX on String? {
     return DateFormat('d MMM, yyyy').format(parsed);
   }
 
+  String toMMMddyyyyHmmaa({String fallback = ''}) {
+    final raw = this;
+    if (raw == null) return fallback;
+    final value = raw.replaceAll('`', '').trim();
+    if (value.isEmpty || value.toLowerCase() == 'null') return fallback;
+
+    DateTime? parsed;
+    try {
+      parsed = DateFormat('yyyy-MM-dd HH:mm:ss').parse(value, true);
+    } catch (_) {
+      parsed = DateTime.tryParse(value);
+    }
+    if (parsed == null) return fallback.isEmpty ? value : fallback;
+
+    final local = parsed.isUtc ? parsed.toLocal() : parsed;
+    final date = DateFormat('MMM d, yyyy').format(local);
+    final time = DateFormat('h:mm a').format(local).toLowerCase();
+    return '$date - $time';
+  }
+
   String toTimeAgo({String fallback = ''}) {
     final raw = this;
     if (raw == null) return fallback;

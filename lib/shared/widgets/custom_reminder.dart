@@ -9,22 +9,24 @@ class CustomReminder extends StatelessWidget {
   final String date;
   final String detail;
   final String? icon;
-  final EdgeInsets ? margin;
-  final EdgeInsets ? padding;
+  final EdgeInsets? margin;
+  final EdgeInsets? padding;
   const CustomReminder({
     super.key,
     required this.title,
     required this.date,
     required this.detail,
-    this.icon, this.margin, this.padding,
+    this.icon,
+    this.margin,
+    this.padding,
   });
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      padding:padding?? EdgeInsets.all(13.07.r),
-      margin:margin?? EdgeInsets.only(bottom: 13.07.h),
+      padding: padding ?? EdgeInsets.all(13.07.r),
+      margin: margin ?? EdgeInsets.only(bottom: 13.07.h),
       height: 145.86.h,
       width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
@@ -50,30 +52,38 @@ class CustomReminder extends StatelessWidget {
             width: 26.15.w,
           ),
           SizedBox(width: 14.16.w),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start ,
-            children: [
-              CustomTextSecondary(
-                text: title ,
-                color: isDark ? AppColors.darkAppBar : AppColors.darkContainer,
-              ),
-              SizedBox(height: 5.h,),
-              Expanded(
-                child: CustomTextSecondary(
-                  text:
-                      detail,
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400, 
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomTextSecondary(
+                  text: title,
+                  color: isDark
+                      ? AppColors.darkAppBar
+                      : AppColors.darkContainer,
+                  maxLines: 1,
+                  textOverflow: TextOverflow.ellipsis,
                 ),
-              ),
-              SizedBox(height: 8.71.h),
-              CustomTextSecondary(
-                text: date,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-                color: AppColors.primaryColorDark,
-              ),
-            ],
+                SizedBox(height: 5.h),
+                Expanded(
+                  child: CustomTextSecondary(
+                    text: detail,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    maxLines: 2,
+                    textOverflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                CustomTextSecondary(
+                  text: date,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.primaryColorDark,
+                  maxLines: 1,
+                  textOverflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
           ),
         ],
       ),

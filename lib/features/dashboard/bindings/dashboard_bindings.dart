@@ -4,6 +4,7 @@ import 'package:renter_pay/features/dashboard/controllers/landlord_controller/ad
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/application_management_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/landlord_calender_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_document_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/reminder_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/services_vendor_controller/booking_management_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/services_vendor_controller/service_vendor_dashboard_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
@@ -13,6 +14,7 @@ import 'package:renter_pay/features/dashboard/controllers/landlord_controller/pr
 import 'package:renter_pay/features/dashboard/repositories/dashboard_metrics_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/create_property_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/property_document_repo.dart';
+import 'package:renter_pay/features/dashboard/repositories/reminder_repo.dart';
 import 'package:renter_pay/features/home/controllers/property_amenities_controller.dart';
 import 'package:renter_pay/features/home/controllers/property_category_controller.dart';
 import 'package:renter_pay/features/home/repositories/property_amenities_repo.dart';
@@ -44,6 +46,13 @@ class DashboardBindings implements Bindings {
     Get.lazyPut(
       () => DashboardMetricController(dashboardMetricsRepository: Get.find()),
     );
+
+    if (!Get.isRegistered<ReminderRepository>()) {
+      Get.lazyPut(() => ReminderRepository(getNetwork: Get.find()));
+    }
+    if (!Get.isRegistered<ReminderController>()) {
+      Get.lazyPut(() => ReminderController(reminderRepository: Get.find()));
+    }
 
     if (!Get.isRegistered<PropertyCategoryRepository>()) {
       Get.lazyPut(() => PropertyCategoryRepository(getNetwork: Get.find()));

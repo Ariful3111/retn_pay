@@ -1,7 +1,7 @@
 {
   "error": false,
   "code": 200,
-  "message": "Notifications fetched successfully",
+  "message": "Reminders fetched successfully",
   "data": {
     "data": [
       {
@@ -16,10 +16,10 @@
             "support_ticket_id": 5
           }
         },
-        "is_read": false,
-        "read_at": null,
+        "is_read": true,
+        "read_at": "2026-02-16T12:47:21.000000Z",
         "created_at": "2026-02-16T11:10:53.000000Z",
-        "updated_at": "2026-02-16T11:10:53.000000Z"
+        "updated_at": "2026-02-16T12:47:21.000000Z"
       },
       {
         "id": "019c6625-61c3-7105-83db-23aac05f23b2",
@@ -33,10 +33,10 @@
             "support_ticket_id": 5
           }
         },
-        "is_read": false,
-        "read_at": null,
+        "is_read": true,
+        "read_at": "2026-02-16T12:47:21.000000Z",
         "created_at": "2026-02-16T11:10:51.000000Z",
-        "updated_at": "2026-02-16T11:10:51.000000Z"
+        "updated_at": "2026-02-16T12:47:21.000000Z"
       },
       {
         "id": "019c6624-b5d9-72a3-9edb-10572665cb6b",
@@ -50,10 +50,10 @@
             "support_ticket_id": 4
           }
         },
-        "is_read": false,
-        "read_at": null,
+        "is_read": true,
+        "read_at": "2026-02-16T12:47:21.000000Z",
         "created_at": "2026-02-16T11:10:07.000000Z",
-        "updated_at": "2026-02-16T11:10:07.000000Z"
+        "updated_at": "2026-02-16T12:47:21.000000Z"
       },
       {
         "id": "019c6624-add3-70b1-9ff2-55ff3c2c5357",
@@ -67,10 +67,10 @@
             "support_ticket_id": 4
           }
         },
-        "is_read": false,
-        "read_at": null,
+        "is_read": true,
+        "read_at": "2026-02-16T12:47:21.000000Z",
         "created_at": "2026-02-16T11:10:05.000000Z",
-        "updated_at": "2026-02-16T11:10:05.000000Z"
+        "updated_at": "2026-02-16T12:47:21.000000Z"
       },
       {
         "id": "019c6622-8a2f-7158-becc-93c78703699c",
@@ -84,10 +84,10 @@
             "support_ticket_id": 3
           }
         },
-        "is_read": false,
-        "read_at": null,
+        "is_read": true,
+        "read_at": "2026-02-16T12:47:21.000000Z",
         "created_at": "2026-02-16T11:07:45.000000Z",
-        "updated_at": "2026-02-16T11:07:45.000000Z"
+        "updated_at": "2026-02-16T12:47:21.000000Z"
       },
       {
         "id": "019c6622-833a-718c-abb3-a95b64b5f105",
@@ -101,10 +101,10 @@
             "support_ticket_id": 3
           }
         },
-        "is_read": false,
-        "read_at": null,
+        "is_read": true,
+        "read_at": "2026-02-16T12:47:21.000000Z",
         "created_at": "2026-02-16T11:07:43.000000Z",
-        "updated_at": "2026-02-16T11:07:43.000000Z"
+        "updated_at": "2026-02-16T12:47:21.000000Z"
       },
       {
         "id": "019c6622-1da8-737a-a7b2-95b0a4214620",
@@ -118,10 +118,10 @@
             "support_ticket_id": 2
           }
         },
-        "is_read": false,
-        "read_at": null,
+        "is_read": true,
+        "read_at": "2026-02-16T12:47:21.000000Z",
         "created_at": "2026-02-16T11:07:17.000000Z",
-        "updated_at": "2026-02-16T11:07:17.000000Z"
+        "updated_at": "2026-02-16T12:47:21.000000Z"
       },
       {
         "id": "019c6622-0dec-737a-ae52-ba340554eef1",
@@ -135,10 +135,10 @@
             "support_ticket_id": 2
           }
         },
-        "is_read": false,
-        "read_at": null,
+        "is_read": true,
+        "read_at": "2026-02-16T12:47:21.000000Z",
         "created_at": "2026-02-16T11:07:13.000000Z",
-        "updated_at": "2026-02-16T11:07:13.000000Z"
+        "updated_at": "2026-02-16T12:47:21.000000Z"
       },
       {
         "id": "019c6039-286c-72eb-bc31-9993fe10b93c",
@@ -152,10 +152,10 @@
             "support_ticket_id": 1
           }
         },
-        "is_read": false,
-        "read_at": null,
+        "is_read": true,
+        "read_at": "2026-02-16T12:47:21.000000Z",
         "created_at": "2026-02-15T07:34:44.000000Z",
-        "updated_at": "2026-02-15T07:34:44.000000Z"
+        "updated_at": "2026-02-16T12:47:21.000000Z"
       },
       {
         "id": "019c6039-1b0a-70d4-9e37-a33003885f0f",
@@ -169,15 +169,15 @@
             "support_ticket_id": 1
           }
         },
-        "is_read": false,
-        "read_at": null,
+        "is_read": true,
+        "read_at": "2026-02-16T12:47:21.000000Z",
         "created_at": "2026-02-15T07:34:41.000000Z",
-        "updated_at": "2026-02-15T07:34:41.000000Z"
+        "updated_at": "2026-02-16T12:47:21.000000Z"
       }
     ],
     "links": {
-      "first": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=1",
-      "last": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=1",
+      "first": "https://renter-pay.mahfuz.click/api/v1/reminders?per_page=20&page=1",
+      "last": "https://renter-pay.mahfuz.click/api/v1/reminders?per_page=20&page=1",
       "prev": null,
       "next": null
     },
@@ -193,7 +193,7 @@
           "active": false
         },
         {
-          "url": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=1",
+          "url": "https://renter-pay.mahfuz.click/api/v1/reminders?per_page=20&page=1",
           "label": "1",
           "page": 1,
           "active": true
@@ -205,7 +205,7 @@
           "active": false
         }
       ],
-      "path": "https://renter-pay.mahfuz.click/api/v1/notification",
+      "path": "https://renter-pay.mahfuz.click/api/v1/reminders",
       "per_page": 20,
       "to": 10,
       "total": 10
