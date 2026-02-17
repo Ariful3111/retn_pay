@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/dashboard_metric_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/reminder_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_item.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_key_features.dart';
@@ -62,7 +63,16 @@ class DashboardProperties extends StatelessWidget {
         DashboardReminder(),
         Obx(
           () => SizedBox(
-            height: dashboardController.reminderList.isEmpty ? 0 : 20.h,
+            height:
+                (Get.find<ReminderController>()
+                        .reminders
+                        .value
+                        ?.data
+                        ?.data
+                        ?.isEmpty ??
+                    true)
+                ? 0
+                : 20.h,
           ),
         ),
         if (userIndex == 1) PropertyPromotion(),

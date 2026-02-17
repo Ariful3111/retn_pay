@@ -177,45 +177,6 @@ class DashboardController extends GetxController {
         .where((user) => user['allowedUser'].contains(userIndex))
         .toList();
   }
-
-  RxList<Map<String, dynamic>> reminderList = [
-    {
-      'title': 'Inspection Reminder',
-      'detail':
-          'Your lease for Harborview Apartments\nexpires soon — renew online to avoid\ninterruption.',
-      'date': '12 Aug, 2023 at 10:00 AM',
-    },
-    {
-      'title': 'Rent Due Reminder',
-      'detail':
-          'Your rent for Maplewood Apartments\nis due in 3 days. Please ensure payment\nis made on time.',
-      'date': '15 Aug, 2023 at 09:00 AM',
-    },
-    {
-      'title': 'Maintenance Reminder',
-      'detail':
-          'Scheduled maintenance for Pinecrest\nCondominiums is coming up next week.\nPlease prepare accordingly.',
-      'date': '20 Aug, 2023 at 11:00 AM',
-    },
-    {
-      'title': 'Inspection Reminder',
-      'detail':
-          'Your lease for Harborview Apartments\nexpires soon — renew online to avoid\ninterruption.',
-      'date': '12 Aug, 2023 at 10:00 AM',
-    },
-    {
-      'title': 'Rent Due Reminder',
-      'detail':
-          'Your rent for Maplewood Apartments\nis due in 3 days. Please ensure payment\nis made on time.',
-      'date': '15 Aug, 2023 at 09:00 AM',
-    },
-    {
-      'title': 'Maintenance Reminder',
-      'detail':
-          'Scheduled maintenance for Pinecrest\nCondominiums is coming up next week.\nPlease prepare accordingly.',
-      'date': '20 Aug, 2023 at 11:00 AM',
-    },
-  ].obs;
   late DateTime today;
   late DateTime firstDay;
   late DateTime lastDay;
