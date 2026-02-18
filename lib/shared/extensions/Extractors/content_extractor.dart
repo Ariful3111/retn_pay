@@ -56,3 +56,22 @@ extension ContentExtractor on String {
     return blocks;
   }
 }
+
+extension NotificationSectionTitleX on DateTime {
+  String toNotificationSectionTitle() {
+    final now = DateTime.now();
+    final nowDate = DateTime(now.year, now.month, now.day);
+    final createdDate = DateTime(year, month, day);
+    final dayDiff = nowDate.difference(createdDate).inDays;
+
+    if (dayDiff <= 0) return 'Today';
+    if (dayDiff == 1) return 'Yesterday';
+    if (dayDiff < 30) return '${dayDiff}d ago';
+
+    final months = (dayDiff / 30).floor();
+    if (months < 12) return '${months}month ago';
+
+    final years = (dayDiff / 365).floor();
+    return '${years}y ago';
+  }
+}

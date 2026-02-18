@@ -14,4 +14,13 @@ class URLService {
       throw Exception('Could not launch $url');
     }
   }
+
+  static Future<bool> launchDialpad({required String phone}) {
+    final value = phone.trim();
+    if (value.isEmpty) return Future.value(false);
+    return launchUrl(
+      Uri(scheme: 'tel', path: value),
+      mode: LaunchMode.externalApplication,
+    );
+  }
 }

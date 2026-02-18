@@ -8,76 +8,55 @@ import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
+import 'package:renter_pay/shared/extensions/formatters/date_time_formatter.dart';
 
-class NotificationView extends StatelessWidget {
+class NotificationView extends GetView<NotificationController> {
   const NotificationView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    NotificationController notificationController = Get.find();
     return CustomContainer(
-      padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
-      child: ListView(
-        children: [
-          Row(
-            children: [
-              CustomAppbarLeading(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              SizedBox(width: 10.w),
-              CustomAppbar(title: 'Notification'),
-              Spacer(),
-              NotificationAppbarActions(),
-            ],
-          ),
-          SizedBox(height: 20.h),
-          CustomTextPrimary(text: 'Today', fontSize: 20.sp),
-          SizedBox(height: 16.h),
-          ListView.builder(
-            itemCount: notificationController.iconList.length,
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemBuilder: (_, index) {
-              return Obx(() {
-                bool selectItem =
-                    notificationController.isSelected.value == index;
-                return NotificationItem(
-                  notificationIcon: notificationController.iconList[index],
-                  notificationText: notificationController.textList[index],
-                  notificationTime: notificationController.timeList[index],
-                  onTap: () {
-                    notificationController.selectItem(index);
-                  },
-                  isSelect: selectItem,
-                );
-              });
-            },
-          ),
-          CustomTextPrimary(text: 'Yesterday', fontSize: 20.sp),
-          ListView.builder(
-            itemCount: notificationController.iconList.length,
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemBuilder: (_, index) {
-              return Obx(() {
-                bool selectItem =
-                    notificationController.isSelected.value == index;
-                return NotificationItem(
-                  notificationIcon: notificationController.iconList[index],
-                  notificationText: notificationController.textList[index],
-                  notificationTime: notificationController.timeList[index],
-                  onTap: () {
-                    notificationController.selectItem(index);
-                  },
-                  isSelect: selectItem,
-                );
-              });
-            },
-          ),
-        ],
-      ),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+      child: Obx(() {
+        return controller.isLoading.value
+            ? Center(child: ButtonLoading())
+            : ListView(
+                controller: controller.scrollController,
+                children: [
+                  Row(
+                    children: [
+                      CustomAppbarLeading(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      SizedBox(width: 10.w),
+                      CustomAppbar(title: 'Notification'),
+                      Spacer(),
+                      NotificationAppbarActions(),
+                    ],
+                  ),
+                  ...controller.notificationSections.expand(
+                    (section) => [
+                      SizedBox(height: 20.h),
+                      CustomTextPrimary(text: section.title, fontSize: 20.sp),
+                      SizedBox(height: 16.h),
+                      ...section.items.map(
+                        (item) => NotificationItem(
+                          notificationIcon: controller.iconList[0],
+                          notificationText: item.data?.body ?? '',
+                          notificationTime: (item.createdAt).toTimeAgo(),
+                          onTap: () {},
+                          isSelect: item.isRead == false,
+                        ),
+                      ),
+                    ],
+                  ),
+                  if (controller.isLoadingMore.value) ButtonLoading(),
+                ],
+              );
+      }),
     );
   }
 }

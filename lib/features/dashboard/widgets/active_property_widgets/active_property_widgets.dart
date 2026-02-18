@@ -6,13 +6,12 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/active_property_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
-class ActivePropertyWidgets extends StatelessWidget {
+class ActivePropertyWidgets extends GetWidget<ActivePropertyController> {
   const ActivePropertyWidgets({super.key});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    ActivePropertyController controller = Get.find();
     return Obx(
       () => Column(
         children: List.generate(controller.title.length, (index) {
@@ -21,7 +20,10 @@ class ActivePropertyWidgets extends StatelessWidget {
             key: ValueKey(index),
             children: [
               Container(
-                padding: EdgeInsets.symmetric(vertical: 17.43.h,horizontal: 16.w),
+                padding: EdgeInsets.symmetric(
+                  vertical: 17.43.h,
+                  horizontal: 16.w,
+                ),
                 decoration: BoxDecoration(
                   color: isDark
                       ? AppColors.darkSecondary

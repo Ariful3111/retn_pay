@@ -25,34 +25,44 @@ class SupportView extends StatelessWidget {
               colors: [AppColors.darkPrimary, AppColors.darkPrimary],
             )
           : AppColors.userBackground,
-      child: ListView(
-        children: [
-          Row(
-            children: [
-              CustomAppbarLeading(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              SizedBox(width: 8.w),
-              CustomAppbar(title: 'Support'),
-            ],
-          ),
-          SizedBox(height: 24.h),
-          SupportTypes(),
-          SizedBox(height: 24.h),
-          Obx(
-            () => Column(
+      child: NotificationListener<ScrollNotification>(
+        onNotification: (notification) {
+          if (supportController.selectedIndex.value == 1 &&
+              !supportController.isCreateTicket.value &&
+              notification.metrics.extentAfter < 200) {
+            supportController.getSupportTickets(loadMore: true);
+          }
+          return false;
+        },
+        child: ListView(
+          children: [
+            Row(
               children: [
-                if (supportController.selectedIndex.value == 0) SupportFaq(),
-                if (supportController.selectedIndex.value == 1)
-                  SupportTickets(),
-                if (supportController.selectedIndex.value == 2)
-                  ContactSupport(),
+                CustomAppbarLeading(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                SizedBox(width: 8.w),
+                CustomAppbar(title: 'Support'),
               ],
             ),
-          ),
-        ],
+            SizedBox(height: 24.h),
+            SupportTypes(),
+            SizedBox(height: 24.h),
+            Obx(
+              () => Column(
+                children: [
+                  if (supportController.selectedIndex.value == 0) SupportFaq(),
+                  if (supportController.selectedIndex.value == 1)
+                    SupportTickets(),
+                  if (supportController.selectedIndex.value == 2)
+                    ContactSupport(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
