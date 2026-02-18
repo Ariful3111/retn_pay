@@ -1,574 +1,144 @@
 {
   "error": false,
   "code": 200,
-  "message": "Lease agreements retrieved successfully",
+  "message": "Maintenance requests retrieved successfully",
   "data": {
     "data": [
       {
-        "id": 3,
-        "tenant_id": 74,
-        "landlord_id": 63,
-        "property_id": 100,
-        "property_unit_id": 175,
-        "status": "draft",
-        "start_date": "2024-12-11T18:00:00.000000Z",
-        "end_date": "2026-12-11T18:00:00.000000Z",
-        "rent_amount": "450.00",
-        "currency": "AUD",
-        "currency_id": 1,
-        "payment_frequency": "monthly",
-        "rent_type_id": 3,
-        "bond_amount": 450,
-        "currency_detail": {
-          "id": 1,
-          "code": "AUD",
-          "name": "Australian Dollar",
-          "symbol": "A$"
-        },
-        "rent_type": {
-          "id": 3,
-          "name": "Monthly",
-          "slug": "monthly"
-        },
-        "signed_at": null,
-        "terms": "No smoking indoors. Pets allowed upon approval.",
-        "rejection_reason": null,
-        "agreement_details": {
-          "basic_terms": {
-            "agreement": {
-              "signed_date": "2025-08-12"
-            },
-            "rental_provider": {
-              "full_name_or_company_name": "Sadman Sakib",
-              "abn": "123456789",
-              "address": "125 Greenview Avenue, Suite 302, Brookfield, NY 11205",
-              "postcode": "1234"
-            },
-            "rental_provider_contact": {
-              "address": "135 Greenview Avenue, Suite 302, Brookfield, NY 11205",
-              "postcode": "1234",
-              "phone_number": "123456789",
-              "email_address": "demo123@gmail.com"
-            },
-            "agent": {
-              "full_name": "Gabriel Maghales",
-              "address": "125 Greenview Avenue, Suite 302, Brookfield, NY 11205",
-              "postcode": "1234",
-              "phone_number": "123456789",
-              "email_address": "demo123@gmail.com",
-              "abn": "123456789"
-            },
-            "agreement_term": {
-              "term_type": "fixed",
-              "fixed_term": {
-                "start_date": "2024-12-12",
-                "end_date": "2026-12-12"
-              },
-              "periodic_term": {
-                "start_date": null
-              }
-            },
-            "rent": {
-              "amount": 450,
-              "currency": "AUD",
-              "frequency": "monthly",
-              "rent_due_date": "2025-08-12"
-            },
-            "bond": {
-              "amount": 450,
-              "payment_due_date": "2025-08-12"
-            },
-            "renters": [
-              {
-                "full_name": "Alphonso Davies",
-                "address": "125 Greenview Avenue, Suite 302, Brookfield, NY 11205",
-                "postcode": "1234",
-                "phone_number": "123456789",
-                "email_address": "alphonsodavies123@gmail.com"
-              },
-              {
-                "full_name": "Dean Housen",
-                "address": "125 Greenview Avenue, Suite 302, Brookfield, NY 11205",
-                "postcode": "1234",
-                "phone_number": "2345826349",
-                "email_address": "dean@gmail.com"
-              },
-              {
-                "full_name": "Kenan Yildiz",
-                "address": "125 Greenview Avenue, Suite 302, Brookfield, NY 11205",
-                "postcode": "1234",
-                "phone_number": "496846293",
-                "email_address": "yildiz@gmail.com"
-              },
-              {
-                "full_name": "Dominic Szoboszlai",
-                "address": "125 Greenview Avenue, Suite 302, Brookfield, NY 11205",
-                "postcode": "1234",
-                "phone_number": "498463785",
-                "email_address": "dominic@gmail.com"
-              }
-            ]
-          },
-          "standard_terms": {
-            "rental_payment_method": "RentChip",
-            "late_payment_policy": {
-              "purpose": "This policy outlines the terms and conditions regarding late rental payments to ensure fair and consistent treatment for all tenants and timely collection of rent.",
-              "rent_due_date": {
-                "frequency": "fortnight",
-                "time_cutoff": "09:01",
-                "late_if_after_cutoff": true
-              },
-              "late_fees": {
-                "initial_late_fee": 30,
-                "initial_late_fee_applies_after_days": 1,
-                "additional_daily_fee": 15,
-                "maximum_additional_fee_period_days": 30
-              },
-              "communication": "Tenants are encouraged to communicate with management before the rent due date if they anticipate difficulty in making payment. Failure to notify may result in immediate enforcement of late fees and other actions.",
-              "returned_payments": {
-                "returned_payment_fee": 35,
-                "additional_late_fees_apply": true
-              },
-              "non_payment_and_eviction": {
-                "days_before_action": 14,
-                "actions": [
-                  "issue_notice_to_vacate",
-                  "issue_notice_to_remedy",
-                  "commence_eviction_proceedings_under_tenancy_act"
-                ]
-              },
-              "application_of_payments": "All payments received will first be applied to outstanding late fees or other charges before being applied to rent.",
-              "amendments": "This policy may be amended by management with proper notice provided to tenants in writing."
-            },
-            "emergency_contact": {
-              "name": "Sadman Sakib",
-              "phone_number": "123456789",
-              "email_address": "sadmansakib123@gmail.com"
-            },
-            "renter_contact_consents": [
-              {
-                "renter_index": 1,
-                "consent_given": true,
-                "contact_details": "Demo Data..."
-              },
-              {
-                "renter_index": 2,
-                "consent_given": true,
-                "contact_details": "Demo Data..."
-              },
-              {
-                "renter_index": 3,
-                "consent_given": true,
-                "contact_details": "Demo Data..."
-              },
-              {
-                "renter_index": 4,
-                "consent_given": true,
-                "contact_details": "Demo Data..."
-              }
-            ]
-          },
-          "signatures": {
-            "rental_providers": [
-              {
-                "provider_index": 1,
-                "signature": null,
-                "signed_date": null
-              },
-              {
-                "provider_index": 2,
-                "signature": null,
-                "signed_date": null
-              }
-            ],
-            "renters": [
-              {
-                "renter_index": 1,
-                "signature": "data:image/png;base64,SIGNATURE_DATA_RENTER_1",
-                "signed_date": "2024-12-12"
-              },
-              {
-                "renter_index": 2,
-                "signature": "data:image/png;base64,SIGNATURE_DATA_RENTER_2",
-                "signed_date": "2024-12-12"
-              },
-              {
-                "renter_index": 3,
-                "signature": "data:image/png;base64,SIGNATURE_DATA_RENTER_3",
-                "signed_date": "2024-12-12"
-              },
-              {
-                "renter_index": 4,
-                "signature": "data:image/png;base64,SIGNATURE_DATA_RENTER_4",
-                "signed_date": "2024-12-12"
-              }
-            ]
-          }
-        },
-        "inclusions": "Dishwasher, Reverse cycle air conditioner, 2x sets of keys",
-        "keys_count": 2,
+        "id": 1,
+        "tenant_id": 67,
+        "property_id": 102,
+        "property_unit_id": 173,
+        "title": "Leaky Faucet",
+        "description": "Kitchen faucet is leaking",
+        "urgency": "high",
+        "status": "pending",
+        "images": [
+          "https://renter-pay.test/storage/maintenance/4FKg9kzGIu8TfzNorMKpnP93HUVaOmSpm4svhBQA.jpg"
+        ],
+        "preferred_date": "2026-02-22",
+        "preferred_time_slots": ["8am_12pm", "12pm_5pm"],
+        "preferred_time_other": null,
         "property": {
-          "id": 100,
-          "landlord_id": 63,
-          "property_type_id": 8,
-          "title": "Penthouse in Newcastle - Park Road",
-          "name": "Penthouse in Newcastle - Park Road",
-          "description": "Modern Penthouse located in Newcastle. Features 2 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
-          "address": "199/172 Pitt Street",
-          "city": "Newcastle",
+          "id": 102,
+          "landlord_id": 67,
+          "property_type_id": 1,
+          "title": "Modern Apartment",
+          "name": "Modern Apartment",
+          "description": "Beautiful modern apartment",
+          "address": "123 Main St",
+          "city": "Sydney",
           "state": "NSW",
-          "postal_code": "6098",
+          "postal_code": "2000",
           "country": "Australia",
-          "latitude": "-32.67830000",
-          "longitude": "151.54170000",
-          "property_type": {
-            "id": 8,
-            "name": "Penthouse",
-            "slug": "penthouse",
-            "image": "https://picsum.photos/seed/penthouse/800/600"
-          },
+          "latitude": null,
+          "longitude": null,
           "bedrooms": 2,
           "bathrooms": 2,
-          "parking_spaces": 1,
+          "parking_spaces": null,
           "land_size": null,
-          "building_size": "80.00",
-          "year_built": 2003,
+          "building_size": null,
+          "year_built": null,
           "status": "active",
-          "is_verified": true,
+          "is_verified": false,
           "is_in_person_inspection_available": true,
           "is_virtual_inspection_available": true,
           "is_favourite": false,
-          "features": [
-            "Built-in wardrobes and ample storage in all bedrooms.",
-            "Dedicated study or home office space with built-in desk.",
-            "Close to public transport, schools, and local shops."
-          ],
-          "rating": "3.70",
-          "rating_count": 10,
+          "features": ["features1", "features2"],
+          "rating": "0.00",
+          "rating_count": 0,
           "units": [
             {
-              "id": 176,
-              "property_id": 100,
-              "unit_number": "Unit 2",
-              "unit_name": "Penthouse 2",
-              "rent_amount": "13890.00",
+              "id": 173,
+              "property_id": 102,
+              "unit_number": "Unit 101",
+              "unit_name": null,
+              "rent_amount": "1500.00",
               "rent_type": {
-                "id": 3,
-                "name": "Monthly",
-                "slug": "monthly",
-                "rent_days": 30
+                "id": 1,
+                "name": "Daily",
+                "slug": "daily",
+                "rent_days": 1
               },
               "currency": {
                 "id": 1,
                 "code": "AUD",
                 "name": "Australian Dollar",
                 "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+                "logo": "https://renter-pay.test/images/currency.png",
                 "type": "fiat"
               },
-              "display_rent_amount": 13890,
+              "display_rent_amount": 1500,
               "display_currency": {
                 "id": 1,
                 "code": "AUD",
                 "name": "Australian Dollar",
                 "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+                "logo": "https://renter-pay.test/images/currency.png",
                 "type": "fiat"
               },
-              "status": "occupied",
+              "status": "available",
               "bedrooms": 2,
-              "bathrooms": 2,
-              "size": "26.67",
-              "description": "Spacious Penthouse with modern fixtures"
-            },
-            {
-              "id": 177,
-              "property_id": 100,
-              "unit_number": "Unit 3",
-              "unit_name": "Penthouse 3",
-              "rent_amount": "27050.00",
-              "rent_type": {
-                "id": 3,
-                "name": "Monthly",
-                "slug": "monthly",
-                "rent_days": 30
-              },
-              "currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "display_rent_amount": 27050,
-              "display_currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "status": "maintenance",
-              "bedrooms": 2,
-              "bathrooms": 2,
-              "size": "26.67",
-              "description": "Spacious Penthouse with modern fixtures"
-            },
-            {
-              "id": 175,
-              "property_id": 100,
-              "unit_number": "Unit 1",
-              "unit_name": "Penthouse 1",
-              "rent_amount": "24980.00",
-              "rent_type": {
-                "id": 4,
-                "name": "Yearly",
-                "slug": "yearly",
-                "rent_days": 365
-              },
-              "currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "display_rent_amount": 24980,
-              "display_currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat"
-              },
-              "status": "reserved",
-              "bedrooms": 2,
-              "bathrooms": 2,
-              "size": "26.67",
-              "description": "Spacious Penthouse with modern fixtures"
+              "bathrooms": 1,
+              "size": "2400.00",
+              "description": null
             }
           ],
-          "images": [
-            {
-              "id": 465,
-              "property_id": 100,
-              "image_path": "https://picsum.photos/1200/800?random=1001",
-              "type": "image",
-              "order": 1,
-              "is_primary": true,
-              "caption": "Bathroom",
-              "created_at": "2026-02-10T20:40:04.000000Z",
-              "updated_at": "2026-02-10T20:40:04.000000Z"
-            },
-            {
-              "id": 466,
-              "property_id": 100,
-              "image_path": "https://picsum.photos/1200/800?random=1002",
-              "type": "image",
-              "order": 2,
-              "is_primary": false,
-              "caption": "Kitchen",
-              "created_at": "2026-02-10T20:40:04.000000Z",
-              "updated_at": "2026-02-10T20:40:04.000000Z"
-            },
-            {
-              "id": 467,
-              "property_id": 100,
-              "image_path": "https://picsum.photos/1200/800?random=1003",
-              "type": "image",
-              "order": 3,
-              "is_primary": false,
-              "caption": "Exterior",
-              "created_at": "2026-02-10T20:40:04.000000Z",
-              "updated_at": "2026-02-10T20:40:04.000000Z"
-            },
-            {
-              "id": 468,
-              "property_id": 100,
-              "image_path": "https://picsum.photos/1200/800?random=1004",
-              "type": "image",
-              "order": 4,
-              "is_primary": false,
-              "caption": "Kitchen",
-              "created_at": "2026-02-10T20:40:04.000000Z",
-              "updated_at": "2026-02-10T20:40:04.000000Z"
-            },
-            {
-              "id": 469,
-              "property_id": 100,
-              "image_path": "https://picsum.photos/1200/800?random=1005",
-              "type": "image",
-              "order": 5,
-              "is_primary": false,
-              "caption": "View",
-              "created_at": "2026-02-10T20:40:04.000000Z",
-              "updated_at": "2026-02-10T20:40:04.000000Z"
-            },
-            {
-              "id": 470,
-              "property_id": 100,
-              "image_path": "https://picsum.photos/1200/800?random=1006",
-              "type": "image",
-              "order": 6,
-              "is_primary": false,
-              "caption": "Bedroom",
-              "created_at": "2026-02-10T20:40:04.000000Z",
-              "updated_at": "2026-02-10T20:40:04.000000Z"
-            }
-          ],
-          "amenities": [
-            {
-              "id": 630,
-              "property_id": 100,
-              "amenity_type_id": 5,
-              "amenity_type": {
-                "id": 5,
-                "name": "Built-in Wardrobes",
-                "slug": "built-in-wardrobes",
-                "icon": "https://picsum.photos/seed/wardrobes/200",
-                "description": "Built-in wardrobe storage"
-              },
-              "created_at": "2026-02-10T20:40:04.000000Z",
-              "updated_at": "2026-02-10T20:40:04.000000Z"
-            },
-            {
-              "id": 631,
-              "property_id": 100,
-              "amenity_type_id": 6,
-              "amenity_type": {
-                "id": 6,
-                "name": "Furnished",
-                "slug": "furnished",
-                "icon": "https://picsum.photos/seed/furnished/200",
-                "description": "Fully or partially furnished"
-              },
-              "created_at": "2026-02-10T20:40:04.000000Z",
-              "updated_at": "2026-02-10T20:40:04.000000Z"
-            },
-            {
-              "id": 632,
-              "property_id": 100,
-              "amenity_type_id": 8,
-              "amenity_type": {
-                "id": 8,
-                "name": "Gym",
-                "slug": "gym",
-                "icon": "https://picsum.photos/seed/gym/200",
-                "description": "Fitness center or gym"
-              },
-              "created_at": "2026-02-10T20:40:04.000000Z",
-              "updated_at": "2026-02-10T20:40:04.000000Z"
-            },
-            {
-              "id": 633,
-              "property_id": 100,
-              "amenity_type_id": 10,
-              "amenity_type": {
-                "id": 10,
-                "name": "BBQ Area",
-                "slug": "bbq-area",
-                "icon": "https://picsum.photos/seed/bbq/200",
-                "description": "Outdoor BBQ facilities"
-              },
-              "created_at": "2026-02-10T20:40:04.000000Z",
-              "updated_at": "2026-02-10T20:40:04.000000Z"
-            },
-            {
-              "id": 634,
-              "property_id": 100,
-              "amenity_type_id": 15,
-              "amenity_type": {
-                "id": 15,
-                "name": "Internet",
-                "slug": "internet",
-                "icon": "https://picsum.photos/seed/internet/200",
-                "description": "High-speed internet included"
-              },
-              "created_at": "2026-02-10T20:40:04.000000Z",
-              "updated_at": "2026-02-10T20:40:04.000000Z"
-            },
-            {
-              "id": 635,
-              "property_id": 100,
-              "amenity_type_id": 21,
-              "amenity_type": {
-                "id": 21,
-                "name": "Laundry",
-                "slug": "laundry",
-                "icon": "https://picsum.photos/seed/laundry/200",
-                "description": "Laundry facilities"
-              },
-              "created_at": "2026-02-10T20:40:04.000000Z",
-              "updated_at": "2026-02-10T20:40:04.000000Z"
-            }
-          ],
-          "documents": [],
           "review_summary": {
-            "total_reviews": 10,
-            "average_rating": "3.70"
+            "total_reviews": 0,
+            "average_rating": "0.00"
           },
-          "created_at": "2026-02-10T20:40:04.000000Z",
-          "updated_at": "2026-02-10T20:40:08.000000Z"
+          "created_at": "2026-02-10T05:28:00.000000Z",
+          "updated_at": "2026-02-10T05:28:00.000000Z"
         },
         "property_unit": {
-          "id": 175,
-          "property_id": 100,
-          "unit_number": "Unit 1",
-          "unit_name": "Penthouse 1",
-          "rent_amount": "24980.00",
+          "id": 173,
+          "property_id": 102,
+          "unit_number": "Unit 101",
+          "unit_name": null,
+          "rent_amount": "1500.00",
           "rent_type": {
-            "id": 4,
-            "name": "Yearly",
-            "slug": "yearly",
-            "rent_days": 365
+            "id": 1,
+            "name": "Daily",
+            "slug": "daily",
+            "rent_days": 1
           },
           "currency": {
             "id": 1,
             "code": "AUD",
             "name": "Australian Dollar",
             "symbol": "A$",
-            "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+            "logo": "https://renter-pay.test/images/currency.png",
             "type": "fiat"
           },
-          "display_rent_amount": 24980,
+          "display_rent_amount": 1500,
           "display_currency": {
             "id": 1,
             "code": "AUD",
             "name": "Australian Dollar",
             "symbol": "A$",
-            "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+            "logo": "https://renter-pay.test/images/currency.png",
             "type": "fiat"
           },
-          "status": "reserved",
+          "status": "available",
           "bedrooms": 2,
-          "bathrooms": 2,
-          "size": "26.67",
-          "description": "Spacious Penthouse with modern fixtures"
+          "bathrooms": 1,
+          "size": "2400.00",
+          "description": null
         },
         "tenant": {
-          "id": 74,
-          "name": "Muhammad Fazlul Karim Rafi",
-          "email": "killerbee0181@gmail.com",
-          "phone": null,
-          "image": "https://lh3.googleusercontent.com/a/ACg8ocJIBkXT5kGcbJ9bAUMNPnqDqXo20e7aO-UWL9RbZGRFKBHAaLg=s96-c"
+          "id": 67,
+          "name": "Md. Mahfuzur Rahman",
+          "email": null
         },
-        "landlord": {
-          "id": 63,
-          "name": "Multi Role 2",
-          "email": "multi2@example.com",
-          "phone": "8801750000002",
-          "image": "https://renter-pay.mahfuz.click/images/person.png"
-        },
-        "created_at": "2026-02-16T07:28:14.000000Z"
+        "assignments": [],
+        "created_at": "2026-02-10 11:28:48",
+        "updated_at": "2026-02-10 11:28:48"
       }
     ],
     "links": {
-      "first": "https://renter-pay.mahfuz.click/api/v1/lease-agreements?page=1",
-      "last": "https://renter-pay.mahfuz.click/api/v1/lease-agreements?page=1",
+      "first": "https://renter-pay.test/api/v1/maintenance/requests?page=1",
+      "last": "https://renter-pay.test/api/v1/maintenance/requests?page=1",
       "prev": null,
       "next": null
     },
@@ -584,7 +154,7 @@
           "active": false
         },
         {
-          "url": "https://renter-pay.mahfuz.click/api/v1/lease-agreements?page=1",
+          "url": "https://renter-pay.test/api/v1/maintenance/requests?page=1",
           "label": "1",
           "page": 1,
           "active": true
@@ -596,8 +166,8 @@
           "active": false
         }
       ],
-      "path": "https://renter-pay.mahfuz.click/api/v1/lease-agreements",
-      "per_page": 15,
+      "path": "https://renter-pay.test/api/v1/maintenance/requests",
+      "per_page": 20,
       "to": 1,
       "total": 1
     }

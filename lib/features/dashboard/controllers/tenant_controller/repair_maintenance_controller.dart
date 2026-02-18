@@ -1,124 +1,35 @@
 import 'package:get/get.dart';
-
-class RepairModel {
-  final String title;
-  final String type;
-  final String date;
-  final String status;
-  RepairModel({
-    required this.title,
-    required this.type,
-    required this.date,
-    required this.status,
-  });
-}
+import 'package:renter_pay/features/dashboard/models/tenant_models/repair_maintenance_model.dart';
+import 'package:renter_pay/features/dashboard/repositories/tenant_repositories/repair_maintenance_repo.dart';
+import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
 class RepairMaintenanceController extends GetxController {
+  final RepairMaintenanceRepository repairMaintenanceRepository;
+  RepairMaintenanceController({required this.repairMaintenanceRepository});
+  final maintenances = Rxn<RepairMaintenanceModel>();
   RxInt repairTypeIndex = 0.obs;
   final List<String> repairType = ['Active', 'Complete'];
   final List<String> repairColumn = ['Issue ', 'Status', 'Action'];
-  RxList<RepairModel> dataList = <RepairModel>[].obs;
   RxList<bool> expandedData = <bool>[].obs;
+  RxBool isLoading = true.obs;
 
-  List<MapEntry<int, RepairModel>> get tableData {
-    final tempData = <MapEntry<int, RepairModel>>[];
-    for (int i = 0; i < dataList.length; i++) {
-      tempData.add(MapEntry(i, dataList[i]));
-    }
-    List<MapEntry<int, RepairModel>> filterData;
-    switch (repairTypeIndex.value) {
-      case 0:
-        filterData = tempData
-            .where(
-              (data) =>
-                  data.value.status == 'Pending' ||
-                  data.value.status == 'Assigned' ||
-                  data.value.status == 'In Progress',
-            )
-            .toList();
-        break;
-      case 1:
-        filterData = tempData
-            .where((data) => data.value.status == 'Complete')
-            .toList();
-        break;
-      default:
-        filterData = tempData;
-    }
-    return filterData;
-  }
+  List<RepairMaintenanceRequest> get requests =>
+      maintenances.value?.data?.data ?? [];
 
-  void initRows() {
-    dataList.value = [
-      RepairModel(
-        title: 'Leaking Kitchen Sink',
-        type: 'Urgent',
-        date: '2 July, 2025',
-        status: 'Pending',
-      ),
-      RepairModel(
-        title: 'AC Not Cooling Properly',
-        type: 'Non - Urgent',
-        date: '2 July, 2025',
-        status: 'Assigned',
-      ),
-      RepairModel(
-        title: 'AC Not Cooling Properly',
-        type: 'Non - Urgent',
-        date: '2 July, 2025',
-        status: 'Assigned',
-      ),
-      RepairModel(
-        title: 'AC Not Cooling Properly',
-        type: 'Non - Urgent',
-        date: '2 July, 2025',
-        status: 'Assigned',
-      ),
-      RepairModel(
-        title: 'Leaking Kitchen Sink',
-        type: 'Urgent',
-        date: '2 July, 2025',
-        status: 'In Progress',
-      ),
-      RepairModel(
-        title: 'Leaking Kitchen Sink',
-        type: 'Urgent',
-        date: '2 July, 2025',
-        status: 'In Progress',
-      ),
-      RepairModel(
-        title: 'Leaking Kitchen Sink',
-        type: 'Urgent',
-        date: '2 July, 2025',
-        status: 'In Progress',
-      ),
-      RepairModel(
-        title: 'Bathroom Tap Replacement',
-        type: 'Urgent',
-        date: '2 July, 2025',
-        status: 'Complete',
-      ),
-      RepairModel(
-        title: 'Bathroom Tap Replacement',
-        type: 'Urgent',
-        date: '2 July, 2025',
-        status: 'Complete',
-      ),
-      RepairModel(
-        title: 'Bathroom Tap Replacement',
-        type: 'Urgent',
-        date: '2 July, 2025',
-        status: 'Complete',
-      ),
-      RepairModel(
-        title: 'Leaking Kitchen Sink',
-        type: 'Urgent',
-        date: '2 July, 2025',
-        status: 'Pending',
-      ),
-    ];
-    expandedData.value = List.generate(dataList.length, (_) => false);
-    update();
+  Future<void> getRepairMaintenance() async {
+    isLoading.value = true;
+    final status = repairTypeIndex.value == 1 ? 'completed' : null;
+    final response = await repairMaintenanceRepository.execute(status: status);
+    isLoading.value = false;
+    response.fold(
+      (error) {
+        ErrorSnackbar.show(description: error.message);
+      },
+      (data) {
+        maintenances.value = data;
+        expandedData.assignAll(List<bool>.filled(requests.length, false));
+      },
+    );
   }
 
   void showExpandedData(int index) {
@@ -129,8 +40,8 @@ class RepairMaintenanceController extends GetxController {
   }
 
   @override
-  void onReady() {
-    initRows();
-    super.onReady();
+  void onInit() {
+    super.onInit();
+    getRepairMaintenance();
   }
 }

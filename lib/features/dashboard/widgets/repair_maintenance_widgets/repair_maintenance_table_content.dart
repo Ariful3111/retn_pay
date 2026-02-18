@@ -14,14 +14,18 @@ class RepairMaintenanceTableContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RepairMaintenanceController repairMaintenanceController = Get.find();
-    final item = repairMaintenanceController.dataList[rowIndex];
+    final list = repairMaintenanceController.requests;
+    if (rowIndex < 0 || rowIndex >= list.length) {
+      return SizedBox.shrink();
+    }
+    final item = list[rowIndex];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 8.h),
-        info(text: 'Request Type: ${item.type}'),
+        info(text: 'Request Type: ${item.urgency ?? ''}'),
         SizedBox(height: 8.h),
-        info(text: 'Issue Date: ${item.date}'),
+        info(text: 'Issue Date: ${item.preferredDate ?? item.createdAt ?? ''}'),
         SizedBox(height: 8.h),
         Row(
           children: [
