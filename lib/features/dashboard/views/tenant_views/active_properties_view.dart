@@ -66,7 +66,15 @@ class _ActivePropertiesViewState extends State<ActivePropertiesView> {
                         Column(
                           children: [
                             SizedBox(height: 20.h),
-                            ActivePropertyImage(),
+                            ActivePropertyImage(
+                              images:
+                                  activePropertyController
+                                      .activePropertyDetails
+                                      .value
+                                      ?.data
+                                      ?.images ??
+                                  const [],
+                            ),
                             SizedBox(height: 20.h),
                             PropertyDetailsInfo(
                               propertyDetails: activePropertyController

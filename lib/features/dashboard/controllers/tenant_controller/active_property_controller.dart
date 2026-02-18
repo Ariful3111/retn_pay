@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/features/dashboard/controllers/lease_agreement_controller.dart';
 import 'package:renter_pay/features/dashboard/models/lease_agreement_model.dart';
@@ -11,8 +11,6 @@ import 'package:renter_pay/shared/widgets/property/property_key_features.dart';
 
 class ActivePropertyController extends GetxController {
   RxList<bool> isOpenList = <bool>[].obs;
-  TextEditingController reviewController = TextEditingController();
-  var rating = 0.0.obs;
   RxBool isAccess = false.obs;
 
   final Rxn<LeaseAgreementItem> activeAgreement = Rxn<LeaseAgreementItem>();
@@ -40,6 +38,8 @@ class ActivePropertyController extends GetxController {
 
   List<Widget> get widgetList {
     final details = activePropertyDetails.value ?? PropertyDetailsModel();
+    final propertyID =
+        activeAgreement.value?.propertyId ?? details.data?.id ?? 0;
     return [
       PropertyDetailsList(propertyDetails: details),
       PropertyKeyFeatures(propertyDetails: details),
@@ -57,7 +57,7 @@ class ActivePropertyController extends GetxController {
         leaseDurationValue: leaseDurationText.value,
         imageUrl: agentImageUrl.value,
       ),
-      ActivePropertyReview(),
+      ActivePropertyReview(propertyID: propertyID),
     ];
   }
 
@@ -93,6 +93,41 @@ class ActivePropertyController extends GetxController {
         features: property.features,
         rating: property.rating,
         ratingCount: property.ratingCount,
+        images: property.images
+            ?.map(
+              (img) => Images(
+                id: img.id,
+                propertyId: img.propertyId,
+                imagePath: img.imagePath,
+                type: img.type,
+                order: img.order,
+                isPrimary: img.isPrimary,
+                caption: img.caption,
+                createdAt: img.createdAt,
+                updatedAt: img.updatedAt,
+              ),
+            )
+            .toList(),
+        amenities: property.amenities
+            ?.map(
+              (a) => Amenities(
+                id: a.id,
+                propertyId: a.propertyId,
+                amenityTypeId: a.amenityTypeId,
+                amenityType: a.amenityType == null
+                    ? null
+                    : AmenityType(
+                        id: a.amenityType?.id,
+                        name: a.amenityType?.name,
+                        slug: a.amenityType?.slug,
+                        icon: a.amenityType?.icon,
+                        description: a.amenityType?.description,
+                      ),
+                createdAt: a.createdAt,
+                updatedAt: a.updatedAt,
+              ),
+            )
+            .toList(),
         units: property.units
             ?.map(
               (unit) => Units(
@@ -171,7 +206,6 @@ class ActivePropertyController extends GetxController {
   @override
   void dispose() {
     _leaseAgreementsWorker?.dispose();
-    reviewController.dispose();
     super.dispose();
   }
 

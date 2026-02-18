@@ -15,6 +15,7 @@ import 'package:renter_pay/features/dashboard/controllers/lease_agreement_contro
 import 'package:renter_pay/features/dashboard/repositories/dashboard_metrics_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/create_property_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/property_document_repo.dart';
+import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/submit_property_review_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/lease_agreement_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/reminder_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/tenant_repositories/rent_notice_repo.dart';
@@ -23,6 +24,7 @@ import 'package:renter_pay/features/home/controllers/property_category_controlle
 import 'package:renter_pay/features/home/repositories/property_amenities_repo.dart';
 import 'package:renter_pay/features/home/repositories/property_category_repo.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/rent_notice_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/submit_property_review_controller.dart';
 
 class DashboardBindings implements Bindings {
   @override
@@ -92,6 +94,14 @@ class DashboardBindings implements Bindings {
           propertyAmenitiesRepository: Get.find(),
         ),
       );
+    }
+    if (!Get.isRegistered<SubmitPropertyReviewRepository>()) {
+      Get.lazyPut(() => SubmitPropertyReviewRepository(postNetwork: Get.find()));
+    }
+    if (!Get.isRegistered<SubmitPropertyReviewController>()) {
+      Get.lazyPut(() => SubmitPropertyReviewController(
+        submitPropertyReviewRepository: Get.find(),
+      ));
     }
   }
 }

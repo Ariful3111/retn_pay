@@ -1,8 +1,3 @@
-// ============================================================
-// LEASE AGREEMENT MODEL - Complete & Properly Typed
-// Generated from API JSON response
-// ============================================================
-
 class LeaseAgreementModel {
   final bool? error;
   final int? code;
@@ -950,6 +945,8 @@ class LeaseAgreementProperty {
   final String? rating;
   final int? ratingCount;
   final List<LeaseAgreementPropertyUnit>? units;
+  final List<LeaseAgreementPropertyImage>? images;
+  final List<LeaseAgreementPropertyAmenity>? amenities;
   final PropertyReviewSummary? reviewSummary;
   final String? createdAt;
   final String? updatedAt;
@@ -983,6 +980,8 @@ class LeaseAgreementProperty {
     this.rating,
     this.ratingCount,
     this.units,
+    this.images,
+    this.amenities,
     this.reviewSummary,
     this.createdAt,
     this.updatedAt,
@@ -1021,6 +1020,14 @@ class LeaseAgreementProperty {
           ?.whereType<Map<String, dynamic>>()
           .map((e) => LeaseAgreementPropertyUnit.fromJson(e))
           .toList(),
+      images: (json['images'] as List?)
+          ?.whereType<Map<String, dynamic>>()
+          .map((e) => LeaseAgreementPropertyImage.fromJson(e))
+          .toList(),
+      amenities: (json['amenities'] as List?)
+          ?.whereType<Map<String, dynamic>>()
+          .map((e) => LeaseAgreementPropertyAmenity.fromJson(e))
+          .toList(),
       reviewSummary: json['review_summary'] is Map<String, dynamic>
           ? PropertyReviewSummary.fromJson(json['review_summary'])
           : null,
@@ -1058,10 +1065,133 @@ class LeaseAgreementProperty {
     'rating': rating,
     'rating_count': ratingCount,
     'units': units?.map((e) => e.toJson()).toList(),
+    'images': images?.map((e) => e.toJson()).toList(),
+    'amenities': amenities?.map((e) => e.toJson()).toList(),
     'review_summary': reviewSummary?.toJson(),
     'created_at': createdAt,
     'updated_at': updatedAt,
     'image': image,
+  };
+}
+
+class LeaseAgreementPropertyImage {
+  final int? id;
+  final int? propertyId;
+  final String? imagePath;
+  final String? type;
+  final int? order;
+  final bool? isPrimary;
+  final String? caption;
+  final String? createdAt;
+  final String? updatedAt;
+
+  const LeaseAgreementPropertyImage({
+    this.id,
+    this.propertyId,
+    this.imagePath,
+    this.type,
+    this.order,
+    this.isPrimary,
+    this.caption,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  factory LeaseAgreementPropertyImage.fromJson(Map<String, dynamic> json) =>
+      LeaseAgreementPropertyImage(
+        id: json['id'],
+        propertyId: json['property_id'],
+        imagePath: json['image_path']?.toString(),
+        type: json['type']?.toString(),
+        order: json['order'],
+        isPrimary: json['is_primary'],
+        caption: json['caption']?.toString(),
+        createdAt: json['created_at']?.toString(),
+        updatedAt: json['updated_at']?.toString(),
+      );
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'property_id': propertyId,
+    'image_path': imagePath,
+    'type': type,
+    'order': order,
+    'is_primary': isPrimary,
+    'caption': caption,
+    'created_at': createdAt,
+    'updated_at': updatedAt,
+  };
+}
+
+class LeaseAgreementPropertyAmenity {
+  final int? id;
+  final int? propertyId;
+  final int? amenityTypeId;
+  final LeaseAgreementAmenityType? amenityType;
+  final String? createdAt;
+  final String? updatedAt;
+
+  const LeaseAgreementPropertyAmenity({
+    this.id,
+    this.propertyId,
+    this.amenityTypeId,
+    this.amenityType,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  factory LeaseAgreementPropertyAmenity.fromJson(Map<String, dynamic> json) =>
+      LeaseAgreementPropertyAmenity(
+        id: json['id'],
+        propertyId: json['property_id'],
+        amenityTypeId: json['amenity_type_id'],
+        amenityType: json['amenity_type'] is Map<String, dynamic>
+            ? LeaseAgreementAmenityType.fromJson(json['amenity_type'])
+            : null,
+        createdAt: json['created_at']?.toString(),
+        updatedAt: json['updated_at']?.toString(),
+      );
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'property_id': propertyId,
+    'amenity_type_id': amenityTypeId,
+    'amenity_type': amenityType?.toJson(),
+    'created_at': createdAt,
+    'updated_at': updatedAt,
+  };
+}
+
+class LeaseAgreementAmenityType {
+  final int? id;
+  final String? name;
+  final String? slug;
+  final String? icon;
+  final String? description;
+
+  const LeaseAgreementAmenityType({
+    this.id,
+    this.name,
+    this.slug,
+    this.icon,
+    this.description,
+  });
+
+  factory LeaseAgreementAmenityType.fromJson(Map<String, dynamic> json) =>
+      LeaseAgreementAmenityType(
+        id: json['id'],
+        name: json['name']?.toString(),
+        slug: json['slug']?.toString(),
+        icon: json['icon']?.toString(),
+        description: json['description']?.toString(),
+      );
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'name': name,
+    'slug': slug,
+    'icon': icon,
+    'description': description,
   };
 }
 
