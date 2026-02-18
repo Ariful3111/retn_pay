@@ -24,11 +24,14 @@ class HomeAppbar extends StatelessWidget {
                 if (profileController.profileData.value?.data?.image
                         .toString() !=
                     "null")
-                  CachedNetworkImage(
-                    imageUrl:
-                        profileController.profileData.value?.data?.image ?? '',
-                    height: 44.h,
-                    width: 44.w,
+                  ClipOval(
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          profileController.profileData.value?.data?.image ??
+                          '',
+                      height: 44.h,
+                      width: 44.w,
+                    ),
                   )
                 else
                   Image.asset(ImagesPath.homeAppbar, height: 44.h, width: 44.w),

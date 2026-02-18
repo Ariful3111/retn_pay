@@ -320,13 +320,17 @@ class Landlord {
   int? id;
   String? name;
   String? email;
+  String? phone;
+  String? image;
 
-  Landlord({this.id, this.name, this.email});
+  Landlord({this.id, this.name, this.email, this.phone, this.image});
 
   Landlord.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     email = json['email'];
+    phone = json['phone']?.toString();
+    image = json['image']?.toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -334,6 +338,8 @@ class Landlord {
     data['id'] = id;
     data['name'] = name;
     data['email'] = email;
+    data['phone'] = phone;
+    data['image'] = image;
     return data;
   }
 }
@@ -408,8 +414,9 @@ class Units {
     unitNumber = json['unit_number'];
     unitName = json['unit_name'];
     rentAmount = json['rent_amount']?.toString();
-    rentType =
-        json['rent_type'] != null ? RentType.fromJson(json['rent_type']) : null;
+    rentType = json['rent_type'] != null
+        ? RentType.fromJson(json['rent_type'])
+        : null;
 
     final dynamic currencyValue = json['currency'];
     if (currencyValue is Map<String, dynamic>) {

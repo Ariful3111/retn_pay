@@ -51,7 +51,7 @@ class DashboardView extends StatelessWidget {
                     child: Stack(
                       key: ValueKey(dashboardController.isUpgrade.value),
                       children: [
-                        DashboardProperties(),
+                        DashboardProperties(metricController: Get.find()),
                         if (userIndex == 1 || userIndex == 3)
                           if (!dashboardController.isUpgrade.value)
                             CustomShadowOverlayButton().shadow(

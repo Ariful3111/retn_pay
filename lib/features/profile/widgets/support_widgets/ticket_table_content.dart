@@ -14,24 +14,37 @@ class TicketTableContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SupportController supportController = Get.find();
-    final item = supportController.tableData[rowIndex];
+    final tickets = supportController.tickets.value?.data?.data ?? const [];
+    final item = (rowIndex >= 0 && rowIndex < tickets.length)
+        ? tickets[rowIndex]
+        : null;
+
+    String displayStatus(String? status) {
+      final value = status?.trim().toLowerCase();
+      if (value == 'open') return 'Open';
+      if (value == 'in_progress') return 'In Progress';
+      if (value == 'resolved') return 'Resolved';
+      if (value == 'closed') return 'Closed';
+      return status?.trim().isNotEmpty == true ? status!.trim() : 'Open';
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 8.h),
-        info(text: 'Category: ${item.category}'),
+        info(text: 'Category: ${item?.priority ?? '-'}'),
         SizedBox(height: 8.h),
-        info(text: 'Issue Title: ${item.issueTitle}'),
+        info(text: 'Issue Title: ${item?.subject ?? '-'}'),
         SizedBox(height: 8.h),
         Row(
           children: [
             info(text: 'Status'),
             SizedBox(width: 8.w),
-            TicketTableStatus(rowIndex: rowIndex),
+            TicketTableStatus(status: displayStatus(item?.status)),
           ],
         ),
         SizedBox(height: 8.h),
-        info(text: 'Issue Date: ${item.issueDate}'),
+        info(text: 'Issue Date: ${item?.createdAt ?? '-'}'),
         SizedBox(height: 8.h),
         CustomTextPrimary(
           text: 'Action',

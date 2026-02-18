@@ -42,7 +42,9 @@ class AddNewPropertyUploadImage extends StatelessWidget {
                 )
               : SizedBox.shrink(),
           SizedBox(height: isTitle ? 70.h : 52.h),
-          DocumentUploadButton(onTap: onTap),
+          GestureDetector(
+            onTap: onTap,
+            child: DocumentUploadButton()),
           SizedBox(height: 16.h),
           CustomTextSpan(
             title: "Press The Button To Upload",
