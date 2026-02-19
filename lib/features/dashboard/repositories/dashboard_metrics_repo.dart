@@ -10,9 +10,13 @@ class DashboardMetricsRepository {
   final GetNetwork getNetwork;
   const DashboardMetricsRepository({required this.getNetwork});
 
-  Future<Either<ErrorModel, DashboardMetricModel>> execute() async {
+  Future<Either<ErrorModel, DashboardMetricModel>> execute({
+    String? fromDate,
+    String? toDate,
+  }) async {
     final response = await getNetwork.getData<DashboardMetricModel>(
-      url: "/api/${NetworkLinks.version}/dashboard/metrics",
+      url:
+          "/api/${NetworkLinks.version}/dashboard/metrics?from_date=${fromDate ?? ''}&to_date=${toDate ?? ''}",
       headers: {
         "Accept": "application/json",
         "Authorization":
