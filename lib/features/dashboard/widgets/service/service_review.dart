@@ -14,65 +14,60 @@ class ServiceReview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return Expanded(
-      child: Container(
-        padding: EdgeInsets.only(
-          left: 16.w,
-          top: 16.h,
-          bottom: 16.h,
-          right: 8.w,
-        ),
-        width: MediaQuery.widthOf(context),
-        height: 820.h,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.r),
-          color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
-        ),
-        child: ListView(
-          children: List.generate(20, (index) {
-            return Padding(
-              padding: EdgeInsets.only(bottom: 16.h),
-              child: GestureDetector(
-                onTap: () {
-                  Get.toNamed(AppRoutes.serviceSearchDetails);
-                },
-                child: Row(
-                  children: [
-                    Container(
-                      height: 120.h,
-                      width: 120.w,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6.39.r),
-                        image: DecorationImage(
-                          image: AssetImage(ImagesPath.service),
-                          fit: BoxFit.cover,
+    return Container(
+      padding: EdgeInsets.only(left: 16.w, top: 16.h, bottom: 16.h, right: 8.w),
+      width: MediaQuery.widthOf(context),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.r),
+        color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+      ),
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: 20,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: EdgeInsets.only(bottom: 16.h),
+            child: GestureDetector(
+              onTap: () {
+                Get.toNamed(AppRoutes.serviceSearchDetails);
+              },
+              child: Row(
+                children: [
+                  Container(
+                    height: 120.h,
+                    width: 120.w,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6.39.r),
+                      image: DecorationImage(
+                        image: AssetImage(ImagesPath.service),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 12.w),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomTextPrimary(text: 'Plumbing', fontSize: 20.sp),
+                        SizedBox(height: 4.h),
+                        CustomTextSecondary(
+                          text:
+                              'We provide reliable plumbing services for homes and businesses, covering everything from leak repairs to full installations. Our skilled team ensures quick, professional',
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
                         ),
-                      ),
+                        SizedBox(height: 8.h),
+                        CustomRatingBar(rating: 5.0, itemSize: 16.sp),
+                      ],
                     ),
-                    SizedBox(width: 12.w),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomTextPrimary(text: 'Plumbing', fontSize: 20.sp),
-                          SizedBox(height: 4.h),
-                          CustomTextSecondary(
-                            text:
-                                'We provide reliable plumbing services for homes and businesses, covering everything from leak repairs to full installations. Our skilled team ensures quick, professional',
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400,
-                          ),
-                          SizedBox(height: 8.h),
-                          CustomRatingBar(rating: 5.0, itemSize: 16.sp),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            );
-          }),
-        ),
+            ),
+          );
+        },
       ),
     );
   }

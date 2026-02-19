@@ -27,26 +27,28 @@ class ServicesView extends StatelessWidget {
             )
           : AppColors.userBackground,
       child: Obx(
-        () => Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                AnimatedSize(
-                  duration: Duration(milliseconds: 200),
-                  curve: Curves.easeInOut,
-                  child: DrawerItemsAppbar(
-                    title:
-                        servicesController.selectedServiceType.value == 'Search'
-                        ? 'Services'
-                        : 'Booked Services',
+        () => CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  AnimatedSize(
+                    duration: Duration(milliseconds: 200),
+                    curve: Curves.easeInOut,
+                    child: DrawerItemsAppbar(
+                      title:
+                          servicesController.selectedServiceType.value ==
+                              'Search'
+                          ? 'Services'
+                          : 'Booked Services',
+                    ),
                   ),
-                ),
-                ServiceDropdownMenu(),
-              ],
+                  ServiceDropdownMenu(),
+                ],
+              ),
             ),
-            Expanded(
+            SliverToBoxAdapter(
               child: AnimatedSwitcher(
                 duration: Duration(milliseconds: 300),
                 switchInCurve: Curves.linear,
