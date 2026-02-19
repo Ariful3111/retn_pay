@@ -27,7 +27,9 @@ class RepairMaintenanceView extends StatelessWidget {
           SizedBox(height: 24.h),
           RepairTypes(),
           SizedBox(height: 20.h),
-         userIndex==1|| userIndex==2?LandlordRepairMaintenanceTable() :RepairMaintenanceTable(),
+          userIndex == 1 || userIndex == 2
+              ? LandlordRepairMaintenanceTable()
+              : RepairMaintenanceTable(),
           SizedBox(height: 20.h),
         ],
       ),

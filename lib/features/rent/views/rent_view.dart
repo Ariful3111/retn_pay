@@ -9,64 +9,72 @@ import 'package:renter_pay/shared/widgets/custom_item_sort.dart';
 import 'package:renter_pay/features/rent/widgets/rent_app_bar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/item_container.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
-class RentView extends StatelessWidget {
+class RentView extends GetView<RentController> {
   const RentView({super.key});
   @override
   Widget build(BuildContext context) {
-    RentController rentController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return CustomContainer(
-      gradient: isDark
-          ? LinearGradient(
-              colors: [AppColors.darkPrimary, AppColors.darkPrimary],
-            )
-          : AppColors.userBackground.withOpacity(0.5),
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
-      child: SingleChildScrollView(
-        controller: rentController.scrollController,
-        child: Column(
-          children: [
-            RentAppBar(),
-            SizedBox(height: 8.h),
-            CustomItemSort(
-              title: 'Property',
-              option: rentController.sortList,
-              info: "",
-              onSelect: (value) {
-                rentController.initialSort.value = value!;
-              },
-              isSelect: rentController.initialSort,
-            ),
-            SizedBox(height: 20.h),
-            ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: 12,
-              itemBuilder: (_, index) {
-                return ItemContainer(
-                  imageHeight: 250.h,
-                  imageWidth: MediaQuery.widthOf(context),
-                  padding: EdgeInsetsGeometry.only(bottom: 24.h),
-                  property: Property(),
-                );
-              },
-            ),
-            Obx(
-              () => CustomPagination(
-                list: rentController.pageNumber,
-                onTapPrev: rentController.previousPage,
-                onTapNext: rentController.nextPage,
-                onTapPage: (item) {
-                  rentController.currentPage.value = item;
-                },
-                value: rentController.currentPage.value,
+    return Obx(() {
+      return controller.isLoading.value
+          ? ButtonLoading()
+          : CustomContainer(
+              gradient: isDark
+                  ? LinearGradient(
+                      colors: [AppColors.darkPrimary, AppColors.darkPrimary],
+                    )
+                  : AppColors.userBackground.withOpacity(0.5),
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: SingleChildScrollView(
+                controller: controller.scrollController,
+                child: Column(
+                  children: [
+                    RentAppBar(),
+                    SizedBox(height: 8.h),
+                    CustomItemSort(
+                      title: 'Property',
+                      option: controller.sortList,
+                      info: "",
+                      onSelect: (value) {
+                        controller.initialSort.value = value!;
+                      },
+                      isSelect: controller.initialSort,
+                    ),
+                    SizedBox(height: 20.h),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount:
+                          controller.rents.value?.data?.data?.length ?? 0,
+                      itemBuilder: (_, index) {
+                        final property =
+                            controller.rents.value?.data?.data?[index].property;
+                        return ItemContainer(
+                          imageHeight: 250.h,
+                          imageWidth: MediaQuery.widthOf(context),
+                          padding: EdgeInsetsGeometry.only(bottom: 24.h),
+                          property: property ?? Property(),
+                        );
+                      },
+                    ),
+                    controller.rents.value?.data?.data?.isEmpty == true
+                        ? SizedBox.shrink()
+                        : CustomPagination(
+                            list: controller.pageNumber,
+                            onTapPrev: controller.previousPage,
+                            onTapNext: controller.nextPage,
+                            onTapPage: (item) {
+                              controller.currentPage.value = item;
+                              controller.getRentList(page: item);
+                            },
+                            value: controller.currentPage.value,
+                          ),
+                    SizedBox(height: 55.h),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 55.h),
-          ],
-        ),
-      ),
-    );
+            );
+    });
   }
 }

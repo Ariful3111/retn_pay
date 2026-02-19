@@ -16,7 +16,8 @@ class CustomCalenderFilter extends StatelessWidget {
     required this.widget,
     this.alignmentGeometry,
     required this.isDay,
-    required this.onTap, required this.onApply,
+    required this.onTap,
+    required this.onApply,
   });
 
   @override
@@ -43,7 +44,7 @@ class CustomCalenderFilter extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SelectDay(isDay: isDay, onTap: onTap),
-            SizedBox(width: 7.w,),
+            SizedBox(width: 7.w),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

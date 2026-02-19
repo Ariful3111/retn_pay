@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/dashboard/controllers/dashboard_metric_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_range_calendar.dart';
 import 'package:renter_pay/shared/widgets/custom_calender/custom_calender_filter_helper.dart';
@@ -14,12 +15,11 @@ import 'package:renter_pay/shared/widgets/custom_appbar/custom_favorite_appbar.d
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_filter_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_notification_button.dart';
 
-class DashboardAppbar extends StatelessWidget {
+class DashboardAppbar extends GetWidget<DashboardController> {
   const DashboardAppbar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    DashboardController dashboardController = Get.find();
     return SliverAppBar(
       backgroundColor: Colors.transparent,
       leading: CustomAppbarLeading(
@@ -53,20 +53,32 @@ class DashboardAppbar extends StatelessWidget {
                 return Obx(
                   () => CustomCalenderFilter(
                     widget: DashboardRangeCalendar(),
-                    isDay: dashboardController.isDay.value,
+                    isDay: controller.isDay.value,
                     onTap: (int index) {
-                      dashboardController.isDay.value = index;
+                      controller.isDay.value = index;
                       calenderFilter(
                         index: index,
-                        selectedDay: dashboardController.selectedDay,
-                        rangeStart: dashboardController.rangeStart,
-                        rangeEnd: dashboardController.rangeEnd,
-                        rangeSelectionMode:
-                            dashboardController.rangeSelectionMode,
-                        focusedDay: dashboardController.focusedDay,
+                        selectedDay: controller.selectedDay,
+                        rangeStart: controller.rangeStart,
+                        rangeEnd: controller.rangeEnd,
+                        rangeSelectionMode: controller.rangeSelectionMode,
+                        focusedDay: controller.focusedDay,
                       );
                     },
-                    onApply: () {},
+                    onApply: () async {
+                      Get.back();
+                      await Get.find<DashboardMetricController>()
+                          .getDashboardMetric(
+                            fromDate: controller.rangeStart.value
+                                ?.toIso8601String()
+                                .split('T')
+                                .first,
+                            toDate: controller.rangeEnd.value
+                                ?.toIso8601String()
+                                .split('T')
+                                .first,
+                          );
+                    },
                   ),
                 );
               },
