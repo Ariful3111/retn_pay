@@ -13,9 +13,15 @@ class RepairMaintenanceTableStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RepairMaintenanceController repairMaintenanceController = Get.find();
-    final item = repairMaintenanceController.dataList[rowIndex];
+    final list = repairMaintenanceController.requests;
+    if (rowIndex < 0 || rowIndex >= list.length) {
+      return SizedBox.shrink();
+    }
+    final item = list[rowIndex];
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return item.status == 'In Progress'
+    final status = item.status?.toLowerCase();
+    final isInProgress = status == 'in progress' || status == 'pending';
+    return isInProgress
         ? Container(
             padding: EdgeInsets.symmetric(vertical: 3.h, horizontal: 16.w),
             decoration: BoxDecoration(
@@ -30,6 +36,6 @@ class RepairMaintenanceTableStatus extends StatelessWidget {
               textOverflow: TextOverflow.ellipsis,
             ),
           )
-        : TableStatus(status: item.status);
+        : TableStatus(status: item.status?.capitalizeFirst ?? '');
   }
 }

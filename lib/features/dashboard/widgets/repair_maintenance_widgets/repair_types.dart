@@ -33,23 +33,28 @@ class RepairTypes extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(
-              userIndex == 1|| userIndex==2
+              userIndex == 1 || userIndex == 2
                   ? landlordRepairMaintenanceController.repairType.length
                   : repairMaintenanceController.repairType.length,
               (index) {
                 return Obx(() {
-                  final isActive = userIndex == 1|| userIndex==2
+                  final isActive = userIndex == 1 || userIndex == 2
                       ? landlordRepairMaintenanceController
-                            .repairTypeIndex
-                            .value == index
+                                .repairTypeIndex
+                                .value ==
+                            index
                       : repairMaintenanceController.repairTypeIndex.value ==
                             index;
                   return GestureDetector(
                     onTap: () {
                       if (userIndex == 0) {
-                        repairMaintenanceController.repairTypeIndex.value =
-                            index;
-                      } else if (userIndex == 1 || userIndex==2) {
+                        if (repairMaintenanceController.repairTypeIndex.value !=
+                            index) {
+                          repairMaintenanceController.repairTypeIndex.value =
+                              index;
+                          repairMaintenanceController.getRepairMaintenance();
+                        }
+                      } else if (userIndex == 1 || userIndex == 2) {
                         landlordRepairMaintenanceController
                                 .repairTypeIndex
                                 .value =
@@ -68,7 +73,10 @@ class RepairTypes extends StatelessWidget {
                         color: isActive ? AppColors.primaryColorDark : null,
                       ),
                       child: CustomTextSecondary(
-                        text:userIndex==1||userIndex==2?landlordRepairMaintenanceController.repairType[index] :repairMaintenanceController.repairType[index],
+                        text: userIndex == 1 || userIndex == 2
+                            ? landlordRepairMaintenanceController
+                                  .repairType[index]
+                            : repairMaintenanceController.repairType[index],
                         fontSize: 14.sp,
                         color: isActive
                             ? AppColors.whiteColor
@@ -81,7 +89,7 @@ class RepairTypes extends StatelessWidget {
             ),
           ),
         ),
-       if(userIndex==0) RepairRequestButton(),
+        if (userIndex == 0) RepairRequestButton(),
       ],
     );
   }

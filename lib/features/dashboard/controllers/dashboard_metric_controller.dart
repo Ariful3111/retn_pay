@@ -10,9 +10,10 @@ class DashboardMetricController extends GetxController {
   final dashboardMetric = Rxn<DashboardMetricModel>();
   RxBool isLoading = true.obs;
 
-  Future<void> getDashboardMetric() async {
+  Future<void> getDashboardMetric({String? fromDate, String? toDate}) async {
     isLoading.value = true;
-    final response = await dashboardMetricsRepository.execute();
+    final response = await dashboardMetricsRepository.execute(
+        fromDate: fromDate, toDate: toDate);
     response.fold(
       (error) {
         ErrorSnackbar.show(description: error.message);
