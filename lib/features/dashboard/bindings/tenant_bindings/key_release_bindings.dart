@@ -7,3 +7,4 @@ class KeyReleaseBindings implements Bindings {
     Get.lazyPut(() => KeyReleaseController());
   }
 }
+

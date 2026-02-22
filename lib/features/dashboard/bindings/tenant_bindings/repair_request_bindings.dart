@@ -7,3 +7,4 @@ class RepairRequestBindings implements Bindings {
     Get.lazyPut(() => RepairRequestController());
   }
 }
+

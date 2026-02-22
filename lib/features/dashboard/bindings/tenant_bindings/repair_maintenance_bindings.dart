@@ -8,9 +8,11 @@ class RepairMaintenanceBindings implements Bindings {
   void dependencies() {
     Get.lazyPut(() => RepairMaintenanceRepository(getNetwork: Get.find()));
     Get.lazyPut(
-      () =>
-          RepairMaintenanceController(repairMaintenanceRepository: Get.find()),
+      () => RepairMaintenanceController(
+        repairMaintenanceRepository: Get.find(),
+      ),
     );
     Get.lazyPut(() => LandlordRepairMaintenanceController());
   }
 }
+

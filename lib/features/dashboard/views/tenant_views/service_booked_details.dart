@@ -49,13 +49,17 @@ class ServiceBookedDetails extends StatelessWidget {
             ],
           ),
           SizedBox(height: 16.h),
-         Obx(()=> ServiceSearchInfo(
-            isShow: serviceBookedDetailsController.isShowInfo.value,
-            onTap: () {
-              serviceBookedDetailsController.isShowInfo.value =
-                  !serviceBookedDetailsController.isShowInfo.value;
-            }, bookButton: false,
-          ),),
+          Obx(
+            () => ServiceSearchInfo(
+              isShow: serviceBookedDetailsController.isShowInfo.value,
+              onTap: () {
+                serviceBookedDetailsController.isShowInfo.value =
+                    !serviceBookedDetailsController.isShowInfo.value;
+              },
+              bookButton: false,
+              controller: Get.find(),
+            ),
+          ),
           SizedBox(height: 20.h),
           ServiceDetailsWidgets(
             widgetList: serviceSearchController.widgetList,
@@ -65,8 +69,8 @@ class ServiceBookedDetails extends StatelessWidget {
           ServiceDetailsCommit(),
           SizedBox(height: 20.h),
           ServiceBookedRequest(),
-          SizedBox(height: 20.h,),
-          ServiceBookedComplete() 
+          SizedBox(height: 20.h),
+          ServiceBookedComplete(),
         ],
       ),
     );
