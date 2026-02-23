@@ -15,13 +15,19 @@ class RepairRequestService extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     RepairRequestController repairRequestController = Get.find();
+    final assignments = repairRequestController.details.value?.data?.assignments;
+    final assignment =
+        (assignments != null && assignments.isNotEmpty) ? assignments.first : null;
+    final vendor = assignment?.vendor;
+    final assignedTo = vendor?.name ?? '';
+    final contact = vendor?.email ?? '';
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomTextSpan(
           title: 'Assigned To: ',
-          spantext: 'Michael Lee (Plumber, PrimeFix Services)',
+          spantext: assignedTo,
           fontSize: 20.sp,
           fontWeight: FontWeight.w600,
           spanFontSize: 20.sp,
@@ -30,7 +36,7 @@ class RepairRequestService extends StatelessWidget {
         SizedBox(height: 8.h),
         CustomTextSpan(
           title: 'Contact: ',
-          spantext: '+1 555-987-6543',
+          spantext: contact,
           fontSize: 20.sp,
           fontWeight: FontWeight.w600,
           spanFontSize: 20.sp,

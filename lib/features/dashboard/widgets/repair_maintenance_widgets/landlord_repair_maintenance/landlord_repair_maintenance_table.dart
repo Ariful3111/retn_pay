@@ -31,7 +31,9 @@ class LandlordRepairMaintenanceTable
             textOverflow: TextOverflow.ellipsis,
           ),
           TableStatus(status: item.status?.capitalizeFirst ?? ''),
-          LandlordRepairMaintenanceTableData(index: index),
+          LandlordRepairMaintenanceTableData(
+            maintenanceRequestId: item.id,
+          ),
         ];
       });
 
