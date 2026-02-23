@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -37,7 +39,9 @@ class ProfileEditController extends GetxController {
   Future<void> updateProfile() async {
     try {
       isLoading.value = true;
+      final image = upload.value != null ? File(upload.value!.path) : null;
       final response = await profileEditRepository.execute(
+        image: image,
         firstName: nameController.text,
         lastName: lastNameController.text,
 
@@ -54,8 +58,33 @@ class ProfileEditController extends GetxController {
         (success) async {
           if (success) {
             isEdit.value = false;
+            upload.value = null;
             await Get.find<ProfileController>().getProfile();
             SuccessSnackbar.show(description: 'Profile updated successfully');
+          }
+        },
+      );
+    } catch (e) {
+      ErrorSnackbar.show(description: e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> updateImage({required File image}) async {
+    try {
+      isLoading.value = true;
+
+      final response = await profileEditRepository.execute(image: image);
+      response.fold(
+        (error) {
+          ErrorSnackbar.show(description: error.message);
+        },
+        (success) async {
+          if (success) {
+            upload.value = null;
+            await Get.find<ProfileController>().getProfile();
+            SuccessSnackbar.show(description: 'Profile image successfully');
           }
         },
       );
