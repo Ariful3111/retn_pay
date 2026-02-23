@@ -1,96 +1,144 @@
 {
   "error": false,
   "code": 200,
-  "message": "Services retrieved successfully",
+  "message": "Maintenance requests retrieved successfully",
   "data": {
     "data": [
       {
-        "id": 30,
-        "vendor_id": 12,
-        "service_type_id": 11,
-        "title": "ABC Cleaning Services – Appliance Repair Services",
-        "subtext": "Professional Appliance Repair for Homes & Businesses",
-        "description": "Repair and maintenance of household appliances We serve residential and commercial clients with reliable, professional service.",
-        "banner_image": null,
-        "logo": null,
-        "rating": {
-          "average_rating": 0,
-          "total_reviews": 0
+        "id": 1,
+        "tenant_id": 67,
+        "property_id": 102,
+        "property_unit_id": 173,
+        "title": "Leaky Faucet",
+        "description": "Kitchen faucet is leaking",
+        "urgency": "high",
+        "status": "pending",
+        "images": [
+          "https://renter-pay.test/storage/maintenance/4FKg9kzGIu8TfzNorMKpnP93HUVaOmSpm4svhBQA.jpg"
+        ],
+        "preferred_date": "2026-02-22",
+        "preferred_time_slots": ["8am_12pm", "12pm_5pm"],
+        "preferred_time_other": null,
+        "property": {
+          "id": 102,
+          "landlord_id": 67,
+          "property_type_id": 1,
+          "title": "Modern Apartment",
+          "name": "Modern Apartment",
+          "description": "Beautiful modern apartment",
+          "address": "123 Main St",
+          "city": "Sydney",
+          "state": "NSW",
+          "postal_code": "2000",
+          "country": "Australia",
+          "latitude": null,
+          "longitude": null,
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "parking_spaces": null,
+          "land_size": null,
+          "building_size": null,
+          "year_built": null,
+          "status": "active",
+          "is_verified": false,
+          "is_in_person_inspection_available": true,
+          "is_virtual_inspection_available": true,
+          "is_favourite": false,
+          "features": ["features1", "features2"],
+          "rating": "0.00",
+          "rating_count": 0,
+          "units": [
+            {
+              "id": 173,
+              "property_id": 102,
+              "unit_number": "Unit 101",
+              "unit_name": null,
+              "rent_amount": "1500.00",
+              "rent_type": {
+                "id": 1,
+                "name": "Daily",
+                "slug": "daily",
+                "rent_days": 1
+              },
+              "currency": {
+                "id": 1,
+                "code": "AUD",
+                "name": "Australian Dollar",
+                "symbol": "A$",
+                "logo": "https://renter-pay.test/images/currency.png",
+                "type": "fiat"
+              },
+              "display_rent_amount": 1500,
+              "display_currency": {
+                "id": 1,
+                "code": "AUD",
+                "name": "Australian Dollar",
+                "symbol": "A$",
+                "logo": "https://renter-pay.test/images/currency.png",
+                "type": "fiat"
+              },
+              "status": "available",
+              "bedrooms": 2,
+              "bathrooms": 1,
+              "size": "2400.00",
+              "description": null
+            }
+          ],
+          "review_summary": {
+            "total_reviews": 0,
+            "average_rating": "0.00"
+          },
+          "created_at": "2026-02-10T05:28:00.000000Z",
+          "updated_at": "2026-02-10T05:28:00.000000Z"
         },
-        "experience": "2+ Years of Experience",
-        "support_time": "Same-Day Service",
-        "why_choose_us": [
-          {
-            "icon": null,
-            "title": "Satisfaction Guaranteed",
-            "short_description": "We stand behind our work"
+        "property_unit": {
+          "id": 173,
+          "property_id": 102,
+          "unit_number": "Unit 101",
+          "unit_name": null,
+          "rent_amount": "1500.00",
+          "rent_type": {
+            "id": 1,
+            "name": "Daily",
+            "slug": "daily",
+            "rent_days": 1
           },
-          {
-            "icon": null,
-            "title": "Fast Response",
-            "short_description": "Same-day and emergency service available"
+          "currency": {
+            "id": 1,
+            "code": "AUD",
+            "name": "Australian Dollar",
+            "symbol": "A$",
+            "logo": "https://renter-pay.test/images/currency.png",
+            "type": "fiat"
           },
-          {
-            "icon": null,
-            "title": "Transparent Pricing",
-            "short_description": "No hidden fees, upfront quotes"
-          }
-        ],
-        "services_offered": [
-          {
-            "icon": null,
-            "title": "Repairs",
-            "short_description": "Fast diagnosis and repair"
+          "display_rent_amount": 1500,
+          "display_currency": {
+            "id": 1,
+            "code": "AUD",
+            "name": "Australian Dollar",
+            "symbol": "A$",
+            "logo": "https://renter-pay.test/images/currency.png",
+            "type": "fiat"
           },
-          {
-            "icon": null,
-            "title": "Installation",
-            "short_description": "Professional installation services"
-          }
-        ],
-        "past_work_showcase": [
-          {
-            "image": null,
-            "image_description": "Completed project to high standard."
-          },
-          {
-            "image": null,
-            "image_description": "Customer satisfied with result."
-          },
-          {
-            "image": null,
-            "image_description": "Quality work delivered on time."
-          }
-        ],
-        "status": "approved",
-        "approved_at": null,
-        "created_at": "2026-02-11T02:39:57+06:00",
-        "updated_at": "2026-02-11T02:39:57+06:00",
-        "vendor": {
-          "id": 12,
-          "user_id": 48,
-          "business_name": "ABC Cleaning Services",
-          "business_type": "Electrical",
-          "abn": "56561965573",
-          "description": "Professional Electrical services with over 10 years of experience.",
-          "is_verified": true,
-          "status": "approved",
-          "rejection_reason": null,
-          "approved_at": "2026-02-11T02:39:52+06:00",
-          "created_at": "2026-02-11T02:39:52+06:00",
-          "updated_at": "2026-02-11T02:39:52+06:00",
-          "subscription": null
+          "status": "available",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "size": "2400.00",
+          "description": null
         },
-        "service_type": {
-          "id": 11,
-          "name": "Appliance Repair",
-          "slug": "appliance-repair"
-        }
+        "tenant": {
+          "id": 67,
+          "name": "Md. Mahfuzur Rahman",
+          "email": null
+        },
+        "assignments": [],
+        "created_at": "2026-02-10 11:28:48",
+        "updated_at": "2026-02-10 11:28:48"
       }
     ],
     "links": {
-      "first": "https://renter-pay.mahfuz.click/api/v1/vendors/services?service_type_id=11&page=1",
-      "last": "https://renter-pay.mahfuz.click/api/v1/vendors/services?service_type_id=11&page=1",
+      "first": "https://renter-pay.test/api/v1/maintenance/requests?page=1",
+      "last": "https://renter-pay.test/api/v1/maintenance/requests?page=1",
       "prev": null,
       "next": null
     },
@@ -106,7 +154,7 @@
           "active": false
         },
         {
-          "url": "https://renter-pay.mahfuz.click/api/v1/vendors/services?service_type_id=11&page=1",
+          "url": "https://renter-pay.test/api/v1/maintenance/requests?page=1",
           "label": "1",
           "page": 1,
           "active": true
@@ -118,7 +166,7 @@
           "active": false
         }
       ],
-      "path": "https://renter-pay.mahfuz.click/api/v1/vendors/services",
+      "path": "https://renter-pay.test/api/v1/maintenance/requests",
       "per_page": 20,
       "to": 1,
       "total": 1
