@@ -32,7 +32,7 @@ class LandlordRepairMaintenanceTable
           ),
           TableStatus(status: item.status?.capitalizeFirst ?? ''),
           LandlordRepairMaintenanceTableData(
-            maintenanceRequestId: item.id,
+            maintenanceRequestID: item.id ?? 0,
           ),
         ];
       });

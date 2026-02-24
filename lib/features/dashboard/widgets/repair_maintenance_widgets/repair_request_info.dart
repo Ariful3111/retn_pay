@@ -17,8 +17,7 @@ class RepairRequestInfo extends StatelessWidget {
         ? property?.title
         : property?.name;
     final date = (data?.preferredDate).toDMMMyyyy();
-    final time =
-        (data?.preferredTimeSlots != null &&
+    final time = (data?.preferredTimeSlots != null &&
             (data?.preferredTimeSlots?.isNotEmpty ?? false))
         ? data?.preferredTimeSlots?.first
         : (data?.preferredTimeOther ?? '');
@@ -35,8 +34,14 @@ class RepairRequestInfo extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            dateTime(title: 'Date:', subTitle: date),
-            dateTime(title: 'Time:', subTitle: time ?? ''),
+            dateTime(
+              title: 'Date:',
+              subTitle: date,
+            ),
+            dateTime(
+              title: 'Time:',
+              subTitle: time ?? '',
+            ),
           ],
         ),
       ],

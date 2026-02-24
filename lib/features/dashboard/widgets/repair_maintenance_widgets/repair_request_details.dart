@@ -19,7 +19,7 @@ class RepairRequestDetails extends GetWidget<RepairRequestController> {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Obx(() {
       final data = controller.details.value?.data;
-      final status = data?.status ?? '';
+      final status = data?.status?.capitalizeFirst ?? '';
       return Container(
         height: MediaQuery.heightOf(context),
         width: MediaQuery.widthOf(context),
@@ -32,8 +32,10 @@ class RepairRequestDetails extends GetWidget<RepairRequestController> {
             : Stack(
                 children: [
                   ListView(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 32.h, horizontal: 20.w),
+                    padding: EdgeInsets.symmetric(
+                      vertical: 32.h,
+                      horizontal: 20.w,
+                    ),
                     children: [
                       RepairRequestInfo(data: data),
                       SizedBox(height: 24.h),
@@ -67,7 +69,9 @@ class RepairRequestDetails extends GetWidget<RepairRequestController> {
                   Positioned(
                     right: 10.w,
                     top: 10.h,
-                    child: RepairRequestStatus(status: status),
+                    child: RepairRequestStatus(
+                      status: status.isEmpty ? 'Pending' : status,
+                    ),
                   ),
                 ],
               ),

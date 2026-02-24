@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/repair_maintenance_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_maintenance_table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
@@ -49,7 +50,11 @@ class RepairMaintenanceTableContent extends StatelessWidget {
           fontWeight: FontWeight.w400,
           textColor: AppColors.darkAppBar,
           borderRadius: BorderRadius.circular(6.r),
-          onPressed: () {},
+          onPressed: () {
+            final id = item.id;
+            if (id == null) return;
+            Get.toNamed(AppRoutes.repairRequestView, arguments: id);
+          },
         ),
         SizedBox(height: 12.h),
       ],
