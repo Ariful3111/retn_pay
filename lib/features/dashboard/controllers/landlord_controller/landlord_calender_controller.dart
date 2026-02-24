@@ -15,22 +15,22 @@ class LandlordCalenderController extends GetxController {
   RxInt isDay = 0.obs;
   final focusedDay = DateTime.now().obs;
   final selectedDay = DateTime.now().obs;
+  final _monthLabelFormatter = DateFormat('MMMM, yyyy');
+  final _apiDateFormatter = DateFormat('yyyy-MM-dd');
 
   String get selectedMonthLabel {
-    final df = DateFormat('MMMM, yyyy');
-
     if (rangeStart.value != null && rangeEnd.value != null) {
       final start = rangeStart.value!;
       final end = rangeEnd.value!;
 
       if (start.year == end.year && start.month == end.month) {
-        return df.format(start);
+        return _monthLabelFormatter.format(start);
       }
 
-      return '${df.format(start)} - ${df.format(end)}';
+      return '${_monthLabelFormatter.format(start)} - ${_monthLabelFormatter.format(end)}';
     }
 
-    return df.format(selectedDay.value);
+    return _monthLabelFormatter.format(selectedDay.value);
   }
 
   List<CalenderEntry> get entries =>
@@ -42,46 +42,27 @@ class LandlordCalenderController extends GetxController {
       final start = DateTime.tryParse(entry.startDatetime ?? '');
       if (start == null) continue;
       final local = start.isUtc ? start.toLocal() : start;
-      final key = DateTime(local.year, local.month, local.day);
+      final key = DateUtils.dateOnly(local);
       (map[key] ??= <CalenderEntry>[]).add(entry);
     }
     return map;
   }
 
   void applyFilter() {
-    final start = rangeStart.value != null
-        ? DateTime(
-            rangeStart.value!.year,
-            rangeStart.value!.month,
-            rangeStart.value!.day,
-          )
-        : DateTime(
-            selectedDay.value.year,
-            selectedDay.value.month,
-            selectedDay.value.day,
-          );
-    final end = rangeEnd.value != null
-        ? DateTime(
-            rangeEnd.value!.year,
-            rangeEnd.value!.month,
-            rangeEnd.value!.day,
-          )
-        : start;
-
+    final start = DateUtils.dateOnly(rangeStart.value ?? selectedDay.value);
+    final end = DateUtils.dateOnly(rangeEnd.value ?? start);
     getCalender(startDate: _formatApiDate(start), endDate: _formatApiDate(end));
   }
 
-  late DateTime today;
   late DateTime firstDay;
   late DateTime lastDay;
   Rx<DateTime?> rangeStart = Rxn<DateTime>();
   Rx<DateTime?> rangeEnd = Rxn<DateTime>();
   Rx<RangeSelectionMode> rangeSelectionMode = RangeSelectionMode.toggledOn.obs;
   Rx<CalendarFormat> calendarFormat = CalendarFormat.month.obs;
-  RxInt isItemSelect = 0.obs;
   @override
   void onInit() {
-    today = DateTime.now();
+    final today = DateTime.now();
     firstDay = DateTime(today.year - 1, today.month, today.day);
     lastDay = DateTime(today.year + 1, today.month, today.day);
     super.onInit();
@@ -94,15 +75,6 @@ class LandlordCalenderController extends GetxController {
     rangeStart.value = null;
     rangeEnd.value = null;
     applyFilter();
-  }
-
-  void onMonthChanged(DateTime focused) {
-    focusedDay.value = focused;
-    selectedDay.value = DateTime(
-      focused.year,
-      focused.month,
-      selectedDay.value.day,
-    );
   }
 
   Future<void> getCalender({
@@ -126,6 +98,6 @@ class LandlordCalenderController extends GetxController {
   }
 
   String _formatApiDate(DateTime date) {
-    return DateFormat('yyyy-MM-dd').format(date);
+    return _apiDateFormatter.format(date);
   }
 }
