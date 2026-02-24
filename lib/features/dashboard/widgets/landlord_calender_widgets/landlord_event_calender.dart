@@ -18,8 +18,8 @@ class LandlordEventCalender extends StatelessWidget {
         isSameDay: (DateTime day) {
           return isSameDay(day, landlordCalenderController.selectedDay.value);
         },
-        event: landlordCalenderController.events,
-        eventList: landlordCalenderController.filteredEvents,
+        event: landlordCalenderController.entriesByDay,
+        eventList: landlordCalenderController.entries,
         onDaySelected: (DateTime day, DateTime focus) {
           landlordCalenderController.onDaySelected(day, focus);
         },

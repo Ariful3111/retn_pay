@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/landlord_controller/landlord_calender_controller.dart';
+import 'package:renter_pay/features/dashboard/models/landlord_models/calender_model.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class CustomCalenderEventList extends StatelessWidget {
-  final List<CalendarEvent> events;
+  final List<CalenderEntry> events;
   const CustomCalenderEventList({super.key, required this.events});
 
   @override
@@ -33,6 +33,11 @@ class CustomCalenderEventList extends StatelessWidget {
         itemCount: events.length,
         itemBuilder: (_, i) {
           final e = events[i];
+          final color = _colorForType(e.type);
+          final start = DateTime.tryParse(e.startDatetime ?? '');
+          final local = start == null
+              ? null
+              : (start.isUtc ? start.toLocal() : start);
           return Container(
             margin: EdgeInsets.only(bottom: 16.r),
             decoration: BoxDecoration(
@@ -52,7 +57,7 @@ class CustomCalenderEventList extends StatelessWidget {
                   width: 8.w,
                   height: 132.h,
                   decoration: BoxDecoration(
-                    color: e.color,
+                    color: color,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(12.r),
                       bottomLeft: Radius.circular(12.r),
@@ -66,20 +71,22 @@ class CustomCalenderEventList extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CustomTextSecondary(
-                          text: '${e.title}:',
-                          color: e.color,
+                          text: '${e.title ?? ''}:',
+                          color: color,
                         ),
                         SizedBox(height: 4.h),
                         CustomTextPrimary(
-                          text: e.subtitle,
+                          text: e.description ?? '',
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w400,
                         ),
                         SizedBox(height: 8.h),
                         CustomTextSecondary(
-                          text: DateFormat(
-                            'MMM dd, yyyy - hh:mm a',
-                          ).format(e.date),
+                          text: local == null
+                              ? ''
+                              : DateFormat(
+                                  'MMM dd, yyyy - hh:mm a',
+                                ).format(local),
                           color: AppColors.borderColor,
                         ),
                       ],
@@ -92,5 +99,12 @@ class CustomCalenderEventList extends StatelessWidget {
         },
       ),
     );
+  }
+
+  Color _colorForType(String? type) {
+    if (type == 'property_inspection') {
+      return Colors.cyan;
+    }
+    return Colors.purple;
   }
 }
