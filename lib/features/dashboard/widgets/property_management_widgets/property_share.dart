@@ -34,35 +34,37 @@ class PropertyShare extends StatelessWidget {
       constraints: BoxConstraints.tight(
         Size(MediaQuery.widthOf(context), 600.h),
       ),
-      content: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomTextSecondary(text: 'Land Data Title: Maple Grove - Lot 23'),
-          SizedBox(height: 12.h),
-          CustomTextSecondary(text: 'Date of Registration: 2025-07-08'),
-          SizedBox(height: 12.h),
-          CustomTextSecondary(text: 'Owner Name: John Doe'),
-          SizedBox(height: 12.h),
-          CustomTextSecondary(text: 'Email: John123@gmail.com'),
-          SizedBox(height: 12.h),
-          CustomTextSecondary(text: 'Phone No: +1234567890'),
-          SizedBox(height: 40.h),
-          CustomTextPrimary(text: 'Share', fontSize: 20.sp),
-          SizedBox(height: 8.h),
-          Row(
-            children: [
-              Image.asset(IconsPath.shareFacebook, height: 32.h, width: 32.w),
-              SizedBox(width: 12.w),
-              Image.asset(IconsPath.messenger, height: 32.h, width: 32.w),
-              SizedBox(width: 12.w),
-              Image.asset(IconsPath.whatsapp, height: 32.h, width: 32.w),
-              SizedBox(width: 12.w),
-              Image.asset(IconsPath.gmail, height: 32.h, width: 32.w),
-            ],
-          ),
-          SizedBox(height: 20.h),
-          PropertyShareLink(),
-        ],
+      content: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomTextSecondary(text: 'Land Data Title: Maple Grove - Lot 23'),
+            SizedBox(height: 12.h),
+            CustomTextSecondary(text: 'Date of Registration: 2025-07-08'),
+            SizedBox(height: 12.h),
+            CustomTextSecondary(text: 'Owner Name: John Doe'),
+            SizedBox(height: 12.h),
+            CustomTextSecondary(text: 'Email: John123@gmail.com'),
+            SizedBox(height: 12.h),
+            CustomTextSecondary(text: 'Phone No: +1234567890'),
+            SizedBox(height: 40.h),
+            CustomTextPrimary(text: 'Share', fontSize: 20.sp),
+            SizedBox(height: 8.h),
+            Row(
+              children: [
+                Image.asset(IconsPath.shareFacebook, height: 32.h, width: 32.w),
+                SizedBox(width: 12.w),
+                Image.asset(IconsPath.messenger, height: 32.h, width: 32.w),
+                SizedBox(width: 12.w),
+                Image.asset(IconsPath.whatsapp, height: 32.h, width: 32.w),
+                SizedBox(width: 12.w),
+                Image.asset(IconsPath.gmail, height: 32.h, width: 32.w),
+              ],
+            ),
+            SizedBox(height: 20.h),
+            PropertyShareLink(),
+          ],
+        ),
       ),
 
       actions: [

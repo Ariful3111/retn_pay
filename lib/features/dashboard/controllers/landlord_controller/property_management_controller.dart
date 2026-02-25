@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_insurance.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_share.dart';
 
@@ -36,7 +37,7 @@ class PropertyManagementController extends GetxController {
   List<String> propertyOption = ['Property 01', 'Property 02'];
   RxList<XFile> imageList = <XFile>[].obs;
   RxBool isShare = false.obs;
-  RxBool isViewProperty = false.obs;
+  // RxBool isViewProperty = false.obs;
   final List<String> tableColumn = [
     'Property Address',
     'Enlisting Status',
@@ -64,7 +65,7 @@ class PropertyManagementController extends GetxController {
         Get.dialog(PropertyInsurance(property: property));
       case MyMenu.view:
         Future.delayed(Duration(milliseconds: 300), () {
-          isViewProperty.value = !isViewProperty.value;
+          Get.toNamed(AppRoutes.propertyManagementDetails);
           for (final position in propertyScrollController.positions) {
             position.animateTo(
               position.minScrollExtent,
