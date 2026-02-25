@@ -41,7 +41,10 @@ class ServiceReview extends GetWidget<ServiceListController> {
                     padding: EdgeInsets.only(bottom: 16.h),
                     child: GestureDetector(
                       onTap: () {
-                        Get.toNamed(AppRoutes.serviceSearchDetails);
+                        Get.toNamed(
+                          AppRoutes.serviceSearchDetails,
+                          arguments: controller.services.value?.data?[index].id,
+                        );
                       },
                       child: Row(
                         children: [

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/agent_repair_request/repair_request_assign.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/landlord_repair_maintenance/landlord_repair_maintenance_assign.dart';
@@ -9,7 +8,8 @@ import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.da
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class RepairRequestImages extends StatelessWidget {
-  const RepairRequestImages({super.key});
+  final List<String> images;
+  const RepairRequestImages({super.key, required this.images});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class RepairRequestImages extends StatelessWidget {
           child: ListView.builder(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: 10,
+            itemCount: images.length,
             itemBuilder: (context, index) {
               return Container(
                 margin: EdgeInsets.only(right: 6.w),
@@ -31,10 +31,14 @@ class RepairRequestImages extends StatelessWidget {
                 width: 80.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.r),
-                  image: DecorationImage(
-                    image: AssetImage(ImagesPath.service),
-                    fit: BoxFit.fill,
-                  ),
+                ),
+                clipBehavior: Clip.antiAlias,
+                child: Image.network(
+                  images[index],
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return SizedBox.shrink();
+                  },
                 ),
               );
             },

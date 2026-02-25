@@ -11,3 +11,4 @@ class PaymentManagementBindings implements Bindings {
     Get.lazyPut(() => ServicePaymentManagementController());
   }
 }
+

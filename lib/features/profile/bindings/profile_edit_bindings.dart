@@ -24,7 +24,12 @@ class ProfileEditBindings implements Bindings {
       );
     }
     Get.lazyPut(() => PlanRepository(getNetwork: Get.find()));
-    Get.lazyPut(() => ProfileEditRepository(patchWithoutResponse: Get.find()));
+    Get.lazyPut(
+      () => ProfileEditRepository(
+        patchWithoutResponse: Get.find(),
+        imageWithoutResponse: Get.find(),
+      ),
+    );
     Get.lazyPut(
       () => UpdatePreferenceRepository(postWithoutResponse: Get.find()),
     );

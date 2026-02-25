@@ -73,12 +73,18 @@ class ProfileEditInfo extends StatelessWidget {
                   child: Align(
                     alignment: Alignment(0.1, 1.5),
                     child: GestureDetector(
-                      onTap: () {
-                        UploadImage.sendImage(
+                      onTap: () async {
+                        final beforePath =
+                            profileEditController.upload.value?.path;
+                        final picked = await UploadImage.sendImage(
                           picker: profileEditController.picker,
                           pickImage: profileEditController.upload,
                           context: context,
                         );
+                        final afterPath = picked?.path;
+                        if (afterPath == null || afterPath == beforePath) {
+                          return;
+                        }
                       },
                       child: Container(
                         height: 30.h,

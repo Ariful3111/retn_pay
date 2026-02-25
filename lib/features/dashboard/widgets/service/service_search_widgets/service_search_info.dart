@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
+import 'package:renter_pay/features/dashboard/controllers/service_details_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_details_container.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_details_switcher.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/service_search_info_item.dart';
@@ -14,10 +15,13 @@ class ServiceSearchInfo extends StatelessWidget {
   final bool isShow;
   final VoidCallback onTap;
   final bool bookButton;
+  final ServiceDetailsController controller;
   const ServiceSearchInfo({
     super.key,
     required this.isShow,
-    required this.onTap, required this.bookButton,
+    required this.onTap,
+    required this.bookButton,
+    required this.controller,
   });
 
   @override
@@ -49,7 +53,15 @@ class ServiceSearchInfo extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomTextPrimary(
-                      text: 'ProFix Plumbing Solutions',
+                      text:
+                          controller
+                              .serviceDetails
+                              .value
+                              ?.data
+                              ?.data
+                              ?.first
+                              .title ??
+                          '',
                       fontSize: 20.sp,
                       color: isDark
                           ? AppColors.whiteColor
@@ -57,7 +69,15 @@ class ServiceSearchInfo extends StatelessWidget {
                     ),
                     SizedBox(height: 4.h),
                     CustomTextSecondary(
-                      text: 'Expert Plumbing Services for Homes & Businesses',
+                      text:
+                          controller
+                              .serviceDetails
+                              .value
+                              ?.data
+                              ?.data
+                              ?.first
+                              .subtext ??
+                          '',
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
                     ),
@@ -69,27 +89,35 @@ class ServiceSearchInfo extends StatelessWidget {
           ),
           SizedBox(height: 12.h),
           AnimatedSwitcher(
-              duration: Duration(milliseconds: 300),
-              switchInCurve: Curves.easeInOut,
-              switchOutCurve: Curves.easeInOut,
-              child: isShow
-                  ? CustomTextSecondary(
-                      text:
-                          'ProFix Plumbing Solutions delivers reliable, affordable, and expert plumbing services for homes and businesses. From quick leak repairs to full-scale installations, our certified team ensures quality workmanship, transparent pricing, and long-lasting solutions you can trust.',
-                      fontSize: 14.sp,
-                    )
-                  : SizedBox.shrink(),
-            ),
+            duration: Duration(milliseconds: 300),
+            switchInCurve: Curves.easeInOut,
+            switchOutCurve: Curves.easeInOut,
+            child: isShow
+                ? CustomTextSecondary(
+                    text:
+                        controller
+                            .serviceDetails
+                            .value
+                            ?.data
+                            ?.data
+                            ?.first
+                            .description ??
+                        '',
+                    fontSize: 14.sp,
+                  )
+                : SizedBox.shrink(),
+          ),
           SizedBox(height: 14.h),
           ServiceSearchInfoItem(),
           SizedBox(height: 16.h),
-         if(bookButton) CustomPrimaryButton(
-            text: 'Book Now',
-            borderRadius: BorderRadius.circular(6.r),
-            height: 40.h,
-            width: 140.w,
-            onPressed: () {},
-          ),
+          if (bookButton)
+            CustomPrimaryButton(
+              text: 'Book Now',
+              borderRadius: BorderRadius.circular(6.r),
+              height: 40.h,
+              width: 140.w,
+              onPressed: () {},
+            ),
         ],
       ),
     );

@@ -5,7 +5,8 @@ import 'package:renter_pay/shared/widgets/custom_table/table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class RepairRequestStatus extends StatelessWidget {
-  const RepairRequestStatus({super.key});
+  final String status;
+  const RepairRequestStatus({super.key, required this.status});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class RepairRequestStatus extends StatelessWidget {
               fontSize: 14.sp,
               fontWeight: FontWeight.w500,
             ),
-            TableStatus(status: 'Pending'),
+            TableStatus(status: status),
           ],
         ),
       ),

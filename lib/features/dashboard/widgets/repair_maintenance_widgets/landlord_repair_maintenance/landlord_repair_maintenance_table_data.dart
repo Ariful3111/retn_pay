@@ -6,8 +6,11 @@ import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/shared/widgets/custom_table/table_action_button.dart';
 
 class LandlordRepairMaintenanceTableData extends StatelessWidget {
-  final int index;
-  const LandlordRepairMaintenanceTableData({super.key, required this.index});
+  final int maintenanceRequestID;
+  const LandlordRepairMaintenanceTableData({
+    super.key,
+    required this.maintenanceRequestID,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,10 @@ class LandlordRepairMaintenanceTableData extends StatelessWidget {
       child: TableActionButton(
         icon: IconsPath.actonView,
         onTap: () {
-          Get.toNamed(AppRoutes.repairRequestView);
+          Get.toNamed(
+            AppRoutes.repairRequestView,
+            arguments: maintenanceRequestID,
+          );
         },
         iconColor: isDark ? AppColors.whiteColor : null,
       ),

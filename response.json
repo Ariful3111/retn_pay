@@ -1,143 +1,63 @@
 {
   "error": false,
   "code": 200,
-  "message": "Service types retrieved successfully",
-  "data": [
-    {
-      "id": 11,
-      "name": "Appliance Repair",
-      "slug": "appliance-repair",
-      "description": "Repair and maintenance of household appliances",
-      "status": true,
-      "created_at": "2026-02-11T02:39:57+06:00",
-      "updated_at": "2026-02-11T02:39:57+06:00"
+  "message": "Calendar entries retrieved successfully",
+  "data": {
+    "data": [
+      {
+        "id": 1,
+        "title": "Property Inspection",
+        "description": "Inspection at Modern Apartment",
+        "start_datetime": "2026-12-15T10:00:00+06:00",
+        "end_datetime": "2026-12-15T10:00:00+06:00",
+        "type": "property_inspection",
+        "type_label": "Property Inspection",
+        "color": "green",
+        "property_id": 102,
+        "property": {
+          "id": 102,
+          "title": "Modern Apartment",
+          "address": "123 Main St"
+        },
+        "created_at": "2026-02-15 02:20:02",
+        "updated_at": "2026-02-15 02:20:02"
+      }
+    ],
+    "links": {
+      "first": "https://renter-pay.test/api/v1/calendar/entries?page=1",
+      "last": "https://renter-pay.test/api/v1/calendar/entries?page=1",
+      "prev": null,
+      "next": null
     },
-    {
-      "id": 7,
-      "name": "Carpentry",
-      "slug": "carpentry",
-      "description": "Custom carpentry and woodworking services",
-      "status": true,
-      "created_at": "2026-02-11T02:39:57+06:00",
-      "updated_at": "2026-02-11T02:39:57+06:00"
-    },
-    {
-      "id": 3,
-      "name": "Cleaning",
-      "slug": "cleaning",
-      "description": "Thorough cleaning services for homes and offices",
-      "status": true,
-      "created_at": "2026-02-11T02:39:57+06:00",
-      "updated_at": "2026-02-11T02:39:57+06:00"
-    },
-    {
-      "id": 2,
-      "name": "Electrical",
-      "slug": "electrical",
-      "description": "Professional electrical services for residential and commercial properties",
-      "status": true,
-      "created_at": "2026-02-11T02:39:57+06:00",
-      "updated_at": "2026-02-11T02:39:57+06:00"
-    },
-    {
-      "id": 10,
-      "name": "Flooring",
-      "slug": "flooring",
-      "description": "Floor installation, repair, and refinishing services",
-      "status": true,
-      "created_at": "2026-02-11T02:39:57+06:00",
-      "updated_at": "2026-02-11T02:39:57+06:00"
-    },
-    {
-      "id": 5,
-      "name": "Handyman",
-      "slug": "handyman",
-      "description": "General handyman services for various home repairs",
-      "status": true,
-      "created_at": "2026-02-11T02:39:57+06:00",
-      "updated_at": "2026-02-11T02:39:57+06:00"
-    },
-    {
-      "id": 4,
-      "name": "HVAC",
-      "slug": "hvac",
-      "description": "Heating, ventilation, and air conditioning installation and repair",
-      "status": true,
-      "created_at": "2026-02-11T02:39:57+06:00",
-      "updated_at": "2026-02-11T02:39:57+06:00"
-    },
-    {
-      "id": 8,
-      "name": "Landscaping",
-      "slug": "landscaping",
-      "description": "Garden design, maintenance, and landscaping services",
-      "status": true,
-      "created_at": "2026-02-11T02:39:57+06:00",
-      "updated_at": "2026-02-11T02:39:57+06:00"
-    },
-    {
-      "id": 12,
-      "name": "Locksmith",
-      "slug": "locksmith",
-      "description": "Lock installation, repair, and key duplication services",
-      "status": true,
-      "created_at": "2026-02-11T02:39:57+06:00",
-      "updated_at": "2026-02-11T02:39:57+06:00"
-    },
-    {
-      "id": 6,
-      "name": "Painting",
-      "slug": "painting",
-      "description": "Interior and exterior painting services",
-      "status": true,
-      "created_at": "2026-02-11T02:39:57+06:00",
-      "updated_at": "2026-02-11T02:39:57+06:00"
-    },
-    {
-      "id": 14,
-      "name": "Pest Control",
-      "slug": "pest-control",
-      "description": "Professional pest control and extermination services",
-      "status": true,
-      "created_at": "2026-02-11T02:39:57+06:00",
-      "updated_at": "2026-02-11T02:39:57+06:00"
-    },
-    {
-      "id": 1,
-      "name": "Plumbing",
-      "slug": "plumbing",
-      "description": "Complete plumbing services including repairs, installations, and maintenance",
-      "status": true,
-      "created_at": "2026-02-11T02:39:57+06:00",
-      "updated_at": "2026-02-11T02:39:57+06:00"
-    },
-    {
-      "id": 9,
-      "name": "Roofing",
-      "slug": "roofing",
-      "description": "Roof repair, installation, and maintenance services",
-      "status": true,
-      "created_at": "2026-02-11T02:39:57+06:00",
-      "updated_at": "2026-02-11T02:39:57+06:00"
-    },
-    {
-      "id": 15,
-      "name": "Waterproofing",
-      "slug": "waterproofing",
-      "description": "Waterproofing solutions for basements and roofs",
-      "status": true,
-      "created_at": "2026-02-11T02:39:57+06:00",
-      "updated_at": "2026-02-11T02:39:57+06:00"
-    },
-    {
-      "id": 13,
-      "name": "Window & Door",
-      "slug": "window-door",
-      "description": "Window and door installation and repair services",
-      "status": true,
-      "created_at": "2026-02-11T02:39:57+06:00",
-      "updated_at": "2026-02-11T02:39:57+06:00"
+    "meta": {
+      "current_page": 1,
+      "from": 1,
+      "last_page": 1,
+      "links": [
+        {
+          "url": null,
+          "label": "&laquo; Previous",
+          "page": null,
+          "active": false
+        },
+        {
+          "url": "https://renter-pay.test/api/v1/calendar/entries?page=1",
+          "label": "1",
+          "page": 1,
+          "active": true
+        },
+        {
+          "url": null,
+          "label": "Next &raquo;",
+          "page": null,
+          "active": false
+        }
+      ],
+      "path": "https://renter-pay.test/api/v1/calendar/entries",
+      "per_page": 15,
+      "to": 1,
+      "total": 1
     }
-  ],
+  },
   "errors": null
 }
