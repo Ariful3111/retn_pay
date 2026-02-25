@@ -20,80 +20,77 @@ class PropertyOwnerDocument
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 24.h,horizontal: 15.w),
-      child: CustomContainer(
-        child: SingleChildScrollView(
-          child: AddNewPropertyContainer(
-            child: Column(
-              children: [
-                PropertyManagementAppbar(),
-                SizedBox(height: 24.h,),
-                CustomTextPrimary(
-                  text: 'Property Ownership Documents',
-                  fontSize: 22.sp,
-                ),
-                SizedBox(height: 20.h),
-                CustomTextPrimary(
-                  text: 'Land Data Registry Certificate',
-                  fontSize: 20.sp,
-                  color: AppColors.primaryColorDark,
-                ),
-                SizedBox(height: 12.h),
-                Obx(
-                  () => controller.isLoading.value
-                      ? ButtonLoading()
-                      : PropertyOwnerDocumentUpload(
-                          key: ValueKey(controller.landImage.length),
-                          onTap: () async {
-                            await controller.submitDocument(
-                              documentType: "ownership_certificate",
-                              images: controller.landImage,
+    return CustomContainer(
+      child: SingleChildScrollView(
+        child: AddNewPropertyContainer(
+          child: Column(
+            children: [
+              PropertyManagementAppbar(),
+              SizedBox(height: 24.h,),
+              CustomTextPrimary(
+                text: 'Property Ownership Documents',
+                fontSize: 22.sp,
+              ),
+              SizedBox(height: 20.h),
+              CustomTextPrimary(
+                text: 'Land Data Registry Certificate',
+                fontSize: 20.sp,
+                color: AppColors.primaryColorDark,
+              ),
+              SizedBox(height: 12.h),
+              Obx(
+                () => controller.isLoading.value
+                    ? ButtonLoading()
+                    : PropertyOwnerDocumentUpload(
+                        key: ValueKey(controller.landImage.length),
+                        onTap: () async {
+                          await controller.submitDocument(
+                            documentType: "ownership_certificate",
+                            images: controller.landImage,
+                          );
+                        },
+                        child: PropertyOwnerDocumentImage(
+                          onPickImage: () async {
+                            await UploadImage.pickMultipleImage(
+                              allImages: controller.landImage,
                             );
                           },
-                          child: PropertyOwnerDocumentImage(
-                            onPickImage: () async {
-                              await UploadImage.pickMultipleImage(
-                                allImages: controller.landImage,
-                              );
-                            },
-                            image: controller.landImage,
-                          ),
+                          image: controller.landImage,
                         ),
-                ),
-                SizedBox(height: 24.h),
-                CustomTextPrimary(
-                  text: 'Certificate of Landlord Insurance',
-                  fontSize: 20.sp,
-                  color: AppColors.primaryColorDark,
-                ),
-                SizedBox(height: 12.h),
-                Obx(
-                  () => controller.isLoading.value
-                      ? ButtonLoading()
-                      : PropertyOwnerDocumentUpload(
-                          key: ValueKey(controller.insuranceImage.length),
-                          onTap: () async {
-                            await controller.submitDocument(
-                              documentType: "insurance",
-                              images: controller.insuranceImage,
+                      ),
+              ),
+              SizedBox(height: 24.h),
+              CustomTextPrimary(
+                text: 'Certificate of Landlord Insurance',
+                fontSize: 20.sp,
+                color: AppColors.primaryColorDark,
+              ),
+              SizedBox(height: 12.h),
+              Obx(
+                () => controller.isLoading.value
+                    ? ButtonLoading()
+                    : PropertyOwnerDocumentUpload(
+                        key: ValueKey(controller.insuranceImage.length),
+                        onTap: () async {
+                          await controller.submitDocument(
+                            documentType: "insurance",
+                            images: controller.insuranceImage,
+                          );
+                        },
+                        child: PropertyOwnerDocumentImage(
+                          onPickImage: () async {
+                            await UploadImage.pickMultipleImage(
+                              allImages: controller.insuranceImage,
                             );
                           },
-                          child: PropertyOwnerDocumentImage(
-                            onPickImage: () async {
-                              await UploadImage.pickMultipleImage(
-                                allImages: controller.insuranceImage,
-                              );
-                            },
-                            image: controller.insuranceImage,
-                          ),
+                          image: controller.insuranceImage,
                         ),
-                ),
-                PropertyOwnerDocumentProperty(),
-                SizedBox(height: 24.h),
-                PropertyOwnerSubmitDocument(),
-              ],
-            ),
+                      ),
+              ),
+              PropertyOwnerDocumentProperty(),
+              SizedBox(height: 24.h),
+              PropertyOwnerSubmitDocument(),
+            ],
           ),
         ),
       ),

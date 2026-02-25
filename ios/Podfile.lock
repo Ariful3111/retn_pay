@@ -9,6 +9,41 @@ PODS:
     - GoogleUtilities/Environment (~> 8.0)
     - GoogleUtilities/UserDefaults (~> 8.0)
     - PromisesObjC (~> 2.4)
+  - camera_avfoundation (0.0.1):
+    - Flutter
+  - camerawesome (0.0.1):
+    - Flutter
+  - DartCvIOS (4.12.0.2):
+    - DartCvIOS/calib3d (= 4.12.0.2)
+    - DartCvIOS/contrib (= 4.12.0.2)
+    - DartCvIOS/core (= 4.12.0.2)
+    - DartCvIOS/features2d (= 4.12.0.2)
+    - DartCvIOS/imgproc (= 4.12.0.2)
+    - DartCvIOS/objdetect (= 4.12.0.2)
+    - DartCvIOS/photo (= 4.12.0.2)
+    - DartCvIOS/stitching (= 4.12.0.2)
+    - DartCvIOS/video (= 4.12.0.2)
+  - DartCvIOS/calib3d (4.12.0.2):
+    - DartCvIOS/core
+  - DartCvIOS/contrib (4.12.0.2):
+    - DartCvIOS/core
+  - DartCvIOS/core (4.12.0.2)
+  - DartCvIOS/dnn (4.12.0.2):
+    - DartCvIOS/core
+  - DartCvIOS/features2d (4.12.0.2):
+    - DartCvIOS/core
+  - DartCvIOS/imgproc (4.12.0.2):
+    - DartCvIOS/core
+  - DartCvIOS/objdetect (4.12.0.2):
+    - DartCvIOS/core
+  - DartCvIOS/photo (4.12.0.2):
+    - DartCvIOS/core
+  - DartCvIOS/stitching (4.12.0.2):
+    - DartCvIOS/core
+  - DartCvIOS/video (4.12.0.2):
+    - DartCvIOS/core
+  - DartCvIOS/videoio (4.12.0.2):
+    - DartCvIOS/core
   - Firebase/CoreOnly (12.8.0):
     - FirebaseCore (~> 12.8.0)
   - Firebase/Messaging (12.8.0):
@@ -98,12 +133,19 @@ PODS:
     - nanopb/encode (= 3.30910.0)
   - nanopb/decode (3.30910.0)
   - nanopb/encode (3.30910.0)
+  - opencv_dart (0.0.1):
+    - DartCvIOS (= 4.12.0.2)
+    - DartCvIOS/dnn (= 4.12.0.2)
+    - DartCvIOS/videoio (= 4.12.0.2)
+    - Flutter
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
   - pointer_interceptor_ios (0.0.1):
     - Flutter
   - PromisesObjC (2.4.0)
+  - sensors_plus (0.0.1):
+    - Flutter
   - sqflite_darwin (0.0.4):
     - Flutter
     - FlutterMacOS
@@ -111,6 +153,8 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
+  - camerawesome (from `.symlinks/plugins/camerawesome/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - Flutter (from `Flutter`)
@@ -118,8 +162,10 @@ DEPENDENCIES:
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - google_sign_in_ios (from `.symlinks/plugins/google_sign_in_ios/darwin`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
+  - opencv_dart (from `.symlinks/plugins/opencv_dart/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - pointer_interceptor_ios (from `.symlinks/plugins/pointer_interceptor_ios/ios`)
+  - sensors_plus (from `.symlinks/plugins/sensors_plus/ios`)
   - sqflite_darwin (from `.symlinks/plugins/sqflite_darwin/darwin`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
@@ -127,6 +173,7 @@ SPEC REPOS:
   trunk:
     - AppAuth
     - AppCheckCore
+    - DartCvIOS
     - Firebase
     - FirebaseCore
     - FirebaseCoreInternal
@@ -141,6 +188,10 @@ SPEC REPOS:
     - PromisesObjC
 
 EXTERNAL SOURCES:
+  camera_avfoundation:
+    :path: ".symlinks/plugins/camera_avfoundation/ios"
+  camerawesome:
+    :path: ".symlinks/plugins/camerawesome/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
   firebase_messaging:
@@ -155,10 +206,14 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/google_sign_in_ios/darwin"
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
+  opencv_dart:
+    :path: ".symlinks/plugins/opencv_dart/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   pointer_interceptor_ios:
     :path: ".symlinks/plugins/pointer_interceptor_ios/ios"
+  sensors_plus:
+    :path: ".symlinks/plugins/sensors_plus/ios"
   sqflite_darwin:
     :path: ".symlinks/plugins/sqflite_darwin/darwin"
   url_launcher_ios:
@@ -167,6 +222,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AppAuth: 1c1a8afa7e12f2ec3a294d9882dfa5ab7d3cb063
   AppCheckCore: cc8fd0a3a230ddd401f326489c99990b013f0c4f
+  camera_avfoundation: 281867ff09f1da66f031a184ecfbc6f2e625c9f5
+  camerawesome: 7ad7493b41b648d2fab64b1fd5ae08299b913120
+  DartCvIOS: 31615ff863f0fc709aee9b93dc3afa3500d35ba7
   Firebase: 9a58fdbc9d8655ed7b79a19cf9690bb007d3d46d
   firebase_core: 8d5e24676350f15dd111aa59a88a1ae26605f9ba
   firebase_messaging: 834cfc0887393d3108cdb19da8e57655c54fd0e4
@@ -185,9 +243,11 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5aea5ba6bd522a239e236100971f10cb71b96ab6
   image_picker_ios: 4f2f91b01abdb52842a8e277617df877e40f905b
   nanopb: fad817b59e0457d11a5dfbde799381cd727c1275
+  opencv_dart: 02eb3e5bc0e22de03c63b68c6bd7b156ea4341fb
   path_provider_foundation: 0b743cbb62d8e47eab856f09262bb8c1ddcfe6ba
   pointer_interceptor_ios: a78ffe95ad3c6cd52c42ad362c116d92355c3d42
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
+  sensors_plus: 7229095999f30740798f0eeef5cd120357a8f4f2
   sqflite_darwin: 5a7236e3b501866c1c9befc6771dfd73ffb8702d
   url_launcher_ios: bb13df5870e8c4234ca12609d04010a21be43dfa
 

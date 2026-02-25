@@ -179,17 +179,18 @@ class AddNewPropertyController extends GetxController {
         unitSize: unitSize,
         images: images.map((e) => File(e.path)).toList(),
       );
+
       response.fold(
         (error) {
           ErrorSnackbar.show(description: error.message);
         },
         (data) async {
+          Get.back();
           Get.toNamed(AppRoutes.propertyOwnerDocument);
           await storage.write(
             key: storage.propertyIDKey,
             value: data.data?.id?.toInt() ?? 0,
           );
-          Get.back();
           for (final position
               in Get.find<PropertyManagementController>()
                   .propertyScrollController
