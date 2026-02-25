@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/create_property_repo.dart';
 import 'package:renter_pay/features/home/controllers/property_amenities_controller.dart';
@@ -15,7 +16,6 @@ class AddNewPropertyController extends GetxController {
   final CreatePropertyRepository createPropertyRepository;
   AddNewPropertyController({required this.createPropertyRepository});
   RxBool isNewProperty = false.obs;
-  RxBool isPropertyDetails = false.obs;
   TextEditingController imageDescriptionController = TextEditingController();
   TextEditingController areaController = TextEditingController();
   TextEditingController nameController = TextEditingController();
@@ -184,7 +184,7 @@ class AddNewPropertyController extends GetxController {
           ErrorSnackbar.show(description: error.message);
         },
         (data) async {
-          isPropertyDetails.value = !isPropertyDetails.value;
+          Get.toNamed(AppRoutes.propertyOwnerDocument);
           await storage.write(
             key: storage.propertyIDKey,
             value: data.data?.id?.toInt() ?? 0,
