@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/property_document_repo.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
@@ -54,11 +53,6 @@ class PropertyManagementDocumentController extends GetxController {
           button: CustomPrimaryButton(
             onPressed: () {
               Navigator.pop(context);
-              Get.find<PropertyManagementController>().isViewProperty.value =
-                  false;
-              Get.find<AddNewPropertyController>().isPropertyDetails.value =
-                  false;
-              Get.find<AddNewPropertyController>().isNewProperty.value = false;
               Get.find<PropertyManagementController>().propertyScrollController
                   .jumpTo(
                     Get.find<PropertyManagementController>()

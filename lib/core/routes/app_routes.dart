@@ -42,5 +42,8 @@ class AppRoutes {
   static const String landlordCalenderView = '/landlordCalenderView';
   static const String serviceManagementView = '/serviceManagementView';
   static const String bookingManagementView = '/bookingManagementView';
-  static const String bookingManagementDetailsView = '/bookingManagementDetailsView';
+  static const String bookingManagementDetailsView =
+      '/bookingManagementDetailsView';
+  static const String addNewProperty = '/addNewProperty';
+  static const String propertyOwnerDocument = '/propertyOwnerDocument';
 }

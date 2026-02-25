@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/agent_widgets/property_management_conditional_report.dart';
@@ -59,8 +60,7 @@ class PropertyManagementRow extends StatelessWidget {
                         add(
                           context: context,
                           onTap: () {
-                            addNewPropertyController.isNewProperty.value =
-                                !addNewPropertyController.isNewProperty.value;
+                            Get.toNamed(AppRoutes.addNewProperty);
                           },
                           text: 'New Property',
                         ),
