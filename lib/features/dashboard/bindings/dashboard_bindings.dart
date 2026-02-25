@@ -13,6 +13,7 @@ import 'package:renter_pay/features/dashboard/controllers/landlord_controller/pr
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_details_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/lease_agreement_controller.dart';
 import 'package:renter_pay/features/dashboard/repositories/dashboard_metrics_repo.dart';
+import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/calender_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/create_property_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/property_document_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/submit_property_review_repo.dart';
@@ -31,7 +32,7 @@ class DashboardBindings implements Bindings {
   void dependencies() {
     Get.lazyPut(() => CreatePropertyRepository(imageWithResponse: Get.find()));
     Get.lazyPut(() => PropertyDocumentRepository(imageNetwork: Get.find()));
-
+    Get.lazyPut(() => CalenderRepository(getNetwork: Get.find()));
     Get.lazyPut(() => DashboardController());
     Get.lazyPut(() => DashboardLandlordController());
     Get.lazyPut(() => PropertyManagementController());
@@ -45,7 +46,9 @@ class DashboardBindings implements Bindings {
     );
     Get.lazyPut(() => PropertyManagementDetailsController());
     Get.lazyPut(() => ApplicationManagementController());
-    Get.lazyPut(() => LandlordCalenderController());
+    Get.lazyPut(
+      () => LandlordCalenderController(calenderRepository: Get.find()),
+    );
     Get.lazyPut(() => ServiceVendorDashboardController());
     Get.lazyPut(() => BookingManagementController());
     Get.lazyPut(() => DashboardMetricsRepository(getNetwork: Get.find()));
@@ -96,12 +99,16 @@ class DashboardBindings implements Bindings {
       );
     }
     if (!Get.isRegistered<SubmitPropertyReviewRepository>()) {
-      Get.lazyPut(() => SubmitPropertyReviewRepository(postNetwork: Get.find()));
+      Get.lazyPut(
+        () => SubmitPropertyReviewRepository(postNetwork: Get.find()),
+      );
     }
     if (!Get.isRegistered<SubmitPropertyReviewController>()) {
-      Get.lazyPut(() => SubmitPropertyReviewController(
-        submitPropertyReviewRepository: Get.find(),
-      ));
+      Get.lazyPut(
+        () => SubmitPropertyReviewController(
+          submitPropertyReviewRepository: Get.find(),
+        ),
+      );
     }
   }
 }

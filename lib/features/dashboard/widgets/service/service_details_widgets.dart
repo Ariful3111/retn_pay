@@ -19,53 +19,55 @@ class ServiceDetailsWidgets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return Obx(()=> Column(
-      children: List.generate(widgetList.length, (index) {
-        final isSelected = selectedWidget[index];
-        return Column(
-          key: ValueKey(index),
-          children: [
-            Container(
-              padding: EdgeInsets.all(16.r),
-              decoration: BoxDecoration(
-                color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
-                borderRadius: BorderRadius.circular(12.r),
+    return Obx(
+      () => Column(
+        children: List.generate(widgetList.length, (index) {
+          final isSelected = selectedWidget[index];
+          return Column(
+            key: ValueKey(index),
+            children: [
+              Container(
+                padding: EdgeInsets.all(16.r),
+                decoration: BoxDecoration(
+                  color: isDark
+                      ? AppColors.darkSecondary
+                      : AppColors.whiteColor,
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+                child: Column(
+                  key: ValueKey(index),
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomTextPrimary(
+                          text: widgetTitleList[index],
+                          fontSize: 20.sp,
+                          color: isDark
+                              ? AppColors.whiteColor
+                              : AppColors.darkContainer,
+                        ),
+                        ServiceDetailsSwitcher(
+                          isShow: isSelected,
+                          onTap: () {
+                            selectedWidget[index] = !selectedWidget[index];
+                          },
+                        ),
+                      ],
+                    ),
+                    AnimatedSize(
+                      duration: Duration(milliseconds: 250),
+                      curve: Curves.easeInOut,
+                      child: isSelected ? widgetList[index] : SizedBox.shrink(),
+                    ),
+                  ],
+                ),
               ),
-              child: Column(
-                key: ValueKey(index),
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CustomTextPrimary(
-                        text: widgetTitleList[index],
-                        fontSize: 20.sp,
-                        color: isDark
-                            ? AppColors.whiteColor
-                            : AppColors.darkContainer,
-                      ),
-                      ServiceDetailsSwitcher(
-                        isShow: isSelected,
-                        onTap: () {
-                          selectedWidget[index]=!selectedWidget[index];
-                        },
-                      ),
-                    ],
-                  ),
-                  AnimatedSize(
-                    duration: Duration(milliseconds: 250),
-                    curve: Curves.easeInOut,
-                    child: isSelected
-                        ? widgetList[index]
-                        : SizedBox.shrink(),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 20.h),
-          ],
-        );
-      }),
-    ),);
+              SizedBox(height: 20.h),
+            ],
+          );
+        }),
+      ),
+    );
   }
 }

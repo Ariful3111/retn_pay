@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -69,12 +71,14 @@ class UploadImage {
     }
   }
 
-  static Future<void> sendImage({
+  static Future<XFile?> sendImage({
     required ImagePicker picker,
     required Rxn<XFile> pickImage,
     required BuildContext context,
   }) async {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
+    final completer = Completer<XFile?>();
+    bool selectionInProgress = false;
     await Get.bottomSheet(
       Container(
         padding: EdgeInsets.all(16),
@@ -91,13 +95,17 @@ class UploadImage {
               leading: const Icon(Icons.camera_alt),
               title: const Text('Camera'),
               onTap: () async {
+                selectionInProgress = true;
                 Get.back();
-                final XFile? image = await picker.pickImage(
-                  source: ImageSource.camera,
-                  imageQuality: 25,
-                );
-                if (image != null) {
-                  pickImage.value = image;
+                try {
+                  final XFile? image = await picker.pickImage(
+                    source: ImageSource.camera,
+                    imageQuality: 25,
+                  );
+                  if (!completer.isCompleted) completer.complete(image);
+                  if (image != null) pickImage.value = image;
+                } catch (_) {
+                  if (!completer.isCompleted) completer.complete(null);
                 }
               },
             ),
@@ -105,13 +113,17 @@ class UploadImage {
               leading: const Icon(Icons.photo_library),
               title: const Text('Gallery'),
               onTap: () async {
+                selectionInProgress = true;
                 Get.back();
-                final XFile? image = await picker.pickImage(
-                  source: ImageSource.gallery,
-                  imageQuality: 25,
-                );
-                if (image != null) {
-                  pickImage.value = image;
+                try {
+                  final XFile? image = await picker.pickImage(
+                    source: ImageSource.gallery,
+                    imageQuality: 25,
+                  );
+                  if (!completer.isCompleted) completer.complete(image);
+                  if (image != null) pickImage.value = image;
+                } catch (_) {
+                  if (!completer.isCompleted) completer.complete(null);
                 }
               },
             ),
@@ -119,6 +131,10 @@ class UploadImage {
         ),
       ),
     );
+    if (!selectionInProgress && !completer.isCompleted) {
+      completer.complete(null);
+    }
+    return completer.future;
   }
 
   static Future<void> pickMultipleImage({

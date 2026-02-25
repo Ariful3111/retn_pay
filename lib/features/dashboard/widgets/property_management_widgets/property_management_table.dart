@@ -40,18 +40,20 @@ class PropertyManagementTable extends StatelessWidget {
               textOverflow: TextOverflow.ellipsis,
             ),
             isProperty
-                ?userIndex==2?CustomTextSecondary(
-                    text: item.rent,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w400,
-                  ) :PropertyManagementTableData(index: index)
+                ? userIndex == 2
+                      ? CustomTextSecondary(
+                          text: item.rent,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                        )
+                      : PropertyManagementTableData(index: index)
                 : CustomTextSecondary(
                     text: item.date,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w400,
                   ),
             isProperty
-                ? item.verifyStatus == 'Approved'||userIndex==2
+                ? item.verifyStatus == 'Approved' || userIndex == 2
                       ? PropertyManagementTableAction(index: index)
                       : SizedBox.shrink()
                 : CustomFilterAppbar(
@@ -66,7 +68,9 @@ class PropertyManagementTable extends StatelessWidget {
         final listIndex = list.map((e) => e.key).toList();
         return CustomTable(
           column: isProperty
-              ?userIndex==2? propertyManagementController.agentTableColumn:propertyManagementController.tableColumn
+              ? userIndex == 2
+                    ? propertyManagementController.agentTableColumn
+                    : propertyManagementController.tableColumn
               : propertyManagementController.conditionReportTableColumn,
           row: rowWidgets,
           expandedTableBuilder: (index) {

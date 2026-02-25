@@ -1,123 +1,104 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-
-class MaintenanceModel {
-  final String tenantName;
-  final String address;
-  final String issueName;
-  final String urgency;
-  final String status;
-  MaintenanceModel({
-    required this.tenantName,
-    required this.address,
-    required this.issueName,
-    required this.urgency,
-    required this.status,
-  });
-}
+import 'package:renter_pay/features/dashboard/models/landlord_models/repair_maintenance_list_model.dart';
+import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/repair_maintenance_list_repo.dart';
+import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
 class LandlordRepairMaintenanceController extends GetxController {
+  final RepairMaintenanceListRepository repairMaintenanceListRepository;
+  LandlordRepairMaintenanceController({
+    required this.repairMaintenanceListRepository,
+  });
+  final repairs = <RepairMaintenanceListItem>[].obs;
+  RxBool isLoading = true.obs;
   RxInt repairTypeIndex = 0.obs;
   List<String> repairType = ['Active Requests', 'Complete'];
-  RxList<MaintenanceModel> dataList = <MaintenanceModel>[].obs;
   final List<String> repairColumn = ['Issue Name', 'Status', 'Action'];
   TextEditingController nameController = TextEditingController();
   TextEditingController numberController = TextEditingController();
   RxList<bool> expandedData = <bool>[].obs;
   RxList<XFile> imageList = <XFile>[].obs;
-  List<MapEntry<int, MaintenanceModel>> get tableData {
-    final tempData = <MapEntry<int, MaintenanceModel>>[];
-    for (int i = 0; i < dataList.length; i++) {
-      tempData.add(MapEntry(i, dataList[i]));
-    }
-    List<MapEntry<int, MaintenanceModel>> filterData;
-    switch (repairTypeIndex.value) {
-      case 0:
-        filterData = tempData
-            .where(
-              (data) =>
-                  data.value.status == 'Pending' ||
-                  data.value.status == 'Assigned',
-            )
-            .toList();
-        break;
-      case 1:
-        filterData = tempData
-            .where((data) => data.value.status == 'Completed')
-            .toList();
-        break;
-      default:
-        filterData = tempData;
-    }
-    return filterData;
+  static const int perPage = 20;
+  final currentPage = 1.obs;
+  final lastPage = 1.obs;
+  late final Worker _tabWorker;
+  final scrollController = ScrollController();
+  bool _isLoadingMore = false;
+
+  String get _status => repairTypeIndex.value == 1 ? 'completed' : '';
+
+  @override
+  void onInit() {
+    super.onInit();
+    _tabWorker = ever<int>(repairTypeIndex, (_) {
+      refreshList();
+    });
+    scrollController.addListener(() {
+      if (!scrollController.hasClients) return;
+      if (scrollController.position.extentAfter > 300) return;
+      loadMore();
+    });
+    refreshList();
   }
 
-  void initRows() {
-    dataList.value = [
-      MaintenanceModel(
-        tenantName: 'Ariful',
-        address: '987 Birch Boulevard',
-        issueName: 'Leaking Faucet',
-        urgency: 'Urgent',
-        status: 'Assigned',
-      ),
-      MaintenanceModel(
-        tenantName: 'Ariful',
-        address: '987 Birch Boulevard',
-        issueName: 'Leaking Faucet',
-        urgency: 'Urgent',
-        status: 'Assigned',
-      ),
-      MaintenanceModel(
-        tenantName: 'Ariful',
-        address: '987 Birch Boulevard',
-        issueName: 'Leaking Faucet',
-        urgency: 'Urgent',
-        status: 'Pending',
-      ),
-      MaintenanceModel(
-        tenantName: 'Ariful',
-        address: '987 Birch Boulevard',
-        issueName: 'Leaking Faucet',
-        urgency: 'Non - Urgent',
-        status: 'Pending',
-      ),
-      MaintenanceModel(
-        tenantName: 'Ariful',
-        address: '987 Birch Boulevard',
-        issueName: 'Leaking Faucet',
-        urgency: 'Non - Urgent',
-        status: 'Completed',
-      ),
-      MaintenanceModel(
-        tenantName: 'Ariful',
-        address: '987 Birch Boulevard',
-        issueName: 'Leaking Faucet',
-        urgency: 'Non - Urgent',
-        status: 'Completed',
-      ),
-      MaintenanceModel(
-        tenantName: 'Ariful',
-        address: '987 Birch Boulevard',
-        issueName: 'Leaking Faucet',
-        urgency: 'Non - Urgent',
-        status: 'Completed',
-      ),
-    ];
-    expandedData.value = List.generate(dataList.length, (_) => false);
-    update();
+  Future<void> refreshList() async {
+    currentPage.value = 1;
+    lastPage.value = 1;
+    repairs.clear();
+    expandedData.clear();
+    await _fetch(page: 1, append: false);
+  }
+
+  Future<void> loadMore() async {
+    if (_isLoadingMore || isLoading.value) return;
+    if (currentPage.value >= lastPage.value) return;
+    _isLoadingMore = true;
+    await _fetch(page: currentPage.value + 1, append: true);
+    _isLoadingMore = false;
+  }
+
+  Future<void> _fetch({required int page, required bool append}) async {
+    isLoading.value = true;
+    final response = await repairMaintenanceListRepository.execute(
+      status: _status,
+      page: page,
+      perPage: perPage,
+    );
+    isLoading.value = false;
+    response.fold(
+      (error) {
+        ErrorSnackbar.show(description: error.message);
+      },
+      (data) {
+        final newItems = data.data?.data ?? <RepairMaintenanceListItem>[];
+        currentPage.value = page;
+        lastPage.value = data.data?.meta?.lastPage ?? 1;
+
+        if (append) {
+          repairs.addAll(newItems);
+          expandedData.addAll(List<bool>.filled(newItems.length, false));
+        } else {
+          repairs.assignAll(newItems);
+          expandedData.assignAll(List<bool>.filled(newItems.length, false));
+        }
+      },
+    );
   }
 
   void showExpandedData(int index) {
     if (index >= 0 && index < expandedData.length) {
       expandedData[index] = !expandedData[index];
     }
+    expandedData.refresh();
   }
 
   @override
-  void onReady() {
-    initRows();
-    super.onReady();
+  void onClose() {
+    _tabWorker.dispose();
+    scrollController.dispose();
+    nameController.dispose();
+    numberController.dispose();
+    super.onClose();
   }
 }

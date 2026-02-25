@@ -7,3 +7,4 @@ class ServiceSearchBindings implements Bindings {
     Get.lazyPut(() => ServiceSearchController());
   }
 }
+

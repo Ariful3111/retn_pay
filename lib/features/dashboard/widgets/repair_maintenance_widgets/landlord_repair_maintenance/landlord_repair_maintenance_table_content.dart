@@ -19,23 +19,29 @@ class LandlordRepairMaintenanceTableContent extends StatelessWidget {
     LandlordRepairMaintenanceController landlordRepairMaintenanceController =
         Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    final item = landlordRepairMaintenanceController.dataList[index];
+    if (index >= landlordRepairMaintenanceController.repairs.length) {
+      return SizedBox.shrink();
+    }
+    final item = landlordRepairMaintenanceController.repairs[index];
+    final status = item.status?.capitalizeFirst ?? '';
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        info(text: 'Tenant Name:${item.address}'),
+        info(text: 'Tenant Name: ${item.tenant?.name ?? ''}'),
         SizedBox(height: 8.h),
-        info(text: 'Urgency:${item.urgency}'),
+        info(text: 'Property Address: ${item.property?.address ?? ''}'),
+        SizedBox(height: 8.h),
+        info(text: 'Urgency: ${item.urgency?.capitalizeFirst ?? ''}'),
         SizedBox(height: 8.h),
         Row(
           children: [
             info(text: 'Status:'),
             SizedBox(width: 8.w),
-            TableStatus(status: item.status),
+            TableStatus(status: status),
           ],
         ),
-        if (item.status == 'Completed'&&userIndex==1) info(text: 'Receipt:'),
-        if (item.status == 'Completed'&&userIndex==1)
+        if (status == 'Completed' && userIndex == 1) info(text: 'Receipt:'),
+        if (status == 'Completed' && userIndex == 1)
           Row(
             children: [
               TableActionButton(

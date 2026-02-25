@@ -18,7 +18,7 @@ class PropertyManagementTableAction extends StatelessWidget {
     return Obx(() {
       final selectedItem = propertyManagementController.getMenu(index);
       return PopupMenuButton<MyMenu>(
-        color:isDark? AppColors.darkPrimary:AppColors.whiteColor,
+        color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
         onSelected: (MyMenu menu) {
           propertyManagementController.setMenu(index, menu);
         },
@@ -30,26 +30,38 @@ class PropertyManagementTableAction extends StatelessWidget {
               menu: MyMenu.view,
               icon: IconsPath.actonView,
               text: 'View',
-              select: selectedItem == MyMenu.view, context: context,
+              select: selectedItem == MyMenu.view,
+              context: context,
             ),
             item(
               menu: MyMenu.share,
               icon: IconsPath.share,
               text: 'Share',
-              select: selectedItem == MyMenu.share, context: context,
+              select: selectedItem == MyMenu.share,
+              context: context,
             ),
             item(
               menu: MyMenu.insurance,
               icon: IconsPath.insurance,
               text: 'Insurance',
-              select: selectedItem == MyMenu.insurance, context: context,
+              select: selectedItem == MyMenu.insurance,
+              context: context,
             ),
-          userIndex==2? item(menu: MyMenu.conditionalReport, icon: IconsPath.conditional, text: 'Conditional Report', select: selectedItem==MyMenu.conditionalReport, context: context): item(
-              menu: MyMenu.reEnlist,
-              icon: IconsPath.enlist,
-              text: 'Re-Enlist',
-              select: selectedItem == MyMenu.reEnlist, context: context,
-            ),
+            userIndex == 2
+                ? item(
+                    menu: MyMenu.conditionalReport,
+                    icon: IconsPath.conditional,
+                    text: 'Conditional Report',
+                    select: selectedItem == MyMenu.conditionalReport,
+                    context: context,
+                  )
+                : item(
+                    menu: MyMenu.reEnlist,
+                    icon: IconsPath.enlist,
+                    text: 'Re-Enlist',
+                    select: selectedItem == MyMenu.reEnlist,
+                    context: context,
+                  ),
           ];
         },
       );
@@ -61,7 +73,7 @@ class PropertyManagementTableAction extends StatelessWidget {
     required String icon,
     required String text,
     required bool select,
-    required BuildContext context
+    required BuildContext context,
   }) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return PopupMenuItem<MyMenu>(
@@ -78,12 +90,20 @@ class PropertyManagementTableAction extends StatelessWidget {
               icon,
               height: 24.h,
               width: 24.w,
-              color: select ? AppColors.whiteColor :isDark? AppColors.darkAppBar:AppColors.darkPrimary,
+              color: select
+                  ? AppColors.whiteColor
+                  : isDark
+                  ? AppColors.darkAppBar
+                  : AppColors.darkPrimary,
             ),
             SizedBox(width: 10.w),
             CustomTextSecondary(
               text: text,
-              color: select ? AppColors.whiteColor :isDark? AppColors.darkAppBar: AppColors.darkContainer,
+              color: select
+                  ? AppColors.whiteColor
+                  : isDark
+                  ? AppColors.darkAppBar
+                  : AppColors.darkContainer,
             ),
           ],
         ),

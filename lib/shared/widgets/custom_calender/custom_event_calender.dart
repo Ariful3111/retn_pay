@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/landlord_controller/landlord_calender_controller.dart';
+import 'package:renter_pay/features/dashboard/models/landlord_models/calender_model.dart';
 import 'package:renter_pay/shared/widgets/custom_calender/custom_calender_event_list.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -13,8 +13,8 @@ class CustomEventCalender extends StatelessWidget {
   final DateTime focusDay;
   final bool Function(DateTime day) isSameDay;
   final void Function(DateTime day, DateTime focus) onDaySelected;
-  final Map<DateTime, List<CalendarEvent>> event;
-  final List<CalendarEvent> eventList;
+  final Map<DateTime, List<CalenderEntry>> event;
+  final List<CalenderEntry> eventList;
   const CustomEventCalender({
     super.key,
     required this.firstDay,
@@ -22,7 +22,8 @@ class CustomEventCalender extends StatelessWidget {
     required this.focusDay,
     required this.isSameDay,
     required this.onDaySelected,
-    required this.event, required this.eventList,
+    required this.event,
+    required this.eventList,
   });
 
   DateTime normalize(DateTime d) => DateTime(d.year, d.month, d.day);
@@ -51,7 +52,7 @@ class CustomEventCalender extends StatelessWidget {
               defaultBuilder: (context, day, _) {
                 final list = event[normalize(day)];
                 if (list != null && list.isNotEmpty) {
-                  return _coloredDate(day.day, list.first.color);
+                  return _coloredDate(day.day, _colorForType(list.first.type));
                 }
                 return null;
               },
@@ -106,5 +107,12 @@ class CustomEventCalender extends StatelessWidget {
       alignment: Alignment.center,
       child: CustomTextSecondary(text: '$day', color: color),
     );
+  }
+
+  Color _colorForType(String? type) {
+    if (type == 'property_inspection') {
+      return Colors.cyan;
+    }
+    return Colors.purple;
   }
 }

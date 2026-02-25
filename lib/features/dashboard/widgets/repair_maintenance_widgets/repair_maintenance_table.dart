@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/repair_maintenance_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_maintenance_table_content.dart';
 import 'package:renter_pay/features/dashboard/widgets/repair_maintenance_widgets/repair_maintenance_table_status.dart';
@@ -49,7 +50,9 @@ class RepairMaintenanceTable extends GetWidget<RepairMaintenanceController> {
                         textColor: AppColors.darkAppBar,
                         borderRadius: BorderRadius.circular(6.r),
                         onPressed: () {
-                          controller.showExpandedData(index);
+                          final id = item.id;
+                          if (id == null) return;
+                          Get.toNamed(AppRoutes.repairRequestView, arguments: id);
                         },
                       ),
                     ];

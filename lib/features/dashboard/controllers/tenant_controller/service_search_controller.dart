@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/service_search_certification.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/service_search_offered.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/service_search_past_work.dart';
-import 'package:renter_pay/features/dashboard/widgets/service/service_search_widgets/service_search_review.dart';
 
 class ServiceSearchController extends GetxController {
   RxBool isShowInfo = false.obs;
@@ -34,7 +31,7 @@ class ServiceSearchController extends GetxController {
     ServiceSearchCertification(),
     ServiceSearchOffered(),
     ServiceSearchPastWork(),
-    ServiceSearchReview(),
+    // ServiceSearchReview(),
   ];
   final List timePeriodList = [
     'Between 8 a.m. - 12 p.m.',
@@ -43,76 +40,10 @@ class ServiceSearchController extends GetxController {
     '',
   ];
   final List<String> widgetTitle = [
-    'Why Choose ProFix Plumbing?',
+    'Why Choose Us?',
     'Services Offered',
     'Past Work Showcase',
     'What Our Clients Say',
-  ];
-  final List certificationItem = [
-    {
-      'icon': IconsPath.serviceTech,
-      'title': 'Leak Repairs',
-      'subTitle': 'Licensed & insured professionals',
-    },
-    {
-      'icon': IconsPath.serviceResponse,
-      'title': 'Quick Response',
-      'subTitle': 'Average response time under 2 hours',
-    },
-    {
-      'icon': IconsPath.servicePrice,
-      'title': 'Transparent Pricing',
-      'subTitle': 'No hidden costs, upfront quotes',
-    },
-    {
-      'icon': IconsPath.serviceClient,
-      'title': 'Trusted by 500+ Clients',
-      'subTitle': 'Consistently rated 5 stars',
-    },
-  ];
-  final List offeredItem = [
-    {
-      'icon': IconsPath.serviceRepair,
-      'title': 'Certified Technicians',
-      'subTitle': 'Licensed & insured professionals',
-    },
-    {
-      'icon': IconsPath.servicePipe,
-      'title': 'Pipe Installations',
-      'subTitle': 'New pipeline setup, upgrades, and replacements.',
-    },
-    {
-      'icon': IconsPath.serviceDrain,
-      'title': 'Drain Cleaning',
-      'subTitle': 'Unclogging sinks, toilets, and mainlines.  ',
-    },
-    {
-      'icon': IconsPath.serviceHeater,
-      'title': 'Water Heater Setup',
-      'subTitle': 'Installation & repair of gas/electric heaters.',
-    },
-    {
-      'icon': IconsPath.serviceBath,
-      'title': 'Bathroom Renovation Support',
-      'subTitle': 'Fixture installations, shower setup, and maintenance.',
-    },
-  ];
-  final List pastWork = [
-    {
-      'Image': ImagesPath.service,
-      'Text':
-          'Emergency pipe burst fixed within hours, restoring full water flow and preventing further damage.',
-    },
-    {
-      'Image': ImagesPath.service,
-      'Text':
-          'Emergency pipe burst fixed within hours, restoring full water flow and preventing further damage.',
-    },
-    {
-      'Image': ImagesPath.service,
-      'Text':
-          'Emergency pipe burst fixed within hours, restoring full water flow and preventing further damage.',
-    },
   ];
   @override
   void dispose() {

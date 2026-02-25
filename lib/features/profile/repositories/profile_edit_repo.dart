@@ -1,15 +1,23 @@
+import 'dart:io';
+
 import 'package:fpdart/fpdart.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/networks_path.dart';
 import 'package:renter_pay/core/data/global_models/error_model.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
+import 'package:renter_pay/core/data/networks/image_without_response.dart';
 import 'package:renter_pay/core/data/networks/patch_without_response.dart';
 
 class ProfileEditRepository {
   final PatchWithoutResponse patchWithoutResponse;
-  const ProfileEditRepository({required this.patchWithoutResponse});
+  final ImageWithoutResponse imageWithoutResponse;
+  const ProfileEditRepository({
+    required this.patchWithoutResponse,
+    required this.imageWithoutResponse,
+  });
 
   Future<Either<ErrorModel, bool>> execute({
+    File? image,
     String? firstName,
     String? lastName,
     String? phone,
@@ -65,6 +73,21 @@ class ProfileEditRepository {
           key: Get.find<StorageService>().tokenKey,
         ) ??
         "";
+
+    if (image != null) {
+      final response = await imageWithoutResponse.upload(
+        url: "/api/${NetworkLinks.version}/profile",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "multipart/form-data",
+          "Authorization": "Bearer $token",
+        },
+        images: [image],
+        imageParameters: ["image"],
+        fields: {"_method": "PATCH"},
+      );
+      return response;
+    }
 
     final response = await patchWithoutResponse.postData(
       url: "/api/${NetworkLinks.version}/profile",

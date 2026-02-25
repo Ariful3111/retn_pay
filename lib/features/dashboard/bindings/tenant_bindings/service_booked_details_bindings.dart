@@ -7,3 +7,4 @@ class ServiceBookedDetailsBindings implements Bindings {
     Get.lazyPut(() => ServiceBookedDetailsController());
   }
 }
+

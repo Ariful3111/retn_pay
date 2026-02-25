@@ -27,3 +27,4 @@ class ActivePropertiesBindings implements Bindings {
     }
   }
 }
+
