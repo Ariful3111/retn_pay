@@ -11,9 +11,10 @@ class VRCaptureScreen extends GetView<VrController> {
   @override
   Widget build(BuildContext context) {
     return PanoramaCreator(
+      loaderColor: Colors.white,
       displayStatus: true,
       backgroundColor: Colors.black,
-      loadingWidget: const CircularProgressIndicator(color: Colors.white),
+      loadingWidget: const CircularProgressIndicator(),
       onError: (error) {
         controller.onError(error: error);
       },

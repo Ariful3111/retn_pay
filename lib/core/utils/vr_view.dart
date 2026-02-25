@@ -13,7 +13,7 @@ class VRView extends StatelessWidget {
     return CustomContainer(
       child: Center(
         child: PanoramaViewer(
-          child: Image.file(File(Get.arguments.toString())),
+          child: Image.file(File(Get.arguments.toString()), fit: BoxFit.fill),
         ),
       ),
     );
