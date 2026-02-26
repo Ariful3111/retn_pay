@@ -4,18 +4,18 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/agent_widgets/property_management_reassignment.dart';
+import 'package:renter_pay/features/home/models/properties_model.dart';
 import 'package:renter_pay/shared/widgets/custom_table/table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class PropertyManagementTableContent extends StatelessWidget {
-  final int rowIndex;
-  const PropertyManagementTableContent({super.key, required this.rowIndex});
+  final Property property;
+  const PropertyManagementTableContent({super.key, required this.property});
 
   @override
   Widget build(BuildContext context) {
     PropertyManagementController propertyManagementController = Get.find();
     bool isProperty = propertyManagementController.selected.value == 'Property';
-    final item = propertyManagementController.allRows[rowIndex];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -35,48 +35,60 @@ class PropertyManagementTableContent extends StatelessWidget {
                       children: [
                         infoText(title: 'Verification Status:'),
                         SizedBox(width: 4.w),
-                        TableStatus(status: item.verifyStatus),
+                        TableStatus(status: property.status.toString()),
                       ],
                     ),
               SizedBox(height: 8.h),
               userIndex == 2
                   ? infoText(title: 'Assigned By: Landlord')
-                  : infoText(title: "Monthly Rent: ${item.rent}"),
+                  : infoText(
+                      title:
+                          "Monthly Rent: ${property.units?.first.rentAmount ?? 'N/A'}",
+                    ),
               SizedBox(height: 8.h),
             ],
           ),
         userIndex == 2 && isProperty
-            ? infoText(title: "Landlord Name: ${item.agent}")
-            : infoText(title: "Agent Name: ${item.agent}"),
+            ? infoText(
+                title: "Landlord Name: ${property.landlord?.name ?? 'N/A'}",
+              )
+            : infoText(title: "Agent Name: ${property.agent?.name ?? 'N/A'}"),
         SizedBox(height: 8.h),
         userIndex == 2 && isProperty
-            ? infoText(title: "Landlord Email: ${item.email}")
-            : infoText(title: "Agent Email: ${item.email}"),
+            ? infoText(
+                title: "Landlord Email: ${property.landlord?.email ?? 'N/A'}",
+              )
+            : infoText(title: "Agent Email: ${property.agent?.email ?? 'N/A'}"),
         SizedBox(height: 8.h),
         userIndex == 2 && isProperty
-            ? infoText(title: "Landlord Phone No: ${item.phoneNo}")
-            : infoText(title: "Agent Phone No: ${item.phoneNo}"),
+            ? infoText(
+                title:
+                    "Landlord Phone No: ${property.landlord?.phone ?? 'N/A'}",
+              )
+            : infoText(
+                title: "Agent Phone No: ${property.agent?.phone ?? 'N/A'}",
+              ),
         if (userIndex == 2 && isProperty)
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 8.h),
-              infoText(title: "Tenant Name: ${item.agent}"),
+              infoText(title: "Tenant Name: ${'N/A'}"),
               SizedBox(height: 8.h),
-              infoText(title: "Tenant Email: ${item.email}"),
+              infoText(title: "Tenant Email: ${'N/A'}"),
               SizedBox(height: 8.h),
-              infoText(title: "Tenant Phone No: ${item.phoneNo}"),
+              infoText(title: "Tenant Phone No: ${'N/A'}"),
             ],
           ),
         SizedBox(height: 8.h),
         if (isProperty)
-          if (item.verifyStatus == 'Approved' && userIndex == 1) ...[
+          if (property.status == 'approved' && userIndex == 1) ...[
             SizedBox(height: 8.h),
             Row(
               children: [
                 infoText(title: "Enlisting Status:"),
                 SizedBox(width: 6.w),
-                TableStatus(status: item.enlistStatus),
+                TableStatus(status: property.status.toString()),
               ],
             ),
           ],

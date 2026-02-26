@@ -46,4 +46,6 @@ class AppRoutes {
       '/bookingManagementDetailsView';
   static const String addNewProperty = '/addNewProperty';
   static const String propertyOwnerDocument = '/propertyOwnerDocument';
+  static const String vrCaptureScreen = '/vrCaptureScreen';
+  static const String vrViewScreen = '/vrViewScreen';
 }

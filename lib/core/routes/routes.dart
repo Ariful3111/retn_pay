@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/core/utils/vr_capture.dart';
+import 'package:renter_pay/core/utils/vr_view.dart';
 import 'package:renter_pay/features/auth/bindings/document_verification_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/first_onboarding_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/forgot_password_bindings.dart';
@@ -58,6 +60,7 @@ import 'package:renter_pay/features/dashboard/views/landlord_views/property_mana
 import 'package:renter_pay/features/favorite/bindings/favorite_bindings.dart';
 import 'package:renter_pay/features/favorite/views/favorite_view.dart';
 import 'package:renter_pay/features/home/bindings/home_bindings.dart';
+import 'package:renter_pay/features/home/bindings/vr_binding.dart';
 import 'package:renter_pay/features/home/views/home_view.dart';
 import 'package:renter_pay/features/home/views/main_home_view.dart';
 import 'package:renter_pay/features/notification/bindings/notification_bindings.dart';
@@ -305,12 +308,18 @@ final List<GetPage> appRoutes = [
   ),
   GetPage(
     name: AppRoutes.addNewProperty,
-    page:()=> AddNewProperty(),
-    binding:  DashboardBindings(),
+    page: () => AddNewProperty(),
+    binding: DashboardBindings(),
   ),
   GetPage(
     name: AppRoutes.propertyOwnerDocument,
-    page:()=> PropertyOwnerDocument(),
-    binding:  DashboardBindings(),
+    page: () => PropertyOwnerDocument(),
+    binding: DashboardBindings(),
   ),
+  GetPage(
+    name: AppRoutes.vrCaptureScreen,
+    page: () => VRCaptureScreen(),
+    binding: VRBindings(),
+  ),
+  GetPage(name: AppRoutes.vrViewScreen, page: () => VRView()),
 ];

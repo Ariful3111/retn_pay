@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/dashboard_landlord_quick_action_model.dart';
 
 class DashboardLandlordQuickAction extends StatelessWidget {
@@ -54,7 +56,9 @@ class DashboardLandlordQuickAction extends StatelessWidget {
           icon: IconsPath.dashboardLandlordVirtual,
           title: 'Virtual Tour Request',
           subTitle: 'Quickly view the request for virtual tour',
-          onTap: () {},
+          onTap: () {
+            Get.toNamed(AppRoutes.vrCaptureScreen);
+          },
           buttonText: 'View Request',
         ),
       ],
