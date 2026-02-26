@@ -105,13 +105,6 @@ class ProfileEditDetails extends StatelessWidget {
                     labelText: 'Phone',
                     readOnly: profileEditController.isEdit.value ? false : true,
                   ),
-
-                  // SizedBox(height: 16.h),
-                  // ProfileEditField(
-                  //   controller: profileEditController.passwordController,
-                  //   labelText: 'Password',
-                  //   readOnly: profileEditController.isEdit.value ? false : true,
-                  // ),
                   if (userIndex == 3)
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,9 +151,9 @@ class ProfileEditDetails extends StatelessWidget {
                 ],
               ),
             ),
-            if (userIndex == 2 || userIndex == 3)
+            if ( userIndex == 3)
               SizedBox(height: 16.h),
-            if (userIndex == 2 || userIndex == 3)
+            if (userIndex == 3)
               ProfileSaveButton(),
           ],
         ),
