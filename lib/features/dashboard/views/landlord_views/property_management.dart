@@ -18,7 +18,6 @@ class PropertyManagement extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     PropertyManagementController propertyManagementController = Get.find();
-
     return CustomContainer(
       padding: EdgeInsets.all(20.h),
       gradient: isDark
@@ -45,18 +44,17 @@ class PropertyManagement extends StatelessWidget {
                   ],
                 ),
               );
-             }
-            else {
+            } else {
               child = Column(
                 children: [
-                    Column(
-                      children: [
-                        SizedBox(height: 16.h),
-                        PropertyManagementRow(),
-                        SizedBox(height: 20.h),
-                        PropertyManagementTable(),
-                      ],
-                    ),
+                  Column(
+                    children: [
+                      SizedBox(height: 16.h),
+                      PropertyManagementRow(),
+                      SizedBox(height: 20.h),
+                      PropertyManagementTable(),
+                    ],
+                  ),
                 ],
               );
             }
