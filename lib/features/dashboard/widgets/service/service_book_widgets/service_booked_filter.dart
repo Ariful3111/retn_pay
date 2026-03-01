@@ -8,12 +8,11 @@ import 'package:renter_pay/shared/widgets/custom_calender/custom_calender_filter
 import 'package:renter_pay/shared/widgets/custom_calender/custom_table_calender.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class ServiceBookedFilter extends StatelessWidget {
+class ServiceBookedFilter extends GetWidget<ServiceBookedController> {
   const ServiceBookedFilter({super.key});
 
   @override
   Widget build(BuildContext context) {
-    ServiceBookedController serviceBookedController = Get.find();
     return Align(
       alignment: Alignment.centerRight,
       child: SizedBox(
@@ -27,63 +26,62 @@ class ServiceBookedFilter extends StatelessWidget {
                   () => CustomCalenderFilter(
                     alignmentGeometry: Alignment(0, -0.3),
                     widget: CustomTableCalender(
-                      firstDay: serviceBookedController.firstDay,
-                      lastDay: serviceBookedController.lastDay,
-                      focusedDay: serviceBookedController.focusedDay.value,
-                      calendarFormat:
-                          serviceBookedController.calendarFormat.value,
-                      rangeSelectionMode:
-                          serviceBookedController.rangeSelectionMode.value,
-                      rangeEndDay: serviceBookedController.rangeEnd.value,
-                      rangeStartDay: serviceBookedController.rangeStart.value,
+                      firstDay: controller.firstDay,
+                      lastDay: controller.lastDay,
+                      focusedDay: controller.focusedDay.value,
+                      calendarFormat: controller.calendarFormat.value,
+                      rangeSelectionMode: controller.rangeSelectionMode.value,
+                      rangeEndDay: controller.rangeEnd.value,
+                      rangeStartDay: controller.rangeStart.value,
                       onDaySelected: (DateTime selectDay, DateTime focus) {
-                        if (serviceBookedController.isDay.value != 6) {
-                          serviceBookedController.isDay.value = 6;
-                          serviceBookedController.rangeSelectionMode.value =
+                        if (controller.isDay.value != 6) {
+                          controller.isDay.value = 6;
+                          controller.rangeSelectionMode.value =
                               RangeSelectionMode.toggledOn;
                         }
-                        serviceBookedController.focusedDay.value = focus;
-                        serviceBookedController.selectedDay.value = selectDay;
-                        serviceBookedController.rangeStart.value = null;
-                        serviceBookedController.rangeEnd.value = null;
+                        controller.focusedDay.value = focus;
+                        controller.selectedDay.value = selectDay;
+                        controller.rangeStart.value = null;
+                        controller.rangeEnd.value = null;
                       },
                       onRangeSelected:
                           (DateTime? start, DateTime? end, DateTime focus) {
-                            if (serviceBookedController.isDay.value != 6) {
-                              serviceBookedController.isDay.value = 6;
+                            if (controller.isDay.value != 6) {
+                              controller.isDay.value = 6;
                             }
-                            serviceBookedController.rangeStart.value = start;
-                            serviceBookedController.rangeEnd.value = end;
-                            serviceBookedController.focusedDay.value = focus;
-                            serviceBookedController.rangeSelectionMode.value =
+                            controller.rangeStart.value = start;
+                            controller.rangeEnd.value = end;
+                            controller.focusedDay.value = focus;
+                            controller.rangeSelectionMode.value =
                                 RangeSelectionMode.toggledOn;
                           },
                       onPageChanged: (DateTime day) {
-                        serviceBookedController.focusedDay.value = day;
+                        controller.focusedDay.value = day;
                       },
                       onFormatChanged: (format) {
-                        if (serviceBookedController.calendarFormat.value !=
-                            format) {
-                          serviceBookedController.calendarFormat.value = format;
+                        if (controller.calendarFormat.value != format) {
+                          controller.calendarFormat.value = format;
                         }
                       },
-                      selectDay: serviceBookedController.selectedDay.value,
+                      selectDay: controller.selectedDay.value,
                     ),
 
-                    isDay: serviceBookedController.isDay.value,
+                    isDay: controller.isDay.value,
                     onTap: (int index) {
-                      serviceBookedController.isDay.value = index;
+                      controller.isDay.value = index;
                       calenderFilter(
                         index: index,
-                        selectedDay: serviceBookedController.selectedDay,
-                        rangeStart: serviceBookedController.rangeStart,
-                        rangeEnd: serviceBookedController.rangeEnd,
-                        rangeSelectionMode:
-                            serviceBookedController.rangeSelectionMode,
-                        focusedDay: serviceBookedController.focusedDay,
+                        selectedDay: controller.selectedDay,
+                        rangeStart: controller.rangeStart,
+                        rangeEnd: controller.rangeEnd,
+                        rangeSelectionMode: controller.rangeSelectionMode,
+                        focusedDay: controller.focusedDay,
                       );
                     },
-                    onApply: () {},
+                    onApply: () {
+                      controller.applyDateFilter();
+                      Get.back();
+                    },
                   ),
                 );
               },

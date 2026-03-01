@@ -12,9 +12,19 @@ class BookedListRepository {
   Future<Either<ErrorModel, BookingListModel>> execute({
     required String status,
     required int page,
+    String? dateFrom,
+    String? dateTo,
+    String? date,
   }) async {
+    final query = <String, String>{
+      'status': status,
+      'page': page.toString(),
+      if (dateFrom != null && dateFrom.isNotEmpty) 'date_from': dateFrom,
+      if (dateTo != null && dateTo.isNotEmpty) 'date_to': dateTo,
+      if (date != null && date.isNotEmpty) 'date': date,
+    };
     final response = await getNetwork.getData<BookingListModel>(
-      url: "/api/v1/vendors/bookings?status=$status&page=$page",
+      url: "/api/v1/vendors/bookings?${Uri(queryParameters: query).query}",
       headers: {
         "Accept": "application/json",
         "Authorization":
