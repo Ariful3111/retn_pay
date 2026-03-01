@@ -13,7 +13,7 @@ class ServiceListRepository {
     required String status,
   }) async {
     final response = await getNetwork.getData<ServiceListModel>(
-      url: "/api/v1/service-types",
+      url: "/api/v1/vendors/services",
       headers: {
         "Accept": "application/json",
         "Authorization":

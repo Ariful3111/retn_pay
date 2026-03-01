@@ -1,38 +1,1829 @@
 {
   "error": false,
   "code": 200,
-  "message": "Calendar entries retrieved successfully",
+  "message": "Services retrieved successfully",
   "data": {
     "data": [
       {
         "id": 1,
-        "title": "Property Inspection",
-        "description": "Inspection at Modern Apartment",
-        "start_datetime": "2026-12-15T10:00:00+06:00",
-        "end_datetime": "2026-12-15T10:00:00+06:00",
-        "type": "property_inspection",
-        "type_label": "Property Inspection",
-        "color": "green",
-        "property_id": 102,
-        "property": {
-          "id": 102,
-          "title": "Modern Apartment",
-          "address": "123 Main St"
+        "vendor_id": 1,
+        "service_type_id": 14,
+        "title": "Master Handyman – Pest Control Services",
+        "subtext": "Professional Pest Control for Homes & Businesses",
+        "description": "Professional pest control and extermination services We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
         },
-        "created_at": "2026-02-15 02:20:02",
-        "updated_at": "2026-02-15 02:20:02"
+        "experience": "2+ Years of Experience",
+        "support_time": "Business Hours: Mon–Sat 8am–6pm",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          },
+          {
+            "icon": null,
+            "title": "Satisfaction Guaranteed",
+            "short_description": "We stand behind our work"
+          },
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          },
+          {
+            "icon": null,
+            "title": "Certified Technicians",
+            "short_description": "Licensed & insured professionals"
+          },
+          {
+            "icon": null,
+            "title": "Eco-Friendly Options",
+            "short_description": "Green solutions when possible"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "Repairs",
+            "short_description": "Fast diagnosis and repair"
+          },
+          {
+            "icon": null,
+            "title": "Installation",
+            "short_description": "Professional installation services"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "Completed project to high standard."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 1,
+          "user_id": 37,
+          "business_name": "Master Handyman",
+          "business_type": "Handyman",
+          "abn": "58571852192",
+          "description": "Professional Handyman services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:49+06:00",
+          "created_at": "2026-02-11T02:39:49+06:00",
+          "updated_at": "2026-02-11T02:39:49+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 14,
+          "name": "Pest Control",
+          "slug": "pest-control",
+          "description": "Professional pest control and extermination services",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 3,
+        "vendor_id": 1,
+        "service_type_id": 6,
+        "title": "Master Handyman – Painting Solutions",
+        "subtext": "Professional Painting for Homes & Businesses",
+        "description": "Interior and exterior painting services We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "2+ Years of Experience",
+        "support_time": "Business Hours: Mon–Sat 8am–6pm",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Eco-Friendly Options",
+            "short_description": "Green solutions when possible"
+          },
+          {
+            "icon": null,
+            "title": "Satisfaction Guaranteed",
+            "short_description": "We stand behind our work"
+          },
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          },
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          },
+          {
+            "icon": null,
+            "title": "Certified Technicians",
+            "short_description": "Licensed & insured professionals"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "Repairs",
+            "short_description": "Fast diagnosis and repair"
+          },
+          {
+            "icon": null,
+            "title": "Installation",
+            "short_description": "Professional installation services"
+          },
+          {
+            "icon": null,
+            "title": "Maintenance",
+            "short_description": "Regular maintenance plans"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "Completed project to high standard."
+          },
+          {
+            "image": null,
+            "image_description": "Customer satisfied with result."
+          },
+          {
+            "image": null,
+            "image_description": "Quality work delivered on time."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 1,
+          "user_id": 37,
+          "business_name": "Master Handyman",
+          "business_type": "Handyman",
+          "abn": "58571852192",
+          "description": "Professional Handyman services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:49+06:00",
+          "created_at": "2026-02-11T02:39:49+06:00",
+          "updated_at": "2026-02-11T02:39:49+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 6,
+          "name": "Painting",
+          "slug": "painting",
+          "description": "Interior and exterior painting services",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 4,
+        "vendor_id": 1,
+        "service_type_id": 12,
+        "title": "Master Handyman – Locksmith Co.",
+        "subtext": "Professional Locksmith for Homes & Businesses",
+        "description": "Lock installation, repair, and key duplication services We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "10+ Years of Experience",
+        "support_time": "24/7 Emergency Support",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Satisfaction Guaranteed",
+            "short_description": "We stand behind our work"
+          },
+          {
+            "icon": null,
+            "title": "Eco-Friendly Options",
+            "short_description": "Green solutions when possible"
+          },
+          {
+            "icon": null,
+            "title": "Certified Technicians",
+            "short_description": "Licensed & insured professionals"
+          },
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "Repairs",
+            "short_description": "Fast diagnosis and repair"
+          },
+          {
+            "icon": null,
+            "title": "Installation",
+            "short_description": "Professional installation services"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "Completed project to high standard."
+          },
+          {
+            "image": null,
+            "image_description": "Customer satisfied with result."
+          },
+          {
+            "image": null,
+            "image_description": "Quality work delivered on time."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 1,
+          "user_id": 37,
+          "business_name": "Master Handyman",
+          "business_type": "Handyman",
+          "abn": "58571852192",
+          "description": "Professional Handyman services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:49+06:00",
+          "created_at": "2026-02-11T02:39:49+06:00",
+          "updated_at": "2026-02-11T02:39:49+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 12,
+          "name": "Locksmith",
+          "slug": "locksmith",
+          "description": "Lock installation, repair, and key duplication services",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 6,
+        "vendor_id": 2,
+        "service_type_id": 3,
+        "title": "Expert Repairs Co – Cleaning Services",
+        "subtext": "Professional Cleaning for Homes & Businesses",
+        "description": "Thorough cleaning services for homes and offices We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "20+ Years in Business",
+        "support_time": "24/7 On-Call",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          },
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          },
+          {
+            "icon": null,
+            "title": "Satisfaction Guaranteed",
+            "short_description": "We stand behind our work"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "Deep Clean",
+            "short_description": "Thorough deep cleaning"
+          },
+          {
+            "icon": null,
+            "title": "Regular Clean",
+            "short_description": "Scheduled cleaning"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "Post-renovation deep clean; property ready for handover."
+          },
+          {
+            "image": null,
+            "image_description": "Regular office cleaning; consistent results."
+          },
+          {
+            "image": null,
+            "image_description": "Move-in deep clean completed."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 2,
+          "user_id": 38,
+          "business_name": "Expert Repairs Co",
+          "business_type": "Handyman",
+          "abn": "90717109381",
+          "description": "Professional Handyman services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:50+06:00",
+          "created_at": "2026-02-11T02:39:50+06:00",
+          "updated_at": "2026-02-11T02:39:50+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 3,
+          "name": "Cleaning",
+          "slug": "cleaning",
+          "description": "Thorough cleaning services for homes and offices",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 7,
+        "vendor_id": 2,
+        "service_type_id": 6,
+        "title": "Expert Repairs Co – Painting Group",
+        "subtext": "Professional Painting for Homes & Businesses",
+        "description": "Interior and exterior painting services We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "2+ Years of Experience",
+        "support_time": "24/7 On-Call",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          },
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          },
+          {
+            "icon": null,
+            "title": "Certified Technicians",
+            "short_description": "Licensed & insured professionals"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "Repairs",
+            "short_description": "Fast diagnosis and repair"
+          },
+          {
+            "icon": null,
+            "title": "Installation",
+            "short_description": "Professional installation services"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "Completed project to high standard."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 2,
+          "user_id": 38,
+          "business_name": "Expert Repairs Co",
+          "business_type": "Handyman",
+          "abn": "90717109381",
+          "description": "Professional Handyman services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:50+06:00",
+          "created_at": "2026-02-11T02:39:50+06:00",
+          "updated_at": "2026-02-11T02:39:50+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 6,
+          "name": "Painting",
+          "slug": "painting",
+          "description": "Interior and exterior painting services",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 8,
+        "vendor_id": 5,
+        "service_type_id": 12,
+        "title": "XYZ Plumbing Solutions – Locksmith Experts",
+        "subtext": "Professional Locksmith for Homes & Businesses",
+        "description": "Lock installation, repair, and key duplication services We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "10+ Years of Experience",
+        "support_time": "Business Hours: Mon–Sat 8am–6pm",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Certified Technicians",
+            "short_description": "Licensed & insured professionals"
+          },
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          },
+          {
+            "icon": null,
+            "title": "Eco-Friendly Options",
+            "short_description": "Green solutions when possible"
+          },
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "Repairs",
+            "short_description": "Fast diagnosis and repair"
+          },
+          {
+            "icon": null,
+            "title": "Installation",
+            "short_description": "Professional installation services"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "Completed project to high standard."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 5,
+          "user_id": 41,
+          "business_name": "XYZ Plumbing Solutions",
+          "business_type": "Painting",
+          "abn": "57728295714",
+          "description": "Professional Painting services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:50+06:00",
+          "created_at": "2026-02-11T02:39:50+06:00",
+          "updated_at": "2026-02-11T02:39:50+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 12,
+          "name": "Locksmith",
+          "slug": "locksmith",
+          "description": "Lock installation, repair, and key duplication services",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 12,
+        "vendor_id": 5,
+        "service_type_id": 4,
+        "title": "XYZ Plumbing Solutions – HVAC Pro",
+        "subtext": "Professional HVAC for Homes & Businesses",
+        "description": "Heating, ventilation, and air conditioning installation and repair We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "15+ Years of Experience",
+        "support_time": "Same-Day Service",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Eco-Friendly Options",
+            "short_description": "Green solutions when possible"
+          },
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          },
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "AC Repair",
+            "short_description": "Cooling system repair"
+          },
+          {
+            "icon": null,
+            "title": "Heating",
+            "short_description": "Heating system service"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "AC unit replaced; cooling restored same day."
+          },
+          {
+            "image": null,
+            "image_description": "Furnace repair before winter; system running efficiently."
+          },
+          {
+            "image": null,
+            "image_description": "Duct cleaning and filter replacement."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 5,
+          "user_id": 41,
+          "business_name": "XYZ Plumbing Solutions",
+          "business_type": "Painting",
+          "abn": "57728295714",
+          "description": "Professional Painting services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:50+06:00",
+          "created_at": "2026-02-11T02:39:50+06:00",
+          "updated_at": "2026-02-11T02:39:50+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 4,
+          "name": "HVAC",
+          "slug": "hvac",
+          "description": "Heating, ventilation, and air conditioning installation and repair",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 14,
+        "vendor_id": 7,
+        "service_type_id": 4,
+        "title": "Quick Fix Electrical – HVAC Pro",
+        "subtext": "Professional HVAC for Homes & Businesses",
+        "description": "Heating, ventilation, and air conditioning installation and repair We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "2+ Years of Experience",
+        "support_time": "Extended Hours Available",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          },
+          {
+            "icon": null,
+            "title": "Eco-Friendly Options",
+            "short_description": "Green solutions when possible"
+          },
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          },
+          {
+            "icon": null,
+            "title": "Certified Technicians",
+            "short_description": "Licensed & insured professionals"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "AC Repair",
+            "short_description": "Cooling system repair"
+          },
+          {
+            "icon": null,
+            "title": "Heating",
+            "short_description": "Heating system service"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "AC unit replaced; cooling restored same day."
+          },
+          {
+            "image": null,
+            "image_description": "Furnace repair before winter; system running efficiently."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 7,
+          "user_id": 43,
+          "business_name": "Quick Fix Electrical",
+          "business_type": "Carpentry",
+          "abn": "70205877938",
+          "description": "Professional Carpentry services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:51+06:00",
+          "created_at": "2026-02-11T02:39:51+06:00",
+          "updated_at": "2026-02-11T02:39:51+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 4,
+          "name": "HVAC",
+          "slug": "hvac",
+          "description": "Heating, ventilation, and air conditioning installation and repair",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 15,
+        "vendor_id": 7,
+        "service_type_id": 2,
+        "title": "Quick Fix Electrical – Electrical Group",
+        "subtext": "Professional Electrical for Homes & Businesses",
+        "description": "Professional electrical services for residential and commercial properties We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "15+ Years of Experience",
+        "support_time": "24/7 Emergency Support",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Eco-Friendly Options",
+            "short_description": "Green solutions when possible"
+          },
+          {
+            "icon": null,
+            "title": "Certified Technicians",
+            "short_description": "Licensed & insured professionals"
+          },
+          {
+            "icon": null,
+            "title": "Satisfaction Guaranteed",
+            "short_description": "We stand behind our work"
+          },
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          },
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "Wiring",
+            "short_description": "Safe wiring and rewiring"
+          },
+          {
+            "icon": null,
+            "title": "Panel Upgrades",
+            "short_description": "Electrical panel installation"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "Full house rewiring completed to current standards."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 7,
+          "user_id": 43,
+          "business_name": "Quick Fix Electrical",
+          "business_type": "Carpentry",
+          "abn": "70205877938",
+          "description": "Professional Carpentry services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:51+06:00",
+          "created_at": "2026-02-11T02:39:51+06:00",
+          "updated_at": "2026-02-11T02:39:51+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 2,
+          "name": "Electrical",
+          "slug": "electrical",
+          "description": "Professional electrical services for residential and commercial properties",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 16,
+        "vendor_id": 7,
+        "service_type_id": 1,
+        "title": "Quick Fix Electrical – Plumbing Group",
+        "subtext": "Professional Plumbing for Homes & Businesses",
+        "description": "Complete plumbing services including repairs, installations, and maintenance We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "20+ Years in Business",
+        "support_time": "24/7 Emergency Support",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Satisfaction Guaranteed",
+            "short_description": "We stand behind our work"
+          },
+          {
+            "icon": null,
+            "title": "Eco-Friendly Options",
+            "short_description": "Green solutions when possible"
+          },
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          },
+          {
+            "icon": null,
+            "title": "Certified Technicians",
+            "short_description": "Licensed & insured professionals"
+          },
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "Leak Repairs",
+            "short_description": "Pipe and fixture leak detection & repair"
+          },
+          {
+            "icon": null,
+            "title": "Drain Cleaning",
+            "short_description": "Blocked drain clearance"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "Emergency pipe burst fixed within hours, restoring full water flow."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 7,
+          "user_id": 43,
+          "business_name": "Quick Fix Electrical",
+          "business_type": "Carpentry",
+          "abn": "70205877938",
+          "description": "Professional Carpentry services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:51+06:00",
+          "created_at": "2026-02-11T02:39:51+06:00",
+          "updated_at": "2026-02-11T02:39:51+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 1,
+          "name": "Plumbing",
+          "slug": "plumbing",
+          "description": "Complete plumbing services including repairs, installations, and maintenance",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 17,
+        "vendor_id": 7,
+        "service_type_id": 9,
+        "title": "Quick Fix Electrical – Roofing Experts",
+        "subtext": "Professional Roofing for Homes & Businesses",
+        "description": "Roof repair, installation, and maintenance services We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "2+ Years of Experience",
+        "support_time": "24/7 Emergency Support",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          },
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          },
+          {
+            "icon": null,
+            "title": "Eco-Friendly Options",
+            "short_description": "Green solutions when possible"
+          },
+          {
+            "icon": null,
+            "title": "Satisfaction Guaranteed",
+            "short_description": "We stand behind our work"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "Repairs",
+            "short_description": "Fast diagnosis and repair"
+          },
+          {
+            "icon": null,
+            "title": "Installation",
+            "short_description": "Professional installation services"
+          },
+          {
+            "icon": null,
+            "title": "Maintenance",
+            "short_description": "Regular maintenance plans"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "Completed project to high standard."
+          },
+          {
+            "image": null,
+            "image_description": "Customer satisfied with result."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 7,
+          "user_id": 43,
+          "business_name": "Quick Fix Electrical",
+          "business_type": "Carpentry",
+          "abn": "70205877938",
+          "description": "Professional Carpentry services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:51+06:00",
+          "created_at": "2026-02-11T02:39:51+06:00",
+          "updated_at": "2026-02-11T02:39:51+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 9,
+          "name": "Roofing",
+          "slug": "roofing",
+          "description": "Roof repair, installation, and maintenance services",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 19,
+        "vendor_id": 9,
+        "service_type_id": 8,
+        "title": "Home Care Experts – Landscaping Experts",
+        "subtext": "Professional Landscaping for Homes & Businesses",
+        "description": "Garden design, maintenance, and landscaping services We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "15+ Years of Experience",
+        "support_time": "24/7 Emergency Support",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Satisfaction Guaranteed",
+            "short_description": "We stand behind our work"
+          },
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          },
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "Repairs",
+            "short_description": "Fast diagnosis and repair"
+          },
+          {
+            "icon": null,
+            "title": "Installation",
+            "short_description": "Professional installation services"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "Completed project to high standard."
+          },
+          {
+            "image": null,
+            "image_description": "Customer satisfied with result."
+          },
+          {
+            "image": null,
+            "image_description": "Quality work delivered on time."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 9,
+          "user_id": 45,
+          "business_name": "Home Care Experts",
+          "business_type": "Electrical",
+          "abn": "48841397072",
+          "description": "Professional Electrical services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:51+06:00",
+          "created_at": "2026-02-11T02:39:51+06:00",
+          "updated_at": "2026-02-11T02:39:51+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 8,
+          "name": "Landscaping",
+          "slug": "landscaping",
+          "description": "Garden design, maintenance, and landscaping services",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 20,
+        "vendor_id": 10,
+        "service_type_id": 5,
+        "title": "Total Property Care – Handyman Experts",
+        "subtext": "Professional Handyman for Homes & Businesses",
+        "description": "General handyman services for various home repairs We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "2+ Years of Experience",
+        "support_time": "Business Hours: Mon–Sat 8am–6pm",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Eco-Friendly Options",
+            "short_description": "Green solutions when possible"
+          },
+          {
+            "icon": null,
+            "title": "Satisfaction Guaranteed",
+            "short_description": "We stand behind our work"
+          },
+          {
+            "icon": null,
+            "title": "Certified Technicians",
+            "short_description": "Licensed & insured professionals"
+          },
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "Repairs",
+            "short_description": "Fast diagnosis and repair"
+          },
+          {
+            "icon": null,
+            "title": "Installation",
+            "short_description": "Professional installation services"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "Completed project to high standard."
+          },
+          {
+            "image": null,
+            "image_description": "Customer satisfied with result."
+          },
+          {
+            "image": null,
+            "image_description": "Quality work delivered on time."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 10,
+          "user_id": 46,
+          "business_name": "Total Property Care",
+          "business_type": "Cleaning",
+          "abn": "47214292403",
+          "description": "Professional Cleaning services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:52+06:00",
+          "created_at": "2026-02-11T02:39:52+06:00",
+          "updated_at": "2026-02-11T02:39:52+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 5,
+          "name": "Handyman",
+          "slug": "handyman",
+          "description": "General handyman services for various home repairs",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 22,
+        "vendor_id": 10,
+        "service_type_id": 4,
+        "title": "Total Property Care – HVAC Group",
+        "subtext": "Professional HVAC for Homes & Businesses",
+        "description": "Heating, ventilation, and air conditioning installation and repair We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "5+ Years of Experience",
+        "support_time": "Business Hours: Mon–Sat 8am–6pm",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          },
+          {
+            "icon": null,
+            "title": "Satisfaction Guaranteed",
+            "short_description": "We stand behind our work"
+          },
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          },
+          {
+            "icon": null,
+            "title": "Certified Technicians",
+            "short_description": "Licensed & insured professionals"
+          },
+          {
+            "icon": null,
+            "title": "Eco-Friendly Options",
+            "short_description": "Green solutions when possible"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "AC Repair",
+            "short_description": "Cooling system repair"
+          },
+          {
+            "icon": null,
+            "title": "Heating",
+            "short_description": "Heating system service"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "AC unit replaced; cooling restored same day."
+          },
+          {
+            "image": null,
+            "image_description": "Furnace repair before winter; system running efficiently."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 10,
+          "user_id": 46,
+          "business_name": "Total Property Care",
+          "business_type": "Cleaning",
+          "abn": "47214292403",
+          "description": "Professional Cleaning services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:52+06:00",
+          "created_at": "2026-02-11T02:39:52+06:00",
+          "updated_at": "2026-02-11T02:39:52+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 4,
+          "name": "HVAC",
+          "slug": "hvac",
+          "description": "Heating, ventilation, and air conditioning installation and repair",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 23,
+        "vendor_id": 10,
+        "service_type_id": 14,
+        "title": "Total Property Care – Pest Control Experts",
+        "subtext": "Professional Pest Control for Homes & Businesses",
+        "description": "Professional pest control and extermination services We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "2+ Years of Experience",
+        "support_time": "24/7 Emergency Support",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Eco-Friendly Options",
+            "short_description": "Green solutions when possible"
+          },
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          },
+          {
+            "icon": null,
+            "title": "Satisfaction Guaranteed",
+            "short_description": "We stand behind our work"
+          },
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "Repairs",
+            "short_description": "Fast diagnosis and repair"
+          },
+          {
+            "icon": null,
+            "title": "Installation",
+            "short_description": "Professional installation services"
+          },
+          {
+            "icon": null,
+            "title": "Maintenance",
+            "short_description": "Regular maintenance plans"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "Completed project to high standard."
+          },
+          {
+            "image": null,
+            "image_description": "Customer satisfied with result."
+          },
+          {
+            "image": null,
+            "image_description": "Quality work delivered on time."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 10,
+          "user_id": 46,
+          "business_name": "Total Property Care",
+          "business_type": "Cleaning",
+          "abn": "47214292403",
+          "description": "Professional Cleaning services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:52+06:00",
+          "created_at": "2026-02-11T02:39:52+06:00",
+          "updated_at": "2026-02-11T02:39:52+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 14,
+          "name": "Pest Control",
+          "slug": "pest-control",
+          "description": "Professional pest control and extermination services",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 24,
+        "vendor_id": 10,
+        "service_type_id": 15,
+        "title": "Total Property Care – Waterproofing Pro",
+        "subtext": "Professional Waterproofing for Homes & Businesses",
+        "description": "Waterproofing solutions for basements and roofs We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "5+ Years of Experience",
+        "support_time": "Business Hours: Mon–Sat 8am–6pm",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Eco-Friendly Options",
+            "short_description": "Green solutions when possible"
+          },
+          {
+            "icon": null,
+            "title": "Satisfaction Guaranteed",
+            "short_description": "We stand behind our work"
+          },
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          },
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "Repairs",
+            "short_description": "Fast diagnosis and repair"
+          },
+          {
+            "icon": null,
+            "title": "Installation",
+            "short_description": "Professional installation services"
+          },
+          {
+            "icon": null,
+            "title": "Maintenance",
+            "short_description": "Regular maintenance plans"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "Completed project to high standard."
+          },
+          {
+            "image": null,
+            "image_description": "Customer satisfied with result."
+          },
+          {
+            "image": null,
+            "image_description": "Quality work delivered on time."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 10,
+          "user_id": 46,
+          "business_name": "Total Property Care",
+          "business_type": "Cleaning",
+          "abn": "47214292403",
+          "description": "Professional Cleaning services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:52+06:00",
+          "created_at": "2026-02-11T02:39:52+06:00",
+          "updated_at": "2026-02-11T02:39:52+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 15,
+          "name": "Waterproofing",
+          "slug": "waterproofing",
+          "description": "Waterproofing solutions for basements and roofs",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 25,
+        "vendor_id": 11,
+        "service_type_id": 4,
+        "title": "Total Property Care – HVAC Services",
+        "subtext": "Professional HVAC for Homes & Businesses",
+        "description": "Heating, ventilation, and air conditioning installation and repair We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "5+ Years of Experience",
+        "support_time": "Business Hours: Mon–Sat 8am–6pm",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          },
+          {
+            "icon": null,
+            "title": "Eco-Friendly Options",
+            "short_description": "Green solutions when possible"
+          },
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          },
+          {
+            "icon": null,
+            "title": "Certified Technicians",
+            "short_description": "Licensed & insured professionals"
+          },
+          {
+            "icon": null,
+            "title": "Satisfaction Guaranteed",
+            "short_description": "We stand behind our work"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "AC Repair",
+            "short_description": "Cooling system repair"
+          },
+          {
+            "icon": null,
+            "title": "Heating",
+            "short_description": "Heating system service"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "AC unit replaced; cooling restored same day."
+          },
+          {
+            "image": null,
+            "image_description": "Furnace repair before winter; system running efficiently."
+          },
+          {
+            "image": null,
+            "image_description": "Duct cleaning and filter replacement."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 11,
+          "user_id": 47,
+          "business_name": "Total Property Care",
+          "business_type": "Plumbing",
+          "abn": "29224467882",
+          "description": "Professional Plumbing services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:52+06:00",
+          "created_at": "2026-02-11T02:39:52+06:00",
+          "updated_at": "2026-02-11T02:39:52+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 4,
+          "name": "HVAC",
+          "slug": "hvac",
+          "description": "Heating, ventilation, and air conditioning installation and repair",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 27,
+        "vendor_id": 11,
+        "service_type_id": 10,
+        "title": "Total Property Care – Flooring Group",
+        "subtext": "Professional Flooring for Homes & Businesses",
+        "description": "Floor installation, repair, and refinishing services We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "15+ Years of Experience",
+        "support_time": "Same-Day Service",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Eco-Friendly Options",
+            "short_description": "Green solutions when possible"
+          },
+          {
+            "icon": null,
+            "title": "Satisfaction Guaranteed",
+            "short_description": "We stand behind our work"
+          },
+          {
+            "icon": null,
+            "title": "Certified Technicians",
+            "short_description": "Licensed & insured professionals"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "Repairs",
+            "short_description": "Fast diagnosis and repair"
+          },
+          {
+            "icon": null,
+            "title": "Installation",
+            "short_description": "Professional installation services"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "Completed project to high standard."
+          },
+          {
+            "image": null,
+            "image_description": "Customer satisfied with result."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 11,
+          "user_id": 47,
+          "business_name": "Total Property Care",
+          "business_type": "Plumbing",
+          "abn": "29224467882",
+          "description": "Professional Plumbing services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:52+06:00",
+          "created_at": "2026-02-11T02:39:52+06:00",
+          "updated_at": "2026-02-11T02:39:52+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 10,
+          "name": "Flooring",
+          "slug": "flooring",
+          "description": "Floor installation, repair, and refinishing services",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 28,
+        "vendor_id": 11,
+        "service_type_id": 8,
+        "title": "Total Property Care – Landscaping Pro",
+        "subtext": "Professional Landscaping for Homes & Businesses",
+        "description": "Garden design, maintenance, and landscaping services We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "15+ Years of Experience",
+        "support_time": "Same-Day Service",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Eco-Friendly Options",
+            "short_description": "Green solutions when possible"
+          },
+          {
+            "icon": null,
+            "title": "Satisfaction Guaranteed",
+            "short_description": "We stand behind our work"
+          },
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          },
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "Repairs",
+            "short_description": "Fast diagnosis and repair"
+          },
+          {
+            "icon": null,
+            "title": "Installation",
+            "short_description": "Professional installation services"
+          },
+          {
+            "icon": null,
+            "title": "Maintenance",
+            "short_description": "Regular maintenance plans"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "Completed project to high standard."
+          },
+          {
+            "image": null,
+            "image_description": "Customer satisfied with result."
+          },
+          {
+            "image": null,
+            "image_description": "Quality work delivered on time."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 11,
+          "user_id": 47,
+          "business_name": "Total Property Care",
+          "business_type": "Plumbing",
+          "abn": "29224467882",
+          "description": "Professional Plumbing services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:52+06:00",
+          "created_at": "2026-02-11T02:39:52+06:00",
+          "updated_at": "2026-02-11T02:39:52+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 8,
+          "name": "Landscaping",
+          "slug": "landscaping",
+          "description": "Garden design, maintenance, and landscaping services",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
+      },
+      {
+        "id": 30,
+        "vendor_id": 12,
+        "service_type_id": 11,
+        "title": "ABC Cleaning Services – Appliance Repair Services",
+        "subtext": "Professional Appliance Repair for Homes & Businesses",
+        "description": "Repair and maintenance of household appliances We serve residential and commercial clients with reliable, professional service.",
+        "banner_image": null,
+        "logo": null,
+        "rating": {
+          "average_rating": 0,
+          "total_reviews": 0
+        },
+        "experience": "2+ Years of Experience",
+        "support_time": "Same-Day Service",
+        "why_choose_us": [
+          {
+            "icon": null,
+            "title": "Satisfaction Guaranteed",
+            "short_description": "We stand behind our work"
+          },
+          {
+            "icon": null,
+            "title": "Fast Response",
+            "short_description": "Same-day and emergency service available"
+          },
+          {
+            "icon": null,
+            "title": "Transparent Pricing",
+            "short_description": "No hidden fees, upfront quotes"
+          }
+        ],
+        "services_offered": [
+          {
+            "icon": null,
+            "title": "Repairs",
+            "short_description": "Fast diagnosis and repair"
+          },
+          {
+            "icon": null,
+            "title": "Installation",
+            "short_description": "Professional installation services"
+          }
+        ],
+        "past_work_showcase": [
+          {
+            "image": null,
+            "image_description": "Completed project to high standard."
+          },
+          {
+            "image": null,
+            "image_description": "Customer satisfied with result."
+          },
+          {
+            "image": null,
+            "image_description": "Quality work delivered on time."
+          }
+        ],
+        "status": "approved",
+        "approved_at": null,
+        "created_at": "2026-02-11T02:39:57+06:00",
+        "updated_at": "2026-02-11T02:39:57+06:00",
+        "vendor": {
+          "id": 12,
+          "user_id": 48,
+          "business_name": "ABC Cleaning Services",
+          "business_type": "Electrical",
+          "abn": "56561965573",
+          "description": "Professional Electrical services with over 10 years of experience.",
+          "is_verified": true,
+          "status": "approved",
+          "rejection_reason": null,
+          "approved_at": "2026-02-11T02:39:52+06:00",
+          "created_at": "2026-02-11T02:39:52+06:00",
+          "updated_at": "2026-02-11T02:39:52+06:00",
+          "subscription": null
+        },
+        "service_type": {
+          "id": 11,
+          "name": "Appliance Repair",
+          "slug": "appliance-repair",
+          "description": "Repair and maintenance of household appliances",
+          "status": true,
+          "created_at": "2026-02-11T02:39:57+06:00",
+          "updated_at": "2026-02-11T02:39:57+06:00"
+        }
       }
     ],
     "links": {
-      "first": "https://renter-pay.test/api/v1/calendar/entries?page=1",
-      "last": "https://renter-pay.test/api/v1/calendar/entries?page=1",
+      "first": "https://renter-pay.mahfuz.click/api/v1/vendors/services?page=1",
+      "last": "https://renter-pay.mahfuz.click/api/v1/vendors/services?page=2",
       "prev": null,
-      "next": null
+      "next": "https://renter-pay.mahfuz.click/api/v1/vendors/services?page=2"
     },
     "meta": {
       "current_page": 1,
       "from": 1,
-      "last_page": 1,
+      "last_page": 2,
       "links": [
         {
           "url": null,
@@ -41,22 +1832,28 @@
           "active": false
         },
         {
-          "url": "https://renter-pay.test/api/v1/calendar/entries?page=1",
+          "url": "https://renter-pay.mahfuz.click/api/v1/vendors/services?page=1",
           "label": "1",
           "page": 1,
           "active": true
         },
         {
-          "url": null,
+          "url": "https://renter-pay.mahfuz.click/api/v1/vendors/services?page=2",
+          "label": "2",
+          "page": 2,
+          "active": false
+        },
+        {
+          "url": "https://renter-pay.mahfuz.click/api/v1/vendors/services?page=2",
           "label": "Next &raquo;",
-          "page": null,
+          "page": 2,
           "active": false
         }
       ],
-      "path": "https://renter-pay.test/api/v1/calendar/entries",
-      "per_page": 15,
-      "to": 1,
-      "total": 1
+      "path": "https://renter-pay.mahfuz.click/api/v1/vendors/services",
+      "per_page": 20,
+      "to": 20,
+      "total": 27
     }
   },
   "errors": null
