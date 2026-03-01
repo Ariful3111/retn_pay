@@ -11,9 +11,10 @@ class ServiceListRepository {
 
   Future<Either<ErrorModel, ServiceListModel>> execute({
     required String status,
+    required int page,
   }) async {
     final response = await getNetwork.getData<ServiceListModel>(
-      url: "/api/v1/vendors/services",
+      url: "/api/v1/vendors/services?page=$page",
       headers: {
         "Accept": "application/json",
         "Authorization":

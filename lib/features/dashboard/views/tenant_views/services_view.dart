@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/features/dashboard/controllers/service_list_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/services_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_filter.dart';
@@ -19,6 +20,7 @@ class ServicesView extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     ServicesController servicesController = Get.find();
+    final serviceListController = Get.find<ServiceListController>();
     return CustomContainer(
       padding: EdgeInsets.all(20.r),
       gradient: isDark
@@ -28,6 +30,7 @@ class ServicesView extends StatelessWidget {
           : AppColors.userBackground,
       child: Obx(
         () => CustomScrollView(
+          controller: serviceListController.scrollController,
           slivers: [
             SliverToBoxAdapter(
               child: Row(

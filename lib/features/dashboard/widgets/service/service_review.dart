@@ -36,10 +36,17 @@ class ServiceReview extends GetWidget<ServiceListController> {
               child: ListView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
-                itemCount: controller.services.value?.data?.data?.length,
+                itemCount:
+                    controller.items.length +
+                    (controller.isLoadingMore.value ? 1 : 0),
                 itemBuilder: (context, index) {
-                  final service = controller.services.value?.data?.data?[index];
-                  if (service == null) return const SizedBox.shrink();
+                  if (index >= controller.items.length) {
+                    return Padding(
+                      padding: EdgeInsets.only(bottom: 16.h, top: 4.h),
+                      child: const Center(child: ButtonLoading()),
+                    );
+                  }
+                  final service = controller.items[index];
                   return Padding(
                     padding: EdgeInsets.only(bottom: 16.h),
                     child: GestureDetector(
