@@ -42,7 +42,6 @@ class PropertyManagementController extends GetxController {
   RxString selected = 'Property'.obs;
   TextEditingController shareController = TextEditingController();
   RxString selectedProperty = ''.obs;
-  List<String> propertyOption = ['Property 01', 'Property 02'];
   RxList<XFile> imageList = <XFile>[].obs;
   RxBool isShare = false.obs;
   // RxBool isViewProperty = false.obs;

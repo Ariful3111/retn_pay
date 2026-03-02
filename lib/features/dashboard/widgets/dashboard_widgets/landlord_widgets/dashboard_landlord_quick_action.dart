@@ -3,9 +3,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/core/utils/download_manager.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/dashboard_landlord_quick_action_model.dart';
-import 'package:renter_pay/shared/widgets/snackbars/success_snackbar.dart';
 
 class DashboardLandlordQuickAction extends StatelessWidget {
   const DashboardLandlordQuickAction({super.key});
@@ -18,17 +16,7 @@ class DashboardLandlordQuickAction extends StatelessWidget {
           icon: IconsPath.dashboardLandlordCalender,
           title: 'Calendar Access',
           subTitle: 'Stay on top of rent due dates, inspections, and events.',
-          onTap: () async {
-            debugPrint("Started downloading...");
-            final response = await DownloadManager.download(
-              url:
-                  "https://renter-pay.mahfuz.click/storage/condition-reports/Xlr0jZ28o3ECDdXUFBdJuwNwtdNjm6iAh0bkXY8y.jpg",
-            );
-            debugPrint("Saved to: ${response.path}");
-            SuccessSnackbar.show(
-              description: "Downloaded to: ${response.path}",
-            );
-          },
+          onTap: () async {},
           buttonText: 'Open Calendar',
         ),
         if (userIndex == 1)
