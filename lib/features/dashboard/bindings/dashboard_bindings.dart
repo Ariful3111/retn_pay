@@ -14,6 +14,7 @@ import 'package:renter_pay/features/dashboard/controllers/landlord_controller/pr
 import 'package:renter_pay/features/dashboard/controllers/lease_agreement_controller.dart';
 import 'package:renter_pay/features/dashboard/repositories/dashboard_metrics_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/calender_repo.dart';
+import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/conditional_reports_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/create_property_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/property_document_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/submit_property_review_repo.dart';
@@ -30,12 +31,43 @@ import 'package:renter_pay/features/dashboard/controllers/tenant_controller/subm
 class DashboardBindings implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => CreatePropertyRepository(imageWithResponse: Get.find()));
-    Get.lazyPut(() => PropertyDocumentRepository(imageNetwork: Get.find()));
     Get.lazyPut(() => CalenderRepository(getNetwork: Get.find()));
+    Get.lazyPut(() => CreatePropertyRepository(imageWithResponse: Get.find()));
+    Get.lazyPut(() => ConditionalReportsRepository(getNetwork: Get.find()));
+    Get.lazyPut(() => DashboardMetricsRepository(getNetwork: Get.find()));
+    Get.lazyPut(() => PropertyDocumentRepository(imageNetwork: Get.find()));
+
+    if (!Get.isRegistered<ReminderRepository>()) {
+      Get.lazyPut(() => ReminderRepository(getNetwork: Get.find()));
+    }
+
+    if (!Get.isRegistered<RentNoticeRepository>()) {
+      Get.lazyPut(() => RentNoticeRepository(getNetwork: Get.find()));
+    }
+
+    if (!Get.isRegistered<LeaseAgreementRepository>()) {
+      Get.lazyPut(() => LeaseAgreementRepository(getNetwork: Get.find()));
+    }
+
+    if (!Get.isRegistered<PropertyCategoryRepository>()) {
+      Get.lazyPut(() => PropertyCategoryRepository(getNetwork: Get.find()));
+    }
+    if (!Get.isRegistered<PropertyAmenitiesRepository>()) {
+      Get.lazyPut(() => PropertyAmenitiesRepository(getNetwork: Get.find()));
+    }
+    if (!Get.isRegistered<SubmitPropertyReviewRepository>()) {
+      Get.lazyPut(
+        () => SubmitPropertyReviewRepository(postNetwork: Get.find()),
+      );
+    }
+
     Get.lazyPut(() => DashboardController());
     Get.lazyPut(() => DashboardLandlordController());
-    Get.lazyPut(() => PropertyManagementController());
+    Get.lazyPut(
+      () => PropertyManagementController(
+        conditionalReportsRepository: Get.find(),
+      ),
+    );
     Get.lazyPut(
       () => AddNewPropertyController(createPropertyRepository: Get.find()),
     );
@@ -51,56 +83,35 @@ class DashboardBindings implements Bindings {
     );
     Get.lazyPut(() => ServiceVendorDashboardController());
     Get.lazyPut(() => BookingManagementController());
-    Get.lazyPut(() => DashboardMetricsRepository(getNetwork: Get.find()));
     Get.lazyPut(
       () => DashboardMetricController(dashboardMetricsRepository: Get.find()),
     );
 
-    if (!Get.isRegistered<ReminderRepository>()) {
-      Get.lazyPut(() => ReminderRepository(getNetwork: Get.find()));
-    }
     if (!Get.isRegistered<ReminderController>()) {
       Get.lazyPut(() => ReminderController(reminderRepository: Get.find()));
     }
 
-    if (!Get.isRegistered<RentNoticeRepository>()) {
-      Get.lazyPut(() => RentNoticeRepository(getNetwork: Get.find()));
-    }
     if (!Get.isRegistered<RentNoticeController>()) {
       Get.lazyPut(() => RentNoticeController(rentNoticeRepository: Get.find()));
     }
 
-    if (!Get.isRegistered<LeaseAgreementRepository>()) {
-      Get.lazyPut(() => LeaseAgreementRepository(getNetwork: Get.find()));
-    }
     if (!Get.isRegistered<LeaseAgreementController>()) {
       Get.lazyPut(
         () => LeaseAgreementController(leaseAgreementRepository: Get.find()),
       );
     }
 
-    if (!Get.isRegistered<PropertyCategoryRepository>()) {
-      Get.lazyPut(() => PropertyCategoryRepository(getNetwork: Get.find()));
-    }
     if (!Get.isRegistered<PropertyCategoryController>()) {
       Get.lazyPut(
         () =>
             PropertyCategoryController(propertyCategoryRepository: Get.find()),
       );
     }
-    if (!Get.isRegistered<PropertyAmenitiesRepository>()) {
-      Get.lazyPut(() => PropertyAmenitiesRepository(getNetwork: Get.find()));
-    }
     if (!Get.isRegistered<PropertyAmenitiesController>()) {
       Get.lazyPut(
         () => PropertyAmenitiesController(
           propertyAmenitiesRepository: Get.find(),
         ),
-      );
-    }
-    if (!Get.isRegistered<SubmitPropertyReviewRepository>()) {
-      Get.lazyPut(
-        () => SubmitPropertyReviewRepository(postNetwork: Get.find()),
       );
     }
     if (!Get.isRegistered<SubmitPropertyReviewController>()) {

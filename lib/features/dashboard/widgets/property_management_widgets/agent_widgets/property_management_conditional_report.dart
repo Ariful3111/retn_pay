@@ -65,9 +65,8 @@ class PropertyManagementConditionalReport extends StatelessWidget {
               width: 120.w,
               borderRadius: BorderRadius.circular(8.r),
               text: 'Submit',
-              onPressed: () {
-              
-            },),
+              onPressed: () {},
+            ),
           ),
         ],
       ),

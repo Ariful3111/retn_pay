@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:fpdart/fpdart.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/networks_path.dart';
 import 'package:renter_pay/core/data/global_models/error_model.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/core/data/networks/image_without_response.dart';
@@ -16,7 +17,7 @@ class PropertyDocumentRepository {
   }) async {
     final response = await imageNetwork.upload(
       url:
-          "/api/v1/properties/${Get.find<StorageService>().read(key: Get.find<StorageService>().propertyIDKey)}/documents",
+          "/api/${NetworkLinks.version}/properties/${Get.find<StorageService>().read(key: Get.find<StorageService>().propertyIDKey)}/documents",
       headers: {
         "Accept": "application/json",
         "Content-Type": "multipart/form-data",

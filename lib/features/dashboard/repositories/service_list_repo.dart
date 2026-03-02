@@ -1,5 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/networks_path.dart';
 import 'package:renter_pay/core/data/global_models/error_model.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/core/data/networks/get_network.dart';
@@ -14,7 +15,7 @@ class ServiceListRepository {
     required int page,
   }) async {
     final response = await getNetwork.getData<ServiceListModel>(
-      url: "/api/v1/vendors/services?page=$page",
+      url: "/api/${NetworkLinks.version}/vendors/services?page=$page",
       headers: {
         "Accept": "application/json",
         "Authorization":

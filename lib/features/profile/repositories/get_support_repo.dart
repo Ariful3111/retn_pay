@@ -1,5 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/networks_path.dart';
 import 'package:renter_pay/core/data/global_models/error_model.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/core/data/networks/get_network.dart';
@@ -16,7 +17,7 @@ class GetSupportTicketRepository {
   }) async {
     final response = await getNetwork.getData<SupportTicketModel>(
       url:
-          "/api/v1/support-tickets?page=$page&per_page=$perPage&status=$status",
+          "/api/${NetworkLinks.version}/support-tickets?page=$page&per_page=$perPage&status=$status",
       headers: {
         "Accept": "application/json",
         "Authorization":

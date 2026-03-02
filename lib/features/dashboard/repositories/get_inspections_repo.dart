@@ -1,5 +1,6 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/networks_path.dart';
 import 'package:renter_pay/core/data/global_models/error_model.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/core/data/networks/get_network.dart';
@@ -12,7 +13,7 @@ class GetInspectionsRepository {
   Future<Either<ErrorModel, InspectionModel>> execute({
     required String status,
   }) async {
-    String url = "/api/v1/inspections";
+    String url = "/api/${NetworkLinks.version}/inspections";
     if (status.isNotEmpty) {
       url = "$url?status=$status";
     }

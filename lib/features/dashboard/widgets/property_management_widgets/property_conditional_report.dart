@@ -10,71 +10,76 @@ import 'package:renter_pay/shared/widgets/custom_table/custom_table.dart';
 import 'package:renter_pay/shared/widgets/custom_table/custom_table_expanded.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
-class PropertyConditionalReport extends StatelessWidget {
+class PropertyConditionalReport
+    extends GetWidget<PropertyManagementController> {
   const PropertyConditionalReport({super.key});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    PropertyManagementController propertyManagementController = Get.find();
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.r),
-        color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
-      ),
-      child: Obx(() {
-        final list = propertyManagementController.listData;
-        final rowWidgets = List<List<Widget>>.generate(list.length, (index) {
-          final item = list[index].value;
-          return [
-            CustomTextPrimary(
-              text: item.address,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w500,
-              textOverflow: TextOverflow.ellipsis,
-            ),
-            CustomTextSecondary(
-              text: item.date,
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w400,
-            ),
-            CustomFilterAppbar(
-              width: 100.w,
-              height: 34.h,
-              title: 'Download',
-              icon: IconsPath.export,
-              onTap: () {},
-            ),
-          ];
-        });
-        final listIndex = list.map((e) => e.key).toList();
-        return CustomTable(
-          column: propertyManagementController.conditionReportTableColumn,
-          row: rowWidgets,
-          expandedTableBuilder: (index) {
-            final item = list[index].value;
-            final rowIndex = listIndex[index];
-            return CustomTableExpanded(
-              title: 'Property Address: ${item.address}',
-              isOpen: propertyManagementController.expandedCondition[rowIndex],
-              onExpandedClose: () {
-                propertyManagementController.toggleCondition(rowIndex);
-              },
-              expandedContent: PropertyConditionalReportContent(
-                rowIndex: rowIndex,
-              ),
-            );
+    return Obx(() {
+      return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.r),
+          color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+        ),
+        child: controller.isLoading.value ? ButtonLoading() : _table(),
+      );
+    });
+  }
+
+  Widget _table() {
+    final list = controller.conditionReports;
+    final rowWidgets = List<List<Widget>>.generate(list.length, (index) {
+      final item = list[index];
+      return [
+        CustomTextPrimary(
+          text: item.property?.address ?? '',
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500,
+          textOverflow: TextOverflow.ellipsis,
+        ),
+        CustomTextSecondary(
+          text: item.createdAt ?? '',
+          fontSize: 12.sp,
+          fontWeight: FontWeight.w400,
+        ),
+        CustomFilterAppbar(
+          width: 100.w,
+          height: 34.h,
+          title: 'Download',
+          icon: IconsPath.export,
+          onTap: () {},
+        ),
+      ];
+    });
+    return CustomTable(
+      column: controller.conditionReportTableColumn,
+      row: rowWidgets,
+      expandedTableBuilder: (index) {
+        final item = list[index];
+        final rowIndex = index;
+        return CustomTableExpanded(
+          title: 'Property Address: ${item.property?.address ?? ''}',
+          isOpen: rowIndex < controller.expandedCondition.length
+              ? controller.expandedCondition[rowIndex]
+              : false,
+          onExpandedClose: () {
+            controller.toggleCondition(rowIndex);
           },
-          onRowTap: (index) {
-            propertyManagementController.toggleCondition(listIndex[index]);
-          },
-          isExpandedTableBuilder: (index) {
-            return propertyManagementController.expandedCondition[listIndex[index]];
-          },
-          isNeedLastCol: false,
+          expandedContent: PropertyConditionalReportContent(rowIndex: rowIndex),
         );
-      }),
+      },
+      onRowTap: (index) {
+        controller.toggleCondition(index);
+      },
+      isExpandedTableBuilder: (index) {
+        if (index >= controller.expandedCondition.length) return false;
+        return controller.expandedCondition[index];
+      },
+      isNeedLastCol: false,
     );
   }
 }
