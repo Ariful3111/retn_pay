@@ -1,160 +1,109 @@
 {
   "error": false,
   "code": 200,
-  "message": "Condition reports retrieved successfully",
+  "message": "Service requests retrieved successfully",
   "data": {
     "data": [
       {
-        "id": 20,
-        "property_id": 141,
-        "inspection_id": null,
-        "report_type": "routine",
-        "file_name": "Generated Image August 30, 2025 - 6_28PM.jpeg",
-        "file_url": "https://renter-pay.mahfuz.click/storage/condition-reports/Xlr0jZ28o3ECDdXUFBdJuwNwtdNjm6iAh0bkXY8y.jpg",
-        "summary": "Property is in good condition for tenant move-in",
+        "id": 101,
+        "user_id": 67,
+        "service_id": 1,
+        "property_id": 1,
+        "description": "Need moving services",
+        "status": "pending",
+        "admin_notes": null,
+        "created_at": "2026-02-10 16:37:11",
+        "updated_at": "2026-02-10 16:37:11",
+        "service": {
+          "id": 1,
+          "name": "Movers & Packers",
+          "description": "Professional moving and packing services",
+          "service_type": "movers_packers",
+          "target_user_types": ["tenant"],
+          "is_active": true
+        },
         "property": {
-          "id": 141,
-          "landlord_id": 71,
+          "id": 1,
+          "landlord_id": 62,
           "property_type_id": 3,
-          "title": "Modern Apartment",
-          "name": "Modern Apartment",
-          "description": "Spacious apartment in the city center.",
-          "address": "Village: Shilashi, Ward - 7, House: 11/8",
-          "city": "Mymensingh",
-          "state": "Dhaka",
-          "postal_code": "23223",
+          "title": "Townhouse in Perth - Main Street",
+          "name": "Townhouse in Perth - Main Street",
+          "description": "Modern Townhouse located in Perth. Features 2 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+          "address": "159/154 George Street",
+          "city": "Perth",
+          "state": "WA",
+          "postal_code": "2516",
           "country": "Australia",
-          "latitude": null,
-          "longitude": null,
-          "bedrooms": 3,
+          "latitude": "-31.56050000",
+          "longitude": "115.40050000",
+          "bedrooms": 2,
           "bathrooms": 2,
-          "parking_spaces": 1,
-          "land_size": "1500.00",
-          "building_size": "1200.00",
-          "year_built": 2018,
-          "status": "active",
-          "is_verified": false,
-          "is_in_person_inspection_available": true,
+          "parking_spaces": 0,
+          "land_size": null,
+          "building_size": "258.00",
+          "year_built": 2013,
+          "status": "inactive",
+          "is_verified": true,
+          "is_in_person_inspection_available": false,
           "is_virtual_inspection_available": false,
           "is_favourite": false,
-          "features": ["Air Conditioning", "Balcony"],
-          "lease_agreement_defaults": {
-            "keys_count": 2,
-            "inclusions": "Refrigerator, washing machine",
-            "terms": "No smoking. Pets allowed with approval.",
-            "bond_amount": 2323,
-            "currency": "AUD",
-            "payment_frequency": "fortnight",
-            "disclosures": {
-              "intent_to_sell_premises": {
-                "intends_to_sell": false,
-                "engaged_agent": false,
-                "contract_prepared": false
-              },
-              "mortgagee_action": {
-                "mortgagee_taking_possession": false,
-                "enforcement_proceedings_commenced": false
-              },
-              "ownership": {
-                "is_owner": true,
-                "has_right_to_rent": true
-              },
-              "embedded_electricity_network": {
-                "supplied_by_embedded_network": false
-              },
-              "property_history": {
-                "homicide_in_last_5_years": false,
-                "drug_activity_in_last_5_years": false,
-                "asbestos_present": false
-              },
-              "rental_compliance": {
-                "meets_minimum_standards": true,
-                "mould_or_damp_repair_notices_last_3_years": false
-              },
-              "safety_checks": {
-                "electricity_safety_check_date": "2026-02-05",
-                "gas_safety_check_date": "2026-02-13",
-                "pool_barrier_compliance_check_date": "2026-02-28",
-                "outstanding_recommendations": false
-              },
-              "heritage": {
-                "is_heritage_listed": false
-              },
-              "planning_and_legal": {
-                "affected_by_planning_application": false,
-                "building_or_safety_notices_issued": false,
-                "domestic_building_work_dispute": false,
-                "owners_corporation_dispute": false,
-                "subject_to_owners_corporation_rules": false
-              },
-              "additional_notes": "No additional disclosures."
-            },
-            "property_manager_details": {
-              "property_manager_name": "Tonni Akter Bithi",
-              "phone_number": "01825332448",
-              "email_address": "landlord@gmail.com",
-              "estate_agency_name": "ABC Realty"
-            }
-          },
-          "rating": "0.00",
-          "rating_count": 0,
+          "features": [
+            "Dedicated study or home office space with built-in desk.",
+            "Low-maintenance garden with native plants and irrigation.",
+            "Swimming pool and communal BBQ area for residents."
+          ],
+          "rating": "4.50",
+          "rating_count": 26,
           "units": [
             {
-              "id": 219,
-              "property_id": 141,
-              "unit_number": "Unit 101",
-              "unit_name": null,
-              "rent_amount": "45000.00",
+              "id": 1,
+              "property_id": 1,
+              "unit_number": "Unit 1",
+              "unit_name": "Townhouse",
+              "rent_amount": "14490.00",
               "rent_type": {
-                "id": 2,
-                "name": "Weekly",
-                "slug": "weekly",
-                "rent_days": 7
+                "id": 3,
+                "name": "Monthly",
+                "slug": "monthly",
+                "rent_days": 30
               },
               "currency": {
                 "id": 1,
                 "code": "AUD",
                 "name": "Australian Dollar",
                 "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+                "logo": "https://renter-pay.test/images/currency.png",
                 "type": "fiat"
               },
-              "display_rent_amount": 45000,
+              "display_rent_amount": 14490,
               "display_currency": {
                 "id": 1,
                 "code": "AUD",
                 "name": "Australian Dollar",
                 "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+                "logo": "https://renter-pay.test/images/currency.png",
                 "type": "fiat"
               },
               "status": "available",
-              "bedrooms": 3,
+              "bedrooms": 2,
               "bathrooms": 2,
-              "size": "1500.00",
-              "description": null
+              "size": "258.00",
+              "description": "Spacious Townhouse with modern fixtures"
             }
           ],
           "review_summary": {
-            "total_reviews": 0,
-            "average_rating": "0.00"
+            "total_reviews": 26,
+            "average_rating": "4.50"
           },
-          "created_at": "2026-02-27T16:26:09.000000Z",
-          "updated_at": "2026-02-27T16:26:09.000000Z"
+          "created_at": "2026-02-10T10:35:42.000000Z",
+          "updated_at": "2026-02-10T10:35:45.000000Z"
         },
-        "inspection": null,
-        "created_by_user": {
-          "id": 71,
-          "name": "Md. Mahfuzur Rahman",
-          "email": "jolontojewel@gmail.com"
-        },
-        "created_at": "2026-02-27 22:35:16",
-        "updated_at": "2026-02-27 22:35:16"
+        "assignments": []
       }
     ],
     "links": {
-      "first": "https://renter-pay.mahfuz.click/api/v1/condition-reports?page=1",
-      "last": "https://renter-pay.mahfuz.click/api/v1/condition-reports?page=1",
+      "first": "https://renter-pay.test/api/v1/additional-services/requests?page=1",
+      "last": "https://renter-pay.test/api/v1/additional-services/requests?page=1",
       "prev": null,
       "next": null
     },
@@ -170,7 +119,7 @@
           "active": false
         },
         {
-          "url": "https://renter-pay.mahfuz.click/api/v1/condition-reports?page=1",
+          "url": "https://renter-pay.test/api/v1/additional-services/requests?page=1",
           "label": "1",
           "page": 1,
           "active": true
@@ -182,7 +131,7 @@
           "active": false
         }
       ],
-      "path": "https://renter-pay.mahfuz.click/api/v1/condition-reports",
+      "path": "https://renter-pay.test/api/v1/additional-services/requests",
       "per_page": 20,
       "to": 1,
       "total": 1

@@ -12,13 +12,23 @@ class ServiceRequestTableContent extends StatelessWidget {
   Widget build(BuildContext context) {
     ServiceVendorDashboardController serviceVendorDashboardController =
         Get.find();
-    final item = serviceVendorDashboardController.upcomingList[index];
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      infoText(title: 'Address: ${item.address}'),
-      SizedBox(height: 8.h,),
-      infoText(title: 'Schedule: ${item.schedule}')
-    ]);
+    final list = serviceVendorDashboardController.requests;
+    if (index < 0 || index >= list.length) return const SizedBox.shrink();
+    final item = list[index];
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        infoText(title: 'Service: ${item.service?.name ?? ''}'),
+        SizedBox(height: 8.h),
+        infoText(title: 'Status: ${item.status ?? ''}'),
+        SizedBox(height: 8.h),
+        infoText(title: 'Address: ${item.property?.address ?? ''}'),
+        SizedBox(height: 8.h),
+        infoText(title: 'Created: ${item.createdAt ?? ''}'),
+      ],
+    );
   }
+
   infoText({required String title}) {
     return CustomTextPrimary(
       text: title,

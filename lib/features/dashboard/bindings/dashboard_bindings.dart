@@ -22,6 +22,7 @@ import 'package:renter_pay/features/dashboard/repositories/landlord_repositories
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/submit_property_review_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/lease_agreement_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/reminder_repo.dart';
+import 'package:renter_pay/features/dashboard/repositories/service_vendors_repositories/own_service_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/tenant_repositories/rent_notice_repo.dart';
 import 'package:renter_pay/features/home/controllers/property_amenities_controller.dart';
 import 'package:renter_pay/features/home/controllers/property_category_controller.dart';
@@ -65,6 +66,7 @@ class DashboardBindings implements Bindings {
         () => SubmitPropertyReviewRepository(postNetwork: Get.find()),
       );
     }
+    Get.lazyPut(() => OwnServicesRepository(getNetwork: Get.find()));
 
     Get.lazyPut(() => DashboardController());
     Get.lazyPut(() => DashboardLandlordController());
@@ -91,7 +93,9 @@ class DashboardBindings implements Bindings {
     Get.lazyPut(
       () => LandlordCalenderController(calenderRepository: Get.find()),
     );
-    Get.lazyPut(() => ServiceVendorDashboardController());
+    Get.lazyPut(
+      () => ServiceVendorDashboardController(ownServicesRepository: Get.find()),
+    );
     Get.lazyPut(() => BookingManagementController());
     Get.lazyPut(
       () => DashboardMetricController(dashboardMetricsRepository: Get.find()),
