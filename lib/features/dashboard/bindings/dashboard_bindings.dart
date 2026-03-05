@@ -19,6 +19,7 @@ import 'package:renter_pay/features/dashboard/repositories/agent_repositories/cr
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/calender_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/conditional_reports_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/create_property_repo.dart';
+import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/get_applications_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/property_document_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/submit_property_review_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/lease_agreement_repo.dart';
@@ -44,6 +45,9 @@ class DashboardBindings implements Bindings {
     Get.lazyPut(() => ConditionalReportsRepository(getNetwork: Get.find()));
     Get.lazyPut(() => DashboardMetricsRepository(getNetwork: Get.find()));
     Get.lazyPut(() => PropertyDocumentRepository(imageNetwork: Get.find()));
+    if (!Get.isRegistered<GetApplicationsRepository>()) {
+      Get.lazyPut(() => GetApplicationsRepository(getNetwork: Get.find()));
+    }
 
     if (!Get.isRegistered<ReminderRepository>()) {
       Get.lazyPut(() => ReminderRepository(getNetwork: Get.find()));
@@ -100,7 +104,13 @@ class DashboardBindings implements Bindings {
       ),
     );
     Get.lazyPut(() => PropertyManagementDetailsController());
-    Get.lazyPut(() => ApplicationManagementController());
+    if (!Get.isRegistered<ApplicationManagementController>()) {
+      Get.lazyPut(
+        () => ApplicationManagementController(
+          getApplicationsRepository: Get.find(),
+        ),
+      );
+    }
     Get.lazyPut(
       () => LandlordCalenderController(calenderRepository: Get.find()),
     );

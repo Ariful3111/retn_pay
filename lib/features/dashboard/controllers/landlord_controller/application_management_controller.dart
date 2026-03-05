@@ -1,119 +1,47 @@
 import 'package:get/get.dart';
-
-class ApplicationModel {
-  final String name;
-  final String property;
-  final String status;
-  final String remark;
-  ApplicationModel({
-    required this.name,
-    required this.property,
-    required this.status,
-    required this.remark,
-  });
-}
+import 'package:renter_pay/features/dashboard/models/landlord_models/applications_model.dart';
+import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/get_applications_repo.dart';
+import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
 class ApplicationManagementController extends GetxController {
-  RxList<bool> expanded = <bool>[].obs;
-  final List<String> tableColumn = ['Property Address', 'Status', 'View Application'];
-  RxList<ApplicationModel> allRows = <ApplicationModel>[].obs;
-  List<MapEntry<int, ApplicationModel>> get filterRow {
-    final tempRow = <MapEntry<int, ApplicationModel>>[];
-    for (int i = 0; i < allRows.length; i++) {
-      tempRow.add(MapEntry(i, allRows[i]));
-    }
-    return tempRow;
+  final GetApplicationsRepository getApplicationsRepository;
+  ApplicationManagementController({required this.getApplicationsRepository});
+  final applications = Rxn<ApplicationsModel>();
+  RxBool isLoading = true.obs;
+  RxList<int> expanded = <int>[].obs;
+  final List<String> tableColumn = [
+    'Property Address',
+    'Status',
+    'View Application',
+  ];
+
+  List<ApplicationItem> get items => applications.value?.data?.data ?? const [];
+
+  Future<void> getApplications() async {
+    isLoading.value = true;
+    final response = await getApplicationsRepository.execute();
+    isLoading.value = false;
+    response.fold(
+      (error) {
+        ErrorSnackbar.show(description: error.message);
+      },
+      (data) {
+        applications.value = data;
+      },
+    );
   }
 
-  void initRows() {
-    allRows.value = [
-      ApplicationModel(
-        property: "123 Elm Street",
-        status: "Approved",
-        name: 'Ariful',
-        remark: '-',
-      ),
-      ApplicationModel(
-        property: "123 Elm Street",
-        status: "Approved",
-        name: 'Ariful',
-        remark: '-',
-      ),
-      ApplicationModel(
-        property: "123 Elm Street",
-        status: "Submitted",
-        name: 'Ariful',
-        remark: '-',
-      ),
-      ApplicationModel(
-        property: "123 Elm Street",
-        status: "Submitted",
-        name: 'Ariful',
-        remark: '-',
-      ),
-      ApplicationModel(
-        property: "123 Elm Street",
-        status: "Credit Check Approved",
-        name: 'Ariful',
-        remark: '-',
-      ),
-      ApplicationModel(
-        property: "123 Elm Street",
-        status: "Credit Check Approved",
-        name: 'Ariful',
-        remark: '-',
-      ),
-      ApplicationModel(
-        property: "123 Elm Street",
-        status: "Assessed Rental Threshold",
-        name: 'Ariful',
-        remark: '-',
-      ),
-      ApplicationModel(
-        property: "123 Elm Street",
-        status: "Assessed Rental Threshold",
-        name: 'Ariful',
-        remark: '-',
-      ),
-      ApplicationModel(
-        property: "123 Elm Street",
-        status: "Reference Checked",
-        name: 'Ariful',
-        remark: '-',
-      ),
-      ApplicationModel(
-        property: "123 Elm Street",
-        status: "Reference Checked",
-        name: 'Ariful',
-        remark: '-',
-      ),
-      ApplicationModel(
-        property: "123 Elm Street",
-        status: "Rejected",
-        name: 'Ariful',
-        remark: 'Stronger Applicant was chosen/property unsuitable lor pets/Credit-bosed decision',
-      ),
-      ApplicationModel(
-        property: "123 Elm Street",
-        status: "Rejected",
-        name: 'Ariful',
-        remark: 'Stronger Applicant was chosen/property unsuitable lor pets/Credit-bosed decision',
-      ),
-    ];
-    expanded.value = List.generate(allRows.length, (_) => false);
-    update();
-  }
-
-  void toggleExpanded(int index) {
-    if (index >= 0 && index < expanded.length) {
-      expanded[index] = !expanded[index];
+  void toggleExpanded({required int id}) {
+    if (expanded.contains(id)) {
+      expanded.remove(id);
+    } else {
+      expanded.add(id);
     }
-    expanded.refresh();
   }
 
   @override
-  void onReady() {
-    initRows();
-    super.onReady();
+  void onInit() {
+    super.onInit();
+    getApplications();
   }
 }

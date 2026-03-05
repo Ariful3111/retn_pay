@@ -5,33 +5,46 @@ import 'package:renter_pay/features/dashboard/controllers/landlord_controller/ap
 import 'package:renter_pay/features/dashboard/widgets/application_management_widgets/application_management_table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
-class ApplicationManagementTableContent extends StatelessWidget {
+class ApplicationManagementTableContent
+    extends GetWidget<ApplicationManagementController> {
   final int index;
   const ApplicationManagementTableContent({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
-    ApplicationManagementController applicationManagementController =
-        Get.find();
-    final item = applicationManagementController.allRows[index];
+    final list = controller.items;
+    final itemIndex = list.indexWhere((e) => (e.id ?? 0) == index);
+    if (itemIndex == -1) return const SizedBox.shrink();
+    final item = list[itemIndex];
+    final status = item.status ?? '';
+    final name =
+        item.tenant?.name ??
+        item.applicationDetails?.applicantDetails?.name ??
+        '';
+    final remark = item.rejectionReason ?? item.notes ?? '';
+    final isRejected =
+        (item.status ?? '').toLowerCase() == 'rejected' ||
+        status.toLowerCase() == 'rejected';
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        infoText(title: 'Name: ${item.name}'),
+        infoText(title: 'Name: $name'),
         SizedBox(height: 8.h),
-       if(item.status=='Rejected') infoText(title: 'Remark: ${item.remark}'),
-       if(item.status=='Rejected') SizedBox(height: 8.h),
+        if (isRejected) infoText(title: 'Remark: $remark'),
+        if (isRejected) SizedBox(height: 8.h),
         Row(
           children: [
             infoText(title: "Status"),
             SizedBox(width: 8.w),
-            ApplicationManagementTableStatus(status: item.status),
+            ApplicationManagementTableStatus(status: status),
           ],
         ),
         SizedBox(height: 8.h),
       ],
     );
   }
+
   infoText({required String title}) {
     return CustomTextPrimary(
       text: title,
