@@ -85,6 +85,9 @@ class ProfileEditInfo extends StatelessWidget {
                         if (afterPath == null || afterPath == beforePath) {
                           return;
                         }
+                        await profileEditController.updateImage(
+                          image: File(afterPath),
+                        );
                       },
                       child: Container(
                         height: 30.h,
