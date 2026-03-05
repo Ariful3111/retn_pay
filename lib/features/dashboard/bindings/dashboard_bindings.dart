@@ -13,6 +13,7 @@ import 'package:renter_pay/features/dashboard/controllers/landlord_controller/da
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_details_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/lease_agreement_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/add_repair_request_controller.dart';
 import 'package:renter_pay/features/dashboard/repositories/dashboard_metrics_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/agent_repositories/create_conditional_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/calender_repo.dart';
@@ -23,6 +24,7 @@ import 'package:renter_pay/features/dashboard/repositories/landlord_repositories
 import 'package:renter_pay/features/dashboard/repositories/lease_agreement_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/reminder_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/service_vendors_repositories/own_service_repo.dart';
+import 'package:renter_pay/features/dashboard/repositories/tenant_repositories/add_repair_request_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/tenant_repositories/rent_notice_repo.dart';
 import 'package:renter_pay/features/home/controllers/property_amenities_controller.dart';
 import 'package:renter_pay/features/home/controllers/property_category_controller.dart';
@@ -67,9 +69,18 @@ class DashboardBindings implements Bindings {
       );
     }
     Get.lazyPut(() => OwnServicesRepository(getNetwork: Get.find()));
+    if (!Get.isRegistered<AddRepairRequestRepository>()) {
+      Get.lazyPut(() => AddRepairRequestRepository(imageNetwork: Get.find()));
+    }
 
     Get.lazyPut(() => DashboardController());
     Get.lazyPut(() => DashboardLandlordController());
+    if (!Get.isRegistered<AddRepairRequestController>()) {
+      Get.lazyPut(
+        () =>
+            AddRepairRequestController(addRepairRequestRepository: Get.find()),
+      );
+    }
     Get.lazyPut(
       () => CreateConditionalReportController(
         createConditionalReportRepository: Get.find(),

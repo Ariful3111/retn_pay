@@ -13,13 +13,29 @@ import 'package:renter_pay/shared/widgets/custom_button/custom_close_button.dart
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
-class AddRepairRequest extends GetWidget<LeaseAgreementController> {
+class AddRepairRequest extends StatefulWidget {
   const AddRepairRequest({super.key});
+
+  @override
+  State<AddRepairRequest> createState() => _AddRepairRequestState();
+}
+
+class _AddRepairRequestState extends State<AddRepairRequest> {
+  final AddRepairRequestController addRepairRequestController =
+      Get.find<AddRepairRequestController>();
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      addRepairRequestController.reset();
+    });
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    Get.find<AddRepairRequestController>().reset();
+    final leaseAgreementController = Get.find<LeaseAgreementController>();
     return Obx(() {
       return Material(
         color: Colors.transparent,
@@ -44,7 +60,7 @@ class AddRepairRequest extends GetWidget<LeaseAgreementController> {
                   myShadow(dy: 4487.56, alpha: 0.0),
                 ],
               ),
-              child: controller.isLoading.value
+              child: leaseAgreementController.isLoading.value
                   ? ButtonLoading()
                   : ListView(
                       children: [
