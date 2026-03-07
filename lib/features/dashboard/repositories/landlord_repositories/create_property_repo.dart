@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:fpdart/fpdart.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/networks_path.dart';
 import 'package:renter_pay/core/data/global_models/error_model.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/core/data/networks/image_with_response.dart';
@@ -126,7 +127,7 @@ class CreatePropertyRepository {
     final body = <String, dynamic>{"images": imageList};
 
     final response = await imageWithResponse.upload(
-      url: "/api/v1/properties",
+      url: "/api/${NetworkLinks.version}/properties",
       headers: {
         "Accept": "application/json",
         "Authorization":

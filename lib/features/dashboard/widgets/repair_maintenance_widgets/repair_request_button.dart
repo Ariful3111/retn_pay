@@ -12,47 +12,56 @@ class RepairRequestButton extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
-          onTap: () {
-            showDialog(
-              context: context,
-              builder: (context) {
-                return AddRepairRequest();
-              },
-            );
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AddRepairRequest();
           },
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 8.w),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6.r),
-              gradient: isDark ? AppColors.darkAppIcon : LinearGradient(colors: [AppColors.whiteColor,AppColors.whiteColor]),
-              border: Border.all(
-                width: 0.8.r,
-                color: isDark
-                    ? AppColors.darkBorderPrimary
-                    : AppColors.primaryBorder,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  offset: Offset(0, 0.8),
-                  blurRadius: 1.16,
-                  color: AppColors.buttonShadowColor.withValues(alpha: 0.06),
-                ),
-              ],
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomTextSecondary(
-                  text: 'Issue A Request',
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  color: isDark?AppColors.darkPrimary:null,
-                ),
-                SizedBox(width: 6.w,),
-                Image.asset(IconsPath.add, height: 20.h, width: 20.w,color: isDark?AppColors.darkPrimary:null,),
-              ],
-            ),
-          ),
         );
+      },
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 8.w),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6.r),
+          gradient: isDark
+              ? AppColors.darkAppIcon
+              : LinearGradient(
+                  colors: [AppColors.whiteColor, AppColors.whiteColor],
+                ),
+          border: Border.all(
+            width: 0.8.r,
+            color: isDark
+                ? AppColors.darkBorderPrimary
+                : AppColors.primaryBorder,
+          ),
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(0, 0.8),
+              blurRadius: 1.16,
+              color: AppColors.buttonShadowColor.withValues(alpha: 0.06),
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CustomTextSecondary(
+              text: 'Issue A Request',
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w400,
+              color: isDark ? AppColors.darkPrimary : null,
+            ),
+            SizedBox(width: 6.w),
+            Image.asset(
+              IconsPath.add,
+              height: 20.h,
+              width: 20.w,
+              color: isDark ? AppColors.darkPrimary : null,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

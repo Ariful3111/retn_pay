@@ -48,7 +48,7 @@ class LandlordInspectionView extends StatelessWidget {
           LandlordInspectionViewId(),
           SizedBox(height: 20.h),
           LandlordInspectionViewDetails(),
-          SizedBox(height: 20.h,),
+          SizedBox(height: 20.h),
           LandlordInspectionViewButton(),
         ],
       ),

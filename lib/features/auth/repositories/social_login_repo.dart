@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:renter_pay/core/constants/networks_path.dart';
 import 'package:renter_pay/core/data/global_models/error_model.dart';
@@ -14,7 +13,6 @@ class SocialLoginRepository {
     required String token,
     required String role,
   }) async {
-    debugPrint("Social Login Request: $provider, $role");
     final response = await postNetwork.postData<SocialLoginModel>(
       url: "/api/${NetworkLinks.version}/auth/social",
       headers: {

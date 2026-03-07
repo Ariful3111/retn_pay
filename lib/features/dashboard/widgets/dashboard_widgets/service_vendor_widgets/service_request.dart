@@ -16,9 +16,10 @@ class ServiceRequest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    ServiceVendorDashboardController serviceVendorDashboardController = Get.find();
+    ServiceVendorDashboardController serviceVendorDashboardController =
+        Get.find();
     return Padding(
-      padding:  EdgeInsets.only(top: 20.h),
+      padding: EdgeInsets.only(top: 20.h),
       child: Column(
         children: [
           Container(
@@ -48,16 +49,21 @@ class ServiceRequest extends StatelessWidget {
                             widget: ServiceRequestFilter(),
                             isDay: serviceVendorDashboardController.isDay.value,
                             onTap: (int index) {
-                              serviceVendorDashboardController.isDay.value = index;
+                              serviceVendorDashboardController.isDay.value =
+                                  index;
                               calenderFilter(
                                 index: index,
-                                selectedDay:
-                                    serviceVendorDashboardController.selectedDay,
+                                selectedDay: serviceVendorDashboardController
+                                    .selectedDay,
                                 rangeStart:
                                     serviceVendorDashboardController.rangeStart,
-                                rangeEnd: serviceVendorDashboardController.rangeEnd,
-                                rangeSelectionMode: serviceVendorDashboardController
-                                    .rangeSelectionMode, focusedDay: serviceVendorDashboardController.focusedDay,
+                                rangeEnd:
+                                    serviceVendorDashboardController.rangeEnd,
+                                rangeSelectionMode:
+                                    serviceVendorDashboardController
+                                        .rangeSelectionMode,
+                                focusedDay:
+                                    serviceVendorDashboardController.focusedDay,
                               );
                             },
                             onApply: () {},
@@ -71,7 +77,7 @@ class ServiceRequest extends StatelessWidget {
             ),
           ),
           SizedBox(height: 12.h),
-         ServiceRequestTable()
+          ServiceRequestTable(),
         ],
       ),
     );

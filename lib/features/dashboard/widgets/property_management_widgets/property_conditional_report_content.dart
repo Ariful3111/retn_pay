@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/utils/download_manager.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_filter_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/snackbars/success_snackbar.dart';
 
 class PropertyConditionalReportContent extends StatelessWidget {
   final int rowIndex;
@@ -14,18 +16,27 @@ class PropertyConditionalReportContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     PropertyManagementController propertyManagementController = Get.find();
-    final item = propertyManagementController.allRows[rowIndex];
+    if (rowIndex >= propertyManagementController.conditionReports.length) {
+      return const SizedBox.shrink();
+    }
+    final item = propertyManagementController.conditionReports[rowIndex];
+    final manager =
+        item.property?.leaseAgreementDefaults?.propertyManagerDetails;
+    final agentName =
+        item.createdByUser?.name ?? manager?.propertyManagerName ?? '';
+    final agentEmail = item.createdByUser?.email ?? manager?.emailAddress ?? '';
+    final agentPhone = manager?.phoneNumber ?? '';
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        infoText(title: "Agent Name: ${item.agent}"),
+        infoText(title: "Agent Name: $agentName"),
         SizedBox(height: 8.h),
-        infoText(title: "Agent Email: ${item.email}"),
+        infoText(title: "Agent Email: $agentEmail"),
         SizedBox(height: 8.h),
-        infoText(title: "Agent Phone No: ${item.phoneNo}"),
+        infoText(title: "Agent Phone No: $agentPhone"),
         SizedBox(height: 8.h),
         CustomTextSecondary(
-          text: 'Date: ${item.date}',
+          text: 'Date: ${item.createdAt ?? ''}',
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,
         ),
@@ -40,7 +51,16 @@ class PropertyConditionalReportContent extends StatelessWidget {
               height: 34.h,
               title: 'Download',
               icon: IconsPath.export,
-              onTap: () {},
+              onTap: () async {
+                debugPrint("Started downloading...");
+                final response = await DownloadManager.download(
+                  url: item.fileUrl ?? '',
+                );
+                debugPrint("Saved to: ${response.path}");
+                SuccessSnackbar.show(
+                  description: "Downloaded to: ${response.path}",
+                );
+              },
             ),
           ],
         ),
