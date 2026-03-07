@@ -13,41 +13,43 @@ class DashboardQuickActions extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     DashboardController dashboardController = Get.find();
-    return Container(
-      height: 78.44.h,
-      width: MediaQuery.widthOf(context),
-      padding: EdgeInsets.all(17.43.r),
-      decoration: BoxDecoration(
-        color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
-        borderRadius: BorderRadius.circular(20.r),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          CustomTextPrimary(
-            text: 'Quick Actions',
-            fontSize: 24.sp,
-            color: isDark ? AppColors.darkAppBar : AppColors.primaryColorDark,
+    return Obx(
+      () => GestureDetector(
+        onTap: () {
+          dashboardController.isQuickActions.value =
+              !dashboardController.isQuickActions.value;
+          Future.delayed(Duration(milliseconds: 100), () {
+            if (dashboardController.isQuickActions.value) {
+              for (final position
+                  in dashboardController.scrollController.positions) {
+                position.animateTo(
+                  position.maxScrollExtent,
+                  duration: Duration(milliseconds: 800),
+                  curve: Curves.easeInOut,
+                );
+              }
+            }
+          });
+        },
+        child: Container(
+          height: 78.44.h,
+          width: MediaQuery.widthOf(context),
+          padding: EdgeInsets.all(17.43.r),
+          decoration: BoxDecoration(
+            color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+            borderRadius: BorderRadius.circular(20.r),
           ),
-          Obx(
-            () => InkWell(
-              onTap: () {
-                dashboardController.isQuickActions.value =
-                    !dashboardController.isQuickActions.value;
-                Future.delayed(Duration(milliseconds: 100), () {
-                  if (dashboardController.isQuickActions.value) {
-                    for (final position
-                        in dashboardController.scrollController.positions) {
-                      position.animateTo(
-                        position.maxScrollExtent,
-                        duration:  Duration(milliseconds: 800),
-                        curve: Curves.easeInOut,
-                      );
-                    }
-                  } 
-                });
-              },
-              child: Padding(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CustomTextPrimary(
+                text: 'Quick Actions',
+                fontSize: 24.sp,
+                color: isDark
+                    ? AppColors.darkAppBar
+                    : AppColors.primaryColorDark,
+              ),
+              Padding(
                 padding: EdgeInsets.all(8.r),
                 child: Center(
                   child: Image.asset(
@@ -60,9 +62,9 @@ class DashboardQuickActions extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

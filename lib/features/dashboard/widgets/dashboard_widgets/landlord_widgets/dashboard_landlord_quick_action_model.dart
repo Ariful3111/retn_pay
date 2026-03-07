@@ -11,7 +11,14 @@ class DashboardLandlordQuickActionModel extends StatelessWidget {
   final String subTitle;
   final VoidCallback onTap;
   final String buttonText;
-  const DashboardLandlordQuickActionModel({super.key, required this.icon, required this.title, required this.subTitle, required this.onTap, required this.buttonText});
+  const DashboardLandlordQuickActionModel({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.subTitle,
+    required this.onTap,
+    required this.buttonText,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +47,12 @@ class DashboardLandlordQuickActionModel extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
           SizedBox(height: 24.h),
-          CustomPrimaryButton(onPressed: onTap, height: 48.h, text: buttonText,fontSize: 14.sp,),
+          CustomPrimaryButton(
+            onPressed: onTap,
+            height: 48.h,
+            text: buttonText,
+            fontSize: 14.sp,
+          ),
         ],
       ),
     );
