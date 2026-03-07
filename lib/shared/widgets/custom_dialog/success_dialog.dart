@@ -22,7 +22,8 @@ class SuccessDialog extends StatelessWidget {
     this.button,
     this.height,
     this.width,
-    this.title1, this.isBG = true,
+    this.title1,
+    this.isBG = true,
   });
 
   @override
@@ -35,10 +36,12 @@ class SuccessDialog extends StatelessWidget {
         width: width ?? 390.w,
         padding: EdgeInsets.zero,
         decoration: BoxDecoration(
-          image:isBG? DecorationImage(
-            image: AssetImage(ImagesPath.successBackground),
-            fit: BoxFit.fill,
-          ):null,
+          image: isBG
+              ? DecorationImage(
+                  image: AssetImage(ImagesPath.successBackground),
+                  fit: BoxFit.fill,
+                )
+              : null,
           boxShadow: [
             myShadow(dy: 200.63, alpha: 0.10),
             myShadow(dy: 803.95, alpha: 0.09),

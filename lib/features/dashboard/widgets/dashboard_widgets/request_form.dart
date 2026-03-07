@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/add_repair_request_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
-class RequestForm extends StatelessWidget {
+class RequestForm extends GetWidget<AddRepairRequestController> {
   const RequestForm({super.key});
 
   @override
   Widget build(BuildContext context) {
-    DashboardController dashboardController = Get.find();
     return Column(
       children: [
         CustomTextField(
-          controller: dashboardController.addressController,
-          hintText: 'Enter your address',
-          labelText: 'Problem Address',
-          textColor: AppColors.secondaryTextColor,
+          controller: controller.issueTitleController,
+          hintText: 'Enter issue title',
+          labelText: 'Issue Title',
         ),
-        SizedBox(height: 10,),
+        SizedBox(height: 10),
         CustomTextField(
-          controller: dashboardController.descriptionController,
+          controller: controller.issueDetailsController,
           hintText: 'Write your problem in detail',
-          labelText: 'Problem Description',
+          labelText: 'Issue Description',
           maxLines: 2,
           hintDirection: TextDirection.ltr,
           isAlignLabelWithHint: true,

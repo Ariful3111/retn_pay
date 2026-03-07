@@ -16,7 +16,7 @@ class DashboardLandlordQuickAction extends StatelessWidget {
           icon: IconsPath.dashboardLandlordCalender,
           title: 'Calendar Access',
           subTitle: 'Stay on top of rent due dates, inspections, and events.',
-          onTap: () {},
+          onTap: () async {},
           buttonText: 'Open Calendar',
         ),
         if (userIndex == 1)

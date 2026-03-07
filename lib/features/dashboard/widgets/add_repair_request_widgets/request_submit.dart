@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/dashboard/controllers/lease_agreement_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/add_repair_request_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
+import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
-class RequestSubmit extends StatelessWidget {
+class RequestSubmit extends GetWidget<AddRepairRequestController> {
   const RequestSubmit({super.key});
 
   @override
@@ -43,16 +46,30 @@ class RequestSubmit extends StatelessWidget {
             color: Color(0xFF6F6F6F),
             spanColor: Color(0xFF1680FB),
           ),
-          CustomPrimaryButton(
-            height: 37.h,
-            width: 112.w,
-            text: 'Submit Now',
-            fontSize: 14.sp,
-            onPressed: () {
-              Navigator.pop(context);
-              Get.toNamed(AppRoutes.repairRequestView);
-            },
-          ),
+          Obx(() {
+            return controller.isLoading.value
+                ? ButtonLoading()
+                : CustomPrimaryButton(
+                    height: 37.h,
+                    width: 112.w,
+                    text: 'Submit Now',
+                    fontSize: 14.sp,
+                    onPressed: () async {
+                      final agreements = Get.find<LeaseAgreementController>()
+                          .leaseAgreements
+                          .value
+                          ?.data
+                          ?.data;
+                      if (agreements == null || agreements.isEmpty) {
+                        ErrorSnackbar.show(
+                          description: 'No active property found',
+                        );
+                      } else {
+                        await controller.addRepairRequest();
+                      }
+                    },
+                  );
+          }),
         ],
       ),
     );

@@ -96,7 +96,7 @@ class SignupController extends GetxController {
     } else if (index == 2) {
       return "agent";
     } else {
-      return "service-vendor";
+      return "service_vendor";
     }
   }
 

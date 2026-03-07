@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/dashboard/models/landlord_models/conditional_reports_model.dart';
+import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/conditional_reports_repo.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_insurance.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_share.dart';
+import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
 class PropertyModel {
   final String address;
@@ -29,12 +32,16 @@ class PropertyModel {
 enum MyMenu { view, share, insurance, reEnlist, conditionalReport }
 
 class PropertyManagementController extends GetxController {
+  final ConditionalReportsRepository conditionalReportsRepository;
+  PropertyManagementController({required this.conditionalReportsRepository});
+  final conditionalReports = Rxn<ConditionalReportsModel>();
+  final conditionReports = <ConditionReportItem>[].obs;
+  final isLoading = false.obs;
   List<String> manageType = ['Property', 'Conditional Report'];
   ScrollController propertyScrollController = ScrollController();
   RxString selected = 'Property'.obs;
   TextEditingController shareController = TextEditingController();
   RxString selectedProperty = ''.obs;
-  List<String> propertyOption = ['Property 01', 'Property 02'];
   RxList<XFile> imageList = <XFile>[].obs;
   RxBool isShare = false.obs;
   // RxBool isViewProperty = false.obs;
@@ -56,6 +63,7 @@ class PropertyManagementController extends GetxController {
   final RxMap<int, MyMenu?> selectedMenu = <int, MyMenu?>{}.obs;
   void setMenu(int index, MyMenu menu) {
     selectedMenu[index] = menu;
+    if (index < 0 || index >= allRows.length) return;
     final property = allRows[index];
     switch (menu) {
       case MyMenu.share:
@@ -115,134 +123,21 @@ class PropertyManagementController extends GetxController {
     return tempRow;
   }
 
-  void rowData() {
-    allRows.value = [
-      PropertyModel(
-        address: '789 Pine Road',
-        verifyStatus: 'Pending',
-        rent: '\$650',
-        agent: 'Mehbubur Rahman ',
-        enlistStatus: '-',
-        date: '8 Aug, 2025',
-        email: 'suriya123@gmail.com',
-        phoneNo: '+1234567890',
-      ),
-      PropertyModel(
-        address: '789 Pine Road',
-        verifyStatus: 'Pending',
-        rent: '\$650',
-        agent: 'Mehbubur Rahman',
-        enlistStatus: '-',
-        date: '8 Aug, 2025',
-        email: 'suriya123@gmail.com',
-        phoneNo: '+1234567890',
-      ),
-      PropertyModel(
-        address: '789 Pine Road',
-        verifyStatus: 'Approved',
-        rent: '\$650',
-        agent: 'Mehbubur Rahman',
-        enlistStatus: 'Publish',
-        date: '8 Aug, 2025',
-        email: 'suriya123@gmail.com',
-        phoneNo: '+1234567890',
-      ),
-      PropertyModel(
-        address: '789 Pine Road',
-        verifyStatus: 'Approved',
-        rent: '\$650',
-        agent: 'Mehbubur Rahman',
-        enlistStatus: 'Publish',
-        date: '8 Aug, 2025',
-        email: 'suriya123@gmail.com',
-        phoneNo: '+1234567890',
-      ),
-      PropertyModel(
-        address: '789 Pine Road',
-        verifyStatus: 'Rejected',
-        rent: '\$650',
-        agent: 'Mehbubur Rahman',
-        enlistStatus: 'Publish',
-        date: '8 Aug, 2025',
-        email: 'suriya123@gmail.com',
-        phoneNo: '+1234567890',
-      ),
-      PropertyModel(
-        address: '789 Pine Road',
-        verifyStatus: 'Rejected',
-        rent: '\$650',
-        agent: 'Mehbubur Rahman',
-        enlistStatus: '-',
-        date: '8 Aug, 2025',
-        email: 'suriya123@gmail.com',
-        phoneNo: '+1234567890',
-      ),
-    ];
-    conditionRows.value = [
-      PropertyModel(
-        address: '789 Pine Road',
-        verifyStatus: 'Pending',
-        rent: '\$650',
-        agent: 'Mehbubur Rahman ',
-        enlistStatus: '-',
-        date: '8 Aug, 2025',
-        email: 'suriya123@gmail.com',
-        phoneNo: '+1234567890',
-      ),
-      PropertyModel(
-        address: '789 Pine Road',
-        verifyStatus: 'Pending',
-        rent: '\$650',
-        agent: 'Mehbubur Rahman',
-        enlistStatus: '-',
-        date: '8 Aug, 2025',
-        email: 'suriya123@gmail.com',
-        phoneNo: '+1234567890',
-      ),
-      PropertyModel(
-        address: '789 Pine Road',
-        verifyStatus: 'Approved',
-        rent: '\$650',
-        agent: 'Mehbubur Rahman',
-        enlistStatus: 'Publish',
-        date: '8 Aug, 2025',
-        email: 'suriya123@gmail.com',
-        phoneNo: '+1234567890',
-      ),
-      PropertyModel(
-        address: '789 Pine Road',
-        verifyStatus: 'Approved',
-        rent: '\$650',
-        agent: 'Mehbubur Rahman',
-        enlistStatus: 'Publish',
-        date: '8 Aug, 2025',
-        email: 'suriya123@gmail.com',
-        phoneNo: '+1234567890',
-      ),
-      PropertyModel(
-        address: '789 Pine Road',
-        verifyStatus: 'Rejected',
-        rent: '\$650',
-        agent: 'Mehbubur Rahman',
-        enlistStatus: 'Publish',
-        date: '8 Aug, 2025',
-        email: 'suriya123@gmail.com',
-        phoneNo: '+1234567890',
-      ),
-      PropertyModel(
-        address: '789 Pine Road',
-        verifyStatus: 'Rejected',
-        rent: '\$650',
-        agent: 'Mehbubur Rahman',
-        enlistStatus: '-',
-        date: '8 Aug, 2025',
-        email: 'suriya123@gmail.com',
-        phoneNo: '+1234567890',
-      ),
-    ];
-    expanded.value = List.generate(allRows.length, (_) => false);
-    expandedCondition.value = List.generate(conditionRows.length, (_) => false);
-    update();
+  Future<void> getConditionalReports() async {
+    isLoading.value = true;
+    final response = await conditionalReportsRepository.execute();
+    response.fold(
+      (error) {
+        ErrorSnackbar.show(description: error.message);
+      },
+      (data) {
+        conditionalReports.value = data;
+        final list = data.data?.data ?? const <ConditionReportItem>[];
+        conditionReports.assignAll(list);
+        expandedCondition.assignAll(List.generate(list.length, (_) => false));
+      },
+    );
+    isLoading.value = false;
   }
 
   void toggleExpanded(int index) {
@@ -258,8 +153,8 @@ class PropertyManagementController extends GetxController {
   }
 
   @override
-  void onReady() {
-    rowData();
-    super.onReady();
+  void onInit() {
+    super.onInit();
+    getConditionalReports();
   }
 }

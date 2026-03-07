@@ -14,7 +14,7 @@ class UserRoleController extends GetxController {
     } else if (selectedIndex.value == 2) {
       return "agent";
     } else if (selectedIndex.value == 3) {
-      return "service-vendor";
+      return "service_vendor";
     } else {
       return "tenant";
     }

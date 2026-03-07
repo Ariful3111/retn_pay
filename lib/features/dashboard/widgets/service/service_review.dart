@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
@@ -35,59 +36,77 @@ class ServiceReview extends GetWidget<ServiceListController> {
               child: ListView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
-                itemCount: controller.services.value?.data?.length,
+                itemCount:
+                    controller.items.length +
+                    (controller.isLoadingMore.value ? 1 : 0),
                 itemBuilder: (context, index) {
+                  if (index >= controller.items.length) {
+                    return Padding(
+                      padding: EdgeInsets.only(bottom: 16.h, top: 4.h),
+                      child: const Center(child: ButtonLoading()),
+                    );
+                  }
+                  final service = controller.items[index];
                   return Padding(
                     padding: EdgeInsets.only(bottom: 16.h),
                     child: GestureDetector(
                       onTap: () {
                         Get.toNamed(
                           AppRoutes.serviceSearchDetails,
-                          arguments: controller.services.value?.data?[index].id,
+                          arguments: service.id,
                         );
                       },
                       child: Row(
                         children: [
-                          Container(
-                            height: 120.h,
-                            width: 120.w,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6.39.r),
-                              image: DecorationImage(
-                                image: AssetImage(ImagesPath.service),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
+                          service.logo == null
+                              ? Container(
+                                  height: 120.h,
+                                  width: 120.w,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(6.39.r),
+                                    image: DecorationImage(
+                                      image: AssetImage(ImagesPath.service),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                )
+                              : Container(
+                                  height: 120.h,
+                                  width: 120.w,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(6.39.r),
+                                    image: DecorationImage(
+                                      image: CachedNetworkImageProvider(
+                                        service.logo ?? '',
+                                      ),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
                           SizedBox(width: 12.w),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 CustomTextPrimary(
-                                  text:
-                                      controller
-                                          .services
-                                          .value
-                                          ?.data?[index]
-                                          .name ??
-                                      '',
+                                  text: service.title ?? '',
                                   fontSize: 20.sp,
                                 ),
                                 SizedBox(height: 4.h),
                                 CustomTextSecondary(
                                   text:
-                                      controller
-                                          .services
-                                          .value
-                                          ?.data?[index]
-                                          .description ??
+                                      service.subtext ??
+                                      service.description ??
                                       '',
                                   fontSize: 12.sp,
                                   fontWeight: FontWeight.w400,
                                 ),
                                 SizedBox(height: 8.h),
-                                CustomRatingBar(rating: 5.0, itemSize: 16.sp),
+                                CustomRatingBar(
+                                  rating: (service.rating?.averageRating ?? 0)
+                                      .toDouble(),
+                                  itemSize: 16.sp,
+                                ),
                               ],
                             ),
                           ),

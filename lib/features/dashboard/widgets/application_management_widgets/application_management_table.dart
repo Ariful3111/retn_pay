@@ -9,60 +9,68 @@ import 'package:renter_pay/features/dashboard/widgets/application_management_wid
 import 'package:renter_pay/shared/widgets/custom_table/custom_table.dart';
 import 'package:renter_pay/shared/widgets/custom_table/custom_table_expanded.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
-class ApplicationManagementTable extends StatelessWidget {
+class ApplicationManagementTable
+    extends GetWidget<ApplicationManagementController> {
   const ApplicationManagementTable({super.key});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    ApplicationManagementController applicationManagementController =
-        Get.find();
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.r),
-        color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
-      ),
-      child: Obx(() {
-        final list = applicationManagementController.filterRow;
-        final rowWidgets = List<List<Widget>>.generate(list.length, (index) {
-          final item = list[index].value;
-          return [
-            CustomTextPrimary(
-              text: item.property,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
-              textOverflow: TextOverflow.ellipsis,
-            ),
-            ApplicationManagementTableStatus(status: item.status,),
-            ApplicationManagementTableData(index: index),
-          ];
-        });
-        final listIndex = list.map((e) => e.key).toList();
-        return CustomTable(
-          column: applicationManagementController.tableColumn,
+    return Obx(() {
+      final list = controller.items;
+      if (controller.isLoading.value) {
+        return ButtonLoading();
+      }
+
+      final rowWidgets = List<List<Widget>>.generate(list.length, (index) {
+        final item = list[index];
+        final status = item.status ?? '';
+        final id = item.id ?? 0;
+        return [
+          CustomTextPrimary(
+            text: item.property?.address ?? '',
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w400,
+            textOverflow: TextOverflow.ellipsis,
+          ),
+          ApplicationManagementTableStatus(status: status),
+          ApplicationManagementTableData(index: id),
+        ];
+      });
+
+      return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.r),
+          color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+        ),
+        child: CustomTable(
+          column: controller.tableColumn,
           row: rowWidgets,
           expandedTableBuilder: (index) {
-            final item = list[index].value;
-            final rowIndex = listIndex[index];
+            final item = list[index];
+            final id = item.id ?? 0;
             return CustomTableExpanded(
-              title: 'Property Address: ${item.property}',
-              isOpen: applicationManagementController.expanded[rowIndex],
+              title: 'Property Address: ${item.property?.address ?? ''}',
+              isOpen: controller.expanded.contains(id),
               onExpandedClose: () {
-                applicationManagementController.toggleExpanded(rowIndex);
+                controller.expanded.remove(id);
               },
-              expandedContent: ApplicationManagementTableContent(index: listIndex[index]),
+              expandedContent: ApplicationManagementTableContent(index: id),
             );
           },
           onRowTap: (index) {
-            applicationManagementController.toggleExpanded(listIndex[index]);
+            final id = list[index].id ?? 0;
+            controller.toggleExpanded(id: id);
           },
           isExpandedTableBuilder: (index) {
-            return applicationManagementController.expanded[listIndex[index]];
+            final id = list[index].id ?? 0;
+            return controller.expanded.contains(id);
           },
           isNeedLastCol: true,
-        );
-      }),
-    );
+        ),
+      );
+    });
   }
 }

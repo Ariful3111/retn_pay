@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_items.dart';
 import 'package:renter_pay/shared/widgets/snackbars/success_snackbar.dart';
 
@@ -20,7 +21,9 @@ class ProfileUserItems extends StatelessWidget {
             imageHeight: 23.h,
             imageWidth: 21.w,
             title: 'Calendar',
-            onTap: () {},
+            onTap: () {
+               Get.find<MainHomeController>().selectIndex.value = 3;
+            },
           ),
         if (userIndex == 1||userIndex==2||userIndex==3) SizedBox(height: 8.h),
         ProfileItems(

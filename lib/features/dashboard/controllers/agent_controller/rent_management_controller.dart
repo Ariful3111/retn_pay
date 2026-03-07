@@ -16,7 +16,8 @@ class PaymentModel {
     required this.landlordPhone,
     required this.propertyAddress,
     required this.date,
-    required this.amount, required this.plan,
+    required this.amount,
+    required this.plan,
   });
 }
 
@@ -35,12 +36,66 @@ class RentManagementController extends GetxController {
 
   void initRows() {
     allRows.value = [
-      PaymentModel(tenantName: 'Arif', landlordName: 'Islam', landlordEmail: 'test@gmail.com', landlordPhone: '+088153465', propertyAddress: 'Dhaka', date: '1 Aug, 2025', amount: '\$450', plan: 'Silver'),
-      PaymentModel(tenantName: 'Rafi', landlordName: 'Islam', landlordEmail: 'test@gmail.com', landlordPhone: '+088153465', propertyAddress: 'Dhaka', date: '1 Aug, 2025', amount: '\$450', plan: 'Silver'),
-      PaymentModel(tenantName: 'Rafi', landlordName: 'Islam', landlordEmail: 'test@gmail.com', landlordPhone: '+088153465', propertyAddress: 'Dhaka', date: '1 Aug, 2025', amount: '\$450', plan: 'Silver'),
-      PaymentModel(tenantName: 'Shanto', landlordName: 'Islam', landlordEmail: 'test@gmail.com', landlordPhone: '+088153465', propertyAddress: 'Dhaka', date: '1 Aug, 2025', amount: '\$450', plan: 'Silver'),
-      PaymentModel(tenantName: 'Shanto', landlordName: 'Islam', landlordEmail: 'test@gmail.com', landlordPhone: '+088153465', propertyAddress: 'Dhaka', date: '1 Aug, 2025', amount: '\$450', plan: 'Silver'),
-      PaymentModel(tenantName: 'Arif', landlordName: 'Islam', landlordEmail: 'test@gmail.com', landlordPhone: '+088153465', propertyAddress: 'Dhaka', date: '1 Aug, 2025', amount: '\$450', plan: 'Silver'),
+      PaymentModel(
+        tenantName: 'Arif',
+        landlordName: 'Islam',
+        landlordEmail: 'test@gmail.com',
+        landlordPhone: '+088153465',
+        propertyAddress: 'Dhaka',
+        date: '1 Aug, 2025',
+        amount: '\$450',
+        plan: 'Silver',
+      ),
+      PaymentModel(
+        tenantName: 'Rafi',
+        landlordName: 'Islam',
+        landlordEmail: 'test@gmail.com',
+        landlordPhone: '+088153465',
+        propertyAddress: 'Dhaka',
+        date: '1 Aug, 2025',
+        amount: '\$450',
+        plan: 'Silver',
+      ),
+      PaymentModel(
+        tenantName: 'Rafi',
+        landlordName: 'Islam',
+        landlordEmail: 'test@gmail.com',
+        landlordPhone: '+088153465',
+        propertyAddress: 'Dhaka',
+        date: '1 Aug, 2025',
+        amount: '\$450',
+        plan: 'Silver',
+      ),
+      PaymentModel(
+        tenantName: 'Shanto',
+        landlordName: 'Islam',
+        landlordEmail: 'test@gmail.com',
+        landlordPhone: '+088153465',
+        propertyAddress: 'Dhaka',
+        date: '1 Aug, 2025',
+        amount: '\$450',
+        plan: 'Silver',
+      ),
+      PaymentModel(
+        tenantName: 'Shanto',
+        landlordName: 'Islam',
+        landlordEmail: 'test@gmail.com',
+        landlordPhone: '+088153465',
+        propertyAddress: 'Dhaka',
+        date: '1 Aug, 2025',
+        amount: '\$450',
+        plan: 'Silver',
+      ),
+      PaymentModel(
+        tenantName: 'Arif',
+        landlordName: 'Islam',
+        landlordEmail: 'test@gmail.com',
+        landlordPhone: '+088153465',
+        propertyAddress: 'Dhaka',
+        date: '1 Aug, 2025',
+        amount: '\$450',
+        plan: 'Silver',
+      ),
     ];
     expanded.value = List.generate(allRows.length, (_) => false);
     update();

@@ -13,7 +13,9 @@ class DashboardMetricController extends GetxController {
   Future<void> getDashboardMetric({String? fromDate, String? toDate}) async {
     isLoading.value = true;
     final response = await dashboardMetricsRepository.execute(
-        fromDate: fromDate, toDate: toDate);
+      fromDate: fromDate,
+      toDate: toDate,
+    );
     response.fold(
       (error) {
         ErrorSnackbar.show(description: error.message);

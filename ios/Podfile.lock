@@ -46,6 +46,8 @@ PODS:
     - DartCvIOS/core
   - dchs_motion_sensors (0.0.1):
     - Flutter
+  - external_path (2.0.1):
+    - Flutter
   - Firebase/CoreOnly (12.8.0):
     - FirebaseCore (~> 12.8.0)
   - Firebase/Messaging (12.8.0):
@@ -158,6 +160,7 @@ DEPENDENCIES:
   - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
   - camerawesome (from `.symlinks/plugins/camerawesome/ios`)
   - dchs_motion_sensors (from `.symlinks/plugins/dchs_motion_sensors/ios`)
+  - external_path (from `.symlinks/plugins/external_path/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - Flutter (from `Flutter`)
@@ -197,6 +200,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/camerawesome/ios"
   dchs_motion_sensors:
     :path: ".symlinks/plugins/dchs_motion_sensors/ios"
+  external_path:
+    :path: ".symlinks/plugins/external_path/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
   firebase_messaging:
@@ -231,6 +236,7 @@ SPEC CHECKSUMS:
   camerawesome: 7ad7493b41b648d2fab64b1fd5ae08299b913120
   DartCvIOS: 31615ff863f0fc709aee9b93dc3afa3500d35ba7
   dchs_motion_sensors: 9cef816635a39345cda9f0c4943e061f6429f453
+  external_path: 2594f1f0d6afcff9e202cfe9c8908dd605b86f32
   Firebase: 9a58fdbc9d8655ed7b79a19cf9690bb007d3d46d
   firebase_core: 8d5e24676350f15dd111aa59a88a1ae26605f9ba
   firebase_messaging: 834cfc0887393d3108cdb19da8e57655c54fd0e4

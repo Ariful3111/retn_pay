@@ -18,7 +18,7 @@ class ApplicationManagementView extends StatelessWidget {
         children: [
           DrawerItemsAppbar(title: 'Application Management'),
           SizedBox(height: 24.h),
-          ApplicationManagementTable()
+          ApplicationManagementTable(),
         ],
       ),
     );
