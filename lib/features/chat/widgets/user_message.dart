@@ -11,6 +11,9 @@ class UserMessage extends StatelessWidget {
   final double? subtitleSize;
   final double? spaceWidth;
   final EdgeInsets padding;
+  final String imageUrl;
+  final String name;
+  final String role;
   const UserMessage({
     super.key,
     this.imageHeight,
@@ -19,6 +22,9 @@ class UserMessage extends StatelessWidget {
     this.subtitleSize,
     this.spaceWidth,
     required this.padding,
+    required this.imageUrl,
+    required this.name,
+    required this.role,
   });
 
   @override
@@ -56,12 +62,9 @@ class UserMessage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomTextPrimary(
-              text: 'Ariful Islam',
-              fontSize: titleSize ?? 16.sp,
-            ),
+            CustomTextPrimary(text: name, fontSize: titleSize ?? 16.sp),
             CustomTextSecondary(
-              text: 'Landlord',
+              text: role,
               fontSize: subtitleSize ?? 14.sp,
               color: Color(0xFF99A2AB),
             ),

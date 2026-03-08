@@ -11,14 +11,13 @@ class ChatController extends GetxController {
   RxInt selectItem = 0.obs;
   List item = [
     {'icon': IconsPath.active, 'text': 'Active'},
-    {'icon': IconsPath.archive, 'text': 'Archive'},
+    {'icon': IconsPath.archive, 'text': 'Support'},
   ];
   @override
   void onInit() {
     if (!scrollController.hasClients) {
       Get.find<GlobalScrollController>().listen(scrollController);
     }
-
     super.onInit();
   }
 

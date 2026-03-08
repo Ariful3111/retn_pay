@@ -34,6 +34,9 @@ class MessageBody extends StatelessWidget {
           imageWidth: 40.h,
           titleSize: 13.sp,
           subtitleSize: 11.sp,
+          imageUrl: "",
+          name: "Renter Pay",
+          role: "Tiger",
         ),
         SizedBox(height: 9.h),
         Divider(

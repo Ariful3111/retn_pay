@@ -67,4 +67,28 @@ extension DateTimeFormatterX on String? {
     final years = (diff.inDays / 365).floor();
     return '${years}y ago';
   }
+
+  String toShortTimeAgo({String fallback = ''}) {
+    final raw = this;
+    if (raw == null) return fallback;
+    final value = raw.replaceAll('`', '').trim();
+    if (value.isEmpty || value.toLowerCase() == 'null') return fallback;
+
+    DateTime? parsed;
+    try {
+      parsed = DateFormat('yyyy-MM-dd HH:mm:ss').parse(value);
+    } catch (_) {
+      parsed = DateTime.tryParse(value);
+    }
+    if (parsed == null) return fallback.isEmpty ? value : fallback;
+
+    final now = DateTime.now();
+    final diff = now.difference(parsed);
+    if (diff.inSeconds < 0) return fallback.isEmpty ? '0m' : fallback;
+
+    if (diff.inMinutes < 1) return '1m';
+    if (diff.inMinutes < 60) return '${diff.inMinutes}m';
+    if (diff.inHours < 24) return '${diff.inHours}h';
+    return '${diff.inDays}d';
+  }
 }
