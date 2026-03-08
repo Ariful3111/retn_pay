@@ -61,11 +61,7 @@ class ChatView extends GetView<ChatController> {
                     SizedBox(height: 10.h),
                     SearchChat(),
                     SizedBox(height: 10.h),
-                    Obx(() {
-                      return controller.selectItem.value == 0
-                          ? Expanded(child: P2PChatList())
-                          : Container();
-                    }),
+                    Expanded(child: P2PChatList()),
                   ],
                 ),
               ),

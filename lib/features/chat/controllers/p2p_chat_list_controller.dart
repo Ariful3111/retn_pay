@@ -16,7 +16,15 @@ class P2PChatListController extends GetxController {
   int? _lastPage;
 
   Future<void> getChatList({int page = 1}) async {
-    final response = await p2pChatListRepository.execute(page: page);
+    final status = Get.find<ChatController>().selectItem.value == 0
+        ? "active"
+        : "archive";
+    final search = Get.find<ChatController>().searchController.text;
+    final response = await p2pChatListRepository.execute(
+      page: page,
+      status: status,
+      search: search,
+    );
     isLoading.value = false;
     response.fold(
       (error) {
@@ -41,6 +49,14 @@ class P2PChatListController extends GetxController {
     );
   }
 
+  Future<void> refreshList() async {
+    isLoading.value = true;
+    isLoadingMore.value = false;
+    _page = 1;
+    _lastPage = null;
+    await getChatList(page: 1);
+  }
+
   Future<void> loadNextPage() async {
     if (isLoading.value || isLoadingMore.value) return;
     final last = _lastPage;
@@ -49,6 +65,8 @@ class P2PChatListController extends GetxController {
     await getChatList(page: _page + 1);
     isLoadingMore.value = false;
   }
+
+  late final Worker _tabWorker;
 
   @override
   void onInit() {
@@ -61,6 +79,15 @@ class P2PChatListController extends GetxController {
         loadNextPage();
       }
     });
+    _tabWorker = ever<int>(Get.find<ChatController>().selectItem, (_) async {
+      await refreshList();
+    });
     getChatList(page: 1);
+  }
+
+  @override
+  void onClose() {
+    _tabWorker.dispose();
+    super.onClose();
   }
 }
