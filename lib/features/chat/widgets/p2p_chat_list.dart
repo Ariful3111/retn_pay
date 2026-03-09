@@ -35,7 +35,13 @@ class P2PChatList extends GetWidget<P2PChatListController> {
                     ChatConversation();
                 return GestureDetector(
                   onTap: () {
-                    Get.toNamed(AppRoutes.messageView);
+                    Get.toNamed(
+                      AppRoutes.messageView,
+                      arguments: {
+                        "channelName": "private-chat.conversation.${chat.id}",
+                        "ID": chat.id,
+                      },
+                    );
                   },
                   child: Container(
                     margin: EdgeInsets.only(bottom: 10.h),

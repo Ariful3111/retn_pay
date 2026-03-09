@@ -32,6 +32,7 @@ import 'package:renter_pay/features/auth/views/signup_option.dart';
 import 'package:renter_pay/features/auth/views/signup_view.dart';
 import 'package:renter_pay/features/auth/views/user_role.dart';
 import 'package:renter_pay/features/chat/bindings/chat_bindings.dart';
+import 'package:renter_pay/features/chat/bindings/message_bindings.dart';
 import 'package:renter_pay/features/chat/views/chat_view.dart';
 import 'package:renter_pay/features/chat/views/message_view.dart';
 import 'package:renter_pay/features/dashboard/bindings/tenant_bindings/active_properties_bindings.dart';
@@ -207,7 +208,7 @@ final List<GetPage> appRoutes = [
   GetPage(
     name: AppRoutes.messageView,
     page: () => MessageView(),
-    binding: ChatBindings(),
+    binding: MessageBindings(),
   ),
   GetPage(
     name: AppRoutes.activePropertiesView,
