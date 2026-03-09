@@ -5,6 +5,7 @@ import 'package:renter_pay/features/chat/controllers/websocket_connect_controlle
 import 'package:renter_pay/features/chat/controllers/websocket_event_receive_controller.dart';
 import 'package:renter_pay/features/chat/controllers/websocket_event_send_controller.dart';
 import 'package:renter_pay/features/chat/repositories/connect_websocket_repo.dart';
+import 'package:renter_pay/features/chat/repositories/get_messages_repo.dart';
 import 'package:renter_pay/features/chat/repositories/get_socket_token_repo.dart';
 import 'package:renter_pay/features/chat/repositories/receive_websocket_event_repo.dart';
 import 'package:renter_pay/features/chat/repositories/send_websocket_event_repo.dart';
@@ -29,8 +30,12 @@ class MessageBindings implements Bindings {
         () => GetSocketTokenController(getSocketTokenRepository: Get.find()),
       );
     }
+
+    if (!Get.isRegistered<GetMessagesRepository>()) {
+      Get.lazyPut(() => GetMessagesRepository(getNetwork: Get.find()));
+    }
     if (!Get.isRegistered<MessageController>()) {
-      Get.lazyPut(() => MessageController());
+      Get.lazyPut(() => MessageController(getMessagesRepository: Get.find()));
     }
     if (!Get.isRegistered<SendWebsocketEventRepository>()) {
       Get.lazyPut(

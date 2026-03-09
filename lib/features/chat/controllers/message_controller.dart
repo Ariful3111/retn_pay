@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:renter_pay/features/chat/models/message_list_model.dart';
+import 'package:renter_pay/features/chat/repositories/get_messages_repo.dart';
+import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
 class MessageController extends GetxController with WidgetsBindingObserver {
+  final GetMessagesRepository getMessagesRepository;
+  MessageController({required this.getMessagesRepository});
   TextEditingController messageController = TextEditingController();
 
-  RxBool isMe = false.obs;
   Rxn<XFile> selectImage = Rxn<XFile>();
   ImagePicker sendImage = ImagePicker();
   final messageScrollController = TrackingScrollController();
+  final messageModel = Rxn<MessageListModel>();
+  final messages = <MessageItem>[].obs;
 
   @override
   void onReady() {
@@ -36,6 +42,25 @@ class MessageController extends GetxController with WidgetsBindingObserver {
       });
     }
     super.didChangeMetrics();
+  }
+
+  Future<void> getMessages({
+    required int conversationID,
+    required int page,
+  }) async {
+    final response = await getMessagesRepository.execute(
+      conversationID: conversationID,
+      page: page,
+    );
+    response.fold(
+      (error) {
+        ErrorSnackbar.show(description: error.message);
+      },
+      (data) {
+        messageModel.value = data;
+        messages.addAll(data.data?.data ?? []);
+      },
+    );
   }
 
   @override

@@ -33,6 +33,10 @@ class _MessageViewState extends State<MessageView> {
     await getSocketTokenController.getSocketToken(
       channelName: Get.arguments["channelName"],
     );
+    await messageController.getMessages(
+      conversationID: Get.arguments["ID"],
+      page: 1,
+    );
     setState(() {
       isLoading = false;
     });
@@ -76,12 +80,10 @@ class _MessageViewState extends State<MessageView> {
                           : AppColors.whiteColor,
                       borderRadius: BorderRadius.circular(12.r),
                     ),
-                    child: Obx(() {
-                      return MessageBody(
-                        isMe: messageController.isMe.value,
-                        controller: messageController.messageScrollController,
-                      );
-                    }),
+                    child: MessageBody(
+                      scrollController:
+                          messageController.messageScrollController,
+                    ),
                   ),
                 ),
               ],
