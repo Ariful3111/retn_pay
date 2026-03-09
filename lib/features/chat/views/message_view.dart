@@ -3,13 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/chat/controllers/message_controller.dart';
+import 'package:renter_pay/features/chat/controllers/websocket_connect_controller.dart';
 import 'package:renter_pay/features/chat/widgets/message_body.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_notification_button.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 
-class MessageView extends StatelessWidget {
+class MessageView extends GetView<WebsocketConnectController> {
   const MessageView({super.key});
 
   @override
@@ -44,13 +45,14 @@ class MessageView extends StatelessWidget {
               height: MediaQuery.heightOf(context),
               width: MediaQuery.widthOf(context),
               decoration: BoxDecoration(
-                color: isDark
-                    ? AppColors.darkSecondary
-                    : AppColors.whiteColor,
+                color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
                 borderRadius: BorderRadius.circular(12.r),
               ),
               child: Obx(() {
-                return MessageBody(isMe: messageController.isMe.value, controller: messageController.messageScrollController,);
+                return MessageBody(
+                  isMe: messageController.isMe.value,
+                  controller: messageController.messageScrollController,
+                );
               }),
             ),
           ),
