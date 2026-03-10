@@ -17,9 +17,24 @@ class MessageController extends GetxController with WidgetsBindingObserver {
   final messages = <MessageItem>[].obs;
   final currentConversationId = RxnInt();
 
+  void _scrollToBottom() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!messageScrollController.hasClients) return;
+      final position = messageScrollController.position;
+      messageScrollController.animateTo(
+        position.maxScrollExtent,
+        duration: const Duration(milliseconds: 250),
+        curve: Curves.easeOut,
+      );
+    });
+  }
+
   void addIncomingMessage(MessageItem item) {
     final cid = currentConversationId.value;
-    if (cid == null || item.chatConversationId == cid) messages.add(item);
+    if (cid == null || item.chatConversationId == cid) {
+      messages.add(item);
+      _scrollToBottom();
+    }
   }
 
   @override
@@ -66,6 +81,7 @@ class MessageController extends GetxController with WidgetsBindingObserver {
       (data) {
         messageModel.value = data;
         messages.addAll(data.data?.data ?? []);
+        _scrollToBottom();
       },
     );
   }
