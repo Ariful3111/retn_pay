@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:renter_pay/features/chat/controllers/get_socket_token_controller.dart';
 import 'package:renter_pay/features/chat/controllers/message_controller.dart';
+import 'package:renter_pay/features/chat/controllers/send_message_controller.dart';
 import 'package:renter_pay/features/chat/controllers/websocket_connect_controller.dart';
 import 'package:renter_pay/features/chat/controllers/websocket_event_receive_controller.dart';
 import 'package:renter_pay/features/chat/controllers/websocket_event_send_controller.dart';
@@ -8,6 +9,7 @@ import 'package:renter_pay/features/chat/repositories/connect_websocket_repo.dar
 import 'package:renter_pay/features/chat/repositories/get_messages_repo.dart';
 import 'package:renter_pay/features/chat/repositories/get_socket_token_repo.dart';
 import 'package:renter_pay/features/chat/repositories/receive_websocket_event_repo.dart';
+import 'package:renter_pay/features/chat/repositories/send_message_repo.dart';
 import 'package:renter_pay/features/chat/repositories/send_websocket_event_repo.dart';
 
 class MessageBindings implements Bindings {
@@ -61,6 +63,14 @@ class MessageBindings implements Bindings {
           receiveWebsocketEventRepository: Get.find(),
           websocketEventSendController: Get.find(),
         ),
+      );
+    }
+    if (!Get.isRegistered<SendMessageRepository>()) {
+      Get.lazyPut(() => SendMessageRepository(postWithoutResponse: Get.find()));
+    }
+    if (!Get.isRegistered<SendMessageController>()) {
+      Get.lazyPut(
+        () => SendMessageController(sendMessageRepository: Get.find()),
       );
     }
   }

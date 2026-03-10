@@ -10,7 +10,12 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class MessageBody extends GetWidget<MessageController> {
   final ScrollController scrollController;
-  const MessageBody({super.key, required this.scrollController});
+  final int conversationID;
+  const MessageBody({
+    super.key,
+    required this.scrollController,
+    required this.conversationID,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +139,7 @@ class MessageBody extends GetWidget<MessageController> {
               },
             ),
           ),
-          ChatField(),
+          ChatField(conversationID: conversationID),
         ],
       );
     });

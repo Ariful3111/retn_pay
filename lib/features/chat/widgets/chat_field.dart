@@ -5,11 +5,14 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/utils/image_picker.dart';
 import 'package:renter_pay/features/chat/controllers/message_controller.dart';
+import 'package:renter_pay/features/chat/controllers/send_message_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
-class ChatField extends StatelessWidget {
-  const ChatField({super.key});
+class ChatField extends GetWidget<SendMessageController> {
+  final int conversationID;
+  const ChatField({super.key, required this.conversationID});
 
   @override
   Widget build(BuildContext context) {
@@ -48,38 +51,50 @@ class ChatField extends StatelessWidget {
           color: Color(0xFFBBBBBB),
         ),
         floatingLabelBehavior: FloatingLabelBehavior.never,
-        suffixIcon: SizedBox(
-          width: 67.w,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  UploadImage.sendImage(
-                    picker: messageController.sendImage,
-                    pickImage: messageController.selectImage, context: context,
-                  );
-                },
-                child: Image.asset(
-                  IconsPath.sendImage,
-                  height: 18.h,
-                  width: 18.w,
+        suffixIcon: Obx(() {
+          final isLoading = controller.isLoading.value;
+          return SizedBox(
+            width: isLoading ? 96.w : 67.w,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    UploadImage.sendImage(
+                      picker: messageController.sendImage,
+                      pickImage: messageController.selectImage,
+                      context: context,
+                    );
+                  },
+                  child: Image.asset(
+                    IconsPath.sendImage,
+                    height: 18.h,
+                    width: 18.w,
+                  ),
                 ),
-              ),
-              SizedBox(width: 13.w),
-              GestureDetector(
-                onTap: () {},
-                child: Image.asset(
-                  IconsPath.sendMessage,
-                  height: 18.h,
-                  width: 18.w,
-                ),
-              ),
-              SizedBox(width: 18.w),
-            ],
-          ),
-        ),
+                SizedBox(width: 13.w),
+                isLoading
+                    ? ButtonLoading(loadingSize: 15.sp)
+                    : GestureDetector(
+                        onTap: () async {
+                          await controller.sendMessage(
+                            conversationID: conversationID,
+                            message: messageController.messageController.text,
+                          );
+                          messageController.messageController.clear();
+                        },
+                        child: Image.asset(
+                          IconsPath.sendMessage,
+                          height: 18.h,
+                          width: 18.w,
+                        ),
+                      ),
+                SizedBox(width: 18.w),
+              ],
+            ),
+          );
+        }),
       ),
     );
   }

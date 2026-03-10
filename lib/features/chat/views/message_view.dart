@@ -83,6 +83,7 @@ class _MessageViewState extends State<MessageView> {
                     child: MessageBody(
                       scrollController:
                           messageController.messageScrollController,
+                      conversationID: Get.arguments["ID"],
                     ),
                   ),
                 ),

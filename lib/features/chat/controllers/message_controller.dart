@@ -15,6 +15,12 @@ class MessageController extends GetxController with WidgetsBindingObserver {
   final messageScrollController = TrackingScrollController();
   final messageModel = Rxn<MessageListModel>();
   final messages = <MessageItem>[].obs;
+  final currentConversationId = RxnInt();
+
+  void addIncomingMessage(MessageItem item) {
+    final cid = currentConversationId.value;
+    if (cid == null || item.chatConversationId == cid) messages.add(item);
+  }
 
   @override
   void onReady() {
@@ -48,6 +54,7 @@ class MessageController extends GetxController with WidgetsBindingObserver {
     required int conversationID,
     required int page,
   }) async {
+    currentConversationId.value = conversationID;
     final response = await getMessagesRepository.execute(
       conversationID: conversationID,
       page: page,
