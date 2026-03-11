@@ -70,6 +70,7 @@ class ChatConversation {
   final ChatUser? otherUser;
   final ChatLastMessage? lastMessage;
   final int? messageCount;
+  final int? unreadCount;
   final String? createdAt;
   final String? updatedAt;
 
@@ -80,6 +81,7 @@ class ChatConversation {
     this.otherUser,
     this.lastMessage,
     this.messageCount,
+    this.unreadCount,
     this.createdAt,
     this.updatedAt,
   });
@@ -96,6 +98,7 @@ class ChatConversation {
           ? ChatLastMessage.fromJson(json['last_message'])
           : null,
       messageCount: _toInt(json['message_count']),
+      unreadCount: _toInt(json['unread_count']),
       createdAt: json['created_at']?.toString(),
       updatedAt: json['updated_at']?.toString(),
     );
@@ -108,6 +111,7 @@ class ChatConversation {
     'other_user': otherUser?.toJson(),
     'last_message': lastMessage?.toJson(),
     'message_count': messageCount,
+    'unread_count': unreadCount,
     'created_at': createdAt,
     'updated_at': updatedAt,
   };
@@ -144,6 +148,7 @@ class ChatUser {
 class ChatLastMessage {
   final int? id;
   final int? senderId;
+  final bool? isSentByMe;
   final String? message;
   final String? createdAt;
   final int? messageCount;
@@ -151,6 +156,7 @@ class ChatLastMessage {
   const ChatLastMessage({
     this.id,
     this.senderId,
+    this.isSentByMe,
     this.message,
     this.createdAt,
     this.messageCount,
@@ -160,6 +166,7 @@ class ChatLastMessage {
     return ChatLastMessage(
       id: _toInt(json['id']),
       senderId: _toInt(json['sender_id']),
+      isSentByMe: json['is_sent_by_me'] == true,
       message: json['message']?.toString(),
       createdAt: json['created_at']?.toString(),
       messageCount: _toInt(json['message_count']),
@@ -169,6 +176,7 @@ class ChatLastMessage {
   Map<String, dynamic> toJson() => {
     'id': id,
     'sender_id': senderId,
+    'is_sent_by_me': isSentByMe,
     'message': message,
     'created_at': createdAt,
     'message_count': messageCount,

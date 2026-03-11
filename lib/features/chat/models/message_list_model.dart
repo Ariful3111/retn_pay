@@ -98,10 +98,7 @@ class MessageItem {
       senderId: _toInt(json['sender_id']),
       isSentByMe: json['is_sent_by_me'] == true,
       message: json['message']?.toString(),
-      images: (json['images'] as List?)
-          ?.map((e) => _cleanBacktickedString(e))
-          .whereType<String>()
-          .toList(),
+      images: _parseImages(json['images']),
       readAt: json['read_at']?.toString(),
       createdAt: json['created_at']?.toString(),
       sender: json['sender'] is Map<String, dynamic>
@@ -284,4 +281,17 @@ String? _cleanBacktickedString(dynamic value) {
   final s = value?.toString();
   if (s == null) return null;
   return s.replaceAll('`', '').trim();
+}
+
+List<String>? _parseImages(dynamic value) {
+  if (value == null) return null;
+  // Handle case where images is an empty Map {} from WebSocket
+  if (value is Map) return [];
+  if (value is List) {
+    return value
+        .map((e) => _cleanBacktickedString(e))
+        .whereType<String>()
+        .toList();
+  }
+  return null;
 }

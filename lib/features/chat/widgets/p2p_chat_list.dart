@@ -75,21 +75,22 @@ class P2PChatList extends GetWidget<P2PChatListController> {
                               fontSize: 14.sp,
                               color: Color(0xFF99A2AB),
                             ),
-                            Container(
-                              height: 18.75.h,
-                              width: 18.75.w,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10.sp),
-                                gradient: AppColors.primaryColor,
-                              ),
-                              child: Center(
-                                child: CustomTextSecondary(
-                                  text: chat.messageCount.toString(),
-                                  fontSize: 10.sp,
-                                  color: AppColors.whiteColor,
+                            if ((chat.unreadCount ?? 0) > 0)
+                              Container(
+                                height: 18.75.h,
+                                width: 18.75.w,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10.sp),
+                                  gradient: AppColors.primaryColor,
+                                ),
+                                child: Center(
+                                  child: CustomTextSecondary(
+                                    text: chat.unreadCount.toString(),
+                                    fontSize: 10.sp,
+                                    color: AppColors.whiteColor,
+                                  ),
                                 ),
                               ),
-                            ),
                           ],
                         ),
                       ],

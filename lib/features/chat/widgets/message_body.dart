@@ -32,9 +32,12 @@ class MessageBody extends GetWidget<MessageController> {
             imageWidth: 40.h,
             titleSize: 13.sp,
             subtitleSize: 11.sp,
-            imageUrl: "",
-            name: "Renter Pay",
-            role: "Tiger",
+            imageUrl:
+                controller.messageModel.value?.data?.otherUser?.image ?? "",
+            role:
+                controller.messageModel.value?.data?.otherUser?.roles?.first ??
+                "User",
+            name: controller.messageModel.value?.data?.otherUser?.name ?? "",
           ),
           SizedBox(height: 9.h),
           Divider(
