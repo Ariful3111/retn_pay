@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -7,6 +8,7 @@ import 'package:renter_pay/features/chat/controllers/message_controller.dart';
 import 'package:renter_pay/features/chat/widgets/chat_field.dart';
 import 'package:renter_pay/features/chat/widgets/user_message.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
 class MessageBody extends GetWidget<MessageController> {
   final ScrollController scrollController;
@@ -146,13 +148,12 @@ class MessageBody extends GetWidget<MessageController> {
                                 padding: EdgeInsets.only(bottom: 10.h),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(12.r),
-                                  child: Image.network(
-                                    url,
+                                  child: CachedNetworkImage(
+                                    imageUrl: url,
                                     width: 232.w,
                                     height: 160.h,
                                     fit: BoxFit.cover,
-                                    errorBuilder: (_, __, ___) =>
-                                        const SizedBox.shrink(),
+                                    placeholder: (_, __) => ButtonLoading(),
                                   ),
                                 ),
                               );

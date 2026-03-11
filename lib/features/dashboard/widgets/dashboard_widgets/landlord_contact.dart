@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/services/url_service.dart';
+import 'package:renter_pay/features/chat/controllers/create_chat_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/lease_agreement_controller.dart';
 import 'package:renter_pay/features/dashboard/models/lease_agreement_model.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/notice_button_model.dart';
@@ -116,11 +117,19 @@ class LandlordContact extends GetWidget<LeaseAgreementController> {
                         iconColor: isDarkMode ? AppColors.whiteColor : null,
                       ),
                       SizedBox(width: 12.w),
-                      NoticeButtonModel(
-                        onTap: () async {},
-                        icon: IconsPath.dashboardChat,
-                        text: 'Chat',
-                      ),
+                      Get.find<CreateChatController>().isLoading.value
+                          ? ButtonLoading()
+                          : NoticeButtonModel(
+                              onTap: () async {
+                                final createChatController =
+                                    Get.find<CreateChatController>();
+                                await createChatController.getCreateChat(
+                                  otherUserID: item.landlord?.id ?? 0,
+                                );
+                              },
+                              icon: IconsPath.dashboardChat,
+                              text: 'Chat',
+                            ),
                     ],
                   ),
                 ],

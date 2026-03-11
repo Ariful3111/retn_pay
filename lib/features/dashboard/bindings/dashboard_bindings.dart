@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:renter_pay/features/chat/controllers/create_chat_controller.dart';
+import 'package:renter_pay/features/chat/repositories/create_chat_repo.dart';
 import 'package:renter_pay/features/dashboard/controllers/agent_controller/create_conditional_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/dashboard_metric_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
@@ -59,6 +61,14 @@ class DashboardBindings implements Bindings {
 
     if (!Get.isRegistered<LeaseAgreementRepository>()) {
       Get.lazyPut(() => LeaseAgreementRepository(getNetwork: Get.find()));
+    }
+
+    if (!Get.isRegistered<CreateChatRepository>()) {
+      Get.lazyPut(() => CreateChatRepository(postWithResponse: Get.find()));
+    }
+
+    if (!Get.isRegistered<CreateChatController>()) {
+      Get.lazyPut(() => CreateChatController(createChatRepository: Get.find()));
     }
 
     if (!Get.isRegistered<PropertyCategoryRepository>()) {
