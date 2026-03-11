@@ -45,7 +45,6 @@ class _MessageViewState extends State<MessageView> {
     setState(() {
       isLoading = false;
     });
-    messageController.scrollToBottom();
   }
 
   @override

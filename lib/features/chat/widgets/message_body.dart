@@ -47,8 +47,10 @@ class MessageBody extends GetWidget<MessageController> {
               controller: scrollController,
               itemCount: controller.messages.length,
               shrinkWrap: true,
+              reverse: true,
               itemBuilder: (context, index) {
-                final item = controller.messages[index];
+                final reversedIndex = controller.messages.length - 1 - index;
+                final item = controller.messages[reversedIndex];
                 final fromMe = item.isSentByMe == true;
                 return Padding(
                   padding: EdgeInsets.only(

@@ -14,18 +14,12 @@ class MessageController extends GetxController with WidgetsBindingObserver {
   final messages = <MessageItem>[].obs;
   final currentConversationId = RxnInt();
 
-  void scrollToBottom({int retries = 2}) {
+  void scrollToBottom() {
+    // With reverse: true, bottom is at offset 0
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!messageScrollController.hasClients) {
-        if (retries > 0) scrollToBottom(retries: retries - 1);
-        return;
+      if (messageScrollController.hasClients) {
+        messageScrollController.jumpTo(0);
       }
-      final position = messageScrollController.position;
-      messageScrollController.animateTo(
-        position.maxScrollExtent,
-        duration: const Duration(milliseconds: 250),
-        curve: Curves.easeOut,
-      );
     });
   }
 
@@ -40,22 +34,22 @@ class MessageController extends GetxController with WidgetsBindingObserver {
   @override
   void onReady() {
     super.onReady();
+    // With reverse: true, bottom is at offset 0
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (messageScrollController.hasClients) {
-        messageScrollController.jumpTo(
-          messageScrollController.position.maxScrollExtent,
-        );
+        messageScrollController.jumpTo(0);
       }
     });
   }
 
   @override
   void didChangeMetrics() {
+    // With reverse: true, bottom is at offset 0
     if (messageScrollController.hasClients) {
       Future.delayed(Duration(milliseconds: 100), () {
         if (messageScrollController.hasClients) {
           messageScrollController.animateTo(
-            messageScrollController.position.maxScrollExtent,
+            0,
             duration: Duration(milliseconds: 300),
             curve: Curves.easeInOut,
           );
