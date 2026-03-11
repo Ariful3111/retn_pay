@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/chat/controllers/get_socket_token_controller.dart';
+import 'package:renter_pay/features/chat/controllers/mark_read_message_controller.dart';
 import 'package:renter_pay/features/chat/controllers/message_controller.dart';
 import 'package:renter_pay/features/chat/widgets/message_body.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
@@ -22,6 +23,7 @@ class _MessageViewState extends State<MessageView> {
   bool isLoading = true;
   final messageController = Get.find<MessageController>();
   final getSocketTokenController = Get.find<GetSocketTokenController>();
+  final markReadMessageController = Get.find<MarkReadMessageController>();
 
   @override
   void initState() {
@@ -37,9 +39,13 @@ class _MessageViewState extends State<MessageView> {
       conversationID: Get.arguments["ID"],
       page: 1,
     );
+    await markReadMessageController.markReadMessage(
+      conversationID: Get.arguments["ID"],
+    );
     setState(() {
       isLoading = false;
     });
+    messageController.scrollToBottom();
   }
 
   @override

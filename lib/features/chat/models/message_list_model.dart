@@ -38,8 +38,9 @@ class MessageListPayload {
   final List<MessageItem>? data;
   final MessagePaginationLinks? links;
   final MessagePaginationMeta? meta;
+  final MessageOtherUser? otherUser;
 
-  const MessageListPayload({this.data, this.links, this.meta});
+  const MessageListPayload({this.data, this.links, this.meta, this.otherUser});
 
   factory MessageListPayload.fromJson(Map<String, dynamic> json) {
     return MessageListPayload(
@@ -53,6 +54,9 @@ class MessageListPayload {
       meta: json['meta'] is Map<String, dynamic>
           ? MessagePaginationMeta.fromJson(json['meta'])
           : null,
+      otherUser: json['other_user'] is Map<String, dynamic>
+          ? MessageOtherUser.fromJson(json['other_user'])
+          : null,
     );
   }
 
@@ -60,6 +64,7 @@ class MessageListPayload {
     'data': data?.map((e) => e.toJson()).toList(),
     'links': links?.toJson(),
     'meta': meta?.toJson(),
+    'other_user': otherUser?.toJson(),
   };
 }
 
@@ -67,7 +72,9 @@ class MessageItem {
   final int? id;
   final int? chatConversationId;
   final int? senderId;
+  final bool? isSentByMe;
   final String? message;
+  final List<String>? images;
   final String? readAt;
   final String? createdAt;
   final MessageSender? sender;
@@ -76,7 +83,9 @@ class MessageItem {
     this.id,
     this.chatConversationId,
     this.senderId,
+    this.isSentByMe,
     this.message,
+    this.images,
     this.readAt,
     this.createdAt,
     this.sender,
@@ -87,7 +96,12 @@ class MessageItem {
       id: _toInt(json['id']),
       chatConversationId: _toInt(json['chat_conversation_id']),
       senderId: _toInt(json['sender_id']),
+      isSentByMe: json['is_sent_by_me'] == true,
       message: json['message']?.toString(),
+      images: (json['images'] as List?)
+          ?.map((e) => _cleanBacktickedString(e))
+          .whereType<String>()
+          .toList(),
       readAt: json['read_at']?.toString(),
       createdAt: json['created_at']?.toString(),
       sender: json['sender'] is Map<String, dynamic>
@@ -100,7 +114,9 @@ class MessageItem {
     'id': id,
     'chat_conversation_id': chatConversationId,
     'sender_id': senderId,
+    'is_sent_by_me': isSentByMe,
     'message': message,
+    'images': images,
     'read_at': readAt,
     'created_at': createdAt,
     'sender': sender?.toJson(),
@@ -123,6 +139,40 @@ class MessageSender {
   }
 
   Map<String, dynamic> toJson() => {'id': id, 'name': name, 'image': image};
+}
+
+class MessageOtherUser {
+  final int? id;
+  final String? name;
+  final String? email;
+  final String? image;
+  final List<String>? roles;
+
+  const MessageOtherUser({
+    this.id,
+    this.name,
+    this.email,
+    this.image,
+    this.roles,
+  });
+
+  factory MessageOtherUser.fromJson(Map<String, dynamic> json) {
+    return MessageOtherUser(
+      id: _toInt(json['id']),
+      name: json['name']?.toString(),
+      email: json['email']?.toString(),
+      image: _cleanBacktickedString(json['image']),
+      roles: (json['roles'] as List?)?.map((e) => e.toString()).toList(),
+    );
+  }
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'name': name,
+    'email': email,
+    'image': image,
+    'roles': roles,
+  };
 }
 
 class MessagePaginationLinks {

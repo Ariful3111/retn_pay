@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/features/chat/models/message_list_model.dart';
 import 'package:renter_pay/features/chat/repositories/get_messages_repo.dart';
 import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
@@ -10,16 +9,17 @@ class MessageController extends GetxController with WidgetsBindingObserver {
   MessageController({required this.getMessagesRepository});
   TextEditingController messageController = TextEditingController();
 
-  Rxn<XFile> selectImage = Rxn<XFile>();
-  ImagePicker sendImage = ImagePicker();
   final messageScrollController = TrackingScrollController();
   final messageModel = Rxn<MessageListModel>();
   final messages = <MessageItem>[].obs;
   final currentConversationId = RxnInt();
 
-  void _scrollToBottom() {
+  void scrollToBottom({int retries = 2}) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!messageScrollController.hasClients) return;
+      if (!messageScrollController.hasClients) {
+        if (retries > 0) scrollToBottom(retries: retries - 1);
+        return;
+      }
       final position = messageScrollController.position;
       messageScrollController.animateTo(
         position.maxScrollExtent,
@@ -33,7 +33,7 @@ class MessageController extends GetxController with WidgetsBindingObserver {
     final cid = currentConversationId.value;
     if (cid == null || item.chatConversationId == cid) {
       messages.add(item);
-      _scrollToBottom();
+      scrollToBottom();
     }
   }
 
@@ -81,7 +81,7 @@ class MessageController extends GetxController with WidgetsBindingObserver {
       (data) {
         messageModel.value = data;
         messages.addAll(data.data?.data ?? []);
-        _scrollToBottom();
+        scrollToBottom();
       },
     );
   }

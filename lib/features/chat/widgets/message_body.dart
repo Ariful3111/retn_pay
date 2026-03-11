@@ -48,7 +48,8 @@ class MessageBody extends GetWidget<MessageController> {
               itemCount: controller.messages.length,
               shrinkWrap: true,
               itemBuilder: (context, index) {
-                bool fromMe = index.isOdd;
+                final item = controller.messages[index];
+                final fromMe = item.isSentByMe == true;
                 return Padding(
                   padding: EdgeInsets.only(
                     left: fromMe ? 0 : 20.w,
@@ -122,15 +123,39 @@ class MessageBody extends GetWidget<MessageController> {
                                       : Colors.transparent,
                                 ),
                         ),
-                        child: CustomTextPrimary(
-                          text: controller.messages[index].message ?? "",
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w400,
-                          color: fromMe
-                              ? AppColors.whiteColor
-                              : isDark
-                              ? AppColors.whiteColor
-                              : AppColors.primaryDarkTextColor,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if ((item.message ?? '').trim().isNotEmpty)
+                              CustomTextPrimary(
+                                text: item.message ?? "",
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
+                                color: fromMe
+                                    ? AppColors.whiteColor
+                                    : isDark
+                                    ? AppColors.whiteColor
+                                    : AppColors.primaryDarkTextColor,
+                              ),
+                            if ((item.images ?? []).isNotEmpty)
+                              SizedBox(height: 10.h),
+                            ...((item.images ?? []).map((url) {
+                              return Padding(
+                                padding: EdgeInsets.only(bottom: 10.h),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(12.r),
+                                  child: Image.network(
+                                    url,
+                                    width: 232.w,
+                                    height: 160.h,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (_, __, ___) =>
+                                        const SizedBox.shrink(),
+                                  ),
+                                ),
+                              );
+                            })),
+                          ],
                         ),
                       ),
                     ],
