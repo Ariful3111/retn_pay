@@ -109,4 +109,10 @@ class PropertyAddressController extends GetxController {
     }
     return (address.city, address.state, address.postalCode);
   }
+
+  void resetFilters() {
+    _selectedAddress = null;
+    addressController.clear();
+    clearSuggestions();
+  }
 }
