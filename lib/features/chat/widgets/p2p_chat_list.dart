@@ -5,6 +5,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/chat/controllers/chat_controller.dart';
 import 'package:renter_pay/features/chat/controllers/p2p_chat_list_controller.dart';
+import 'package:renter_pay/features/chat/controllers/unread_count_controller.dart';
 import 'package:renter_pay/features/chat/models/chat_list_model.dart';
 import 'package:renter_pay/features/chat/widgets/user_message.dart';
 import 'package:renter_pay/shared/extensions/formatters/date_time_formatter.dart';
@@ -72,22 +73,10 @@ class P2PChatList extends GetWidget<P2PChatListController> {
                               fontSize: 14.sp,
                               color: Color(0xFF99A2AB),
                             ),
-                            if ((chat.unreadCount ?? 0) > 0)
-                              Container(
-                                height: 18.75.h,
-                                width: 18.75.w,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10.sp),
-                                  gradient: AppColors.primaryColor,
-                                ),
-                                child: Center(
-                                  child: CustomTextSecondary(
-                                    text: chat.unreadCount.toString(),
-                                    fontSize: 10.sp,
-                                    color: AppColors.whiteColor,
-                                  ),
-                                ),
-                              ),
+                            _UnreadBadge(
+                              chatId: chat.id,
+                              fallbackCount: chat.unreadCount,
+                            ),
                           ],
                         ),
                       ],
@@ -96,6 +85,43 @@ class P2PChatList extends GetWidget<P2PChatListController> {
                 );
               },
             );
+    });
+  }
+}
+
+class _UnreadBadge extends StatelessWidget {
+  final int? chatId;
+  final int? fallbackCount;
+
+  const _UnreadBadge({this.chatId, this.fallbackCount});
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      final unreadCtrl = Get.isRegistered<UnreadCountController>()
+          ? Get.find<UnreadCountController>()
+          : null;
+      final count = (chatId != null && unreadCtrl != null)
+          ? (unreadCtrl.conversationUnread[chatId] ?? fallbackCount ?? 0)
+          : (fallbackCount ?? 0);
+
+      if (count <= 0) return const SizedBox.shrink();
+
+      return Container(
+        height: 18.75.h,
+        width: 18.75.w,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.sp),
+          gradient: AppColors.primaryColor,
+        ),
+        child: Center(
+          child: CustomTextSecondary(
+            text: count.toString(),
+            fontSize: 10.sp,
+            color: AppColors.whiteColor,
+          ),
+        ),
+      );
     });
   }
 }
