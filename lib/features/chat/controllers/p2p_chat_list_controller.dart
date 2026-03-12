@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:renter_pay/features/chat/controllers/chat_controller.dart';
+import 'package:renter_pay/features/chat/controllers/unread_count_controller.dart';
 import 'package:renter_pay/features/chat/models/chat_list_model.dart';
 import 'package:renter_pay/features/chat/repositories/p2p_chat_list_repo.dart';
 import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
@@ -35,6 +36,10 @@ class P2PChatListController extends GetxController {
         _lastPage = data.data?.meta?.lastPage;
         if (page == 1 || chats.value == null) {
           chats.value = data;
+          // Sync unread count to global controller
+          if (Get.isRegistered<UnreadCountController>()) {
+            Get.find<UnreadCountController>().syncFromChatList(data);
+          }
           return;
         }
         final existing = chats.value?.data?.data;
@@ -45,6 +50,10 @@ class P2PChatListController extends GetxController {
         }
         existing.addAll(incoming);
         chats.refresh();
+        // Sync unread count to global controller
+        if (Get.isRegistered<UnreadCountController>()) {
+          Get.find<UnreadCountController>().syncFromChatList(chats.value);
+        }
       },
     );
   }

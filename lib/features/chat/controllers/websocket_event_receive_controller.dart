@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/features/chat/controllers/unread_count_controller.dart';
 import 'package:renter_pay/features/chat/controllers/websocket_event_send_controller.dart';
 import 'package:renter_pay/features/chat/controllers/message_controller.dart';
 import 'package:renter_pay/features/chat/models/message_list_model.dart';
@@ -47,10 +48,22 @@ class WebsocketEventReceiveController extends GetxController {
       } else if (raw is Map) {
         decoded = raw.map((k, v) => MapEntry(k.toString(), v));
       }
-      if (decoded != null && Get.isRegistered<MessageController>()) {
-        Get.find<MessageController>().addIncomingMessage(
-          MessageItem.fromJson(decoded),
-        );
+      if (decoded != null) {
+        final item = MessageItem.fromJson(decoded);
+        final isSentByMe = item.isSentByMe == true;
+        final conversationId = item.chatConversationId;
+        final currentCid = Get.isRegistered<MessageController>()
+            ? Get.find<MessageController>().currentConversationId.value
+            : null;
+
+        // Add message to list if viewing that conversation
+        if (Get.isRegistered<MessageController>() &&
+            conversationId == currentCid) {
+          Get.find<MessageController>().addIncomingMessage(item);
+        } else if (!isSentByMe && Get.isRegistered<UnreadCountController>()) {
+          // Increment unread count only if not sent by me and not viewing that conversation
+          Get.find<UnreadCountController>().incrementUnread(conversationId);
+        }
       }
       return;
     }
@@ -69,13 +82,23 @@ class WebsocketEventReceiveController extends GetxController {
       } else if (raw is Map) {
         decoded = raw.map((k, v) => MapEntry(k.toString(), v));
       }
-      if (decoded != null && Get.isRegistered<MessageController>()) {
+      if (decoded != null) {
         final conversationId = decoded['chat_conversation_id'];
         final readAt = decoded['read_at']?.toString();
-        Get.find<MessageController>().handleMessagesRead(
-          conversationId: conversationId,
-          readAt: readAt,
-        );
+        if (Get.isRegistered<MessageController>()) {
+          Get.find<MessageController>().handleMessagesRead(
+            conversationId: conversationId,
+            readAt: readAt,
+          );
+        }
+        // Clear unread count for this conversation
+        if (Get.isRegistered<UnreadCountController>()) {
+          Get.find<UnreadCountController>().clearConversationUnread(
+            conversationId is int
+                ? conversationId
+                : int.tryParse(conversationId?.toString() ?? ''),
+          );
+        }
       }
       return;
     }

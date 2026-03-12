@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/features/chat/controllers/chat_controller.dart';
 import 'package:renter_pay/features/chat/controllers/get_socket_token_controller.dart';
 import 'package:renter_pay/features/chat/controllers/p2p_chat_list_controller.dart';
+import 'package:renter_pay/features/chat/controllers/unread_count_controller.dart';
 import 'package:renter_pay/features/chat/controllers/user_channel_controller.dart';
 import 'package:renter_pay/features/chat/controllers/websocket_connect_controller.dart';
 import 'package:renter_pay/features/chat/controllers/websocket_event_receive_controller.dart';
@@ -16,6 +17,11 @@ import 'package:renter_pay/features/profile/controllers/profile_controller.dart'
 class ChatBindings implements Bindings {
   @override
   void dependencies() {
+    // UnreadCountController - global, registered first
+    if (!Get.isRegistered<UnreadCountController>()) {
+      Get.put(UnreadCountController());
+    }
+
     if (!Get.isRegistered<P2PChatListRepository>()) {
       Get.lazyPut(() => P2PChatListRepository(getNetwork: Get.find()));
     }
