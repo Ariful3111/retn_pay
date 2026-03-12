@@ -37,10 +37,7 @@ class P2PChatList extends GetWidget<P2PChatListController> {
                   onTap: () {
                     Get.toNamed(
                       AppRoutes.messageView,
-                      arguments: {
-                        "channelName": "private-chat.conversation.${chat.id}",
-                        "ID": chat.id,
-                      },
+                      arguments: {"ID": chat.id},
                     );
                   },
                   child: Container(

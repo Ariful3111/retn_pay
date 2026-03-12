@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/chat/controllers/message_controller.dart';
 import 'package:renter_pay/features/chat/widgets/chat_field.dart';
 import 'package:renter_pay/features/chat/widgets/user_message.dart';
@@ -75,7 +74,15 @@ class MessageBody extends GetWidget<MessageController> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30.r),
                             image: DecorationImage(
-                              image: AssetImage(ImagesPath.profile),
+                              image: CachedNetworkImageProvider(
+                                controller
+                                        .messageModel
+                                        .value
+                                        ?.data
+                                        ?.otherUser
+                                        ?.image ??
+                                    "",
+                              ),
                               fit: BoxFit.fill,
                             ),
                           ),

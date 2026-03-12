@@ -23,13 +23,7 @@ class CreateChatController extends GetxController {
       },
       (data) {
         createChat.value = data;
-        Get.toNamed(
-          AppRoutes.messageView,
-          arguments: {
-            "channelName": "private-chat.conversation.${data.data?.id}",
-            "ID": data.data?.id,
-          },
-        );
+        Get.toNamed(AppRoutes.messageView, arguments: {"ID": data.data?.id});
       },
     );
   }

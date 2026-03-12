@@ -31,6 +31,30 @@ class MessageController extends GetxController with WidgetsBindingObserver {
     }
   }
 
+  void handleMessagesRead({required dynamic conversationId, String? readAt}) {
+    final cid = currentConversationId.value;
+    // Only update if we're in the same conversation
+    if (cid != null && cid == conversationId) {
+      // Update read_at for all messages sent by me
+      for (int i = 0; i < messages.length; i++) {
+        if (messages[i].isSentByMe == true && messages[i].readAt == null) {
+          messages[i] = MessageItem(
+            id: messages[i].id,
+            chatConversationId: messages[i].chatConversationId,
+            senderId: messages[i].senderId,
+            isSentByMe: messages[i].isSentByMe,
+            message: messages[i].message,
+            images: messages[i].images,
+            readAt: readAt,
+            createdAt: messages[i].createdAt,
+            sender: messages[i].sender,
+          );
+        }
+      }
+      messages.refresh();
+    }
+  }
+
   @override
   void onReady() {
     super.onReady();

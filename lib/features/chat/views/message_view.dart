@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/chat/controllers/get_socket_token_controller.dart';
 import 'package:renter_pay/features/chat/controllers/mark_read_message_controller.dart';
 import 'package:renter_pay/features/chat/controllers/message_controller.dart';
 import 'package:renter_pay/features/chat/widgets/message_body.dart';
@@ -22,19 +21,15 @@ class MessageView extends StatefulWidget {
 class _MessageViewState extends State<MessageView> {
   bool isLoading = true;
   final messageController = Get.find<MessageController>();
-  final getSocketTokenController = Get.find<GetSocketTokenController>();
   final markReadMessageController = Get.find<MarkReadMessageController>();
 
   @override
   void initState() {
     super.initState();
-    connectToWebsocket();
+    _initializeMessages();
   }
 
-  Future<void> connectToWebsocket() async {
-    await getSocketTokenController.getSocketToken(
-      channelName: Get.arguments["channelName"],
-    );
+  Future<void> _initializeMessages() async {
     await messageController.getMessages(
       conversationID: Get.arguments["ID"],
       page: 1,

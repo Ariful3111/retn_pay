@@ -3,6 +3,7 @@ import 'package:renter_pay/features/chat/controllers/get_socket_token_controller
 import 'package:renter_pay/features/chat/controllers/mark_read_message_controller.dart';
 import 'package:renter_pay/features/chat/controllers/message_controller.dart';
 import 'package:renter_pay/features/chat/controllers/send_message_controller.dart';
+import 'package:renter_pay/features/chat/controllers/user_channel_controller.dart';
 import 'package:renter_pay/features/chat/controllers/websocket_connect_controller.dart';
 import 'package:renter_pay/features/chat/controllers/websocket_event_receive_controller.dart';
 import 'package:renter_pay/features/chat/controllers/websocket_event_send_controller.dart';
@@ -13,6 +14,7 @@ import 'package:renter_pay/features/chat/repositories/mark_read_message_repo.dar
 import 'package:renter_pay/features/chat/repositories/receive_websocket_event_repo.dart';
 import 'package:renter_pay/features/chat/repositories/send_message_repo.dart';
 import 'package:renter_pay/features/chat/repositories/send_websocket_event_repo.dart';
+import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 
 class MessageBindings implements Bindings {
   @override
@@ -33,6 +35,16 @@ class MessageBindings implements Bindings {
       Get.lazyPut(
         () => GetSocketTokenController(getSocketTokenRepository: Get.find()),
       );
+    }
+
+    // Ensure ProfileController is available for UserChannelController
+    if (!Get.isRegistered<ProfileController>()) {
+      Get.lazyPut(() => ProfileController(getProfileRepository: Get.find()));
+    }
+
+    // UserChannelController - subscribes to chat.user.{userId} channel once
+    if (!Get.isRegistered<UserChannelController>()) {
+      Get.put(UserChannelController(getSocketTokenController: Get.find()));
     }
 
     if (!Get.isRegistered<GetMessagesRepository>()) {

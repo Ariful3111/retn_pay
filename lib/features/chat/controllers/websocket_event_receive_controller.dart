@@ -55,6 +55,31 @@ class WebsocketEventReceiveController extends GetxController {
       return;
     }
 
+    if (msg.event == 'messages.read') {
+      final raw = msg.data;
+      debugPrint('messages.read event received: $raw');
+      Map<String, dynamic>? decoded;
+      if (raw is String) {
+        try {
+          final parsed = jsonDecode(raw);
+          if (parsed is Map) {
+            decoded = parsed.map((k, v) => MapEntry(k.toString(), v));
+          }
+        } catch (_) {}
+      } else if (raw is Map) {
+        decoded = raw.map((k, v) => MapEntry(k.toString(), v));
+      }
+      if (decoded != null && Get.isRegistered<MessageController>()) {
+        final conversationId = decoded['chat_conversation_id'];
+        final readAt = decoded['read_at']?.toString();
+        Get.find<MessageController>().handleMessagesRead(
+          conversationId: conversationId,
+          readAt: readAt,
+        );
+      }
+      return;
+    }
+
     if (msg.event == 'pusher:ping') {
       debugPrint('pusher:ping received');
       await websocketEventSendController.sendEvent(
