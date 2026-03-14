@@ -30,7 +30,7 @@ class BlogItem extends GetWidget<BlogController> {
                   onTap: () {
                     Get.toNamed(
                       AppRoutes.blogDetails,
-                      arguments: blog.slug.toString(),
+                      arguments: blog?.slug.toString(),
                     );
                   },
                   child: Container(
@@ -111,9 +111,11 @@ class BlogItem extends GetWidget<BlogController> {
                             ),
                             SizedBox(width: 5.78.w),
                             CustomTextSecondary(
-                              text: blog!.author!.name.toString() == "null"
-                                  ? 'By RenterPay Team'
-                                  : blog.author!.name.toString(),
+                              text:
+                                  (blog?.author?.name != null &&
+                                      blog!.author!.name.toString() != "null")
+                                  ? 'By ${blog.author!.name}'
+                                  : 'By RenterPay Team',
                               fontSize: 12.sp,
                               color: isDark
                                   ? Color(0xFFFAFBFB)

@@ -1,520 +1,580 @@
 {
     "error": false,
     "code": 200,
-    "message": "Messages retrieved successfully",
+    "message": "Blogs retrieved successfully",
     "data": {
         "data": [
             {
-                "id": 2,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Hello, I have a question about the lease.",
-                "read_at": null,
-                "created_at": "2026-03-08 10:17:12",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 3,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Hello, I have a question about the lease.",
-                "read_at": null,
-                "created_at": "2026-03-09 15:08:16",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 4,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Hello, I have a question about the lease.",
-                "read_at": null,
-                "created_at": "2026-03-10 10:00:30",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
                 "id": 5,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Hello, I have a question about the lease.",
-                "read_at": null,
-                "created_at": "2026-03-10 10:01:12",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
+                "title": "Scheduled Maintenance: System Upgrade on March 15th",
+                "slug": "scheduled-maintenance-march-2026",
+                "excerpt": "RenterPay will undergo scheduled maintenance on March 15th from 2:00 AM to 6:00 AM. Learn what to expect during this period.",
+                "content": "Dear RenterPay Users,\n\nWe will be performing scheduled system maintenance and upgrades on March 15th, 2026, from 2:00 AM to 6:00 AM (local time).\n\nDuring this maintenance window:\n- The platform will be temporarily unavailable\n- Payment processing will be paused\n- Scheduled notifications may be delayed\n- Mobile apps may not function properly\n\nWhat's being upgraded:\n- Enhanced security features\n- Improved payment processing speed\n- New dashboard features\n- Bug fixes and performance improvements\n\nWe recommend:\n- Completing any urgent payments before 2:00 AM on March 15th\n- Downloading important documents or reports in advance\n- Informing your tenants/landlords about the maintenance window\n\nWe apologize for any inconvenience this may cause. If you have any urgent concerns, please contact our support team before the maintenance period.\n\nThank you for your patience and understanding!\n\nThe RenterPay Team",
+                "featured_image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 3,
+                    "name": "Announcement",
+                    "slug": "announcement",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "Important announcements and system updates",
+                    "order": 3,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 1,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-02-06 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/scheduled-maintenance-march-2026"
             },
             {
                 "id": 6,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "hello",
-                "read_at": null,
-                "created_at": "2026-03-10 10:20:13",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
+                "title": "10 Tips for First-Time Renters",
+                "slug": "tips-for-first-time-renters",
+                "excerpt": "Renting your first property can be overwhelming. Here are 10 essential tips to help you navigate the rental process with confidence.",
+                "content": "Renting your first property is an exciting milestone! Here are 10 essential tips to help you get started:\n\n1. Set a Realistic Budget\nYour rent should not exceed 30% of your monthly income. Don't forget to factor in utilities, internet, and other expenses.\n\n2. Research Neighborhoods\nVisit potential neighborhoods at different times of day. Check proximity to work, schools, shops, and public transportation.\n\n3. Understand the Lease Agreement\nRead every clause carefully. Pay attention to lease duration, renewal terms, maintenance responsibilities, and early termination conditions.\n\n4. Document Everything\nTake photos and videos of the property before moving in. This protects you from being charged for pre-existing damage.\n\n5. Know Your Rights\nFamiliarize yourself with tenant rights in your area. Understand your landlord's obligations regarding repairs, privacy, and security deposits.\n\n6. Get Renters Insurance\nProtect your belongings with renters insurance. It's affordable and provides peace of mind.\n\n7. Inspect Before Signing\nCarefully inspect the property during viewings. Test appliances, check for leaks, and assess overall condition.\n\n8. Communicate Clearly\nMaintain good communication with your landlord. Report issues promptly and keep records of all correspondence.\n\n9. Pay Rent on Time\nSet up automatic payments to avoid late fees. A good payment history helps with future rental applications.\n\n10. Be a Good Neighbor\nRespect quiet hours, maintain cleanliness in common areas, and be friendly with neighbors.\n\nRemember, RenterPay makes the rental process easier with features like automated payments, maintenance requests, and digital documentation. Good luck with your rental journey!",
+                "featured_image": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 4,
+                    "name": "General",
+                    "slug": "general",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "General articles and information about rental management",
+                    "order": 4,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 1,
+                "reading_time_minutes": 2,
+                "reading_time_label": "2 min read",
+                "is_published": true,
+                "published_at": "2026-02-01 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/tips-for-first-time-renters"
             },
             {
-                "id": 7,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "hello",
-                "read_at": null,
-                "created_at": "2026-03-10 10:20:36",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
+                "id": 3,
+                "title": "How to Create Your RenterPay Account: A Step-by-Step Guide",
+                "slug": "create-renterpay-account-guide",
+                "excerpt": "Learn how to set up your RenterPay account in just a few simple steps and start managing your rental properties or searching for your dream home.",
+                "content": "Getting started with RenterPay is quick and easy! Follow this step-by-step guide to create your account:\n\nStep 1: Visit the RenterPay website\nNavigate to www.renterpay.com and click the 'Sign Up' button in the top right corner.\n\nStep 2: Choose your account type\nSelect the account type that best describes you:\n- Tenant: Looking to rent a property\n- Landlord: Managing rental properties\n- Agent: Real estate professional\n- Service Vendor: Offering property services\n\nStep 3: Fill in your details\nProvide your basic information including name, email, phone number, and create a secure password.\n\nStep 4: Verify your account\nCheck your email for a verification code and enter it on the verification page. You may also receive an SMS verification code.\n\nStep 5: Complete your profile\nAdd additional details to your profile such as your address, photo, and any relevant documentation (ID, business license, etc.).\n\nStep 6: Start using RenterPay!\nYou're all set! Explore the platform and discover all the features available to you.\n\nIf you encounter any issues during registration, our support team is here to help 24/7.",
+                "featured_image": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 2,
+                    "name": "Tutorial",
+                    "slug": "tutorial",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "Step-by-step guides and tutorials to help you get the most out of our platform",
+                    "order": 2,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 1,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-01-17 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/create-renterpay-account-guide"
             },
             {
-                "id": 8,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Hello, I have a question about the lease.",
-                "read_at": null,
-                "created_at": "2026-03-10 10:22:24",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 9,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Hello, I have a question about the lease.",
-                "read_at": null,
-                "created_at": "2026-03-10 10:23:15",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 10,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "hello",
-                "read_at": null,
-                "created_at": "2026-03-10 10:24:49",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 11,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "hello",
-                "read_at": null,
-                "created_at": "2026-03-10 10:25:09",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 12,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "hi",
-                "read_at": null,
-                "created_at": "2026-03-10 10:29:54",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 13,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Rafi",
-                "read_at": null,
-                "created_at": "2026-03-10 10:30:10",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 14,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "king",
-                "read_at": null,
-                "created_at": "2026-03-10 10:31:13",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
+                "id": 1,
+                "title": "Welcome to RenterPay - Your Complete Rental Management Solution",
+                "slug": "welcome-to-renterpay",
+                "excerpt": "We are excited to introduce RenterPay, a revolutionary platform designed to simplify property rental management for tenants, landlords, agents, and service vendors.",
+                "content": "We are thrilled to announce the launch of RenterPay, a comprehensive rental management platform that brings together all stakeholders in the rental ecosystem. Our platform offers seamless rent payment processing, property management tools, inspection scheduling, and much more.\n\nWhether you're a tenant looking for your next home, a landlord managing multiple properties, a real estate agent helping clients, or a service vendor offering maintenance services, RenterPay has been designed with you in mind.\n\nKey features include:\n- Secure online rent payments with multiple payment options\n- Property listing and search functionality\n- Automated inspection scheduling\n- Maintenance request management\n- Digital lease agreements\n- Real-time notifications and updates\n\nJoin us today and experience the future of rental management!",
+                "featured_image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 1,
+                    "name": "News",
+                    "slug": "news",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "Latest news and updates about our platform and services",
+                    "order": 1,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 1,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-01-12 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/welcome-to-renterpay"
             },
             {
                 "id": 15,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Hello Rafi",
-                "read_at": null,
-                "created_at": "2026-03-10 11:01:08",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 16,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Hello",
-                "read_at": null,
-                "created_at": "2026-03-10 11:03:09",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 17,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Doland Trump",
-                "read_at": null,
-                "created_at": "2026-03-10 11:10:49",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
+                "title": "Holiday Support Hours: December 2026",
+                "slug": "holiday-support-hours-december-2026",
+                "excerpt": "Our support team will operate on reduced hours during the holiday period. Emergency payment support remains available.",
+                "content": "From Dec 24–26 and Dec 31–Jan 1, live chat and phone support will have limited hours. Email support and critical payment issues will still be handled. Check the help center for exact times.",
+                "featured_image": "https://images.unsplash.com/photo-1512389142860-9c449e58a943?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 3,
+                    "name": "Announcement",
+                    "slug": "announcement",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "Important announcements and system updates",
+                    "order": 3,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 2,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-02-04 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/holiday-support-hours-december-2026"
             },
             {
                 "id": 18,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Hello World",
-                "read_at": null,
-                "created_at": "2026-03-11 09:54:20",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
+                "title": "What Landlords Look for in Tenant Applications",
+                "slug": "what-landlords-look-for-in-applications",
+                "excerpt": "Improve your chances of securing a rental by understanding what landlords consider when reviewing applications.",
+                "content": "Landlords typically look at income stability, rental history, references, and credit. Presenting a complete RenterPay profile and paying rent on time through the platform can strengthen your application.",
+                "featured_image": "https://images.unsplash.com/photo-1560185127-6a1896f2f64b?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 4,
+                    "name": "General",
+                    "slug": "general",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "General articles and information about rental management",
+                    "order": 4,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 2,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-02-02 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/what-landlords-look-for-in-applications"
+            },
+            {
+                "id": 2,
+                "title": "New Payment Options Added: Cryptocurrency Support",
+                "slug": "cryptocurrency-payment-support",
+                "excerpt": "RenterPay now supports cryptocurrency payments, giving users more flexibility in how they pay rent and manage their finances.",
+                "content": "We are pleased to announce that RenterPay now supports cryptocurrency payments! Tenants can now pay their rent using popular cryptocurrencies including Bitcoin, Ethereum, and USDT.\n\nThis new feature offers several benefits:\n- Lower transaction fees compared to traditional payment methods\n- Faster international payments\n- Enhanced privacy and security\n- Support for multiple blockchain networks\n\nTo use cryptocurrency payments, simply connect your crypto wallet in the payment settings. All transactions are processed securely through our verified payment partners, and landlords can choose to receive payments in crypto or have them automatically converted to their local currency.\n\nStay tuned for more updates as we continue to expand our payment options!",
+                "featured_image": "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 1,
+                    "name": "News",
+                    "slug": "news",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "Latest news and updates about our platform and services",
+                    "order": 1,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 2,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-01-27 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/cryptocurrency-payment-support"
+            },
+            {
+                "id": 4,
+                "title": "Scheduling Property Inspections: A Complete Guide",
+                "slug": "scheduling-property-inspections-guide",
+                "excerpt": "Master the art of scheduling property inspections on RenterPay. Learn the best practices and tips for a smooth inspection experience.",
+                "content": "Property inspections are a crucial part of the rental process. Here's how to schedule and prepare for inspections on RenterPay:\n\n1. Finding Properties\nBrowse available properties using our advanced search filters. You can filter by location, price range, property type, and amenities.\n\n2. Requesting an Inspection\nOnce you find a property you like, click the 'Request Inspection' button. Select your preferred date and time from the available slots.\n\n3. Preparing for the Inspection\n- Arrive 5-10 minutes early\n- Bring a valid photo ID\n- Prepare a list of questions\n- Take notes and photos if permitted\n\n4. During the Inspection\n- Check all rooms, appliances, and facilities\n- Test water pressure, electrical outlets, and heating/cooling\n- Ask about utilities, maintenance, and neighborhood\n- Take measurements if you're bringing furniture\n\n5. After the Inspection\n- Submit feedback through your dashboard\n- Rate your experience\n- If interested, proceed with the rental application\n\nPro Tips:\n- Schedule inspections during different times of day to assess natural lighting\n- Check public transportation and parking availability\n- Talk to current residents if possible\n- Don't rush - take your time to evaluate the property thoroughly\n\nRemember, you can reschedule or cancel inspections up to 24 hours in advance through your dashboard.",
+                "featured_image": "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 2,
+                    "name": "Tutorial",
+                    "slug": "tutorial",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "Step-by-step guides and tutorials to help you get the most out of our platform",
+                    "order": 2,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 2,
+                "reading_time_minutes": 2,
+                "reading_time_label": "2 min read",
+                "is_published": true,
+                "published_at": "2026-01-22 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/scheduling-property-inspections-guide"
+            },
+            {
+                "id": 16,
+                "title": "Updated Privacy Policy Effective February 1st",
+                "slug": "privacy-policy-update-february-2026",
+                "excerpt": "We have updated our Privacy Policy to reflect new data practices and compliance requirements. Key changes are summarized here.",
+                "content": "The updated policy clarifies how we collect, use, and protect your data. We recommend reviewing the full document. Continued use of RenterPay after Feb 1st constitutes acceptance.",
+                "featured_image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 3,
+                    "name": "Announcement",
+                    "slug": "announcement",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "Important announcements and system updates",
+                    "order": 3,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 3,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-02-07 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/privacy-policy-update-february-2026"
             },
             {
                 "id": 19,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Hello, I have a question about the lease.",
-                "read_at": null,
-                "created_at": "2026-03-11 10:03:31",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
+                "title": "Renters Insurance: What It Covers and Why You Need It",
+                "slug": "renters-insurance-guide",
+                "excerpt": "A practical overview of renters insurance and how it protects you and your belongings.",
+                "content": "Renters insurance covers personal property, liability, and sometimes additional living expenses. Policies are usually affordable and can be required by landlords. Compare options and choose a plan that fits your needs.",
+                "featured_image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 4,
+                    "name": "General",
+                    "slug": "general",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "General articles and information about rental management",
+                    "order": 4,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 3,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-02-05 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/renters-insurance-guide"
+            },
+            {
+                "id": 11,
+                "title": "How to Set Up Automatic Rent Payments",
+                "slug": "setup-automatic-rent-payments",
+                "excerpt": "A quick guide to configuring automatic rent payments so you never miss a due date.",
+                "content": "Go to Payments > Automatic Payments. Link your bank account or card, choose the amount and frequency, and confirm. You can pause or cancel anytime.",
+                "featured_image": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 2,
+                    "name": "Tutorial",
+                    "slug": "tutorial",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "Step-by-step guides and tutorials to help you get the most out of our platform",
+                    "order": 2,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 3,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-01-18 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/setup-automatic-rent-payments"
+            },
+            {
+                "id": 7,
+                "title": "RenterPay Reaches 10,000 Active Users",
+                "slug": "renterpay-10000-users-milestone",
+                "excerpt": "We are proud to announce that RenterPay has crossed the 10,000 active users milestone, thanks to our growing community.",
+                "content": "This milestone reflects the trust our users place in RenterPay. We continue to improve the platform based on your feedback.\n\nThank you for being part of our journey!",
+                "featured_image": "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 1,
+                    "name": "News",
+                    "slug": "news",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "Latest news and updates about our platform and services",
+                    "order": 1,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 3,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-01-14 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/renterpay-10000-users-milestone"
+            },
+            {
+                "id": 17,
+                "title": "New Data Centers for Improved Latency",
+                "slug": "new-data-centers-improved-latency",
+                "excerpt": "RenterPay has expanded its infrastructure with new regional data centers for faster response times globally.",
+                "content": "Users in Asia-Pacific and Europe should notice faster load times and more reliable access. We will continue to invest in infrastructure.",
+                "featured_image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 3,
+                    "name": "Announcement",
+                    "slug": "announcement",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "Important announcements and system updates",
+                    "order": 3,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 4,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-02-09 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/new-data-centers-improved-latency"
             },
             {
                 "id": 20,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Hello, I have a question about the lease.",
-                "images": [
-                    "https://renter-pay.mahfuz.click/storage/chat/HTo6Ua7bw5NNxkh3swv7ZT7LX0jNtRzoeHwqLrhg.jpg"
-                ],
-                "read_at": null,
-                "created_at": "2026-03-11 10:04:14",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
+                "title": "How to Negotiate Your Rent Renewal",
+                "slug": "negotiate-rent-renewal-tips",
+                "excerpt": "Tips for approaching your landlord when your lease is up for renewal and you want better terms.",
+                "content": "Research comparable rents, highlight your reliability as a tenant, and propose a reasonable increase or incentives. Good communication and a track record of on-time payments via RenterPay can support your case.",
+                "featured_image": "https://images.unsplash.com/photo-1560185127-6a1896f2f64b?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 4,
+                    "name": "General",
+                    "slug": "general",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "General articles and information about rental management",
+                    "order": 4,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 4,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-02-08 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/negotiate-rent-renewal-tips"
+            },
+            {
+                "id": 12,
+                "title": "Submitting a Maintenance Request: Step-by-Step",
+                "slug": "submitting-maintenance-request-guide",
+                "excerpt": "Learn how to report maintenance issues through RenterPay and get them resolved quickly.",
+                "content": "From your dashboard, go to Maintenance > New Request. Describe the issue, add photos if helpful, and submit. You can track status and communicate with vendors in one place.",
+                "featured_image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 2,
+                    "name": "Tutorial",
+                    "slug": "tutorial",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "Step-by-step guides and tutorials to help you get the most out of our platform",
+                    "order": 2,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 4,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-01-23 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/submitting-maintenance-request-guide"
+            },
+            {
+                "id": 8,
+                "title": "Partnership with Leading Banks for Instant Transfers",
+                "slug": "bank-partnership-instant-transfers",
+                "excerpt": "RenterPay has partnered with major banks to enable instant rent transfers with zero fees for account holders.",
+                "content": "Tenants can now transfer rent instantly to landlords who bank with our partner institutions. No more waiting days for funds to clear.",
+                "featured_image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 1,
+                    "name": "News",
+                    "slug": "news",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "Latest news and updates about our platform and services",
+                    "order": 1,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 4,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-01-20 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/bank-partnership-instant-transfers"
             },
             {
                 "id": 21,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Message With Image",
-                "images": [
-                    "https://renter-pay.mahfuz.click/storage/chat/6OdpLgfqUlLs06CX4qBRLVr6P65wZv1ZBTmOLJUs.jpg"
-                ],
-                "read_at": null,
-                "created_at": "2026-03-11 10:05:28",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
+                "title": "Moving Checklist: Before You Hand Over the Keys",
+                "slug": "moving-checklist-before-handover",
+                "excerpt": "A practical checklist to complete before moving out and returning keys to your landlord.",
+                "content": "Clean the unit, repair minor damage, cancel utilities, forward mail, and schedule a final walkthrough. Use RenterPay to document condition and settle any final payments or deposits.",
+                "featured_image": "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 4,
+                    "name": "General",
+                    "slug": "general",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "General articles and information about rental management",
+                    "order": 4,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 5,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-02-10 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/moving-checklist-before-handover"
+            },
+            {
+                "id": 13,
+                "title": "Understanding Your Rent Payment History",
+                "slug": "understanding-rent-payment-history",
+                "excerpt": "How to view and download your rent payment history for taxes or personal records.",
+                "content": "Your payment history is available under Payments > History. Filter by date range, export to PDF or CSV, and use it for tax documentation or proof of rent.",
+                "featured_image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 2,
+                    "name": "Tutorial",
+                    "slug": "tutorial",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "Step-by-step guides and tutorials to help you get the most out of our platform",
+                    "order": 2,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 5,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-01-28 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/understanding-rent-payment-history"
+            },
+            {
+                "id": 9,
+                "title": "Mobile App Update: Dark Mode and Offline Access",
+                "slug": "mobile-app-dark-mode-offline",
+                "excerpt": "Our latest app update brings dark mode and limited offline access so you can view key information anytime.",
+                "content": "The RenterPay mobile app now supports dark mode for comfortable viewing at night. You can also view your payment history and lease details offline.",
+                "featured_image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 1,
+                    "name": "News",
+                    "slug": "news",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "Latest news and updates about our platform and services",
+                    "order": 1,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 5,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-01-24 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/mobile-app-dark-mode-offline"
             },
             {
                 "id": 22,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Message With Image",
-                "images": [
-                    "https://renter-pay.mahfuz.click/storage/chat/0YHjb65mRBIKOk2H86H7wPU9UfOQFZe4UOPQVv2v.jpg"
-                ],
-                "read_at": null,
-                "created_at": "2026-03-11 10:09:40",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 23,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Message With Image",
-                "read_at": null,
-                "created_at": "2026-03-11 10:21:18",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 24,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Message With Image",
-                "images": [
-                    "https://renter-pay.mahfuz.click/storage/chat/6uy9CIJopPFTjMVuwnsHEfSI8BN5qGmpgjzjmmSR.jpg"
-                ],
-                "read_at": null,
-                "created_at": "2026-03-11 10:21:24",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 25,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Message With Image",
-                "images": [
-                    "https://renter-pay.mahfuz.click/storage/chat/RlDMg74Gio2EFYI21gILMEUn932DX83m0Jx3bLw6.jpg"
-                ],
-                "read_at": null,
-                "created_at": "2026-03-11 10:24:13",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 26,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Hi",
-                "read_at": null,
-                "created_at": "2026-03-11 10:54:11",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 27,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "How Are You?",
-                "read_at": null,
-                "created_at": "2026-03-11 10:54:21",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 28,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Hi",
-                "read_at": null,
-                "created_at": "2026-03-11 10:54:47",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 29,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Hello Rafi",
-                "read_at": null,
-                "created_at": "2026-03-11 11:13:28",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 30,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Kmn Acho?",
-                "read_at": null,
-                "created_at": "2026-03-11 11:13:39",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 31,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Eigula amr Image",
-                "images": [
-                    "https://renter-pay.mahfuz.click/storage/chat/zMDxIV4L2GUZmAGp1UMdXuQLuzF4xF4MogYbIKA1.jpg",
-                    "https://renter-pay.mahfuz.click/storage/chat/RXfPifT9skL4303geln8dFZIfFAOH04OKpx9e56Y.jpg"
-                ],
-                "read_at": null,
-                "created_at": "2026-03-11 11:14:00",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 32,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Hello",
-                "read_at": null,
-                "created_at": "2026-03-11 12:17:52",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 33,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "How Are You From Coder",
-                "read_at": null,
-                "created_at": "2026-03-11 12:18:04",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 34,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Qoder Images",
-                "images": [
-                    "https://renter-pay.mahfuz.click/storage/chat/HIpNPVqkHaccVrpOFxdfgdkeq2MHk1pQK4kVWD2O.jpg",
-                    "https://renter-pay.mahfuz.click/storage/chat/RaSlOkhxZ0gjPpRUBZEAL60zFdLNkylCvxCbycwb.jpg",
-                    "https://renter-pay.mahfuz.click/storage/chat/2n5ZV15RffPPrgnyvQKdl5IwphpYw2CcCJKF2QnF.jpg"
-                ],
-                "read_at": null,
-                "created_at": "2026-03-11 12:18:17",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
-            },
-            {
-                "id": 35,
-                "chat_conversation_id": 3,
-                "sender_id": 74,
-                "is_sent_by_me": true,
-                "message": "Hello",
-                "read_at": null,
-                "created_at": "2026-03-11 12:58:33",
-                "sender": {
-                    "id": 74,
-                    "name": "Muhammad Fazlul Karim Rafi",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/ZJoCi3xh7PT412JHilb2hyhpkop3gabEjx6Cgmx3.jpg"
-                }
+                "title": "Understanding Security Deposits and Move-Out Inspections",
+                "slug": "security-deposits-move-out-inspections",
+                "excerpt": "What to expect when your lease ends: deposit return, deductions, and how to prepare for the move-out inspection.",
+                "content": "Landlords typically inspect the unit and may deduct for damage beyond wear and tear. Document the condition at move-in and move-out. Know your local laws on deposit timelines and itemized statements.",
+                "featured_image": "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=400&fit=crop",
+                "category": {
+                    "id": 4,
+                    "name": "General",
+                    "slug": "general",
+                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
+                    "description": "General articles and information about rental management",
+                    "order": 4,
+                    "status": true,
+                    "created_at": "2026-02-10T20:40:18.000000Z",
+                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                },
+                "author": null,
+                "order": 6,
+                "reading_time_minutes": 1,
+                "reading_time_label": "1 min read",
+                "is_published": true,
+                "published_at": "2026-02-11 02:40:18",
+                "created_at": "2026-02-11 02:40:18",
+                "updated_at": "2026-02-11 02:40:18",
+                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/security-deposits-move-out-inspections"
             }
         ],
         "links": {
-            "first": "https://renter-pay.mahfuz.click/api/v1/chat/conversations/3/messages?page=1",
-            "last": "https://renter-pay.mahfuz.click/api/v1/chat/conversations/3/messages?page=1",
+            "first": "https://renter-pay.mahfuz.click/api/v1/blogs?page=1",
+            "last": "https://renter-pay.mahfuz.click/api/v1/blogs?page=2",
             "prev": null,
-            "next": null
+            "next": "https://renter-pay.mahfuz.click/api/v1/blogs?page=2"
         },
         "meta": {
             "current_page": 1,
             "from": 1,
-            "last_page": 1,
+            "last_page": 2,
             "links": [
                 {
                     "url": null,
@@ -523,32 +583,28 @@
                     "active": false
                 },
                 {
-                    "url": "https://renter-pay.mahfuz.click/api/v1/chat/conversations/3/messages?page=1",
+                    "url": "https://renter-pay.mahfuz.click/api/v1/blogs?page=1",
                     "label": "1",
                     "page": 1,
                     "active": true
                 },
                 {
-                    "url": null,
+                    "url": "https://renter-pay.mahfuz.click/api/v1/blogs?page=2",
+                    "label": "2",
+                    "page": 2,
+                    "active": false
+                },
+                {
+                    "url": "https://renter-pay.mahfuz.click/api/v1/blogs?page=2",
                     "label": "Next &raquo;",
-                    "page": null,
+                    "page": 2,
                     "active": false
                 }
             ],
-            "path": "https://renter-pay.mahfuz.click/api/v1/chat/conversations/3/messages",
-            "per_page": 50,
-            "to": 34,
-            "total": 34
-        },
-        "other_user": {
-            "id": 66,
-            "name": "Multi Role 5",
-            "email": "multi5@example.com",
-            "image": "https://renter-pay.mahfuz.click/images/person.png",
-            "roles": [
-                "agent",
-                "landlord"
-            ]
+            "path": "https://renter-pay.mahfuz.click/api/v1/blogs",
+            "per_page": 20,
+            "to": 20,
+            "total": 26
         }
     },
     "errors": null
