@@ -34,37 +34,39 @@ class OtpView extends GetView<OtpController> {
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,
               ),
-              Get.arguments.toString() == "email"
-                  ? Column(
-                      children: [
-                        SizedBox(height: 21.h),
-                        CustomTextField(
-                          labelText: "Verify Email OTP",
-                          hintText: "Enter Email OTP",
-                          controller: controller.emailOTPController,
-                          validator: otpValidation,
-                          keyboardType: TextInputType.number,
-                          validation: AutovalidateMode.onUserInteraction,
-                        ),
-                      ],
-                    )
-                  : SizedBox(),
-              Get.arguments.toString() == "phone"
-                  ? Column(
-                      children: [
-                        SizedBox(height: 21.h),
-                        CustomTextField(
-                          labelText: "Verify Phone Number OTP",
-                          hintText: "Enter Phone Number OTP",
-                          controller: controller.numberOTPController,
-                          validator: otpValidation,
-                          keyboardType: TextInputType.number,
-                          validation: AutovalidateMode.onUserInteraction,
-                        ),
-                      ],
-                    )
-                  : SizedBox(),
               SizedBox(height: 21.h),
+              // Show email OTP field if email was provided or both
+              if (Get.arguments.toString() == "email" ||
+                  Get.arguments.toString() == "both")
+                Column(
+                  children: [
+                    CustomTextField(
+                      labelText: "Verify Email OTP",
+                      hintText: "Enter Email OTP",
+                      controller: controller.emailOTPController,
+                      validator: otpValidation,
+                      keyboardType: TextInputType.number,
+                      validation: AutovalidateMode.onUserInteraction,
+                    ),
+                    SizedBox(height: 21.h),
+                  ],
+                ),
+              // Show phone OTP field if phone was provided or both
+              if (Get.arguments.toString() == "phone" ||
+                  Get.arguments.toString() == "both")
+                Column(
+                  children: [
+                    CustomTextField(
+                      labelText: "Verify Phone Number OTP",
+                      hintText: "Enter Phone Number OTP",
+                      controller: controller.numberOTPController,
+                      validator: otpValidation,
+                      keyboardType: TextInputType.number,
+                      validation: AutovalidateMode.onUserInteraction,
+                    ),
+                    SizedBox(height: 21.h),
+                  ],
+                ),
               Obx(() {
                 return controller.isLoading.value
                     ? ButtonLoading()
