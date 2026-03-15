@@ -1,580 +1,798 @@
 {
     "error": false,
     "code": 200,
-    "message": "Blogs retrieved successfully",
+    "message": "Payments retrieved successfully",
     "data": {
         "data": [
             {
-                "id": 5,
-                "title": "Scheduled Maintenance: System Upgrade on March 15th",
-                "slug": "scheduled-maintenance-march-2026",
-                "excerpt": "RenterPay will undergo scheduled maintenance on March 15th from 2:00 AM to 6:00 AM. Learn what to expect during this period.",
-                "content": "Dear RenterPay Users,\n\nWe will be performing scheduled system maintenance and upgrades on March 15th, 2026, from 2:00 AM to 6:00 AM (local time).\n\nDuring this maintenance window:\n- The platform will be temporarily unavailable\n- Payment processing will be paused\n- Scheduled notifications may be delayed\n- Mobile apps may not function properly\n\nWhat's being upgraded:\n- Enhanced security features\n- Improved payment processing speed\n- New dashboard features\n- Bug fixes and performance improvements\n\nWe recommend:\n- Completing any urgent payments before 2:00 AM on March 15th\n- Downloading important documents or reports in advance\n- Informing your tenants/landlords about the maintenance window\n\nWe apologize for any inconvenience this may cause. If you have any urgent concerns, please contact our support team before the maintenance period.\n\nThank you for your patience and understanding!\n\nThe RenterPay Team",
-                "featured_image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 3,
-                    "name": "Announcement",
-                    "slug": "announcement",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "Important announcements and system updates",
-                    "order": 3,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
-                },
-                "author": null,
-                "order": 1,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-02-06 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/scheduled-maintenance-march-2026"
-            },
-            {
-                "id": 6,
-                "title": "10 Tips for First-Time Renters",
-                "slug": "tips-for-first-time-renters",
-                "excerpt": "Renting your first property can be overwhelming. Here are 10 essential tips to help you navigate the rental process with confidence.",
-                "content": "Renting your first property is an exciting milestone! Here are 10 essential tips to help you get started:\n\n1. Set a Realistic Budget\nYour rent should not exceed 30% of your monthly income. Don't forget to factor in utilities, internet, and other expenses.\n\n2. Research Neighborhoods\nVisit potential neighborhoods at different times of day. Check proximity to work, schools, shops, and public transportation.\n\n3. Understand the Lease Agreement\nRead every clause carefully. Pay attention to lease duration, renewal terms, maintenance responsibilities, and early termination conditions.\n\n4. Document Everything\nTake photos and videos of the property before moving in. This protects you from being charged for pre-existing damage.\n\n5. Know Your Rights\nFamiliarize yourself with tenant rights in your area. Understand your landlord's obligations regarding repairs, privacy, and security deposits.\n\n6. Get Renters Insurance\nProtect your belongings with renters insurance. It's affordable and provides peace of mind.\n\n7. Inspect Before Signing\nCarefully inspect the property during viewings. Test appliances, check for leaks, and assess overall condition.\n\n8. Communicate Clearly\nMaintain good communication with your landlord. Report issues promptly and keep records of all correspondence.\n\n9. Pay Rent on Time\nSet up automatic payments to avoid late fees. A good payment history helps with future rental applications.\n\n10. Be a Good Neighbor\nRespect quiet hours, maintain cleanliness in common areas, and be friendly with neighbors.\n\nRemember, RenterPay makes the rental process easier with features like automated payments, maintenance requests, and digital documentation. Good luck with your rental journey!",
-                "featured_image": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 4,
-                    "name": "General",
-                    "slug": "general",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "General articles and information about rental management",
-                    "order": 4,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
-                },
-                "author": null,
-                "order": 1,
-                "reading_time_minutes": 2,
-                "reading_time_label": "2 min read",
-                "is_published": true,
-                "published_at": "2026-02-01 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/tips-for-first-time-renters"
-            },
-            {
-                "id": 3,
-                "title": "How to Create Your RenterPay Account: A Step-by-Step Guide",
-                "slug": "create-renterpay-account-guide",
-                "excerpt": "Learn how to set up your RenterPay account in just a few simple steps and start managing your rental properties or searching for your dream home.",
-                "content": "Getting started with RenterPay is quick and easy! Follow this step-by-step guide to create your account:\n\nStep 1: Visit the RenterPay website\nNavigate to www.renterpay.com and click the 'Sign Up' button in the top right corner.\n\nStep 2: Choose your account type\nSelect the account type that best describes you:\n- Tenant: Looking to rent a property\n- Landlord: Managing rental properties\n- Agent: Real estate professional\n- Service Vendor: Offering property services\n\nStep 3: Fill in your details\nProvide your basic information including name, email, phone number, and create a secure password.\n\nStep 4: Verify your account\nCheck your email for a verification code and enter it on the verification page. You may also receive an SMS verification code.\n\nStep 5: Complete your profile\nAdd additional details to your profile such as your address, photo, and any relevant documentation (ID, business license, etc.).\n\nStep 6: Start using RenterPay!\nYou're all set! Explore the platform and discover all the features available to you.\n\nIf you encounter any issues during registration, our support team is here to help 24/7.",
-                "featured_image": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 2,
-                    "name": "Tutorial",
-                    "slug": "tutorial",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "Step-by-step guides and tutorials to help you get the most out of our platform",
-                    "order": 2,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
-                },
-                "author": null,
-                "order": 1,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-01-17 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/create-renterpay-account-guide"
-            },
-            {
-                "id": 1,
-                "title": "Welcome to RenterPay - Your Complete Rental Management Solution",
-                "slug": "welcome-to-renterpay",
-                "excerpt": "We are excited to introduce RenterPay, a revolutionary platform designed to simplify property rental management for tenants, landlords, agents, and service vendors.",
-                "content": "We are thrilled to announce the launch of RenterPay, a comprehensive rental management platform that brings together all stakeholders in the rental ecosystem. Our platform offers seamless rent payment processing, property management tools, inspection scheduling, and much more.\n\nWhether you're a tenant looking for your next home, a landlord managing multiple properties, a real estate agent helping clients, or a service vendor offering maintenance services, RenterPay has been designed with you in mind.\n\nKey features include:\n- Secure online rent payments with multiple payment options\n- Property listing and search functionality\n- Automated inspection scheduling\n- Maintenance request management\n- Digital lease agreements\n- Real-time notifications and updates\n\nJoin us today and experience the future of rental management!",
-                "featured_image": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 1,
-                    "name": "News",
-                    "slug": "news",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "Latest news and updates about our platform and services",
-                    "order": 1,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
-                },
-                "author": null,
-                "order": 1,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-01-12 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/welcome-to-renterpay"
-            },
-            {
-                "id": 15,
-                "title": "Holiday Support Hours: December 2026",
-                "slug": "holiday-support-hours-december-2026",
-                "excerpt": "Our support team will operate on reduced hours during the holiday period. Emergency payment support remains available.",
-                "content": "From Dec 24–26 and Dec 31–Jan 1, live chat and phone support will have limited hours. Email support and critical payment issues will still be handled. Check the help center for exact times.",
-                "featured_image": "https://images.unsplash.com/photo-1512389142860-9c449e58a943?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 3,
-                    "name": "Announcement",
-                    "slug": "announcement",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "Important announcements and system updates",
-                    "order": 3,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
-                },
-                "author": null,
-                "order": 2,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-02-04 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/holiday-support-hours-december-2026"
-            },
-            {
                 "id": 18,
-                "title": "What Landlords Look for in Tenant Applications",
-                "slug": "what-landlords-look-for-in-applications",
-                "excerpt": "Improve your chances of securing a rental by understanding what landlords consider when reviewing applications.",
-                "content": "Landlords typically look at income stability, rental history, references, and credit. Presenting a complete RenterPay profile and paying rent on time through the platform can strengthen your application.",
-                "featured_image": "https://images.unsplash.com/photo-1560185127-6a1896f2f64b?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 4,
-                    "name": "General",
-                    "slug": "general",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "General articles and information about rental management",
-                    "order": 4,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                "tenant_id": 70,
+                "landlord_id": 75,
+                "property_id": 143,
+                "property_unit_id": 221,
+                "lease_agreement_id": 6,
+                "amount": "45000.00",
+                "total_amount_due": 45075,
+                "currency": "AUD",
+                "status": "pending",
+                "payment_date": null,
+                "due_date": "2026-03-11",
+                "wallet_transaction_id": null,
+                "notes": "Rent for period starting Mar 11, 2026",
+                "property": {
+                    "id": 143,
+                    "landlord_id": 75,
+                    "property_type_id": 3,
+                    "title": "Duplex in Sydney - Queen Street",
+                    "name": "Duplex in Sydney - Queen Street",
+                    "description": "Modern Penthouse located in Brisbane. Features 4 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+                    "address": "New York , City",
+                    "city": "Australia",
+                    "state": "new york",
+                    "postal_code": "9845",
+                    "country": "Australia",
+                    "latitude": null,
+                    "longitude": null,
+                    "bedrooms": 8,
+                    "bathrooms": 6,
+                    "parking_spaces": 0,
+                    "land_size": "1200.00",
+                    "building_size": "1200.00",
+                    "year_built": 2000,
+                    "status": "active",
+                    "available_from": "2027-03-14",
+                    "is_verified": true,
+                    "is_in_person_inspection_available": false,
+                    "is_virtual_inspection_available": false,
+                    "is_favourite": true,
+                    "features": [
+                        "Spacious open-plan living area with natural light throughout.",
+                        "Ducted air conditioning and heating for year-round comfort.",
+                        "Dedicated study or home office space with built-in desk.",
+                        "Swimming pool and communal BBQ area for residents.",
+                        "Pet-friendly with easy access to nearby parks and walking paths.",
+                        "Internal laundry with dryer and extra linen storage."
+                    ],
+                    "lease_agreement_defaults": {
+                        "keys_count": "0",
+                        "bond_amount": "4500",
+                        "currency": "AUD",
+                        "payment_frequency": "week",
+                        "disclosures": {
+                            "intent_to_sell_premises": {
+                                "intends_to_sell": "1",
+                                "engaged_agent": "0",
+                                "contract_prepared": "0"
+                            },
+                            "mortgagee_action": {
+                                "mortgagee_taking_possession": "0",
+                                "enforcement_proceedings_commenced": "0"
+                            },
+                            "ownership": {
+                                "is_owner": "0",
+                                "has_right_to_rent": "0"
+                            },
+                            "embedded_electricity_network": {
+                                "supplied_by_embedded_network": "0"
+                            },
+                            "property_history": {
+                                "homicide_in_last_5_years": "0",
+                                "drug_activity_in_last_5_years": "0",
+                                "asbestos_present": "0"
+                            },
+                            "rental_compliance": {
+                                "meets_minimum_standards": "0",
+                                "mould_or_damp_repair_notices_last_3_years": "0"
+                            },
+                            "safety_checks": {
+                                "electricity_safety_check_date": "2026-03-09",
+                                "gas_safety_check_date": "2026-03-03",
+                                "pool_barrier_compliance_check_date": "2026-03-10",
+                                "outstanding_recommendations": "0"
+                            },
+                            "heritage": {
+                                "is_heritage_listed": "0"
+                            },
+                            "planning_and_legal": {
+                                "affected_by_planning_application": "0",
+                                "building_or_safety_notices_issued": "0",
+                                "domestic_building_work_dispute": "0",
+                                "owners_corporation_dispute": "0",
+                                "subject_to_owners_corporation_rules": "0"
+                            },
+                            "additional_notes": "Description:\r\nModern Penthouse located in Brisbane. Features 4 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.\r\n\r\nFeatures:\r\nSpacious open-plan living area with natural light throughout.\r\nDucted air conditioning and heating for year-round comfort.\r\nDedicated study or home office space with built-in desk.\r\nSwimming pool and communal BBQ area for residents.\r\nPet-friendly with easy access to nearby parks and walking paths.\r\nInternal laundry with dryer and extra linen storage."
+                        },
+                        "property_manager_details": {
+                            "property_manager_name": "sdfsd",
+                            "phone_number": "154545",
+                            "email_address": "mark@gmail.com",
+                            "estate_agency_name": "new agency"
+                        }
+                    },
+                    "rating": "0.00",
+                    "rating_count": 0,
+                    "units": [
+                        {
+                            "id": 221,
+                            "property_id": 143,
+                            "unit_number": "unit 101",
+                            "unit_name": null,
+                            "rent_amount": "45000.00",
+                            "rent_type": {
+                                "id": 1,
+                                "name": "Daily",
+                                "slug": "daily",
+                                "rent_days": 1,
+                                "description": "Rent charged per day",
+                                "status": true,
+                                "created_at": "2026-02-10T20:39:57.000000Z",
+                                "updated_at": "2026-02-10T20:39:57.000000Z"
+                            },
+                            "currency": {
+                                "id": 1,
+                                "code": "AUD",
+                                "name": "Australian Dollar",
+                                "symbol": "A$",
+                                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+                                "type": "fiat",
+                                "decimal_places": 2,
+                                "exchange_rate": 1,
+                                "is_active": true,
+                                "sort_order": 1
+                            },
+                            "display_rent_amount": 45000,
+                            "display_currency": {
+                                "id": 1,
+                                "code": "AUD",
+                                "name": "Australian Dollar",
+                                "symbol": "A$",
+                                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+                                "type": "fiat",
+                                "decimal_places": 2,
+                                "exchange_rate": 1,
+                                "is_active": true,
+                                "sort_order": 1
+                            },
+                            "status": "occupied",
+                            "bedrooms": 8,
+                            "bathrooms": 6,
+                            "size": "1200.00",
+                            "description": null
+                        }
+                    ],
+                    "review_summary": {
+                        "total_reviews": 0,
+                        "average_rating": "0.00"
+                    },
+                    "created_at": "2026-03-08T06:34:43.000000Z",
+                    "updated_at": "2026-03-15T03:37:46.000000Z"
                 },
-                "author": null,
-                "order": 2,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-02-02 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/what-landlords-look-for-in-applications"
-            },
-            {
-                "id": 2,
-                "title": "New Payment Options Added: Cryptocurrency Support",
-                "slug": "cryptocurrency-payment-support",
-                "excerpt": "RenterPay now supports cryptocurrency payments, giving users more flexibility in how they pay rent and manage their finances.",
-                "content": "We are pleased to announce that RenterPay now supports cryptocurrency payments! Tenants can now pay their rent using popular cryptocurrencies including Bitcoin, Ethereum, and USDT.\n\nThis new feature offers several benefits:\n- Lower transaction fees compared to traditional payment methods\n- Faster international payments\n- Enhanced privacy and security\n- Support for multiple blockchain networks\n\nTo use cryptocurrency payments, simply connect your crypto wallet in the payment settings. All transactions are processed securely through our verified payment partners, and landlords can choose to receive payments in crypto or have them automatically converted to their local currency.\n\nStay tuned for more updates as we continue to expand our payment options!",
-                "featured_image": "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 1,
-                    "name": "News",
-                    "slug": "news",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "Latest news and updates about our platform and services",
-                    "order": 1,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                "property_unit": {
+                    "id": 221,
+                    "property_id": 143,
+                    "unit_number": "unit 101",
+                    "unit_name": null,
+                    "rent_amount": "45000.00",
+                    "rent_type": {
+                        "id": 1,
+                        "name": "Daily",
+                        "slug": "daily",
+                        "rent_days": 1,
+                        "description": "Rent charged per day",
+                        "status": true,
+                        "created_at": "2026-02-10T20:39:57.000000Z",
+                        "updated_at": "2026-02-10T20:39:57.000000Z"
+                    },
+                    "currency": {
+                        "id": 1,
+                        "code": "AUD",
+                        "name": "Australian Dollar",
+                        "symbol": "A$",
+                        "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+                        "type": "fiat",
+                        "decimal_places": 2,
+                        "exchange_rate": 1,
+                        "is_active": true,
+                        "sort_order": 1
+                    },
+                    "display_rent_amount": 45000,
+                    "display_currency": {
+                        "id": 1,
+                        "code": "AUD",
+                        "name": "Australian Dollar",
+                        "symbol": "A$",
+                        "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+                        "type": "fiat",
+                        "decimal_places": 2,
+                        "exchange_rate": 1,
+                        "is_active": true,
+                        "sort_order": 1
+                    },
+                    "status": "occupied",
+                    "bedrooms": 8,
+                    "bathrooms": 6,
+                    "size": "1200.00",
+                    "description": null
                 },
-                "author": null,
-                "order": 2,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-01-27 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/cryptocurrency-payment-support"
-            },
-            {
-                "id": 4,
-                "title": "Scheduling Property Inspections: A Complete Guide",
-                "slug": "scheduling-property-inspections-guide",
-                "excerpt": "Master the art of scheduling property inspections on RenterPay. Learn the best practices and tips for a smooth inspection experience.",
-                "content": "Property inspections are a crucial part of the rental process. Here's how to schedule and prepare for inspections on RenterPay:\n\n1. Finding Properties\nBrowse available properties using our advanced search filters. You can filter by location, price range, property type, and amenities.\n\n2. Requesting an Inspection\nOnce you find a property you like, click the 'Request Inspection' button. Select your preferred date and time from the available slots.\n\n3. Preparing for the Inspection\n- Arrive 5-10 minutes early\n- Bring a valid photo ID\n- Prepare a list of questions\n- Take notes and photos if permitted\n\n4. During the Inspection\n- Check all rooms, appliances, and facilities\n- Test water pressure, electrical outlets, and heating/cooling\n- Ask about utilities, maintenance, and neighborhood\n- Take measurements if you're bringing furniture\n\n5. After the Inspection\n- Submit feedback through your dashboard\n- Rate your experience\n- If interested, proceed with the rental application\n\nPro Tips:\n- Schedule inspections during different times of day to assess natural lighting\n- Check public transportation and parking availability\n- Talk to current residents if possible\n- Don't rush - take your time to evaluate the property thoroughly\n\nRemember, you can reschedule or cancel inspections up to 24 hours in advance through your dashboard.",
-                "featured_image": "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 2,
-                    "name": "Tutorial",
-                    "slug": "tutorial",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "Step-by-step guides and tutorials to help you get the most out of our platform",
-                    "order": 2,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                "tenant": {
+                    "id": 70,
+                    "name": "Tonni Akter",
+                    "first_name": "Tonni",
+                    "last_name": "Akter",
+                    "gender": "female",
+                    "image": "https://renter-pay.mahfuz.click/storage/images/users/Zg5eNdBas56k0l6teMbNMXT0Re47xpkfnBW2o7uv.png",
+                    "email": "tenant@gmail.com",
+                    "phone": "8801825332448",
+                    "is_active": true,
+                    "provider": null,
+                    "provider_id": null,
+                    "roles": [
+                        "tenant"
+                    ],
+                    "tenant_profile": {
+                        "id": 23,
+                        "employment_status": "employed",
+                        "employer_name": "Wiztech BD",
+                        "job_title": "Software Engineer",
+                        "monthly_income": "50000.00",
+                        "is_verified": true,
+                        "created_at": "2026-02-11T03:50:12.000000Z",
+                        "updated_at": "2026-02-11T03:50:12.000000Z"
+                    },
+                    "documents": [
+                        {
+                            "id": 1,
+                            "user_id": 70,
+                            "document_type": "nid",
+                            "document_number": null,
+                            "file_path": "https://renter-pay.mahfuz.click/storage/documents/users/4izRp6k1ps5rfiBr3uK8TNBedj3XGzKesUdsgM2s.png",
+                            "file_url": "https://renter-pay.mahfuz.click/storage/documents/users/4izRp6k1ps5rfiBr3uK8TNBedj3XGzKesUdsgM2s.png",
+                            "back_file_path": "https://renter-pay.mahfuz.click/images/default.png",
+                            "back_file_url": "https://renter-pay.mahfuz.click/images/default.png",
+                            "expiry_date": null,
+                            "status": "approved",
+                            "rejection_reason": null,
+                            "is_verified": true,
+                            "verification_response": null,
+                            "verified_at": "2026-02-13 10:54:26",
+                            "created_at": "2026-02-11 19:47:36",
+                            "updated_at": "2026-02-13 10:54:26"
+                        }
+                    ],
+                    "created_at": "2026-02-11 09:50:12",
+                    "updated_at": "2026-02-26 18:57:52"
                 },
-                "author": null,
-                "order": 2,
-                "reading_time_minutes": 2,
-                "reading_time_label": "2 min read",
-                "is_published": true,
-                "published_at": "2026-01-22 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/scheduling-property-inspections-guide"
-            },
-            {
-                "id": 16,
-                "title": "Updated Privacy Policy Effective February 1st",
-                "slug": "privacy-policy-update-february-2026",
-                "excerpt": "We have updated our Privacy Policy to reflect new data practices and compliance requirements. Key changes are summarized here.",
-                "content": "The updated policy clarifies how we collect, use, and protect your data. We recommend reviewing the full document. Continued use of RenterPay after Feb 1st constitutes acceptance.",
-                "featured_image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 3,
-                    "name": "Announcement",
-                    "slug": "announcement",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "Important announcements and system updates",
-                    "order": 3,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                "landlord": {
+                    "id": 75,
+                    "name": "Tonni Akter",
+                    "first_name": "Tonni",
+                    "last_name": "Akter",
+                    "gender": "female",
+                    "image": "https://renter-pay.mahfuz.click/images/person.png",
+                    "email": "landlord@gmail.com",
+                    "phone": null,
+                    "is_active": true,
+                    "provider": null,
+                    "provider_id": null,
+                    "roles": [
+                        "landlord"
+                    ],
+                    "landlord_profile": {
+                        "id": 17,
+                        "description": null,
+                        "is_verified": true,
+                        "created_at": "2026-02-15T06:28:32.000000Z",
+                        "updated_at": "2026-02-15T06:28:32.000000Z",
+                        "subscription": {
+                            "id": 58,
+                            "user_id": 75,
+                            "role": "landlord",
+                            "plan_id": 3,
+                            "start_date": "2026-03-07T18:00:00.000000Z",
+                            "end_date": "2026-04-07T18:00:00.000000Z",
+                            "is_trial": false,
+                            "trial_ends_at": null,
+                            "status": "active",
+                            "auto_renew": true,
+                            "plan": {
+                                "id": 3,
+                                "for_role": "landlord",
+                                "name": "Platinum",
+                                "price": 2199,
+                                "billing_cycle": "monthly",
+                                "trial_period_days": 15,
+                                "is_active": true,
+                                "features": [
+                                    {
+                                        "title": "Property Limit",
+                                        "value": "10",
+                                        "features": null
+                                    },
+                                    {
+                                        "title": "Photography Limit",
+                                        "value": "60",
+                                        "features": null
+                                    },
+                                    {
+                                        "title": "Video Duration Limit",
+                                        "value": "120",
+                                        "features": null
+                                    },
+                                    {
+                                        "title": "List Property",
+                                        "value": null,
+                                        "features": [
+                                            "Up to 10"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Ads Strategy",
+                                        "value": null,
+                                        "features": [
+                                            "RenterPay page",
+                                            "Social media"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Photography",
+                                        "value": null,
+                                        "features": [
+                                            "40-60 photos"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Video curation",
+                                        "value": null,
+                                        "features": [
+                                            "90-120 seconds"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Rental Appraisal",
+                                        "value": null,
+                                        "features": [
+                                            "Free"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Documentation",
+                                        "value": null,
+                                        "features": [
+                                            "Online Access"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Signage",
+                                        "value": null,
+                                        "features": [
+                                            "Sale/Lease included"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Legal Advice",
+                                        "value": null,
+                                        "features": [
+                                            "36 hours"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Agent",
+                                        "value": null,
+                                        "features": [
+                                            "Dedicated Assigned"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "documents": [],
+                    "created_at": "2026-02-15 12:28:32",
+                    "updated_at": "2026-02-15 12:28:32"
                 },
-                "author": null,
-                "order": 3,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-02-07 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/privacy-policy-update-february-2026"
-            },
-            {
-                "id": 19,
-                "title": "Renters Insurance: What It Covers and Why You Need It",
-                "slug": "renters-insurance-guide",
-                "excerpt": "A practical overview of renters insurance and how it protects you and your belongings.",
-                "content": "Renters insurance covers personal property, liability, and sometimes additional living expenses. Policies are usually affordable and can be required by landlords. Compare options and choose a plan that fits your needs.",
-                "featured_image": "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 4,
-                    "name": "General",
-                    "slug": "general",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "General articles and information about rental management",
-                    "order": 4,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
-                },
-                "author": null,
-                "order": 3,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-02-05 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/renters-insurance-guide"
-            },
-            {
-                "id": 11,
-                "title": "How to Set Up Automatic Rent Payments",
-                "slug": "setup-automatic-rent-payments",
-                "excerpt": "A quick guide to configuring automatic rent payments so you never miss a due date.",
-                "content": "Go to Payments > Automatic Payments. Link your bank account or card, choose the amount and frequency, and confirm. You can pause or cancel anytime.",
-                "featured_image": "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 2,
-                    "name": "Tutorial",
-                    "slug": "tutorial",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "Step-by-step guides and tutorials to help you get the most out of our platform",
-                    "order": 2,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
-                },
-                "author": null,
-                "order": 3,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-01-18 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/setup-automatic-rent-payments"
-            },
-            {
-                "id": 7,
-                "title": "RenterPay Reaches 10,000 Active Users",
-                "slug": "renterpay-10000-users-milestone",
-                "excerpt": "We are proud to announce that RenterPay has crossed the 10,000 active users milestone, thanks to our growing community.",
-                "content": "This milestone reflects the trust our users place in RenterPay. We continue to improve the platform based on your feedback.\n\nThank you for being part of our journey!",
-                "featured_image": "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 1,
-                    "name": "News",
-                    "slug": "news",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "Latest news and updates about our platform and services",
-                    "order": 1,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
-                },
-                "author": null,
-                "order": 3,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-01-14 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/renterpay-10000-users-milestone"
+                "created_at": "2026-03-13 22:29:30",
+                "updated_at": "2026-03-13 22:29:30"
             },
             {
                 "id": 17,
-                "title": "New Data Centers for Improved Latency",
-                "slug": "new-data-centers-improved-latency",
-                "excerpt": "RenterPay has expanded its infrastructure with new regional data centers for faster response times globally.",
-                "content": "Users in Asia-Pacific and Europe should notice faster load times and more reliable access. We will continue to invest in infrastructure.",
-                "featured_image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 3,
-                    "name": "Announcement",
-                    "slug": "announcement",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "Important announcements and system updates",
-                    "order": 3,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                "tenant_id": 70,
+                "landlord_id": 75,
+                "property_id": 143,
+                "property_unit_id": 221,
+                "lease_agreement_id": 5,
+                "amount": "45000.00",
+                "total_amount_due": 45105,
+                "currency": "AUD",
+                "status": "pending",
+                "payment_date": null,
+                "due_date": "2026-03-09",
+                "wallet_transaction_id": null,
+                "notes": "Rent for period starting Mar 09, 2026",
+                "property": {
+                    "id": 143,
+                    "landlord_id": 75,
+                    "property_type_id": 3,
+                    "title": "Duplex in Sydney - Queen Street",
+                    "name": "Duplex in Sydney - Queen Street",
+                    "description": "Modern Penthouse located in Brisbane. Features 4 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+                    "address": "New York , City",
+                    "city": "Australia",
+                    "state": "new york",
+                    "postal_code": "9845",
+                    "country": "Australia",
+                    "latitude": null,
+                    "longitude": null,
+                    "bedrooms": 8,
+                    "bathrooms": 6,
+                    "parking_spaces": 0,
+                    "land_size": "1200.00",
+                    "building_size": "1200.00",
+                    "year_built": 2000,
+                    "status": "active",
+                    "available_from": "2027-03-14",
+                    "is_verified": true,
+                    "is_in_person_inspection_available": false,
+                    "is_virtual_inspection_available": false,
+                    "is_favourite": true,
+                    "features": [
+                        "Spacious open-plan living area with natural light throughout.",
+                        "Ducted air conditioning and heating for year-round comfort.",
+                        "Dedicated study or home office space with built-in desk.",
+                        "Swimming pool and communal BBQ area for residents.",
+                        "Pet-friendly with easy access to nearby parks and walking paths.",
+                        "Internal laundry with dryer and extra linen storage."
+                    ],
+                    "lease_agreement_defaults": {
+                        "keys_count": "0",
+                        "bond_amount": "4500",
+                        "currency": "AUD",
+                        "payment_frequency": "week",
+                        "disclosures": {
+                            "intent_to_sell_premises": {
+                                "intends_to_sell": "1",
+                                "engaged_agent": "0",
+                                "contract_prepared": "0"
+                            },
+                            "mortgagee_action": {
+                                "mortgagee_taking_possession": "0",
+                                "enforcement_proceedings_commenced": "0"
+                            },
+                            "ownership": {
+                                "is_owner": "0",
+                                "has_right_to_rent": "0"
+                            },
+                            "embedded_electricity_network": {
+                                "supplied_by_embedded_network": "0"
+                            },
+                            "property_history": {
+                                "homicide_in_last_5_years": "0",
+                                "drug_activity_in_last_5_years": "0",
+                                "asbestos_present": "0"
+                            },
+                            "rental_compliance": {
+                                "meets_minimum_standards": "0",
+                                "mould_or_damp_repair_notices_last_3_years": "0"
+                            },
+                            "safety_checks": {
+                                "electricity_safety_check_date": "2026-03-09",
+                                "gas_safety_check_date": "2026-03-03",
+                                "pool_barrier_compliance_check_date": "2026-03-10",
+                                "outstanding_recommendations": "0"
+                            },
+                            "heritage": {
+                                "is_heritage_listed": "0"
+                            },
+                            "planning_and_legal": {
+                                "affected_by_planning_application": "0",
+                                "building_or_safety_notices_issued": "0",
+                                "domestic_building_work_dispute": "0",
+                                "owners_corporation_dispute": "0",
+                                "subject_to_owners_corporation_rules": "0"
+                            },
+                            "additional_notes": "Description:\r\nModern Penthouse located in Brisbane. Features 4 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.\r\n\r\nFeatures:\r\nSpacious open-plan living area with natural light throughout.\r\nDucted air conditioning and heating for year-round comfort.\r\nDedicated study or home office space with built-in desk.\r\nSwimming pool and communal BBQ area for residents.\r\nPet-friendly with easy access to nearby parks and walking paths.\r\nInternal laundry with dryer and extra linen storage."
+                        },
+                        "property_manager_details": {
+                            "property_manager_name": "sdfsd",
+                            "phone_number": "154545",
+                            "email_address": "mark@gmail.com",
+                            "estate_agency_name": "new agency"
+                        }
+                    },
+                    "rating": "0.00",
+                    "rating_count": 0,
+                    "units": [
+                        {
+                            "id": 221,
+                            "property_id": 143,
+                            "unit_number": "unit 101",
+                            "unit_name": null,
+                            "rent_amount": "45000.00",
+                            "rent_type": {
+                                "id": 1,
+                                "name": "Daily",
+                                "slug": "daily",
+                                "rent_days": 1,
+                                "description": "Rent charged per day",
+                                "status": true,
+                                "created_at": "2026-02-10T20:39:57.000000Z",
+                                "updated_at": "2026-02-10T20:39:57.000000Z"
+                            },
+                            "currency": {
+                                "id": 1,
+                                "code": "AUD",
+                                "name": "Australian Dollar",
+                                "symbol": "A$",
+                                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+                                "type": "fiat",
+                                "decimal_places": 2,
+                                "exchange_rate": 1,
+                                "is_active": true,
+                                "sort_order": 1
+                            },
+                            "display_rent_amount": 45000,
+                            "display_currency": {
+                                "id": 1,
+                                "code": "AUD",
+                                "name": "Australian Dollar",
+                                "symbol": "A$",
+                                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+                                "type": "fiat",
+                                "decimal_places": 2,
+                                "exchange_rate": 1,
+                                "is_active": true,
+                                "sort_order": 1
+                            },
+                            "status": "occupied",
+                            "bedrooms": 8,
+                            "bathrooms": 6,
+                            "size": "1200.00",
+                            "description": null
+                        }
+                    ],
+                    "review_summary": {
+                        "total_reviews": 0,
+                        "average_rating": "0.00"
+                    },
+                    "created_at": "2026-03-08T06:34:43.000000Z",
+                    "updated_at": "2026-03-15T03:37:46.000000Z"
                 },
-                "author": null,
-                "order": 4,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-02-09 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/new-data-centers-improved-latency"
-            },
-            {
-                "id": 20,
-                "title": "How to Negotiate Your Rent Renewal",
-                "slug": "negotiate-rent-renewal-tips",
-                "excerpt": "Tips for approaching your landlord when your lease is up for renewal and you want better terms.",
-                "content": "Research comparable rents, highlight your reliability as a tenant, and propose a reasonable increase or incentives. Good communication and a track record of on-time payments via RenterPay can support your case.",
-                "featured_image": "https://images.unsplash.com/photo-1560185127-6a1896f2f64b?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 4,
-                    "name": "General",
-                    "slug": "general",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "General articles and information about rental management",
-                    "order": 4,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                "property_unit": {
+                    "id": 221,
+                    "property_id": 143,
+                    "unit_number": "unit 101",
+                    "unit_name": null,
+                    "rent_amount": "45000.00",
+                    "rent_type": {
+                        "id": 1,
+                        "name": "Daily",
+                        "slug": "daily",
+                        "rent_days": 1,
+                        "description": "Rent charged per day",
+                        "status": true,
+                        "created_at": "2026-02-10T20:39:57.000000Z",
+                        "updated_at": "2026-02-10T20:39:57.000000Z"
+                    },
+                    "currency": {
+                        "id": 1,
+                        "code": "AUD",
+                        "name": "Australian Dollar",
+                        "symbol": "A$",
+                        "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+                        "type": "fiat",
+                        "decimal_places": 2,
+                        "exchange_rate": 1,
+                        "is_active": true,
+                        "sort_order": 1
+                    },
+                    "display_rent_amount": 45000,
+                    "display_currency": {
+                        "id": 1,
+                        "code": "AUD",
+                        "name": "Australian Dollar",
+                        "symbol": "A$",
+                        "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+                        "type": "fiat",
+                        "decimal_places": 2,
+                        "exchange_rate": 1,
+                        "is_active": true,
+                        "sort_order": 1
+                    },
+                    "status": "occupied",
+                    "bedrooms": 8,
+                    "bathrooms": 6,
+                    "size": "1200.00",
+                    "description": null
                 },
-                "author": null,
-                "order": 4,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-02-08 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/negotiate-rent-renewal-tips"
-            },
-            {
-                "id": 12,
-                "title": "Submitting a Maintenance Request: Step-by-Step",
-                "slug": "submitting-maintenance-request-guide",
-                "excerpt": "Learn how to report maintenance issues through RenterPay and get them resolved quickly.",
-                "content": "From your dashboard, go to Maintenance > New Request. Describe the issue, add photos if helpful, and submit. You can track status and communicate with vendors in one place.",
-                "featured_image": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 2,
-                    "name": "Tutorial",
-                    "slug": "tutorial",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "Step-by-step guides and tutorials to help you get the most out of our platform",
-                    "order": 2,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                "tenant": {
+                    "id": 70,
+                    "name": "Tonni Akter",
+                    "first_name": "Tonni",
+                    "last_name": "Akter",
+                    "gender": "female",
+                    "image": "https://renter-pay.mahfuz.click/storage/images/users/Zg5eNdBas56k0l6teMbNMXT0Re47xpkfnBW2o7uv.png",
+                    "email": "tenant@gmail.com",
+                    "phone": "8801825332448",
+                    "is_active": true,
+                    "provider": null,
+                    "provider_id": null,
+                    "roles": [
+                        "tenant"
+                    ],
+                    "tenant_profile": {
+                        "id": 23,
+                        "employment_status": "employed",
+                        "employer_name": "Wiztech BD",
+                        "job_title": "Software Engineer",
+                        "monthly_income": "50000.00",
+                        "is_verified": true,
+                        "created_at": "2026-02-11T03:50:12.000000Z",
+                        "updated_at": "2026-02-11T03:50:12.000000Z"
+                    },
+                    "documents": [
+                        {
+                            "id": 1,
+                            "user_id": 70,
+                            "document_type": "nid",
+                            "document_number": null,
+                            "file_path": "https://renter-pay.mahfuz.click/storage/documents/users/4izRp6k1ps5rfiBr3uK8TNBedj3XGzKesUdsgM2s.png",
+                            "file_url": "https://renter-pay.mahfuz.click/storage/documents/users/4izRp6k1ps5rfiBr3uK8TNBedj3XGzKesUdsgM2s.png",
+                            "back_file_path": "https://renter-pay.mahfuz.click/images/default.png",
+                            "back_file_url": "https://renter-pay.mahfuz.click/images/default.png",
+                            "expiry_date": null,
+                            "status": "approved",
+                            "rejection_reason": null,
+                            "is_verified": true,
+                            "verification_response": null,
+                            "verified_at": "2026-02-13 10:54:26",
+                            "created_at": "2026-02-11 19:47:36",
+                            "updated_at": "2026-02-13 10:54:26"
+                        }
+                    ],
+                    "created_at": "2026-02-11 09:50:12",
+                    "updated_at": "2026-02-26 18:57:52"
                 },
-                "author": null,
-                "order": 4,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-01-23 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/submitting-maintenance-request-guide"
-            },
-            {
-                "id": 8,
-                "title": "Partnership with Leading Banks for Instant Transfers",
-                "slug": "bank-partnership-instant-transfers",
-                "excerpt": "RenterPay has partnered with major banks to enable instant rent transfers with zero fees for account holders.",
-                "content": "Tenants can now transfer rent instantly to landlords who bank with our partner institutions. No more waiting days for funds to clear.",
-                "featured_image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 1,
-                    "name": "News",
-                    "slug": "news",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "Latest news and updates about our platform and services",
-                    "order": 1,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
+                "landlord": {
+                    "id": 75,
+                    "name": "Tonni Akter",
+                    "first_name": "Tonni",
+                    "last_name": "Akter",
+                    "gender": "female",
+                    "image": "https://renter-pay.mahfuz.click/images/person.png",
+                    "email": "landlord@gmail.com",
+                    "phone": null,
+                    "is_active": true,
+                    "provider": null,
+                    "provider_id": null,
+                    "roles": [
+                        "landlord"
+                    ],
+                    "landlord_profile": {
+                        "id": 17,
+                        "description": null,
+                        "is_verified": true,
+                        "created_at": "2026-02-15T06:28:32.000000Z",
+                        "updated_at": "2026-02-15T06:28:32.000000Z",
+                        "subscription": {
+                            "id": 58,
+                            "user_id": 75,
+                            "role": "landlord",
+                            "plan_id": 3,
+                            "start_date": "2026-03-07T18:00:00.000000Z",
+                            "end_date": "2026-04-07T18:00:00.000000Z",
+                            "is_trial": false,
+                            "trial_ends_at": null,
+                            "status": "active",
+                            "auto_renew": true,
+                            "plan": {
+                                "id": 3,
+                                "for_role": "landlord",
+                                "name": "Platinum",
+                                "price": 2199,
+                                "billing_cycle": "monthly",
+                                "trial_period_days": 15,
+                                "is_active": true,
+                                "features": [
+                                    {
+                                        "title": "Property Limit",
+                                        "value": "10",
+                                        "features": null
+                                    },
+                                    {
+                                        "title": "Photography Limit",
+                                        "value": "60",
+                                        "features": null
+                                    },
+                                    {
+                                        "title": "Video Duration Limit",
+                                        "value": "120",
+                                        "features": null
+                                    },
+                                    {
+                                        "title": "List Property",
+                                        "value": null,
+                                        "features": [
+                                            "Up to 10"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Ads Strategy",
+                                        "value": null,
+                                        "features": [
+                                            "RenterPay page",
+                                            "Social media"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Photography",
+                                        "value": null,
+                                        "features": [
+                                            "40-60 photos"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Video curation",
+                                        "value": null,
+                                        "features": [
+                                            "90-120 seconds"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Rental Appraisal",
+                                        "value": null,
+                                        "features": [
+                                            "Free"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Documentation",
+                                        "value": null,
+                                        "features": [
+                                            "Online Access"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Signage",
+                                        "value": null,
+                                        "features": [
+                                            "Sale/Lease included"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Legal Advice",
+                                        "value": null,
+                                        "features": [
+                                            "36 hours"
+                                        ]
+                                    },
+                                    {
+                                        "title": "Agent",
+                                        "value": null,
+                                        "features": [
+                                            "Dedicated Assigned"
+                                        ]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "documents": [],
+                    "created_at": "2026-02-15 12:28:32",
+                    "updated_at": "2026-02-15 12:28:32"
                 },
-                "author": null,
-                "order": 4,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-01-20 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/bank-partnership-instant-transfers"
-            },
-            {
-                "id": 21,
-                "title": "Moving Checklist: Before You Hand Over the Keys",
-                "slug": "moving-checklist-before-handover",
-                "excerpt": "A practical checklist to complete before moving out and returning keys to your landlord.",
-                "content": "Clean the unit, repair minor damage, cancel utilities, forward mail, and schedule a final walkthrough. Use RenterPay to document condition and settle any final payments or deposits.",
-                "featured_image": "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 4,
-                    "name": "General",
-                    "slug": "general",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "General articles and information about rental management",
-                    "order": 4,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
-                },
-                "author": null,
-                "order": 5,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-02-10 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/moving-checklist-before-handover"
-            },
-            {
-                "id": 13,
-                "title": "Understanding Your Rent Payment History",
-                "slug": "understanding-rent-payment-history",
-                "excerpt": "How to view and download your rent payment history for taxes or personal records.",
-                "content": "Your payment history is available under Payments > History. Filter by date range, export to PDF or CSV, and use it for tax documentation or proof of rent.",
-                "featured_image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 2,
-                    "name": "Tutorial",
-                    "slug": "tutorial",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "Step-by-step guides and tutorials to help you get the most out of our platform",
-                    "order": 2,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
-                },
-                "author": null,
-                "order": 5,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-01-28 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/understanding-rent-payment-history"
-            },
-            {
-                "id": 9,
-                "title": "Mobile App Update: Dark Mode and Offline Access",
-                "slug": "mobile-app-dark-mode-offline",
-                "excerpt": "Our latest app update brings dark mode and limited offline access so you can view key information anytime.",
-                "content": "The RenterPay mobile app now supports dark mode for comfortable viewing at night. You can also view your payment history and lease details offline.",
-                "featured_image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 1,
-                    "name": "News",
-                    "slug": "news",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "Latest news and updates about our platform and services",
-                    "order": 1,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
-                },
-                "author": null,
-                "order": 5,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-01-24 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/mobile-app-dark-mode-offline"
-            },
-            {
-                "id": 22,
-                "title": "Understanding Security Deposits and Move-Out Inspections",
-                "slug": "security-deposits-move-out-inspections",
-                "excerpt": "What to expect when your lease ends: deposit return, deductions, and how to prepare for the move-out inspection.",
-                "content": "Landlords typically inspect the unit and may deduct for damage beyond wear and tear. Document the condition at move-in and move-out. Know your local laws on deposit timelines and itemized statements.",
-                "featured_image": "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=400&fit=crop",
-                "category": {
-                    "id": 4,
-                    "name": "General",
-                    "slug": "general",
-                    "icon": "https://renter-pay.mahfuz.click/images/default.png",
-                    "description": "General articles and information about rental management",
-                    "order": 4,
-                    "status": true,
-                    "created_at": "2026-02-10T20:40:18.000000Z",
-                    "updated_at": "2026-02-10T20:40:18.000000Z"
-                },
-                "author": null,
-                "order": 6,
-                "reading_time_minutes": 1,
-                "reading_time_label": "1 min read",
-                "is_published": true,
-                "published_at": "2026-02-11 02:40:18",
-                "created_at": "2026-02-11 02:40:18",
-                "updated_at": "2026-02-11 02:40:18",
-                "url": "https://renter-pay.mahfuz.click/api/v1/blogs/security-deposits-move-out-inspections"
+                "created_at": "2026-03-11 12:16:55",
+                "updated_at": "2026-03-11 12:16:55"
             }
         ],
         "links": {
-            "first": "https://renter-pay.mahfuz.click/api/v1/blogs?page=1",
-            "last": "https://renter-pay.mahfuz.click/api/v1/blogs?page=2",
+            "first": "https://renter-pay.mahfuz.click/api/v1/rent-payments?page=1",
+            "last": "https://renter-pay.mahfuz.click/api/v1/rent-payments?page=1",
             "prev": null,
-            "next": "https://renter-pay.mahfuz.click/api/v1/blogs?page=2"
+            "next": null
         },
         "meta": {
             "current_page": 1,
             "from": 1,
-            "last_page": 2,
+            "last_page": 1,
             "links": [
                 {
                     "url": null,
@@ -583,28 +801,22 @@
                     "active": false
                 },
                 {
-                    "url": "https://renter-pay.mahfuz.click/api/v1/blogs?page=1",
+                    "url": "https://renter-pay.mahfuz.click/api/v1/rent-payments?page=1",
                     "label": "1",
                     "page": 1,
                     "active": true
                 },
                 {
-                    "url": "https://renter-pay.mahfuz.click/api/v1/blogs?page=2",
-                    "label": "2",
-                    "page": 2,
-                    "active": false
-                },
-                {
-                    "url": "https://renter-pay.mahfuz.click/api/v1/blogs?page=2",
+                    "url": null,
                     "label": "Next &raquo;",
-                    "page": 2,
+                    "page": null,
                     "active": false
                 }
             ],
-            "path": "https://renter-pay.mahfuz.click/api/v1/blogs",
+            "path": "https://renter-pay.mahfuz.click/api/v1/rent-payments",
             "per_page": 20,
-            "to": 20,
-            "total": 26
+            "to": 2,
+            "total": 2
         }
     },
     "errors": null
