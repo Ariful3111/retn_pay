@@ -14,15 +14,16 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
-class LandlordContact extends GetWidget<LeaseAgreementController> {
+class LandlordContact extends StatelessWidget {
   const LandlordContact({super.key});
 
   @override
   Widget build(BuildContext context) {
     bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final controller = Get.find<LeaseAgreementController>();
     return Obx(() {
-      LeaseAgreementItem? item = controller.leaseAgreements.value?.data?.data
-          ?.firstWhere((element) => element.status == 'draft');
+      LeaseAgreementItem? item =
+          controller.leaseAgreements.value?.data?.data?.firstOrNull;
       return controller.isLoading.value
           ? ButtonLoading()
           : item == null

@@ -49,6 +49,7 @@ class ActivePropertyController extends GetxController {
         description: contactDescription.value,
         leaseDurationValue: leaseDurationText.value,
         imageUrl: landlordImageUrl.value,
+        otherUserID: details.data?.landlordId ?? 0,
       ),
       ActivePropertyContact(
         name: agentName.value,
@@ -56,6 +57,7 @@ class ActivePropertyController extends GetxController {
         description: contactDescription.value,
         leaseDurationValue: leaseDurationText.value,
         imageUrl: agentImageUrl.value,
+        otherUserID: details.data?.agentId ?? 0,
       ),
       ActivePropertyReview(propertyID: propertyID),
     ];

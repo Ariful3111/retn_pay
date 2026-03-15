@@ -24,8 +24,8 @@ class PropertyManagementDetailsController extends GetxController {
   List<Widget> widgetList = [
     PropertyDetailsList(propertyDetails: PropertyDetailsModel()),
     PropertyKeyFeatures(propertyDetails: PropertyDetailsModel()),
-    ActivePropertyContact(),
-    ActivePropertyContact(),
+    ActivePropertyContact(otherUserID: 1),
+    ActivePropertyContact(otherUserID: 1),
     PropertyManagementDetailsReview(),
     PropertyManagementDetailsReview(),
     PropertyManagementDetailsReport(),

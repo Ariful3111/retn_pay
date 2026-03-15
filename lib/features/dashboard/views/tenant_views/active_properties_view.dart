@@ -27,13 +27,16 @@ class ActivePropertiesView extends StatefulWidget {
 }
 
 class _ActivePropertiesViewState extends State<ActivePropertiesView> {
-  ActivePropertyController activePropertyController = Get.find();
-  RentNoticeController rentNoticeController = Get.find();
-  LeaseAgreementController leaseAgreementController = Get.find();
+  late ActivePropertyController activePropertyController;
+  late RentNoticeController rentNoticeController;
+  late LeaseAgreementController leaseAgreementController;
 
   @override
   void initState() {
     super.initState();
+    activePropertyController = Get.find();
+    rentNoticeController = Get.find();
+    leaseAgreementController = Get.find();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       leaseAgreementController.getLeaseAgreements();
       rentNoticeController.getRentNotices();
