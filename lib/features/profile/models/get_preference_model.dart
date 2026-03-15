@@ -69,7 +69,9 @@ class Preferences {
     budgetMax = json['budget_max'];
     currency = json['currency'];
     if (json['preferred_suburbs'] != null) {
-      preferredSuburbs = json['preferred_suburbs'].cast<String>();
+      preferredSuburbs = (json['preferred_suburbs'] as List)
+          .map((e) => e.toString())
+          .toList();
     }
     moveInDate = json['move_in_date'];
     petsAllowed = json['pets_allowed'];
@@ -77,7 +79,11 @@ class Preferences {
     maxBedrooms = json['max_bedrooms'];
     minBathrooms = json['min_bathrooms'];
     maxBathrooms = json['max_bathrooms'];
-    propertyTypes = json['property_types'];
+    if (json['property_types'] != null) {
+      propertyTypes = (json['property_types'] as List)
+          .map((e) => e.toString())
+          .toList();
+    }
     additionalRequirements = json['additional_requirements'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
