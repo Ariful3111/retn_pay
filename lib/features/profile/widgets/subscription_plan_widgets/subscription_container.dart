@@ -117,9 +117,19 @@ class _SubscriptionContainerState extends State<SubscriptionContainer> {
                       color: AppColors.primaryBorder,
                     ),
                     SizedBox(height: 12.h),
-                    CustomTextSecondary(
-                      text: "Benefits:",
-                      color: AppColors.subsPlanTitle,
+                    AnimatedSlide(
+                      offset: isExpanded ? Offset.zero : const Offset(0, -0.5),
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut,
+                      child: FadeTransition(
+                        opacity: isExpanded
+                            ? AlwaysStoppedAnimation(1.0)
+                            : AlwaysStoppedAnimation(0.0),
+                        child: CustomTextSecondary(
+                          text: "Benefits:",
+                          color: AppColors.subsPlanTitle,
+                        ),
+                      ),
                     ),
                     SizedBox(height: 14.h),
                     Column(children: widget.widgetList),
