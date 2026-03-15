@@ -54,17 +54,18 @@ class P2PChatList extends GetWidget<P2PChatListController> {
                       color: isDark ? AppColors.darkPrimary : Color(0xFFF8F6FF),
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        UserMessage(
-                          padding: EdgeInsets.zero,
-                          imageUrl: chat.otherUser?.image ?? '',
-                          name: chat.otherUser?.name ?? '',
-                          role:
-                              chat.otherUser?.roles?.first.capitalizeFirst ??
-                              '',
+                        Expanded(
+                          child: UserMessage(
+                            padding: EdgeInsets.zero,
+                            imageUrl: chat.otherUser?.image ?? '',
+                            name: chat.otherUser?.name ?? '',
+                            role:
+                                chat.otherUser?.roles?.first.capitalizeFirst ??
+                                '',
+                          ),
                         ),
-                        Spacer(),
                         Column(
                           children: [
                             CustomTextSecondary(

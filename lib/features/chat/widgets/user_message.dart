@@ -58,17 +58,26 @@ class UserMessage extends StatelessWidget {
           ),
         ),
         SizedBox(width: spaceWidth ?? 8.75.w),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomTextPrimary(text: name, fontSize: titleSize ?? 16.sp),
-            CustomTextSecondary(
-              text: role,
-              fontSize: subtitleSize ?? 14.sp,
-              color: Color(0xFF99A2AB),
-            ),
-          ],
+        Flexible(
+          flex: 1,
+          fit: FlexFit.loose,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomTextPrimary(
+                text: name,
+                fontSize: titleSize ?? 16.sp,
+                textOverflow: TextOverflow.ellipsis,
+              ),
+              CustomTextSecondary(
+                text: role,
+                fontSize: subtitleSize ?? 14.sp,
+                color: Color(0xFF99A2AB),
+                textOverflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
         ),
       ],
     );

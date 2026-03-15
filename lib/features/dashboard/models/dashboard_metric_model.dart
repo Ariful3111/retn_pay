@@ -32,7 +32,14 @@ class Data {
   int? pendingRentCount;
   int? overdueRentCount;
   String? role;
-  int? totalRentPaid;
+  String? totalRentPaid;
+  String? totalRevenue;
+  int? totalProperties;
+  String? totalRentCollected;
+  String? totalRentFromAssignedProperties;
+  String? assignedPropertiesCount;
+  String? totalBooking;
+  String? totalBookingAmount;
 
   Data({
     this.inspectionRequests,
@@ -42,16 +49,31 @@ class Data {
     this.overdueRentCount,
     this.role,
     this.totalRentPaid,
+    this.totalRevenue,
+    this.totalProperties,
+    this.totalRentCollected,
+    this.totalRentFromAssignedProperties,
+    this.assignedPropertiesCount,
+    this.totalBooking,
+    this.totalBookingAmount,
   });
 
   Data.fromJson(Map<String, dynamic> json) {
-    inspectionRequests = json['inspection_requests'];
-    applicationsSubmitted = json['applications_submitted'];
-    repairRequests = json['repair_requests'];
-    pendingRentCount = json['pending_rent_count'];
-    overdueRentCount = json['overdue_rent_count'];
+    inspectionRequests = _parseInt(json['inspection_requests']);
+    applicationsSubmitted = _parseInt(json['applications_submitted']);
+    repairRequests = _parseInt(json['repair_requests']);
+    pendingRentCount = _parseInt(json['pending_rent_count']);
+    overdueRentCount = _parseInt(json['overdue_rent_count']);
     role = json['role'];
-    totalRentPaid = json['total_rent_paid'];
+    totalRentPaid = json['total_rent_paid']?.toString();
+    totalRevenue = json['total_revenue']?.toString();
+    totalProperties = _parseInt(json['total_properties']);
+    totalRentCollected = json['total_rent_collected']?.toString();
+    totalRentFromAssignedProperties =
+        json['total_rent_from_assigned_properties']?.toString();
+    assignedPropertiesCount = json['assigned_properties_count']?.toString();
+    totalBooking = json['total_booking']?.toString();
+    totalBookingAmount = json['total_booking_amount']?.toString();
   }
 
   Map<String, dynamic> toJson() {
@@ -63,6 +85,28 @@ class Data {
     data['overdue_rent_count'] = overdueRentCount;
     data['role'] = role;
     data['total_rent_paid'] = totalRentPaid;
+    data['total_revenue'] = totalRevenue;
+    data['total_properties'] = totalProperties;
+    data['total_rent_collected'] = totalRentCollected;
+    data['total_rent_from_assigned_properties'] =
+        totalRentFromAssignedProperties;
+    data['assigned_properties_count'] = assignedPropertiesCount;
+    data['total_booking'] = totalBooking;
+    data['total_booking_amount'] = totalBookingAmount;
     return data;
   }
+}
+
+int? _parseInt(dynamic value) {
+  if (value == null) return null;
+  if (value is int) return value;
+  if (value is double) return value.toInt();
+  if (value is String) {
+    try {
+      return int.parse(value);
+    } catch (e) {
+      return null;
+    }
+  }
+  return null;
 }
