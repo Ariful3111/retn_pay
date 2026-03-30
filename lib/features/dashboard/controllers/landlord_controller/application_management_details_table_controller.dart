@@ -128,7 +128,6 @@ class ApplicationManagementDetailsTableController extends GetxController {
     ];
   }
 
-  /// Update yes/no answers
   void updateYesAnswer(int index, bool value) {
     disclosureItems[index].yesAnswer = value;
     if (value) {
@@ -150,7 +149,6 @@ class ApplicationManagementDetailsTableController extends GetxController {
     disclosureItems.refresh();
   }
 
-  /// Update yes/no answers for sub-item A
   void updateYesAnswerA(int index, bool value) {
     disclosureItems[index].yesAnswerA = value;
     if (value) {
@@ -167,7 +165,6 @@ class ApplicationManagementDetailsTableController extends GetxController {
     disclosureItems.refresh();
   }
 
-  /// Update yes/no answers for sub-item B
   void updateYesAnswerB(int index, bool value) {
     disclosureItems[index].yesAnswerB = value;
     if (value) {
@@ -184,7 +181,6 @@ class ApplicationManagementDetailsTableController extends GetxController {
     disclosureItems.refresh();
   }
 
-  /// Get additional field controller
   TextEditingController getAdditionalFieldController(int index, String key) {
     if (!disclosureItems[index].additionalFieldsControllers.containsKey(key)) {
       disclosureItems[index].additionalFieldsControllers[key] =
@@ -194,10 +190,10 @@ class ApplicationManagementDetailsTableController extends GetxController {
   }
 
   @override
-  void onClose() {
+  void dispose() {
     for (var item in disclosureItems) {
       item.dispose();
     }
-    super.onClose();
+    super.dispose();
   }
 }

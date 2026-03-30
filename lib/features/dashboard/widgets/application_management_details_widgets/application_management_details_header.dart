@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/state_manager.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/application_management_details_controller.dart';
-import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_list_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_bullet_point_text.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
@@ -32,7 +32,7 @@ class ApplicationManagementDetailsHeader
           SizedBox(height: 12.h),
           Container(
             width: double.infinity,
-            height: 1.h,
+            height: 1.5.h,
             color: isDark
                 ? AppColors.darkBorderPrimary
                 : AppColors.secondaryBorder,
@@ -46,7 +46,7 @@ class ApplicationManagementDetailsHeader
           SizedBox(height: 8.h),
           Container(
             width: double.infinity,
-            height: 1.h,
+            height: 1.5.h,
             color: isDark
                 ? AppColors.darkBorderPrimary
                 : AppColors.secondaryBorder,
@@ -60,8 +60,8 @@ class ApplicationManagementDetailsHeader
             fontWeight: FontWeight.w400,
           ),
           Padding(
-            padding: EdgeInsets.only(left:  8.w),
-            child: ApplicationManagementDetailsListText(items: controller.items),
+            padding: EdgeInsets.only(left: 8.w),
+            child: CustomBulletPointText(items: controller.items),
           ),
         ],
       ),

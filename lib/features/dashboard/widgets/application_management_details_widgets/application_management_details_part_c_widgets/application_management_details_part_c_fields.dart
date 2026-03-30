@@ -4,18 +4,19 @@ import 'package:get/state_manager.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/application_management_details_table_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 
-class ApplicationManagementDetailsPartCFields extends GetWidget<ApplicationManagementDetailsTableController> {
+class ApplicationManagementDetailsPartCFields
+    extends GetWidget<ApplicationManagementDetailsTableController> {
   final DisclosureItem item;
   final int itemIndex;
 
-  const ApplicationManagementDetailsPartCFields({super.key, 
+  const ApplicationManagementDetailsPartCFields({
+    super.key,
     required this.item,
     required this.itemIndex,
   });
 
   @override
   Widget build(BuildContext context) {
-
     final fields = [
       'Trading name of the embedded network operator',
       'ABN of the embedded network operator',
@@ -29,6 +30,12 @@ class ApplicationManagementDetailsPartCFields extends GetWidget<ApplicationManag
         return Padding(
           padding: EdgeInsets.only(bottom: 8.h),
           child: CustomTextField(
+            enableBorderRadius: BorderRadius.circular(12.r),
+            enableBorderWidth: 1.r,
+            focusBorderRadius: BorderRadius.circular(12.r),
+            focusBorderWidth: 1.r,
+            borderRadius: 12.r,
+            borderWidth: 1.r,
             controller: controller.getAdditionalFieldController(
               itemIndex,
               label,

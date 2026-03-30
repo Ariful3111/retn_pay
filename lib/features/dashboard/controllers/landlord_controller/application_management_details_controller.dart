@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_info.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_part_a.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_part_a_application.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_part_a_provider.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_part_b.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_part_c_widgets/application_management_details_part_c.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_part_d.dart';
-
-/// Model class for disclosure items
+import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_part_e_widgets/application_management_details_part_e.dart';
+import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_service.dart';
 
 class ApplicationManagementDetailsController extends GetxController {
   List<String> items = [
@@ -32,21 +33,22 @@ class ApplicationManagementDetailsController extends GetxController {
     'Information for the applicant(s)',
   ];
 
-  /// Empty for now (you can plug widgets later like form sections)
   List<Widget> widgetList = [
     ApplicationManagementDetailsPartA(),
     ApplicationManagementDetailsPartB(),
     ApplicationManagementDetailsPartC(),
     ApplicationManagementDetailsPartD(),
+    ApplicationManagementDetailsPartE(),
+    ApplicationManagementDetailsInfo(),
+    ApplicationManagementDetailsService()
   ];
   List<Widget> informationWidgetList = [
     ApplicationManagementDetailsPartAProvider(),
     ApplicationManagementDetailsPartAApplication(),
   ];
-/// 🔹 Payment Type
+
 RxString selectedPaymentType = ''.obs;
 
-/// 🔹 Dynamic Controllers
 final Map<String, TextEditingController> fieldControllers = {};
 
 TextEditingController getFieldController(String key) {
@@ -56,7 +58,6 @@ TextEditingController getFieldController(String key) {
   return fieldControllers[key]!;
 }
 
-/// 🔹 Date Controllers
 TextEditingController startDateController = TextEditingController();
 TextEditingController endDateController = TextEditingController();
   @override
@@ -68,6 +69,14 @@ TextEditingController endDateController = TextEditingController();
     );
     super.onInit();
   }
-
+@override
+  dispose() {
+    for (var controller in fieldControllers.values) {
+      controller.dispose();
+    }
+    startDateController.dispose();
+    endDateController.dispose();
+    super.dispose();
+  }
   
 }

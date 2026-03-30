@@ -116,8 +116,9 @@ class _ActivePropertiesViewState extends State<ActivePropertiesView> {
                             right: 20.w,
                             child: CustomPrimaryButton(
                               onPressed: () {
-                                activePropertyController.isAccess.value =
-                                    !activePropertyController.isAccess.value;
+                                // activePropertyController.isAccess.value =
+                                //     !activePropertyController.isAccess.value;
+                                Get.toNamed(AppRoutes.agreementView);
                               },
                               height: 48.h,
                               width: 307.w,

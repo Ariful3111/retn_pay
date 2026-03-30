@@ -39,8 +39,8 @@ class ApplicationManagementDetailsPartA extends GetWidget<ApplicationManagementD
                           Expanded(
                             child: CustomTextPrimary(
                               text: controller.informationTitle[index],
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.w600,
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w500,
                               color: isDark
                                   ? AppColors.whiteColor
                                   : AppColors.primaryColorDark,

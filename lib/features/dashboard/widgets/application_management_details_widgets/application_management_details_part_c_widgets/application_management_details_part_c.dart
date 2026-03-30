@@ -15,45 +15,43 @@ class ApplicationManagementDetailsPartC extends GetWidget<ApplicationManagementD
   @override
   Widget build(BuildContext context) {
  final bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          ApplicationManagementDetailsPartCDescription(isDark: isDark),
-          SizedBox(height: 16.h),
-
-          ApplicationManagementDetailsPartCTableHeader(isDark: isDark),
-          SizedBox(height: 16.h),
-
-          /// 🔹 List
-          Obx(
-            () => Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w),
-              child: ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: controller.disclosureItems.length,
-                separatorBuilder: (_, __) => SizedBox(height: 12.h),
-                itemBuilder: (context, index) {
-                  return ApplicationManagementDetailsPartCTable(
-                    itemIndex: index,
-                    isDark: isDark,
-                  );
-                },
-              ),
+    return Column(
+      children: [
+        ApplicationManagementDetailsPartCDescription(isDark: isDark),
+        SizedBox(height: 16.h),
+    
+        ApplicationManagementDetailsPartCTableHeader(isDark: isDark),
+        SizedBox(height: 16.h),
+    
+        /// 🔹 List
+        Obx(
+          () => Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: ListView.separated(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: controller.disclosureItems.length,
+              separatorBuilder: (_, __) => SizedBox(height: 12.h),
+              itemBuilder: (context, index) {
+                return ApplicationManagementDetailsPartCTable(
+                  itemIndex: index,
+                  isDark: isDark,
+                );
+              },
             ),
           ),
-
-          SizedBox(height: 24.h),
-
-          CustomTextSecondary(
-      text: 'Further information about any disclosures outlined above',
-      fontSize: 14.sp,
-      color: isDark ? AppColors.whiteColor : AppColors.darkTextColor,
-    ),
-
-          SizedBox(height: 20.h),
-        ],
-      ),
+        ),
+    
+        SizedBox(height: 24.h),
+    
+        CustomTextSecondary(
+    text: 'Further information about any disclosures outlined above',
+    fontSize: 14.sp,
+    color: isDark ? AppColors.whiteColor : AppColors.darkTextColor,
+        ),
+    
+        SizedBox(height: 20.h),
+      ],
     );
   }
 

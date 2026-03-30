@@ -3,13 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/features/dashboard/controllers/landlord_controller/application_management_details_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/agreement_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
-class ApplicationManagementDetailsWidgets
-    extends GetWidget<ApplicationManagementDetailsController> {
-  const ApplicationManagementDetailsWidgets({super.key});
+class AgreementViewWidgets extends GetWidget<AgreementController> {
+  const AgreementViewWidgets({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +74,7 @@ class ApplicationManagementDetailsWidgets
                           ],
                         ),
                         AnimatedSize(
-                          duration: const Duration(milliseconds: 250),
+                          duration:  Duration(milliseconds: 250),
                           curve: Curves.easeInOut,
                           child: isSelected
                               ? Padding(
@@ -94,15 +92,6 @@ class ApplicationManagementDetailsWidgets
             });
           }),
         ),
-        SizedBox(height: 4.h),
-        CustomPrimaryButton(
-          onPressed: () {},
-          text: 'Submit',
-          height: 40.h,
-          width: 100.w,
-          borderRadius: BorderRadius.circular(6.r),
-        ),
-        SizedBox(height: 20.h),
       ],
     );
   }

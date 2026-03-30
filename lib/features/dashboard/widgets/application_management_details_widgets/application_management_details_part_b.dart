@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_helper.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
-import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_list_text.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_bullet_point_text.dart';
 
 class ApplicationManagementDetailsPartB extends StatelessWidget {
   const ApplicationManagementDetailsPartB({super.key});
@@ -12,7 +12,6 @@ class ApplicationManagementDetailsPartB extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        /// 🔹 Intro Paragraphs
         ApplicationManagementDetailsHelper().paragraph(
           'The following statement is required by Schedule 1 of the Residential Tenancies Regulations 2021 and cannot be altered.',
         ),
@@ -22,11 +21,8 @@ class ApplicationManagementDetailsPartB extends StatelessWidget {
         ApplicationManagementDetailsHelper().paragraph(
           'In Victoria it is unlawful to discriminate against someone in relation to certain personal attributes. This means that rental providers and real estate agents cannot refuse you accommodation or discriminate against you during your tenancy on the basis of personal attributes protected by law. The following is a list of some protected attributes that are sometimes discriminated against in the rental market—',
         ),
-
         SizedBox(height: 8.h),
-
-        /// 🔹 Protected Attributes List
-        ApplicationManagementDetailsListText(
+        CustomBulletPointText(
           items: [
             'Age',
             'Disability (physical, sensory, intellectual, mental illness)',
@@ -66,7 +62,7 @@ class ApplicationManagementDetailsPartB extends StatelessWidget {
           'Some examples of unlawful discrimination in applying for a property:',
         ),
 
-        ApplicationManagementDetailsListText(
+        CustomBulletPointText(
           items: [
             'Refusing or not accepting your application because you have children, unless the premises is unsuitable for occupation by children due to its design or location.',
             'Processing your application differently to other applicants and not giving your application to the rental provider because you have a disability or because of your race.',
@@ -82,7 +78,7 @@ class ApplicationManagementDetailsPartB extends StatelessWidget {
           'Some examples of unlawful discrimination when occupying or leaving a property:',
         ),
 
-        ApplicationManagementDetailsListText(
+        CustomBulletPointText(
           items: [
             'Refusing to agree to you assigning your lease to someone else because of that person\'s personal attributes.',
             'Refusing to allow you to make reasonable alterations or modifications to the property to meet your needs if you have a disability.',
@@ -93,17 +89,21 @@ class ApplicationManagementDetailsPartB extends StatelessWidget {
 
         SizedBox(height: 12.h),
 
-        ApplicationManagementDetailsHelper().paragraph('The examples listed and similar actions could contravene the Act, the Equal Opportunity Act, or the Commonwealth Acts. '),
+        ApplicationManagementDetailsHelper().paragraph(
+          'The examples listed and similar actions could contravene the Act, the Equal Opportunity Act, or the Commonwealth Acts. ',
+        ),
 
         SizedBox(height: 16.h),
 
-        /// 🔹 Help Section
         _buildTitle('Getting help:'),
 
-        ApplicationManagementDetailsHelper().paragraph('If a rental provider or a real estate agent has unlawfully discriminated against you and you have suffered loss as a result, you may apply to VCAT for an order for compensation under section 210AA of the Act. VCAT may be contacted online at vcat.vic.gov.au/ or by calling 1300 018 228.\nIf you would like advice about unlawful discrimination in relation to an application to rent or an existing agreement you may call Victoria Legal Aid on 1300 792 387.\nIf you feel you have been unlawfully discriminated against when applying to rent, or once you have occupied a property, you or someone on your behalf may make a complaint to VEOHRC at\nhumanrightscommission.vic.gov.au/ or by calling 1300 292 153.'),
+        ApplicationManagementDetailsHelper().paragraph(
+          'If a rental provider or a real estate agent has unlawfully discriminated against you and you have suffered loss as a result, you may apply to VCAT for an order for compensation under section 210AA of the Act. VCAT may be contacted online at vcat.vic.gov.au/ or by calling 1300 018 228.\nIf you would like advice about unlawful discrimination in relation to an application to rent or an existing agreement you may call Victoria Legal Aid on 1300 792 387.\nIf you feel you have been unlawfully discriminated against when applying to rent, or once you have occupied a property, you or someone on your behalf may make a complaint to VEOHRC at\nhumanrightscommission.vic.gov.au/ or by calling 1300 292 153.',
+        ),
       ],
     );
   }
+
   Widget _buildTitle(String text) {
     return Padding(
       padding: EdgeInsets.only(bottom: 8.h),

@@ -22,10 +22,9 @@ class ApplicationManagementDetailsPartDPaid extends GetWidget<ApplicationManagem
             text: 'To be paid per:',
             fontSize: 16.sp,
             fontWeight: FontWeight.w500,
-            color: isDark ? AppColors.whiteColor : AppColors.primaryColorDark,
+            color: isDark ? AppColors.whiteColor : AppColors.darkPrimary,
           ),
           SizedBox(height: 12.h),
-
           Wrap(
             spacing: 20.w,
             runSpacing: 12.h,
@@ -41,7 +40,6 @@ class ApplicationManagementDetailsPartDPaid extends GetWidget<ApplicationManagem
   }
   Widget _buildOption(String value,bool isDark) {
     final bool isSelected = controller.selectedPaymentType.value == value;
-
     return GestureDetector(
       onTap: () => controller.selectedPaymentType.value = value,
       child: Row(
@@ -57,7 +55,6 @@ class ApplicationManagementDetailsPartDPaid extends GetWidget<ApplicationManagem
           CustomTextSecondary(
             text: value,
             fontSize: 14.sp,
-            color: isDark ? AppColors.whiteColor : AppColors.primaryColorDark,
           ),
         ],
       ),
