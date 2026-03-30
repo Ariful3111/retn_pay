@@ -14,6 +14,12 @@ class ApplicationManagementDetailsPartDField extends GetWidget<ApplicationManage
     return Padding(
       padding: EdgeInsets.only(bottom: 12.h),
       child: CustomTextField(
+        enableBorderRadius: BorderRadius.circular(12.r),
+        enableBorderWidth: 1.r,
+        focusBorderRadius: BorderRadius.circular(12.r),
+        focusBorderWidth: 1.r,
+        borderRadius: 12.r,
+        borderWidth: 1.r,
         controller: controller.getFieldController(label),
         labelText: label,
         hintText: 'Enter $label',

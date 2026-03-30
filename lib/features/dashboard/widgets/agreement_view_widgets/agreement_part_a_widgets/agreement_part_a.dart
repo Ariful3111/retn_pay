@@ -3,19 +3,33 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
-import 'package:renter_pay/features/dashboard/controllers/landlord_controller/application_management_details_controller.dart';
-import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/agreement_part_a_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
-class ApplicationManagementDetailsWidgets
-    extends GetWidget<ApplicationManagementDetailsController> {
-  const ApplicationManagementDetailsWidgets({super.key});
+class AgreementPartA extends GetWidget<AgreementPartAController> {
+  const AgreementPartA({super.key});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       children: [
+        CustomTextSecondary(
+          fontSize: 14.sp,
+          color: isDark ? AppColors.whiteColor : AppColors.darkContainer,
+          text:
+              'This agreement is between the residential rental provider (rental provider) and the renter(s) listed on this form. ',
+        ),
+        SizedBox(height: 12.h),
+        Container(
+          width: double.infinity,
+          height: 1.5.h,
+          color: isDark
+              ? AppColors.darkBorderPrimary
+              : AppColors.secondaryBorder,
+        ),
+        SizedBox(height: 16.h),
         Column(
           children: List.generate(controller.title.length, (index) {
             return Obx(() {
@@ -24,10 +38,6 @@ class ApplicationManagementDetailsWidgets
                 key: ValueKey(index),
                 children: [
                   Container(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 18.h,
-                      horizontal: 16.w,
-                    ),
                     decoration: BoxDecoration(
                       color: isDark
                           ? AppColors.darkSecondary
@@ -42,11 +52,11 @@ class ApplicationManagementDetailsWidgets
                             Expanded(
                               child: CustomTextPrimary(
                                 text: controller.title[index],
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.w600,
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w500,
                                 color: isDark
                                     ? AppColors.whiteColor
-                                    : AppColors.primaryColorDark,
+                                    : AppColors.darkTextColor,
                               ),
                             ),
                             InkWell(
@@ -57,9 +67,7 @@ class ApplicationManagementDetailsWidgets
                               child: Padding(
                                 padding: EdgeInsets.all(8.r),
                                 child: AnimatedRotation(
-                                  turns: isSelected
-                                      ? 0.5
-                                      : 0.0, // 180° rotation
+                                  turns: isSelected ? 0.5 : 0.0,
                                   duration: Duration(milliseconds: 250),
                                   curve: Curves.easeInOut,
                                   child: Image.asset(
@@ -76,33 +84,24 @@ class ApplicationManagementDetailsWidgets
                           ],
                         ),
                         AnimatedSize(
-                          duration: const Duration(milliseconds: 250),
+                          duration: Duration(milliseconds: 250),
                           curve: Curves.easeInOut,
                           child: isSelected
                               ? Padding(
                                   padding: EdgeInsets.only(top: 12.h),
                                   child: controller.widgetList[index],
                                 )
-                              : const SizedBox.shrink(),
+                              : SizedBox.shrink(),
                         ),
                       ],
                     ),
                   ),
-                  SizedBox(height: 20.h),
+                  SizedBox(height: 16.h),
                 ],
               );
             });
           }),
         ),
-        SizedBox(height: 4.h),
-        CustomPrimaryButton(
-          onPressed: () {},
-          text: 'Submit',
-          height: 40.h,
-          width: 100.w,
-          borderRadius: BorderRadius.circular(6.r),
-        ),
-        SizedBox(height: 20.h),
       ],
     );
   }
