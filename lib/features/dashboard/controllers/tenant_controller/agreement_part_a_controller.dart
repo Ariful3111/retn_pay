@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/features/dashboard/widgets/agreement_view_widgets/agreement_part_a_widgets/agreement_part_a_bond.dart';
 import 'package:renter_pay/features/dashboard/widgets/agreement_view_widgets/agreement_part_a_widgets/agreement_part_a_date.dart';
 import 'package:renter_pay/features/dashboard/widgets/agreement_view_widgets/agreement_part_a_widgets/agreement_part_a_length.dart';
 import 'package:renter_pay/features/dashboard/widgets/agreement_view_widgets/agreement_part_a_widgets/agreement_part_a_premises.dart';
@@ -54,6 +55,9 @@ class AgreementPartAController extends GetxController {
   RxString selectedPaymentType = 'Calendar month'.obs;
   TextEditingController rentPaymentDateController = TextEditingController();
 
+  TextEditingController bondAmountController = TextEditingController();
+  TextEditingController bondDateController = TextEditingController();
+
   List<String> title = [
     '1. Date of agreement',
     '2. Premises let by the rental provider',
@@ -71,14 +75,12 @@ class AgreementPartAController extends GetxController {
     AgreementPartARenter(),
     AgreementPartALength(),
     AgreementPartARent(),
-    Container(),
-    Container(),
+    AgreementPartABond(),
   ];
 
   @override
   void onInit() {
     isOpenList.value = List.generate(title.length, (_) => false);
-    // Initialize renter controllers - 4 renters with 5 fields each
     renterControllers = List.generate(
       4,
       (_) => List.generate(5, (_) => TextEditingController()),
@@ -126,6 +128,8 @@ class AgreementPartAController extends GetxController {
     // Dispose Rent Section Controllers
     rentAmountController.dispose();
     rentPaymentDateController.dispose();
+    bondAmountController.dispose();
+    bondDateController.dispose();
 
     super.dispose();
   }

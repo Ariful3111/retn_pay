@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/features/dashboard/widgets/agreement_view_widgets/agreement_part_a_widgets/agreement_part_a.dart';
+import 'package:renter_pay/features/dashboard/widgets/agreement_view_widgets/agreement_part_b_widgets/agreement_part_b.dart';
+import 'package:renter_pay/features/dashboard/widgets/agreement_view_widgets/agreement_part_c_widgets/agreement_part_c.dart';
+import 'package:renter_pay/features/dashboard/widgets/agreement_view_widgets/agreement_part_d_widgets/agreement_part_d.dart';
+import 'package:renter_pay/features/dashboard/widgets/agreement_view_widgets/agreement_part_e_widgets/agreement_part_e.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_info.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_service.dart';
 
@@ -19,10 +23,10 @@ class AgreementController extends GetxController{
 
   List<Widget> widgetList = [
    AgreementPartA(),
-    Container(),
-    Container(),
-    Container(),
-    Container(),
+    AgreementPartB(),
+    AgreementPartC(),
+    AgreementPartD(),
+    AgreementPartE(),
     ApplicationManagementDetailsInfo(),
     ApplicationManagementDetailsService(),
   ];
