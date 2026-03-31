@@ -16,7 +16,6 @@ class ApplicationManagementDetailsPartD extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<ApplicationManagementDetailsController>();
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -85,7 +84,7 @@ class ApplicationManagementDetailsPartD extends StatelessWidget {
       text: title,
       fontSize: 18.sp,
       fontWeight: FontWeight.w600,
-      color: isDark ? AppColors.whiteColor : AppColors.primaryColorDark,
+      color: isDark ? AppColors.whiteColor : AppColors.darkPrimary,
     );
   }
 }

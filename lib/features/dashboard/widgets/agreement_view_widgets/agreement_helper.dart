@@ -35,25 +35,22 @@ class AgreementHelper {
   }
 
   Widget divider({required bool isDark}) {
-    return Container(
-      width: double.infinity,
-      height: 1.5.h,
+    return Divider(
       color: isDark ? AppColors.darkBorderPrimary : AppColors.secondaryBorder,
     );
   }
 
-  Widget richText({required String title, required String spantext}) {
+  Widget richText({required String title, required String spantext,Color? color,Color? spanColor}) {
     return CustomTextSpan(
       title: title,
       fontWeight: FontWeight.w600,
       fontSize: 16.sp,
-      color: AppColors.darkContainer,
-      spanColor: AppColors.darkContainer,
+      color: color ?? AppColors.darkContainer,
+      spanColor: spanColor ?? AppColors.darkContainer,
       spantext: spantext,
     );
   }
 
-  // Reusable checkbox with text row
   Widget checkboxWithText({
     required String text,
     required bool isChecked,
@@ -71,7 +68,6 @@ class AgreementHelper {
     );
   }
 
-  // Reusable date field with date picker
   Widget dateFieldWithPicker({
     required BuildContext context,
     required String labelText,
@@ -95,6 +91,29 @@ class AgreementHelper {
           },
         );
       },
+    );
+  }
+
+  Widget section({
+    required String title,
+    required Widget child,
+    required bool isDark,
+  }) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 12.h),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CustomTextSecondary(
+            text: title,
+            color: isDark
+                ? AppColors.darkSecondaryText
+                : AppColors.darkContainer,
+          ),
+          SizedBox(height: 6.h),
+          child,
+        ],
+      ),
     );
   }
 }

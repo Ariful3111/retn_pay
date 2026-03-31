@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/application_management_details_table_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_check_box.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class ApplicationManagementDetailsPartCSell
@@ -20,7 +21,7 @@ class ApplicationManagementDetailsPartCSell
         children: [
           SizedBox(height: 8.h),
 
-          CustomTextSecondary(
+          CustomTextPrimary(
             text: 'If Yes:',
             fontSize: 12.sp,
             fontWeight: FontWeight.w500,
@@ -55,16 +56,19 @@ class ApplicationManagementDetailsPartCSell
     ValueChanged onYes,
     ValueChanged onNo,
   ) {
-    return Row(
-      children: [
-        Expanded(flex: 3, child: CustomTextSecondary(text: text)),
-        Expanded(
-          child: CustomCheckBox(isChecked: yes, onChange: onYes),
-        ),
-        Expanded(
-          child: CustomCheckBox(isChecked: no, onChange: onNo),
-        ),
-      ],
+    return Padding(
+      padding:  EdgeInsets.only(left: 24.w),
+      child: Row(
+        children: [
+          Expanded(flex: 3, child: CustomTextPrimary(text: text,fontSize: 16.sp,fontWeight: FontWeight.w400,)),
+          Expanded(
+            child: CustomCheckBox(isChecked: yes, onChange: onYes),
+          ),
+          Expanded(
+            child: CustomCheckBox(isChecked: no, onChange: onNo),
+          ),
+        ],
+      ),
     );
   }
 }

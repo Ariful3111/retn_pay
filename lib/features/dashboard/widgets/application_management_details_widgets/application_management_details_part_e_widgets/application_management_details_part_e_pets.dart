@@ -27,7 +27,7 @@ class ApplicationManagementDetailsPetsDeclaration
           () => Row(
             children: List.generate(controller.petOptions.length, (index) {
               return Padding(
-                padding:  EdgeInsets.only(right: 40.w),
+                padding: EdgeInsets.only(right: 40.w),
                 child: CustomRadioButton(
                   value: index,
                   groupValue: controller.petType.value,
@@ -48,7 +48,11 @@ class ApplicationManagementDetailsPetsDeclaration
           color: isDark ? AppColors.whiteColor : AppColors.darkTextColor,
         ),
         SizedBox(height: 8.h),
-        helper.textField(controller.petDetailsController, 'Enter number of pets', isDark,),
+        helper.textField(
+          controller.petDetailsController,
+          'Enter number of pets',
+          isDark,
+        ),
         helper.sectionTitle('10.Applicant\'s declaration', isDark),
         SizedBox(height: 12.h),
         CustomTextSecondary(
@@ -59,7 +63,6 @@ class ApplicationManagementDetailsPetsDeclaration
           color: isDark ? AppColors.whiteColor : AppColors.darkTextColor,
         ),
         SizedBox(height: 16.h),
-
         Container(
           height: 160.h,
           decoration: BoxDecoration(

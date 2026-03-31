@@ -5,6 +5,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/utils/date_picker.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/application_management_details_table_controller.dart';
+import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_helper.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_part_c_widgets/application_management_details_part_c_fields.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_part_c_widgets/application_management_details_part_c_sell.dart';
 import 'package:renter_pay/shared/widgets/custom_check_box.dart';
@@ -56,6 +57,8 @@ class ApplicationManagementDetailsPartCTable
           ),
           if (item.label.contains('I intend to sell'))
             ApplicationManagementDetailsPartCSell(index: itemIndex),
+        SizedBox(height: 12.h),
+        ApplicationManagementDetailsHelper().divider(isDark: isDark),
         ],
       );
     });

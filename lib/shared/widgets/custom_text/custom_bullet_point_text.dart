@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class CustomBulletPointText extends StatelessWidget {
   final List<String> items;
-  const CustomBulletPointText({super.key, required this.items});
+  final List<String>? title;
+  final Color? color;
+  const CustomBulletPointText({super.key, required this.items, this.color, this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -17,19 +19,17 @@ class CustomBulletPointText extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                   CustomTextSecondary(
-                    text: '•',
+                    text:title?[index]?? '•',
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                   ),
                   SizedBox(width: 4.w),
                 Expanded(
-                  child: CustomTextSecondary(
+                  child: CustomTextPrimary(
                     text: items[index],
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? AppColors.whiteColor
-                        : AppColors.darkTextColor,
+                    color: color,
                   ),
                 ),
               ],

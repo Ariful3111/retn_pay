@@ -49,7 +49,6 @@ class AgreementPartARent extends GetWidget<AgreementPartAController> {
           ),
           SizedBox(height: 16.h),
 
-          // Rent Payment Date Field
           helper.dateFieldWithPicker(
             context: context,
             labelText: 'Rent is to be paid',
