@@ -43,6 +43,7 @@ import 'package:renter_pay/features/dashboard/bindings/tenant_bindings/active_pr
 import 'package:renter_pay/features/dashboard/bindings/tenant_bindings/add_repair_request_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/dashboard_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/landlord_bindings/inspection_request_bindings.dart';
+import 'package:renter_pay/features/dashboard/bindings/landlord_bindings/landlord_inspection_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/tenant_bindings/key_release_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/tenant_bindings/payment_management_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/tenant_bindings/repair_maintenance_bindings.dart';
@@ -286,6 +287,7 @@ final List<GetPage> appRoutes = [
   GetPage(
     name: AppRoutes.landlordInspectionView,
     page: () => LandlordInspectionView(),
+    binding: LandlordInspectionBindings(),
   ),
   GetPage(
     name: AppRoutes.applicationManagementView,
