@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/features/dashboard/models/landlord_models/application_details_model.dart';
+import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/application_details_repo.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_info.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_part_a.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_part_a_application.dart';
@@ -9,8 +11,15 @@ import 'package:renter_pay/features/dashboard/widgets/application_management_det
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_part_d.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_part_e_widgets/application_management_details_part_e.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_service.dart';
+import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
 class ApplicationManagementDetailsController extends GetxController {
+  final ApplicationDetailsRepository applicationDetailsRepository;
+  ApplicationManagementDetailsController({
+    required this.applicationDetailsRepository,
+  });
+  final applicationDetails = Rxn<ApplicationDetailsModel>();
+  RxBool isLoading = false.obs;
   List<String> items = [
     'Part A-Important information;',
     'Part B-Statement of information for rental applicants; and',
@@ -40,36 +49,56 @@ class ApplicationManagementDetailsController extends GetxController {
     ApplicationManagementDetailsPartD(),
     ApplicationManagementDetailsPartE(),
     ApplicationManagementDetailsInfo(),
-    ApplicationManagementDetailsService()
+    ApplicationManagementDetailsService(),
   ];
   List<Widget> informationWidgetList = [
     ApplicationManagementDetailsPartAProvider(),
     ApplicationManagementDetailsPartAApplication(),
   ];
 
-RxString selectedPaymentType = ''.obs;
+  RxString selectedPaymentType = ''.obs;
 
-final Map<String, TextEditingController> fieldControllers = {};
+  final Map<String, TextEditingController> fieldControllers = {};
 
-TextEditingController getFieldController(String key) {
-  if (!fieldControllers.containsKey(key)) {
-    fieldControllers[key] = TextEditingController();
+  TextEditingController getFieldController(String key) {
+    if (!fieldControllers.containsKey(key)) {
+      fieldControllers[key] = TextEditingController();
+    }
+    return fieldControllers[key]!;
   }
-  return fieldControllers[key]!;
-}
 
-TextEditingController startDateController = TextEditingController();
-TextEditingController endDateController = TextEditingController();
+  TextEditingController startDateController = TextEditingController();
+  TextEditingController endDateController = TextEditingController();
   @override
   void onInit() {
+    super.onInit();
+    if (Get.arguments != null) {
+      getApplicationDetails();
+    }
     isOpenList.value = List.generate(title.length, (_) => false);
     isInformationOpenList.value = List.generate(
       informationTitle.length,
       (_) => false,
     );
-    super.onInit();
   }
-@override
+
+  Future<void> getApplicationDetails() async {
+    isLoading.value = true;
+    final response = await applicationDetailsRepository.execute(
+      applicationID: Get.arguments.toString(),
+    );
+    isLoading.value = false;
+    response.fold(
+      (error) {
+        ErrorSnackbar.show(description: error.message);
+      },
+      (data) {
+        applicationDetails.value = data;
+      },
+    );
+  }
+
+  @override
   dispose() {
     for (var controller in fieldControllers.values) {
       controller.dispose();
@@ -78,5 +107,4 @@ TextEditingController endDateController = TextEditingController();
     endDateController.dispose();
     super.dispose();
   }
-  
 }
