@@ -14,21 +14,24 @@ class ApplicationManagementDetailsPartEEmployment
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ApplicationManagementDetailsPartEHelper().sectionTitle(
-          '5. Employment details',
-          isDark,
-        ),
-        SizedBox(height: 16.h),
-        ApplicationManagementDetailsPartEHelper().textField(
-          controller.occupationController,
-          'Occupation',
-          isDark,
-        ),
-        SizedBox(height: 12.h),
-         Row(
+    return Obx(() {
+      final readOnly = !controller.isEditable.value;
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ApplicationManagementDetailsPartEHelper().sectionTitle(
+            '5. Employment details',
+            isDark,
+          ),
+          SizedBox(height: 16.h),
+          ApplicationManagementDetailsPartEHelper().textField(
+            controller.occupationController,
+            'Occupation',
+            isDark,
+            readOnly: readOnly,
+          ),
+          SizedBox(height: 12.h),
+          Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomTextSecondary(
@@ -50,15 +53,19 @@ class ApplicationManagementDetailsPartEEmployment
                         (index) {
                           return SizedBox(
                             width: itemWidth,
-                            child:Obx(()=> CustomRadioButton(
-                              value: index,
-                              groupValue: controller.employmentType.value,
-                              onChange: (value) {
-                                controller.employmentType.value = value!;
-                              },
-                              text: controller.employmentTypeOptions[index],
-                              fontSize: 16.sp,
-                            )),
+                            child: Obx(
+                              () => CustomRadioButton(
+                                value: index,
+                                groupValue: controller.employmentType.value,
+                                onChange: (value) {
+                                  if (!readOnly) {
+                                    controller.employmentType.value = value!;
+                                  }
+                                },
+                                text: controller.employmentTypeOptions[index],
+                                fontSize: 16.sp,
+                              ),
+                            ),
                           );
                         },
                       ),
@@ -68,18 +75,21 @@ class ApplicationManagementDetailsPartEEmployment
               ),
             ],
           ),
-        SizedBox(height: 12.h),
-        ApplicationManagementDetailsPartEHelper().textField(
-          controller.salaryController,
-          'Salary income per week (\$)',
-          isDark,
-        ),
-        ApplicationManagementDetailsPartEHelper().textField(
-          controller.otherIncomeController,
-          'Other net income per week (\$)',
-          isDark,
-        ),
-      ],
-    );
+          SizedBox(height: 12.h),
+          ApplicationManagementDetailsPartEHelper().textField(
+            controller.salaryController,
+            'Salary income per week (\$)',
+            isDark,
+            readOnly: readOnly,
+          ),
+          ApplicationManagementDetailsPartEHelper().textField(
+            controller.otherIncomeController,
+            'Other net income per week (\$)',
+            isDark,
+            readOnly: readOnly,
+          ),
+        ],
+      );
+    });
   }
 }

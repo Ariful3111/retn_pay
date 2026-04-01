@@ -13,64 +13,76 @@ class ApplicationManagementDetailsPartEPreviousEmployment
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     final helper = ApplicationManagementDetailsPartEHelper();
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        helper.sectionTitle('7. Previous employment', isDark),
-        SizedBox(height: 16.h),
-        helper.textField(
-          controller.previousEmployerNameController,
-          'Name of previous employer',
-          isDark,
-        ),
-        helper.textField(
-          controller.previousEmployerAddressController,
-          'Address of previous employer',
-          isDark,
-        ),
-        helper.textField(
-          controller.previousEmployerPostcodeController,
-          'Postcode',
-          isDark,
-        ),
-        helper.sectionTitle('How long employed there', isDark,size: 14.sp),
-        SizedBox(height: 12.h),
+    return Obx(() {
+      final readOnly = !controller.isEditable.value;
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          helper.sectionTitle('7. Previous employment', isDark),
+          SizedBox(height: 16.h),
+          helper.textField(
+            controller.previousEmployerNameController,
+            'Name of previous employer',
+            isDark,
+            readOnly: readOnly,
+          ),
+          helper.textField(
+            controller.previousEmployerAddressController,
+            'Address of previous employer',
+            isDark,
+            readOnly: readOnly,
+          ),
+          helper.textField(
+            controller.previousEmployerPostcodeController,
+            'Postcode',
+            isDark,
+            readOnly: readOnly,
+          ),
+          helper.sectionTitle('How long employed there', isDark, size: 14.sp),
+          SizedBox(height: 12.h),
 
-        helper.textField(
-          controller.previousYearsController,
-          'Years',
-          isDark,
-        ),
+          helper.textField(
+            controller.previousYearsController,
+            'Years',
+            isDark,
+            readOnly: readOnly,
+          ),
 
-        helper.textField(
-          controller.previousMonthsController,
-          'Months',
-          isDark,
-        ),
+          helper.textField(
+            controller.previousMonthsController,
+            'Months',
+            isDark,
+            readOnly: readOnly,
+          ),
 
-        helper.textField(
-          controller.previousPositionController,
-          'Position held',
-          isDark,
-        ),
-        helper.textField(
-          controller.previousContactPersonController,
-          'Name of contact person',
-          isDark,
-        ),
-        helper.textField(
-          controller.previousPhoneController,
-          'Phone number',
-          isDark,
-        ),
-        helper.textField(
-          controller.previousRemarksController,
-          'Remarks',
-          isDark,
-          maxLines: 4,
-          isAlignLabelWithHint: true,
-        ),
-      ],
-    );
+          helper.textField(
+            controller.previousPositionController,
+            'Position held',
+            isDark,
+            readOnly: readOnly,
+          ),
+          helper.textField(
+            controller.previousContactPersonController,
+            'Name of contact person',
+            isDark,
+            readOnly: readOnly,
+          ),
+          helper.textField(
+            controller.previousPhoneController,
+            'Phone number',
+            isDark,
+            readOnly: readOnly,
+          ),
+          helper.textField(
+            controller.previousRemarksController,
+            'Remarks',
+            isDark,
+            maxLines: 4,
+            isAlignLabelWithHint: true,
+            readOnly: readOnly,
+          ),
+        ],
+      );
+    });
   }
 }

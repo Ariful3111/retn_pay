@@ -13,58 +13,76 @@ class ApplicationManagementDetailsPartECurrentEmployment
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     final helper = ApplicationManagementDetailsPartEHelper();
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        helper.sectionTitle('6. Current employment', isDark),
-        SizedBox(height: 16.h),
-        helper.textField(
-          controller.currentEmployerNameController,
-          'Name of current employer',
-          isDark,
-        ),
-        helper.textField(
-          controller.currentEmployerAddressController,
-          'Address of current employer',
-          isDark,
-        ),
-        helper.textField(
-          controller.currentEmployerPostcodeController,
-          'Postcode',
-          isDark,
-        ),
-        SizedBox(height: 8.h),
-        helper.sectionTitle('How long employed there', isDark,size: 14),
-        SizedBox(height: 12.h),
-        helper.textField(
-          controller.yearsController,
-          'Years',
-          isDark,
-        ),
-        helper.textField(
-          controller.monthsController,
-          'Months',
-          isDark,
-        ),
-        SizedBox(height: 4.h),
-        helper.textField(
-          controller.positionController,
-          'Position held',
-          isDark,
-        ),
-        helper.textField(
-          controller.contactPersonController,
-          'Name of contact person',
-          isDark,
-        ),
-        helper.textField(
-          controller.phoneController,
-          'Phone number',
-          isDark,
-        ),
+    return Obx(() {
+      final readOnly = !controller.isEditable.value;
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          helper.sectionTitle('6. Current employment', isDark),
+          SizedBox(height: 16.h),
+          helper.textField(
+            controller.currentEmployerNameController,
+            'Name of current employer',
+            isDark,
+            readOnly: readOnly,
+          ),
+          helper.textField(
+            controller.currentEmployerAddressController,
+            'Address of current employer',
+            isDark,
+            readOnly: readOnly,
+          ),
+          helper.textField(
+            controller.currentEmployerPostcodeController,
+            'Postcode',
+            isDark,
+            readOnly: readOnly,
+          ),
+          SizedBox(height: 8.h),
+          helper.sectionTitle('How long employed there', isDark, size: 14),
+          SizedBox(height: 12.h),
+          helper.textField(
+            controller.yearsController,
+            'Years',
+            isDark,
+            readOnly: readOnly,
+          ),
+          helper.textField(
+            controller.monthsController,
+            'Months',
+            isDark,
+            readOnly: readOnly,
+          ),
+          SizedBox(height: 4.h),
+          helper.textField(
+            controller.positionController,
+            'Position held',
+            isDark,
+            readOnly: readOnly,
+          ),
+          helper.textField(
+            controller.contactPersonController,
+            'Name of contact person',
+            isDark,
+            readOnly: readOnly,
+          ),
+          helper.textField(
+            controller.phoneController,
+            'Phone number',
+            isDark,
+            readOnly: readOnly,
+          ),
 
-        helper.textField(controller.remarksController, 'Remarks', isDark,maxLines: 4,isAlignLabelWithHint: true)
-      ],
-    );
+          helper.textField(
+            controller.remarksController,
+            'Remarks',
+            isDark,
+            maxLines: 4,
+            isAlignLabelWithHint: true,
+            readOnly: readOnly,
+          ),
+        ],
+      );
+    });
   }
 }

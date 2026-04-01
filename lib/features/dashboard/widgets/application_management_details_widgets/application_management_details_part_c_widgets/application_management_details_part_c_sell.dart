@@ -15,6 +15,7 @@ class ApplicationManagementDetailsPartCSell
   Widget build(BuildContext context) {
     return Obx(() {
       final item = controller.disclosureItems[index];
+      final readOnly = !controller.isEditable.value;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -32,16 +33,16 @@ class ApplicationManagementDetailsPartCSell
             'a. I have engaged an agent',
             item.yesAnswerA,
             item.noAnswerA,
-            (v) => controller.updateYesAnswerA(index, v),
-            (v) => controller.updateNoAnswerA(index, v),
+            readOnly ? null : (v) => controller.updateYesAnswerA(index, v),
+            readOnly ? null : (v) => controller.updateNoAnswerA(index, v),
           ),
 
           _row(
             'b. Contract of sale prepared',
             item.yesAnswerB,
             item.noAnswerB,
-            (v) => controller.updateYesAnswerB(index, v),
-            (v) => controller.updateNoAnswerB(index, v),
+            readOnly ? null : (v) => controller.updateYesAnswerB(index, v),
+            readOnly ? null : (v) => controller.updateNoAnswerB(index, v),
           ),
         ],
       );
@@ -52,8 +53,8 @@ class ApplicationManagementDetailsPartCSell
     String text,
     bool yes,
     bool no,
-    ValueChanged onYes,
-    ValueChanged onNo,
+    ValueChanged? onYes,
+    ValueChanged? onNo,
   ) {
     return Padding(
       padding: EdgeInsets.only(left: 24.w),
@@ -68,10 +69,10 @@ class ApplicationManagementDetailsPartCSell
             ),
           ),
           Expanded(
-            child: CustomCheckBox(isChecked: yes, onChange: onYes),
+            child: CustomCheckBox(isChecked: yes, onChange: onYes ?? (_) {}),
           ),
           Expanded(
-            child: CustomCheckBox(isChecked: no, onChange: onNo),
+            child: CustomCheckBox(isChecked: no, onChange: onNo ?? (_) {}),
           ),
         ],
       ),

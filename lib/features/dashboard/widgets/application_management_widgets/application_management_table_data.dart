@@ -6,8 +6,11 @@ import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/shared/widgets/custom_table/table_action_button.dart';
 
 class ApplicationManagementTableData extends StatelessWidget {
-  final int index;
-  const ApplicationManagementTableData({super.key, required this.index});
+  final int applicationID;
+  const ApplicationManagementTableData({
+    super.key,
+    required this.applicationID,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,10 @@ class ApplicationManagementTableData extends StatelessWidget {
       child: TableActionButton(
         icon: IconsPath.actonView,
         onTap: () {
-          Get.toNamed(AppRoutes.applicationManagementDetails);
+          Get.toNamed(
+            AppRoutes.applicationManagementDetails,
+            arguments: applicationID,
+          );
         },
         iconColor: isDark ? AppColors.whiteColor : null,
       ),

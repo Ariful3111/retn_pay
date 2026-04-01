@@ -7,15 +7,16 @@ import 'package:renter_pay/shared/widgets/custom_check_box.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
-class ApplicationManagementDetailsPartDPaid extends GetWidget<ApplicationManagementDetailsController> {
-
-  const ApplicationManagementDetailsPartDPaid({super.key, });
+class ApplicationManagementDetailsPartDPaid
+    extends GetWidget<ApplicationManagementDetailsController> {
+  const ApplicationManagementDetailsPartDPaid({super.key});
 
   @override
   Widget build(BuildContext context) {
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return Obx(
-      () => Column(
+    return Obx(() {
+      final readOnly = !controller.isEditable.value;
+      return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomTextPrimary(
@@ -29,33 +30,35 @@ class ApplicationManagementDetailsPartDPaid extends GetWidget<ApplicationManagem
             spacing: 20.w,
             runSpacing: 12.h,
             children: [
-              _buildOption('Week', isDark),
-              _buildOption('Fortnight', isDark),
-              _buildOption('Calendar month', isDark),
+              _buildOption('Week', isDark, readOnly),
+              _buildOption('Fortnight', isDark, readOnly),
+              _buildOption('Calendar month', isDark, readOnly),
             ],
           ),
         ],
-      ),
-    );
+      );
+    });
   }
-  Widget _buildOption(String value,bool isDark) {
+
+  Widget _buildOption(String value, bool isDark, bool readOnly) {
     final bool isSelected = controller.selectedPaymentType.value == value;
     return GestureDetector(
-      onTap: () => controller.selectedPaymentType.value = value,
+      onTap: readOnly
+          ? null
+          : () => controller.selectedPaymentType.value = value,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           CustomCheckBox(
             isChecked: isSelected,
-            onChange: (_) {
-              controller.selectedPaymentType.value = value;
-            },
+            onChange: readOnly
+                ? (_) {}
+                : (_) {
+                    controller.selectedPaymentType.value = value;
+                  },
           ),
           SizedBox(width: 6.w),
-          CustomTextSecondary(
-            text: value,
-            fontSize: 14.sp,
-          ),
+          CustomTextSecondary(text: value, fontSize: 14.sp),
         ],
       ),
     );

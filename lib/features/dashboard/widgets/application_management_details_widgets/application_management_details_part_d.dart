@@ -16,67 +16,74 @@ class ApplicationManagementDetailsPartD extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<ApplicationManagementDetailsController>();
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        title(title: 'Rental property details', isDark: isDark),
-        SizedBox(height: 16.h),
-        ApplicationManagementDetailsPartDField(label: 'Address'),
-        ApplicationManagementDetailsPartDField(label: 'Postcode'),
-        ApplicationManagementDetailsPartDField(label: 'Rent amount (\$)'),
-        SizedBox(height: 12.h),
-        ApplicationManagementDetailsPartDPaid(),
-        SizedBox(height: 12.h),
-        ApplicationManagementDetailsPartDField(
-          label: 'Property bond amount (\$)',
-        ),
-        SizedBox(height: 12.h),
-        CustomDateField(
-          fillColor: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
-          label: 'Tenancy start date',
-          controller: controller.startDateController,
-          onTap: () {
-            DatePicker.pickDate(
-              context: context,
-              onDateSelected: (date) {
-                controller.startDateController.text =
-                    "${date.day.toString().padLeft(2, '0')}/"
-                    "${date.month.toString().padLeft(2, '0')}/"
-                    "${date.year}";
-              },
-            );
-          },
-        ),
-        SizedBox(height: 12.h),
-        CustomDateField(
-          fillColor: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
-          label: 'Tenancy end date (if any)',
-          controller: controller.endDateController,
-          onTap: () {
-            DatePicker.pickDate(
-              context: context,
-              onDateSelected: (date) {
-                controller.endDateController.text =
-                    "${date.day.toString().padLeft(2, '0')}/"
-                    "${date.month.toString().padLeft(2, '0')}/"
-                    "${date.year}";
-              },
-            );
-          },
-        ),
-        SizedBox(height: 24.h),
-        title(title: 'Property manager details', isDark: isDark),
-        SizedBox(height: 16.h),
-        ApplicationManagementDetailsPartDField(
-          label: 'Name of property manager',
-        ),
-        ApplicationManagementDetailsPartDField(label: 'Phone number'),
-        ApplicationManagementDetailsPartDField(label: 'Email address'),
-        ApplicationManagementDetailsPartDField(
-          label: 'Name of estate agency (if applicable)',
-        ),
-      ],
-    );
+    return Obx(() {
+      final readOnly = !controller.isEditable.value;
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          title(title: 'Rental property details', isDark: isDark),
+          SizedBox(height: 16.h),
+          ApplicationManagementDetailsPartDField(label: 'Address'),
+          ApplicationManagementDetailsPartDField(label: 'Postcode'),
+          ApplicationManagementDetailsPartDField(label: 'Rent amount (\$)'),
+          SizedBox(height: 12.h),
+          ApplicationManagementDetailsPartDPaid(),
+          SizedBox(height: 12.h),
+          ApplicationManagementDetailsPartDField(
+            label: 'Property bond amount (\$)',
+          ),
+          SizedBox(height: 12.h),
+          CustomDateField(
+            fillColor: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+            label: 'Tenancy start date',
+            controller: controller.startDateController,
+            onTap: () {
+              if (!readOnly) {
+                DatePicker.pickDate(
+                  context: context,
+                  onDateSelected: (date) {
+                    controller.startDateController.text =
+                        "${date.day.toString().padLeft(2, '0')}/"
+                        "${date.month.toString().padLeft(2, '0')}/"
+                        "${date.year}";
+                  },
+                );
+              }
+            },
+          ),
+          SizedBox(height: 12.h),
+          CustomDateField(
+            fillColor: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+            label: 'Tenancy end date (if any)',
+            controller: controller.endDateController,
+            onTap: () {
+              if (!readOnly) {
+                DatePicker.pickDate(
+                  context: context,
+                  onDateSelected: (date) {
+                    controller.endDateController.text =
+                        "${date.day.toString().padLeft(2, '0')}/"
+                        "${date.month.toString().padLeft(2, '0')}/"
+                        "${date.year}";
+                  },
+                );
+              }
+            },
+          ),
+          SizedBox(height: 24.h),
+          title(title: 'Property manager details', isDark: isDark),
+          SizedBox(height: 16.h),
+          ApplicationManagementDetailsPartDField(
+            label: 'Name of property manager',
+          ),
+          ApplicationManagementDetailsPartDField(label: 'Phone number'),
+          ApplicationManagementDetailsPartDField(label: 'Email address'),
+          ApplicationManagementDetailsPartDField(
+            label: 'Name of estate agency (if applicable)',
+          ),
+        ],
+      );
+    });
   }
 
   Widget title({required String title, required bool isDark}) {
