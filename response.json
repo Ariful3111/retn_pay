@@ -1,474 +1,231 @@
 {
-    "error": false,
-    "code": 200,
-    "message": "Maintenance requests retrieved successfully",
-    "data": {
-        "data": [
-            {
-                "id": 2,
-                "tenant_id": 70,
-                "property_id": 140,
-                "property_unit_id": null,
-                "title": "dfgdfg",
-                "description": "dfgdfg",
-                "location_of_problem": null,
-                "urgency": "high",
-                "status": "pending",
-                "images": [
-                    "https://renter-pay.mahfuz.click/storage/maintenance/ocHFgQSdiA4dzLUx1snkuBuFCSoY5YhV8QE9AL1K.png"
-                ],
-                "preferred_date": "2026-03-12",
-                "preferred_time_slots": [
-                    "8am_12pm",
-                    "12pm_5pm"
-                ],
-                "preferred_time_other": "Between 12 p.m. - 5 p.m",
-                "property": {
-                    "id": 140,
-                    "landlord_id": 75,
-                    "property_type_id": 3,
-                    "title": "Updated tonnis apartment",
-                    "name": "Updated tonnis apartment",
-                    "description": "Experience modern living with high-end finishes, including wood-style flooring, sleek Whirlpool stainless steel appliances, and premium amenities designed for comfort and convenience. Enjoy a sophisticated urban lifestyle in a prime location with easy access to dining, entertainment, and business hubs.",
-                    "address": "New market road-6",
-                    "city": "dhaka",
-                    "state": "dhaka",
-                    "postal_code": "1216",
-                    "country": "Australia",
-                    "latitude": null,
-                    "longitude": null,
-                    "bedrooms": 8,
-                    "bathrooms": 4,
-                    "parking_spaces": 0,
-                    "land_size": "1200.00",
-                    "building_size": "1200.00",
-                    "year_built": 2000,
-                    "status": "active",
-                    "available_from": "2026-03-15",
-                    "is_verified": true,
-                    "is_in_person_inspection_available": false,
-                    "is_virtual_inspection_available": false,
-                    "is_favourite": true,
-                    "features": [
-                        "Open floor plan with natural lighting",
-                        "Fully equipped modern kitchen"
-                    ],
-                    "lease_agreement_defaults": {
-                        "keys_count": "0",
-                        "bond_amount": "345",
-                        "currency": "AUD",
-                        "payment_frequency": "week",
-                        "disclosures": {
-                            "intent_to_sell_premises": {
-                                "intends_to_sell": "0",
-                                "engaged_agent": "0",
-                                "contract_prepared": "0"
-                            },
-                            "mortgagee_action": {
-                                "mortgagee_taking_possession": "0",
-                                "enforcement_proceedings_commenced": "0"
-                            },
-                            "ownership": {
-                                "is_owner": "1",
-                                "has_right_to_rent": "0"
-                            },
-                            "embedded_electricity_network": {
-                                "supplied_by_embedded_network": "0"
-                            },
-                            "property_history": {
-                                "homicide_in_last_5_years": "0",
-                                "drug_activity_in_last_5_years": "0",
-                                "asbestos_present": "0"
-                            },
-                            "rental_compliance": {
-                                "meets_minimum_standards": "1",
-                                "mould_or_damp_repair_notices_last_3_years": "1"
-                            },
-                            "safety_checks": {
-                                "electricity_safety_check_date": "2026-02-06",
-                                "gas_safety_check_date": "2026-02-13",
-                                "pool_barrier_compliance_check_date": "2026-02-28",
-                                "outstanding_recommendations": "0"
-                            },
-                            "heritage": {
-                                "is_heritage_listed": "1"
-                            },
-                            "planning_and_legal": {
-                                "affected_by_planning_application": "0",
-                                "building_or_safety_notices_issued": "1",
-                                "domestic_building_work_dispute": "1",
-                                "owners_corporation_dispute": "0",
-                                "subject_to_owners_corporation_rules": "0"
-                            },
-                            "additional_notes": "aFully equipped modern kitchen"
-                        },
-                        "property_manager_details": {
-                            "property_manager_name": "Tonni Akter Bithi",
-                            "phone_number": "01825332448",
-                            "email_address": "landlord@gmail.com",
-                            "estate_agency_name": "sdfsdfs"
-                        }
-                    },
-                    "rating": "4.00",
-                    "rating_count": 2,
-                    "units": [
-                        {
-                            "id": 218,
-                            "property_id": 140,
-                            "unit_number": "unit 101",
-                            "unit_name": null,
-                            "rent_amount": "450000.00",
-                            "rent_type": {
-                                "id": 1,
-                                "name": "Daily",
-                                "slug": "daily",
-                                "rent_days": 1,
-                                "description": "Rent charged per day",
-                                "status": true,
-                                "created_at": "2026-02-10T20:39:57.000000Z",
-                                "updated_at": "2026-02-10T20:39:57.000000Z"
-                            },
-                            "currency": {
-                                "id": 1,
-                                "code": "AUD",
-                                "name": "Australian Dollar",
-                                "symbol": "A$",
-                                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                                "type": "fiat",
-                                "decimal_places": 2,
-                                "exchange_rate": 1,
-                                "is_active": true,
-                                "sort_order": 1
-                            },
-                            "display_rent_amount": 450000,
-                            "display_currency": {
-                                "id": 1,
-                                "code": "AUD",
-                                "name": "Australian Dollar",
-                                "symbol": "A$",
-                                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                                "type": "fiat",
-                                "decimal_places": 2,
-                                "exchange_rate": 1,
-                                "is_active": true,
-                                "sort_order": 1
-                            },
-                            "status": "available",
-                            "bedrooms": 8,
-                            "bathrooms": 4,
-                            "size": "1200.00",
-                            "description": null
-                        }
-                    ],
-                    "review_summary": {
-                        "total_reviews": 2,
-                        "average_rating": "4.00"
-                    },
-                    "created_at": "2026-02-27T16:15:08.000000Z",
-                    "updated_at": "2026-03-08T16:51:27.000000Z"
-                },
-                "property_unit": null,
-                "tenant": {
-                    "id": 70,
-                    "name": "Tonni Akter",
-                    "first_name": "Tonni",
-                    "last_name": "Akter",
-                    "gender": "female",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/Zg5eNdBas56k0l6teMbNMXT0Re47xpkfnBW2o7uv.png",
-                    "email": "tenant@gmail.com",
-                    "phone": "8801825332448",
-                    "is_active": true,
-                    "provider": null,
-                    "provider_id": null,
-                    "roles": [
-                        "tenant"
-                    ],
-                    "tenant_profile": {
-                        "id": 23,
-                        "employment_status": "employed",
-                        "employer_name": "Wiztech BD",
-                        "job_title": "Software Engineer",
-                        "monthly_income": "50000.00",
-                        "is_verified": true,
-                        "created_at": "2026-02-11T03:50:12.000000Z",
-                        "updated_at": "2026-02-11T03:50:12.000000Z"
-                    },
-                    "documents": [
-                        {
-                            "id": 1,
-                            "user_id": 70,
-                            "document_type": "nid",
-                            "document_number": null,
-                            "file_path": "https://renter-pay.mahfuz.click/storage/documents/users/4izRp6k1ps5rfiBr3uK8TNBedj3XGzKesUdsgM2s.png",
-                            "file_url": "https://renter-pay.mahfuz.click/storage/documents/users/4izRp6k1ps5rfiBr3uK8TNBedj3XGzKesUdsgM2s.png",
-                            "back_file_path": "https://renter-pay.mahfuz.click/images/default.png",
-                            "back_file_url": "https://renter-pay.mahfuz.click/images/default.png",
-                            "expiry_date": null,
-                            "status": "approved",
-                            "rejection_reason": null,
-                            "is_verified": true,
-                            "verification_response": null,
-                            "verified_at": "2026-02-13 10:54:26",
-                            "created_at": "2026-02-11 19:47:36",
-                            "updated_at": "2026-02-13 10:54:26"
-                        }
-                    ],
-                    "created_at": "2026-02-11 09:50:12",
-                    "updated_at": "2026-02-26 18:57:52"
-                },
-                "assignments": [],
-                "created_at": "2026-03-03 23:33:33",
-                "updated_at": "2026-03-03 23:33:33"
-            },
-            {
-                "id": 1,
-                "tenant_id": 70,
-                "property_id": 140,
-                "property_unit_id": null,
-                "title": "Leaky Faucet",
-                "description": "Kitchen faucet is leaking",
-                "location_of_problem": null,
-                "urgency": "high",
-                "status": "pending",
-                "preferred_date": "2026-03-22",
-                "preferred_time_slots": [
-                    "8am_12pm",
-                    "12pm_5pm"
-                ],
-                "preferred_time_other": null,
-                "property": {
-                    "id": 140,
-                    "landlord_id": 75,
-                    "property_type_id": 3,
-                    "title": "Updated tonnis apartment",
-                    "name": "Updated tonnis apartment",
-                    "description": "Experience modern living with high-end finishes, including wood-style flooring, sleek Whirlpool stainless steel appliances, and premium amenities designed for comfort and convenience. Enjoy a sophisticated urban lifestyle in a prime location with easy access to dining, entertainment, and business hubs.",
-                    "address": "New market road-6",
-                    "city": "dhaka",
-                    "state": "dhaka",
-                    "postal_code": "1216",
-                    "country": "Australia",
-                    "latitude": null,
-                    "longitude": null,
-                    "bedrooms": 8,
-                    "bathrooms": 4,
-                    "parking_spaces": 0,
-                    "land_size": "1200.00",
-                    "building_size": "1200.00",
-                    "year_built": 2000,
-                    "status": "active",
-                    "available_from": "2026-03-15",
-                    "is_verified": true,
-                    "is_in_person_inspection_available": false,
-                    "is_virtual_inspection_available": false,
-                    "is_favourite": true,
-                    "features": [
-                        "Open floor plan with natural lighting",
-                        "Fully equipped modern kitchen"
-                    ],
-                    "lease_agreement_defaults": {
-                        "keys_count": "0",
-                        "bond_amount": "345",
-                        "currency": "AUD",
-                        "payment_frequency": "week",
-                        "disclosures": {
-                            "intent_to_sell_premises": {
-                                "intends_to_sell": "0",
-                                "engaged_agent": "0",
-                                "contract_prepared": "0"
-                            },
-                            "mortgagee_action": {
-                                "mortgagee_taking_possession": "0",
-                                "enforcement_proceedings_commenced": "0"
-                            },
-                            "ownership": {
-                                "is_owner": "1",
-                                "has_right_to_rent": "0"
-                            },
-                            "embedded_electricity_network": {
-                                "supplied_by_embedded_network": "0"
-                            },
-                            "property_history": {
-                                "homicide_in_last_5_years": "0",
-                                "drug_activity_in_last_5_years": "0",
-                                "asbestos_present": "0"
-                            },
-                            "rental_compliance": {
-                                "meets_minimum_standards": "1",
-                                "mould_or_damp_repair_notices_last_3_years": "1"
-                            },
-                            "safety_checks": {
-                                "electricity_safety_check_date": "2026-02-06",
-                                "gas_safety_check_date": "2026-02-13",
-                                "pool_barrier_compliance_check_date": "2026-02-28",
-                                "outstanding_recommendations": "0"
-                            },
-                            "heritage": {
-                                "is_heritage_listed": "1"
-                            },
-                            "planning_and_legal": {
-                                "affected_by_planning_application": "0",
-                                "building_or_safety_notices_issued": "1",
-                                "domestic_building_work_dispute": "1",
-                                "owners_corporation_dispute": "0",
-                                "subject_to_owners_corporation_rules": "0"
-                            },
-                            "additional_notes": "aFully equipped modern kitchen"
-                        },
-                        "property_manager_details": {
-                            "property_manager_name": "Tonni Akter Bithi",
-                            "phone_number": "01825332448",
-                            "email_address": "landlord@gmail.com",
-                            "estate_agency_name": "sdfsdfs"
-                        }
-                    },
-                    "rating": "4.00",
-                    "rating_count": 2,
-                    "units": [
-                        {
-                            "id": 218,
-                            "property_id": 140,
-                            "unit_number": "unit 101",
-                            "unit_name": null,
-                            "rent_amount": "450000.00",
-                            "rent_type": {
-                                "id": 1,
-                                "name": "Daily",
-                                "slug": "daily",
-                                "rent_days": 1,
-                                "description": "Rent charged per day",
-                                "status": true,
-                                "created_at": "2026-02-10T20:39:57.000000Z",
-                                "updated_at": "2026-02-10T20:39:57.000000Z"
-                            },
-                            "currency": {
-                                "id": 1,
-                                "code": "AUD",
-                                "name": "Australian Dollar",
-                                "symbol": "A$",
-                                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                                "type": "fiat",
-                                "decimal_places": 2,
-                                "exchange_rate": 1,
-                                "is_active": true,
-                                "sort_order": 1
-                            },
-                            "display_rent_amount": 450000,
-                            "display_currency": {
-                                "id": 1,
-                                "code": "AUD",
-                                "name": "Australian Dollar",
-                                "symbol": "A$",
-                                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                                "type": "fiat",
-                                "decimal_places": 2,
-                                "exchange_rate": 1,
-                                "is_active": true,
-                                "sort_order": 1
-                            },
-                            "status": "available",
-                            "bedrooms": 8,
-                            "bathrooms": 4,
-                            "size": "1200.00",
-                            "description": null
-                        }
-                    ],
-                    "review_summary": {
-                        "total_reviews": 2,
-                        "average_rating": "4.00"
-                    },
-                    "created_at": "2026-02-27T16:15:08.000000Z",
-                    "updated_at": "2026-03-08T16:51:27.000000Z"
-                },
-                "property_unit": null,
-                "tenant": {
-                    "id": 70,
-                    "name": "Tonni Akter",
-                    "first_name": "Tonni",
-                    "last_name": "Akter",
-                    "gender": "female",
-                    "image": "https://renter-pay.mahfuz.click/storage/images/users/Zg5eNdBas56k0l6teMbNMXT0Re47xpkfnBW2o7uv.png",
-                    "email": "tenant@gmail.com",
-                    "phone": "8801825332448",
-                    "is_active": true,
-                    "provider": null,
-                    "provider_id": null,
-                    "roles": [
-                        "tenant"
-                    ],
-                    "tenant_profile": {
-                        "id": 23,
-                        "employment_status": "employed",
-                        "employer_name": "Wiztech BD",
-                        "job_title": "Software Engineer",
-                        "monthly_income": "50000.00",
-                        "is_verified": true,
-                        "created_at": "2026-02-11T03:50:12.000000Z",
-                        "updated_at": "2026-02-11T03:50:12.000000Z"
-                    },
-                    "documents": [
-                        {
-                            "id": 1,
-                            "user_id": 70,
-                            "document_type": "nid",
-                            "document_number": null,
-                            "file_path": "https://renter-pay.mahfuz.click/storage/documents/users/4izRp6k1ps5rfiBr3uK8TNBedj3XGzKesUdsgM2s.png",
-                            "file_url": "https://renter-pay.mahfuz.click/storage/documents/users/4izRp6k1ps5rfiBr3uK8TNBedj3XGzKesUdsgM2s.png",
-                            "back_file_path": "https://renter-pay.mahfuz.click/images/default.png",
-                            "back_file_url": "https://renter-pay.mahfuz.click/images/default.png",
-                            "expiry_date": null,
-                            "status": "approved",
-                            "rejection_reason": null,
-                            "is_verified": true,
-                            "verification_response": null,
-                            "verified_at": "2026-02-13 10:54:26",
-                            "created_at": "2026-02-11 19:47:36",
-                            "updated_at": "2026-02-13 10:54:26"
-                        }
-                    ],
-                    "created_at": "2026-02-11 09:50:12",
-                    "updated_at": "2026-02-26 18:57:52"
-                },
-                "assignments": [],
-                "created_at": "2026-03-03 23:00:38",
-                "updated_at": "2026-03-03 23:00:38"
-            }
-        ],
-        "links": {
-            "first": "https://renter-pay.mahfuz.click/api/v1/maintenance/requests?page=1",
-            "last": "https://renter-pay.mahfuz.click/api/v1/maintenance/requests?page=1",
-            "prev": null,
-            "next": null
+  "error": false,
+  "code": 200,
+  "message": "Inspection retrieved successfully",
+  "data": {
+    "id": 118,
+    "property_id": 143,
+    "property_unit_id": null,
+    "tenant_id": 98,
+    "inspection_date": "2027-01-01 00:31:00",
+    "type": "in_person",
+    "status": "cancelled",
+    "notes": "Valo koira inspect koiro. ok bye.",
+    "is_approved": false,
+    "approved_by": null,
+    "approved_at": null,
+    "rejection_reason": null,
+    "property": {
+      "id": 143,
+      "landlord_id": 75,
+      "property_type_id": 3,
+      "title": "Duplex in Sydney - Queen Street",
+      "name": "Duplex in Sydney - Queen Street",
+      "description": "Modern Penthouse located in Brisbane. Features 4 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+      "address": "New York , City",
+      "city": "Australia",
+      "state": "new york",
+      "postal_code": "9845",
+      "country": "Australia",
+      "latitude": null,
+      "longitude": null,
+      "bedrooms": 8,
+      "bathrooms": 6,
+      "parking_spaces": 0,
+      "land_size": "1200.00",
+      "building_size": "1200.00",
+      "year_built": 2000,
+      "status": "active",
+      "available_from": "2026-04-01",
+      "is_verified": true,
+      "is_in_person_inspection_available": false,
+      "is_virtual_inspection_available": false,
+      "is_favourite": true,
+      "features": [
+        "Spacious open-plan living area with natural light throughout.",
+        "Ducted air conditioning and heating for year-round comfort.",
+        "Dedicated study or home office space with built-in desk.",
+        "Swimming pool and communal BBQ area for residents.",
+        "Pet-friendly with easy access to nearby parks and walking paths.",
+        "Internal laundry with dryer and extra linen storage."
+      ],
+      "lease_agreement_defaults": {
+        "keys_count": "0",
+        "bond_amount": "4500",
+        "currency": "AUD",
+        "payment_frequency": "week",
+        "disclosures": {
+          "intent_to_sell_premises": {
+            "intends_to_sell": "1",
+            "engaged_agent": "0",
+            "contract_prepared": "0"
+          },
+          "mortgagee_action": {
+            "mortgagee_taking_possession": "0",
+            "enforcement_proceedings_commenced": "0"
+          },
+          "ownership": {
+            "is_owner": "0",
+            "has_right_to_rent": "0"
+          },
+          "embedded_electricity_network": {
+            "supplied_by_embedded_network": "0"
+          },
+          "property_history": {
+            "homicide_in_last_5_years": "0",
+            "drug_activity_in_last_5_years": "0",
+            "asbestos_present": "0"
+          },
+          "rental_compliance": {
+            "meets_minimum_standards": "0",
+            "mould_or_damp_repair_notices_last_3_years": "0"
+          },
+          "safety_checks": {
+            "electricity_safety_check_date": "2026-03-09",
+            "gas_safety_check_date": "2026-03-03",
+            "pool_barrier_compliance_check_date": "2026-03-10",
+            "outstanding_recommendations": "0"
+          },
+          "heritage": {
+            "is_heritage_listed": "0"
+          },
+          "planning_and_legal": {
+            "affected_by_planning_application": "0",
+            "building_or_safety_notices_issued": "0",
+            "domestic_building_work_dispute": "0",
+            "owners_corporation_dispute": "0",
+            "subject_to_owners_corporation_rules": "0"
+          },
+          "additional_notes": "Description:\r\nModern Penthouse located in Brisbane. Features 4 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.\r\n\r\nFeatures:\r\nSpacious open-plan living area with natural light throughout.\r\nDucted air conditioning and heating for year-round comfort.\r\nDedicated study or home office space with built-in desk.\r\nSwimming pool and communal BBQ area for residents.\r\nPet-friendly with easy access to nearby parks and walking paths.\r\nInternal laundry with dryer and extra linen storage."
         },
-        "meta": {
-            "current_page": 1,
-            "from": 1,
-            "last_page": 1,
-            "links": [
-                {
-                    "url": null,
-                    "label": "&laquo; Previous",
-                    "page": null,
-                    "active": false
-                },
-                {
-                    "url": "https://renter-pay.mahfuz.click/api/v1/maintenance/requests?page=1",
-                    "label": "1",
-                    "page": 1,
-                    "active": true
-                },
-                {
-                    "url": null,
-                    "label": "Next &raquo;",
-                    "page": null,
-                    "active": false
-                }
-            ],
-            "path": "https://renter-pay.mahfuz.click/api/v1/maintenance/requests",
-            "per_page": 20,
-            "to": 2,
-            "total": 2
+        "property_manager_details": {
+          "property_manager_name": "sdfsd",
+          "phone_number": "154545",
+          "email_address": "mark@gmail.com",
+          "estate_agency_name": "new agency"
         }
+      },
+      "rating": "0.00",
+      "rating_count": 0,
+      "units": [
+        {
+          "id": 221,
+          "property_id": 143,
+          "unit_number": "unit 101",
+          "unit_name": null,
+          "rent_amount": "45000.00",
+          "rent_type": {
+            "id": 1,
+            "name": "Daily",
+            "slug": "daily",
+            "rent_days": 1,
+            "description": "Rent charged per day",
+            "status": true,
+            "created_at": "2026-02-10T20:39:57.000000Z",
+            "updated_at": "2026-02-10T20:39:57.000000Z"
+          },
+          "currency": {
+            "id": 1,
+            "code": "AUD",
+            "name": "Australian Dollar",
+            "symbol": "A$",
+            "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+            "type": "fiat",
+            "decimal_places": 2,
+            "exchange_rate": 1,
+            "is_active": true,
+            "sort_order": 1
+          },
+          "display_rent_amount": 45000,
+          "display_currency": {
+            "id": 1,
+            "code": "AUD",
+            "name": "Australian Dollar",
+            "symbol": "A$",
+            "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+            "type": "fiat",
+            "decimal_places": 2,
+            "exchange_rate": 1,
+            "is_active": true,
+            "sort_order": 1
+          },
+          "status": "available",
+          "bedrooms": 8,
+          "bathrooms": 6,
+          "size": "1200.00",
+          "description": null
+        }
+      ],
+      "review_summary": {
+        "total_reviews": 0,
+        "average_rating": "0.00"
+      },
+      "created_at": "2026-03-08T06:34:43.000000Z",
+      "updated_at": "2026-03-30T12:37:16.000000Z"
     },
-    "errors": null
+    "tenant": {
+      "id": 98,
+      "name": "Sabkat Ahmed Rafi",
+      "first_name": "Sabkat",
+      "last_name": "Ahmed Rafi",
+      "gender": "",
+      "image": "https://renter-pay.mahfuz.click/images/person.png",
+      "email": "sabkatahmedrafi@gmail.com",
+      "phone": "880123456789",
+      "is_active": true,
+      "provider": null,
+      "provider_id": null,
+      "roles": ["tenant"],
+      "tenant_profile": {
+        "id": 33,
+        "employment_status": null,
+        "employer_name": null,
+        "job_title": null,
+        "monthly_income": null,
+        "is_verified": true,
+        "created_at": "2026-03-16T03:46:35.000000Z",
+        "updated_at": "2026-03-16T03:46:35.000000Z"
+      },
+      "documents": [
+        {
+          "id": 13,
+          "user_id": 98,
+          "document_type": "nid",
+          "document_number": null,
+          "file_path": "https://renter-pay.mahfuz.click/storage/documents/users/emrIcYP9WSYZhORPkNhRSFtlUdmdst3RZs1PuC83.png",
+          "file_url": "https://renter-pay.mahfuz.click/storage/documents/users/emrIcYP9WSYZhORPkNhRSFtlUdmdst3RZs1PuC83.png",
+          "back_file_path": "https://renter-pay.mahfuz.click/storage/documents/users/LfroDSwbYXIGRq0c7bz39F3H0FUcbCU8QoTv09B3.png",
+          "back_file_url": "https://renter-pay.mahfuz.click/storage/documents/users/LfroDSwbYXIGRq0c7bz39F3H0FUcbCU8QoTv09B3.png",
+          "expiry_date": null,
+          "status": "manual_review",
+          "rejection_reason": null,
+          "is_verified": false,
+          "verification_response": {
+            "verified": false,
+            "score": 0,
+            "details": "The provided images are not National ID documents. They are identical graphics of the React software logo. No personal data or document fields are present.",
+            "extracted_data": {
+              "full_name": null,
+              "date_of_birth": null,
+              "nid_no": null,
+              "expiry_date": null,
+              "address": null,
+              "issuing_authority": null,
+              "photo_present": false
+            },
+            "timestamp": "2026-03-16T12:07:36+06:00"
+          },
+          "verified_at": null,
+          "created_at": "2026-03-16 10:26:57",
+          "updated_at": "2026-03-16 12:07:36"
+        }
+      ],
+      "created_at": "2026-03-16 09:46:35",
+      "updated_at": "2026-03-16 09:46:35"
+    },
+    "approved_by_user": null,
+    "created_at": "2026-03-16 12:41:37",
+    "updated_at": "2026-03-16 13:05:55"
+  },
+  "errors": null
 }
