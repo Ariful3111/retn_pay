@@ -10,10 +10,16 @@ class CustomRadioButton extends StatelessWidget {
   final int groupValue;
   final ValueChanged onChange;
   final String text;
+  final double? fontSize;
+  final FontWeight? fontWeight;
   const CustomRadioButton({
     super.key,
     required this.value,
-    required this.groupValue, required this.onChange, required this.text,
+    required this.groupValue,
+    required this.onChange,
+    required this.text,
+    this.fontSize,
+    this.fontWeight,
   });
 
   @override
@@ -27,13 +33,12 @@ class CustomRadioButton extends StatelessWidget {
           visualDensity: VisualDensity.compact,
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           activeColor: AppColors.primaryColorDark,
-          
         ),
         CustomTextSecondary(
-        text: text,
-        fontWeight: FontWeight.w400,
-        fontSize: 12.sp,
-      ),
+          text: text,
+          fontWeight: fontWeight ?? FontWeight.w400,
+          fontSize: fontSize ?? 12.sp,
+        ),
       ],
     );
   }
