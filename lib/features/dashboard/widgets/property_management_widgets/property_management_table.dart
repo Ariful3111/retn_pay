@@ -40,12 +40,6 @@ class _PropertyManagementTableState extends State<PropertyManagementTable> {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Obx(() {
-      // Sync allRows from homeController when properties change
-      if (!homeController.isLoading.value &&
-          homeController.properties.value != null) {
-        propertyManagementController.syncAllRowsFromProperties();
-      }
-
       return homeController.isLoading.value
           ? ButtonLoading()
           : Container(

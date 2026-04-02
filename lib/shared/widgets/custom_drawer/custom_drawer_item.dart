@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
@@ -28,10 +29,16 @@ class CustomDrawerItem extends StatelessWidget {
             if (Get.currentRoute != AppRoutes.mainHome) {
               Get.toNamed(AppRoutes.mainHome);
               Future.microtask(() {
-        mainHomeController.changeIndex(item['navIndex']);
-      });
+                mainHomeController.changeIndex(item['navIndex']);
+              });
             }
             mainHomeController.changeIndex(item['navIndex']);
+          } else if (dashboardController.drawerItems[index]['title'] ==
+              'Dashboard') {
+            userIndex == 0
+                ? mainHomeController.selectIndex.value = 2
+                : mainHomeController.selectIndex.value = 0;
+            Get.toNamed(AppRoutes.mainHome);
           } else {
             final route = item['routes'];
             if (Get.currentRoute != route) {

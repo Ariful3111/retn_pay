@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/dashboard_landlord_quick_action_model.dart';
+import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
 
 class DashboardLandlordQuickAction extends StatelessWidget {
   const DashboardLandlordQuickAction({super.key});
@@ -16,7 +18,9 @@ class DashboardLandlordQuickAction extends StatelessWidget {
           icon: IconsPath.dashboardLandlordCalender,
           title: 'Calendar Access',
           subTitle: 'Stay on top of rent due dates, inspections, and events.',
-          onTap: () async {},
+          onTap: () {
+            Get.find<MainHomeController>().selectIndex.value = 3;
+          },
           buttonText: 'Open Calendar',
         ),
         if (userIndex == 1)
@@ -24,7 +28,10 @@ class DashboardLandlordQuickAction extends StatelessWidget {
             icon: IconsPath.dashboardAddProperty,
             title: 'Add New Properties',
             subTitle: 'Expand your portfolio by adding a new rental property.',
-            onTap: () {},
+            onTap: () {
+              Get.toNamed(AppRoutes.addNewProperty);
+              Get.find<DashboardController>().isItemSelect.value = 1;
+            },
             buttonText: 'Add Property',
           ),
         if (userIndex == 2)
@@ -45,11 +52,14 @@ class DashboardLandlordQuickAction extends StatelessWidget {
             onTap: () {},
             buttonText: 'View Service',
           ),
-        DashboardLandlordQuickActionModel(
+      if(userIndex!=3)  DashboardLandlordQuickActionModel(
           icon: IconsPath.dashboardLandlordInspection,
           title: 'Scheduled Inspections',
           subTitle: 'View upcoming property inspections with ease.',
-          onTap: () {},
+          onTap: () {
+            Get.toNamed(AppRoutes.inspectionRequestView);
+              Get.find<DashboardController>().isItemSelect.value = 2;
+          },
           buttonText: 'View Schedule ',
         ),
         DashboardLandlordQuickActionModel(

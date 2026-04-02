@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/core/services/url_service.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_items.dart';
 
 class WebAssetItems extends StatelessWidget {
@@ -39,15 +42,21 @@ class WebAssetItems extends StatelessWidget {
             imageHeight: 17.h,
             imageWidth: 18.w,
             title: 'Application Management',
-            onTap: () {},
-          ),
+            onTap: () {
+              Get.toNamed(AppRoutes.applicationManagementDetails);
+              Get.find<DashboardController>().isItemSelect.value = 1;
+            },
+        ),
         if (userIndex == 0 || userIndex == 1 || userIndex == 2)
           ProfileItems(
             image: IconsPath.profileAgreement,
             imageHeight: 23.h,
             imageWidth: 21.w,
             title: 'Agreement',
-            onTap: () {},
+            onTap: () {
+              Get.toNamed(AppRoutes.agreementView);
+              Get.find<DashboardController>().isItemSelect.value = 3;
+            },
           ),
         if (userIndex == 1)
           ProfileItems(
