@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/dashboard/widgets/agreement_view_widgets/agreement_header.dart';
 import 'package:renter_pay/features/dashboard/widgets/agreement_view_widgets/agreement_view_widgets.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
