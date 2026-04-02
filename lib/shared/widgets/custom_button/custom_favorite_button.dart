@@ -6,7 +6,11 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 class CustomFavoriteButton extends StatelessWidget {
   final VoidCallback onTap;
   final bool isFavorite;
-  const CustomFavoriteButton({super.key, required this.onTap, required this.isFavorite});
+  const CustomFavoriteButton({
+    super.key,
+    required this.onTap,
+    required this.isFavorite,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +24,11 @@ class CustomFavoriteButton extends StatelessWidget {
           color: AppColors.whiteColor,
         ),
         child: Center(
-          child: Image.asset(isFavorite?IconsPath.selectFavorite :IconsPath.favorite,height: isFavorite? 20.h:15.h,width: isFavorite? 20.h:15.h,),
+          child: Image.asset(
+            isFavorite ? IconsPath.selectFavorite : IconsPath.favorite,
+            height: isFavorite ? 20.h : 15.h,
+            width: isFavorite ? 20.h : 15.h,
+          ),
         ),
       ),
     );

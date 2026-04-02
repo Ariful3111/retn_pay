@@ -74,7 +74,7 @@ class AgreementViewWidgets extends GetWidget<AgreementController> {
                           ],
                         ),
                         AnimatedSize(
-                          duration:  Duration(milliseconds: 250),
+                          duration: Duration(milliseconds: 250),
                           curve: Curves.easeInOut,
                           child: isSelected
                               ? Padding(

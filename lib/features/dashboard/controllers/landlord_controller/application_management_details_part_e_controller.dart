@@ -3,6 +3,20 @@ import 'package:get/get.dart';
 import 'package:signature/signature.dart';
 
 class ApplicationManagementDetailsPartEController extends GetxController {
+  // Is editable flag - true for new application, false for viewing existing
+  RxBool isEditable = true.obs;
+
+  // Existing signature from API (base64)
+  RxString existingSignature = ''.obs;
+
+  // Method to set existing signature
+  void setExistingSignature(String signature) {
+    existingSignature.value = signature;
+  }
+
+  // Method to check if signature exists (either new or from API)
+  bool get hasSignature => existingSignature.value.isNotEmpty;
+
   TextEditingController applicantNameController = TextEditingController();
   TextEditingController applicantAddressController = TextEditingController();
   TextEditingController applicantPostcodeController = TextEditingController();

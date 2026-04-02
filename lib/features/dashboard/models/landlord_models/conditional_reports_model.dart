@@ -1,3 +1,11 @@
+bool _parseBool(dynamic value) {
+  if (value is bool) return value;
+  if (value is String) {
+    return value.toLowerCase() == 'true' || value == '1';
+  }
+  return false;
+}
+
 class ConditionalReportsModel {
   bool? error;
   int? code;
@@ -14,8 +22,8 @@ class ConditionalReportsModel {
   });
 
   ConditionalReportsModel.fromJson(Map<String, dynamic> json) {
-    error = json['error'];
-    code = json['code'];
+    error = json['error'] != null ? _parseBool(json['error']) : null;
+    code = json['code'] != null ? int.tryParse(json['code'].toString()) : null;
     message = json['message'];
     data = json['data'] != null
         ? ConditionalReportsData.fromJson(json['data'])
@@ -103,9 +111,13 @@ class ConditionReportItem {
   });
 
   ConditionReportItem.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    propertyId = json['property_id'];
-    inspectionId = json['inspection_id'];
+    id = json['id'] != null ? int.tryParse(json['id'].toString()) : null;
+    propertyId = json['property_id'] != null
+        ? int.tryParse(json['property_id'].toString())
+        : null;
+    inspectionId = json['inspection_id'] != null
+        ? int.tryParse(json['inspection_id'].toString())
+        : null;
     reportType = json['report_type'];
     fileName = json['file_name'];
     fileUrl = json['file_url'];
@@ -213,9 +225,13 @@ class ConditionReportProperty {
   });
 
   ConditionReportProperty.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    landlordId = json['landlord_id'];
-    propertyTypeId = json['property_type_id'];
+    id = json['id'] != null ? int.tryParse(json['id'].toString()) : null;
+    landlordId = json['landlord_id'] != null
+        ? int.tryParse(json['landlord_id'].toString())
+        : null;
+    propertyTypeId = json['property_type_id'] != null
+        ? int.tryParse(json['property_type_id'].toString())
+        : null;
     title = json['title'];
     name = json['name'];
     description = json['description'];
@@ -226,17 +242,35 @@ class ConditionReportProperty {
     country = json['country'];
     latitude = json['latitude'];
     longitude = json['longitude'];
-    bedrooms = json['bedrooms'];
-    bathrooms = json['bathrooms'];
-    parkingSpaces = json['parking_spaces'];
+    bedrooms = json['bedrooms'] != null
+        ? int.tryParse(json['bedrooms'].toString())
+        : null;
+    bathrooms = json['bathrooms'] != null
+        ? int.tryParse(json['bathrooms'].toString())
+        : null;
+    parkingSpaces = json['parking_spaces'] != null
+        ? int.tryParse(json['parking_spaces'].toString())
+        : null;
     landSize = json['land_size'];
     buildingSize = json['building_size'];
-    yearBuilt = json['year_built'];
+    yearBuilt = json['year_built'] != null
+        ? int.tryParse(json['year_built'].toString())
+        : null;
     status = json['status'];
-    isVerified = json['is_verified'];
-    isInPersonInspectionAvailable = json['is_in_person_inspection_available'];
-    isVirtualInspectionAvailable = json['is_virtual_inspection_available'];
-    isFavourite = json['is_favourite'];
+    isVerified = json['is_verified'] != null
+        ? _parseBool(json['is_verified'])
+        : null;
+    isInPersonInspectionAvailable =
+        json['is_in_person_inspection_available'] != null
+        ? _parseBool(json['is_in_person_inspection_available'])
+        : null;
+    isVirtualInspectionAvailable =
+        json['is_virtual_inspection_available'] != null
+        ? _parseBool(json['is_virtual_inspection_available'])
+        : null;
+    isFavourite = json['is_favourite'] != null
+        ? _parseBool(json['is_favourite'])
+        : null;
     if (json['features'] != null) {
       features = List<String>.from(json['features']);
     }
@@ -244,7 +278,9 @@ class ConditionReportProperty {
         ? LeaseAgreementDefaults.fromJson(json['lease_agreement_defaults'])
         : null;
     rating = json['rating'];
-    ratingCount = json['rating_count'];
+    ratingCount = json['rating_count'] != null
+        ? int.tryParse(json['rating_count'].toString())
+        : null;
     if (json['units'] != null) {
       units = <PropertyUnit>[];
       json['units'].forEach((v) {
@@ -324,10 +360,14 @@ class LeaseAgreementDefaults {
   });
 
   LeaseAgreementDefaults.fromJson(Map<String, dynamic> json) {
-    keysCount = json['keys_count'];
+    keysCount = json['keys_count'] != null
+        ? int.tryParse(json['keys_count'].toString())
+        : null;
     inclusions = json['inclusions'];
     terms = json['terms'];
-    bondAmount = json['bond_amount'];
+    bondAmount = json['bond_amount'] != null
+        ? int.tryParse(json['bond_amount'].toString())
+        : null;
     currency = json['currency'];
     paymentFrequency = json['payment_frequency'];
     disclosures = json['disclosures'] != null
@@ -461,9 +501,15 @@ class IntentToSellPremises {
   });
 
   IntentToSellPremises.fromJson(Map<String, dynamic> json) {
-    intendsToSell = json['intends_to_sell'];
-    engagedAgent = json['engaged_agent'];
-    contractPrepared = json['contract_prepared'];
+    intendsToSell = json['intends_to_sell'] != null
+        ? _parseBool(json['intends_to_sell'])
+        : null;
+    engagedAgent = json['engaged_agent'] != null
+        ? _parseBool(json['engaged_agent'])
+        : null;
+    contractPrepared = json['contract_prepared'] != null
+        ? _parseBool(json['contract_prepared'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -485,8 +531,13 @@ class MortgageeAction {
   });
 
   MortgageeAction.fromJson(Map<String, dynamic> json) {
-    mortgageeTakingPossession = json['mortgagee_taking_possession'];
-    enforcementProceedingsCommenced = json['enforcement_proceedings_commenced'];
+    mortgageeTakingPossession = json['mortgagee_taking_possession'] != null
+        ? _parseBool(json['mortgagee_taking_possession'])
+        : null;
+    enforcementProceedingsCommenced =
+        json['enforcement_proceedings_commenced'] != null
+        ? _parseBool(json['enforcement_proceedings_commenced'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -504,8 +555,10 @@ class OwnershipDisclosure {
   OwnershipDisclosure({this.isOwner, this.hasRightToRent});
 
   OwnershipDisclosure.fromJson(Map<String, dynamic> json) {
-    isOwner = json['is_owner'];
-    hasRightToRent = json['has_right_to_rent'];
+    isOwner = json['is_owner'] != null ? _parseBool(json['is_owner']) : null;
+    hasRightToRent = json['has_right_to_rent'] != null
+        ? _parseBool(json['has_right_to_rent'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -522,7 +575,9 @@ class EmbeddedElectricityNetwork {
   EmbeddedElectricityNetwork({this.suppliedByEmbeddedNetwork});
 
   EmbeddedElectricityNetwork.fromJson(Map<String, dynamic> json) {
-    suppliedByEmbeddedNetwork = json['supplied_by_embedded_network'];
+    suppliedByEmbeddedNetwork = json['supplied_by_embedded_network'] != null
+        ? _parseBool(json['supplied_by_embedded_network'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -544,9 +599,15 @@ class PropertyHistory {
   });
 
   PropertyHistory.fromJson(Map<String, dynamic> json) {
-    homicideInLast5Years = json['homicide_in_last_5_years'];
-    drugActivityInLast5Years = json['drug_activity_in_last_5_years'];
-    asbestosPresent = json['asbestos_present'];
+    homicideInLast5Years = json['homicide_in_last_5_years'] != null
+        ? _parseBool(json['homicide_in_last_5_years'])
+        : null;
+    drugActivityInLast5Years = json['drug_activity_in_last_5_years'] != null
+        ? _parseBool(json['drug_activity_in_last_5_years'])
+        : null;
+    asbestosPresent = json['asbestos_present'] != null
+        ? _parseBool(json['asbestos_present'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -568,9 +629,13 @@ class RentalCompliance {
   });
 
   RentalCompliance.fromJson(Map<String, dynamic> json) {
-    meetsMinimumStandards = json['meets_minimum_standards'];
+    meetsMinimumStandards = json['meets_minimum_standards'] != null
+        ? _parseBool(json['meets_minimum_standards'])
+        : null;
     mouldOrDampRepairNoticesLast3Years =
-        json['mould_or_damp_repair_notices_last_3_years'];
+        json['mould_or_damp_repair_notices_last_3_years'] != null
+        ? _parseBool(json['mould_or_damp_repair_notices_last_3_years'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -599,7 +664,9 @@ class SafetyChecks {
     electricitySafetyCheckDate = json['electricity_safety_check_date'];
     gasSafetyCheckDate = json['gas_safety_check_date'];
     poolBarrierComplianceCheckDate = json['pool_barrier_compliance_check_date'];
-    outstandingRecommendations = json['outstanding_recommendations'];
+    outstandingRecommendations = json['outstanding_recommendations'] != null
+        ? _parseBool(json['outstanding_recommendations'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -618,7 +685,9 @@ class Heritage {
   Heritage({this.isHeritageListed});
 
   Heritage.fromJson(Map<String, dynamic> json) {
-    isHeritageListed = json['is_heritage_listed'];
+    isHeritageListed = json['is_heritage_listed'] != null
+        ? _parseBool(json['is_heritage_listed'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -644,12 +713,24 @@ class PlanningAndLegal {
   });
 
   PlanningAndLegal.fromJson(Map<String, dynamic> json) {
-    affectedByPlanningApplication = json['affected_by_planning_application'];
-    buildingOrSafetyNoticesIssued = json['building_or_safety_notices_issued'];
-    domesticBuildingWorkDispute = json['domestic_building_work_dispute'];
-    ownersCorporationDispute = json['owners_corporation_dispute'];
+    affectedByPlanningApplication =
+        json['affected_by_planning_application'] != null
+        ? _parseBool(json['affected_by_planning_application'])
+        : null;
+    buildingOrSafetyNoticesIssued =
+        json['building_or_safety_notices_issued'] != null
+        ? _parseBool(json['building_or_safety_notices_issued'])
+        : null;
+    domesticBuildingWorkDispute = json['domestic_building_work_dispute'] != null
+        ? _parseBool(json['domestic_building_work_dispute'])
+        : null;
+    ownersCorporationDispute = json['owners_corporation_dispute'] != null
+        ? _parseBool(json['owners_corporation_dispute'])
+        : null;
     subjectToOwnersCorporationRules =
-        json['subject_to_owners_corporation_rules'];
+        json['subject_to_owners_corporation_rules'] != null
+        ? _parseBool(json['subject_to_owners_corporation_rules'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -728,8 +809,10 @@ class PropertyUnit {
   });
 
   PropertyUnit.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    propertyId = json['property_id'];
+    id = json['id'] != null ? int.tryParse(json['id'].toString()) : null;
+    propertyId = json['property_id'] != null
+        ? int.tryParse(json['property_id'].toString())
+        : null;
     unitNumber = json['unit_number'];
     unitName = json['unit_name'];
     rentAmount = json['rent_amount'];
@@ -739,13 +822,19 @@ class PropertyUnit {
     currency = json['currency'] != null
         ? Currency.fromJson(json['currency'])
         : null;
-    displayRentAmount = json['display_rent_amount'];
+    displayRentAmount = json['display_rent_amount'] != null
+        ? int.tryParse(json['display_rent_amount'].toString())
+        : null;
     displayCurrency = json['display_currency'] != null
         ? Currency.fromJson(json['display_currency'])
         : null;
     status = json['status'];
-    bedrooms = json['bedrooms'];
-    bathrooms = json['bathrooms'];
+    bedrooms = json['bedrooms'] != null
+        ? int.tryParse(json['bedrooms'].toString())
+        : null;
+    bathrooms = json['bathrooms'] != null
+        ? int.tryParse(json['bathrooms'].toString())
+        : null;
     size = json['size'];
     description = json['description'];
   }
@@ -785,10 +874,12 @@ class RentType {
   RentType({this.id, this.name, this.slug, this.rentDays});
 
   RentType.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = json['id'] != null ? int.tryParse(json['id'].toString()) : null;
     name = json['name'];
     slug = json['slug'];
-    rentDays = json['rent_days'];
+    rentDays = json['rent_days'] != null
+        ? int.tryParse(json['rent_days'].toString())
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -812,7 +903,7 @@ class Currency {
   Currency({this.id, this.code, this.name, this.symbol, this.logo, this.type});
 
   Currency.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = json['id'] != null ? int.tryParse(json['id'].toString()) : null;
     code = json['code'];
     name = json['name'];
     symbol = json['symbol'];
@@ -839,7 +930,9 @@ class ReviewSummary {
   ReviewSummary({this.totalReviews, this.averageRating});
 
   ReviewSummary.fromJson(Map<String, dynamic> json) {
-    totalReviews = json['total_reviews'];
+    totalReviews = json['total_reviews'] != null
+        ? int.tryParse(json['total_reviews'].toString())
+        : null;
     averageRating = json['average_rating'];
   }
 
@@ -859,7 +952,7 @@ class CreatedByUser {
   CreatedByUser({this.id, this.name, this.email});
 
   CreatedByUser.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = json['id'] != null ? int.tryParse(json['id'].toString()) : null;
     name = json['name'];
     email = json['email'];
   }
@@ -920,9 +1013,13 @@ class ConditionalReportsMeta {
   });
 
   ConditionalReportsMeta.fromJson(Map<String, dynamic> json) {
-    currentPage = json['current_page'];
-    from = json['from'];
-    lastPage = json['last_page'];
+    currentPage = json['current_page'] != null
+        ? int.tryParse(json['current_page'].toString())
+        : null;
+    from = json['from'] != null ? int.tryParse(json['from'].toString()) : null;
+    lastPage = json['last_page'] != null
+        ? int.tryParse(json['last_page'].toString())
+        : null;
     if (json['links'] != null) {
       links = <ConditionalReportsMetaLink>[];
       json['links'].forEach((v) {
@@ -931,8 +1028,10 @@ class ConditionalReportsMeta {
     }
     path = json['path'];
     perPage = int.tryParse(json['per_page'].toString());
-    to = json['to'];
-    total = json['total'];
+    to = json['to'] != null ? int.tryParse(json['to'].toString()) : null;
+    total = json['total'] != null
+        ? int.tryParse(json['total'].toString())
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -962,8 +1061,8 @@ class ConditionalReportsMetaLink {
   ConditionalReportsMetaLink.fromJson(Map<String, dynamic> json) {
     url = json['url'];
     label = json['label'];
-    page = json['page'];
-    active = json['active'];
+    page = json['page'] != null ? int.tryParse(json['page'].toString()) : null;
+    active = json['active'] != null ? _parseBool(json['active']) : null;
   }
 
   Map<String, dynamic> toJson() {

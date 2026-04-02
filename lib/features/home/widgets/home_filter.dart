@@ -50,7 +50,17 @@ class HomeFilter extends StatelessWidget {
             amenitiesItems: amenitiesController.filterAmenitiesNames,
             selectedAmenities: amenitiesController.filterSelectedNames,
             onAmenitiesChange: amenitiesController.onFilterAmenitiesChanged,
-            onReset: () {},
+            onReset: () {
+              // Reset all filter controllers
+              homeController.resetFilters();
+              categoryController.resetFilters();
+              amenitiesController.resetFilters();
+              propertyAddressController.resetFilters();
+              // Refresh properties with default filters
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                homeController.getProperties();
+              });
+            },
             isProperty: () {
               homeController.isShowProperty.value =
                   !homeController.isShowProperty.value;

@@ -6,6 +6,7 @@ import 'package:renter_pay/features/dashboard/models/landlord_models/conditional
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/conditional_reports_repo.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_insurance.dart';
 import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_share.dart';
+import 'package:renter_pay/features/home/controllers/home_controller.dart';
 import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
 class PropertyModel {
@@ -34,6 +35,8 @@ enum MyMenu { view, share, insurance, reEnlist, conditionalReport }
 class PropertyManagementController extends GetxController {
   final ConditionalReportsRepository conditionalReportsRepository;
   PropertyManagementController({required this.conditionalReportsRepository});
+
+  late HomeController homeController;
   final conditionalReports = Rxn<ConditionalReportsModel>();
   final conditionReports = <ConditionReportItem>[].obs;
   final isLoading = false.obs;
@@ -155,6 +158,35 @@ class PropertyManagementController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    // Get HomeController reference
+    homeController = Get.find<HomeController>();
+    // Sync allRows from homeController properties
+    syncAllRowsFromProperties();
     getConditionalReports();
+  }
+
+  /// Sync allRows from homeController.properties
+  void syncAllRowsFromProperties() {
+    final properties = homeController.properties.value?.data?.data ?? [];
+
+    final List<PropertyModel> rows = properties.map((property) {
+      return PropertyModel(
+        address: property.address ?? '',
+        verifyStatus: property.isVerified == true ? 'Approved' : 'Pending',
+        rent: (property.units?.isNotEmpty ?? false)
+            ? property.units!.first.rentAmount ?? ''
+            : '',
+        agent: property.agent?.name ?? property.landlord?.name ?? '',
+        enlistStatus: property.status == 'active'
+            ? 'Publish'
+            : (property.status ?? ''),
+        date: property.createdAt ?? '',
+        email: property.landlord?.email ?? property.agent?.email ?? '',
+        phoneNo: property.landlord?.phone ?? property.agent?.phone ?? '',
+      );
+    }).toList();
+
+    allRows.assignAll(rows);
+    expanded.assignAll(List.generate(rows.length, (_) => false));
   }
 }

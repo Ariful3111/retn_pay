@@ -69,9 +69,7 @@ class RepairRequestDetails extends GetWidget<RepairRequestController> {
                   Positioned(
                     right: 10.w,
                     top: 10.h,
-                    child: RepairRequestStatus(
-                      status: status.isEmpty ? 'Pending' : status,
-                    ),
+                    child: RepairRequestStatus(status: status),
                   ),
                 ],
               ),

@@ -145,7 +145,7 @@ class LeaseAgreementItem {
       currencyId: json['currency_id'],
       paymentFrequency: json['payment_frequency']?.toString(),
       rentTypeId: json['rent_type_id'],
-      bondAmount: json['bond_amount'],
+      bondAmount: _parseNum(json['bond_amount']),
       currencyDetail: json['currency_detail'] is Map<String, dynamic>
           ? LeaseAgreementCurrencyDetail.fromJson(json['currency_detail'])
           : null,
@@ -159,7 +159,7 @@ class LeaseAgreementItem {
           ? AgreementDetails.fromJson(json['agreement_details'])
           : null,
       inclusions: json['inclusions']?.toString(),
-      keysCount: json['keys_count'],
+      keysCount: _parseNum(json['keys_count']),
       property: json['property'] is Map<String, dynamic>
           ? LeaseAgreementProperty.fromJson(json['property'])
           : null,
@@ -544,7 +544,7 @@ class RentDetail {
   });
 
   factory RentDetail.fromJson(Map<String, dynamic> json) => RentDetail(
-    amount: json['amount'],
+    amount: _parseNum(json['amount']),
     currency: json['currency']?.toString(),
     frequency: json['frequency']?.toString(),
     rentDueDate: json['rent_due_date']?.toString(),
@@ -565,7 +565,7 @@ class BondDetail {
   const BondDetail({this.amount, this.paymentDueDate});
 
   factory BondDetail.fromJson(Map<String, dynamic> json) => BondDetail(
-    amount: json['amount'],
+    amount: _parseNum(json['amount']),
     paymentDueDate: json['payment_due_date']?.toString(),
   );
 
@@ -715,7 +715,7 @@ class RentDueDate {
   factory RentDueDate.fromJson(Map<String, dynamic> json) => RentDueDate(
     frequency: json['frequency']?.toString(),
     timeCutoff: json['time_cutoff']?.toString(),
-    lateIfAfterCutoff: json['late_if_after_cutoff'],
+    lateIfAfterCutoff: _parseBool(json['late_if_after_cutoff']),
   );
 
   Map<String, dynamic> toJson() => {
@@ -739,10 +739,14 @@ class LateFees {
   });
 
   factory LateFees.fromJson(Map<String, dynamic> json) => LateFees(
-    initialLateFee: json['initial_late_fee'],
-    initialLateFeeAppliesAfterDays: json['initial_late_fee_applies_after_days'],
-    additionalDailyFee: json['additional_daily_fee'],
-    maximumAdditionalFeePeriodDays: json['maximum_additional_fee_period_days'],
+    initialLateFee: _parseNum(json['initial_late_fee']),
+    initialLateFeeAppliesAfterDays: _parseNum(
+      json['initial_late_fee_applies_after_days'],
+    ),
+    additionalDailyFee: _parseNum(json['additional_daily_fee']),
+    maximumAdditionalFeePeriodDays: _parseNum(
+      json['maximum_additional_fee_period_days'],
+    ),
   );
 
   Map<String, dynamic> toJson() => {
@@ -764,8 +768,8 @@ class ReturnedPayments {
 
   factory ReturnedPayments.fromJson(Map<String, dynamic> json) =>
       ReturnedPayments(
-        returnedPaymentFee: json['returned_payment_fee'],
-        additionalLateFeesApply: json['additional_late_fees_apply'],
+        returnedPaymentFee: _parseNum(json['returned_payment_fee']),
+        additionalLateFeesApply: _parseBool(json['additional_late_fees_apply']),
       );
 
   Map<String, dynamic> toJson() => {
@@ -782,7 +786,7 @@ class NonPaymentAndEviction {
 
   factory NonPaymentAndEviction.fromJson(Map<String, dynamic> json) =>
       NonPaymentAndEviction(
-        daysBeforeAction: json['days_before_action'],
+        daysBeforeAction: _parseNum(json['days_before_action']),
         actions: (json['actions'] as List?)?.map((e) => e.toString()).toList(),
       );
 
@@ -826,8 +830,8 @@ class RenterContactConsent {
 
   factory RenterContactConsent.fromJson(Map<String, dynamic> json) =>
       RenterContactConsent(
-        renterIndex: json['renter_index'],
-        consentGiven: json['consent_given'],
+        renterIndex: _parseInt(json['renter_index']),
+        consentGiven: _parseBool(json['consent_given']),
         contactDetails: json['contact_details']?.toString(),
       );
 
@@ -880,7 +884,7 @@ class ProviderSignature {
 
   factory ProviderSignature.fromJson(Map<String, dynamic> json) =>
       ProviderSignature(
-        providerIndex: json['provider_index'],
+        providerIndex: _parseInt(json['provider_index']),
         signature: json['signature']?.toString(),
         signedDate: json['signed_date']?.toString(),
       );
@@ -901,7 +905,7 @@ class RenterSignature {
 
   factory RenterSignature.fromJson(Map<String, dynamic> json) =>
       RenterSignature(
-        renterIndex: json['renter_index'],
+        renterIndex: _parseInt(json['renter_index']),
         signature: json['signature']?.toString(),
         signedDate: json['signed_date']?.toString(),
       );
@@ -1263,13 +1267,13 @@ class LeaseAgreementPropertyUnit {
       currency: json['currency'] is Map<String, dynamic>
           ? PropertyUnitCurrency.fromJson(json['currency'])
           : null,
-      displayRentAmount: json['display_rent_amount'],
+      displayRentAmount: _parseNum(json['display_rent_amount']),
       displayCurrency: json['display_currency'] is Map<String, dynamic>
           ? PropertyUnitCurrency.fromJson(json['display_currency'])
           : null,
       status: json['status']?.toString(),
-      bedrooms: json['bedrooms'],
-      bathrooms: json['bathrooms'],
+      bedrooms: json['bedrooms']?.toDouble(),
+      bathrooms: json['bathrooms']?.toDouble(),
       size: json['size']?.toString(),
       description: json['description']?.toString(),
     );
@@ -1529,4 +1533,49 @@ class LeaseAgreementMetaLink {
     'page': page,
     'active': active,
   };
+}
+
+// ============================================================
+// HELPER FUNCTION TO PARSE NUM (STRING OR NUM)
+// ============================================================
+
+num? _parseNum(dynamic value) {
+  if (value == null) return null;
+  if (value is num) return value;
+  if (value is String) {
+    // Try to parse as integer first
+    final intValue = int.tryParse(value);
+    if (intValue != null) return intValue;
+    // Try to parse as double
+    final doubleValue = double.tryParse(value);
+    if (doubleValue != null) return doubleValue;
+    return null;
+  }
+  return null;
+}
+
+// ============================================================
+// HELPER FUNCTION TO PARSE BOOL (STRING OR BOOL)
+// ============================================================
+
+bool? _parseBool(dynamic value) {
+  if (value == null) return null;
+  if (value is bool) return value;
+  if (value is String) {
+    return value.toLowerCase() == 'true';
+  }
+  return null;
+}
+
+// ============================================================
+// HELPER FUNCTION TO PARSE INT (STRING OR INT)
+// ============================================================
+
+int? _parseInt(dynamic value) {
+  if (value == null) return null;
+  if (value is int) return value;
+  if (value is String) {
+    return int.tryParse(value);
+  }
+  return null;
 }

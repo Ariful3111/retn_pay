@@ -147,4 +147,53 @@ class UploadImage {
       allImages.insertAll(0, newImages);
     }
   }
+
+  static Future<void> sendImages({
+    required ImagePicker picker,
+    required RxList<XFile> pickImages,
+    required BuildContext context,
+  }) async {
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
+    await Get.bottomSheet(
+      Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: isDark ? AppColors.darkPrimary : Colors.white,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(16),
+            topRight: Radius.circular(16),
+          ),
+        ),
+        child: Wrap(
+          children: [
+            ListTile(
+              leading: const Icon(Icons.camera_alt),
+              title: const Text('Camera'),
+              onTap: () async {
+                Get.back();
+                final XFile? image = await picker.pickImage(
+                  source: ImageSource.camera,
+                  imageQuality: 25,
+                );
+                if (image != null) {
+                  pickImages.add(image);
+                }
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.photo_library),
+              title: const Text('Gallery'),
+              onTap: () async {
+                Get.back();
+                final images = await picker.pickMultiImage(imageQuality: 25);
+                if (images.isNotEmpty) {
+                  pickImages.addAll(images);
+                }
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }

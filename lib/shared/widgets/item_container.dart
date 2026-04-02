@@ -14,14 +14,15 @@ class ItemContainer extends StatelessWidget {
   final double imageHeight;
   final double imageWidth;
   final EdgeInsetsGeometry padding;
+  final int favoriteIndex;
 
   const ItemContainer({
     super.key,
     required this.imageHeight,
     required this.imageWidth,
     required this.padding,
-
     required this.property,
+    this.favoriteIndex = 2, // Default to 2 (home view)
   });
 
   @override
@@ -68,11 +69,14 @@ class ItemContainer extends StatelessWidget {
                       if (property.isFavourite.value == false) {
                         await Get.find<AddFavoriteController>().addFavorite(
                           propertyID: property.id!,
-                          index: 2,
+                          index: favoriteIndex,
                         );
                       } else {
                         await Get.find<DeleteFavoriteController>()
-                            .deleteFavorite(propertyID: property.id!, index: 2);
+                            .deleteFavorite(
+                              propertyID: property.id!,
+                              index: favoriteIndex,
+                            );
                       }
                     },
                     isFavorite: property.isFavourite.value,

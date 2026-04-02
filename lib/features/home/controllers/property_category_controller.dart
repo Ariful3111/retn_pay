@@ -39,6 +39,11 @@ class PropertyCategoryController extends GetxController {
     filterSelectedNames.assignAll(names);
   }
 
+  void resetFilters() {
+    filterSelectedNames.clear();
+    selectedCategory.value = -1;
+  }
+
   String? getFilterTypeParam() {
     final categories = propertyCategories.value?.data;
     if (categories != null && filterSelectedNames.isNotEmpty) {

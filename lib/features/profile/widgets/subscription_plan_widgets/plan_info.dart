@@ -23,6 +23,7 @@ class PlanInfo extends StatelessWidget {
   final double? priceFontSize;
   final double? spanFontSize;
   final double? sizeWidth;
+  final Widget? actionButton;
 
   const PlanInfo({
     super.key,
@@ -42,6 +43,7 @@ class PlanInfo extends StatelessWidget {
     this.priceFontSize,
     this.spanFontSize,
     this.sizeWidth,
+    this.actionButton,
   });
 
   @override
@@ -70,10 +72,20 @@ class PlanInfo extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomTextPrimary(
-                text: planTitle ?? "Basic",
-                color: AppColors.subsPlanTitle,
-                fontSize: titleFontSize ?? 28.sp,
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomTextPrimary(
+                    text: planTitle ?? "Basic",
+                    color: AppColors.subsPlanTitle,
+                    fontSize: titleFontSize ?? 28.sp,
+                  ),
+                  if (actionButton != null) ...[
+                    SizedBox(width: 8.w),
+                    actionButton!,
+                  ],
+                ],
               ),
               SizedBox(height: 12.h),
               CustomTextSecondary(

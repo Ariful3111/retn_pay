@@ -40,6 +40,12 @@ class _PropertyManagementTableState extends State<PropertyManagementTable> {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Obx(() {
+      // Sync allRows from homeController when properties change
+      if (!homeController.isLoading.value &&
+          homeController.properties.value != null) {
+        propertyManagementController.syncAllRowsFromProperties();
+      }
+
       return homeController.isLoading.value
           ? ButtonLoading()
           : Container(
@@ -65,7 +71,9 @@ class _PropertyManagementTableState extends State<PropertyManagementTable> {
                       isProperty
                           ? userIndex == 2
                                 ? CustomTextSecondary(
-                                    text: item?.units?.first.rentAmount ?? "",
+                                    text: (item?.units?.isNotEmpty ?? false)
+                                        ? item!.units!.first.rentAmount ?? ""
+                                        : "-",
                                     fontSize: 12.sp,
                                     fontWeight: FontWeight.w400,
                                   )

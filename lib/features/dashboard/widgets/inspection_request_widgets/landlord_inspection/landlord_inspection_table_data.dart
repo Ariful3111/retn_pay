@@ -23,6 +23,7 @@ class LandlordInspectionTableData extends StatelessWidget {
     }
     final isValue = list[itemIndex];
     final status = isValue.status?.capitalizeFirst ?? '';
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -32,7 +33,10 @@ class LandlordInspectionTableData extends StatelessWidget {
           TableActionButton(
             icon: IconsPath.actonView,
             onTap: () {
-              Get.toNamed(AppRoutes.landlordInspectionView);
+              Get.toNamed(
+                AppRoutes.landlordInspectionView,
+                arguments: isValue.id,
+              );
             },
             iconColor: isDark ? AppColors.whiteColor : null,
           ),

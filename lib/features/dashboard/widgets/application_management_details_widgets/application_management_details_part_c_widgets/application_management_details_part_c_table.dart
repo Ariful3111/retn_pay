@@ -26,6 +26,7 @@ class ApplicationManagementDetailsPartCTable
   Widget build(BuildContext context) {
     return Obx(() {
       final item = controller.disclosureItems[itemIndex];
+      final readOnly = !controller.isEditable.value;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -42,23 +43,27 @@ class ApplicationManagementDetailsPartCTable
               Expanded(flex: 3, child: _label(item)),
 
               if (item.hasDateField) ...[
-                _dateField(context, item),
+                _dateField(context, item, readOnly),
               ] else ...[
                 _checkBox(
                   value: item.yesAnswer,
-                  onChange: (v) => controller.updateYesAnswer(itemIndex, v),
+                  onChange: readOnly
+                      ? null
+                      : (v) => controller.updateYesAnswer(itemIndex, v),
                 ),
                 _checkBox(
                   value: item.noAnswer,
-                  onChange: (v) => controller.updateNoAnswer(itemIndex, v),
+                  onChange: readOnly
+                      ? null
+                      : (v) => controller.updateNoAnswer(itemIndex, v),
                 ),
               ],
             ],
           ),
           if (item.label.contains('I intend to sell'))
             ApplicationManagementDetailsPartCSell(index: itemIndex),
-        SizedBox(height: 12.h),
-        ApplicationManagementDetailsHelper().divider(isDark: isDark),
+          SizedBox(height: 12.h),
+          ApplicationManagementDetailsHelper().divider(isDark: isDark),
         ],
       );
     });
@@ -72,15 +77,15 @@ class ApplicationManagementDetailsPartCTable
     );
   }
 
-  Widget _checkBox({required bool value, required ValueChanged onChange}) {
+  Widget _checkBox({required bool value, ValueChanged? onChange}) {
     return Expanded(
       child: Center(
-        child: CustomCheckBox(isChecked: value, onChange: onChange),
+        child: CustomCheckBox(isChecked: value, onChange: onChange ?? (_) {}),
       ),
     );
   }
 
-  Widget _dateField(BuildContext context, DisclosureItem item) {
+  Widget _dateField(BuildContext context, DisclosureItem item, bool readOnly) {
     return Row(
       children: [
         CustomTextSecondary(
@@ -94,7 +99,7 @@ class ApplicationManagementDetailsPartCTable
         ),
         SizedBox(width: 8.w),
         GestureDetector(
-          onTap: () => _pickDate(context),
+          onTap: readOnly ? null : () => _pickDate(context),
           child: Image.asset(IconsPath.date, height: 20.h, width: 20.w),
         ),
       ],

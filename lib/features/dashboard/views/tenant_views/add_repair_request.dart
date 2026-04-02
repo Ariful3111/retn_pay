@@ -21,8 +21,13 @@ class AddRepairRequest extends StatefulWidget {
 }
 
 class _AddRepairRequestState extends State<AddRepairRequest> {
-  final AddRepairRequestController addRepairRequestController =
-      Get.find<AddRepairRequestController>();
+  late AddRepairRequestController addRepairRequestController;
+
+  @override
+  void initState() {
+    super.initState();
+    addRepairRequestController = Get.find<AddRepairRequestController>();
+  }
 
   @override
   void dispose() {

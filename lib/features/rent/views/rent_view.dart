@@ -42,21 +42,25 @@ class RentView extends GetView<RentController> {
                       isSelect: controller.initialSort,
                     ),
                     SizedBox(height: 20.h),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount:
-                          controller.rents.value?.data?.data?.length ?? 0,
-                      itemBuilder: (_, index) {
-                        final property =
-                            controller.rents.value?.data?.data?[index].property;
-                        return ItemContainer(
-                          imageHeight: 250.h,
-                          imageWidth: MediaQuery.widthOf(context),
-                          padding: EdgeInsetsGeometry.only(bottom: 24.h),
-                          property: property ?? Property(),
-                        );
-                      },
+                    Obx(
+                      () => ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount:
+                            controller.rents.value?.data?.data?.length ?? 0,
+                        itemBuilder: (_, index) {
+                          final rentItem =
+                              controller.rents.value?.data?.data![index];
+                          final property = rentItem?.property;
+                          return ItemContainer(
+                            imageHeight: 250.h,
+                            imageWidth: MediaQuery.widthOf(context),
+                            padding: EdgeInsetsGeometry.only(bottom: 24.h),
+                            property: property ?? Property(),
+                            favoriteIndex: 3, // Rent view index
+                          );
+                        },
+                      ),
                     ),
                     controller.rents.value?.data?.data?.isEmpty == true
                         ? SizedBox.shrink()

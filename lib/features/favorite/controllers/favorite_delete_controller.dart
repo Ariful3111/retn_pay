@@ -4,6 +4,7 @@ import 'package:renter_pay/features/favorite/repositories/delete_favorite_repo.d
 import 'package:renter_pay/features/home/controllers/home_controller.dart';
 import 'package:renter_pay/features/home/controllers/popular_controller.dart';
 import 'package:renter_pay/features/home/controllers/recommended_controller.dart';
+import 'package:renter_pay/features/rent/controllers/rent_controller.dart';
 import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
 class DeleteFavoriteController extends GetxController {
@@ -71,12 +72,78 @@ class DeleteFavoriteController extends GetxController {
     if (index == 2) {
       if (Get.isRegistered<HomeController>()) {
         var controller = Get.find<HomeController>();
+
+        // Update main properties list
         if (controller.properties.value?.data?.data != null) {
           var item = controller.properties.value!.data!.data!.firstWhereOrNull(
             (element) => element.id == propertyID,
           );
           if (item != null) {
             item.isFavourite.value = false;
+          }
+        }
+
+        // Update house properties list
+        if (controller.houseProperties.isNotEmpty) {
+          var item = controller.houseProperties.firstWhereOrNull(
+            (element) => element.id == propertyID,
+          );
+          if (item != null) {
+            item.isFavourite.value = false;
+          }
+        }
+
+        // Update apartment properties list
+        if (controller.apartmentProperties.isNotEmpty) {
+          var item = controller.apartmentProperties.firstWhereOrNull(
+            (element) => element.id == propertyID,
+          );
+          if (item != null) {
+            item.isFavourite.value = false;
+          }
+        }
+
+        // Update vila properties list
+        if (controller.vilaProperties.isNotEmpty) {
+          var item = controller.vilaProperties.firstWhereOrNull(
+            (element) => element.id == propertyID,
+          );
+          if (item != null) {
+            item.isFavourite.value = false;
+          }
+        }
+
+        // Update office properties list
+        if (controller.officeProperties.isNotEmpty) {
+          var item = controller.officeProperties.firstWhereOrNull(
+            (element) => element.id == propertyID,
+          );
+          if (item != null) {
+            item.isFavourite.value = false;
+          }
+        }
+
+        // Update studio properties list
+        if (controller.studioProperties.isNotEmpty) {
+          var item = controller.studioProperties.firstWhereOrNull(
+            (element) => element.id == propertyID,
+          );
+          if (item != null) {
+            item.isFavourite.value = false;
+          }
+        }
+      }
+    }
+
+    // Update rent list properties (for rent view)
+    if (Get.isRegistered<RentController>()) {
+      var controller = Get.find<RentController>();
+      if (controller.rents.value?.data?.data != null) {
+        final dataList = controller.rents.value!.data!.data!;
+        for (var rentItem in dataList) {
+          if (rentItem.property?.id == propertyID) {
+            rentItem.property!.isFavourite.value = false;
+            break;
           }
         }
       }
