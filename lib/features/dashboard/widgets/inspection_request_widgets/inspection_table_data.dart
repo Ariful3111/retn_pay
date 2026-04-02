@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/core/services/url_service.dart';
 import 'package:renter_pay/features/dashboard/controllers/inspection_update_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/inspection_request_controller.dart';
@@ -45,12 +46,8 @@ class InspectionTableData extends GetWidget<InspectionRequestController> {
           TableActionButton(
             icon: IconsPath.tableUpload,
             color: AppColors.tableUpload,
-            onTap: () async {
-              await URLService.launchURL(
-                url:
-                    "https://renter-pay-web.vercel.app/dashboard/applications/${isValue.propertyId}",
-                isExternal: false,
-              );
+            onTap: () {
+              Get.toNamed(AppRoutes.applicationManagementDetails);
             },
           ),
         ],

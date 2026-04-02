@@ -163,6 +163,11 @@ class PropertyManagementController extends GetxController {
     // Sync allRows from homeController properties
     syncAllRowsFromProperties();
     getConditionalReports();
+
+    // Listen to changes in properties and sync automatically
+    ever(homeController.properties, (_) {
+      syncAllRowsFromProperties();
+    });
   }
 
   /// Sync allRows from homeController.properties

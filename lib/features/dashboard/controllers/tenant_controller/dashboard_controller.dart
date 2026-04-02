@@ -6,6 +6,7 @@ import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/dashboard/controllers/dashboard_metric_controller.dart';
 import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
+import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class DashboardController extends GetxController {
@@ -80,6 +81,7 @@ class DashboardController extends GetxController {
       userIndex == 0 ? 'routes' : 'navIndex': userIndex == 0
           ? AppRoutes.mainHome
           : 0,
+          
     },
     {
       'icon': IconsPath.drawerInspection,
