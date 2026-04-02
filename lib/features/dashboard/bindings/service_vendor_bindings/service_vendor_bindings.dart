@@ -7,14 +7,18 @@ import 'package:renter_pay/features/dashboard/repositories/service_vendors_repos
 class ServiceVendorBindings implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(
-      () => GetBookingsRepository(getNetwork: Get.find()),
-      fenix: true,
-    );
-    Get.lazyPut(
-      () => BookingManagementController(getBookingsRepository: Get.find()),
-      fenix: true,
-    );
+    if (!Get.isRegistered<GetBookingsRepository>()) {
+      Get.lazyPut(
+        () => GetBookingsRepository(getNetwork: Get.find()),
+        fenix: true,
+      );
+    }
+    if (!Get.isRegistered<BookingManagementController>()) {
+      Get.lazyPut(
+        () => BookingManagementController(getBookingsRepository: Get.find()),
+        fenix: true,
+      );
+    }
     Get.lazyPut(() => ServicePaymentManagementController());
     Get.lazyPut(() => ServiceManagementController());
   }

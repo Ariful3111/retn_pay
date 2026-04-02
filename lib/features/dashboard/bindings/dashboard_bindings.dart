@@ -26,6 +26,7 @@ import 'package:renter_pay/features/dashboard/repositories/landlord_repositories
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/submit_property_review_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/lease_agreement_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/reminder_repo.dart';
+import 'package:renter_pay/features/dashboard/repositories/service_vendors_repositories/get_bookings_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/service_vendors_repositories/own_service_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/tenant_repositories/add_repair_request_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/tenant_repositories/rent_notice_repo.dart';
@@ -85,6 +86,12 @@ class DashboardBindings implements Bindings {
       );
     }
     Get.lazyPut(() => OwnServicesRepository(getNetwork: Get.find()));
+    if (!Get.isRegistered<GetBookingsRepository>()) {
+      Get.lazyPut(
+        () => GetBookingsRepository(getNetwork: Get.find()),
+        fenix: true,
+      );
+    }
     if (!Get.isRegistered<AddRepairRequestRepository>()) {
       Get.lazyPut(() => AddRepairRequestRepository(imageNetwork: Get.find()));
     }
@@ -129,9 +136,12 @@ class DashboardBindings implements Bindings {
     Get.lazyPut(
       () => ServiceVendorDashboardController(ownServicesRepository: Get.find()),
     );
-    Get.lazyPut(
-      () => BookingManagementController(getBookingsRepository: Get.find()),
-    );
+    if (!Get.isRegistered<BookingManagementController>()) {
+      Get.lazyPut(
+        () => BookingManagementController(getBookingsRepository: Get.find()),
+        fenix: true,
+      );
+    }
     Get.lazyPut(
       () => DashboardMetricController(dashboardMetricsRepository: Get.find()),
     );

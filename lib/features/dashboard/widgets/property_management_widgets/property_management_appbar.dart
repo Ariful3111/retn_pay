@@ -8,11 +8,11 @@ class PropertyManagementAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              DrawerItemsAppbar(title: 'Property Management'),
-              PropertyManagementType(),
-            ],
-          );
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        DrawerItemsAppbar(title: 'Property Management'),
+        PropertyManagementType(),
+      ],
+    );
   }
 }
