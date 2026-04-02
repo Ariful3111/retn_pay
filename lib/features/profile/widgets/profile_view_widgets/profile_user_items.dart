@@ -5,7 +5,9 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
+import 'package:renter_pay/features/profile/controllers/start_deposit_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_items.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 import 'package:renter_pay/shared/widgets/snackbars/success_snackbar.dart';
 
 class ProfileUserItems extends StatelessWidget {
@@ -15,24 +17,31 @@ class ProfileUserItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        if (userIndex == 1||userIndex==2||userIndex==3)
+        if (userIndex == 1 || userIndex == 2 || userIndex == 3)
           ProfileItems(
             image: IconsPath.profileCalendar,
             imageHeight: 23.h,
             imageWidth: 21.w,
             title: 'Calendar',
             onTap: () {
-               Get.find<MainHomeController>().selectIndex.value = 3;
+              Get.find<MainHomeController>().selectIndex.value = 3;
             },
           ),
-        if (userIndex == 1||userIndex==2||userIndex==3) SizedBox(height: 8.h),
-        ProfileItems(
-          image: IconsPath.profilePayment,
-          imageHeight: 23.h,
-          imageWidth: 21.w,
-          title: 'Payment History',
-          onTap: () {},
-        ),
+        if (userIndex == 1 || userIndex == 2 || userIndex == 3)
+          SizedBox(height: 8.h),
+        Obx(() {
+          return Get.find<StartDepositController>().isLoading.value
+              ? ButtonLoading(verticalPadding: 15.h)
+              : ProfileItems(
+                  image: IconsPath.profilePayment,
+                  imageHeight: 23.h,
+                  imageWidth: 21.w,
+                  title: 'Payment History',
+                  onTap: () async {
+                    await Get.find<StartDepositController>().startDeposit();
+                  },
+                );
+        }),
         SizedBox(height: 8.h),
         ProfileItems(
           image: IconsPath.profileSetting,
@@ -70,7 +79,9 @@ class ProfileUserItems extends StatelessWidget {
           imageWidth: 21.w,
           title: 'Privacy Policy',
           onTap: () {
-            SuccessSnackbar.show(description: 'Navigate user to Web Privacy Policy');
+            SuccessSnackbar.show(
+              description: 'Navigate user to Web Privacy Policy',
+            );
           },
         ),
         SizedBox(height: 8.h),
@@ -80,7 +91,9 @@ class ProfileUserItems extends StatelessWidget {
           imageWidth: 21.w,
           title: 'Terms and Condition',
           onTap: () {
-            SuccessSnackbar.show(description: 'Navigate user to Web Terms and Condition');
+            SuccessSnackbar.show(
+              description: 'Navigate user to Web Terms and Condition',
+            );
           },
         ),
         SizedBox(height: 8.h),
