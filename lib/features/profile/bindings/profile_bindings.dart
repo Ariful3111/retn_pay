@@ -1,9 +1,11 @@
 import 'package:get/get.dart';
 import 'package:renter_pay/features/auth/controllers/logout_controller.dart';
 import 'package:renter_pay/features/auth/repositories/logout_repo.dart';
+import 'package:renter_pay/features/profile/controllers/balance_controller.dart';
 import 'package:renter_pay/features/profile/controllers/privacy_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/profile/controllers/start_deposit_controller.dart';
+import 'package:renter_pay/features/profile/repositories/get_balance_repo.dart';
 import 'package:renter_pay/features/profile/repositories/get_profile_repo.dart';
 import 'package:renter_pay/features/profile/repositories/start_deposit_repo.dart';
 
@@ -19,5 +21,7 @@ class ProfileBindings implements Bindings {
     Get.lazyPut(
       () => StartDepositController(startDepositRepository: Get.find()),
     );
+    Get.lazyPut(() => GetBalanceRepository(getNetwork: Get.find()));
+    Get.lazyPut(() => BalanceController(getBalanceRepository: Get.find()));
   }
 }

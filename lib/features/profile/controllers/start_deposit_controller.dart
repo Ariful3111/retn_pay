@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:renter_pay/core/services/eway_payment_service.dart';
+import 'package:renter_pay/features/profile/controllers/balance_controller.dart';
 import 'package:renter_pay/features/profile/models/start_deposit_model.dart';
 import 'package:renter_pay/features/profile/repositories/start_deposit_repo.dart';
 import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
@@ -42,6 +43,7 @@ class StartDepositController extends GetxController {
       paymentUrl: formActionUrl,
       onSuccess: () async {
         await Future.delayed(const Duration(milliseconds: 300));
+        await Get.find<BalanceController>().getBalance();
         SuccessSnackbar.show(description: 'Deposit completed successfully');
       },
       onCancel: () async {

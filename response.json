@@ -1,23 +1,25 @@
 {
   "error": false,
   "code": 200,
-  "message": "Deposit initiated successfully",
+  "message": "Balance retrieved successfully",
   "data": {
-    "transaction": {
-      "id": 441,
-      "user_id": 87,
-      "type": "deposit",
-      "amount": "50.00",
-      "currency": "AUD",
-      "rentchip_amount": null,
-      "status": "pending",
-      "gateway": "eway",
-      "gateway_transaction_id": "C3AB9d0gpREj3ocFppzUb2beEjryeJeoQUV7fdluOQyNMEeEPHbxsdAvwpgiPtVxzewvsqGdwdbVN-1Aj_70W-VM79DeJVyDY5fIqplqEP6pHZk1L_PeAV7vXqywGBkR7TeaX",
-      "notes": null,
-      "created_at": "2026-04-02 16:49:17",
-      "updated_at": "2026-04-02 16:49:18"
-    },
-    "form_action_url": "https://secure-au.sandbox.ewaypayments.com/sharedpage/sharedpayment?AccessCode=C3AB9d0gpREj3ocFppzUb2beEjryeJeoQUV7fdluOQyNMEeEPHbxsdAvwpgiPtVxzewvsqGdwdbVN-1Aj_70W-VM79DeJVyDY5fIqplqEP6pHZk1L_PeAV7vXqywGBkR7TeaX"
+    "balance": "250.00000000",
+    "balance_formatted": "250.00000000 RC",
+    "fiat_balance": "225.00",
+    "fiat_balance_aud": "225.00",
+    "display_balance": 225,
+    "display_currency": {
+      "id": 1,
+      "code": "AUD",
+      "name": "Australian Dollar",
+      "symbol": "A$",
+      "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+      "type": "fiat",
+      "decimal_places": 2,
+      "exchange_rate": 1,
+      "is_active": true,
+      "sort_order": 1
+    }
   },
   "errors": null
 }
