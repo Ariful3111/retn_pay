@@ -28,25 +28,29 @@ class PaymentManagementView extends StatelessWidget {
           : AppColors.userBackground,
       child: ListView(
         children: [
-          DrawerItemsAppbar(title:userIndex==2? 'Rent Management':'Payment Management'),
+          DrawerItemsAppbar(
+            title: userIndex == 2 ? 'Rent Management' : 'Payment Management',
+          ),
           SizedBox(height: 24.h),
           PaymentTab(),
           SizedBox(height: 20.h),
           Obx(() {
             if (paymentManagementController.paymentTypeIndex.value == 0) {
-              return  userIndex==2 || userIndex==3?RentManagementTable() :DashboardUpcomingPayment(
-                widget: CustomPrimaryButton(
-                  height: 40.h,
-                  width: 120.w,
-                  borderRadius: BorderRadius.circular(6.r),
-                  text: 'Pay Now',
-                  textColor: AppColors.darkAppBar,
-                  onPressed: () {},
-                ),
-              );
+              return userIndex == 2 || userIndex == 3
+                  ? RentManagementTable()
+                  : DashboardUpcomingPayment(
+                      widget: CustomPrimaryButton(
+                        height: 40.h,
+                        width: 120.w,
+                        borderRadius: BorderRadius.circular(6.r),
+                        text: 'Pay Now',
+                        textColor: AppColors.darkAppBar,
+                        onPressed: () {},
+                      ),
+                    );
             } else if (paymentManagementController.paymentTypeIndex.value ==
                 1) {
-              return userIndex==2?RentManagementTable():PaymentHistory();
+              return userIndex == 2 ? RentManagementTable() : PaymentHistory();
             } else {
               return Container();
             }

@@ -129,7 +129,9 @@ class DashboardBindings implements Bindings {
     Get.lazyPut(
       () => ServiceVendorDashboardController(ownServicesRepository: Get.find()),
     );
-    Get.lazyPut(() => BookingManagementController());
+    Get.lazyPut(
+      () => BookingManagementController(getBookingsRepository: Get.find()),
+    );
     Get.lazyPut(
       () => DashboardMetricController(dashboardMetricsRepository: Get.find()),
     );

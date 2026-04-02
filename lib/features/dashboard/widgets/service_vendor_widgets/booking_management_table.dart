@@ -39,7 +39,7 @@ class BookingManagementTable extends StatelessWidget {
             TableActionButton(
               icon: IconsPath.actonView,
               onTap: () {
-               Get.toNamed(AppRoutes.bookingManagementDetailsView);
+                Get.toNamed(AppRoutes.bookingManagementDetailsView);
               },
             ),
           ];
