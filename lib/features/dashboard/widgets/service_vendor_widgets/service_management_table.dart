@@ -54,7 +54,10 @@ class ServiceManagementTable extends GetView<ServiceManagementController> {
         TableActionButton(
           icon: IconsPath.actonView,
           onTap: () {
-            Get.toNamed(AppRoutes.serviceSearchDetails, arguments: item.id);
+            Get.toNamed(
+              AppRoutes.serviceSearchDetails,
+              arguments: item.serviceTypeId,
+            );
           },
         ),
       ];
