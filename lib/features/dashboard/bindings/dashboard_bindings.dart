@@ -9,6 +9,7 @@ import 'package:renter_pay/features/dashboard/controllers/landlord_controller/la
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/property_management_document_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/reminder_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/services_vendor_controller/booking_management_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/services_vendor_controller/service_management_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/services_vendor_controller/service_vendor_dashboard_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/dashboard_landlord_controller.dart';
@@ -26,6 +27,7 @@ import 'package:renter_pay/features/dashboard/repositories/landlord_repositories
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/submit_property_review_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/lease_agreement_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/reminder_repo.dart';
+import 'package:renter_pay/features/dashboard/repositories/service_list_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/service_vendors_repositories/get_bookings_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/service_vendors_repositories/own_service_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/tenant_repositories/add_repair_request_repo.dart';
@@ -139,6 +141,18 @@ class DashboardBindings implements Bindings {
     if (!Get.isRegistered<BookingManagementController>()) {
       Get.lazyPut(
         () => BookingManagementController(getBookingsRepository: Get.find()),
+        fenix: true,
+      );
+    }
+    if (!Get.isRegistered<ServiceListRepository>()) {
+      Get.lazyPut(
+        () => ServiceListRepository(getNetwork: Get.find()),
+        fenix: true,
+      );
+    }
+    if (!Get.isRegistered<ServiceManagementController>()) {
+      Get.lazyPut(
+        () => ServiceManagementController(serviceListRepository: Get.find()),
         fenix: true,
       );
     }
