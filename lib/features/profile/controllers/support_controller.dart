@@ -27,7 +27,15 @@ class SupportController extends GetxController {
   RxBool isCreateTicket = false.obs;
   RxString ticketCategory = "".obs;
   RxInt priorityIndex = 1.obs;
-  final List<String> ticketCategoryList = ['Payments', 'Repairs', 'Lease'];
+  final List<String> ticketCategoryList = [
+    'General',
+    'Billing',
+    'Technical',
+    'Property',
+    'Payment',
+    'Repair',
+    'Lease',
+  ];
   final List<String> supportType = ['FAQ', 'Tickets', 'Contact Support'];
   final List<String> filterList = ['All', 'Open', 'In Progress', 'Resolved'];
   final List<String> _statusValues = ['', 'open', 'in_progress', 'resolved'];
@@ -108,7 +116,7 @@ class SupportController extends GetxController {
       subject: issueController.text,
       description: descriptionController.text,
       priority: selectedPriority,
-      category: ticketCategory.value,
+      category: ticketCategory.value.toLowerCase(),
     );
 
     response.fold(

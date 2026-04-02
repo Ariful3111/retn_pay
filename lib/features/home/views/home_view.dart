@@ -44,18 +44,48 @@ class HomeView extends GetView<HomeController> {
             PopularItems(popularController: Get.find()),
             controller.isLoading.value
                 ? Center(child: ButtonLoading())
-                : Column(
-                    children: [
-                      HouseList(homeController: controller),
-                      ApartmentList(homeController: controller),
-                      VilaList(homeController: controller),
-                      OfficeList(homeController: controller),
-                      StudioList(homeController: controller),
-                    ],
-                  ),
+                : _buildPropertyLists(),
           ],
         ),
       );
     });
+  }
+
+  Widget _buildPropertyLists() {
+    final controller = Get.find<HomeController>();
+    final hasHouse = controller.houseProperties.isNotEmpty;
+    final hasApartment = controller.apartmentProperties.isNotEmpty;
+    final hasVila = controller.vilaProperties.isNotEmpty;
+    final hasOffice = controller.officeProperties.isNotEmpty;
+    final hasStudio = controller.studioProperties.isNotEmpty;
+
+    // If no properties at all, show "No Property Available"
+    if (!hasHouse && !hasApartment && !hasVila && !hasOffice && !hasStudio) {
+      return Center(
+        child: Padding(
+          padding: EdgeInsets.only(top: 10.h, bottom: 40.h),
+          child: Text(
+            'No Property Available',
+            style: TextStyle(
+              fontSize: 18.sp,
+              color: Theme.of(Get.context!).brightness == Brightness.dark
+                  ? AppColors.darkSecondaryText
+                  : AppColors.secondaryTextColor,
+            ),
+          ),
+        ),
+      );
+    }
+
+    // Show only categories that have properties
+    return Column(
+      children: [
+        if (hasHouse) HouseList(homeController: controller),
+        if (hasApartment) ApartmentList(homeController: controller),
+        if (hasVila) VilaList(homeController: controller),
+        if (hasOffice) OfficeList(homeController: controller),
+        if (hasStudio) StudioList(homeController: controller),
+      ],
+    );
   }
 }

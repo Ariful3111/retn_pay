@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:renter_pay/features/chat/controllers/create_chat_controller.dart';
+import 'package:renter_pay/features/chat/repositories/create_chat_repo.dart';
 import 'package:renter_pay/features/dashboard/controllers/agent_controller/create_conditional_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/dashboard_metric_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
@@ -33,6 +35,8 @@ import 'package:renter_pay/features/home/repositories/property_amenities_repo.da
 import 'package:renter_pay/features/home/repositories/property_category_repo.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/rent_notice_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/submit_property_review_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/landlord_controller/monthly_revenue_controller.dart';
+import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/monthly_revenue_repo.dart';
 
 class DashboardBindings implements Bindings {
   @override
@@ -59,6 +63,14 @@ class DashboardBindings implements Bindings {
 
     if (!Get.isRegistered<LeaseAgreementRepository>()) {
       Get.lazyPut(() => LeaseAgreementRepository(getNetwork: Get.find()));
+    }
+
+    if (!Get.isRegistered<CreateChatRepository>()) {
+      Get.lazyPut(() => CreateChatRepository(postWithResponse: Get.find()));
+    }
+
+    if (!Get.isRegistered<CreateChatController>()) {
+      Get.lazyPut(() => CreateChatController(createChatRepository: Get.find()));
     }
 
     if (!Get.isRegistered<PropertyCategoryRepository>()) {
@@ -154,6 +166,16 @@ class DashboardBindings implements Bindings {
         () => SubmitPropertyReviewController(
           submitPropertyReviewRepository: Get.find(),
         ),
+      );
+    }
+
+    // Monthly Revenue Controller
+    if (!Get.isRegistered<GetMonthlyRevenueRepository>()) {
+      Get.lazyPut(() => GetMonthlyRevenueRepository(getNetwork: Get.find()));
+    }
+    if (!Get.isRegistered<MonthlyRevenueController>()) {
+      Get.lazyPut(
+        () => MonthlyRevenueController(getMonthlyRevenueRepository: Get.find()),
       );
     }
   }

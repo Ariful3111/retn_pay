@@ -27,13 +27,16 @@ class ActivePropertiesView extends StatefulWidget {
 }
 
 class _ActivePropertiesViewState extends State<ActivePropertiesView> {
-  ActivePropertyController activePropertyController = Get.find();
-  RentNoticeController rentNoticeController = Get.find();
-  LeaseAgreementController leaseAgreementController = Get.find();
+  late ActivePropertyController activePropertyController;
+  late RentNoticeController rentNoticeController;
+  late LeaseAgreementController leaseAgreementController;
 
   @override
   void initState() {
     super.initState();
+    activePropertyController = Get.find();
+    rentNoticeController = Get.find();
+    leaseAgreementController = Get.find();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       leaseAgreementController.getLeaseAgreements();
       rentNoticeController.getRentNotices();
@@ -116,8 +119,9 @@ class _ActivePropertiesViewState extends State<ActivePropertiesView> {
                             right: 20.w,
                             child: CustomPrimaryButton(
                               onPressed: () {
-                                activePropertyController.isAccess.value =
-                                    !activePropertyController.isAccess.value;
+                                // activePropertyController.isAccess.value =
+                                //     !activePropertyController.isAccess.value;
+                                Get.toNamed(AppRoutes.agreementView);
                               },
                               height: 48.h,
                               width: 307.w,

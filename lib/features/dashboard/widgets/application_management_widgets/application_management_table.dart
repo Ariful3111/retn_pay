@@ -36,7 +36,7 @@ class ApplicationManagementTable
             textOverflow: TextOverflow.ellipsis,
           ),
           ApplicationManagementTableStatus(status: status),
-          ApplicationManagementTableData(index: id),
+          ApplicationManagementTableData(applicationID: id),
         ];
       });
 

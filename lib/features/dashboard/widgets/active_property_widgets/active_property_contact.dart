@@ -1,11 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/features/chat/controllers/create_chat_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/notice_button_model.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
 class ActivePropertyContact extends StatelessWidget {
   final String name;
@@ -16,6 +19,7 @@ class ActivePropertyContact extends StatelessWidget {
   final String imageUrl;
   final VoidCallback? onChatTap;
   final bool showChat;
+  final int otherUserID;
 
   const ActivePropertyContact({
     super.key,
@@ -28,6 +32,7 @@ class ActivePropertyContact extends StatelessWidget {
     this.onChatTap,
     this.showChat = true,
     this.imageUrl = '',
+    required this.otherUserID,
   });
 
   @override
@@ -86,14 +91,20 @@ class ActivePropertyContact extends StatelessWidget {
               ],
             ),
             if (showChat)
-              NoticeButtonModel(
-                onTap: onChatTap ?? () {},
-                icon: IconsPath.dashboardChat,
-                text: 'Chat',
-                borderColorDark: AppColors.secondaryTextColor,
-                shadowColor: AppColors.buttonShadowColor.withValues(
-                  alpha: 0.06,
-                ),
+              Obx(
+                () => Get.find<CreateChatController>().isLoading.value
+                    ? ButtonLoading()
+                    : NoticeButtonModel(
+                        onTap: () async {
+                          final createChatController =
+                              Get.find<CreateChatController>();
+                          await createChatController.getCreateChat(
+                            otherUserID: otherUserID,
+                          );
+                        },
+                        icon: IconsPath.dashboardChat,
+                        text: 'Chat',
+                      ),
               ),
           ],
         ),

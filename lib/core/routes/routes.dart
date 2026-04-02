@@ -5,9 +5,12 @@ import 'package:renter_pay/core/utils/vr_view.dart';
 import 'package:renter_pay/features/auth/bindings/document_verification_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/first_onboarding_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/forgot_password_bindings.dart';
+import 'package:renter_pay/features/dashboard/bindings/landlord_bindings/application_management_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/landlord_bindings/landlord_key_release_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/service_vendor_bindings/service_vendor_bindings.dart';
+import 'package:renter_pay/features/dashboard/bindings/tenant_bindings/agreement_bindings.dart';
 import 'package:renter_pay/features/dashboard/views/landlord_views/add_new_property.dart';
+import 'package:renter_pay/features/dashboard/views/landlord_views/application_management_details.dart';
 import 'package:renter_pay/features/dashboard/views/landlord_views/application_management_view.dart';
 import 'package:renter_pay/features/dashboard/views/landlord_views/landlord_calender_view.dart';
 import 'package:renter_pay/features/dashboard/views/landlord_views/landlord_key_release.dart';
@@ -16,6 +19,7 @@ import 'package:renter_pay/features/dashboard/views/landlord_views/property_owne
 import 'package:renter_pay/features/dashboard/views/service_vendor_views/booking_management.dart';
 import 'package:renter_pay/features/dashboard/views/service_vendor_views/booking_management_details.dart';
 import 'package:renter_pay/features/dashboard/views/service_vendor_views/service_management_view.dart';
+import 'package:renter_pay/features/dashboard/views/tenant_views/agreement_view.dart';
 import 'package:renter_pay/features/dashboard/widgets/inspection_request_widgets/landlord_inspection/landlord_inspection_view.dart';
 import 'package:renter_pay/features/home/bindings/logged_in_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/login_bindings.dart';
@@ -32,12 +36,14 @@ import 'package:renter_pay/features/auth/views/signup_option.dart';
 import 'package:renter_pay/features/auth/views/signup_view.dart';
 import 'package:renter_pay/features/auth/views/user_role.dart';
 import 'package:renter_pay/features/chat/bindings/chat_bindings.dart';
+import 'package:renter_pay/features/chat/bindings/message_bindings.dart';
 import 'package:renter_pay/features/chat/views/chat_view.dart';
 import 'package:renter_pay/features/chat/views/message_view.dart';
 import 'package:renter_pay/features/dashboard/bindings/tenant_bindings/active_properties_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/tenant_bindings/add_repair_request_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/dashboard_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/landlord_bindings/inspection_request_bindings.dart';
+import 'package:renter_pay/features/dashboard/bindings/landlord_bindings/landlord_inspection_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/tenant_bindings/key_release_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/tenant_bindings/payment_management_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/tenant_bindings/repair_maintenance_bindings.dart';
@@ -207,7 +213,7 @@ final List<GetPage> appRoutes = [
   GetPage(
     name: AppRoutes.messageView,
     page: () => MessageView(),
-    binding: ChatBindings(),
+    binding: MessageBindings(),
   ),
   GetPage(
     name: AppRoutes.activePropertiesView,
@@ -281,6 +287,7 @@ final List<GetPage> appRoutes = [
   GetPage(
     name: AppRoutes.landlordInspectionView,
     page: () => LandlordInspectionView(),
+    binding: LandlordInspectionBindings(),
   ),
   GetPage(
     name: AppRoutes.applicationManagementView,
@@ -322,4 +329,14 @@ final List<GetPage> appRoutes = [
     binding: VRBindings(),
   ),
   GetPage(name: AppRoutes.vrViewScreen, page: () => VRView()),
+  GetPage(
+    name: AppRoutes.applicationManagementDetails,
+    page: () => ApplicationManagementDetails(),
+    binding: ApplicationManagementBindings(),
+  ),
+  GetPage(
+    name: AppRoutes.agreementView,
+    page: () => AgreementView(),
+    binding: AgreementBindings(),
+  ),
 ];

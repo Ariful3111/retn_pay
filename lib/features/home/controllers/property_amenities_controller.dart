@@ -36,6 +36,10 @@ class PropertyAmenitiesController extends GetxController {
     filterSelectedNames.assignAll(names);
   }
 
+  void resetFilters() {
+    filterSelectedNames.clear();
+  }
+
   String? getAmenitiesParam() {
     final amenities = propertyAmenities.value?.data;
     if (amenities != null && filterSelectedNames.isNotEmpty) {

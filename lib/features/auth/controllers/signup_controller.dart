@@ -33,22 +33,47 @@ class SignupController extends GetxController {
   Future<void> sendCode({required GlobalKey<FormState> fromKey}) async {
     if (fromKey.currentState?.validate() ?? false) {
       isLoading.value = true;
-      final (contact, contactType, message) = verificationIdentifier();
-      final response = await verificationRepository.execute(
-        contact: contact,
-        contactType: contactType,
-        isRegistration: 1,
-      );
+
+      // Send code to phone if phone number is provided
+      if (phoneController.text.isNotEmpty) {
+        final phoneResponse = await verificationRepository.execute(
+          contact: phoneController.text,
+          contactType: "phone",
+          isRegistration: 1,
+        );
+        phoneResponse.fold(
+          (error) {
+            ErrorSnackbar.show(description: error.message);
+            isLoading.value = false;
+          },
+          (data) {
+            SuccessSnackbar.show(description: "Code sent to your phone");
+          },
+        );
+      }
+
+      // Send code to email if email is provided
+      if (emailController.text.isNotEmpty) {
+        final emailResponse = await verificationRepository.execute(
+          contact: emailController.text,
+          contactType: "email",
+          isRegistration: 1,
+        );
+        emailResponse.fold(
+          (error) {
+            ErrorSnackbar.show(description: error.message);
+            isLoading.value = false;
+          },
+          (data) {
+            SuccessSnackbar.show(description: "Code sent to your email");
+          },
+        );
+      }
+
       isLoading.value = false;
-      response.fold(
-        (error) {
-          ErrorSnackbar.show(description: error.message);
-        },
-        (data) {
-          SuccessSnackbar.show(description: message);
-          Get.toNamed(AppRoutes.otpView, arguments: contactType);
-        },
-      );
+
+      // Navigate to OTP view with both types
+      Get.toNamed(AppRoutes.otpView, arguments: "both");
     }
   }
 

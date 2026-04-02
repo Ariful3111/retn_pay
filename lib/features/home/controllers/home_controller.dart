@@ -111,6 +111,15 @@ class HomeController extends GetxController {
           .toList() ??
       [];
 
+  void resetFilters() {
+    range.value = SfRangeValues(0, 700000);
+    isShowPriceRange.value = true;
+    isShowSearch.value = true;
+    isShowProperty.value = false;
+    isShowAmenities.value = false;
+    searchController.clear();
+  }
+
   @override
   void onClose() {
     _debounce?.cancel();

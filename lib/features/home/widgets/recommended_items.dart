@@ -25,6 +25,12 @@ class RecommendedItems extends StatelessWidget {
     return Obx(() {
       List<Property>? properties =
           recommendedController.recommendedProperties.value?.data?.data;
+
+      // Don't show if no data
+      if (properties == null || properties.isEmpty) {
+        return SizedBox.shrink();
+      }
+
       return recommendedController.isLoading.value
           ? ButtonLoading()
           : Column(
@@ -37,9 +43,9 @@ class RecommendedItems extends StatelessWidget {
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
-                    itemCount: properties?.length ?? 0,
+                    itemCount: properties.length,
                     itemBuilder: (context, index) {
-                      Property property = properties![index];
+                      Property property = properties[index];
                       Units? unit = (property.units?.isNotEmpty ?? false)
                           ? property.units!.first
                           : null;

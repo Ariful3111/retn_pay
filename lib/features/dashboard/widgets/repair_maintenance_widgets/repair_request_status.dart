@@ -30,10 +30,12 @@ class RepairRequestStatus extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CustomTextPrimary(
-              text: 'Status:',
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
+            Flexible(
+              child: CustomTextPrimary(
+                text: 'Status:',
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w500,
+              ),
             ),
             TableStatus(status: status),
           ],
@@ -41,5 +43,4 @@ class RepairRequestStatus extends StatelessWidget {
       ),
     );
   }
-  
 }

@@ -13,7 +13,7 @@ class SearchChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ChatController chatController = Get.find();
-        bool isDark = Theme.of(context).brightness == Brightness.dark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
@@ -27,23 +27,39 @@ class SearchChat extends StatelessWidget {
       ),
       child: CustomTextField(
         controller: chatController.searchController,
-        fillColor:isDark?AppColors.darkPrimary: AppColors.whiteColor,
-        labelTextWidget: CustomTextSecondary(text: 'Search...',fontSize: 17.5.sp,fontWeight: FontWeight.w400,color:isDark? AppColors.darkSecondaryText:Color(0xFF424242),),
+        onChanged: chatController.onSearchChanged,
+        fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+        labelTextWidget: CustomTextSecondary(
+          text: 'Search...',
+          fontSize: 17.5.sp,
+          fontWeight: FontWeight.w400,
+          color: isDark ? AppColors.darkSecondaryText : Color(0xFF424242),
+        ),
         floatingLabelBehavior: FloatingLabelBehavior.never,
         prefixIcon: Padding(
           padding: EdgeInsets.only(left: 12.5.w),
-          child: Image.asset(IconsPath.homeSearch,height: 25.h,width: 25.w,color:isDark?AppColors.darkSecondaryText: Color(0xFF424242),),
+          child: Image.asset(
+            IconsPath.homeSearch,
+            height: 25.h,
+            width: 25.w,
+            color: isDark ? AppColors.darkSecondaryText : Color(0xFF424242),
+          ),
         ),
         enableBorder: OutlineInputBorder(
-          borderSide: BorderSide(color:isDark?AppColors.darkBorderPrimary: Color(0xFFE9E9E9),width: 1.25.r),
+          borderSide: BorderSide(
+            color: isDark ? AppColors.darkBorderPrimary : Color(0xFFE9E9E9),
+            width: 1.25.r,
+          ),
           borderRadius: BorderRadius.circular(10.r),
         ),
         focusBorder: OutlineInputBorder(
-          borderSide: BorderSide(color:isDark?AppColors.darkBorderPrimary: Color(0xFFE9E9E9),width: 1.25.r),
+          borderSide: BorderSide(
+            color: isDark ? AppColors.darkBorderPrimary : Color(0xFFE9E9E9),
+            width: 1.25.r,
+          ),
           borderRadius: BorderRadius.circular(10.r),
         ),
-        ),
-
+      ),
     );
   }
 }

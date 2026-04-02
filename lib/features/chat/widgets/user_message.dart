@@ -1,6 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
@@ -11,6 +11,9 @@ class UserMessage extends StatelessWidget {
   final double? subtitleSize;
   final double? spaceWidth;
   final EdgeInsets padding;
+  final String imageUrl;
+  final String name;
+  final String role;
   const UserMessage({
     super.key,
     this.imageHeight,
@@ -19,6 +22,9 @@ class UserMessage extends StatelessWidget {
     this.subtitleSize,
     this.spaceWidth,
     required this.padding,
+    required this.imageUrl,
+    required this.name,
+    required this.role,
   });
 
   @override
@@ -33,7 +39,7 @@ class UserMessage extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30.r),
               image: DecorationImage(
-                image: AssetImage(ImagesPath.profile),
+                image: CachedNetworkImageProvider(imageUrl),
                 fit: BoxFit.fill,
               ),
             ),
@@ -52,20 +58,26 @@ class UserMessage extends StatelessWidget {
           ),
         ),
         SizedBox(width: spaceWidth ?? 8.75.w),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomTextPrimary(
-              text: 'Ariful Islam',
-              fontSize: titleSize ?? 16.sp,
-            ),
-            CustomTextSecondary(
-              text: 'Landlord',
-              fontSize: subtitleSize ?? 14.sp,
-              color: Color(0xFF99A2AB),
-            ),
-          ],
+        Flexible(
+          flex: 1,
+          fit: FlexFit.loose,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomTextPrimary(
+                text: name,
+                fontSize: titleSize ?? 16.sp,
+                textOverflow: TextOverflow.ellipsis,
+              ),
+              CustomTextSecondary(
+                text: role,
+                fontSize: subtitleSize ?? 14.sp,
+                color: Color(0xFF99A2AB),
+                textOverflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
         ),
       ],
     );

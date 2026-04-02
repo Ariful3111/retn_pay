@@ -11,8 +11,22 @@ class PropertyManagementTableData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     PropertyManagementController propertyManagementController = Get.find();
-     final rowIndex = propertyManagementController.listData[index].key;
-    final item = propertyManagementController.allRows[rowIndex];
+
+    // Safety check: ensure listData has data at this index
+    final listData = propertyManagementController.listData;
+    if (index < 0 || index >= listData.length) {
+      return const Center(child: CustomTextSecondary(text: '-'));
+    }
+
+    final rowIndex = listData[index].key;
+    final allRows = propertyManagementController.allRows;
+
+    // Safety check: ensure allRows has data at rowIndex
+    if (rowIndex < 0 || rowIndex >= allRows.length) {
+      return const Center(child: CustomTextSecondary(text: '-'));
+    }
+
+    final item = allRows[rowIndex];
 
     if (item.verifyStatus != 'Approved') {
       return const Center(child: CustomTextSecondary(text: '-'));

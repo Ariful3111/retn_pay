@@ -47,14 +47,16 @@ class ActiveChat extends StatelessWidget {
                   children: [
                     Image.asset(
                       item['icon'],
-                      height:item==0? 30.h:20.h,
-                      width: item==0? 30.w:20.h,
-                      color: select?AppColors.whiteColor:AppColors.primaryColorDark,
+                      height: item == 0 ? 30.h : 20.h,
+                      width: item == 0 ? 30.w : 20.h,
+                      color: select
+                          ? AppColors.whiteColor
+                          : AppColors.primaryColorDark,
                     ),
                     CustomTextSecondary(
                       text: item['text'],
                       fontSize: 20.sp,
-                      color: select?AppColors.whiteColor:null,
+                      color: select ? AppColors.whiteColor : null,
                     ),
                   ],
                 ),
