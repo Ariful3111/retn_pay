@@ -6,6 +6,7 @@ import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
 import 'package:renter_pay/features/profile/controllers/start_deposit_controller.dart';
+import 'package:renter_pay/features/profile/controllers/withdraw_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_items.dart';
 import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 import 'package:renter_pay/shared/widgets/snackbars/success_snackbar.dart';
@@ -85,17 +86,19 @@ class ProfileUserItems extends StatelessWidget {
           },
         ),
         SizedBox(height: 8.h),
-        ProfileItems(
-          image: IconsPath.profileTerms,
-          imageHeight: 23.h,
-          imageWidth: 21.w,
-          title: 'Terms and Condition',
-          onTap: () {
-            SuccessSnackbar.show(
-              description: 'Navigate user to Web Terms and Condition',
-            );
-          },
-        ),
+        Obx(() {
+          return Get.find<WithdrawController>().isLoading.value
+              ? ButtonLoading(verticalPadding: 15.h)
+              : ProfileItems(
+                  image: IconsPath.profileTerms,
+                  imageHeight: 23.h,
+                  imageWidth: 21.w,
+                  title: 'Terms and Condition',
+                  onTap: () async {
+                    await Get.find<WithdrawController>().withdraw();
+                  },
+                );
+        }),
         SizedBox(height: 8.h),
       ],
     );
