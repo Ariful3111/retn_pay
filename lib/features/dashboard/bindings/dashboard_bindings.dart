@@ -106,6 +106,7 @@ class DashboardBindings implements Bindings {
             AddRepairRequestController(addRepairRequestRepository: Get.find()),
       );
     }
+
     Get.lazyPut(
       () => CreateConditionalReportController(
         createConditionalReportRepository: Get.find(),
