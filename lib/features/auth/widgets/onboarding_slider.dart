@@ -43,7 +43,7 @@ class OnboardingSlider extends StatelessWidget {
               duration: Duration(milliseconds: 300),
               curve: Curves.linearToEaseOut,
               height: onboardingController.currentPage.value == 3 ? 60.h : 52.h,
-              width: onboardingController.currentPage.value == 3 ? 106.w : 52.w,
+              width: onboardingController.currentPage.value == 3 ? 150.w : 52.w,
               decoration: BoxDecoration(
                 gradient: AppColors.primaryColor,
                 borderRadius: BorderRadius.circular(30.r),
@@ -86,7 +86,7 @@ class OnboardingSlider extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(width: 10.w),
-                              ...List.generate(3, (index) {
+                              ...List.generate(8, (index) {
                                 return FadeIn(
                                   delay: Duration(
                                     milliseconds: 800 + (index * 200),

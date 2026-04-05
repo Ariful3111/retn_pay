@@ -10,6 +10,7 @@ import 'package:renter_pay/features/dashboard/widgets/key_release_widgets/landlo
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
+import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 import 'package:signature/signature.dart';
 
 class ReleaseForm extends StatelessWidget {
@@ -85,7 +86,9 @@ class ReleaseForm extends StatelessWidget {
           child: CustomPrimaryButton(
             height: 40.h,
             width: 100.w,
-            onPressed: () {},
+            onPressed: () async {
+              ErrorSnackbar.show(description: "Failed to connect server");
+            },
             text: 'Submit',
             borderRadius: BorderRadius.circular(6.r),
           ),
