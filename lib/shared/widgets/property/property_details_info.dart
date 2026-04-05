@@ -35,8 +35,7 @@ class PropertyDetailsInfo extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomTextPrimary(
-            text:
-                '${data.city ?? ''}, ${data.country ?? ''}',
+            text: '${data.city ?? ''}, ${data.country ?? ''}',
             fontSize: 24.sp,
           ),
           Row(

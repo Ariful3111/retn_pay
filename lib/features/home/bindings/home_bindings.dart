@@ -24,6 +24,7 @@ class HomeBindings implements Bindings {
     Get.lazyPut(() => PropertyAddressRepository(getNetwork: Get.find()));
     Get.lazyPut(() => PropertyAmenitiesRepository(getNetwork: Get.find()));
     Get.lazyPut(() => FAQRepository(getNetwork: Get.find()));
+
     Get.lazyPut(() => HomeController(getPropertiesRepository: Get.find()));
     Get.lazyPut(
       () => RecommendedController(getRecommendedRepository: Get.find()),

@@ -4,9 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/features/rent/controllers/rent_controller.dart';
 
-class PropertyImageView extends GetView<RentController> {
+class PropertyImageView extends StatefulWidget {
   final List<String> images;
   final int propertyID;
   const PropertyImageView({
@@ -14,6 +13,13 @@ class PropertyImageView extends GetView<RentController> {
     required this.images,
     required this.propertyID,
   });
+
+  @override
+  State<PropertyImageView> createState() => _PropertyImageViewState();
+}
+
+class _PropertyImageViewState extends State<PropertyImageView> {
+  int _currentIndex = 0;
 
   Widget _imageLoadingIndicator({double? size}) {
     return Center(
@@ -31,7 +37,6 @@ class PropertyImageView extends GetView<RentController> {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    controller.dialogSelectedIndex(0);
 
     return Container(
       padding: EdgeInsets.all(7.66.sp),
@@ -41,95 +46,95 @@ class PropertyImageView extends GetView<RentController> {
         color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
         borderRadius: BorderRadius.circular(12.sp),
       ),
-      child: Obx(() {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            AnimatedContainer(
-              duration: Duration(milliseconds: 400),
-              curve: Curves.linear,
-              width: 364.w,
-              height: 218.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(3.5.sp),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(3.5.sp),
-                child: GestureDetector(
-                  onTap: () {
-                    Get.toNamed(AppRoutes.rentDetails, arguments: propertyID);
-                  },
-                  onHorizontalDragEnd: (details) {
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          AnimatedContainer(
+            duration: Duration(milliseconds: 400),
+            curve: Curves.linear,
+            width: 364.w,
+            height: 218.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(3.5.sp),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(3.5.sp),
+              child: GestureDetector(
+                onTap: () {
+                  Get.toNamed(
+                    AppRoutes.rentDetails,
+                    arguments: widget.propertyID,
+                  );
+                },
+                onHorizontalDragEnd: (details) {
+                  setState(() {
                     if (details.primaryVelocity! > 0) {
                       // Swipe right - previous image (loop to last if at first)
-                      final currentIndex = controller.dialogImageIndex.value;
-                      final newIndex = currentIndex == 0
-                          ? images.length - 1
-                          : currentIndex - 1;
-                      controller.dialogSelectedIndex(newIndex);
+                      _currentIndex = _currentIndex == 0
+                          ? widget.images.length - 1
+                          : _currentIndex - 1;
                     } else if (details.primaryVelocity! < 0) {
                       // Swipe left - next image (loop to first if at last)
-                      final currentIndex = controller.dialogImageIndex.value;
-                      final newIndex = currentIndex == images.length - 1
+                      _currentIndex = _currentIndex == widget.images.length - 1
                           ? 0
-                          : currentIndex + 1;
-                      controller.dialogSelectedIndex(newIndex);
+                          : _currentIndex + 1;
                     }
-                  },
-                  child: CachedNetworkImage(
-                    imageUrl: images[controller.dialogImageIndex.value],
-                    fit: BoxFit.cover,
-                    placeholder: (_, __) => _imageLoadingIndicator(size: 22.sp),
-                    errorWidget: (_, __, ___) =>
-                        _imageLoadingIndicator(size: 22.sp),
-                  ),
+                  });
+                },
+                child: CachedNetworkImage(
+                  imageUrl: widget.images[_currentIndex],
+                  fit: BoxFit.cover,
+                  placeholder: (_, __) => _imageLoadingIndicator(size: 22.sp),
+                  errorWidget: (_, __, ___) =>
+                      _imageLoadingIndicator(size: 22.sp),
                 ),
               ),
             ),
-            SizedBox(height: 10.h),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(images.length, (index) {
-                  final selectIndex =
-                      controller.dialogImageIndex.value == index;
-                  return GestureDetector(
-                    onTap: () {
-                      controller.dialogSelectedIndex(index);
-                    },
-                    child: Container(
-                      height: 25.h,
-                      width: 41.w,
-                      margin: EdgeInsets.only(
-                        right: index < images.length - 1 ? 12.28.w : 0,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(3.07.r),
-                        border: selectIndex
-                            ? Border.all(
-                                width: 1.51.r,
-                                color: AppColors.lightBorder,
-                              )
-                            : null,
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(3.07.r),
-                        child: CachedNetworkImage(
-                          imageUrl: images[index],
-                          fit: BoxFit.cover,
-                          placeholder: (_, __) => _imageLoadingIndicator(),
-                          errorWidget: (_, __, ___) => _imageLoadingIndicator(),
-                        ),
+          ),
+          SizedBox(height: 10.h),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(widget.images.length, (index) {
+                final selectIndex = _currentIndex == index;
+                return GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _currentIndex = index;
+                    });
+                  },
+                  child: Container(
+                    height: 25.h,
+                    width: 41.w,
+                    margin: EdgeInsets.only(
+                      right: index < widget.images.length - 1 ? 12.28.w : 0,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(3.07.r),
+                      border: selectIndex
+                          ? Border.all(
+                              width: 1.51.r,
+                              color: AppColors.lightBorder,
+                            )
+                          : null,
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(3.07.r),
+                      child: CachedNetworkImage(
+                        imageUrl: widget.images[index],
+                        fit: BoxFit.cover,
+                        placeholder: (_, __) => _imageLoadingIndicator(),
+                        errorWidget: (_, __, ___) => _imageLoadingIndicator(),
                       ),
                     ),
-                  );
-                }),
-              ),
+                  ),
+                );
+              }),
             ),
-          ],
-        );
-      }),
+          ),
+        ],
+      ),
     );
   }
 }

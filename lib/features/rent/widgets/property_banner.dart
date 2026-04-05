@@ -11,43 +11,73 @@ class PropertyBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20.r),
-      height: 306.h,
+      padding: EdgeInsets.symmetric(horizontal: 20.r, vertical: 10.r),
+      // height: 220.h,
       width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(9.44.r),
-        image: DecorationImage(image: AssetImage(ImagesPath.propertyBanner),fit: BoxFit.fill),
+        image: DecorationImage(
+          image: AssetImage(ImagesPath.propertyBanner),
+          fit: BoxFit.fill,
+        ),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(ImagesPath.appLogo,color: AppColors.whiteColor,width: 131.7.w,height: 30.h,),
-          SizedBox(height: 12.h,),
-          CustomTextPrimary(text: 'Looking to Rent\na Property?',fontSize: 24.sp,color: AppColors.approveBG,),
-          CustomTextPrimary(text: 'Schedule a visit today or talk\nto our agent for more details.',fontSize: 14.sp,color: Color(0xFFE6E9ED),fontWeight: FontWeight.w400,),
-          SizedBox(height: 16.h,),
+          Image.asset(
+            ImagesPath.appLogo,
+            color: AppColors.whiteColor,
+            width: 131.7.w,
+            height: 30.h,
+          ),
+          SizedBox(height: 12.h),
+          CustomTextPrimary(
+            text: 'Looking to Rent\na Property?',
+            fontSize: 20.sp,
+            color: AppColors.approveBG,
+          ),
+          CustomTextPrimary(
+            text:
+                'Schedule a visit today or talk\nto our agent for more details.',
+            fontSize: 12.sp,
+            color: Color(0xFFE6E9ED),
+            fontWeight: FontWeight.w400,
+          ),
+          SizedBox(height: 16.h),
           GestureDetector(
-            onTap: () {
-              
-            },
+            onTap: () {},
             child: Container(
               height: 31.85.h,
-              width: 162.77.w,
-              padding: EdgeInsets.symmetric(vertical: 7.92.h,horizontal: 2.06.w),
+              width: 180.w,
+              padding: EdgeInsets.symmetric(
+                vertical: 7.92.h,
+                horizontal: 2.06.w,
+              ),
               decoration: BoxDecoration(
                 color: AppColors.darkAppBar,
-                borderRadius: BorderRadius.circular(4.53.r)
+                borderRadius: BorderRadius.circular(4.53.r),
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  CustomTextPrimary(text: 'Get a Free Consultation',fontSize: 12.sp,color: AppColors.primaryTextColor,),
-                  Image.asset(IconsPath.consultation,height: 16.h,width: 16.w,),
+                  SizedBox(width: 2.w),
+                  CustomTextPrimary(
+                    text: 'Get a Free Consultation',
+                    fontSize: 12.sp,
+                    color: AppColors.primaryTextColor,
+                  ),
+                  SizedBox(width: 10.w),
+                  Image.asset(
+                    IconsPath.consultation,
+                    height: 16.h,
+                    width: 16.w,
+                  ),
+                  SizedBox(width: 2.w),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
