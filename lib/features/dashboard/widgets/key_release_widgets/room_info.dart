@@ -6,13 +6,15 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class RoomInfo extends StatelessWidget {
-  const RoomInfo({super.key});
+  final String roomName;
+  final String date;
+  const RoomInfo({super.key, required this.roomName, required this.date});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
-      padding: EdgeInsets.only(top: 24.h, left: 24.h,bottom: 24.h),
+      padding: EdgeInsets.only(top: 24.h, left: 24.h, bottom: 24.h),
       height: 313.h,
       width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
@@ -39,21 +41,24 @@ class RoomInfo extends StatelessWidget {
                     width: 52.w,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4.r),
-                      image: DecorationImage(image: AssetImage(ImagesPath.house),fit: BoxFit.cover)
+                      image: DecorationImage(
+                        image: AssetImage(ImagesPath.house),
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 );
               },
             ),
           ),
-          SizedBox(height: 24.h,),
+          SizedBox(height: 24.h),
           CustomTextSecondary(text: 'Room/Door name:'),
-          SizedBox(height: 4.h,),
-          infoText(text: 'SKS Tower'),
-          SizedBox(height: 20.h,),
+          SizedBox(height: 4.h),
+          infoText(text: roomName),
+          SizedBox(height: 20.h),
           CustomTextSecondary(text: 'Date:'),
-          SizedBox(height: 4.h,),
-          infoText(text: '12 October, 2025')
+          SizedBox(height: 4.h),
+          infoText(text: date),
         ],
       ),
     );
