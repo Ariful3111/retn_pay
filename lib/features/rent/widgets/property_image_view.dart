@@ -3,11 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/rent/controllers/rent_controller.dart';
 
 class PropertyImageView extends GetView<RentController> {
   final List<String> images;
-  const PropertyImageView({super.key, required this.images});
+  final int propertyID;
+  const PropertyImageView({
+    super.key,
+    required this.images,
+    required this.propertyID,
+  });
 
   Widget _imageLoadingIndicator({double? size}) {
     return Center(
@@ -49,15 +55,38 @@ class PropertyImageView extends GetView<RentController> {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(3.5.sp),
-                child: CachedNetworkImage(
-                  imageUrl: images[controller.dialogImageIndex.value],
-                  fit: BoxFit.fill,
-                  placeholder: (_, __) => _imageLoadingIndicator(size: 22.sp),
-                  errorWidget: (_, __, ___) =>
-                      _imageLoadingIndicator(size: 22.sp),
+                child: GestureDetector(
+                  onTap: () {
+                    Get.toNamed(AppRoutes.rentDetails, arguments: propertyID);
+                  },
+                  onHorizontalDragEnd: (details) {
+                    if (details.primaryVelocity! > 0) {
+                      // Swipe right - previous image (loop to last if at first)
+                      final currentIndex = controller.dialogImageIndex.value;
+                      final newIndex = currentIndex == 0
+                          ? images.length - 1
+                          : currentIndex - 1;
+                      controller.dialogSelectedIndex(newIndex);
+                    } else if (details.primaryVelocity! < 0) {
+                      // Swipe left - next image (loop to first if at last)
+                      final currentIndex = controller.dialogImageIndex.value;
+                      final newIndex = currentIndex == images.length - 1
+                          ? 0
+                          : currentIndex + 1;
+                      controller.dialogSelectedIndex(newIndex);
+                    }
+                  },
+                  child: CachedNetworkImage(
+                    imageUrl: images[controller.dialogImageIndex.value],
+                    fit: BoxFit.cover,
+                    placeholder: (_, __) => _imageLoadingIndicator(size: 22.sp),
+                    errorWidget: (_, __, ___) =>
+                        _imageLoadingIndicator(size: 22.sp),
+                  ),
                 ),
               ),
             ),
+            SizedBox(height: 10.h),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -72,7 +101,9 @@ class PropertyImageView extends GetView<RentController> {
                     child: Container(
                       height: 25.h,
                       width: 41.w,
-                      margin: EdgeInsets.only(right: 12.28.w),
+                      margin: EdgeInsets.only(
+                        right: index < images.length - 1 ? 12.28.w : 0,
+                      ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(3.07.r),
                         border: selectIndex
@@ -86,7 +117,7 @@ class PropertyImageView extends GetView<RentController> {
                         borderRadius: BorderRadius.circular(3.07.r),
                         child: CachedNetworkImage(
                           imageUrl: images[index],
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                           placeholder: (_, __) => _imageLoadingIndicator(),
                           errorWidget: (_, __, ___) => _imageLoadingIndicator(),
                         ),

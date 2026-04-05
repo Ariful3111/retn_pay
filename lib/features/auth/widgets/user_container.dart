@@ -33,12 +33,18 @@ class UserContainer extends StatelessWidget {
           duration: Duration(microseconds: 300),
           curve: Curves.linear,
           height: 136.72.h,
-          width: 170.9.w,
+          width: 171.w,
+          padding: EdgeInsets.symmetric(horizontal: 5.w),
           decoration: BoxDecoration(
-            color:isDark?AppColors.darkSecondary: AppColors.whiteColor,
+            color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
             borderRadius: BorderRadius.circular(8.2.r),
-            border:selectedIndex
-                ? Border.all(width: 1.7.w, color:isDark? AppColors.darkBorderPrimary :AppColors.borderColor)
+            border: selectedIndex
+                ? Border.all(
+                    width: 1.7.w,
+                    color: isDark
+                        ? AppColors.darkBorderPrimary
+                        : AppColors.borderColor,
+                  )
                 : null,
             boxShadow: [
               BoxShadow(
@@ -58,14 +64,19 @@ class UserContainer extends StatelessWidget {
               CustomTextPrimary(
                 text: title,
                 fontSize: 14.sp,
-                color:isDark?AppColors.darkPrimaryText: AppColors.darkTextColor,
+                color: isDark
+                    ? AppColors.darkPrimaryText
+                    : AppColors.darkTextColor,
               ),
-              SizedBox(height: 8.89.h),
+              SizedBox(height: 8.h),
               CustomTextSecondary(
                 text: description,
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color:isDark?AppColors.darkSecondaryText : AppColors.buttonShadowColor,
+                color: isDark
+                    ? AppColors.darkSecondaryText
+                    : AppColors.buttonShadowColor,
+                textAlign: TextAlign.center,
               ),
             ],
           ),

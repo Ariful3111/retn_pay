@@ -31,7 +31,7 @@ class ApartmentList extends StatelessWidget {
                     return ItemContainer(
                       property: property,
                       imageHeight: 220.h,
-                      imageWidth: 300.w,
+                      imageWidth: 390.w,
                       padding: EdgeInsetsGeometry.only(right: 12.w),
                     );
                   },
