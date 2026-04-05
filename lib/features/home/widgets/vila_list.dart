@@ -16,7 +16,7 @@ class VilaList extends StatelessWidget {
         ? SizedBox()
         : Column(
             children: [
-              Category(categoryName: 'Villa', onTap: () {}),
+              Category(categoryName: 'Villa', categorySlug: 'villa'),
               SizedBox(height: 16.h),
               SizedBox(
                 height: 302.h,

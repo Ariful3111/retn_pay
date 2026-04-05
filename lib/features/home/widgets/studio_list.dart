@@ -16,7 +16,10 @@ class StudioList extends StatelessWidget {
         ? SizedBox()
         : Column(
             children: [
-              Category(categoryName: 'Studio Apartment', onTap: () {}),
+              Category(
+                categoryName: 'Studio Apartment',
+                categorySlug: 'studio',
+              ),
               SizedBox(height: 16.h),
               SizedBox(
                 height: 302.h,

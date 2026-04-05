@@ -35,7 +35,10 @@ class RecommendedItems extends StatelessWidget {
           ? ButtonLoading()
           : Column(
               children: [
-                Category(categoryName: 'Recommended', onTap: () {}),
+                Category(
+                  categoryName: 'Recommended',
+                  categorySlug: 'recommended',
+                ),
                 SizedBox(height: 16.h),
                 SizedBox(
                   height: 284.h,
