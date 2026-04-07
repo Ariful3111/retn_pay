@@ -7,7 +7,12 @@ class FilterTitles extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
   final IconData icon;
-  const FilterTitles({super.key, required this.title, required this.onTap, required this.icon});
+  const FilterTitles({
+    super.key,
+    required this.title,
+    required this.onTap,
+    required this.icon,
+  });
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
@@ -19,18 +24,23 @@ class FilterTitles extends StatelessWidget {
             CustomTextPrimary(
               text: title,
               fontSize: 15.34.sp,
-              color:isDark?AppColors.darkAppBar: Color(0xFF252B37),
+              color: isDark ? AppColors.darkAppBar : Color(0xFF252B37),
             ),
             GestureDetector(
               onTap: onTap,
-              child: Icon(icon,color:isDark?AppColors.whiteColor: AppColors.darkPrimary,size: 18.sp,),
-            )
+              child: Icon(
+                icon,
+                color: isDark ? AppColors.whiteColor : AppColors.darkPrimary,
+                size: 18.sp,
+              ),
+            ),
           ],
         ),
         SizedBox(height: 8.32),
         Divider(
           height: 2.h,
-          color:isDark?AppColors.darkBorderPrimary: Color(0xFFE5E9EE)),
+          color: isDark ? AppColors.darkBorderPrimary : Color(0xFFE5E9EE),
+        ),
       ],
     );
   }
