@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/features/dashboard/controllers/key_release_request_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/get_agreements_controller.dart';
-import 'package:renter_pay/features/dashboard/controllers/tenant_controller/key_release_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
 import 'package:renter_pay/features/dashboard/widgets/key_release_widgets/release_form.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
-import 'package:signature/signature.dart';
 
 class KeyReleaseView extends GetView<GetAgreementsController> {
   const KeyReleaseView({super.key});
@@ -16,13 +15,11 @@ class KeyReleaseView extends GetView<GetAgreementsController> {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    KeyReleaseController keyReleaseController = Get.find();
-    final SignatureController signatureController = SignatureController(
-      penStrokeWidth: 3,
-      penColor: isDark ? AppColors.whiteColor : AppColors.darkPrimary,
-    );
-    return Obx(() {
-      return CustomContainer(
+    final keyReleaseController = Get.find<KeyReleaseRequestController>();
+    keyReleaseController.initSignatureController(isDark);
+
+    return Obx(
+      () => CustomContainer(
         gradient: isDark
             ? LinearGradient(
                 colors: [AppColors.darkPrimary, AppColors.darkPrimary],
@@ -38,8 +35,8 @@ class KeyReleaseView extends GetView<GetAgreementsController> {
               )
             : ListView(
                 physics: keyReleaseController.isDrawing.value
-                    ? NeverScrollableScrollPhysics()
-                    : BouncingScrollPhysics(),
+                    ? const NeverScrollableScrollPhysics()
+                    : const BouncingScrollPhysics(),
                 children: [
                   DrawerItemsAppbar(title: 'Key Release'),
                   SizedBox(height: 32.h),
@@ -59,14 +56,16 @@ class KeyReleaseView extends GetView<GetAgreementsController> {
                         borderRadius: BorderRadius.circular(20.r),
                       ),
                       child: ReleaseForm(
-                        signatureController: signatureController,
                         agreement: controller.firstAgreement,
+                        onSubmit: () => keyReleaseController.submitTenant(
+                          leaseAgreementId: controller.firstAgreement?.id ?? 0,
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
-      );
-    });
+      ),
+    );
   }
 }

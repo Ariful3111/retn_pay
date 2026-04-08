@@ -11,6 +11,7 @@ class ProfileController extends GetxController {
   final scrollController = ScrollController();
   final profileData = Rxn<ProfileModel>();
   RxBool isWebAsset = false.obs;
+  RxBool isWallet = false.obs;
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();

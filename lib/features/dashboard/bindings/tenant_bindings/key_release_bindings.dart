@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:renter_pay/features/dashboard/bindings/tenant_bindings/agreement_bindings.dart';
-import 'package:renter_pay/features/dashboard/controllers/tenant_controller/key_release_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/key_release_request_controller.dart';
+import 'package:renter_pay/features/dashboard/repositories/key_release_request_repo.dart';
 
 class KeyReleaseBindings implements Bindings {
   @override
@@ -8,7 +9,19 @@ class KeyReleaseBindings implements Bindings {
     // Load agreement bindings first (includes GetAgreementsController)
     AgreementBindings().dependencies();
 
-    // Load key release controller
-    Get.lazyPut(() => KeyReleaseController());
+    // Key Release Request Repository
+    if (!Get.isRegistered<KeyReleaseRequestRepository>()) {
+      Get.lazyPut(
+        () => KeyReleaseRequestRepository(
+          imageNetwork: Get.find(),
+          postNetwork: Get.find(),
+        ),
+      );
+    }
+
+    // Key Release Request Controller
+    if (!Get.isRegistered<KeyReleaseRequestController>()) {
+      Get.lazyPut(() => KeyReleaseRequestController(repository: Get.find()));
+    }
   }
 }

@@ -281,7 +281,6 @@ class _CategorySeeAllViewState extends State<CategorySeeAllView> {
       default:
         final controller = Get.find<HomeController>();
         final allProperties = controller.properties.value?.data?.data ?? [];
-        // Filter by category slug and apply API filters (budget, amenities, address)
         return allProperties
             .where(
               (element) => element.propertyType?.slug == widget.categorySlug,

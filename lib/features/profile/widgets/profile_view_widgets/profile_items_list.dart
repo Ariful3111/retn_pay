@@ -10,6 +10,7 @@ import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_shared_item.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_user_items.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/web_asset.dart';
+import 'package:renter_pay/features/profile/widgets/profile_view_widgets/wallet.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class ProfileItemsList extends StatelessWidget with ProfileSharedItem {
@@ -61,6 +62,8 @@ class ProfileItemsList extends StatelessWidget with ProfileSharedItem {
         ),
         SizedBox(height: 8.h),
         WebAsset(),
+        SizedBox(height: 8.h),
+        Wallet(),
         SizedBox(height: 8.h),
         ProfileUserItems(),
       ],

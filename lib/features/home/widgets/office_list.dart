@@ -30,7 +30,7 @@ class OfficeList extends StatelessWidget {
                     return ItemContainer(
                       property: property,
                       imageHeight: 220.h,
-                      imageWidth: 390.w,
+                      imageWidth: 300.w,
                       padding: EdgeInsetsGeometry.only(right: 12.w),
                     );
                   },
