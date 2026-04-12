@@ -40,7 +40,7 @@ class NotificationService {
 
   static Future<void> _initLocalNotifications() async {
     const androidSettings = AndroidInitializationSettings(
-      '@mipmap/ic_launcher',
+      '@mipmap/launcher_icon',
     );
     const iosSettings = DarwinInitializationSettings(
       requestSoundPermission: false,
@@ -106,7 +106,7 @@ class NotificationService {
         channelDescription: _channelDesc,
         importance: Importance.max,
         priority: Priority.high,
-        icon: '@mipmap/ic_launcher',
+        icon: '@mipmap/launcher_icon',
         playSound: true,
         enableVibration: true,
       ),

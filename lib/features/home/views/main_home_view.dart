@@ -48,15 +48,17 @@ class MainHomeView extends StatelessWidget {
           child:
               mainHomeController.pageList[mainHomeController.selectIndex.value],
         ),
-        bottomNavigationBar: AnimatedContainer(
-          height: globalScrollController.isVisible.value ? 90.h : 0,
-          duration: const Duration(milliseconds: 500),
-          curve: Curves.easeInOut,
-          child: AnimatedOpacity(
-            opacity: globalScrollController.isVisible.value ? 1 : 0,
+        bottomNavigationBar: SafeArea(
+          child: AnimatedContainer(
+            height: globalScrollController.isVisible.value ? 90.h : 0,
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeInOut,
-            child: Wrap(children: [Navbar()]),
+            child: AnimatedOpacity(
+              opacity: globalScrollController.isVisible.value ? 1 : 0,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.easeInOut,
+              child: Wrap(children: [Navbar()]),
+            ),
           ),
         ),
       );
