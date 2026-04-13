@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/profile/controllers/profile_edit_controller.dart';
+import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_button.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_field.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_save_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
@@ -42,38 +42,11 @@ class ProfileEditDetails extends StatelessWidget {
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w600,
                 ),
-                GestureDetector(
+                ProfileEditButton(
                   onTap: () {
                     profileEditController.isEdit.value =
                         !profileEditController.isEdit.value;
                   },
-                  child: Container(
-                    height: 41.h,
-                    width: 86.w,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 10.h,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.r),
-                      gradient: AppColors.primaryColor,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Image.asset(
-                          IconsPath.profileEdit,
-                          height: 18.h,
-                          width: 18.w,
-                        ),
-                        CustomTextSecondary(
-                          text: 'Edit',
-                          fontSize: 14.sp,
-                          color: AppColors.whiteColor,
-                        ),
-                      ],
-                    ),
-                  ),
                 ),
               ],
             ),
@@ -138,23 +111,35 @@ class ProfileEditDetails extends StatelessWidget {
                         ),
                       ],
                     ),
-                  SizedBox(height: 20.h),
                   profileEditController.isLoading.value
                       ? ButtonLoading()
-                      : ProfileSaveButton(
-                          onPressed: () async {
-                            if (profileEditController.isEdit.value) {
-                              await profileEditController.updateProfile();
-                            }
-                          },
+                      : AnimatedSize(
+                          duration: Duration(milliseconds: 300),
+                          child: profileEditController.isEdit.value
+                              ? Padding(
+                                padding: EdgeInsets.only(top: 20.h),
+                                child: ProfileSaveButton(
+                                    onPressed: () async {
+                                      if (profileEditController.isEdit.value) {
+                                        await profileEditController
+                                            .updateProfile();
+                                      }
+                                    },
+                                  ),
+                              )
+                              : SizedBox(),
                         ),
                 ],
               ),
             ),
-            if ( userIndex == 3)
-              SizedBox(height: 16.h),
+            if (userIndex == 3) SizedBox(height: 16.h),
             if (userIndex == 3)
-              ProfileSaveButton(),
+              AnimatedSize(
+                duration: Duration(milliseconds: 300),
+                child: profileEditController.isEdit.value
+                    ? ProfileSaveButton()
+                    : SizedBox(),
+              ),
           ],
         ),
       ),

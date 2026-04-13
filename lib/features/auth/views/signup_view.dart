@@ -21,45 +21,55 @@ class SignupView extends StatelessWidget {
     SignupController signupController = Get.find();
     return CustomContainer(
       padding: EdgeInsets.symmetric(horizontal: 20.w),
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(ImagesPath.appLogo, height: 30.h, width: 170.w),
-            SizedBox(height: 20.h),
-            CustomTextPrimary(text: "Fill Out Information", fontSize: 28.sp),
-            SizedBox(height: 7.h),
-            CustomTextPrimary(
-              text: "Let's login to grab amazing deal",
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w500,
-            ),
-            SizedBox(height: 20.h),
-            SignupField(fromKey: fromKey),
-            SizedBox(height: 20.h),
-            Obx(() {
-              return signupController.isLoading.value
-                  ? ButtonLoading()
-                  : CustomPrimaryButton(
-                      height: 48.50.h,
-                      onPressed: () async {
-                        await signupController.sendCode(fromKey: fromKey);
-                      },
-                      text: "Signup",
-                      textColor: AppColors.whiteColor,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                    );
-            }),
-            SizedBox(height: 21.h),
-            CustomTextSpan(
-              title: "Do have an account?",
-              spantext: " Login",
-              onTap: () {
-                Get.toNamed(AppRoutes.loginView);
-              },
-            ),
-          ],
+      child: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Image.asset(ImagesPath.appLogo, height: 30.h, width: 170.w),
+              SizedBox(height: 20.h),
+              Center(
+                child: CustomTextPrimary(
+                  text: "Fill Out Information",
+                  fontSize: 28.sp,
+                ),
+              ),
+              SizedBox(height: 7.h),
+              Center(
+                child: CustomTextPrimary(
+                  text: "Let's login to grab amazing deal",
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              SizedBox(height: 20.h),
+              SignupField(fromKey: fromKey),
+              SizedBox(height: 20.h),
+              Obx(() {
+                return signupController.isLoading.value
+                    ? ButtonLoading()
+                    : CustomPrimaryButton(
+                        height: 48.50.h,
+                        onPressed: () async {
+                          await signupController.sendCode(fromKey: fromKey);
+                        },
+                        text: "Signup",
+                        textColor: AppColors.whiteColor,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                      );
+              }),
+              SizedBox(height: 21.h),
+              Center(
+                child: CustomTextSpan(
+                  title: "Do have an account?",
+                  spantext: " Login",
+                  onTap: () {
+                    Get.toNamed(AppRoutes.loginView);
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

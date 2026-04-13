@@ -57,6 +57,13 @@ class FilterSearch extends StatelessWidget {
                 child: isSearchShow.value
                     ? Column(
                         children: [
+                          SizedBox(height: 8.32),
+                          Divider(
+                            height: 2.h,
+                            color: isDark
+                                ? AppColors.darkBorderPrimary
+                                : Color(0xFFE5E9EE),
+                          ),
                           SizedBox(height: 8.44.h),
                           FilterSearchField(
                             textEditingController: textEditingController,

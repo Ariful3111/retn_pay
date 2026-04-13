@@ -36,11 +36,7 @@ class FilterTitles extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 8.32),
-        Divider(
-          height: 2.h,
-          color: isDark ? AppColors.darkBorderPrimary : Color(0xFFE5E9EE),
-        ),
+
       ],
     );
   }
