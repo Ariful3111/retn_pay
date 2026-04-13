@@ -53,7 +53,7 @@ class ServiceReview extends GetWidget<ServiceListController> {
                       onTap: () {
                         Get.toNamed(
                           AppRoutes.serviceSearchDetails,
-                          arguments: service.id,
+                          arguments: service.serviceTypeId,
                         );
                       },
                       child: Row(

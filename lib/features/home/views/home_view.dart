@@ -25,7 +25,7 @@ class HomeView extends GetView<HomeController> {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Obx(() {
       return CustomContainer(
-        padding: EdgeInsets.symmetric(horizontal: 20.sp),
+        padding: EdgeInsets.symmetric(horizontal: 0.sp),
         gradient: isDark
             ? LinearGradient(
                 colors: [AppColors.darkPrimary, AppColors.darkPrimary],
@@ -34,13 +34,19 @@ class HomeView extends GetView<HomeController> {
         child: ListView(
           controller: controller.scrollController,
           children: [
-            HomeAppbar(profileController: Get.find<ProfileController>()),
+            applyPadding(
+              widget: HomeAppbar(
+                profileController: Get.find<ProfileController>(),
+              ),
+            ),
             SizedBox(height: 16.h),
-            HomeSearch(controller: controller),
+            applyPadding(widget: HomeSearch(controller: controller)),
             SizedBox(height: 10.h),
             CategoryList(),
             SizedBox(height: 10.h),
-            RecommendedItems(recommendedController: Get.find()),
+            applyPadding(
+              widget: RecommendedItems(recommendedController: Get.find()),
+            ),
             PopularItems(popularController: Get.find()),
             controller.isLoading.value
                 ? Center(child: ButtonLoading())
@@ -86,6 +92,13 @@ class HomeView extends GetView<HomeController> {
         if (hasOffice) OfficeList(homeController: controller),
         if (hasStudio) StudioList(homeController: controller),
       ],
+    );
+  }
+
+  Widget applyPadding({required Widget widget}) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      child: widget,
     );
   }
 }
