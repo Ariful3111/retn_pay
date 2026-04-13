@@ -53,10 +53,21 @@ class FilterAmenities extends StatelessWidget {
                   opacity: isShowAmenities.value ? 1 : 0,
                   duration: Duration(milliseconds: 200),
                   child: isShowAmenities.value
-                      ? FilterCheckbox(
-                          propertyItems: amenitiesItems,
-                          selectedProperty: selectedAmenities,
-                          onChange: onAmenitiesChange,
+                      ? Column(
+                          children: [
+                            SizedBox(height: 8.32),
+                            Divider(
+                              height: 2.h,
+                              color: isDark
+                                  ? AppColors.darkBorderPrimary
+                                  : Color(0xFFE5E9EE),
+                            ),
+                            FilterCheckbox(
+                              propertyItems: amenitiesItems,
+                              selectedProperty: selectedAmenities,
+                              onChange: onAmenitiesChange,
+                            ),
+                          ],
                         )
                       : SizedBox(),
                 ),

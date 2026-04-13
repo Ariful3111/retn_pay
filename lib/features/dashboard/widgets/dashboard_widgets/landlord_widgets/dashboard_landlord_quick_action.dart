@@ -4,10 +4,12 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/inspection_request_controller.dart';
+import 'package:renter_pay/features/dashboard/repositories/get_inspections_repo.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/landlord_widgets/dashboard_landlord_quick_action_model.dart';
 import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
 
-class DashboardLandlordQuickAction extends StatelessWidget {
+class DashboardLandlordQuickAction extends GetWidget<DashboardController> {
   const DashboardLandlordQuickAction({super.key});
 
   @override
@@ -52,26 +54,45 @@ class DashboardLandlordQuickAction extends StatelessWidget {
             onTap: () {},
             buttonText: 'View Service',
           ),
-      if(userIndex!=3)  DashboardLandlordQuickActionModel(
-          icon: IconsPath.dashboardLandlordInspection,
-          title: 'Scheduled Inspections',
-          subTitle: 'View upcoming property inspections with ease.',
-          onTap: () {
-            Get.toNamed(AppRoutes.inspectionRequestView);
+        if (userIndex != 3)
+          DashboardLandlordQuickActionModel(
+            icon: IconsPath.dashboardLandlordInspection,
+            title: 'Scheduled Inspections',
+            subTitle: 'View upcoming property inspections with ease.',
+            onTap: () {
+              Get.toNamed(AppRoutes.inspectionRequestView);
               Get.find<DashboardController>().isItemSelect.value = 2;
-          },
-          buttonText: 'View Schedule ',
-        ),
+            },
+            buttonText: 'View Schedule ',
+          ),
         DashboardLandlordQuickActionModel(
           icon: IconsPath.dashboardLandlordVirtual,
           title: 'Virtual Tour Request',
           subTitle: 'Quickly view the request for virtual tour',
-          onTap: () {
-            Get.toNamed(AppRoutes.vrCaptureScreen);
-          },
+          onTap: navigator,
           buttonText: 'View Request',
         ),
       ],
+    );
+  }
+
+  void navigator() {
+    //  Get.toNamed(AppRoutes.vrCaptureScreen);
+    Get.toNamed(AppRoutes.inspectionRequestView);
+    controller.isItemSelect.value = 2;
+
+    if (!Get.isRegistered<GetInspectionsRepository>()) {
+      Get.lazyPut(() => GetInspectionsRepository(getNetwork: Get.find()));
+    }
+    if (!Get.isRegistered<InspectionRequestController>()) {
+      Get.lazyPut(
+        () => InspectionRequestController(getInspectionsRepository: Get.find()),
+      );
+    }
+    InspectionRequestController inspectionRequestController = Get.find();
+    inspectionRequestController.isInspectionType.value = 1;
+    inspectionRequestController.getInspectionStatus(
+      status: inspectionRequestController.isInspectionType.value,
     );
   }
 }
