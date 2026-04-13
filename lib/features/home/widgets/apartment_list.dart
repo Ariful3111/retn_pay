@@ -16,8 +16,13 @@ class ApartmentList extends StatelessWidget {
         ? SizedBox()
         : Column(
             children: [
-              Category(categoryName: 'Apartment', categorySlug: 'apartment'),
-              SizedBox(height: 16.h),
+              applyPadding(
+                widget: Category(
+                  categoryName: 'Apartment',
+                  categorySlug: 'apartment',
+                ),
+              ),
+              SizedBox(height: 10.h),
               SizedBox(
                 height: 302.h,
                 width: Get.width,
@@ -28,17 +33,29 @@ class ApartmentList extends StatelessWidget {
                   itemBuilder: (_, index) {
                     Property property =
                         homeController.apartmentProperties[index];
+                    bool isFirst = index == 0;
+                    bool isLast =
+                        index == homeController.apartmentProperties.length - 1;
                     return ItemContainer(
                       property: property,
                       imageHeight: 220.h,
                       imageWidth: 300.w,
-                      padding: EdgeInsetsGeometry.only(right: 12.w),
+                      padding: EdgeInsets.only(
+                        right: isLast ? 15.w : 0.w,
+                        left: isFirst ? 12.w : 5.w,
+                      ),
                     );
                   },
                 ),
               ),
-              SizedBox(height: 24.h),
             ],
           );
+  }
+
+  Widget applyPadding({required Widget widget}) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      child: widget,
+    );
   }
 }
