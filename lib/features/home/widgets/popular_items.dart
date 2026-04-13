@@ -35,7 +35,7 @@ class PopularItems extends StatelessWidget {
           ? ButtonLoading()
           : Column(
               children: [
-                Category(categoryName: 'Popular', onTap: () {}),
+                Category(categoryName: 'Popular', categorySlug: 'popular'),
                 SizedBox(height: 16.h),
                 SizedBox(
                   height: 284.w,

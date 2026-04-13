@@ -40,7 +40,10 @@ class ProfileView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             sliver: SliverList(
               delegate: SliverChildListDelegate([
-                ProfileInfo(controller: profileController),
+                ProfileInfo(
+                  controller: profileController,
+                  balanceController: Get.find(),
+                ),
                 SizedBox(height: 12.h),
                 ProfileItemsList(),
                 Obx(() {

@@ -19,75 +19,77 @@ class UserRole extends StatelessWidget {
     UserRoleController userRoleController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
-      gradient: isDark?LinearGradient(colors: [
-        AppColors.darkPrimary,
-        AppColors.darkPrimary,
-      ]):AppColors.backgroundColor,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 35.w),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(ImagesPath.appLogo, width: 170.w, height: 30.h),
-              SizedBox(height: 48.h),
-              CustomTextPrimary(
-                text: 'Select a role for your account',
-                fontSize: 24.sp,
-                color: isDark?AppColors.darkPrimaryText:AppColors.primaryDarkTextColor,
-              ),
-              SizedBox(height: 32.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  UserContainer(
-                    image: IconsPath.tenantIcon,
-                    title: "Tenant",
-                    description: "Find your perfect House",
-                    index: 0,
-                  ),
-                  UserContainer(
-                    image: IconsPath.landLordIcon,
-                    title: "Landlord",
-                    description: "Sell your Home with Tenant",
-                    index: 1,
-                  ),
-                ],
-              ),
-              SizedBox(height: 8.2.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  UserContainer(
-                    image: IconsPath.agentIcon,
-                    title: "Agent",
-                    description: "Find Agent for your Land",
-                    index: 2,
-                  ),
-                  UserContainer(
-                    image: IconsPath.serviceVendorIcon,
-                    title: "Service Vendor",
-                    description: "Get All Home Services",
-                    index: 3,
-                  ),
-                ],
-              ),
-              SizedBox(height: 32.h),
-              UserButton(
-                backOnTap: () {
-                  Get.back();
-                },
-                continueOnTap: () {
-                  if(userRoleController.selectedIndex.value==-1){
-                  }else{
-                    Get.toNamed(AppRoutes.signupOption);
-                  }
-                  
-                },
-              ),
-            ],
-          ),
+      gradient: isDark
+          ? LinearGradient(
+              colors: [AppColors.darkPrimary, AppColors.darkPrimary],
+            )
+          : AppColors.backgroundColor,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 35.w),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(ImagesPath.appLogo, width: 170.w, height: 30.h),
+            SizedBox(height: 48.h),
+            CustomTextPrimary(
+              text: 'Select a role for your account',
+              fontSize: 24.sp,
+              color: isDark
+                  ? AppColors.darkPrimaryText
+                  : AppColors.primaryDarkTextColor,
+            ),
+            SizedBox(height: 32.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                UserContainer(
+                  image: IconsPath.tenantIcon,
+                  title: "Tenant",
+                  description: "Find your perfect House",
+                  index: 0,
+                ),
+                UserContainer(
+                  image: IconsPath.landLordIcon,
+                  title: "Landlord",
+                  description: "Sell your Home with Tenant",
+                  index: 1,
+                ),
+              ],
+            ),
+            SizedBox(height: 8.2.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                UserContainer(
+                  image: IconsPath.agentIcon,
+                  title: "Agent",
+                  description: "Find Agent for your Land",
+                  index: 2,
+                ),
+                UserContainer(
+                  image: IconsPath.serviceVendorIcon,
+                  title: "Service Vendor",
+                  description: "Get All Home Services",
+                  index: 3,
+                ),
+              ],
+            ),
+            SizedBox(height: 32.h),
+            UserButton(
+              backOnTap: () {
+                Get.back();
+              },
+              continueOnTap: () {
+                if (userRoleController.selectedIndex.value == -1) {
+                } else {
+                  Get.toNamed(AppRoutes.signupOption);
+                }
+              },
+            ),
+          ],
         ),
-      );
+      ),
+    );
   }
 }

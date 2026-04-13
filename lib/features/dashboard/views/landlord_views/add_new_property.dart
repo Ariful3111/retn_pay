@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_address.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_container.dart';
@@ -13,7 +12,7 @@ import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/a
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_inspection.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_virtual_tour.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/property_maintenance_info.dart';
-import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_management_appbar.dart';
+
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';

@@ -15,7 +15,6 @@ import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_i
 import 'package:renter_pay/shared/widgets/custom_animation/custom_animated_switcher.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
-import 'package:renter_pay/shared/widgets/custom_animation/custom_shadow_overlay_button.dart';
 import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 import 'package:renter_pay/shared/widgets/property/property_details_info.dart';
 
@@ -105,41 +104,84 @@ class _ActivePropertiesViewState extends State<ActivePropertiesView> {
                           ],
                         ),
                         if (!activePropertyController.isAccess.value)
-                          CustomShadowOverlayButton().shadow(
-                            context: context,
-                            imageFilter: ImageFilter.blur(
-                              sigmaX: 1.5,
-                              sigmaY: 1.5,
-                            ),
-                          ),
-                        if (!activePropertyController.isAccess.value)
-                          Positioned(
-                            top: 370.h,
-                            left: 20.w,
-                            right: 20.w,
-                            child: CustomPrimaryButton(
-                              onPressed: () {
-                                // activePropertyController.isAccess.value =
-                                //     !activePropertyController.isAccess.value;
-                                Get.toNamed(AppRoutes.agreementView);
-                              },
-                              height: 48.h,
-                              width: 307.w,
-                              text: 'Agreement',
-                            ),
-                          ),
-                        if (!activePropertyController.isAccess.value)
-                          Positioned(
-                            top: 430.h,
-                            left: 20.w,
-                            right: 20.w,
-                            child: CustomPrimaryButton(
-                              onPressed: () {
-                                Get.toNamed(AppRoutes.keyReleaseView);
-                              },
-                              height: 48.h,
-                              width: 307.w,
-                              text: 'Key Release Form',
+                          Positioned.fill(
+                            child: Stack(
+                              children: [
+                                // Blurred overlay - TAP HERE to unlock
+                                GestureDetector(
+                                  onTap: () {
+                                    activePropertyController.isAccess.value =
+                                        true;
+                                  },
+                                  behavior: HitTestBehavior.opaque,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadiusGeometry.circular(
+                                      16.r,
+                                    ),
+                                    child: BackdropFilter(
+                                      filter: ImageFilter.blur(
+                                        sigmaX: 1.5,
+                                        sigmaY: 1.5,
+                                      ),
+                                      child: Container(
+                                        width: MediaQuery.widthOf(context),
+                                        decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                            begin: Alignment.bottomCenter,
+                                            end: Alignment.topCenter,
+                                            colors: [
+                                              Theme.of(context).brightness ==
+                                                      Brightness.dark
+                                                  ? AppColors.darkSecondary
+                                                  : AppColors.whiteColor,
+                                              Theme.of(context).brightness ==
+                                                      Brightness.dark
+                                                  ? AppColors.darkSecondary
+                                                  : AppColors.whiteColor
+                                                        .withValues(
+                                                          alpha: 0.85,
+                                                        ),
+                                              Theme.of(context).brightness ==
+                                                      Brightness.dark
+                                                  ? AppColors.darkSecondary
+                                                        .withValues(alpha: 0.5)
+                                                  : AppColors.whiteColor
+                                                        .withValues(alpha: 0.5),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                // Buttons - will still work normally
+                                Positioned(
+                                  top: 370.h,
+                                  left: 20.w,
+                                  right: 20.w,
+                                  child: CustomPrimaryButton(
+                                    onPressed: () {
+                                      Get.toNamed(AppRoutes.agreementView);
+                                    },
+                                    height: 48.h,
+                                    width: 307.w,
+                                    text: 'Agreement',
+                                  ),
+                                ),
+                                Positioned(
+                                  top: 430.h,
+                                  left: 20.w,
+                                  right: 20.w,
+                                  child: CustomPrimaryButton(
+                                    onPressed: () {
+                                      Get.toNamed(AppRoutes.keyReleaseView);
+                                    },
+                                    height: 48.h,
+                                    width: 307.w,
+                                    text: 'Key Release Form',
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                       ],

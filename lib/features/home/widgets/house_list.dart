@@ -17,7 +17,7 @@ class HouseList extends StatelessWidget {
         : Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Category(categoryName: 'House', onTap: () {}),
+              Category(categoryName: 'House', categorySlug: 'house'),
               SizedBox(height: 16.h),
               SizedBox(
                 height: 302.h,

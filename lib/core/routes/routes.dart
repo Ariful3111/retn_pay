@@ -8,6 +8,7 @@ import 'package:renter_pay/features/auth/bindings/forgot_password_bindings.dart'
 import 'package:renter_pay/features/dashboard/bindings/landlord_bindings/application_management_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/landlord_bindings/landlord_key_release_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/service_vendor_bindings/service_vendor_bindings.dart';
+import 'package:renter_pay/features/dashboard/bindings/service_vendor_bindings/booking_management_details_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/tenant_bindings/agreement_bindings.dart';
 import 'package:renter_pay/features/dashboard/views/landlord_views/add_new_property.dart';
 import 'package:renter_pay/features/dashboard/views/landlord_views/application_management_details.dart';
@@ -312,6 +313,7 @@ final List<GetPage> appRoutes = [
   GetPage(
     name: AppRoutes.bookingManagementDetailsView,
     page: () => BookingManagementDetails(),
+    binding: BookingManagementDetailsBindings(),
   ),
   GetPage(
     name: AppRoutes.addNewProperty,

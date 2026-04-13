@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/features/dashboard/controllers/key_release_request_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_repair_request_widgets/landlord_signature.dart';
 import 'package:renter_pay/features/dashboard/widgets/key_release_widgets/landlord_key_release/landlord_key_release_room_info.dart';
 import 'package:renter_pay/features/dashboard/widgets/key_release_widgets/landlord_key_release/signature_draw.dart';
@@ -10,25 +11,15 @@ import 'package:renter_pay/shared/widgets/custom_dropdown/custom_dropdown_menu.d
 import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
-import 'package:signature/signature.dart';
 
 class LandlordReleaseForm extends StatelessWidget {
-  final RxString signatureMode;
-  final RxBool isDrawing;
-  final SignatureController signatureController;
-  final RxString typedText;
-  final TextEditingController textEditingController;
-  const LandlordReleaseForm({
-    super.key,
-    required this.signatureMode,
-    required this.isDrawing,
-    required this.signatureController,
-    required this.typedText,
-    required this.textEditingController,
-  });
+  const LandlordReleaseForm({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<KeyReleaseRequestController>();
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -36,56 +27,54 @@ class LandlordReleaseForm extends StatelessWidget {
           child: CustomTextPrimary(text: 'Key Release Form', fontSize: 24.sp),
         ),
         SizedBox(height: 24.h),
-        customField(
-          controller: TextEditingController(),
+        CustomTextField(
+          controller: controller.firstNameController,
           labelText: "Resident First Name*",
-          context: context,
+          fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
         ),
         SizedBox(height: 20.h),
-        customField(
-          controller: TextEditingController(),
+        CustomTextField(
+          controller: controller.lastNameController,
           labelText: "Resident Last Name*",
-          context: context,
+          fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
         ),
         SizedBox(height: 24.h),
         infoText(text: 'Property Address:'),
         SizedBox(height: 12.h),
-        customField(
-          controller: TextEditingController(),
+        CustomTextField(
+          controller: controller.addressLine1Controller,
           labelText: "Address Line 1*",
-          context: context,
+          fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
         ),
         SizedBox(height: 20.h),
-        customField(
-          controller: TextEditingController(),
+        CustomTextField(
+          controller: controller.addressLine2Controller,
           labelText: "Address Line 2*",
-          context: context,
+          fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
         ),
         SizedBox(height: 20.h),
-        customField(
-          controller: TextEditingController(),
+        CustomTextField(
+          controller: controller.cityController,
           labelText: "City*",
-          context: context,
+          fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
         ),
         SizedBox(height: 20.h),
         CustomDropdownMenu(
           label: CustomTextSecondary(text: "State*"),
           option: ['Bangladesh', 'USA', 'Canada', "Australia"],
-          onSelect: (value) {},
-          isSelect: RxString(''),
-          fillColor: Theme.of(context).brightness == Brightness.dark
-              ? AppColors.darkPrimary
-              : AppColors.whiteColor,
-          alignmentGeometry: Alignment(0.2, 1),
+          onSelect: (value) => controller.selectedState.value = value ?? '',
+          isSelect: controller.selectedState,
+          fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+          alignmentGeometry: const Alignment(0.2, 1),
         ),
         SizedBox(height: 20.h),
-        customField(
-          controller: TextEditingController(),
+        CustomTextField(
+          controller: controller.zipCodeController,
           labelText: "Zip Code*",
-          context: context,
+          fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
         ),
         SizedBox(height: 24.h),
-        LandlordKeyReleaseRoomInfo(),
+        const LandlordKeyReleaseRoomInfo(),
         SizedBox(height: 16.h),
         addMoreButton(),
         SizedBox(height: 20.h),
@@ -95,16 +84,16 @@ class LandlordReleaseForm extends StatelessWidget {
         ),
         infoText(text: 'Resident Signature'),
         SizedBox(height: 14.h),
-        LandlordSignature(),
+        const LandlordSignature(),
         SizedBox(height: 20.h),
         infoText(text: 'Landlord/Agent Signature'),
         SizedBox(height: 13.h),
         SignatureDraw(
-          signatureMode: signatureMode,
-          isDrawing: isDrawing,
-          signatureController: signatureController,
-          typedText: typedText,
-          textEditingController: textEditingController,
+          signatureMode: controller.signatureMode,
+          isDrawing: controller.isDrawing,
+          signatureController: controller.signatureController!,
+          typedText: controller.typedText,
+          textEditingController: controller.drawController,
         ),
       ],
     );
@@ -126,20 +115,6 @@ class LandlordReleaseForm extends StatelessWidget {
         SizedBox(height: 4.h),
         infoText(text: subTitle),
       ],
-    );
-  }
-
-  Widget customField({
-    required String labelText,
-    required TextEditingController controller,
-    required BuildContext context,
-  }) {
-    return CustomTextField(
-      controller: controller,
-      labelText: labelText,
-      fillColor: Theme.of(context).brightness == Brightness.dark
-          ? AppColors.darkPrimary
-          : AppColors.whiteColor,
     );
   }
 

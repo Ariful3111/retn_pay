@@ -21,28 +21,60 @@ class PropertyKeyFeatures extends StatelessWidget {
       itemBuilder: (context, index) {
         final feature = amenities[index];
         return Container(
-          margin: EdgeInsets.only(bottom: 8.h),
-          height: 48.h,
+          margin: EdgeInsets.only(bottom: 12.h),
+          height: 52.h,
           width: MediaQuery.widthOf(context),
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(7.8.r),
             color: isDark ? AppColors.primaryTextColor : AppColors.darkAppBar,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.08),
+                offset: Offset(0, 2.sp),
+                blurRadius: 6.sp,
+                spreadRadius: 0.5.sp,
+              ),
+            ],
           ),
           child: Row(
             children: [
-              CachedNetworkImage(
-                imageUrl: feature.amenityType?.icon ?? '',
-                height: 20.h,
-                width: 20.w,
-                color: isDark ? AppColors.darkAppBar : null,
+              // Badge with icon
+              Container(
+                height: 30.h,
+                width: 30.w,
+                margin: EdgeInsets.symmetric(horizontal: 12.w),
+                padding: EdgeInsets.all(8.sp),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                    colors: [
+                      AppColors.primaryColorDark,
+                      AppColors.primaryColorDark.withValues(alpha: 0.7),
+                    ],
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.primaryColorDark.withValues(alpha: 0.3),
+                      blurRadius: 8,
+                      spreadRadius: 3,
+                      offset: Offset(0, 2),
+                    ),
+                  ],
+                  image: DecorationImage(
+                    image: CachedNetworkImageProvider(
+                      feature.amenityType?.icon ?? '',
+                    ),
+                  ),
+                ),
               ),
-              SizedBox(width: 9.75.w),
+              SizedBox(width: 8.w),
               CustomTextSecondary(
                 text: feature.amenityType?.name ?? '',
                 color: isDark
                     ? AppColors.darkAppBar
                     : AppColors.primaryTextColor,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w500,
               ),
             ],
           ),

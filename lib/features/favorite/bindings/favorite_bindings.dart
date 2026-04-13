@@ -13,6 +13,7 @@ class FavoriteBindings implements Bindings {
     Get.lazyPut(() => GetFavoriteRepository(getNetwork: Get.find()));
     Get.lazyPut(() => AddFavoriteRepository(getNetwork: Get.find()));
     Get.lazyPut(() => DeleteFavoriteRepository(deleteNetwork: Get.find()));
+
     Get.lazyPut(() => FavoriteController());
     Get.lazyPut(() => GetFavoriteController(getFavoriteRepository: Get.find()));
     Get.lazyPut(() => AddFavoriteController(addFavoriteRepository: Get.find()));

@@ -46,7 +46,12 @@ class CustomerReview extends GetView<PropertyReviewController> {
                 .trim();
 
             return Container(
-              margin: EdgeInsets.only(right: 10),
+              margin: EdgeInsets.only(
+                right: 10,
+                top: 10.h,
+                bottom: 10.h,
+                left: 10.w,
+              ),
               padding: EdgeInsets.symmetric(
                 horizontal: 14.38.w,
                 vertical: 23.96.h,

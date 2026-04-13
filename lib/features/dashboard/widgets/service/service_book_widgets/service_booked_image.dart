@@ -3,12 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/service_booked_details_controller.dart';
+import 'package:renter_pay/features/dashboard/models/service_vendor_models/booking_model.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_book_info.dart';
 import 'package:renter_pay/shared/widgets/custom_attach_image/custom_attach_image_view.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class ServiceBookedImage extends StatelessWidget with ServiceBookInfo {
-  const ServiceBookedImage({super.key});
+  final BookingItem? bookingItem;
+  const ServiceBookedImage({super.key, this.bookingItem});
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +24,13 @@ class ServiceBookedImage extends StatelessWidget with ServiceBookInfo {
           color: isDark ? AppColors.whiteColor : AppColors.darkTextColor,
         ),
         SizedBox(height: 12.h),
-        myInfo(title: 'Location of Problem:', data: 'Kitchen Sink Area'),
+        myInfo(
+          title: 'Location of Problem:',
+          data: bookingItem?.property?.address ?? 'Not specified',
+        ),
         myInfo(
           title: 'Problem Details:',
-          data:
-              'There\'s a continuous leak under the kitchen sink that worsens when the tap is turned on. Water is pooling on the cabinet floor and causing minor dampness. Please send a plumber as soon as possible to inspect and repair.',
+          data: bookingItem?.service?.description ?? 'No details provided',
         ),
         CustomTextSecondary(text: 'Attached Photos'),
         SizedBox(height: 4.h),
@@ -63,11 +67,11 @@ class ServiceBookedImage extends StatelessWidget with ServiceBookInfo {
                 color: isDark ? AppColors.whiteColor : AppColors.darkTextColor,
               ),
               SizedBox(height: 12.h),
-              myInfo(title: 'Date', data: '23 October 2025'),
               myInfo(
-                title: 'Preferred Time Period:',
-                data: 'Between 8 a.m. - 12 p.m.',
+                title: 'Date',
+                data: bookingItem?.scheduledAt ?? 'Not scheduled',
               ),
+              myInfo(title: 'Preferred Time Period:', data: 'To be confirmed'),
             ],
           ),
         ),

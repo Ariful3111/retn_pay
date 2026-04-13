@@ -40,6 +40,7 @@ class ItemContainer extends StatelessWidget {
                 builder: (context) {
                   return Dialog(
                     child: PropertyImageView(
+                      propertyID: property.id!.toInt(),
                       images: property.images!
                           .map((e) => e.imagePath.toString())
                           .toList(),
@@ -52,36 +53,66 @@ class ItemContainer extends StatelessWidget {
               height: imageHeight,
               width: imageWidth,
               padding: EdgeInsets.all(8.sp),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12.sp),
-                image: DecorationImage(
-                  image: CachedNetworkImageProvider(
-                    property.images?.first.imagePath ?? '',
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12.sp),
+                    child: CachedNetworkImage(
+                      imageUrl: property.images?.first.imagePath ?? '',
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => Container(
+                        color: Colors.grey[300],
+                        child: Center(
+                          child: SizedBox(
+                            height: 20.h,
+                            width: 20.w,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Theme.of(context).primaryColor,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      errorWidget: (context, url, error) => Container(
+                        color: Colors.grey[300],
+                        child: Icon(
+                          Icons.image_not_supported,
+                          size: 30.sp,
+                          color: Colors.grey[600],
+                        ),
+                      ),
+                    ),
                   ),
-                  fit: BoxFit.fill,
-                ),
-              ),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: Obx(
-                  () => CustomFavoriteButton(
-                    onTap: () async {
-                      if (property.isFavourite.value == false) {
-                        await Get.find<AddFavoriteController>().addFavorite(
-                          propertyID: property.id!,
-                          index: favoriteIndex,
-                        );
-                      } else {
-                        await Get.find<DeleteFavoriteController>()
-                            .deleteFavorite(
-                              propertyID: property.id!,
-                              index: favoriteIndex,
-                            );
-                      }
-                    },
-                    isFavorite: property.isFavourite.value,
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 8.sp, right: 8.sp),
+                      child: Obx(
+                        () => CustomFavoriteButton(
+                          onTap: () async {
+                            if (property.isFavourite.value == false) {
+                              await Get.find<AddFavoriteController>()
+                                  .addFavorite(
+                                    propertyID: property.id!,
+                                    index: favoriteIndex,
+                                  );
+                            } else {
+                              await Get.find<DeleteFavoriteController>()
+                                  .deleteFavorite(
+                                    propertyID: property.id!,
+                                    index: favoriteIndex,
+                                  );
+                            }
+                          },
+                          isFavorite: property.isFavourite.value,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           ),

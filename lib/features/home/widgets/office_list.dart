@@ -16,7 +16,7 @@ class OfficeList extends StatelessWidget {
         ? SizedBox()
         : Column(
             children: [
-              Category(categoryName: 'Office', onTap: () {}),
+              Category(categoryName: 'Office', categorySlug: 'office'),
               SizedBox(height: 16.h),
               SizedBox(
                 height: 302.h,
