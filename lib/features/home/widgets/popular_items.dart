@@ -11,6 +11,7 @@ import 'package:renter_pay/features/favorite/controllers/favorite_delete_control
 import 'package:renter_pay/features/home/controllers/popular_controller.dart';
 import 'package:renter_pay/features/home/models/properties_model.dart';
 import 'package:renter_pay/features/home/widgets/category.dart';
+import 'package:renter_pay/features/home/widgets/shadow_container.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_favorite_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_span.dart';
@@ -58,7 +59,6 @@ class PopularItems extends StatelessWidget {
                           height: 284.h,
                           width: 300.w,
                           margin: EdgeInsets.only(right: 12.w),
-                          padding: EdgeInsets.all(12.sp),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20.sp),
                             image: DecorationImage(
@@ -71,77 +71,98 @@ class PopularItems extends StatelessWidget {
                               fit: BoxFit.cover,
                             ),
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          child: Stack(
                             children: [
-                              Align(
-                                alignment: Alignment.topRight,
-                                child: Obx(
-                                  () => CustomFavoriteButton(
-                                    onTap: () async {
-                                      if (property.isFavourite.value == false) {
-                                        await Get.find<AddFavoriteController>()
-                                            .addFavorite(
-                                              propertyID: property.id!,
-                                              index: 1,
-                                            );
-                                      } else {
-                                        await Get.find<
-                                              DeleteFavoriteController
-                                            >()
-                                            .deleteFavorite(
-                                              propertyID: property.id!,
-                                              index: 1,
-                                            );
-                                      }
-                                    },
-                                    isFavorite: property.isFavourite.value,
-                                  ),
+                              Positioned(
+                                bottom: 0,
+                                left: 0,
+                                right: 0,
+                                child: ShadowContainer(),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(12.sp),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Align(
+                                      alignment: Alignment.topRight,
+                                      child: Obx(
+                                        () => CustomFavoriteButton(
+                                          onTap: () async {
+                                            if (property.isFavourite.value ==
+                                                false) {
+                                              await Get.find<
+                                                    AddFavoriteController
+                                                  >()
+                                                  .addFavorite(
+                                                    propertyID: property.id!,
+                                                    index: 1,
+                                                  );
+                                            } else {
+                                              await Get.find<
+                                                    DeleteFavoriteController
+                                                  >()
+                                                  .deleteFavorite(
+                                                    propertyID: property.id!,
+                                                    index: 1,
+                                                  );
+                                            }
+                                          },
+                                          isFavorite:
+                                              property.isFavourite.value,
+                                        ),
+                                      ),
+                                    ),
+                                    Spacer(),
+                                    Row(
+                                      children: [
+                                        Image.asset(
+                                          IconsPath.location,
+                                          height: 14.h,
+                                          width: 14.w,
+                                        ),
+                                        SizedBox(width: 4.w),
+                                        CustomTextSecondary(
+                                          text:
+                                              '${property.city}, ${property.country}',
+                                          color: AppColors.whiteColor,
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        CustomTextSpan(
+                                          title:
+                                              '\$${property.units![0].rentAmount}',
+                                          spantext: '/Week',
+                                          fontSize: 16.sp,
+                                          spanFontSize: 12.sp,
+                                          spanFontWeight: FontWeight.w400,
+                                          color: AppColors.whiteColor,
+                                          spanColor:
+                                              AppColors.darkSecondaryText,
+                                        ),
+                                        Image.asset(
+                                          IconsPath.appCurrency,
+                                          height: 11.h,
+                                          width: 11.h,
+                                        ),
+                                        SizedBox(width: 3.w),
+                                        CustomTextSpan(
+                                          title:
+                                              '${property.units![0].rentAmount}',
+                                          spantext: '/Week',
+                                          fontSize: 16.sp,
+                                          spanFontSize: 12.sp,
+                                          spanFontWeight: FontWeight.w400,
+                                          color: AppColors.whiteColor,
+                                          spanColor:
+                                              AppColors.darkSecondaryText,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              Spacer(),
-                              Row(
-                                children: [
-                                  Image.asset(
-                                    IconsPath.location,
-                                    height: 14.h,
-                                    width: 14.w,
-                                  ),
-                                  SizedBox(width: 4.w),
-                                  CustomTextSecondary(
-                                    text:
-                                        '${property.city}, ${property.country}',
-                                    color: AppColors.whiteColor,
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  CustomTextSpan(
-                                    title: '\$${property.units![0].rentAmount}',
-                                    spantext: '/Week',
-                                    fontSize: 16.sp,
-                                    spanFontSize: 12.sp,
-                                    spanFontWeight: FontWeight.w400,
-                                    color: AppColors.whiteColor,
-                                    spanColor: AppColors.darkSecondaryText,
-                                  ),
-                                  Image.asset(
-                                    IconsPath.appCurrency,
-                                    height: 11.h,
-                                    width: 11.h,
-                                  ),
-                                  SizedBox(width: 3.w),
-                                  CustomTextSpan(
-                                    title: '${property.units![0].rentAmount}',
-                                    spantext: '/Week',
-                                    fontSize: 16.sp,
-                                    spanFontSize: 12.sp,
-                                    spanFontWeight: FontWeight.w400,
-                                    color: AppColors.whiteColor,
-                                    spanColor: AppColors.darkSecondaryText,
-                                  ),
-                                ],
                               ),
                             ],
                           ),
