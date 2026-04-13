@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/shared/widgets/filter/filter_amenities.dart';
@@ -80,7 +79,7 @@ class _CustomFilterState extends State<CustomFilter> {
     return Material(
       color: Colors.transparent,
       child: Container(
-        width: 260.w,
+        padding: EdgeInsets.all(8),
         color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
         child: SingleChildScrollView(
           child: Column(

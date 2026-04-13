@@ -30,8 +30,9 @@ class ProfileView extends StatelessWidget {
         controller: profileController.scrollController,
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             backgroundColor: Colors.transparent,
-            titleSpacing: 0.w,
+            titleSpacing: 24.w,
             title: Obx(() {
               return CustomAppbar(title: roleDetector());
             }),

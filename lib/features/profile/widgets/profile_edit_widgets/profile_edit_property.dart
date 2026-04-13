@@ -6,6 +6,7 @@ import 'package:renter_pay/features/home/controllers/property_address_controller
 import 'package:renter_pay/features/profile/controllers/get_preference_controller.dart';
 import 'package:renter_pay/features/profile/controllers/preference_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_edit_controller.dart';
+import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_button.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_checkbox.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_edit_field.dart';
 import 'package:renter_pay/features/profile/widgets/profile_edit_widgets/profile_save_button.dart';
@@ -51,10 +52,21 @@ class ProfileEditProperty extends GetView<GetPreferenceController> {
             () => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomTextSecondary(
-                  text: 'Property Preferences',
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w600,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomTextSecondary(
+                      text: 'Property Preferences',
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    ProfileEditButton(
+                      onTap: () {
+                        controller.isEditAddress.value =!
+                            controller.isEditAddress.value;
+                      },
+                    ),
+                  ],
                 ),
                 SizedBox(height: 20.h),
                 ProfileEditField(
@@ -208,18 +220,23 @@ class ProfileEditProperty extends GetView<GetPreferenceController> {
           //   ),
           //   textAlign: TextAlign.start,
           // ),
-          SizedBox(height: 20),
           Obx(() {
             return preferenceController.isLoading.value
                 ? Center(child: ButtonLoading())
-                : ProfileSaveButton(
-                    onPressed: () async {
-                      if (Get.find<ProfileEditController>().isEdit.value) {
-                        Get.find<ProfileEditController>().isEdit.value = false;
-                        await preferenceController.updatePreference();
-                      }
-                    },
-                  );
+                : AnimatedSize(
+                  duration: Duration(milliseconds: 300),
+                  child:controller.isEditAddress.value? Padding(
+                    padding:  EdgeInsets.only(top: 20.h),
+                    child: ProfileSaveButton(
+                        onPressed: () async {
+                          if (Get.find<ProfileEditController>().isEdit.value) {
+                            Get.find<ProfileEditController>().isEdit.value = false;
+                            await preferenceController.updatePreference();
+                          }
+                        },
+                      ),
+                  ):SizedBox(),
+                );
           }),
           SizedBox(height: 20),
         ],
