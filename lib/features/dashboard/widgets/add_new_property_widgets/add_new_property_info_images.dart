@@ -30,6 +30,7 @@ class AddNewPropertyInfoImages extends StatelessWidget {
         shrinkWrap: true,
         itemBuilder: (context, index) {
           return Container(
+            margin: EdgeInsets.only(top: 20.h),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.38.r),
               image: DecorationImage(
