@@ -35,7 +35,12 @@ class PopularItems extends StatelessWidget {
           ? ButtonLoading()
           : Column(
               children: [
-                Category(categoryName: 'Popular', categorySlug: 'popular'),
+                applyPadding(
+                  widget: Category(
+                    categoryName: 'Popular',
+                    categorySlug: 'popular',
+                  ),
+                ),
                 SizedBox(height: 16.h),
                 SizedBox(
                   height: 284.w,
@@ -46,6 +51,8 @@ class PopularItems extends StatelessWidget {
                     itemBuilder: (_, index) {
                       Property property = properties[index];
                       final hasImage = property.images?.isNotEmpty ?? false;
+                      bool isFirst = index == 0;
+                      bool isLast = index == properties.length - 1;
                       return GestureDetector(
                         onTap: () {
                           HitTestBehavior.opaque;
@@ -57,7 +64,10 @@ class PopularItems extends StatelessWidget {
                         child: Container(
                           height: 284.h,
                           width: 300.w,
-                          margin: EdgeInsets.only(right: 12.w),
+                          margin: EdgeInsets.only(
+                            right: isLast ? 8.w : 0.w,
+                            left: isFirst ? 20.w : 10.w,
+                          ),
                           padding: EdgeInsets.all(12.sp),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20.sp),
@@ -154,5 +164,12 @@ class PopularItems extends StatelessWidget {
               ],
             );
     });
+  }
+
+  Widget applyPadding({required Widget widget}) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      child: widget,
+    );
   }
 }
