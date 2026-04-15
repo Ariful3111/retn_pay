@@ -16,24 +16,25 @@ class ApplicationManagementDetailsPartEProvider
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ApplicationManagementDetailsPartEHelper().sectionTitle(
+          ApplicationManagementDetailsPartEHelper.sectionTitle(
             '4. Previous rental provider/agent details',
             isDark,
           ),
           SizedBox(height: 16.h),
-          ApplicationManagementDetailsPartEHelper().textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.previousProviderNameController,
             'Name of previous rental provider/agent',
             isDark,
             readOnly: readOnly,
           ),
-          ApplicationManagementDetailsPartEHelper().textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.previousProviderPhoneController,
             'Phone number',
             isDark,
+            keyboardType: TextInputType.phone,
             readOnly: readOnly,
           ),
-          ApplicationManagementDetailsPartEHelper().textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.previousProviderEmailController,
             'Email address',
             isDark,

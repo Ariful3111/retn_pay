@@ -24,13 +24,20 @@ class ApplicationManagementDetailsPartD extends StatelessWidget {
           title(title: 'Rental property details', isDark: isDark),
           SizedBox(height: 16.h),
           ApplicationManagementDetailsPartDField(label: 'Address'),
-          ApplicationManagementDetailsPartDField(label: 'Postcode'),
-          ApplicationManagementDetailsPartDField(label: 'Rent amount (\$)'),
+          ApplicationManagementDetailsPartDField(
+            label: 'Postcode',
+            keyboardType: TextInputType.number,
+          ),
+          ApplicationManagementDetailsPartDField(
+            label: 'Rent amount (\$)',
+            keyboardType: TextInputType.number,
+          ),
           SizedBox(height: 12.h),
           ApplicationManagementDetailsPartDPaid(),
           SizedBox(height: 12.h),
           ApplicationManagementDetailsPartDField(
             label: 'Property bond amount (\$)',
+            keyboardType: TextInputType.number,
           ),
           SizedBox(height: 12.h),
           CustomDateField(
@@ -76,7 +83,10 @@ class ApplicationManagementDetailsPartD extends StatelessWidget {
           ApplicationManagementDetailsPartDField(
             label: 'Name of property manager',
           ),
-          ApplicationManagementDetailsPartDField(label: 'Phone number'),
+          ApplicationManagementDetailsPartDField(
+            label: 'Phone number',
+            keyboardType: TextInputType.number,
+          ),
           ApplicationManagementDetailsPartDField(label: 'Email address'),
           ApplicationManagementDetailsPartDField(
             label: 'Name of estate agency (if applicable)',

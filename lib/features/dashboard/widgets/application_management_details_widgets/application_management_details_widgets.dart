@@ -76,7 +76,7 @@ class ApplicationManagementDetailsWidgets
                           ],
                         ),
                         AnimatedSize(
-                          duration: const Duration(milliseconds: 250),
+                          duration: const Duration(milliseconds: 300),
                           curve: Curves.easeInOut,
                           child: isSelected
                               ? Padding(

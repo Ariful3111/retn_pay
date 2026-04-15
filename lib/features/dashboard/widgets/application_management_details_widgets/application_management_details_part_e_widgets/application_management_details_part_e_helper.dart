@@ -5,7 +5,7 @@ import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class ApplicationManagementDetailsPartEHelper {
-  Widget sectionTitle(String text, bool isDark, {double? size}) {
+  static Widget sectionTitle(String text, bool isDark, {double? size}) {
     return CustomTextSecondary(
       text: text,
       fontSize: size ?? 18.sp,
@@ -14,13 +14,14 @@ class ApplicationManagementDetailsPartEHelper {
     );
   }
 
-  Widget textField(
+  static Widget textField(
     TextEditingController controller,
     String label,
     bool isDark, {
     int? maxLines,
     bool? isAlignLabelWithHint,
     bool readOnly = false,
+    TextInputType? keyboardType,
   }) {
     return Padding(
       padding: EdgeInsets.only(bottom: 16.h),
@@ -37,6 +38,7 @@ class ApplicationManagementDetailsPartEHelper {
         maxLines: maxLines,
         isAlignLabelWithHint: isAlignLabelWithHint,
         readOnly: readOnly,
+        keyboardType: keyboardType,
       ),
     );
   }

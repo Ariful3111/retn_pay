@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/features/dashboard/models/inspection_model.dart';
@@ -11,6 +12,7 @@ class InspectionRequestController extends GetxController {
   RxInt isInspectionType = 0.obs;
   RxList<int> expanded = <int>[].obs;
   final TextEditingController searchController = TextEditingController();
+  Timer? _debounce;
   final List inspectionTypeList = ['Scheduled', 'Pending', 'History'];
   final List<String> tableColumn = ['Property Address', 'Status', 'Action'];
   RxBool isLoading = true.obs;
@@ -18,19 +20,30 @@ class InspectionRequestController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    searchController.addListener(_onSearchChanged);
     getInspections();
   }
 
   @override
   void dispose() {
+    _debounce?.cancel();
+    searchController.removeListener(_onSearchChanged);
     searchController.dispose();
     super.dispose();
+  }
+
+  void _onSearchChanged() {
+    if (_debounce?.isActive ?? false) _debounce!.cancel();
+    _debounce = Timer(const Duration(milliseconds: 500), () {
+      getInspections();
+    });
   }
 
   Future<void> getInspections() async {
     isLoading.value = true;
     final response = await getInspectionsRepository.execute(
       status: getInspectionStatus(status: isInspectionType.value),
+      search: searchController.text.trim(),
     );
     isLoading.value = false;
     response.fold(
