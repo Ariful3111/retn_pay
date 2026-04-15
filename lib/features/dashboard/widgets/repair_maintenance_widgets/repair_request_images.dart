@@ -45,19 +45,21 @@ class RepairRequestImages extends StatelessWidget {
           ),
         ),
         SizedBox(height: 24.h),
-       if (userIndex == 1||userIndex==2) CustomTextPrimary(text: 'Assigned To', fontSize: 20.sp),
-       if (userIndex == 1||userIndex==2) SizedBox(height: 12.h),
+        if (userIndex == 1 || userIndex == 2)
+          CustomTextPrimary(text: 'Assigned To', fontSize: 20.sp),
+        if (userIndex == 1 || userIndex == 2) SizedBox(height: 12.h),
         if (userIndex == 2) RepairRequestAssign(),
         if (userIndex == 1) LandlordRepairMaintenanceAssign(),
         if (userIndex == 0) RepairRequestService(),
-       if (userIndex == 1||userIndex==2) SizedBox(height: 20.h),
-        if (userIndex == 1||userIndex==2)CustomPrimaryButton(
-          onPressed: () {},
-          height: 40.h,
-          width: 83.w,
-          text:userIndex==2? 'Back':'Assign',
-          borderRadius: BorderRadius.circular(6.r),
-        ),
+        if (userIndex == 1 || userIndex == 2) SizedBox(height: 20.h),
+        if (userIndex == 1 || userIndex == 2)
+          CustomPrimaryButton(
+            onPressed: () {},
+            height: 40.h,
+            width: 83.w,
+            text: userIndex == 2 ? 'Back' : 'Assign',
+            borderRadius: BorderRadius.circular(6.r),
+          ),
       ],
     );
   }
