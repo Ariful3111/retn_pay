@@ -22,8 +22,7 @@ class ApplicationManagementDetailsController extends GetxController {
   });
   final applicationDetails = Rxn<ApplicationDetailsModel>();
   RxBool isLoading = false.obs;
-  RxBool isEditable =
-      true.obs; // true if creating new, false if viewing existing
+  RxBool isEditable = true.obs;
 
   List<String> items = [
     'Part A-Important information;',
