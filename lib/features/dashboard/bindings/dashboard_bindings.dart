@@ -39,7 +39,9 @@ import 'package:renter_pay/features/home/repositories/property_category_repo.dar
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/rent_notice_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/submit_property_review_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/monthly_revenue_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/landlord_controller/upcoming_payment_controller.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/monthly_revenue_repo.dart';
+import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/upcoming_payment_repo.dart';
 
 class DashboardBindings implements Bindings {
   @override
@@ -203,6 +205,18 @@ class DashboardBindings implements Bindings {
     if (!Get.isRegistered<MonthlyRevenueController>()) {
       Get.lazyPut(
         () => MonthlyRevenueController(getMonthlyRevenueRepository: Get.find()),
+      );
+    }
+
+    // Upcoming Payment Repository
+    if (!Get.isRegistered<UpcomingPaymentRepository>()) {
+      Get.lazyPut(() => UpcomingPaymentRepository(getNetwork: Get.find()));
+    }
+
+    // Upcoming Payment Controller
+    if (!Get.isRegistered<UpcomingPaymentController>()) {
+      Get.lazyPut(
+        () => UpcomingPaymentController(upcomingPaymentRepository: Get.find()),
       );
     }
   }

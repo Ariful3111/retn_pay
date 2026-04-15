@@ -22,6 +22,7 @@ class GetNetwork {
       }
 
       try {
+        debugPrint("Url: $url");
         return left(
           ErrorModel.fromHttp(
             statusCode: response.statusCode,

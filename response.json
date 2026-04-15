@@ -1,31 +1,487 @@
 {
   "error": false,
   "code": 200,
-  "message": "Settings Retrieved..",
-  "data": {
-    "app_logo": "https://renter-pay.mahfuz.click/storage/settings/4HnD1aITdYXY2IA7eDmqwLOrUKp0Raq38wQtQ11q.png",
-    "maintenance_message": "The site is under maintenance. Please try again later.",
-    "app_version": "1.0.0",
-    "android_app_code": 1,
-    "android_app_code_min": 1,
-    "ios_app_code": 1,
-    "ios_app_code_min": 1,
-    "app_icon": "https://renter-pay.mahfuz.click/storage/settings/YGRlpZQwbL4Hlx9QJaIDkCb6tX6VBC3umOV1ANno.png",
-    "play_store_url": "#",
-    "app_store_url": "#",
-    "app_maintenance_mode": false,
-    "contact_message": "We are here to help you. Please contact us for any questions or concerns.",
-    "address": "Office 4240, Ground Floor, 470 St Kilda Rd, Melbourne Vic 3004",
-    "email": "renterpay22@gmail.com",
-    "phone": "0468 083 798",
-    "web": "https://renterpay.com.au",
-    "facebook": "#",
-    "tiktok": "#",
-    "instagram": "#",
-    "twitter": "#",
-    "youtube": "#",
-    "app_logo_dark": "https://renter-pay.mahfuz.click/storage/settings/IF5ktBSPppxfujOzRzI4n1NEleYqh9Xj86hM6wIi.png",
-    "ABN": "27 691 001 993"
-  },
+  "message": "Upcoming payments retrieved successfully",
+  "data": [
+    {
+      "id": 1,
+      "lease_agreement_id": 1,
+      "rent_type_id": 3,
+      "amount": "45000.00",
+      "next_payment_date": "2026-04-07",
+      "auto_pay_enabled": false,
+      "frequency": "monthly",
+      "end_date": "2027-03-08",
+      "lease_agreement": {
+        "id": 1,
+        "tenant_id": 67,
+        "landlord_id": 67,
+        "property_id": 102,
+        "property_unit_id": 195,
+        "status": "active",
+        "start_date": "2026-03-08",
+        "end_date": "2027-03-08",
+        "duration_years": 1,
+        "duration_months": 0,
+        "rent_amount": "45000.00",
+        "currency": "AUD",
+        "currency_id": 1,
+        "payment_frequency": "monthly",
+        "rent_type_id": 3,
+        "bond_amount": 450,
+        "currency_detail": {
+          "id": 1,
+          "code": "AUD",
+          "name": "Australian Dollar",
+          "symbol": "A$",
+          "logo": "https://renter-pay.test/images/currency.png",
+          "type": "fiat",
+          "decimal_places": 2,
+          "exchange_rate": 1,
+          "is_active": true,
+          "sort_order": 1
+        },
+        "rent_type": {
+          "id": 3,
+          "name": "Monthly",
+          "slug": "monthly",
+          "rent_days": 30,
+          "description": "Rent charged per month",
+          "status": true,
+          "created_at": "2026-03-07T20:19:28.000000Z",
+          "updated_at": "2026-03-07T20:19:28.000000Z"
+        },
+        "signed_at": null,
+        "terms": "No smoking indoors. Pets allowed upon approval.",
+        "rejection_reason": null,
+        "agreement_details": {
+          "signatures": {
+            "renters": [
+              {
+                "signature": "data:image/png;base64,SIGNATURE_DATA_RENTER_1",
+                "signed_date": "2024-12-12",
+                "renter_index": 1
+              },
+              {
+                "signature": "data:image/png;base64,SIGNATURE_DATA_RENTER_2",
+                "signed_date": "2024-12-12",
+                "renter_index": 2
+              },
+              {
+                "signature": "data:image/png;base64,SIGNATURE_DATA_RENTER_3",
+                "signed_date": "2024-12-12",
+                "renter_index": 3
+              },
+              {
+                "signature": "data:image/png;base64,SIGNATURE_DATA_RENTER_4",
+                "signed_date": "2024-12-12",
+                "renter_index": 4
+              }
+            ],
+            "rental_providers": [
+              {
+                "signature": null,
+                "signed_date": null,
+                "provider_index": 1
+              },
+              {
+                "signature": null,
+                "signed_date": null,
+                "provider_index": 2
+              }
+            ]
+          },
+          "basic_terms": {
+            "bond": {
+              "amount": 450,
+              "payment_due_date": "2025-08-12"
+            },
+            "rent": {
+              "amount": 450,
+              "currency": "AUD",
+              "frequency": "monthly",
+              "rent_due_date": "2025-08-12"
+            },
+            "agent": {
+              "abn": "123456789",
+              "address": "125 Greenview Avenue, Suite 302, Brookfield, NY 11205",
+              "postcode": "1234",
+              "full_name": "Gabriel Maghales",
+              "phone_number": "123456789",
+              "email_address": "demo123@gmail.com"
+            },
+            "renters": [
+              {
+                "address": "125 Greenview Avenue, Suite 302, Brookfield, NY 11205",
+                "postcode": "1234",
+                "full_name": "Alphonso Davies",
+                "phone_number": "123456789",
+                "email_address": "alphonsodavies123@gmail.com"
+              },
+              {
+                "address": "125 Greenview Avenue, Suite 302, Brookfield, NY 11205",
+                "postcode": "1234",
+                "full_name": "Dean Housen",
+                "phone_number": "2345826349",
+                "email_address": "dean@gmail.com"
+              },
+              {
+                "address": "125 Greenview Avenue, Suite 302, Brookfield, NY 11205",
+                "postcode": "1234",
+                "full_name": "Kenan Yildiz",
+                "phone_number": "496846293",
+                "email_address": "yildiz@gmail.com"
+              },
+              {
+                "address": "125 Greenview Avenue, Suite 302, Brookfield, NY 11205",
+                "postcode": "1234",
+                "full_name": "Dominic Szoboszlai",
+                "phone_number": "498463785",
+                "email_address": "dominic@gmail.com"
+              }
+            ],
+            "agreement": {
+              "signed_date": "2025-08-12"
+            },
+            "agreement_term": {
+              "term_type": "fixed",
+              "fixed_term": {
+                "end_date": "2026-12-12",
+                "start_date": "2025-12-12"
+              },
+              "periodic_term": {
+                "start_date": null
+              }
+            },
+            "rental_provider": {
+              "abn": "123456789",
+              "address": "125 Greenview Avenue, Suite 302, Brookfield, NY 11205",
+              "postcode": "1234",
+              "full_name_or_company_name": "Sadman Sakib"
+            },
+            "rental_provider_contact": {
+              "address": "135 Greenview Avenue, Suite 302, Brookfield, NY 11205",
+              "postcode": "1234",
+              "phone_number": "123456789",
+              "email_address": "demo123@gmail.com"
+            }
+          },
+          "disclosures": {
+            "heritage": {
+              "is_heritage_listed": false
+            },
+            "ownership": {
+              "is_owner": true,
+              "has_right_to_rent": true
+            },
+            "safety_checks": {
+              "gas_safety_check_date": "2026-02-13",
+              "outstanding_recommendations": false,
+              "electricity_safety_check_date": "2026-02-05",
+              "pool_barrier_compliance_check_date": "2026-02-28"
+            },
+            "additional_notes": "No additional disclosures.",
+            "mortgagee_action": {
+              "mortgagee_taking_possession": false,
+              "enforcement_proceedings_commenced": false
+            },
+            "property_history": {
+              "asbestos_present": false,
+              "homicide_in_last_5_years": false,
+              "drug_activity_in_last_5_years": false
+            },
+            "rental_compliance": {
+              "meets_minimum_standards": true,
+              "mould_or_damp_repair_notices_last_3_years": false
+            },
+            "planning_and_legal": {
+              "owners_corporation_dispute": false,
+              "domestic_building_work_dispute": false,
+              "affected_by_planning_application": false,
+              "building_or_safety_notices_issued": false,
+              "subject_to_owners_corporation_rules": false
+            },
+            "intent_to_sell_premises": {
+              "engaged_agent": false,
+              "intends_to_sell": false,
+              "contract_prepared": false
+            },
+            "embedded_electricity_network": {
+              "supplied_by_embedded_network": false
+            }
+          },
+          "standard_terms": {
+            "emergency_contact": {
+              "name": "Sadman Sakib",
+              "phone_number": "123456789",
+              "email_address": "sadmansakib123@gmail.com"
+            },
+            "late_payment_policy": {
+              "purpose": "This policy outlines the terms and conditions regarding late rental payments to ensure fair and consistent treatment for all tenants and timely collection of rent.",
+              "late_fees": {
+                "initial_late_fee": 30,
+                "additional_daily_fee": 15,
+                "maximum_additional_fee_period_days": 30,
+                "initial_late_fee_applies_after_days": 1
+              },
+              "amendments": "This policy may be amended by management with proper notice provided to tenants in writing.",
+              "communication": "Tenants are encouraged to communicate with management before the rent due date if they anticipate difficulty in making payment. Failure to notify may result in immediate enforcement of late fees and other actions.",
+              "rent_due_date": {
+                "frequency": "fortnight",
+                "time_cutoff": "09:01",
+                "late_if_after_cutoff": true
+              },
+              "returned_payments": {
+                "returned_payment_fee": 35,
+                "additional_late_fees_apply": true
+              },
+              "application_of_payments": "All payments received will first be applied to outstanding late fees or other charges before being applied to rent.",
+              "non_payment_and_eviction": {
+                "actions": [
+                  "issue_notice_to_vacate",
+                  "issue_notice_to_remedy",
+                  "commence_eviction_proceedings_under_tenancy_act"
+                ],
+                "days_before_action": 14
+              }
+            },
+            "rental_payment_method": "RentChip",
+            "renter_contact_consents": [
+              {
+                "renter_index": 1,
+                "consent_given": true,
+                "contact_details": "Demo Data..."
+              },
+              {
+                "renter_index": 2,
+                "consent_given": true,
+                "contact_details": "Demo Data..."
+              },
+              {
+                "renter_index": 3,
+                "consent_given": true,
+                "contact_details": "Demo Data..."
+              },
+              {
+                "renter_index": 4,
+                "consent_given": true,
+                "contact_details": "Demo Data..."
+              }
+            ]
+          },
+          "property_manager_details": {
+            "phone_number": "01825332448",
+            "email_address": "landlord@gmail.com",
+            "estate_agency_name": "ABC Realty",
+            "property_manager_name": "Tonni Akter Bithi"
+          }
+        },
+        "inclusions": "Dishwasher, Reverse cycle air conditioner, 2x sets of keys",
+        "keys_count": 2,
+        "property": {
+          "id": 102,
+          "landlord_id": 67,
+          "property_type_id": 3,
+          "title": "Modern Apartment",
+          "name": "Modern Apartment",
+          "description": "Spacious apartment in the city center.",
+          "address": "Village: Shilashi, Ward - 7, House: 11/8",
+          "city": "Mymensingh",
+          "state": "Dhaka",
+          "postal_code": "23223",
+          "country": "Australia",
+          "latitude": null,
+          "longitude": null,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "parking_spaces": 1,
+          "land_size": "1500.00",
+          "building_size": "1200.00",
+          "year_built": 2018,
+          "status": "active",
+          "is_verified": false,
+          "is_in_person_inspection_available": true,
+          "is_virtual_inspection_available": false,
+          "is_favourite": false,
+          "features": ["Air Conditioning", "Balcony"],
+          "lease_agreement_defaults": {
+            "terms": "No smoking. Pets allowed with approval.",
+            "currency": "AUD",
+            "inclusions": "Refrigerator, washing machine",
+            "keys_count": 2,
+            "bond_amount": 2323,
+            "disclosures": {
+              "heritage": {
+                "is_heritage_listed": false
+              },
+              "ownership": {
+                "is_owner": true,
+                "has_right_to_rent": true
+              },
+              "safety_checks": {
+                "gas_safety_check_date": "2026-02-13",
+                "outstanding_recommendations": false,
+                "electricity_safety_check_date": "2026-02-05",
+                "pool_barrier_compliance_check_date": "2026-02-28"
+              },
+              "additional_notes": "No additional disclosures.",
+              "mortgagee_action": {
+                "mortgagee_taking_possession": false,
+                "enforcement_proceedings_commenced": false
+              },
+              "property_history": {
+                "asbestos_present": false,
+                "homicide_in_last_5_years": false,
+                "drug_activity_in_last_5_years": false
+              },
+              "rental_compliance": {
+                "meets_minimum_standards": true,
+                "mould_or_damp_repair_notices_last_3_years": false
+              },
+              "planning_and_legal": {
+                "owners_corporation_dispute": false,
+                "domestic_building_work_dispute": false,
+                "affected_by_planning_application": false,
+                "building_or_safety_notices_issued": false,
+                "subject_to_owners_corporation_rules": false
+              },
+              "intent_to_sell_premises": {
+                "engaged_agent": false,
+                "intends_to_sell": false,
+                "contract_prepared": false
+              },
+              "embedded_electricity_network": {
+                "supplied_by_embedded_network": false
+              }
+            },
+            "payment_frequency": "fortnight",
+            "property_manager_details": {
+              "phone_number": "01825332448",
+              "email_address": "landlord@gmail.com",
+              "estate_agency_name": "ABC Realty",
+              "property_manager_name": "Tonni Akter Bithi"
+            }
+          },
+          "rating": "0.00",
+          "rating_count": 0,
+          "units": [
+            {
+              "id": 195,
+              "property_id": 102,
+              "unit_number": "Unit 101",
+              "unit_name": null,
+              "rent_amount": "45000.00",
+              "rent_type": {
+                "id": 2,
+                "name": "Weekly",
+                "slug": "weekly",
+                "rent_days": 7,
+                "description": "Rent charged per week",
+                "status": true,
+                "created_at": "2026-03-07T20:19:28.000000Z",
+                "updated_at": "2026-03-07T20:19:28.000000Z"
+              },
+              "currency": {
+                "id": 1,
+                "code": "AUD",
+                "name": "Australian Dollar",
+                "symbol": "A$",
+                "logo": "https://renter-pay.test/images/currency.png",
+                "type": "fiat",
+                "decimal_places": 2,
+                "exchange_rate": 1,
+                "is_active": true,
+                "sort_order": 1
+              },
+              "display_rent_amount": 45000,
+              "display_currency": {
+                "id": 1,
+                "code": "AUD",
+                "name": "Australian Dollar",
+                "symbol": "A$",
+                "logo": "https://renter-pay.test/images/currency.png",
+                "type": "fiat",
+                "decimal_places": 2,
+                "exchange_rate": 1,
+                "is_active": true,
+                "sort_order": 1
+              },
+              "status": "occupied",
+              "bedrooms": 3,
+              "bathrooms": 2,
+              "size": "1500.00",
+              "description": null
+            }
+          ],
+          "review_summary": {
+            "total_reviews": 0,
+            "average_rating": "0.00"
+          },
+          "created_at": "2026-03-07T20:20:12.000000Z",
+          "updated_at": "2026-03-07T20:20:12.000000Z"
+        },
+        "property_unit": {
+          "id": 195,
+          "property_id": 102,
+          "unit_number": "Unit 101",
+          "unit_name": null,
+          "rent_amount": "45000.00",
+          "rent_type": {
+            "id": 2,
+            "name": "Weekly",
+            "slug": "weekly",
+            "rent_days": 7,
+            "description": "Rent charged per week",
+            "status": true,
+            "created_at": "2026-03-07T20:19:28.000000Z",
+            "updated_at": "2026-03-07T20:19:28.000000Z"
+          },
+          "currency": {
+            "id": 1,
+            "code": "AUD",
+            "name": "Australian Dollar",
+            "symbol": "A$",
+            "logo": "https://renter-pay.test/images/currency.png",
+            "type": "fiat",
+            "decimal_places": 2,
+            "exchange_rate": 1,
+            "is_active": true,
+            "sort_order": 1
+          },
+          "display_rent_amount": 45000,
+          "display_currency": {
+            "id": 1,
+            "code": "AUD",
+            "name": "Australian Dollar",
+            "symbol": "A$",
+            "logo": "https://renter-pay.test/images/currency.png",
+            "type": "fiat",
+            "decimal_places": 2,
+            "exchange_rate": 1,
+            "is_active": true,
+            "sort_order": 1
+          },
+          "status": "occupied",
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "size": "1500.00",
+          "description": null
+        },
+        "created_at": "2026-03-07T20:21:26.000000Z"
+      },
+      "rent_type": {
+        "id": 3,
+        "name": "Monthly",
+        "slug": "monthly",
+        "rent_days": 30,
+        "description": "Rent charged per month",
+        "status": true,
+        "created_at": "2026-03-07T20:19:28.000000Z",
+        "updated_at": "2026-03-07T20:19:28.000000Z"
+      },
+      "created_at": "2026-03-08 02:43:33",
+      "updated_at": "2026-03-08 02:43:33"
+    }
+  ],
   "errors": null
 }

@@ -11,7 +11,6 @@ class DashboardUpcomingPayment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     List imageList = [ImagesPath.house, ImagesPath.studio, ImagesPath.office];
 
     bool isDark = Theme.of(context).brightness == Brightness.dark;
@@ -32,7 +31,7 @@ class DashboardUpcomingPayment extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomTextPrimary(
-              text:'Upcoming Payment',
+              text: 'Upcoming Payment',
               fontSize: 24.sp,
               fontWeight: FontWeight.w600,
               color: isDark ? AppColors.darkAppBar : AppColors.primaryColorDark,

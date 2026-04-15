@@ -14,11 +14,11 @@ class ApplicationManagementDetailsWidgets
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return Column(
-      children: [
-        Column(
-          children: List.generate(controller.title.length, (index) {
-            return Obx(() {
+    return Obx(() {
+      return Column(
+        children: [
+          Column(
+            children: List.generate(controller.title.length, (index) {
               final isSelected = controller.isOpenList[index];
               return Column(
                 key: ValueKey(index),
@@ -91,19 +91,19 @@ class ApplicationManagementDetailsWidgets
                   SizedBox(height: 20.h),
                 ],
               );
-            });
-          }),
-        ),
-        SizedBox(height: 4.h),
-        CustomPrimaryButton(
-          onPressed: () {},
-          text: 'Submit',
-          height: 40.h,
-          width: 100.w,
-          borderRadius: BorderRadius.circular(6.r),
-        ),
-        SizedBox(height: 20.h),
-      ],
-    );
+            }),
+          ),
+          SizedBox(height: 4.h),
+          CustomPrimaryButton(
+            onPressed: () {},
+            text: 'Submit',
+            height: 40.h,
+            width: 100.w,
+            borderRadius: BorderRadius.circular(6.r),
+          ),
+          SizedBox(height: 20.h),
+        ],
+      );
+    });
   }
 }
