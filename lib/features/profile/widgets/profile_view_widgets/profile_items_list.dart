@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
@@ -11,7 +10,6 @@ import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_user_items.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/web_asset.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/wallet.dart';
-import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class ProfileItemsList extends StatelessWidget with ProfileSharedItem {
   const ProfileItemsList({super.key});
@@ -24,22 +22,7 @@ class ProfileItemsList extends StatelessWidget with ProfileSharedItem {
           imageWidth: 22.w,
           image: IconsPath.profileNotification,
           title: 'Notifications',
-          secondaryWidget: Container(
-            height: 24.h,
-            width: 24.w,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.sp),
-              color: AppColors.darkAppBar,
-            ),
-            child: Center(
-              child: CustomTextPrimary(
-                text: '3',
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w400,
-                color: Color(0xFF002256),
-              ),
-            ),
-          ),
+          secondaryWidget: SizedBox(),
           onTap: () {
             Get.toNamed(AppRoutes.notification);
           },
