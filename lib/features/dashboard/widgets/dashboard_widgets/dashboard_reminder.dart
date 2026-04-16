@@ -50,7 +50,8 @@ class DashboardReminder extends GetWidget<ReminderController> {
                       padding: EdgeInsets.only(left: 8.0),
                       child: CustomTextPrimary(
                         text: 'Reminders',
-                        fontSize: 20.sp,
+                        fontSize: 24.sp,
+                        fontWeight: FontWeight.w600,
                         color: isDark
                             ? AppColors.darkAppBar
                             : AppColors.primaryColorDark,
