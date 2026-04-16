@@ -60,6 +60,7 @@ class ContactField extends GetWidget<ContactUsController> {
               label: 'Phone Number',
               hint: 'Enter Your Phone Number',
               context: context,
+              keyboardType: TextInputType.number,
             ),
             SizedBox(height: 15.h),
             userField(
@@ -113,6 +114,7 @@ class ContactField extends GetWidget<ContactUsController> {
     required BuildContext context,
     bool? isAlignLabelWithHint,
     TextDirection? hintDirection,
+    TextInputType? keyboardType,
   }) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomTextField(
@@ -122,6 +124,7 @@ class ContactField extends GetWidget<ContactUsController> {
       maxLines: maxLines,
       isAlignLabelWithHint: isAlignLabelWithHint,
       hintDirection: hintDirection,
+      keyboardType: keyboardType,
       fillColor: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
       labelTextWidget: CustomTextSecondary(
         text: label,
