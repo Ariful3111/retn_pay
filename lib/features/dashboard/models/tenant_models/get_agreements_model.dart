@@ -14,8 +14,8 @@ class GetAgreementsModel {
   });
 
   GetAgreementsModel.fromJson(Map<String, dynamic> json) {
-    error = json['error'];
-    code = json['code'];
+    error = _parseBool(json['error']);
+    code = _parseInt(json['code']);
     message = json['message']?.toString();
 
     final dataJson = json['data'];
@@ -149,22 +149,22 @@ class AgreementItem {
   });
 
   AgreementItem.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    tenantApplicationId = json['tenant_application_id'];
-    tenantId = json['tenant_id'];
-    landlordId = json['landlord_id'];
-    propertyId = json['property_id'];
-    propertyUnitId = json['property_unit_id'];
+    id = _parseInt(json['id']);
+    tenantApplicationId = _parseInt(json['tenant_application_id']);
+    tenantId = _parseInt(json['tenant_id']);
+    landlordId = _parseInt(json['landlord_id']);
+    propertyId = _parseInt(json['property_id']);
+    propertyUnitId = _parseInt(json['property_unit_id']);
     status = json['status']?.toString();
     startDate = json['start_date']?.toString();
     endDate = json['end_date']?.toString();
-    durationYears = json['duration_years'];
-    durationMonths = json['duration_months'];
+    durationYears = _parseInt(json['duration_years']);
+    durationMonths = _parseInt(json['duration_months']);
     rentAmount = json['rent_amount']?.toString();
     currency = json['currency']?.toString();
-    currencyId = json['currency_id'];
+    currencyId = _parseInt(json['currency_id']);
     paymentFrequency = json['payment_frequency']?.toString();
-    rentTypeId = json['rent_type_id'];
+    rentTypeId = _parseInt(json['rent_type_id']);
     bondAmount = _parseNum(json['bond_amount']);
     signedAt = json['signed_at'];
     terms = json['terms']?.toString();
@@ -288,16 +288,16 @@ class CurrencyDetail {
   });
 
   CurrencyDetail.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = _parseInt(json['id']);
     code = json['code']?.toString();
     name = json['name']?.toString();
     symbol = json['symbol']?.toString();
     logo = json['logo']?.toString();
     type = json['type']?.toString();
-    decimalPlaces = json['decimal_places'];
+    decimalPlaces = _parseInt(json['decimal_places']);
     exchangeRate = _parseNum(json['exchange_rate']);
-    isActive = json['is_active'];
-    sortOrder = json['sort_order'];
+    isActive = _parseBool(json['is_active']);
+    sortOrder = _parseInt(json['sort_order']);
   }
 
   Map<String, dynamic> toJson() {
@@ -338,12 +338,12 @@ class RentType {
   });
 
   RentType.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = _parseInt(json['id']);
     name = json['name']?.toString();
     slug = json['slug']?.toString();
-    rentDays = json['rent_days'];
+    rentDays = _parseInt(json['rent_days']);
     description = json['description']?.toString();
-    status = json['status'];
+    status = _parseBool(json['status']);
     createdAt = json['created_at']?.toString();
     updatedAt = json['updated_at']?.toString();
   }
@@ -897,7 +897,7 @@ class RentDueDate {
   RentDueDate.fromJson(Map<String, dynamic> json) {
     frequency = json['frequency']?.toString();
     timeCutoff = json['time_cutoff']?.toString();
-    lateIfAfterCutoff = json['late_if_after_cutoff'];
+    lateIfAfterCutoff = _parseBool(json['late_if_after_cutoff']);
   }
 
   Map<String, dynamic> toJson() {
@@ -952,7 +952,7 @@ class ReturnedPayments {
 
   ReturnedPayments.fromJson(Map<String, dynamic> json) {
     returnedPaymentFee = _parseNum(json['returned_payment_fee']);
-    additionalLateFeesApply = json['additional_late_fees_apply'];
+    additionalLateFeesApply = _parseBool(json['additional_late_fees_apply']);
   }
 
   Map<String, dynamic> toJson() {
@@ -1019,8 +1019,8 @@ class RenterContactConsent {
   });
 
   RenterContactConsent.fromJson(Map<String, dynamic> json) {
-    renterIndex = json['renter_index'];
-    consentGiven = json['consent_given'];
+    renterIndex = _parseInt(json['renter_index']);
+    consentGiven = _parseBool(json['consent_given']);
     contactDetails = json['contact_details']?.toString();
   }
 
@@ -1079,7 +1079,7 @@ class ProviderSignature {
   ProviderSignature({this.providerIndex, this.signature, this.signedDate});
 
   ProviderSignature.fromJson(Map<String, dynamic> json) {
-    providerIndex = json['provider_index'];
+    providerIndex = _parseInt(json['provider_index']);
     signature = json['signature'];
     signedDate = json['signed_date'];
   }
@@ -1101,7 +1101,7 @@ class RenterSignature {
   RenterSignature({this.renterIndex, this.signature, this.signedDate});
 
   RenterSignature.fromJson(Map<String, dynamic> json) {
-    renterIndex = json['renter_index'];
+    renterIndex = _parseInt(json['renter_index']);
     signature = json['signature']?.toString();
     signedDate = json['signed_date']?.toString();
   }
@@ -1193,9 +1193,9 @@ class AgreementProperty {
   });
 
   AgreementProperty.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    landlordId = json['landlord_id'];
-    propertyTypeId = json['property_type_id'];
+    id = _parseInt(json['id']);
+    landlordId = _parseInt(json['landlord_id']);
+    propertyTypeId = _parseInt(json['property_type_id']);
     title = json['title']?.toString();
     name = json['name']?.toString();
     description = json['description']?.toString();
@@ -1206,18 +1206,22 @@ class AgreementProperty {
     country = json['country']?.toString();
     latitude = json['latitude']?.toString();
     longitude = json['longitude']?.toString();
-    bedrooms = json['bedrooms'];
-    bathrooms = json['bathrooms'];
-    parkingSpaces = json['parking_spaces'];
+    bedrooms = _parseInt(json['bedrooms']);
+    bathrooms = _parseInt(json['bathrooms']);
+    parkingSpaces = _parseInt(json['parking_spaces']);
     landSize = json['land_size'];
     buildingSize = json['building_size']?.toString();
-    yearBuilt = json['year_built'];
+    yearBuilt = _parseInt(json['year_built']);
     status = json['status']?.toString();
     availableFrom = json['available_from']?.toString();
-    isVerified = json['is_verified'];
-    isInPersonInspectionAvailable = json['is_in_person_inspection_available'];
-    isVirtualInspectionAvailable = json['is_virtual_inspection_available'];
-    isFavourite = json['is_favourite'];
+    isVerified = _parseBool(json['is_verified']);
+    isInPersonInspectionAvailable = _parseBool(
+      json['is_in_person_inspection_available'],
+    );
+    isVirtualInspectionAvailable = _parseBool(
+      json['is_virtual_inspection_available'],
+    );
+    isFavourite = _parseBool(json['is_favourite']);
 
     final featuresRaw = json['features'];
     if (featuresRaw is List) {
@@ -1230,7 +1234,7 @@ class AgreementProperty {
     }
 
     rating = json['rating']?.toString();
-    ratingCount = json['rating_count'];
+    ratingCount = _parseInt(json['rating_count']);
     createdAt = json['created_at']?.toString();
     updatedAt = json['updated_at']?.toString();
 
@@ -1353,15 +1357,15 @@ class AgreementPropertyUnit {
   });
 
   AgreementPropertyUnit.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    propertyId = json['property_id'];
+    id = _parseInt(json['id']);
+    propertyId = _parseInt(json['property_id']);
     unitNumber = json['unit_number']?.toString();
     unitName = json['unit_name']?.toString();
     rentAmount = json['rent_amount']?.toString();
     displayRentAmount = _parseNum(json['display_rent_amount']);
     status = json['status']?.toString();
-    bedrooms = json['bedrooms'];
-    bathrooms = json['bathrooms'];
+    bedrooms = _parseInt(json['bedrooms']);
+    bathrooms = _parseInt(json['bathrooms']);
     size = json['size']?.toString();
     description = json['description']?.toString();
 
@@ -1429,12 +1433,12 @@ class UnitRentType {
   });
 
   UnitRentType.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = _parseInt(json['id']);
     name = json['name']?.toString();
     slug = json['slug']?.toString();
-    rentDays = json['rent_days'];
+    rentDays = _parseInt(json['rent_days']);
     description = json['description']?.toString();
-    status = json['status'];
+    status = _parseBool(json['status']);
     createdAt = json['created_at']?.toString();
     updatedAt = json['updated_at']?.toString();
   }
@@ -1479,16 +1483,16 @@ class UnitCurrency {
   });
 
   UnitCurrency.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = _parseInt(json['id']);
     code = json['code']?.toString();
     name = json['name']?.toString();
     symbol = json['symbol']?.toString();
     logo = json['logo']?.toString();
     type = json['type']?.toString();
-    decimalPlaces = json['decimal_places'];
+    decimalPlaces = _parseInt(json['decimal_places']);
     exchangeRate = _parseNum(json['exchange_rate']);
-    isActive = json['is_active'];
-    sortOrder = json['sort_order'];
+    isActive = _parseBool(json['is_active']);
+    sortOrder = _parseInt(json['sort_order']);
   }
 
   Map<String, dynamic> toJson() {
@@ -1531,12 +1535,12 @@ class PropertyImage {
   });
 
   PropertyImage.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    propertyId = json['property_id'];
+    id = _parseInt(json['id']);
+    propertyId = _parseInt(json['property_id']);
     imagePath = json['image_path']?.toString();
     type = json['type']?.toString();
-    order = json['order'];
-    isPrimary = json['is_primary'];
+    order = _parseInt(json['order']);
+    isPrimary = _parseBool(json['is_primary']);
     caption = json['caption']?.toString();
     createdAt = json['created_at']?.toString();
     updatedAt = json['updated_at']?.toString();
@@ -1575,9 +1579,9 @@ class PropertyAmenity {
   });
 
   PropertyAmenity.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    propertyId = json['property_id'];
-    amenityTypeId = json['amenity_type_id'];
+    id = _parseInt(json['id']);
+    propertyId = _parseInt(json['property_id']);
+    amenityTypeId = _parseInt(json['amenity_type_id']);
     createdAt = json['created_at']?.toString();
     updatedAt = json['updated_at']?.toString();
 
@@ -1625,13 +1629,13 @@ class AmenityType {
   });
 
   AmenityType.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = _parseInt(json['id']);
     name = json['name']?.toString();
     slug = json['slug']?.toString();
     icon = json['icon']?.toString();
     iconUrl = json['icon_url']?.toString();
     description = json['description']?.toString();
-    status = json['status'];
+    status = _parseBool(json['status']);
     createdAt = json['created_at']?.toString();
     updatedAt = json['updated_at']?.toString();
   }
@@ -1658,7 +1662,7 @@ class ReviewSummary {
   ReviewSummary({this.totalReviews, this.averageRating});
 
   ReviewSummary.fromJson(Map<String, dynamic> json) {
-    totalReviews = json['total_reviews'];
+    totalReviews = _parseInt(json['total_reviews']);
     averageRating = json['average_rating']?.toString();
   }
 
@@ -1708,7 +1712,7 @@ class AgreementTenant {
   });
 
   AgreementTenant.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = _parseInt(json['id']);
     name = json['name']?.toString();
     firstName = json['first_name']?.toString();
     lastName = json['last_name']?.toString();
@@ -1716,7 +1720,7 @@ class AgreementTenant {
     image = json['image']?.toString();
     email = json['email']?.toString();
     phone = json['phone'];
-    isActive = json['is_active'];
+    isActive = _parseBool(json['is_active']);
     provider = json['provider']?.toString();
     providerId = json['provider_id']?.toString();
 
@@ -1785,12 +1789,12 @@ class TenantProfile {
   });
 
   TenantProfile.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = _parseInt(json['id']);
     employmentStatus = json['employment_status'];
     employerName = json['employer_name'];
     jobTitle = json['job_title'];
     monthlyIncome = json['monthly_income'];
-    isVerified = json['is_verified'];
+    isVerified = _parseBool(json['is_verified']);
     createdAt = json['created_at']?.toString();
     updatedAt = json['updated_at']?.toString();
   }
@@ -1849,7 +1853,7 @@ class AgreementLandlord {
   });
 
   AgreementLandlord.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = _parseInt(json['id']);
     name = json['name']?.toString();
     firstName = json['first_name']?.toString();
     lastName = json['last_name']?.toString();
@@ -1857,7 +1861,7 @@ class AgreementLandlord {
     image = json['image']?.toString();
     email = json['email']?.toString();
     phone = json['phone']?.toString();
-    isActive = json['is_active'];
+    isActive = _parseBool(json['is_active']);
     provider = json['provider'];
     providerId = json['provider_id'];
 
@@ -1940,11 +1944,11 @@ class AgentProfile {
   });
 
   AgentProfile.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = _parseInt(json['id']);
     agencyName = json['agency_name']?.toString();
     abn = json['abn']?.toString();
     reiaNumber = json['reia_number']?.toString();
-    isVerified = json['is_verified'];
+    isVerified = _parseBool(json['is_verified']);
     status = json['status']?.toString();
     rejectionReason = json['rejection_reason'];
     approvedAt = json['approved_at']?.toString();
@@ -1988,9 +1992,9 @@ class LandlordProfile {
   });
 
   LandlordProfile.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = _parseInt(json['id']);
     description = json['description']?.toString();
-    isVerified = json['is_verified'];
+    isVerified = _parseBool(json['is_verified']);
     createdAt = json['created_at']?.toString();
     updatedAt = json['updated_at']?.toString();
     subscription = json['subscription'];
@@ -2055,13 +2059,13 @@ class AgreementMetaPagination {
   });
 
   AgreementMetaPagination.fromJson(Map<String, dynamic> json) {
-    currentPage = json['current_page'];
-    from = json['from'];
-    lastPage = json['last_page'];
+    currentPage = _parseInt(json['current_page']);
+    from = _parseInt(json['from']);
+    lastPage = _parseInt(json['last_page']);
     path = json['path']?.toString();
-    perPage = json['per_page'];
-    to = json['to'];
-    total = json['total'];
+    perPage = _parseInt(json['per_page']);
+    to = _parseInt(json['to']);
+    total = _parseInt(json['total']);
 
     final list = json['links'];
     if (list is List) {
@@ -2099,9 +2103,8 @@ class AgreementMetaLink {
   AgreementMetaLink.fromJson(Map<String, dynamic> json) {
     url = json['url']?.toString();
     label = json['label']?.toString();
-    final rawPage = json['page'];
-    page = rawPage is int ? rawPage : int.tryParse(rawPage?.toString() ?? '');
-    active = json['active'];
+    page = _parseInt(json['page']);
+    active = _parseBool(json['active']);
   }
 
   Map<String, dynamic> toJson() {
@@ -2127,6 +2130,36 @@ num? _parseNum(dynamic value) {
     final doubleValue = double.tryParse(value);
     if (doubleValue != null) return doubleValue;
     return null;
+  }
+  return null;
+}
+
+// ============================================================
+// HELPER FUNCTION TO PARSE INT (STRING, INT, OR DOUBLE)
+// ============================================================
+
+int? _parseInt(dynamic value) {
+  if (value == null) return null;
+  if (value is int) return value;
+  if (value is double) return value.toInt();
+  if (value is String) {
+    return int.tryParse(value);
+  }
+  return null;
+}
+
+// ============================================================
+// HELPER FUNCTION TO PARSE BOOL (STRING, BOOL, OR NUM)
+// ============================================================
+
+bool? _parseBool(dynamic value) {
+  if (value == null) return null;
+  if (value is bool) return value;
+  if (value is num) return value != 0;
+  if (value is String) {
+    final lower = value.toLowerCase();
+    if (lower == 'true' || lower == '1') return true;
+    if (lower == 'false' || lower == '0') return false;
   }
   return null;
 }

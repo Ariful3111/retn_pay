@@ -14,8 +14,8 @@ class UpcomingPaymentsModel {
   });
 
   UpcomingPaymentsModel.fromJson(Map<String, dynamic> json) {
-    error = json['error'];
-    code = json['code'];
+    error = _parseBool(json['error']);
+    code = _parseInt(json['code']);
     message = json['message']?.toString();
 
     final dataJson = json['data'];
@@ -72,12 +72,12 @@ class UpcomingPayment {
   });
 
   UpcomingPayment.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    leaseAgreementId = json['lease_agreement_id'];
-    rentTypeId = json['rent_type_id'];
+    id = _parseInt(json['id']);
+    leaseAgreementId = _parseInt(json['lease_agreement_id']);
+    rentTypeId = _parseInt(json['rent_type_id']);
     amount = json['amount']?.toString();
     nextPaymentDate = json['next_payment_date']?.toString();
-    autoPayEnabled = json['auto_pay_enabled'];
+    autoPayEnabled = _parseBool(json['auto_pay_enabled']);
     frequency = json['frequency']?.toString();
     endDate = json['end_date']?.toString();
 
@@ -177,22 +177,22 @@ class LeaseAgreement {
   });
 
   LeaseAgreement.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    tenantId = json['tenant_id'];
-    landlordId = json['landlord_id'];
-    propertyId = json['property_id'];
-    propertyUnitId = json['property_unit_id'];
+    id = _parseInt(json['id']);
+    tenantId = _parseInt(json['tenant_id']);
+    landlordId = _parseInt(json['landlord_id']);
+    propertyId = _parseInt(json['property_id']);
+    propertyUnitId = _parseInt(json['property_unit_id']);
     status = json['status']?.toString();
     startDate = json['start_date']?.toString();
     endDate = json['end_date']?.toString();
-    durationYears = json['duration_years'];
-    durationMonths = json['duration_months'];
+    durationYears = _parseInt(json['duration_years']);
+    durationMonths = _parseInt(json['duration_months']);
     rentAmount = json['rent_amount']?.toString();
     currency = json['currency']?.toString();
-    currencyId = json['currency_id'];
+    currencyId = _parseInt(json['currency_id']);
     paymentFrequency = json['payment_frequency']?.toString();
-    rentTypeId = json['rent_type_id'];
-    bondAmount = json['bond_amount'];
+    rentTypeId = _parseInt(json['rent_type_id']);
+    bondAmount = _parseInt(json['bond_amount']);
     signedAt = json['signed_at'];
     terms = json['terms']?.toString();
     rejectionReason = json['rejection_reason'];
@@ -203,7 +203,7 @@ class LeaseAgreement {
     }
 
     inclusions = json['inclusions']?.toString();
-    keysCount = json['keys_count'];
+    keysCount = _parseInt(json['keys_count']);
 
     final currencyDetailJson = json['currency_detail'];
     if (currencyDetailJson is Map<String, dynamic>) {
@@ -279,7 +279,7 @@ class CurrencyDetail {
   String? logo;
   String? type;
   int? decimalPlaces;
-  int? exchangeRate;
+  num? exchangeRate;
   bool? isActive;
   int? sortOrder;
 
@@ -297,16 +297,16 @@ class CurrencyDetail {
   });
 
   CurrencyDetail.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = _parseInt(json['id']);
     code = json['code']?.toString();
     name = json['name']?.toString();
     symbol = json['symbol']?.toString();
     logo = json['logo']?.toString();
     type = json['type']?.toString();
-    decimalPlaces = json['decimal_places'];
-    exchangeRate = json['exchange_rate'];
-    isActive = json['is_active'];
-    sortOrder = json['sort_order'];
+    decimalPlaces = _parseInt(json['decimal_places']);
+    exchangeRate = _parseNum(json['exchange_rate']);
+    isActive = _parseBool(json['is_active']);
+    sortOrder = _parseInt(json['sort_order']);
   }
 
   Map<String, dynamic> toJson() {
@@ -347,12 +347,12 @@ class RentType {
   });
 
   RentType.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = _parseInt(json['id']);
     name = json['name']?.toString();
     slug = json['slug']?.toString();
-    rentDays = json['rent_days'];
+    rentDays = _parseInt(json['rent_days']);
     description = json['description']?.toString();
-    status = json['status'];
+    status = _parseBool(json['status']);
     createdAt = json['created_at']?.toString();
     updatedAt = json['updated_at']?.toString();
   }
@@ -441,9 +441,9 @@ class Property {
   });
 
   Property.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    landlordId = json['landlord_id'];
-    propertyTypeId = json['property_type_id'];
+    id = _parseInt(json['id']);
+    landlordId = _parseInt(json['landlord_id']);
+    propertyTypeId = _parseInt(json['property_type_id']);
     title = json['title']?.toString();
     name = json['name']?.toString();
     description = json['description']?.toString();
@@ -454,21 +454,25 @@ class Property {
     country = json['country']?.toString();
     latitude = json['latitude'];
     longitude = json['longitude'];
-    bedrooms = json['bedrooms'];
-    bathrooms = json['bathrooms'];
-    parkingSpaces = json['parking_spaces'];
+    bedrooms = _parseInt(json['bedrooms']);
+    bathrooms = _parseInt(json['bathrooms']);
+    parkingSpaces = _parseInt(json['parking_spaces']);
     landSize = json['land_size']?.toString();
     buildingSize = json['building_size']?.toString();
-    yearBuilt = json['year_built'];
+    yearBuilt = _parseInt(json['year_built']);
     status = json['status']?.toString();
-    isVerified = json['is_verified'];
-    isInPersonInspectionAvailable = json['is_in_person_inspection_available'];
-    isVirtualInspectionAvailable = json['is_virtual_inspection_available'];
-    isFavourite = json['is_favourite'];
+    isVerified = _parseBool(json['is_verified']);
+    isInPersonInspectionAvailable = _parseBool(
+      json['is_in_person_inspection_available'],
+    );
+    isVirtualInspectionAvailable = _parseBool(
+      json['is_virtual_inspection_available'],
+    );
+    isFavourite = _parseBool(json['is_favourite']);
     features = json['features'];
     leaseAgreementDefaults = json['lease_agreement_defaults'];
     rating = json['rating']?.toString();
-    ratingCount = json['rating_count'];
+    ratingCount = _parseInt(json['rating_count']);
     units = json['units'];
     reviewSummary = json['review_summary'];
     createdAt = json['created_at']?.toString();
@@ -521,7 +525,7 @@ class PropertyUnit {
   String? rentAmount;
   RentType? rentType;
   CurrencyDetail? currency;
-  int? displayRentAmount;
+  num? displayRentAmount;
   CurrencyDetail? displayCurrency;
   String? status;
   int? bedrooms;
@@ -547,14 +551,14 @@ class PropertyUnit {
   });
 
   PropertyUnit.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    propertyId = json['property_id'];
+    id = _parseInt(json['id']);
+    propertyId = _parseInt(json['property_id']);
     unitNumber = json['unit_number']?.toString();
     unitName = json['unit_name'];
     rentAmount = json['rent_amount']?.toString();
     status = json['status']?.toString();
-    bedrooms = json['bedrooms'];
-    bathrooms = json['bathrooms'];
+    bedrooms = _parseInt(json['bedrooms']);
+    bathrooms = _parseInt(json['bathrooms']);
     size = json['size']?.toString();
     description = json['description'];
 
@@ -568,7 +572,7 @@ class PropertyUnit {
       currency = CurrencyDetail.fromJson(currencyJson);
     }
 
-    displayRentAmount = json['display_rent_amount'];
+    displayRentAmount = _parseNum(json['display_rent_amount']);
 
     final displayCurrencyJson = json['display_currency'];
     if (displayCurrencyJson is Map<String, dynamic>) {
@@ -719,4 +723,51 @@ class RentInfo {
     json['rent_due_date'] = rentDueDate;
     return json;
   }
+}
+
+// ============================================================
+// HELPER FUNCTION TO PARSE NUM (STRING OR NUM)
+// ============================================================
+
+num? _parseNum(dynamic value) {
+  if (value == null) return null;
+  if (value is num) return value;
+  if (value is String) {
+    final intValue = int.tryParse(value);
+    if (intValue != null) return intValue;
+    final doubleValue = double.tryParse(value);
+    if (doubleValue != null) return doubleValue;
+    return null;
+  }
+  return null;
+}
+
+// ============================================================
+// HELPER FUNCTION TO PARSE INT (STRING, INT, OR DOUBLE)
+// ============================================================
+
+int? _parseInt(dynamic value) {
+  if (value == null) return null;
+  if (value is int) return value;
+  if (value is double) return value.toInt();
+  if (value is String) {
+    return int.tryParse(value);
+  }
+  return null;
+}
+
+// ============================================================
+// HELPER FUNCTION TO PARSE BOOL (STRING, BOOL, OR NUM)
+// ============================================================
+
+bool? _parseBool(dynamic value) {
+  if (value == null) return null;
+  if (value is bool) return value;
+  if (value is num) return value != 0;
+  if (value is String) {
+    final lower = value.toLowerCase();
+    if (lower == 'true' || lower == '1') return true;
+    if (lower == 'false' || lower == '0') return false;
+  }
+  return null;
 }
