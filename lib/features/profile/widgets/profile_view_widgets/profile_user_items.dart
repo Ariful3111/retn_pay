@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/core/services/url_service.dart';
 import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_items.dart';
-import 'package:renter_pay/shared/widgets/snackbars/success_snackbar.dart';
 
 class ProfileUserItems extends StatelessWidget {
   const ProfileUserItems({super.key});
@@ -70,9 +70,9 @@ class ProfileUserItems extends StatelessWidget {
           imageHeight: 23.h,
           imageWidth: 21.w,
           title: 'Privacy Policy',
-          onTap: () {
-            SuccessSnackbar.show(
-              description: 'Navigate user to Web Privacy Policy',
+          onTap: () async {
+            await URLService.launchURL(
+              url: "https://renterpay.com.au/privacy-policy",
             );
           },
         ),
@@ -82,7 +82,11 @@ class ProfileUserItems extends StatelessWidget {
           imageHeight: 23.h,
           imageWidth: 21.w,
           title: 'Terms and Condition',
-          onTap: () {},
+          onTap: () async {
+            await URLService.launchURL(
+              url: "https://renterpay.com.au/terms-condition",
+            );
+          },
         ),
         SizedBox(height: 8.h),
       ],

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/features/dashboard/models/landlord_models/upcoming_payments_model.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/upcoming_payment_repo.dart';
@@ -20,6 +21,7 @@ class UpcomingPaymentController extends GetxController {
       },
       (data) {
         upcomingPayments.value = data;
+        debugPrint("Upcoming Payment API Called");
       },
     );
   }
