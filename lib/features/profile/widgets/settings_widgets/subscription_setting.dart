@@ -15,7 +15,7 @@ class SubscriptionSetting extends StatelessWidget {
         subTitle:
             'Your plan will renew automatically to ensure uninterrupted access.',
         isOn: settingsController.isSubscription.value,
-        onChanged: (value) {
+        onChanged: (value) async {
           settingsController.isSubscription.value = value;
         },
       ),
