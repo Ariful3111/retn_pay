@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/shared/widgets/filter/filter_amenities.dart';
@@ -80,7 +81,11 @@ class _CustomFilterState extends State<CustomFilter> {
       color: Colors.transparent,
       child: Container(
         padding: EdgeInsets.all(8),
-        color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+        decoration: BoxDecoration(
+          color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+          borderRadius: BorderRadius.circular(9.2.r),
+        ),
+
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
