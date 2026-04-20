@@ -40,8 +40,8 @@ class _PropertyImageViewState extends State<PropertyImageView> {
 
     return Container(
       padding: EdgeInsets.all(7.66.sp),
-      width: 380.w,
-      height: 272.h,
+      width: Get.width,
+      height: 320.h,
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
         borderRadius: BorderRadius.circular(12.sp),
@@ -53,7 +53,7 @@ class _PropertyImageViewState extends State<PropertyImageView> {
             duration: Duration(milliseconds: 400),
             curve: Curves.linear,
             width: 364.w,
-            height: 218.h,
+            height: 250.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(3.5.sp),
             ),
@@ -105,8 +105,8 @@ class _PropertyImageViewState extends State<PropertyImageView> {
                     });
                   },
                   child: Container(
-                    height: 25.h,
-                    width: 41.w,
+                    height: 30.h,
+                    width: 45.w,
                     margin: EdgeInsets.only(
                       right: index < widget.images.length - 1 ? 12.28.w : 0,
                     ),

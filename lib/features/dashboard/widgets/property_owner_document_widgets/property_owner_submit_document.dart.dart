@@ -10,19 +10,16 @@ class PropertyOwnerSubmitDocument
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(height: 24.h),
-        CustomPrimaryButton(
-          onPressed: () async {
-            await controller.openDialog(context: context);
-          },
-          text: 'Submit',
-          height: 52.h,
-          width: 119.w,
-          borderRadius: BorderRadius.circular(8.r),
-        ),
-      ],
+    return Center(
+      child: CustomPrimaryButton(
+        onPressed: () async {
+          await controller.openDialog(context: context);
+        },
+        text: 'Complete',
+        height: 52.h,
+        width: 119.w,
+        borderRadius: BorderRadius.circular(8.r),
+      ),
     );
   }
 }

@@ -26,12 +26,18 @@ class CustomNotificationButton extends StatelessWidget {
                 ? AppColors.darkBorderPrimary
                 : AppColors.secondaryBorder,
           ),
-          gradient: isDark?AppColors.darkAppIcon:LinearGradient(colors: [AppColors.whiteColor,AppColors.whiteColor]),
+          gradient: isDark
+              ? AppColors.darkAppIcon
+              : LinearGradient(
+                  colors: [AppColors.whiteColor, AppColors.whiteColor],
+                ),
           boxShadow: [
             BoxShadow(
               offset: Offset(0, 0.89),
               blurRadius: 1.78,
-              color:isDark? AppColors.darkBorderPrimary:AppColors.buttonShadowColor.withValues(alpha: 0.06),
+              color: isDark
+                  ? AppColors.darkBorderPrimary
+                  : AppColors.buttonShadowColor.withValues(alpha: 0.06),
             ),
           ],
         ),
@@ -42,20 +48,20 @@ class CustomNotificationButton extends StatelessWidget {
                 IconsPath.homeNotification,
                 height: 18.h,
                 width: 18.w,
-                color: isDark?AppColors.darkPrimary:null,
+                color: isDark ? AppColors.darkPrimary : null,
               ),
-              Positioned(
-                top: 1.50.h,
-                right: 1.50.w,
-                child: Container(
-                  height: 6.h,
-                  width: 6.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5.sp),
-                    color: Color(0xFFFF4D5E),
-                  ),
-                ),
-              ),
+              // Positioned(
+              //   top: 1.50.h,
+              //   right: 1.50.w,
+              //   child: Container(
+              //     height: 6.h,
+              //     width: 6.w,
+              //     decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(5.sp),
+              //       color: Color(0xFFFF4D5E),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),

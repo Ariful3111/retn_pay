@@ -39,8 +39,8 @@ class CustomReminder extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color: AppColors.dropShadowColor.withValues(alpha: 0.10),
-            blurRadius: 30.5,
-            offset: Offset(0, 8.72),
+            blurRadius: 5,
+            offset: Offset(0, 8),
           ),
         ],
       ),

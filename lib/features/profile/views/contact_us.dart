@@ -13,10 +13,11 @@ class ContactUs extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return CustomContainer(
-      gradient:isDark? LinearGradient(colors: [
-        AppColors.darkPrimary,
-        AppColors.darkPrimary,
-      ]):AppColors.userBackground.withOpacity(0.5),
+      gradient: isDark
+          ? LinearGradient(
+              colors: [AppColors.darkPrimary, AppColors.darkPrimary],
+            )
+          : AppColors.userBackground.withOpacity(0.5),
       drawer: Drawer(),
       child: CustomScrollView(
         slivers: [
@@ -26,11 +27,14 @@ class ContactUs extends StatelessWidget {
             title: CustomAppbar(title: 'Contact Us'),
           ),
           SliverPadding(
-            padding: EdgeInsetsGeometry.symmetric(horizontal: 20.w, vertical: 20.h),
+            padding: EdgeInsetsGeometry.symmetric(
+              horizontal: 20.w,
+              vertical: 20.h,
+            ),
             sliver: SliverList(
               delegate: SliverChildListDelegate([
                 ContactField(),
-                SizedBox(height: 32.h),
+                SizedBox(height: 20.h),
                 ContactUsInfo(),
               ]),
             ),

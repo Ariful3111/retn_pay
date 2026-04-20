@@ -48,15 +48,20 @@ class BlogView extends GetView<BlogController> {
                     BlogItem(),
                     SizedBox(height: 10),
                     Obx(
-                      () => CustomPagination(
-                        list: controller.pageNumber,
-                        onTapPrev: controller.previousPage,
-                        onTapNext: controller.nextPage,
-                        onTapPage: (item) {
-                          controller.currentPage.value = item;
-                        },
-                        value: controller.currentPage.value,
-                      ),
+                      () =>
+                          (controller.blogs.value?.data?.data?.isEmpty ??
+                                  true) ||
+                              controller.isLoading.value
+                          ? SizedBox()
+                          : CustomPagination(
+                              list: controller.pageNumber,
+                              onTapPrev: controller.previousPage,
+                              onTapNext: controller.nextPage,
+                              onTapPage: (item) {
+                                controller.currentPage.value = item;
+                              },
+                              value: controller.currentPage.value,
+                            ),
                     ),
                   ],
                 ),

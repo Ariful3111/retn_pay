@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/utils/date_picker.dart';
-import 'package:renter_pay/features/dashboard/controllers/landlord_controller/application_management_details_part_e_controller.dart';
 import 'package:signature/signature.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/features/dashboard/controllers/landlord_controller/application_management_details_part_e_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/application_management_details_widgets/application_management_details_part_e_widgets/application_management_details_part_e_helper.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_radio_button.dart';
 import 'package:renter_pay/shared/widgets/custom_fields/custom_date_field.dart';
@@ -17,14 +17,16 @@ class ApplicationManagementDetailsPetsDeclaration
 
   @override
   Widget build(BuildContext context) {
-    final helper = ApplicationManagementDetailsPartEHelper();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Obx(() {
       final readOnly = !controller.isEditable.value;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          helper.sectionTitle('9. Pets', isDark),
+          ApplicationManagementDetailsPartEHelper.sectionTitle(
+            '9. Pets',
+            isDark,
+          ),
           SizedBox(height: 16.h),
           Row(
             children: List.generate(controller.petOptions.length, (index) {
@@ -51,13 +53,17 @@ class ApplicationManagementDetailsPetsDeclaration
             color: isDark ? AppColors.whiteColor : AppColors.darkTextColor,
           ),
           SizedBox(height: 8.h),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.petDetailsController,
             'Enter number of pets',
             isDark,
             readOnly: readOnly,
+            keyboardType: TextInputType.number,
           ),
-          helper.sectionTitle('10.Applicant\'s declaration', isDark),
+          ApplicationManagementDetailsPartEHelper.sectionTitle(
+            '10.Applicant\'s declaration',
+            isDark,
+          ),
           SizedBox(height: 12.h),
           CustomTextSecondary(
             text:

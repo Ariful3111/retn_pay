@@ -15,8 +15,8 @@ class LeaseAgreementModel {
 
   factory LeaseAgreementModel.fromJson(Map<String, dynamic> json) {
     return LeaseAgreementModel(
-      error: json['error'],
-      code: json['code'],
+      error: _parseBool(json['error']),
+      code: _parseInt(json['code']),
       message: json['message']?.toString(),
       data: json['data'] is Map<String, dynamic>
           ? LeaseAgreementPayload.fromJson(json['data'])
@@ -132,19 +132,19 @@ class LeaseAgreementItem {
 
   factory LeaseAgreementItem.fromJson(Map<String, dynamic> json) {
     return LeaseAgreementItem(
-      id: json['id'],
-      tenantId: json['tenant_id'],
-      landlordId: json['landlord_id'],
-      propertyId: json['property_id'],
-      propertyUnitId: json['property_unit_id'],
+      id: _parseInt(json['id']),
+      tenantId: _parseInt(json['tenant_id']),
+      landlordId: _parseInt(json['landlord_id']),
+      propertyId: _parseInt(json['property_id']),
+      propertyUnitId: _parseInt(json['property_unit_id']),
       status: json['status']?.toString(),
       startDate: json['start_date']?.toString(),
       endDate: json['end_date']?.toString(),
       rentAmount: json['rent_amount']?.toString(),
       currency: json['currency']?.toString(),
-      currencyId: json['currency_id'],
+      currencyId: _parseInt(json['currency_id']),
       paymentFrequency: json['payment_frequency']?.toString(),
-      rentTypeId: json['rent_type_id'],
+      rentTypeId: _parseInt(json['rent_type_id']),
       bondAmount: _parseNum(json['bond_amount']),
       currencyDetail: json['currency_detail'] is Map<String, dynamic>
           ? LeaseAgreementCurrencyDetail.fromJson(json['currency_detail'])
@@ -226,7 +226,7 @@ class LeaseAgreementCurrencyDetail {
 
   factory LeaseAgreementCurrencyDetail.fromJson(Map<String, dynamic> json) {
     return LeaseAgreementCurrencyDetail(
-      id: json['id'],
+      id: _parseInt(json['id']),
       code: json['code']?.toString(),
       name: json['name']?.toString(),
       symbol: json['symbol']?.toString(),
@@ -254,7 +254,7 @@ class LeaseAgreementRentType {
 
   factory LeaseAgreementRentType.fromJson(Map<String, dynamic> json) {
     return LeaseAgreementRentType(
-      id: json['id'],
+      id: _parseInt(json['id']),
       name: json['name']?.toString(),
       slug: json['slug']?.toString(),
     );
@@ -994,9 +994,9 @@ class LeaseAgreementProperty {
 
   factory LeaseAgreementProperty.fromJson(Map<String, dynamic> json) {
     return LeaseAgreementProperty(
-      id: json['id'],
-      landlordId: json['landlord_id'],
-      propertyTypeId: json['property_type_id'],
+      id: _parseInt(json['id']),
+      landlordId: _parseInt(json['landlord_id']),
+      propertyTypeId: _parseInt(json['property_type_id']),
       title: json['title']?.toString(),
       name: json['name']?.toString(),
       description: json['description']?.toString(),
@@ -1007,19 +1007,23 @@ class LeaseAgreementProperty {
       country: json['country']?.toString(),
       latitude: json['latitude']?.toString(),
       longitude: json['longitude']?.toString(),
-      bedrooms: json['bedrooms'],
-      bathrooms: json['bathrooms'],
-      parkingSpaces: json['parking_spaces'],
+      bedrooms: _parseInt(json['bedrooms']),
+      bathrooms: _parseInt(json['bathrooms']),
+      parkingSpaces: _parseInt(json['parking_spaces']),
       buildingSize: json['building_size']?.toString(),
-      yearBuilt: json['year_built'],
+      yearBuilt: _parseInt(json['year_built']),
       status: json['status']?.toString(),
-      isVerified: json['is_verified'],
-      isInPersonInspectionAvailable: json['is_in_person_inspection_available'],
-      isVirtualInspectionAvailable: json['is_virtual_inspection_available'],
-      isFavourite: json['is_favourite'],
+      isVerified: _parseBool(json['is_verified']),
+      isInPersonInspectionAvailable: _parseBool(
+        json['is_in_person_inspection_available'],
+      ),
+      isVirtualInspectionAvailable: _parseBool(
+        json['is_virtual_inspection_available'],
+      ),
+      isFavourite: _parseBool(json['is_favourite']),
       features: (json['features'] as List?)?.map((e) => e.toString()).toList(),
       rating: json['rating']?.toString(),
-      ratingCount: json['rating_count'],
+      ratingCount: _parseInt(json['rating_count']),
       units: (json['units'] as List?)
           ?.whereType<Map<String, dynamic>>()
           .map((e) => LeaseAgreementPropertyUnit.fromJson(e))
@@ -1103,12 +1107,12 @@ class LeaseAgreementPropertyImage {
 
   factory LeaseAgreementPropertyImage.fromJson(Map<String, dynamic> json) =>
       LeaseAgreementPropertyImage(
-        id: json['id'],
-        propertyId: json['property_id'],
+        id: _parseInt(json['id']),
+        propertyId: _parseInt(json['property_id']),
         imagePath: json['image_path']?.toString(),
         type: json['type']?.toString(),
-        order: json['order'],
-        isPrimary: json['is_primary'],
+        order: _parseInt(json['order']),
+        isPrimary: _parseBool(json['is_primary']),
         caption: json['caption']?.toString(),
         createdAt: json['created_at']?.toString(),
         updatedAt: json['updated_at']?.toString(),
@@ -1146,9 +1150,9 @@ class LeaseAgreementPropertyAmenity {
 
   factory LeaseAgreementPropertyAmenity.fromJson(Map<String, dynamic> json) =>
       LeaseAgreementPropertyAmenity(
-        id: json['id'],
-        propertyId: json['property_id'],
-        amenityTypeId: json['amenity_type_id'],
+        id: _parseInt(json['id']),
+        propertyId: _parseInt(json['property_id']),
+        amenityTypeId: _parseInt(json['amenity_type_id']),
         amenityType: json['amenity_type'] is Map<String, dynamic>
             ? LeaseAgreementAmenityType.fromJson(json['amenity_type'])
             : null,
@@ -1183,7 +1187,7 @@ class LeaseAgreementAmenityType {
 
   factory LeaseAgreementAmenityType.fromJson(Map<String, dynamic> json) =>
       LeaseAgreementAmenityType(
-        id: json['id'],
+        id: _parseInt(json['id']),
         name: json['name']?.toString(),
         slug: json['slug']?.toString(),
         icon: json['icon']?.toString(),
@@ -1207,7 +1211,7 @@ class PropertyReviewSummary {
 
   factory PropertyReviewSummary.fromJson(Map<String, dynamic> json) =>
       PropertyReviewSummary(
-        totalReviews: json['total_reviews'],
+        totalReviews: _parseInt(json['total_reviews']),
         averageRating: json['average_rating']?.toString(),
       );
 
@@ -1256,8 +1260,8 @@ class LeaseAgreementPropertyUnit {
 
   factory LeaseAgreementPropertyUnit.fromJson(Map<String, dynamic> json) {
     return LeaseAgreementPropertyUnit(
-      id: json['id'],
-      propertyId: json['property_id'],
+      id: _parseInt(json['id']),
+      propertyId: _parseInt(json['property_id']),
       unitNumber: json['unit_number']?.toString(),
       unitName: json['unit_name']?.toString(),
       rentAmount: json['rent_amount']?.toString(),
@@ -1272,8 +1276,8 @@ class LeaseAgreementPropertyUnit {
           ? PropertyUnitCurrency.fromJson(json['display_currency'])
           : null,
       status: json['status']?.toString(),
-      bedrooms: json['bedrooms']?.toDouble(),
-      bathrooms: json['bathrooms']?.toDouble(),
+      bedrooms: _parseNum(json['bedrooms']),
+      bathrooms: _parseNum(json['bathrooms']),
       size: json['size']?.toString(),
       description: json['description']?.toString(),
     );
@@ -1307,10 +1311,10 @@ class PropertyUnitRentType {
 
   factory PropertyUnitRentType.fromJson(Map<String, dynamic> json) =>
       PropertyUnitRentType(
-        id: json['id'],
+        id: _parseInt(json['id']),
         name: json['name']?.toString(),
         slug: json['slug']?.toString(),
-        rentDays: json['rent_days'],
+        rentDays: _parseInt(json['rent_days']),
       );
 
   Map<String, dynamic> toJson() => {
@@ -1340,7 +1344,7 @@ class PropertyUnitCurrency {
 
   factory PropertyUnitCurrency.fromJson(Map<String, dynamic> json) =>
       PropertyUnitCurrency(
-        id: json['id'],
+        id: _parseInt(json['id']),
         code: json['code']?.toString(),
         name: json['name']?.toString(),
         symbol: json['symbol']?.toString(),
@@ -1379,7 +1383,7 @@ class LeaseAgreementTenant {
 
   factory LeaseAgreementTenant.fromJson(Map<String, dynamic> json) =>
       LeaseAgreementTenant(
-        id: json['id'],
+        id: _parseInt(json['id']),
         name: json['name']?.toString(),
         email: json['email']?.toString(),
         phone: json['phone']?.toString(),
@@ -1416,7 +1420,7 @@ class LeaseAgreementLandlord {
 
   factory LeaseAgreementLandlord.fromJson(Map<String, dynamic> json) =>
       LeaseAgreementLandlord(
-        id: json['id'],
+        id: _parseInt(json['id']),
         name: json['name']?.toString(),
         email: json['email']?.toString(),
         phone: json['phone']?.toString(),
@@ -1483,17 +1487,17 @@ class LeaseAgreementMeta {
 
   factory LeaseAgreementMeta.fromJson(Map<String, dynamic> json) {
     return LeaseAgreementMeta(
-      currentPage: json['current_page'],
-      from: json['from'],
-      lastPage: json['last_page'],
+      currentPage: _parseInt(json['current_page']),
+      from: _parseInt(json['from']),
+      lastPage: _parseInt(json['last_page']),
       links: (json['links'] as List?)
           ?.whereType<Map<String, dynamic>>()
           .map((e) => LeaseAgreementMetaLink.fromJson(e))
           .toList(),
       path: json['path']?.toString(),
-      perPage: json['per_page'],
-      to: json['to'],
-      total: json['total'],
+      perPage: _parseInt(json['per_page']),
+      to: _parseInt(json['to']),
+      total: _parseInt(json['total']),
     );
   }
 
@@ -1521,10 +1525,8 @@ class LeaseAgreementMetaLink {
       LeaseAgreementMetaLink(
         url: json['url']?.toString(),
         label: json['label']?.toString(),
-        page: json['page'] is int
-            ? json['page']
-            : int.tryParse(json['page']?.toString() ?? ''),
-        active: json['active'],
+        page: _parseInt(json['page']),
+        active: _parseBool(json['active']),
       );
 
   Map<String, dynamic> toJson() => {
@@ -1555,25 +1557,29 @@ num? _parseNum(dynamic value) {
 }
 
 // ============================================================
-// HELPER FUNCTION TO PARSE BOOL (STRING OR BOOL)
+// HELPER FUNCTION TO PARSE BOOL (STRING, BOOL, OR NUM)
 // ============================================================
 
 bool? _parseBool(dynamic value) {
   if (value == null) return null;
   if (value is bool) return value;
+  if (value is num) return value != 0;
   if (value is String) {
-    return value.toLowerCase() == 'true';
+    final lower = value.toLowerCase();
+    if (lower == 'true' || lower == '1') return true;
+    if (lower == 'false' || lower == '0') return false;
   }
   return null;
 }
 
 // ============================================================
-// HELPER FUNCTION TO PARSE INT (STRING OR INT)
+// HELPER FUNCTION TO PARSE INT (STRING, INT, OR DOUBLE)
 // ============================================================
 
 int? _parseInt(dynamic value) {
   if (value == null) return null;
   if (value is int) return value;
+  if (value is double) return value.toInt();
   if (value is String) {
     return int.tryParse(value);
   }

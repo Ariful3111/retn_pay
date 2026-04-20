@@ -11,12 +11,23 @@ class GetInspectionsRepository {
   const GetInspectionsRepository({required this.getNetwork});
 
   Future<Either<ErrorModel, InspectionModel>> execute({
-    required String status,
+    String status = '',
+    String search = '',
   }) async {
     String url = "/api/${NetworkLinks.version}/inspections";
+    List<String> queryParams = [];
+
     if (status.isNotEmpty) {
-      url = "$url?status=$status";
+      queryParams.add('status=$status');
     }
+    if (search.isNotEmpty) {
+      queryParams.add('search=$search');
+    }
+
+    if (queryParams.isNotEmpty) {
+      url = "$url?${queryParams.join('&')}";
+    }
+
     final response = await getNetwork.getData<InspectionModel>(
       url: url,
       headers: {

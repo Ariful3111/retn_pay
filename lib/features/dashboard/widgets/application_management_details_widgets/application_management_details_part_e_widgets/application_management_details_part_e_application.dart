@@ -19,48 +19,49 @@ class ApplicationManagementDetailsPartEApplication
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ApplicationManagementDetailsPartEHelper().sectionTitle(
+          ApplicationManagementDetailsPartEHelper.sectionTitle(
             '3. Applicant details',
             isDark,
           ),
           SizedBox(height: 16.h),
-          ApplicationManagementDetailsPartEHelper().textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.applicantNameController,
             'Name of applicant',
             isDark,
             readOnly: readOnly,
           ),
-          ApplicationManagementDetailsPartEHelper().textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.applicantAddressController,
             'Address',
             isDark,
             readOnly: readOnly,
           ),
-          ApplicationManagementDetailsPartEHelper().textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.applicantPostcodeController,
             'Postcode',
             isDark,
             readOnly: readOnly,
+            keyboardType: TextInputType.number,
           ),
-          ApplicationManagementDetailsPartEHelper().sectionTitle(
+          ApplicationManagementDetailsPartEHelper.sectionTitle(
             'Contact phone numbers',
             isDark,
             size: 14,
           ),
           SizedBox(height: 16.h),
-          ApplicationManagementDetailsPartEHelper().textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.businessHourController,
             'Business hours',
             isDark,
             readOnly: readOnly,
           ),
-          ApplicationManagementDetailsPartEHelper().textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.afterHourController,
             'After hours',
             isDark,
             readOnly: readOnly,
           ),
-          ApplicationManagementDetailsPartEHelper().textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.applicationEmailController,
             'Email address',
             isDark,
@@ -84,19 +85,20 @@ class ApplicationManagementDetailsPartEApplication
             },
           ),
           SizedBox(height: 20.h),
-          ApplicationManagementDetailsPartEHelper().sectionTitle(
+          ApplicationManagementDetailsPartEHelper.sectionTitle(
             'Dependents who will live in the premises',
             isDark,
             size: 14,
           ),
           SizedBox(height: 16.h),
-          ApplicationManagementDetailsPartEHelper().textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.dependentsNumberController,
             'Number',
             isDark,
             readOnly: readOnly,
+            keyboardType: TextInputType.number,
           ),
-          ApplicationManagementDetailsPartEHelper().textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.dependentsAgeController,
             'Age of each',
             isDark,

@@ -19,7 +19,6 @@ class UserChannelController extends GetxController {
     final userId = profileController.profileData.value?.data?.id;
 
     if (userId == null) {
-      debugPrint('UserChannelController: User ID not available, retrying...');
       // Retry after profile is loaded
       Future.delayed(const Duration(seconds: 2), () {
         if (!isSubscribed.value) {
@@ -32,7 +31,6 @@ class UserChannelController extends GetxController {
     currentUserId.value = userId;
     final channelName = 'private-chat.user.$userId';
 
-    debugPrint('UserChannelController: Subscribing to $channelName');
     await getSocketTokenController.getSocketToken(channelName: channelName);
     isSubscribed.value = true;
     debugPrint('UserChannelController: Subscribed to $channelName');

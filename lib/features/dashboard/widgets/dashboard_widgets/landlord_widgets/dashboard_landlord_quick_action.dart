@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/dashboard/controllers/landlord_controller/add_new_property_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/inspection_request_controller.dart';
 import 'package:renter_pay/features/dashboard/repositories/get_inspections_repo.dart';
@@ -31,8 +32,16 @@ class DashboardLandlordQuickAction extends GetWidget<DashboardController> {
             title: 'Add New Properties',
             subTitle: 'Expand your portfolio by adding a new rental property.',
             onTap: () {
+              // Pre-initialize controller if not already registered
+              if (!Get.isRegistered<AddNewPropertyController>()) {
+                Get.put(
+                  AddNewPropertyController(
+                    createPropertyRepository: Get.find(),
+                  ),
+                );
+              }
               Get.toNamed(AppRoutes.addNewProperty);
-              Get.find<DashboardController>().isItemSelect.value = 1;
+              controller.isItemSelect.value = 1;
             },
             buttonText: 'Add Property',
           ),

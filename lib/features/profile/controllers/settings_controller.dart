@@ -11,7 +11,6 @@ class SettingsController extends GetxController {
   RxBool isRegistry = false.obs;
   RxBool isInsurance = false.obs;
   RxBool isSafety = false.obs;
-  RxBool isUpgrade = false.obs;
   RxBool isSubscription = false.obs;
 
   @override
@@ -30,6 +29,9 @@ class SettingsController extends GetxController {
       (data) {
         isNotification.value = data.data?.pushNotifications ?? false;
         isAutoPayment.value = data.data?.autoPayRent ?? false;
+        isRegistry.value = data.data?.landDataRegistryExpiry ?? false;
+        isInsurance.value = data.data?.landlordInsuranceExpiry ?? false;
+        isSafety.value = data.data?.fireAlarmSafetyServiceExpiry ?? false;
       },
     );
   }

@@ -63,7 +63,10 @@ class RepairRequestDetails extends GetWidget<RepairRequestController> {
                         subTitle: data?.description ?? '',
                       ),
                       SizedBox(height: 16.h),
-                      RepairRequestImages(images: data?.images ?? const []),
+                      RepairRequestImages(
+                        images: data?.images ?? const [],
+                        status: status,
+                      ),
                     ],
                   ),
                   Positioned(

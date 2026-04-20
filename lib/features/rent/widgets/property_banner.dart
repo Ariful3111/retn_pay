@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
+import 'package:renter_pay/core/services/url_service.dart';
+import 'package:renter_pay/features/auth/controllers/get_settings_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class PropertyBanner extends StatelessWidget {
@@ -12,7 +15,7 @@ class PropertyBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.r, vertical: 10.r),
-      // height: 220.h,
+      height: 300.h,
       width: MediaQuery.widthOf(context),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(9.44.r),
@@ -28,13 +31,14 @@ class PropertyBanner extends StatelessWidget {
           Image.asset(
             ImagesPath.appLogo,
             color: AppColors.whiteColor,
-            width: 131.7.w,
+            width: 150.w,
             height: 30.h,
+            fit: BoxFit.fill,
           ),
           SizedBox(height: 12.h),
           CustomTextPrimary(
             text: 'Looking to Rent\na Property?',
-            fontSize: 20.sp,
+            fontSize: 25.sp,
             color: AppColors.approveBG,
           ),
           CustomTextPrimary(
@@ -46,10 +50,20 @@ class PropertyBanner extends StatelessWidget {
           ),
           SizedBox(height: 16.h),
           GestureDetector(
-            onTap: () {},
+            onTap: () async {
+              await URLService.launchDialpad(
+                phone:
+                    Get.find<GetSettingsController>()
+                        .settings
+                        .value
+                        ?.data
+                        ?.phone ??
+                    "",
+              );
+            },
             child: Container(
               height: 31.85.h,
-              width: 180.w,
+              width: 170.w,
               padding: EdgeInsets.symmetric(
                 vertical: 7.92.h,
                 horizontal: 2.06.w,
@@ -64,7 +78,7 @@ class PropertyBanner extends StatelessWidget {
                   SizedBox(width: 2.w),
                   CustomTextPrimary(
                     text: 'Get a Free Consultation',
-                    fontSize: 12.sp,
+                    fontSize: 10.sp,
                     color: AppColors.primaryTextColor,
                   ),
                   SizedBox(width: 10.w),

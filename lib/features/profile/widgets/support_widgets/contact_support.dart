@@ -34,7 +34,7 @@ class ContactSupport extends StatelessWidget {
           ...List.generate(supportController.contactList.length, (index) {
             final list = supportController.contactList[index];
             return Container(
-              margin: EdgeInsets.only(bottom: index==2?0:16.h),
+              margin: EdgeInsets.only(bottom: index == 2 ? 0 : 16.h),
               padding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 24.w),
               decoration: BoxDecoration(
                 color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
@@ -47,23 +47,32 @@ class ContactSupport extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Column(children: [
-                Image.asset(list['icon'],height: 32.h,width: 32.w,),
-                SizedBox(height: 12.h,),
-                CustomTextPrimary(text: list['title'],fontSize: 20.sp,),
-                SizedBox(height: 8.h,),
-                CustomTextSecondary(text: list['subTitle'],textAlign: TextAlign.center,),
-                SizedBox(height: 20.h,),
-              if(index==1||index==0)  CustomPrimaryButton(
-                  height: 40.h,
-                  width: 111.w,
-                  borderRadius: BorderRadius.circular(6.r),
-                  text: list['action'],
-                  onPressed: () {
-                  
-                },),
-                if(index==2) CustomTextSecondary(text: list['action']),
-              ],),
+              child: Column(
+                children: [
+                  Image.asset(list['icon'], height: 32.h, width: 32.w),
+                  SizedBox(height: 12.h),
+                  CustomTextPrimary(text: list['title'], fontSize: 20.sp),
+                  SizedBox(height: 8.h),
+                  CustomTextSecondary(
+                    text: list['subTitle'],
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 20.h),
+                  if (index == 1 || index == 0)
+                    CustomPrimaryButton(
+                      height: 40.h,
+                      width: 111.w,
+                      borderRadius: BorderRadius.circular(6.r),
+                      text: list['action'],
+                      onPressed: list["tap"],
+                    ),
+                  if (index == 2)
+                    GestureDetector(
+                      onTap: list["tap"],
+                      child: CustomTextSecondary(text: list['action']),
+                    ),
+                ],
+              ),
             );
           }),
         ],

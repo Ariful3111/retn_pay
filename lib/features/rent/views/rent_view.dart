@@ -75,18 +75,26 @@ class RentView extends GetView<RentController> {
                               ),
                             ),
                     ),
-                    (controller.rents.value?.data?.data?.isNotEmpty ?? false)
-                        ? CustomPagination(
-                            list: controller.pageNumber,
-                            onTapPrev: controller.previousPage,
-                            onTapNext: controller.nextPage,
-                            onTapPage: (item) {
-                              controller.currentPage.value = item;
-                              controller.getRentList(page: item);
-                            },
-                            value: controller.currentPage.value,
-                          )
-                        : SizedBox.shrink(),
+                    Obx(() {
+                      final data = controller.rents.value?.data;
+                      final lastPage = data?.meta?.lastPage ?? 1;
+
+                      // Show pagination only if more than 1 page exists
+                      if (lastPage <= 1) {
+                        return SizedBox.shrink();
+                      }
+
+                      return CustomPagination(
+                        list: controller.pageNumber,
+                        onTapPrev: controller.previousPage,
+                        onTapNext: controller.nextPage,
+                        onTapPage: (item) {
+                          controller.currentPage.value = item;
+                          controller.getRentList(page: item);
+                        },
+                        value: controller.currentPage.value,
+                      );
+                    }),
                     SizedBox(height: 55.h),
                   ],
                 ),

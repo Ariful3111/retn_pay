@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_appbar.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/dashboard_properties.dart';
@@ -27,8 +28,8 @@ class DashboardView extends StatelessWidget {
               colors: [AppColors.darkPrimary, AppColors.darkPrimary],
             )
           : AppColors.userBackground.withOpacity(0.5),
-      child: Obx(
-        () => CustomScrollView(
+      child: Obx(() {
+        return CustomScrollView(
           controller: dashboardController.scrollController,
           physics:
               userIndex == 1 && dashboardController.isUpgrade.value ||
@@ -69,8 +70,8 @@ class DashboardView extends StatelessWidget {
                               right: 60.w,
                               child: CustomPrimaryButton(
                                 onPressed: () {
-                                  dashboardController.isUpgrade.value =
-                                      !dashboardController.isUpgrade.value;
+                                  // Navigate to subscription plan page
+                                  Get.toNamed(AppRoutes.subsPlan);
                                 },
                                 height: 48.h,
                                 width: 307.w,
@@ -84,8 +85,8 @@ class DashboardView extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
+        );
+      }),
     );
   }
 }

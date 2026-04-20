@@ -12,7 +12,6 @@ class ApplicationManagementDetailsPartEReferences
 
   @override
   Widget build(BuildContext context) {
-    final helper = ApplicationManagementDetailsPartEHelper();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Obx(() {
@@ -20,7 +19,10 @@ class ApplicationManagementDetailsPartEReferences
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          helper.sectionTitle('8. References', isDark),
+          ApplicationManagementDetailsPartEHelper.sectionTitle(
+            '8. References',
+            isDark,
+          ),
           SizedBox(height: 4.h),
           CustomTextSecondary(
             text: '(If you have written references attach copies to this form)',
@@ -37,29 +39,31 @@ class ApplicationManagementDetailsPartEReferences
           ),
           SizedBox(height: 12.h),
 
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.ref1NameController,
             'Name',
             isDark,
             readOnly: readOnly,
           ),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.ref1RelationController,
             'Relationship to applicant',
             isDark,
             readOnly: readOnly,
           ),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.ref1HomePhoneController,
             'Home phone number',
             isDark,
             readOnly: readOnly,
+            keyboardType: TextInputType.phone,
           ),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.ref1WorkPhoneController,
             'Work phone number',
             isDark,
             readOnly: readOnly,
+            keyboardType: TextInputType.phone,
           ),
           CustomTextSecondary(
             text: 'Referee 2',
@@ -68,29 +72,31 @@ class ApplicationManagementDetailsPartEReferences
             color: isDark ? AppColors.whiteColor : AppColors.darkTextColor,
           ),
           SizedBox(height: 12.h),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.ref2NameController,
             'Name',
             isDark,
             readOnly: readOnly,
           ),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.ref2RelationController,
             'Relationship to applicant',
             isDark,
             readOnly: readOnly,
           ),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.ref2HomePhoneController,
             'Home phone number',
             isDark,
             readOnly: readOnly,
+            keyboardType: TextInputType.phone,
           ),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.ref2WorkPhoneController,
             'Work phone number',
             isDark,
             readOnly: readOnly,
+            keyboardType: TextInputType.phone,
           ),
         ],
       );

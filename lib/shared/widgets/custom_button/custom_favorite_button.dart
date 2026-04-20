@@ -17,8 +17,8 @@ class CustomFavoriteButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: 24.h,
-        width: 24.w,
+        height: 30.h,
+        width: 30.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15.sp),
           color: AppColors.whiteColor,
@@ -26,8 +26,8 @@ class CustomFavoriteButton extends StatelessWidget {
         child: Center(
           child: Image.asset(
             isFavorite ? IconsPath.selectFavorite : IconsPath.favorite,
-            height: isFavorite ? 20.h : 15.h,
-            width: isFavorite ? 20.h : 15.h,
+            height: isFavorite ? 22.h : 17.h,
+            width: isFavorite ? 22.h : 17.h,
           ),
         ),
       ),

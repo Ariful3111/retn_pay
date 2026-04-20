@@ -69,7 +69,7 @@ class PopularItems extends StatelessWidget {
                             right: isLast ? 8.w : 0.w,
                             left: isFirst ? 20.w : 10.w,
                           ),
-                          padding: EdgeInsets.all(12.sp),
+                          padding: EdgeInsets.only(bottom: 12.h),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20.sp),
                             image: DecorationImage(
@@ -142,16 +142,19 @@ class PopularItems extends StatelessWidget {
                                     ),
                                     Row(
                                       children: [
-                                        CustomTextSpan(
-                                          title:
-                                              '\$${property.units![0].rentAmount}',
-                                          spantext: '/Week',
-                                          fontSize: 16.sp,
-                                          spanFontSize: 12.sp,
-                                          spanFontWeight: FontWeight.w400,
-                                          color: AppColors.whiteColor,
-                                          spanColor:
-                                              AppColors.darkSecondaryText,
+                                        Expanded(
+                                          child: CustomTextSpan(
+                                            title:
+                                                '\$${property.units![0].rentAmount}',
+                                            spantext: '/Week',
+                                            fontSize: 16.sp,
+                                            spanFontSize: 12.sp,
+                                            spanFontWeight: FontWeight.w400,
+                                            color: AppColors.whiteColor,
+                                            spanColor:
+                                                AppColors.darkSecondaryText,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
                                         ),
                                         Image.asset(
                                           IconsPath.appCurrency,
@@ -159,16 +162,19 @@ class PopularItems extends StatelessWidget {
                                           width: 11.h,
                                         ),
                                         SizedBox(width: 3.w),
-                                        CustomTextSpan(
-                                          title:
-                                              '${property.units![0].rentAmount}',
-                                          spantext: '/Week',
-                                          fontSize: 16.sp,
-                                          spanFontSize: 12.sp,
-                                          spanFontWeight: FontWeight.w400,
-                                          color: AppColors.whiteColor,
-                                          spanColor:
-                                              AppColors.darkSecondaryText,
+                                        Expanded(
+                                          child: CustomTextSpan(
+                                            title:
+                                                '${property.units![0].rentAmount}',
+                                            spantext: '/Week',
+                                            fontSize: 16.sp,
+                                            spanFontSize: 12.sp,
+                                            spanFontWeight: FontWeight.w400,
+                                            color: AppColors.whiteColor,
+                                            spanColor:
+                                                AppColors.darkSecondaryText,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
                                         ),
                                       ],
                                     ),

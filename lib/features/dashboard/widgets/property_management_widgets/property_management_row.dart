@@ -57,13 +57,15 @@ class PropertyManagementRow extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CustomTextPrimary(text: 'Property', fontSize: 24.sp),
-                        add(
-                          context: context,
-                          onTap: () {
-                            Get.toNamed(AppRoutes.addNewProperty);
-                          },
-                          text: 'New Property',
-                        ),
+                        userIndex == 2
+                            ? SizedBox()
+                            : add(
+                                context: context,
+                                onTap: () {
+                                  Get.toNamed(AppRoutes.addNewProperty);
+                                },
+                                text: 'New Property',
+                              ),
                       ],
                     ),
             ),

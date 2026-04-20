@@ -20,7 +20,7 @@ class CategoryList extends GetView<PropertyCategoryController> {
       final selectedIndex = controller.selectedCategory.value;
       return controller.isLoading.value
           ? ButtonLoading()
-          : Container(
+          : SizedBox(
               height: 64.h,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
