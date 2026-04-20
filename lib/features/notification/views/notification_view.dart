@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/notification/controller/notification_controller.dart';
 import 'package:renter_pay/features/notification/widgets/notification_appbar_actions.dart';
 import 'package:renter_pay/features/notification/widgets/notification_item.dart';
@@ -47,7 +48,23 @@ class NotificationView extends GetView<NotificationController> {
                           notificationIcon: controller.iconList[0],
                           notificationText: item.data?.body ?? '',
                           notificationTime: (item.createdAt).toTimeAgo(),
-                          onTap: () {},
+                          onTap: () {
+                            if (item.type == "property") {
+                              Get.toNamed(
+                                AppRoutes.rentDetails,
+                                arguments: item.data?.data?.propertyId,
+                              );
+                            } else if (item.type == "support") {
+                              Get.toNamed(AppRoutes.supportView);
+                            } else if (item.type == "chat") {
+                              Get.toNamed(
+                                AppRoutes.messageView,
+                                arguments: {
+                                  "ID": item.data?.data?.chatConversationId,
+                                },
+                              );
+                            }
+                          },
                           isSelect: item.isRead == false,
                         ),
                       ),

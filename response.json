@@ -1,186 +1,459 @@
 {
   "error": false,
   "code": 200,
-  "message": "Property retrieved successfully",
+  "message": "Notifications fetched successfully",
   "data": {
-    "id": 101,
-    "landlord_id": 68,
-    "property_type_id": 1,
-    "title": "Modern Apartment",
-    "name": "Modern Apartment",
-    "description": "Beautiful modern apartment",
-    "address": "123 Main St",
-    "city": "Sydney",
-    "state": "NSW",
-    "postal_code": "2000",
-    "country": "Australia",
-    "latitude": null,
-    "longitude": null,
-    "property_type": {
-      "id": 1,
-      "name": "Apartment",
-      "slug": "apartment",
-      "image": "https://picsum.photos/seed/apartment/800/600",
-      "description": "A self-contained housing unit that occupies part of a building",
-      "status": true,
-      "created_at": "2026-02-10T20:39:57.000000Z",
-      "updated_at": "2026-02-10T20:39:57.000000Z"
-    },
-    "bedrooms": 2,
-    "bathrooms": 2,
-    "parking_spaces": null,
-    "land_size": null,
-    "building_size": null,
-    "year_built": null,
-    "status": "active",
-    "available_from": "2026-04-20",
-    "is_verified": true,
-    "is_in_person_inspection_available": false,
-    "is_virtual_inspection_available": false,
-    "has_active_inspection_request": false,
-    "is_inspected": true,
-    "is_favourite": false,
-    "features": ["features1", "features2"],
-    "lease_agreement_defaults": [],
-    "rating": "3.00",
-    "rating_count": 1,
-    "landlord": {
-      "id": 68,
-      "name": "Md. Mahfuzur Rahman",
-      "first_name": "Md. Mahfuzur",
-      "last_name": "Rahman",
-      "gender": "male",
-      "image": "https://renter-pay.mahfuz.click/images/person.png",
-      "email": "mrj.cse15@gmail.com",
-      "phone": null,
-      "is_active": true,
-      "provider": null,
-      "provider_id": null,
-      "roles": ["tenant"],
-      "tenant_profile": {
-        "id": 21,
-        "employment_status": "employed",
-        "employer_name": "Wiztech BD",
-        "job_title": "Software Engineer",
-        "monthly_income": "50000.00",
-        "is_verified": true,
-        "created_at": "2026-02-10T20:56:46.000000Z",
-        "updated_at": "2026-02-10T20:56:46.000000Z"
-      },
-      "documents": [],
-      "created_at": "2026-02-11 02:56:46",
-      "updated_at": "2026-02-11 02:56:46"
-    },
-    "assigned_agents": [],
-    "units": [
+    "data": [
       {
-        "id": 178,
-        "property_id": 101,
-        "unit_number": "Unit 101",
-        "unit_name": null,
-        "rent_amount": "1500.00",
-        "rent_type": {
-          "id": 1,
-          "name": "Daily",
-          "slug": "daily",
-          "rent_days": 1,
-          "description": "Rent charged per day",
-          "status": true,
-          "created_at": "2026-02-10T20:39:57.000000Z",
-          "updated_at": "2026-02-10T20:39:57.000000Z"
+        "id": "019d80ab-8d33-70ed-92af-448ed72e079d",
+        "type": "support",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "Support ticket created",
+          "body": "Your support ticket \"gdgd\" has been created. Ticket #15.",
+          "data": {
+            "support_ticket_id": 15
+          }
         },
-        "currency": {
-          "id": 1,
-          "code": "AUD",
-          "name": "Australian Dollar",
-          "symbol": "A$",
-          "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-          "type": "fiat",
-          "decimal_places": 2,
-          "exchange_rate": 1,
-          "is_active": true,
-          "sort_order": 1
-        },
-        "display_rent_amount": 1500,
-        "display_currency": {
-          "id": 1,
-          "code": "AUD",
-          "name": "Australian Dollar",
-          "symbol": "A$",
-          "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-          "type": "fiat",
-          "decimal_places": 2,
-          "exchange_rate": 1,
-          "is_active": true,
-          "sort_order": 1
-        },
-        "status": "available",
-        "bedrooms": 2,
-        "bathrooms": 1,
-        "size": "2400.00",
-        "description": null
-      }
-    ],
-    "images": [
-      {
-        "id": 473,
-        "property_id": 101,
-        "image_path": "https://renter-pay.mahfuz.click/storage/images/properties/Mg5Gj3IN5TBiP8jGzWYfiynlyP3aTT0LCK18oqJ3.jpg",
-        "type": "image",
-        "order": 1,
-        "is_primary": false,
-        "caption": null,
-        "created_at": "2026-02-10T20:57:46.000000Z",
-        "updated_at": "2026-02-10T20:57:46.000000Z"
-      }
-    ],
-    "amenities": [
-      {
-        "id": 640,
-        "property_id": 101,
-        "amenity_type_id": 1,
-        "amenity_type": {
-          "id": 1,
-          "name": "Air Conditioning",
-          "slug": "air-conditioning",
-          "icon": "https://picsum.photos/seed/air-conditioning/200",
-          "icon_url": "https://picsum.photos/seed/air-conditioning/200",
-          "description": "Air conditioning system for climate control",
-          "status": true,
-          "created_at": "2026-02-10T20:39:57.000000Z",
-          "updated_at": "2026-02-10T20:39:57.000000Z"
-        },
-        "created_at": "2026-02-10T20:57:46.000000Z",
-        "updated_at": "2026-02-10T20:57:46.000000Z"
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-12T07:50:19.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
       },
       {
-        "id": 641,
-        "property_id": 101,
-        "amenity_type_id": 2,
-        "amenity_type": {
-          "id": 2,
-          "name": "Heating",
-          "slug": "heating",
-          "icon": "https://picsum.photos/seed/heating/200",
-          "icon_url": "https://picsum.photos/seed/heating/200",
-          "description": "Central heating or other heating systems",
-          "status": true,
-          "created_at": "2026-02-10T20:39:57.000000Z",
-          "updated_at": "2026-02-10T20:39:57.000000Z"
+        "id": "019d80ab-7e38-7101-8b70-ec0304d853d6",
+        "type": "support",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "Support ticket created",
+          "body": "Your support ticket \"gdgd\" has been created. Ticket #15.",
+          "data": {
+            "support_ticket_id": 15
+          }
         },
-        "created_at": "2026-02-10T20:57:46.000000Z",
-        "updated_at": "2026-02-10T20:57:46.000000Z"
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-12T07:50:15.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d8069-b26c-72e6-b66b-405a05e9da9a",
+        "type": "chat",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "New message from Tonni Akter",
+          "body": "He 2",
+          "data": {
+            "chat_conversation_id": 6,
+            "chat_message_id": 104,
+            "sender_id": 75
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-12T06:38:23.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d8069-b27e-7353-af3a-3a1fbff60aae",
+        "type": "chat",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "New message from Tonni Akter",
+          "body": "He 2",
+          "data": {
+            "chat_conversation_id": 6,
+            "chat_message_id": 104,
+            "sender_id": 75
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-12T06:38:23.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d8069-6b40-71fc-82c4-2f39838b6df9",
+        "type": "chat",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "New message from Tonni Akter",
+          "body": "And You?",
+          "data": {
+            "chat_conversation_id": 6,
+            "chat_message_id": 103,
+            "sender_id": 75
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-12T06:38:05.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d8069-6b7a-70c8-84c0-53f9704c0adc",
+        "type": "chat",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "New message from Tonni Akter",
+          "body": "And You?",
+          "data": {
+            "chat_conversation_id": 6,
+            "chat_message_id": 103,
+            "sender_id": 75
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-12T06:38:05.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d8069-3af7-7138-a104-7e32b6008792",
+        "type": "chat",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "New message from Tonni Akter",
+          "body": "How are You?",
+          "data": {
+            "chat_conversation_id": 6,
+            "chat_message_id": 102,
+            "sender_id": 75
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-12T06:37:53.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d8069-3b06-71b0-9303-668be3ad3148",
+        "type": "chat",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "New message from Tonni Akter",
+          "body": "How are You?",
+          "data": {
+            "chat_conversation_id": 6,
+            "chat_message_id": 102,
+            "sender_id": 75
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-12T06:37:53.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d8068-14f5-734f-90a9-1367aeca4ddd",
+        "type": "chat",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "New message from Tonni Akter",
+          "body": "Hello",
+          "data": {
+            "chat_conversation_id": 6,
+            "chat_message_id": 101,
+            "sender_id": 75
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-12T06:36:38.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d8068-1516-7256-bfe6-32c3697997be",
+        "type": "chat",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "New message from Tonni Akter",
+          "body": "Hello",
+          "data": {
+            "chat_conversation_id": 6,
+            "chat_message_id": 101,
+            "sender_id": 75
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-12T06:36:38.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d8067-cdf3-7299-a0ab-8650e24e43c5",
+        "type": "chat",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "New message from Tonni Akter",
+          "body": "Hi",
+          "data": {
+            "chat_conversation_id": 6,
+            "chat_message_id": 100,
+            "sender_id": 75
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-12T06:36:19.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d8067-ce01-7144-818d-81ec08f4571b",
+        "type": "chat",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "New message from Tonni Akter",
+          "body": "Hi",
+          "data": {
+            "chat_conversation_id": 6,
+            "chat_message_id": 100,
+            "sender_id": 75
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-12T06:36:19.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d788d-4ccf-706a-80f4-b2fa7693a1dd",
+        "type": "rent",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "Late fees applied",
+          "body": "Late fees of 15 AUD have been applied to your rent due Mar 11, 2026. Please pay the updated total.",
+          "data": {
+            "rent_payment_id": 18,
+            "late_fee_total": "15",
+            "due_date": "2026-03-11T00:00:00+06:00"
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-10T18:00:19.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d788d-3a16-704a-9cf1-9e62860dd025",
+        "type": "rent",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "Late fees applied",
+          "body": "Late fees of 15 AUD have been applied to your rent due Mar 11, 2026. Please pay the updated total.",
+          "data": {
+            "rent_payment_id": 18,
+            "late_fee_total": "15",
+            "due_date": "2026-03-11T00:00:00+06:00"
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-10T18:00:14.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d7366-d1c7-718b-95b1-62d739474136",
+        "type": "rent",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "Late fees applied",
+          "body": "Late fees of 15 AUD have been applied to your rent due Mar 11, 2026. Please pay the updated total.",
+          "data": {
+            "rent_payment_id": 18,
+            "late_fee_total": "15",
+            "due_date": "2026-03-11T00:00:00+06:00"
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-09T18:00:11.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d7366-be27-7287-935f-0d6f8f47625b",
+        "type": "rent",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "Late fees applied",
+          "body": "Late fees of 15 AUD have been applied to your rent due Mar 11, 2026. Please pay the updated total.",
+          "data": {
+            "rent_payment_id": 18,
+            "late_fee_total": "15",
+            "due_date": "2026-03-11T00:00:00+06:00"
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-09T18:00:06.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d71c5-1e61-7148-ac37-3a4ec6b5ac1b",
+        "type": "support",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "Support ticket created",
+          "body": "Your support ticket \"thththt\" has been created. Ticket #13.",
+          "data": {
+            "support_ticket_id": 13
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-09T10:23:57.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d71c5-16b7-72cd-ab07-eaf19598ac5f",
+        "type": "support",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "Support ticket created",
+          "body": "Your support ticket \"thththt\" has been created. Ticket #13.",
+          "data": {
+            "support_ticket_id": 13
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-09T10:23:55.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d71c1-5479-7168-872e-a9ab0c13ae5b",
+        "type": "payment",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "Deposit completed",
+          "body": "Your deposit of 100.00 AUD has been completed successfully.",
+          "data": {
+            "transaction_id": 469,
+            "amount": "100.00",
+            "currency": "AUD"
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-09T10:19:48.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
+      },
+      {
+        "id": "019d71c1-4691-7340-88b7-efd1ce853b08",
+        "type": "payment",
+        "notifiable_type": "App\\Models\\User",
+        "notifiable_id": 70,
+        "data": {
+          "title": "Deposit completed",
+          "body": "Your deposit of 100.00 AUD has been completed successfully.",
+          "data": {
+            "transaction_id": 469,
+            "amount": "100.00",
+            "currency": "AUD"
+          }
+        },
+        "is_read": true,
+        "read_at": "2026-04-12T11:59:37.000000Z",
+        "created_at": "2026-04-09T10:19:45.000000Z",
+        "updated_at": "2026-04-12T11:59:37.000000Z"
       }
     ],
-    "documents": [],
-    "maintenance_profile": null,
-    "review_summary": {
-      "total_reviews": 1,
-      "average_rating": "3.00"
+    "links": {
+      "first": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=1",
+      "last": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=8",
+      "prev": null,
+      "next": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=2"
     },
-    "my_review": null,
-    "created_at": "2026-02-10T20:56:54.000000Z",
-    "updated_at": "2026-04-20T05:24:48.000000Z"
+    "meta": {
+      "current_page": 1,
+      "from": 1,
+      "last_page": 8,
+      "links": [
+        {
+          "url": null,
+          "label": "&laquo; Previous",
+          "page": null,
+          "active": false
+        },
+        {
+          "url": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=1",
+          "label": "1",
+          "page": 1,
+          "active": true
+        },
+        {
+          "url": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=2",
+          "label": "2",
+          "page": 2,
+          "active": false
+        },
+        {
+          "url": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=3",
+          "label": "3",
+          "page": 3,
+          "active": false
+        },
+        {
+          "url": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=4",
+          "label": "4",
+          "page": 4,
+          "active": false
+        },
+        {
+          "url": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=5",
+          "label": "5",
+          "page": 5,
+          "active": false
+        },
+        {
+          "url": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=6",
+          "label": "6",
+          "page": 6,
+          "active": false
+        },
+        {
+          "url": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=7",
+          "label": "7",
+          "page": 7,
+          "active": false
+        },
+        {
+          "url": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=8",
+          "label": "8",
+          "page": 8,
+          "active": false
+        },
+        {
+          "url": "https://renter-pay.mahfuz.click/api/v1/notification?per_page=20&page=2",
+          "label": "Next &raquo;",
+          "page": 2,
+          "active": false
+        }
+      ],
+      "path": "https://renter-pay.mahfuz.click/api/v1/notification",
+      "per_page": 20,
+      "to": 20,
+      "total": 160
+    }
   },
   "errors": null
 }

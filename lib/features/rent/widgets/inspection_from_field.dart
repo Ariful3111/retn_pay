@@ -55,6 +55,7 @@ class InspectionFromField extends GetWidget<InspectionFormController> {
           onTap: () {
             DatePicker.pickDate(
               context: context,
+              firstDate: DateTime.now(),
               onDateSelected: (date) {
                 controller.selectedDate.value = date;
                 controller.dateController.text =
