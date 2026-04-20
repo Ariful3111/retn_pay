@@ -26,11 +26,12 @@ class PropertyMaintenanceInfo extends StatelessWidget {
           ),
           SizedBox(height: 20.h),
           CustomDateField(
-            label: 'Select Date...',
+            label: 'Last Fire Alarm Service Date',
             fillColor: isDark ? null : AppColors.whiteColor,
             controller: addNewPropertyController.dateController,
             onTap: () {
               DatePicker.pickDate(
+                lastDate: DateTime.now(),
                 context: context,
                 onDateSelected: (date) {
                   addNewPropertyController.selectedDate.value = date;
