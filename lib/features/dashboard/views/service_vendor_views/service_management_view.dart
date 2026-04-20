@@ -15,13 +15,15 @@ class ServiceManagementView extends StatelessWidget {
     return CustomContainer(
       padding: EdgeInsets.all(20.r),
       gradient: isDark ? null : AppColors.userBackground,
-      child: ListView(children: [
-         DrawerItemsAppbar(title: 'Service Management'),
-         SizedBox(height: 24.h,),
-         ServiceManagementType(),
-         SizedBox(height: 24.h,),
-         ServiceManagementTable()
-      ]),
+      child: ListView(
+        children: [
+          DrawerItemsAppbar(title: 'Service Management'),
+          SizedBox(height: 24.h),
+          ServiceManagementType(),
+          SizedBox(height: 24.h),
+          ServiceManagementTable(),
+        ],
+      ),
     );
   }
 }

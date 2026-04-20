@@ -12,7 +12,9 @@ import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/a
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_inspection.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/add_new_property_virtual_tour.dart';
 import 'package:renter_pay/features/dashboard/widgets/add_new_property_widgets/property_maintenance_info.dart';
-import 'package:renter_pay/features/dashboard/widgets/property_management_widgets/property_management_appbar.dart';
+
+import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
+import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
 import 'package:renter_pay/shared/widgets/custom_dropdown/custom_dropdown_menu.dart';
@@ -32,7 +34,17 @@ class AddNewProperty extends GetView<AddNewPropertyController> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    PropertyManagementAppbar(),
+                    Row(
+                      children: [
+                        CustomAppbarLeading(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                        SizedBox(width: 8.w),
+                        CustomAppbar(title: 'Add New Property'),
+                      ],
+                    ),
                     SizedBox(height: 20.h),
                     AddNewPropertyInfo(),
                     SizedBox(height: 20.h),

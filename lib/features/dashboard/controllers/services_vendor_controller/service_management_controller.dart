@@ -1,68 +1,46 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-class ServiceManagementModel {
-  final String serviceName;
-  final String status;
-  final String clientName;
-  final String address;
-  final String schedule;
-  ServiceManagementModel({required this.serviceName, required this.status, required this.clientName, required this.address, required this.schedule});
-}
+import 'package:renter_pay/features/dashboard/models/service_list_model.dart';
+import 'package:renter_pay/features/dashboard/repositories/service_list_repo.dart';
+import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
 class ServiceManagementController extends GetxController {
+  final ServiceListRepository serviceListRepository;
+  ServiceManagementController({required this.serviceListRepository});
+
+  final services = Rxn<ServiceListModel>();
+  RxBool isLoading = true.obs;
   List<String> serviceType = ['Listed Service', 'Pending', 'Rejected'];
   List<String> tableColumn = ['Service Name', 'Status', 'Action'];
   RxInt serviceTypeIndex = 0.obs;
+  TextEditingController searchController = TextEditingController();
   RxList<bool> expanded = <bool>[].obs;
-  RxList<ServiceManagementModel> allRows = <ServiceManagementModel>[].obs;
-  List<MapEntry<int, ServiceManagementModel>> get filterRow {
-    final tempRow = <MapEntry<int, ServiceManagementModel>>[];
-    for (int i = 0; i < allRows.length; i++) {
-      tempRow.add(MapEntry(i, allRows[i]));
-    }
-    List<MapEntry<int, ServiceManagementModel>> tabFiltered;
-    switch (serviceTypeIndex.value) {
-      case 0:
-        tabFiltered = tempRow
-            .where((row) => row.value.status == 'Approved')
-            .toList();
-        break;
-      case 1:
-        tabFiltered = tempRow
-            .where((row) => row.value.status == 'Pending')
-            .toList();
-        break;
-      case 2:
-        tabFiltered = tempRow
-            .where((row) => row.value.status == 'Rejected')
-            .toList();
-        break;
-      default:
-        tabFiltered = tempRow;
-    }
-    return tabFiltered;
-  }
 
-  void initRows() {
-    allRows.value = [
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Approved', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Approved', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Approved', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Approved', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Approved', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Pending', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Pending', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Pending', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Pending', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Pending', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Rejected', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Rejected', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Rejected', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Rejected', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
-      ServiceManagementModel(serviceName: 'Plumbing', status: 'Rejected', clientName: 'Arif', address: 'Dhaka', schedule: '8 Aug, 2025 10:00 AM'),
-    ];
-    expanded.value = List.generate(allRows.length, (_) => false);
-    update();
+  // Get all services from API response
+  List<ServiceItem> get allServices =>
+      services.value?.data?.data ?? <ServiceItem>[];
+
+  // Filter services based on selected tab
+  List<ServiceItem> get filterRow {
+    final allItems = allServices;
+    if (allItems.isEmpty) return [];
+
+    switch (serviceTypeIndex.value) {
+      case 0: // Listed Service = approved
+        return allItems
+            .where((item) => item.status?.toLowerCase() == 'approved')
+            .toList();
+      case 1: // Pending
+        return allItems
+            .where((item) => item.status?.toLowerCase() == 'pending')
+            .toList();
+      case 2: // Rejected
+        return allItems
+            .where((item) => item.status?.toLowerCase() == 'rejected')
+            .toList();
+      default:
+        return allItems;
+    }
   }
 
   void toggleExpanded(int index) {
@@ -72,9 +50,30 @@ class ServiceManagementController extends GetxController {
     expanded.refresh();
   }
 
+  Future<void> getServices() async {
+    isLoading.value = true;
+    final response = await serviceListRepository.execute(
+      status: 'active',
+      page: 1,
+    );
+    isLoading.value = false;
+    response.fold(
+      (error) {
+        ErrorSnackbar.show(description: error.message);
+      },
+      (data) {
+        services.value = data;
+        expanded.value = List.generate(
+          data.data?.data?.length ?? 0,
+          (_) => false,
+        );
+      },
+    );
+  }
+
   @override
-  void onReady() {
-    initRows();
-    super.onReady();
+  void onInit() {
+    super.onInit();
+    getServices();
   }
 }

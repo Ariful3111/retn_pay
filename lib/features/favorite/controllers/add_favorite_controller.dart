@@ -23,9 +23,14 @@ class AddFavoriteController extends GetxController {
       propertyID: propertyID,
     );
     isLoading.value = false;
-    response.fold((error) {
-      ErrorSnackbar.show(description: error.message);
-    }, (data) {});
+    response.fold(
+      (error) {
+        ErrorSnackbar.show(description: error.message);
+      },
+      (data) async {
+        await Get.find<GetFavoriteController>().getFavorite();
+      },
+    );
   }
 
   void updateLocalUI({required int index, required int propertyID}) {
@@ -36,12 +41,7 @@ class AddFavoriteController extends GetxController {
             .firstWhereOrNull((element) => element.id == propertyID);
         if (favItem != null) {
           favItem.isFavourite.value = true;
-        } else {
-          // If item is not in the list, we might want to refresh the list to fetch it
-          // Or we can add it manually if we have the full property object (which we don't have here easily)
-          // For now, refreshing the favorite list is a safe bet if we want to show it immediately
-          favoriteController.getFavorite();
-        }
+        } else {}
       }
     }
 

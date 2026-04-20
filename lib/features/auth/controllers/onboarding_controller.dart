@@ -7,7 +7,7 @@ class OnboardingController extends GetxController {
   RxInt currentPage = 0.obs;
   RxInt activeArrow = 0.obs;
   RxDouble dragOffset = 0.0.obs;
-  final double maxDragDistance = 45;
+  final double maxDragDistance = 90;
   List colorList = [
     AppColors.whiteColor,
     AppColors.whiteColor.withValues(alpha: 0.6),
@@ -27,7 +27,7 @@ class OnboardingController extends GetxController {
 
   void nextPage() {
     if (currentPage.value < 3) {
-      Future.delayed( Duration(milliseconds: 300), () {
+      Future.delayed(Duration(milliseconds: 300), () {
         currentPage.value++;
       });
     }
@@ -50,8 +50,8 @@ class OnboardingController extends GetxController {
     if (dragOffset.value > maxDragDistance * 0.8) {
       Future.delayed(const Duration(milliseconds: 200), () {
         Get.delete<OnboardingController>();
-        Get.toNamed(AppRoutes.userRole)!.then((_){
-          dragOffset.value=0.0;
+        Get.toNamed(AppRoutes.userRole)!.then((_) {
+          dragOffset.value = 0.0;
         });
       });
       dragOffset.value = maxDragDistance;

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
@@ -80,7 +82,9 @@ class DashboardKeyFeatures extends StatelessWidget {
           CustomPrimaryButton(
             text: 'Launch AR View',
             height: 54.h,
-            onPressed: () {},
+            onPressed: () {
+              Get.toNamed(AppRoutes.vrCaptureScreen);
+            },
           ),
         ],
       ),

@@ -9,55 +9,83 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
 class RepairRequestImages extends StatelessWidget {
   final List<String> images;
-  const RepairRequestImages({super.key, required this.images});
+  final String status;
+  const RepairRequestImages({
+    super.key,
+    required this.images,
+    required this.status,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomTextPrimary(text: 'Attached Photos', fontSize: 20.sp),
-        SizedBox(height: 12.h),
-        SizedBox(
-          height: 80.h,
-          child: ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: images.length,
-            itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.only(right: 6.w),
-                height: 80.h,
-                width: 80.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.r),
-                ),
-                clipBehavior: Clip.antiAlias,
-                child: Image.network(
-                  images[index],
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return SizedBox.shrink();
-                  },
-                ),
-              );
-            },
-          ),
-        ),
-        SizedBox(height: 24.h),
-       if (userIndex == 1||userIndex==2) CustomTextPrimary(text: 'Assigned To', fontSize: 20.sp),
-       if (userIndex == 1||userIndex==2) SizedBox(height: 12.h),
-        if (userIndex == 2) RepairRequestAssign(),
-        if (userIndex == 1) LandlordRepairMaintenanceAssign(),
+        images.isEmpty
+            ? SizedBox()
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomTextPrimary(text: 'Attached Photos', fontSize: 20.sp),
+                  SizedBox(height: 12.h),
+                  SizedBox(
+                    height: 80.h,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: images.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          margin: EdgeInsets.only(right: 6.w),
+                          height: 80.h,
+                          width: 80.w,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.r),
+                          ),
+                          clipBehavior: Clip.antiAlias,
+                          child: Image.network(
+                            images[index],
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return SizedBox.shrink();
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 24.h),
+                ],
+              ),
+
+        status == "Completed"
+            ? SizedBox()
+            : Column(
+                children: [
+                  if (userIndex == 1 || userIndex == 2)
+                    CustomTextPrimary(text: 'Assigned To', fontSize: 20.sp),
+                  if (userIndex == 1 || userIndex == 2) SizedBox(height: 12.h),
+                  if (userIndex == 2) RepairRequestAssign(),
+                  if (userIndex == 1) LandlordRepairMaintenanceAssign(),
+                ],
+              ),
+
         if (userIndex == 0) RepairRequestService(),
-       if (userIndex == 1||userIndex==2) SizedBox(height: 20.h),
-        if (userIndex == 1||userIndex==2)CustomPrimaryButton(
-          onPressed: () {},
-          height: 40.h,
-          width: 83.w,
-          text:userIndex==2? 'Back':'Assign',
-          borderRadius: BorderRadius.circular(6.r),
-        ),
+        if (userIndex == 1 || userIndex == 2) SizedBox(height: 20.h),
+        status == "Completed"
+            ? SizedBox()
+            : Column(
+                children: [
+                  if (userIndex == 1 || userIndex == 2)
+                    CustomPrimaryButton(
+                      onPressed: () {},
+                      height: 40.h,
+                      width: 83.w,
+                      text: userIndex == 2 ? 'Back' : 'Assign',
+                      borderRadius: BorderRadius.circular(6.r),
+                    ),
+                ],
+              ),
       ],
     );
   }

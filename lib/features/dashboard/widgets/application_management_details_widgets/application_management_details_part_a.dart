@@ -6,7 +6,8 @@ import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/application_management_details_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 
-class ApplicationManagementDetailsPartA extends GetWidget<ApplicationManagementDetailsController> {
+class ApplicationManagementDetailsPartA
+    extends GetWidget<ApplicationManagementDetailsController> {
   const ApplicationManagementDetailsPartA({super.key});
 
   @override
@@ -16,18 +17,18 @@ class ApplicationManagementDetailsPartA extends GetWidget<ApplicationManagementD
     return Column(
       children: [
         Container(
-            width: double.infinity,
-            height: 1.h,
-            color: isDark
-                ? AppColors.darkBorderPrimary
-                : AppColors.darkSecondaryText,
-          ),
+          width: double.infinity,
+          height: 1.h,
+          color: isDark
+              ? AppColors.darkBorderPrimary
+              : AppColors.darkSecondaryText,
+        ),
         SizedBox(height: 16.h),
         Column(
           children: List.generate(controller.informationTitle.length, (index) {
             return Obx(() {
               final isSelected = controller.isInformationOpenList[index];
-        
+
               return Column(
                 key: ValueKey(index),
                 children: [
@@ -71,7 +72,7 @@ class ApplicationManagementDetailsPartA extends GetWidget<ApplicationManagementD
                         ],
                       ),
                       AnimatedSize(
-                        duration:  Duration(milliseconds: 250),
+                        duration: Duration(milliseconds: 250),
                         curve: Curves.easeInOut,
                         child: isSelected
                             ? Padding(
@@ -92,4 +93,3 @@ class ApplicationManagementDetailsPartA extends GetWidget<ApplicationManagementD
     );
   }
 }
-

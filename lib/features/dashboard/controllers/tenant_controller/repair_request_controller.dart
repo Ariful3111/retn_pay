@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/features/dashboard/models/landlord_models/repair_maintenance_details_model.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/repair_maintenance_details_repo.dart';
@@ -11,8 +10,7 @@ class RepairRequestController extends GetxController {
   final details = Rxn<RepairMaintenanceDetailsModel>();
   RxBool isLoading = true.obs;
 
-  RxDouble rating = 1.0.obs;
-  TextEditingController reviewController = TextEditingController();
+
 
   int? get maintenanceRequestId {
     final args = Get.arguments;
@@ -33,8 +31,9 @@ class RepairRequestController extends GetxController {
       return;
     }
     isLoading.value = true;
-    final response =
-        await repairMaintenanceDetailsRepository.execute(maintenanceRequestID: id);
+    final response = await repairMaintenanceDetailsRepository.execute(
+      maintenanceRequestID: id,
+    );
     response.fold(
       (error) {
         ErrorSnackbar.show(description: error.message);
@@ -46,11 +45,6 @@ class RepairRequestController extends GetxController {
     isLoading.value = false;
   }
 
-  @override
-  void dispose() {
-    reviewController.dispose();
-    super.dispose();
-  }
 
   @override
   void onInit() {

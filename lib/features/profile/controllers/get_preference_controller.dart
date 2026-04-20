@@ -10,6 +10,7 @@ class GetPreferenceController extends GetxController {
 
   final preference = Rxn<PreferenceModel>();
   RxBool isLoading = true.obs;
+    RxBool isEditAddress = false.obs;
 
   @override
   void onInit() {

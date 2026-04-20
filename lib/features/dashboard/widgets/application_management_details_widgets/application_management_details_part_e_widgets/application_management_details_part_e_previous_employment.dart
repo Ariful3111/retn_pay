@@ -11,69 +11,78 @@ class ApplicationManagementDetailsPartEPreviousEmployment
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    final helper = ApplicationManagementDetailsPartEHelper();
 
     return Obx(() {
       final readOnly = !controller.isEditable.value;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          helper.sectionTitle('7. Previous employment', isDark),
+          ApplicationManagementDetailsPartEHelper.sectionTitle(
+            '7. Previous employment',
+            isDark,
+          ),
           SizedBox(height: 16.h),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.previousEmployerNameController,
             'Name of previous employer',
             isDark,
             readOnly: readOnly,
           ),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.previousEmployerAddressController,
             'Address of previous employer',
             isDark,
             readOnly: readOnly,
           ),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.previousEmployerPostcodeController,
             'Postcode',
             isDark,
             readOnly: readOnly,
+            keyboardType: TextInputType.number,
           ),
-          helper.sectionTitle('How long employed there', isDark, size: 14.sp),
+          ApplicationManagementDetailsPartEHelper.sectionTitle(
+            'How long employed there',
+            isDark,
+            size: 14.sp,
+          ),
           SizedBox(height: 12.h),
 
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.previousYearsController,
             'Years',
             isDark,
             readOnly: readOnly,
+            keyboardType: TextInputType.number,
           ),
 
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.previousMonthsController,
             'Months',
             isDark,
             readOnly: readOnly,
           ),
 
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.previousPositionController,
             'Position held',
             isDark,
             readOnly: readOnly,
           ),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.previousContactPersonController,
             'Name of contact person',
             isDark,
             readOnly: readOnly,
           ),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.previousPhoneController,
             'Phone number',
             isDark,
             readOnly: readOnly,
+            keyboardType: TextInputType.phone,
           ),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.previousRemarksController,
             'Remarks',
             isDark,

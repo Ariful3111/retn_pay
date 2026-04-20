@@ -13,6 +13,7 @@ import 'package:renter_pay/shared/extensions/formatters/date_time_formatter.dart
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
+import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
 class LandlordContact extends StatelessWidget {
   const LandlordContact({super.key});
@@ -109,9 +110,15 @@ class LandlordContact extends StatelessWidget {
                     children: [
                       NoticeButtonModel(
                         onTap: () async {
-                          await URLService.launchDialpad(
-                            phone: item.landlord?.phone ?? '',
-                          );
+                          if (item.landlord?.phone == null) {
+                            ErrorSnackbar.show(
+                              description: "Phone number is not available",
+                            );
+                          } else {
+                            await URLService.launchDialpad(
+                              phone: item.landlord?.phone ?? '',
+                            );
+                          }
                         },
                         icon: IconsPath.dashboardCall,
                         text: 'Call',

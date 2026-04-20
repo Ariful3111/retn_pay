@@ -30,8 +30,9 @@ class ProfileView extends StatelessWidget {
         controller: profileController.scrollController,
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             backgroundColor: Colors.transparent,
-            titleSpacing: 0.w,
+            titleSpacing: 24.w,
             title: Obx(() {
               return CustomAppbar(title: roleDetector());
             }),
@@ -40,7 +41,10 @@ class ProfileView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             sliver: SliverList(
               delegate: SliverChildListDelegate([
-                ProfileInfo(controller: profileController),
+                ProfileInfo(
+                  controller: profileController,
+                  balanceController: Get.find(),
+                ),
                 SizedBox(height: 12.h),
                 ProfileItemsList(),
                 Obx(() {

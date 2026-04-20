@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/core/services/url_service.dart';
 import 'package:renter_pay/features/home/controllers/main_home_controller.dart';
 import 'package:renter_pay/features/profile/widgets/profile_view_widgets/profile_items.dart';
-import 'package:renter_pay/shared/widgets/snackbars/success_snackbar.dart';
 
 class ProfileUserItems extends StatelessWidget {
   const ProfileUserItems({super.key});
@@ -15,23 +15,24 @@ class ProfileUserItems extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        if (userIndex == 1||userIndex==2||userIndex==3)
+        if (userIndex == 1 || userIndex == 2 || userIndex == 3)
           ProfileItems(
             image: IconsPath.profileCalendar,
             imageHeight: 23.h,
             imageWidth: 21.w,
             title: 'Calendar',
             onTap: () {
-               Get.find<MainHomeController>().selectIndex.value = 3;
+              Get.find<MainHomeController>().selectIndex.value = 3;
             },
           ),
-        if (userIndex == 1||userIndex==2||userIndex==3) SizedBox(height: 8.h),
+        if (userIndex == 1 || userIndex == 2 || userIndex == 3)
+          SizedBox(height: 8.h),
         ProfileItems(
           image: IconsPath.profilePayment,
           imageHeight: 23.h,
           imageWidth: 21.w,
           title: 'Payment History',
-          onTap: () {},
+          onTap: () async {},
         ),
         SizedBox(height: 8.h),
         ProfileItems(
@@ -69,8 +70,10 @@ class ProfileUserItems extends StatelessWidget {
           imageHeight: 23.h,
           imageWidth: 21.w,
           title: 'Privacy Policy',
-          onTap: () {
-            SuccessSnackbar.show(description: 'Navigate user to Web Privacy Policy');
+          onTap: () async {
+            await URLService.launchURL(
+              url: "https://renterpay.com.au/privacy-policy",
+            );
           },
         ),
         SizedBox(height: 8.h),
@@ -79,8 +82,10 @@ class ProfileUserItems extends StatelessWidget {
           imageHeight: 23.h,
           imageWidth: 21.w,
           title: 'Terms and Condition',
-          onTap: () {
-            SuccessSnackbar.show(description: 'Navigate user to Web Terms and Condition');
+          onTap: () async {
+            await URLService.launchURL(
+              url: "https://renterpay.com.au/terms-condition",
+            );
           },
         ),
         SizedBox(height: 8.h),

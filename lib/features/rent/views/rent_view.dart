@@ -8,6 +8,7 @@ import 'package:renter_pay/shared/widgets/custom_pagination.dart';
 import 'package:renter_pay/shared/widgets/custom_item_sort.dart';
 import 'package:renter_pay/features/rent/widgets/rent_app_bar.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
+import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/item_container.dart';
 import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
@@ -43,37 +44,57 @@ class RentView extends GetView<RentController> {
                     ),
                     SizedBox(height: 20.h),
                     Obx(
-                      () => ListView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount:
-                            controller.rents.value?.data?.data?.length ?? 0,
-                        itemBuilder: (_, index) {
-                          final rentItem =
-                              controller.rents.value?.data?.data![index];
-                          final property = rentItem?.property;
-                          return ItemContainer(
-                            imageHeight: 250.h,
-                            imageWidth: MediaQuery.widthOf(context),
-                            padding: EdgeInsetsGeometry.only(bottom: 24.h),
-                            property: property ?? Property(),
-                            favoriteIndex: 3, // Rent view index
-                          );
-                        },
-                      ),
+                      () =>
+                          (controller.rents.value?.data?.data?.isNotEmpty ??
+                              false)
+                          ? ListView.builder(
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount:
+                                  controller.rents.value?.data?.data?.length ??
+                                  0,
+                              itemBuilder: (_, index) {
+                                final rentItem =
+                                    controller.rents.value?.data?.data![index];
+                                final property = rentItem?.property;
+                                return ItemContainer(
+                                  imageHeight: 250.h,
+                                  imageWidth: MediaQuery.widthOf(context),
+                                  padding: EdgeInsetsGeometry.only(
+                                    bottom: 24.h,
+                                  ),
+                                  property: property ?? Property(),
+                                  favoriteIndex: 3, // Rent view index
+                                );
+                              },
+                            )
+                          : Center(
+                              child: CustomTextPrimary(
+                                text: 'No Rentals Available',
+                                fontSize: 20.sp,
+                              ),
+                            ),
                     ),
-                    controller.rents.value?.data?.data?.isEmpty == true
-                        ? SizedBox.shrink()
-                        : CustomPagination(
-                            list: controller.pageNumber,
-                            onTapPrev: controller.previousPage,
-                            onTapNext: controller.nextPage,
-                            onTapPage: (item) {
-                              controller.currentPage.value = item;
-                              controller.getRentList(page: item);
-                            },
-                            value: controller.currentPage.value,
-                          ),
+                    Obx(() {
+                      final data = controller.rents.value?.data;
+                      final lastPage = data?.meta?.lastPage ?? 1;
+
+                      // Show pagination only if more than 1 page exists
+                      if (lastPage <= 1) {
+                        return SizedBox.shrink();
+                      }
+
+                      return CustomPagination(
+                        list: controller.pageNumber,
+                        onTapPrev: controller.previousPage,
+                        onTapNext: controller.nextPage,
+                        onTapPage: (item) {
+                          controller.currentPage.value = item;
+                          controller.getRentList(page: item);
+                        },
+                        value: controller.currentPage.value,
+                      );
+                    }),
                     SizedBox(height: 55.h),
                   ],
                 ),

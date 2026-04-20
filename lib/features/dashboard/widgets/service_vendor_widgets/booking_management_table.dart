@@ -5,70 +5,88 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/dashboard/controllers/services_vendor_controller/booking_management_controller.dart';
+import 'package:renter_pay/features/dashboard/models/service_vendor_models/booking_model.dart';
 import 'package:renter_pay/features/dashboard/widgets/service_vendor_widgets/booking_management_table_content.dart';
 import 'package:renter_pay/shared/widgets/custom_table/custom_table.dart';
 import 'package:renter_pay/shared/widgets/custom_table/custom_table_expanded.dart';
 import 'package:renter_pay/shared/widgets/custom_table/table_action_button.dart';
 import 'package:renter_pay/shared/widgets/custom_table/table_status.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
-class BookingManagementTable extends StatelessWidget {
+class BookingManagementTable extends GetView<BookingManagementController> {
   const BookingManagementTable({super.key});
 
   @override
   Widget build(BuildContext context) {
-    BookingManagementController bookingManagementController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.r),
-        color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
-      ),
-      child: Obx(() {
-        final list = bookingManagementController.filterRow;
-        final rowWidgets = List<List<Widget>>.generate(list.length, (index) {
-          final item = list[index].value;
-          return [
-            CustomTextPrimary(
-              text: item.serviceName,
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
-              textOverflow: TextOverflow.ellipsis,
-            ),
-            TableStatus(status: item.status),
-            TableActionButton(
-              icon: IconsPath.actonView,
-              onTap: () {
-               Get.toNamed(AppRoutes.bookingManagementDetailsView);
-              },
-            ),
-          ];
-        });
-        final listIndex = list.map((e) => e.key).toList();
-        return CustomTable(
-          column: bookingManagementController.tableColumn,
-          row: rowWidgets,
-          expandedTableBuilder: (index) {
-            final item = list[index].value;
-            final rowIndex = listIndex[index];
-            return CustomTableExpanded(
-              title: 'Service Name: ${item.serviceName}',
-              isOpen: bookingManagementController.expanded[rowIndex],
-              onExpandedClose: () {
-                bookingManagementController.toggleExpanded(rowIndex);
-              },
-              expandedContent: BookingManagementTableContent(index: rowIndex),
+    return Obx(() {
+      if (controller.isLoading.value) {
+        return const Center(child: ButtonLoading());
+      }
+
+      final list = controller.filterRow;
+      if (list.isEmpty) {
+        return Center(
+          child: CustomTextPrimary(text: 'No bookings found', fontSize: 14.sp),
+        );
+      }
+
+      return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.r),
+          color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
+        ),
+        child: _buildTable(list, isDark),
+      );
+    });
+  }
+
+  Widget _buildTable(List<BookingItem> list, bool isDark) {
+    final rowWidgets = List<List<Widget>>.generate(list.length, (index) {
+      final item = list[index];
+      return [
+        CustomTextPrimary(
+          text: item.service?.title ?? '-',
+          fontSize: 14.sp,
+          fontWeight: FontWeight.w400,
+          textOverflow: TextOverflow.ellipsis,
+        ),
+        TableStatus(status: item.status ?? '-'),
+        TableActionButton(
+          icon: IconsPath.actonView,
+          onTap: () {
+            // Pass the entire BookingItem to details view
+            Get.toNamed(
+              AppRoutes.bookingManagementDetailsView,
+              arguments: item,
             );
           },
-          onRowTap: (index) {
-            bookingManagementController.toggleExpanded(listIndex[index]);
+        ),
+      ];
+    });
+
+    return CustomTable(
+      column: controller.tableColumn,
+      row: rowWidgets,
+      expandedTableBuilder: (index) {
+        final item = list[index];
+        return CustomTableExpanded(
+          title: 'Service Name: ${item.service?.title ?? '-'}',
+          isOpen: controller.expanded[index],
+          onExpandedClose: () {
+            controller.toggleExpanded(index);
           },
-          isExpandedTableBuilder: (index) {
-            return bookingManagementController.expanded[listIndex[index]];
-          },
-          isNeedLastCol: false,
+          expandedContent: BookingManagementTableContent(bookingItem: item),
         );
-      }),
+      },
+      onRowTap: (index) {
+        controller.toggleExpanded(index);
+      },
+      isExpandedTableBuilder: (index) {
+        return controller.expanded[index];
+      },
+      isNeedLastCol: false,
     );
   }
 }

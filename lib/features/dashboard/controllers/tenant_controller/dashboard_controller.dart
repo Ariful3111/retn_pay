@@ -37,6 +37,7 @@ class DashboardController extends GetxController {
     final inspectionRequests = metricData?.inspectionRequests ?? 0;
     final applicationsSubmitted = metricData?.applicationsSubmitted ?? 0;
     final repairRequests = metricData?.repairRequests ?? 0;
+    final totalBooking = metricData?.totalBooking ?? 0;
 
     return [
       {
@@ -49,7 +50,7 @@ class DashboardController extends GetxController {
         "icon": IconsPath.dashboardBoking,
         "title": 'Total booking',
         'allowedUser': [3],
-        "value": '1200',
+        "value": '$totalBooking',
       },
       {
         "icon": IconsPath.dashboardInspection,

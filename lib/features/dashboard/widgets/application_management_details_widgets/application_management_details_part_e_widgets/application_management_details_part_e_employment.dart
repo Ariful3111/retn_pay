@@ -19,12 +19,12 @@ class ApplicationManagementDetailsPartEEmployment
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ApplicationManagementDetailsPartEHelper().sectionTitle(
+          ApplicationManagementDetailsPartEHelper.sectionTitle(
             '5. Employment details',
             isDark,
           ),
           SizedBox(height: 16.h),
-          ApplicationManagementDetailsPartEHelper().textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.occupationController,
             'Occupation',
             isDark,
@@ -76,17 +76,19 @@ class ApplicationManagementDetailsPartEEmployment
             ],
           ),
           SizedBox(height: 12.h),
-          ApplicationManagementDetailsPartEHelper().textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.salaryController,
             'Salary income per week (\$)',
             isDark,
             readOnly: readOnly,
+            keyboardType: TextInputType.number,
           ),
-          ApplicationManagementDetailsPartEHelper().textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.otherIncomeController,
             'Other net income per week (\$)',
             isDark,
             readOnly: readOnly,
+            keyboardType: TextInputType.number,
           ),
         ],
       );

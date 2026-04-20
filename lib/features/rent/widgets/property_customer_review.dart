@@ -17,6 +17,8 @@ class PropertyCustomerReview extends GetView<PropertyReviewController> {
     return Obx(() {
       return controller.isLoading.value
           ? ButtonLoading()
+          : controller.propertyReviews.value!.data!.reviews!.isEmpty
+          ? SizedBox()
           : Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

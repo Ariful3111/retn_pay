@@ -4,6 +4,8 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
+import 'package:renter_pay/core/services/url_service.dart';
+import 'package:renter_pay/features/auth/controllers/get_settings_controller.dart';
 import 'package:renter_pay/features/profile/models/support_ticket_model.dart';
 import 'package:renter_pay/features/profile/repositories/add_support_repo.dart';
 import 'package:renter_pay/features/profile/repositories/get_support_repo.dart';
@@ -145,18 +147,34 @@ class SupportController extends GetxController {
       'title': 'Live Chat',
       'subTitle': 'Chat with our support team in real-time.',
       'action': 'Start Chat',
+      "tap": () async {},
     },
     {
       'icon': IconsPath.supportEmail,
       'title': 'Email Support',
       'subTitle': 'Send us an email and get a response within 24 hours.',
       'action': 'Send Email',
+      "tap": () async {
+        await URLService.launchEmail(
+          email:
+              Get.find<GetSettingsController>().settings.value?.data?.email ??
+              "",
+        );
+      },
     },
     {
       'icon': IconsPath.supportCall,
       'title': 'Call Us',
       'subTitle': 'Speak directly with our support agents.',
-      'action': 'Number: +880-XXX-XXX-XXXX',
+      'action':
+          'Number: ${Get.find<GetSettingsController>().settings.value?.data?.phone ?? ""}',
+      "tap": () async {
+        await URLService.launchDialpad(
+          phone:
+              Get.find<GetSettingsController>().settings.value?.data?.phone ??
+              "",
+        );
+      },
     },
   ];
 

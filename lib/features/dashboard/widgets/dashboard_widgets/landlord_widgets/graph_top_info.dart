@@ -58,33 +58,38 @@ class GraphTopInfo extends GetWidget<MonthlyRevenueController> {
               ),
             ],
           ),
-          const Spacer(),
-          // Dynamic property legends
-          ...List.generate(revenueData.series.length, (index) {
-            final colorIndex = index % _propertyColors.length;
-            final propertyName = revenueData.series[index].name;
+          SizedBox(width: 8.w),
+          // Dynamic property legends with wrapping
+          Flexible(
+            child: Wrap(
+              spacing: 8.w,
+              runSpacing: 4.h,
+              alignment: WrapAlignment.end,
+              children: List.generate(revenueData.series.length, (index) {
+                final colorIndex = index % _propertyColors.length;
+                final propertyName = revenueData.series[index].name;
 
-            return Padding(
-              padding: EdgeInsets.only(right: 8.w),
-              child: Row(
-                children: [
-                  CustomTextPrimary(
-                    text: _truncateName(propertyName, 10),
-                    fontSize: 10.sp,
-                  ),
-                  SizedBox(width: 4.w),
-                  Container(
-                    height: 16.h,
-                    width: 16.w,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(2.r),
-                      color: _propertyColors[colorIndex],
+                return Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CustomTextPrimary(
+                      text: _truncateName(propertyName, 10),
+                      fontSize: 10.sp,
                     ),
-                  ),
-                ],
-              ),
-            );
-          }),
+                    SizedBox(width: 4.w),
+                    Container(
+                      height: 16.h,
+                      width: 16.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(2.r),
+                        color: _propertyColors[colorIndex],
+                      ),
+                    ),
+                  ],
+                );
+              }),
+            ),
+          ),
         ],
       );
     });

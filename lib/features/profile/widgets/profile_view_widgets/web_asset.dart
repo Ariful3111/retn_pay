@@ -20,27 +20,23 @@ class WebAsset extends StatelessWidget {
                 imageWidth: 21.5.w,
                 image: IconsPath.profileWeb,
                 title: 'Web Assets',
-                secondaryWidget: GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: () {
-                    profileController.isWebAsset.value =
-                        !profileController.isWebAsset.value;
-                  },
-                  child: SizedBox(
-                    height: 24.h,
-                    width: 24.h,
-                    child: Center(
-                      child: Image.asset(
-                        profileController.isWebAsset.value
-                            ? IconsPath.upArrow
-                            : IconsPath.downArrow,
-                        height: 7.5.h,
-                        width: 15.w,
-                      ),
+                secondaryWidget: SizedBox(
+                  height: 24.h,
+                  width: 24.h,
+                  child: Center(
+                    child: Image.asset(
+                      profileController.isWebAsset.value
+                          ? IconsPath.upArrow
+                          : IconsPath.downArrow,
+                      height: 7.5.h,
+                      width: 15.w,
                     ),
                   ),
                 ),
-                onTap: () {},
+                onTap: () {
+                  profileController.isWebAsset.value =
+                        !profileController.isWebAsset.value;
+                },
               ),
               AnimatedSize(
                 duration: Duration(milliseconds: 300),

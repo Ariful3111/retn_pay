@@ -20,6 +20,9 @@ class UpdateSettingsRepository {
     String? defaultPaymentMethod,
     String? defaultCurrency,
     String? dateFormat,
+    bool? landDataRegistryExpiry,
+    bool? landlordInsuranceExpiry,
+    bool? fireAlarmSafetyServiceExpiry,
   }) async {
     final body = <String, dynamic>{};
     void addBody({required String key, dynamic value}) {
@@ -38,6 +41,12 @@ class UpdateSettingsRepository {
     addBody(key: "default_payment_method", value: defaultPaymentMethod);
     addBody(key: "default_currency", value: defaultCurrency);
     addBody(key: "date_format", value: dateFormat);
+    addBody(key: "land_data_registry_expiry", value: landDataRegistryExpiry);
+    addBody(key: "landlord_insurance_expiry", value: landlordInsuranceExpiry);
+    addBody(
+      key: "fire_alarm_safety_service_expiry",
+      value: fireAlarmSafetyServiceExpiry,
+    );
 
     final response = await postWithoutResponse.updateData(
       url: "/api/${NetworkLinks.version}/user/settings",

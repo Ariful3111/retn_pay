@@ -11,23 +11,8 @@ class RentController extends GetxController {
   final rents = Rxn<RentListModel>();
   final scrollController = ScrollController();
   RxBool isLoading = true.obs;
-  // Rx<SfRangeValues> range = SfRangeValues(300, 670000).obs;
-  // double minRange = 0;
-  // double maxRange = 700000;
   RxString initialSort = 'sortBy'.obs;
   List<String> sortList = ['Low To High', 'High to Low'];
-  // TextEditingController filterSearchController = TextEditingController();
-  // RxList<String> selectedFilterProperty = <String>[].obs;
-  // RxList<String> selectedAmenities = <String>[].obs;
-  // RxList apartmentRating = List<double>.filled(12, 1.0).obs;
-  // RxList houseRating = List<double>.filled(12, 1.0).obs;
-  // RxList officeRating = List<double>.filled(12, 1.0).obs;
-  // RxList studioRating = List<double>.filled(12, 1.0).obs;
-  // RxList vilaRating = List<double>.filled(12, 1.0).obs;
-  // RxBool isShowPriceRange = true.obs;
-  // RxBool isShowAmenities = false.obs;
-  // RxBool isShowProperty = false.obs;
-  // RxBool isShowSearch = true.obs;
   RxInt currentPage = 1.obs;
   int totalPage = 1;
 
@@ -48,6 +33,11 @@ class RentController extends GetxController {
   RxInt dialogImageIndex = 0.obs;
   void dialogSelectedIndex(int index) {
     dialogImageIndex.value = index;
+  }
+
+  RxInt detailImageIndex = 0.obs;
+  void detailSelectedIndex(int index) {
+    detailImageIndex.value = index;
   }
 
   void previousPage() {

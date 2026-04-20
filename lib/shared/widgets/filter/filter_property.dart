@@ -52,11 +52,22 @@ class FilterProperty extends StatelessWidget {
                   opacity: isPropertyShow.value ? 1 : 0,
                   duration: Duration(milliseconds: 200),
                   child: isPropertyShow.value
-                      ? FilterCheckbox(
-                          propertyItems: propertyItems,
-                          selectedProperty: selectedProperty,
-                          onChange: onChange,
-                        )
+                      ? Column(
+                        children: [
+                          SizedBox(height: 8.32),
+                          Divider(
+                            height: 2.h,
+                            color: isDark
+                                ? AppColors.darkBorderPrimary
+                                : Color(0xFFE5E9EE),
+                          ),
+                          FilterCheckbox(
+                              propertyItems: propertyItems,
+                              selectedProperty: selectedProperty,
+                              onChange: onChange,
+                            ),
+                        ],
+                      )
                       : SizedBox(),
                 ),
               ),

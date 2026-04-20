@@ -77,48 +77,55 @@ class _CustomFilterState extends State<CustomFilter> {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    return Container(
-      width: 260.w,
-      color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ResetFilter(onTap: widget.onReset),
-            SizedBox(height: 8.32),
-            PriceRange(
-              range: widget.range,
-              min: widget.min,
-              max: widget.max,
-              minRange: widget.minRange,
-              maxRange: widget.maxRange,
-              onChanged: widget.onSliderChanged,
-              onTap: widget.isSlider,
-              isPriceShow: widget.isShowPriceRange,
-            ),
-            SizedBox(height: 8.32),
-            FilterSearch(
-              textEditingController: widget.textEditingController,
-              onTap: widget.isSearch,
-              isSearchShow: widget.isShowSearch,
-            ),
-            SizedBox(height: 8.32),
-            FilterProperty(
-              propertyItems: widget.propertyItems,
-              selectedProperty: widget.selectedProperty,
-              onChange: widget.onPropertyChange,
-              onTap: widget.isProperty,
-              isPropertyShow: widget.isShowProperty,
-            ),
-            SizedBox(height: 8.32),
-            FilterAmenities(
-              amenitiesItems: widget.amenitiesItems,
-              selectedAmenities: widget.selectedAmenities,
-              onAmenitiesChange: widget.onAmenitiesChange,
-              onAmenities: widget.onAmenities,
-              isShowAmenities: widget.isShowAmenities,
-            ),
-          ],
+    return Material(
+      color: Colors.transparent,
+      child: Container(
+        padding: EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+          borderRadius: BorderRadius.circular(9.2.r),
+        ),
+
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ResetFilter(onTap: widget.onReset),
+              SizedBox(height: 8.32),
+              PriceRange(
+                range: widget.range,
+                min: widget.min,
+                max: widget.max,
+                minRange: widget.minRange,
+                maxRange: widget.maxRange,
+                onChanged: widget.onSliderChanged,
+                onTap: widget.isSlider,
+                isPriceShow: widget.isShowPriceRange,
+              ),
+              SizedBox(height: 8.32),
+              FilterSearch(
+                textEditingController: widget.textEditingController,
+                onTap: widget.isSearch,
+                isSearchShow: widget.isShowSearch,
+              ),
+              SizedBox(height: 8.32),
+              FilterProperty(
+                propertyItems: widget.propertyItems,
+                selectedProperty: widget.selectedProperty,
+                onChange: widget.onPropertyChange,
+                onTap: widget.isProperty,
+                isPropertyShow: widget.isShowProperty,
+              ),
+              SizedBox(height: 8.32),
+              FilterAmenities(
+                amenitiesItems: widget.amenitiesItems,
+                selectedAmenities: widget.selectedAmenities,
+                onAmenitiesChange: widget.onAmenitiesChange,
+                onAmenities: widget.onAmenities,
+                isShowAmenities: widget.isShowAmenities,
+              ),
+            ],
+          ),
         ),
       ),
     );

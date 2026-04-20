@@ -11,69 +11,79 @@ class ApplicationManagementDetailsPartECurrentEmployment
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    final helper = ApplicationManagementDetailsPartEHelper();
 
     return Obx(() {
       final readOnly = !controller.isEditable.value;
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          helper.sectionTitle('6. Current employment', isDark),
+          ApplicationManagementDetailsPartEHelper.sectionTitle(
+            '6. Current employment',
+            isDark,
+          ),
           SizedBox(height: 16.h),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.currentEmployerNameController,
             'Name of current employer',
             isDark,
             readOnly: readOnly,
           ),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.currentEmployerAddressController,
             'Address of current employer',
             isDark,
             readOnly: readOnly,
           ),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.currentEmployerPostcodeController,
             'Postcode',
             isDark,
             readOnly: readOnly,
+            keyboardType: TextInputType.number,
           ),
           SizedBox(height: 8.h),
-          helper.sectionTitle('How long employed there', isDark, size: 14),
+          ApplicationManagementDetailsPartEHelper.sectionTitle(
+            'How long employed there',
+            isDark,
+            size: 14,
+          ),
           SizedBox(height: 12.h),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.yearsController,
             'Years',
             isDark,
             readOnly: readOnly,
+            keyboardType: TextInputType.number,
           ),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.monthsController,
             'Months',
             isDark,
             readOnly: readOnly,
+            keyboardType: TextInputType.number,
           ),
           SizedBox(height: 4.h),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.positionController,
             'Position held',
             isDark,
             readOnly: readOnly,
           ),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.contactPersonController,
             'Name of contact person',
             isDark,
             readOnly: readOnly,
           ),
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.phoneController,
             'Phone number',
             isDark,
             readOnly: readOnly,
+            keyboardType: TextInputType.phone,
           ),
 
-          helper.textField(
+          ApplicationManagementDetailsPartEHelper.textField(
             controller.remarksController,
             'Remarks',
             isDark,

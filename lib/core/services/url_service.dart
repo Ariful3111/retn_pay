@@ -23,4 +23,22 @@ class URLService {
       mode: LaunchMode.externalApplication,
     );
   }
+
+  static Future<bool> launchEmail({
+    required String email,
+    String subject = '',
+    String body = '',
+  }) {
+    final value = email.trim();
+    if (value.isEmpty) return Future.value(false);
+    final uri = Uri(
+      scheme: 'mailto',
+      path: value,
+      queryParameters: {
+        if (subject.isNotEmpty) 'subject': subject,
+        if (body.isNotEmpty) 'body': body,
+      },
+    );
+    return launchUrl(uri, mode: LaunchMode.externalApplication);
+  }
 }

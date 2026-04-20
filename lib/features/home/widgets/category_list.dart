@@ -32,6 +32,10 @@ class CategoryList extends GetView<PropertyCategoryController> {
                   String? category =
                       controller.propertyCategories.value?.data?[index].name;
                   final isSelected = selectedIndex == index;
+                  bool isFirst = index == 0;
+                  bool isLast =
+                      index ==
+                      controller.propertyCategories.value!.data!.length - 1;
                   return GestureDetector(
                     onTap: () async {
                       if (isSelected) {
@@ -44,9 +48,10 @@ class CategoryList extends GetView<PropertyCategoryController> {
                     },
                     child: Container(
                       margin: EdgeInsets.only(
-                        right: 8.w,
+                        right: isLast ? 8.w : 0.w,
                         top: 10.h,
                         bottom: 10.h,
+                        left: isFirst ? 20.w : 10.w,
                       ),
                       padding: EdgeInsets.only(
                         top: 2.h,

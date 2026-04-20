@@ -61,6 +61,13 @@ class PriceRange extends StatelessWidget {
                 child: isPriceShow.value
                     ? Column(
                         children: [
+                          SizedBox(height: 8.32),
+                          Divider(
+                            height: 2.h,
+                            color: isDark
+                                ? AppColors.darkBorderPrimary
+                                : Color(0xFFE5E9EE),
+                          ),
                           SizedBox(height: 8.44.h),
                           SizedBox(
                             height: 18.41.h,
@@ -97,7 +104,7 @@ class PriceRange extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       height: 45.h,
-      width: 108.53.w,
+      width: 100.w,
       padding: EdgeInsets.symmetric(horizontal: 12.27.w, vertical: 6.14.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(6.14.sp),

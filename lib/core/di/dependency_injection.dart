@@ -14,7 +14,9 @@ import 'package:renter_pay/core/di/firebase_initialize.dart';
 import 'package:renter_pay/core/services/uuid_service.dart';
 import 'package:renter_pay/core/themes/theme_controller.dart';
 import 'package:renter_pay/features/auth/controllers/firebase_token_update_controller.dart';
+import 'package:renter_pay/features/auth/controllers/get_settings_controller.dart';
 import 'package:renter_pay/features/auth/repositories/firebase_token_update_repo.dart';
+import 'package:renter_pay/features/auth/repositories/get_settings_repo.dart';
 import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
 
 class DependencyInjection {
@@ -43,6 +45,14 @@ class DependencyInjection {
     );
     Get.put(
       FirebaseTokenUpdateController(firebaseTokenUpdateRepository: Get.find()),
+      permanent: true,
+    );
+    Get.put<AppSettingsRepository>(
+      AppSettingsRepository(getNetwork: Get.find()),
+      permanent: true,
+    );
+    Get.put(
+      GetSettingsController(settingsRepository: Get.find()),
       permanent: true,
     );
     await Get.find<UuidService>().getUuidFromStorage();

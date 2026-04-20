@@ -8,9 +8,11 @@ import 'package:renter_pay/shared/widgets/custom_fields/custom_text_field.dart';
 class ApplicationManagementDetailsPartDField
     extends GetWidget<ApplicationManagementDetailsController> {
   final String label;
+  final TextInputType? keyboardType;
   const ApplicationManagementDetailsPartDField({
     super.key,
     required this.label,
+    this.keyboardType,
   });
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class ApplicationManagementDetailsPartDField
           hintText: 'Enter $label',
           fillColor: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
           readOnly: readOnly,
+          keyboardType: keyboardType,
         ),
       );
     });
