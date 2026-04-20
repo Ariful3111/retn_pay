@@ -20,7 +20,6 @@ class AgreementPartESignaturesPad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-
     return Padding(
       padding: EdgeInsets.only(bottom: 16.h),
       child: Column(
@@ -53,10 +52,7 @@ class AgreementPartESignaturesPad extends StatelessWidget {
               ],
             ),
           ),
-
           SizedBox(height: 12.h),
-
-          /// Date Field (your helper)
           AgreementHelper().dateFieldWithPicker(
             controller: dateController,
             labelText: 'Date',
