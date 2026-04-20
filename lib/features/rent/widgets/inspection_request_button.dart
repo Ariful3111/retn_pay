@@ -4,15 +4,20 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
+import 'package:renter_pay/features/rent/controllers/property_view_controller.dart';
 import 'package:renter_pay/features/rent/widgets/inspection_verification.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_secondary_button.dart';
+import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 
-class InspectionRequestButton extends StatelessWidget {
+class InspectionRequestButton extends GetWidget<PropertyViewController> {
   const InspectionRequestButton({super.key});
 
   @override
   Widget build(BuildContext context) {
+    bool hasActiveInspectionRequest =
+        controller.propertyDetails.value?.data?.hasActiveInspectionRequest ==
+        true;
     return Row(
       children: [
         Container(
@@ -66,25 +71,39 @@ class InspectionRequestButton extends StatelessWidget {
           ),
           child: CustomPrimaryButton(
             height: 40.h,
-            width: 176.w,
+            width: hasActiveInspectionRequest ? 200.w : 176.w,
+            backgroundColor: hasActiveInspectionRequest
+                ? AppColors.basicIconBG
+                : null,
+            textColor: hasActiveInspectionRequest
+                ? AppColors.primaryColorDark
+                : null,
             onPressed: () {
-              if (Get.find<ProfileController>()
-                  .profileData
-                  .value!
-                  .data!
-                  .documents!
-                  .isNotEmpty) {
-                Get.toNamed(AppRoutes.inspectionFrom);
+              if (hasActiveInspectionRequest == false) {
+                if (Get.find<ProfileController>()
+                    .profileData
+                    .value!
+                    .data!
+                    .documents!
+                    .isNotEmpty) {
+                  Get.toNamed(AppRoutes.inspectionFrom);
+                } else {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return Dialog(child: InspectionVerification());
+                    },
+                  );
+                }
               } else {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return Dialog(child: InspectionVerification());
-                  },
+                ErrorSnackbar.show(
+                  description: 'You already have an active inspection request',
                 );
               }
             },
-            text: 'Inspection Request',
+            text: hasActiveInspectionRequest == false
+                ? 'Inspection Request'
+                : "Inspection in Progress",
             borderRadius: BorderRadius.circular(8.r),
           ),
         ),

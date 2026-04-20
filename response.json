@@ -1,777 +1,186 @@
 {
   "error": false,
   "code": 200,
-  "message": "Payments retrieved successfully",
+  "message": "Property retrieved successfully",
   "data": {
-    "data": [
-      {
-        "id": 18,
-        "tenant_id": 70,
-        "landlord_id": 75,
-        "property_id": 143,
-        "property_unit_id": 221,
-        "lease_agreement_id": 6,
-        "amount": "45000.00",
-        "total_amount_due": 45480,
-        "currency": "AUD",
-        "status": "pending",
-        "payment_date": null,
-        "due_date": "2026-03-11",
-        "wallet_transaction_id": null,
-        "notes": "Rent for period starting Mar 11, 2026",
-        "property": {
-          "id": 143,
-          "landlord_id": 75,
-          "property_type_id": 3,
-          "title": "Duplex in Sydney - Queen Street",
-          "name": "Duplex in Sydney - Queen Street",
-          "description": "Modern Penthouse located in Brisbane. Features 4 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
-          "address": "New York , City",
-          "city": "Australia",
-          "state": "new york",
-          "postal_code": "9845",
-          "country": "Australia",
-          "latitude": null,
-          "longitude": null,
-          "bedrooms": 8,
-          "bathrooms": 6,
-          "parking_spaces": 0,
-          "land_size": "1200.00",
-          "building_size": "1200.00",
-          "year_built": 2000,
-          "status": "active",
-          "available_from": "2026-04-16",
-          "is_verified": true,
-          "is_in_person_inspection_available": false,
-          "is_virtual_inspection_available": false,
-          "is_favourite": false,
-          "features": [
-            "Spacious open-plan living area with natural light throughout.",
-            "Ducted air conditioning and heating for year-round comfort.",
-            "Dedicated study or home office space with built-in desk.",
-            "Swimming pool and communal BBQ area for residents.",
-            "Pet-friendly with easy access to nearby parks and walking paths.",
-            "Internal laundry with dryer and extra linen storage."
-          ],
-          "lease_agreement_defaults": {
-            "keys_count": "0",
-            "bond_amount": "4500",
-            "currency": "AUD",
-            "payment_frequency": "week",
-            "disclosures": {
-              "intent_to_sell_premises": {
-                "intends_to_sell": "1",
-                "engaged_agent": "0",
-                "contract_prepared": "0"
-              },
-              "mortgagee_action": {
-                "mortgagee_taking_possession": "0",
-                "enforcement_proceedings_commenced": "0"
-              },
-              "ownership": {
-                "is_owner": "0",
-                "has_right_to_rent": "0"
-              },
-              "embedded_electricity_network": {
-                "supplied_by_embedded_network": "0"
-              },
-              "property_history": {
-                "homicide_in_last_5_years": "0",
-                "drug_activity_in_last_5_years": "0",
-                "asbestos_present": "0"
-              },
-              "rental_compliance": {
-                "meets_minimum_standards": "0",
-                "mould_or_damp_repair_notices_last_3_years": "0"
-              },
-              "safety_checks": {
-                "electricity_safety_check_date": "2026-03-09",
-                "gas_safety_check_date": "2026-03-03",
-                "pool_barrier_compliance_check_date": "2026-03-10",
-                "outstanding_recommendations": "0"
-              },
-              "heritage": {
-                "is_heritage_listed": "0"
-              },
-              "planning_and_legal": {
-                "affected_by_planning_application": "0",
-                "building_or_safety_notices_issued": "0",
-                "domestic_building_work_dispute": "0",
-                "owners_corporation_dispute": "0",
-                "subject_to_owners_corporation_rules": "0"
-              },
-              "additional_notes": "Description:\r\nModern Penthouse located in Brisbane. Features 4 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.\r\n\r\nFeatures:\r\nSpacious open-plan living area with natural light throughout.\r\nDucted air conditioning and heating for year-round comfort.\r\nDedicated study or home office space with built-in desk.\r\nSwimming pool and communal BBQ area for residents.\r\nPet-friendly with easy access to nearby parks and walking paths.\r\nInternal laundry with dryer and extra linen storage."
-            },
-            "property_manager_details": {
-              "property_manager_name": "sdfsd",
-              "phone_number": "154545",
-              "email_address": "mark@gmail.com",
-              "estate_agency_name": "new agency"
-            }
-          },
-          "rating": "0.00",
-          "rating_count": 0,
-          "units": [
-            {
-              "id": 221,
-              "property_id": 143,
-              "unit_number": "unit 101",
-              "unit_name": null,
-              "rent_amount": "45000.00",
-              "rent_type": {
-                "id": 1,
-                "name": "Daily",
-                "slug": "daily",
-                "rent_days": 1,
-                "description": "Rent charged per day",
-                "status": true,
-                "created_at": "2026-02-10T20:39:57.000000Z",
-                "updated_at": "2026-02-10T20:39:57.000000Z"
-              },
-              "currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat",
-                "decimal_places": 2,
-                "exchange_rate": 1,
-                "is_active": true,
-                "sort_order": 1
-              },
-              "display_rent_amount": 45000,
-              "display_currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat",
-                "decimal_places": 2,
-                "exchange_rate": 1,
-                "is_active": true,
-                "sort_order": 1
-              },
-              "status": "available",
-              "bedrooms": 8,
-              "bathrooms": 6,
-              "size": "1200.00",
-              "description": null
-            }
-          ],
-          "review_summary": {
-            "total_reviews": 0,
-            "average_rating": "0.00"
-          },
-          "created_at": "2026-03-08T06:34:43.000000Z",
-          "updated_at": "2026-04-13T12:00:09.000000Z"
-        },
-        "property_unit": {
-          "id": 221,
-          "property_id": 143,
-          "unit_number": "unit 101",
-          "unit_name": null,
-          "rent_amount": "45000.00",
-          "rent_type": {
-            "id": 1,
-            "name": "Daily",
-            "slug": "daily",
-            "rent_days": 1,
-            "description": "Rent charged per day",
-            "status": true,
-            "created_at": "2026-02-10T20:39:57.000000Z",
-            "updated_at": "2026-02-10T20:39:57.000000Z"
-          },
-          "currency": {
-            "id": 1,
-            "code": "AUD",
-            "name": "Australian Dollar",
-            "symbol": "A$",
-            "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-            "type": "fiat",
-            "decimal_places": 2,
-            "exchange_rate": 1,
-            "is_active": true,
-            "sort_order": 1
-          },
-          "display_rent_amount": 45000,
-          "display_currency": {
-            "id": 1,
-            "code": "AUD",
-            "name": "Australian Dollar",
-            "symbol": "A$",
-            "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-            "type": "fiat",
-            "decimal_places": 2,
-            "exchange_rate": 1,
-            "is_active": true,
-            "sort_order": 1
-          },
-          "status": "available",
-          "bedrooms": 8,
-          "bathrooms": 6,
-          "size": "1200.00",
-          "description": null
-        },
-        "tenant": {
-          "id": 70,
-          "name": "Tonni Akter",
-          "first_name": "Tonni",
-          "last_name": "Akter",
-          "gender": "female",
-          "image": "https://renter-pay.mahfuz.click/storage/images/users/Zg5eNdBas56k0l6teMbNMXT0Re47xpkfnBW2o7uv.png",
-          "email": "tenant@gmail.com",
-          "phone": "8801825332448",
-          "is_active": true,
-          "provider": null,
-          "provider_id": null,
-          "roles": ["tenant"],
-          "tenant_profile": {
-            "id": 23,
-            "employment_status": "employed",
-            "employer_name": "Wiztech BD",
-            "job_title": "Software Engineer",
-            "monthly_income": "50000.00",
-            "is_verified": true,
-            "created_at": "2026-02-11T03:50:12.000000Z",
-            "updated_at": "2026-02-11T03:50:12.000000Z"
-          },
-          "documents": [
-            {
-              "id": 1,
-              "user_id": 70,
-              "document_type": "nid",
-              "document_number": null,
-              "file_path": "https://renter-pay.mahfuz.click/storage/documents/users/4izRp6k1ps5rfiBr3uK8TNBedj3XGzKesUdsgM2s.png",
-              "file_url": "https://renter-pay.mahfuz.click/storage/documents/users/4izRp6k1ps5rfiBr3uK8TNBedj3XGzKesUdsgM2s.png",
-              "back_file_path": "https://renter-pay.mahfuz.click/images/default.png",
-              "back_file_url": "https://renter-pay.mahfuz.click/images/default.png",
-              "expiry_date": null,
-              "status": "approved",
-              "rejection_reason": null,
-              "is_verified": true,
-              "verification_response": null,
-              "verified_at": "2026-02-13 10:54:26",
-              "created_at": "2026-02-11 19:47:36",
-              "updated_at": "2026-02-13 10:54:26"
-            }
-          ],
-          "created_at": "2026-02-11 09:50:12",
-          "updated_at": "2026-02-26 18:57:52"
-        },
-        "landlord": {
-          "id": 75,
-          "name": "Tonni Akter",
-          "first_name": "Tonni",
-          "last_name": "Akter",
-          "gender": "female",
-          "image": "https://renter-pay.mahfuz.click/images/person.png",
-          "email": "landlord@gmail.com",
-          "phone": null,
-          "is_active": true,
-          "provider": null,
-          "provider_id": null,
-          "roles": ["landlord"],
-          "landlord_profile": {
-            "id": 17,
-            "description": null,
-            "is_verified": true,
-            "created_at": "2026-02-15T06:28:32.000000Z",
-            "updated_at": "2026-02-15T06:28:32.000000Z",
-            "subscription": {
-              "id": 58,
-              "user_id": 75,
-              "role": "landlord",
-              "plan_id": 3,
-              "start_date": "2026-03-07T18:00:00.000000Z",
-              "end_date": "2026-04-07T18:00:00.000000Z",
-              "is_trial": false,
-              "trial_ends_at": null,
-              "status": "active",
-              "auto_renew": true,
-              "plan": {
-                "id": 3,
-                "for_role": "landlord",
-                "name": "Platinum",
-                "price": 2199,
-                "billing_cycle": "monthly",
-                "trial_period_days": 15,
-                "is_active": true,
-                "features": [
-                  {
-                    "title": "Property Limit",
-                    "value": "10",
-                    "features": null
-                  },
-                  {
-                    "title": "Photography Limit",
-                    "value": "60",
-                    "features": null
-                  },
-                  {
-                    "title": "Video Duration Limit",
-                    "value": "120",
-                    "features": null
-                  },
-                  {
-                    "title": "List Property",
-                    "value": null,
-                    "features": ["Up to 10"]
-                  },
-                  {
-                    "title": "Ads Strategy",
-                    "value": null,
-                    "features": ["RenterPay page", "Social media"]
-                  },
-                  {
-                    "title": "Photography",
-                    "value": null,
-                    "features": ["40-60 photos"]
-                  },
-                  {
-                    "title": "Video curation",
-                    "value": null,
-                    "features": ["90-120 seconds"]
-                  },
-                  {
-                    "title": "Rental Appraisal",
-                    "value": null,
-                    "features": ["Free"]
-                  },
-                  {
-                    "title": "Documentation",
-                    "value": null,
-                    "features": ["Online Access"]
-                  },
-                  {
-                    "title": "Signage",
-                    "value": null,
-                    "features": ["Sale/Lease included"]
-                  },
-                  {
-                    "title": "Legal Advice",
-                    "value": null,
-                    "features": ["36 hours"]
-                  },
-                  {
-                    "title": "Agent",
-                    "value": null,
-                    "features": ["Dedicated Assigned"]
-                  }
-                ]
-              }
-            }
-          },
-          "documents": [],
-          "created_at": "2026-02-15 12:28:32",
-          "updated_at": "2026-04-09 15:28:12"
-        },
-        "created_at": "2026-03-13 22:29:30",
-        "updated_at": "2026-03-13 22:29:30"
+    "id": 101,
+    "landlord_id": 68,
+    "property_type_id": 1,
+    "title": "Modern Apartment",
+    "name": "Modern Apartment",
+    "description": "Beautiful modern apartment",
+    "address": "123 Main St",
+    "city": "Sydney",
+    "state": "NSW",
+    "postal_code": "2000",
+    "country": "Australia",
+    "latitude": null,
+    "longitude": null,
+    "property_type": {
+      "id": 1,
+      "name": "Apartment",
+      "slug": "apartment",
+      "image": "https://picsum.photos/seed/apartment/800/600",
+      "description": "A self-contained housing unit that occupies part of a building",
+      "status": true,
+      "created_at": "2026-02-10T20:39:57.000000Z",
+      "updated_at": "2026-02-10T20:39:57.000000Z"
+    },
+    "bedrooms": 2,
+    "bathrooms": 2,
+    "parking_spaces": null,
+    "land_size": null,
+    "building_size": null,
+    "year_built": null,
+    "status": "active",
+    "available_from": "2026-04-20",
+    "is_verified": true,
+    "is_in_person_inspection_available": false,
+    "is_virtual_inspection_available": false,
+    "has_active_inspection_request": false,
+    "is_inspected": true,
+    "is_favourite": false,
+    "features": ["features1", "features2"],
+    "lease_agreement_defaults": [],
+    "rating": "3.00",
+    "rating_count": 1,
+    "landlord": {
+      "id": 68,
+      "name": "Md. Mahfuzur Rahman",
+      "first_name": "Md. Mahfuzur",
+      "last_name": "Rahman",
+      "gender": "male",
+      "image": "https://renter-pay.mahfuz.click/images/person.png",
+      "email": "mrj.cse15@gmail.com",
+      "phone": null,
+      "is_active": true,
+      "provider": null,
+      "provider_id": null,
+      "roles": ["tenant"],
+      "tenant_profile": {
+        "id": 21,
+        "employment_status": "employed",
+        "employer_name": "Wiztech BD",
+        "job_title": "Software Engineer",
+        "monthly_income": "50000.00",
+        "is_verified": true,
+        "created_at": "2026-02-10T20:56:46.000000Z",
+        "updated_at": "2026-02-10T20:56:46.000000Z"
       },
+      "documents": [],
+      "created_at": "2026-02-11 02:56:46",
+      "updated_at": "2026-02-11 02:56:46"
+    },
+    "assigned_agents": [],
+    "units": [
       {
-        "id": 17,
-        "tenant_id": 70,
-        "landlord_id": 75,
-        "property_id": 143,
-        "property_unit_id": 221,
-        "lease_agreement_id": 5,
-        "amount": "45000.00",
-        "total_amount_due": 45480,
-        "currency": "AUD",
-        "status": "pending",
-        "payment_date": null,
-        "due_date": "2026-03-09",
-        "wallet_transaction_id": null,
-        "notes": "Rent for period starting Mar 09, 2026",
-        "property": {
-          "id": 143,
-          "landlord_id": 75,
-          "property_type_id": 3,
-          "title": "Duplex in Sydney - Queen Street",
-          "name": "Duplex in Sydney - Queen Street",
-          "description": "Modern Penthouse located in Brisbane. Features 4 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
-          "address": "New York , City",
-          "city": "Australia",
-          "state": "new york",
-          "postal_code": "9845",
-          "country": "Australia",
-          "latitude": null,
-          "longitude": null,
-          "bedrooms": 8,
-          "bathrooms": 6,
-          "parking_spaces": 0,
-          "land_size": "1200.00",
-          "building_size": "1200.00",
-          "year_built": 2000,
-          "status": "active",
-          "available_from": "2026-04-16",
-          "is_verified": true,
-          "is_in_person_inspection_available": false,
-          "is_virtual_inspection_available": false,
-          "is_favourite": false,
-          "features": [
-            "Spacious open-plan living area with natural light throughout.",
-            "Ducted air conditioning and heating for year-round comfort.",
-            "Dedicated study or home office space with built-in desk.",
-            "Swimming pool and communal BBQ area for residents.",
-            "Pet-friendly with easy access to nearby parks and walking paths.",
-            "Internal laundry with dryer and extra linen storage."
-          ],
-          "lease_agreement_defaults": {
-            "keys_count": "0",
-            "bond_amount": "4500",
-            "currency": "AUD",
-            "payment_frequency": "week",
-            "disclosures": {
-              "intent_to_sell_premises": {
-                "intends_to_sell": "1",
-                "engaged_agent": "0",
-                "contract_prepared": "0"
-              },
-              "mortgagee_action": {
-                "mortgagee_taking_possession": "0",
-                "enforcement_proceedings_commenced": "0"
-              },
-              "ownership": {
-                "is_owner": "0",
-                "has_right_to_rent": "0"
-              },
-              "embedded_electricity_network": {
-                "supplied_by_embedded_network": "0"
-              },
-              "property_history": {
-                "homicide_in_last_5_years": "0",
-                "drug_activity_in_last_5_years": "0",
-                "asbestos_present": "0"
-              },
-              "rental_compliance": {
-                "meets_minimum_standards": "0",
-                "mould_or_damp_repair_notices_last_3_years": "0"
-              },
-              "safety_checks": {
-                "electricity_safety_check_date": "2026-03-09",
-                "gas_safety_check_date": "2026-03-03",
-                "pool_barrier_compliance_check_date": "2026-03-10",
-                "outstanding_recommendations": "0"
-              },
-              "heritage": {
-                "is_heritage_listed": "0"
-              },
-              "planning_and_legal": {
-                "affected_by_planning_application": "0",
-                "building_or_safety_notices_issued": "0",
-                "domestic_building_work_dispute": "0",
-                "owners_corporation_dispute": "0",
-                "subject_to_owners_corporation_rules": "0"
-              },
-              "additional_notes": "Description:\r\nModern Penthouse located in Brisbane. Features 4 bedroom(s), 2 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.\r\n\r\nFeatures:\r\nSpacious open-plan living area with natural light throughout.\r\nDucted air conditioning and heating for year-round comfort.\r\nDedicated study or home office space with built-in desk.\r\nSwimming pool and communal BBQ area for residents.\r\nPet-friendly with easy access to nearby parks and walking paths.\r\nInternal laundry with dryer and extra linen storage."
-            },
-            "property_manager_details": {
-              "property_manager_name": "sdfsd",
-              "phone_number": "154545",
-              "email_address": "mark@gmail.com",
-              "estate_agency_name": "new agency"
-            }
-          },
-          "rating": "0.00",
-          "rating_count": 0,
-          "units": [
-            {
-              "id": 221,
-              "property_id": 143,
-              "unit_number": "unit 101",
-              "unit_name": null,
-              "rent_amount": "45000.00",
-              "rent_type": {
-                "id": 1,
-                "name": "Daily",
-                "slug": "daily",
-                "rent_days": 1,
-                "description": "Rent charged per day",
-                "status": true,
-                "created_at": "2026-02-10T20:39:57.000000Z",
-                "updated_at": "2026-02-10T20:39:57.000000Z"
-              },
-              "currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat",
-                "decimal_places": 2,
-                "exchange_rate": 1,
-                "is_active": true,
-                "sort_order": 1
-              },
-              "display_rent_amount": 45000,
-              "display_currency": {
-                "id": 1,
-                "code": "AUD",
-                "name": "Australian Dollar",
-                "symbol": "A$",
-                "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-                "type": "fiat",
-                "decimal_places": 2,
-                "exchange_rate": 1,
-                "is_active": true,
-                "sort_order": 1
-              },
-              "status": "available",
-              "bedrooms": 8,
-              "bathrooms": 6,
-              "size": "1200.00",
-              "description": null
-            }
-          ],
-          "review_summary": {
-            "total_reviews": 0,
-            "average_rating": "0.00"
-          },
-          "created_at": "2026-03-08T06:34:43.000000Z",
-          "updated_at": "2026-04-13T12:00:09.000000Z"
+        "id": 178,
+        "property_id": 101,
+        "unit_number": "Unit 101",
+        "unit_name": null,
+        "rent_amount": "1500.00",
+        "rent_type": {
+          "id": 1,
+          "name": "Daily",
+          "slug": "daily",
+          "rent_days": 1,
+          "description": "Rent charged per day",
+          "status": true,
+          "created_at": "2026-02-10T20:39:57.000000Z",
+          "updated_at": "2026-02-10T20:39:57.000000Z"
         },
-        "property_unit": {
-          "id": 221,
-          "property_id": 143,
-          "unit_number": "unit 101",
-          "unit_name": null,
-          "rent_amount": "45000.00",
-          "rent_type": {
-            "id": 1,
-            "name": "Daily",
-            "slug": "daily",
-            "rent_days": 1,
-            "description": "Rent charged per day",
-            "status": true,
-            "created_at": "2026-02-10T20:39:57.000000Z",
-            "updated_at": "2026-02-10T20:39:57.000000Z"
-          },
-          "currency": {
-            "id": 1,
-            "code": "AUD",
-            "name": "Australian Dollar",
-            "symbol": "A$",
-            "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-            "type": "fiat",
-            "decimal_places": 2,
-            "exchange_rate": 1,
-            "is_active": true,
-            "sort_order": 1
-          },
-          "display_rent_amount": 45000,
-          "display_currency": {
-            "id": 1,
-            "code": "AUD",
-            "name": "Australian Dollar",
-            "symbol": "A$",
-            "logo": "https://renter-pay.mahfuz.click/images/currency.png",
-            "type": "fiat",
-            "decimal_places": 2,
-            "exchange_rate": 1,
-            "is_active": true,
-            "sort_order": 1
-          },
-          "status": "available",
-          "bedrooms": 8,
-          "bathrooms": 6,
-          "size": "1200.00",
-          "description": null
-        },
-        "tenant": {
-          "id": 70,
-          "name": "Tonni Akter",
-          "first_name": "Tonni",
-          "last_name": "Akter",
-          "gender": "female",
-          "image": "https://renter-pay.mahfuz.click/storage/images/users/Zg5eNdBas56k0l6teMbNMXT0Re47xpkfnBW2o7uv.png",
-          "email": "tenant@gmail.com",
-          "phone": "8801825332448",
+        "currency": {
+          "id": 1,
+          "code": "AUD",
+          "name": "Australian Dollar",
+          "symbol": "A$",
+          "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+          "type": "fiat",
+          "decimal_places": 2,
+          "exchange_rate": 1,
           "is_active": true,
-          "provider": null,
-          "provider_id": null,
-          "roles": ["tenant"],
-          "tenant_profile": {
-            "id": 23,
-            "employment_status": "employed",
-            "employer_name": "Wiztech BD",
-            "job_title": "Software Engineer",
-            "monthly_income": "50000.00",
-            "is_verified": true,
-            "created_at": "2026-02-11T03:50:12.000000Z",
-            "updated_at": "2026-02-11T03:50:12.000000Z"
-          },
-          "documents": [
-            {
-              "id": 1,
-              "user_id": 70,
-              "document_type": "nid",
-              "document_number": null,
-              "file_path": "https://renter-pay.mahfuz.click/storage/documents/users/4izRp6k1ps5rfiBr3uK8TNBedj3XGzKesUdsgM2s.png",
-              "file_url": "https://renter-pay.mahfuz.click/storage/documents/users/4izRp6k1ps5rfiBr3uK8TNBedj3XGzKesUdsgM2s.png",
-              "back_file_path": "https://renter-pay.mahfuz.click/images/default.png",
-              "back_file_url": "https://renter-pay.mahfuz.click/images/default.png",
-              "expiry_date": null,
-              "status": "approved",
-              "rejection_reason": null,
-              "is_verified": true,
-              "verification_response": null,
-              "verified_at": "2026-02-13 10:54:26",
-              "created_at": "2026-02-11 19:47:36",
-              "updated_at": "2026-02-13 10:54:26"
-            }
-          ],
-          "created_at": "2026-02-11 09:50:12",
-          "updated_at": "2026-02-26 18:57:52"
+          "sort_order": 1
         },
-        "landlord": {
-          "id": 75,
-          "name": "Tonni Akter",
-          "first_name": "Tonni",
-          "last_name": "Akter",
-          "gender": "female",
-          "image": "https://renter-pay.mahfuz.click/images/person.png",
-          "email": "landlord@gmail.com",
-          "phone": null,
+        "display_rent_amount": 1500,
+        "display_currency": {
+          "id": 1,
+          "code": "AUD",
+          "name": "Australian Dollar",
+          "symbol": "A$",
+          "logo": "https://renter-pay.mahfuz.click/images/currency.png",
+          "type": "fiat",
+          "decimal_places": 2,
+          "exchange_rate": 1,
           "is_active": true,
-          "provider": null,
-          "provider_id": null,
-          "roles": ["landlord"],
-          "landlord_profile": {
-            "id": 17,
-            "description": null,
-            "is_verified": true,
-            "created_at": "2026-02-15T06:28:32.000000Z",
-            "updated_at": "2026-02-15T06:28:32.000000Z",
-            "subscription": {
-              "id": 58,
-              "user_id": 75,
-              "role": "landlord",
-              "plan_id": 3,
-              "start_date": "2026-03-07T18:00:00.000000Z",
-              "end_date": "2026-04-07T18:00:00.000000Z",
-              "is_trial": false,
-              "trial_ends_at": null,
-              "status": "active",
-              "auto_renew": true,
-              "plan": {
-                "id": 3,
-                "for_role": "landlord",
-                "name": "Platinum",
-                "price": 2199,
-                "billing_cycle": "monthly",
-                "trial_period_days": 15,
-                "is_active": true,
-                "features": [
-                  {
-                    "title": "Property Limit",
-                    "value": "10",
-                    "features": null
-                  },
-                  {
-                    "title": "Photography Limit",
-                    "value": "60",
-                    "features": null
-                  },
-                  {
-                    "title": "Video Duration Limit",
-                    "value": "120",
-                    "features": null
-                  },
-                  {
-                    "title": "List Property",
-                    "value": null,
-                    "features": ["Up to 10"]
-                  },
-                  {
-                    "title": "Ads Strategy",
-                    "value": null,
-                    "features": ["RenterPay page", "Social media"]
-                  },
-                  {
-                    "title": "Photography",
-                    "value": null,
-                    "features": ["40-60 photos"]
-                  },
-                  {
-                    "title": "Video curation",
-                    "value": null,
-                    "features": ["90-120 seconds"]
-                  },
-                  {
-                    "title": "Rental Appraisal",
-                    "value": null,
-                    "features": ["Free"]
-                  },
-                  {
-                    "title": "Documentation",
-                    "value": null,
-                    "features": ["Online Access"]
-                  },
-                  {
-                    "title": "Signage",
-                    "value": null,
-                    "features": ["Sale/Lease included"]
-                  },
-                  {
-                    "title": "Legal Advice",
-                    "value": null,
-                    "features": ["36 hours"]
-                  },
-                  {
-                    "title": "Agent",
-                    "value": null,
-                    "features": ["Dedicated Assigned"]
-                  }
-                ]
-              }
-            }
-          },
-          "documents": [],
-          "created_at": "2026-02-15 12:28:32",
-          "updated_at": "2026-04-09 15:28:12"
+          "sort_order": 1
         },
-        "created_at": "2026-03-11 12:16:55",
-        "updated_at": "2026-03-11 12:16:55"
+        "status": "available",
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "size": "2400.00",
+        "description": null
       }
     ],
-    "links": {
-      "first": "https://renter-pay.mahfuz.click/api/v1/rent-payments?page=1",
-      "last": "https://renter-pay.mahfuz.click/api/v1/rent-payments?page=1",
-      "prev": null,
-      "next": null
+    "images": [
+      {
+        "id": 473,
+        "property_id": 101,
+        "image_path": "https://renter-pay.mahfuz.click/storage/images/properties/Mg5Gj3IN5TBiP8jGzWYfiynlyP3aTT0LCK18oqJ3.jpg",
+        "type": "image",
+        "order": 1,
+        "is_primary": false,
+        "caption": null,
+        "created_at": "2026-02-10T20:57:46.000000Z",
+        "updated_at": "2026-02-10T20:57:46.000000Z"
+      }
+    ],
+    "amenities": [
+      {
+        "id": 640,
+        "property_id": 101,
+        "amenity_type_id": 1,
+        "amenity_type": {
+          "id": 1,
+          "name": "Air Conditioning",
+          "slug": "air-conditioning",
+          "icon": "https://picsum.photos/seed/air-conditioning/200",
+          "icon_url": "https://picsum.photos/seed/air-conditioning/200",
+          "description": "Air conditioning system for climate control",
+          "status": true,
+          "created_at": "2026-02-10T20:39:57.000000Z",
+          "updated_at": "2026-02-10T20:39:57.000000Z"
+        },
+        "created_at": "2026-02-10T20:57:46.000000Z",
+        "updated_at": "2026-02-10T20:57:46.000000Z"
+      },
+      {
+        "id": 641,
+        "property_id": 101,
+        "amenity_type_id": 2,
+        "amenity_type": {
+          "id": 2,
+          "name": "Heating",
+          "slug": "heating",
+          "icon": "https://picsum.photos/seed/heating/200",
+          "icon_url": "https://picsum.photos/seed/heating/200",
+          "description": "Central heating or other heating systems",
+          "status": true,
+          "created_at": "2026-02-10T20:39:57.000000Z",
+          "updated_at": "2026-02-10T20:39:57.000000Z"
+        },
+        "created_at": "2026-02-10T20:57:46.000000Z",
+        "updated_at": "2026-02-10T20:57:46.000000Z"
+      }
+    ],
+    "documents": [],
+    "maintenance_profile": null,
+    "review_summary": {
+      "total_reviews": 1,
+      "average_rating": "3.00"
     },
-    "meta": {
-      "current_page": 1,
-      "from": 1,
-      "last_page": 1,
-      "links": [
-        {
-          "url": null,
-          "label": "&laquo; Previous",
-          "page": null,
-          "active": false
-        },
-        {
-          "url": "https://renter-pay.mahfuz.click/api/v1/rent-payments?page=1",
-          "label": "1",
-          "page": 1,
-          "active": true
-        },
-        {
-          "url": null,
-          "label": "Next &raquo;",
-          "page": null,
-          "active": false
-        }
-      ],
-      "path": "https://renter-pay.mahfuz.click/api/v1/rent-payments",
-      "per_page": 20,
-      "to": 2,
-      "total": 2
-    }
+    "my_review": null,
+    "created_at": "2026-02-10T20:56:54.000000Z",
+    "updated_at": "2026-04-20T05:24:48.000000Z"
   },
   "errors": null
 }
