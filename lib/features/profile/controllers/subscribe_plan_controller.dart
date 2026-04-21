@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/dashboard/controllers/current_plan_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/profile/repositories/subscribe_plan_repo.dart';
 import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
@@ -12,7 +13,11 @@ class SubscribePlanController extends GetxController {
 
   RxBool isLoading = false.obs;
 
-  Future<void> subscribePlan({required int planID}) async {
+  Future<void> subscribePlan({
+    required int planID,
+    bool? isReloadCurrent,
+    bool? cancelNavigate,
+  }) async {
     isLoading.value = true;
     final response = await subscribePlanRepository.execute(
       role: currentUserRoleForApi(),
@@ -27,9 +32,14 @@ class SubscribePlanController extends GetxController {
       },
       (data) async {
         await Get.find<ProfileController>().getProfile();
+        if (isReloadCurrent == true) {
+          await Get.find<CurrentPlanController>().getCurrentPlan();
+        }
         isLoading.value = false;
         SuccessSnackbar.show(description: 'Subscription successful');
-        Get.toNamed(AppRoutes.mainHome);
+        if (cancelNavigate != true) {
+          Get.toNamed(AppRoutes.mainHome);
+        }
       },
     );
   }

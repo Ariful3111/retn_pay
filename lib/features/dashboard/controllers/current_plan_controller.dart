@@ -10,6 +10,19 @@ class CurrentPlanController extends GetxController {
   final currentPlan = Rxn<CurrentPlanModel>();
   RxBool isLoading = true.obs;
 
+  /// Finds the first subscription with a suggested upgrade plan
+  CurrentSubscription? getSubscriptionWithUpgrade() {
+    final subscriptions = currentPlan.value?.data;
+    if (subscriptions == null || subscriptions.isEmpty) return null;
+
+    for (final subscription in subscriptions) {
+      if (subscription.suggestedUpgradePlan != null) {
+        return subscription;
+      }
+    }
+    return null;
+  }
+
   Future<void> getCurrentPlan() async {
     isLoading.value = true;
     final response = await currentPlanRepository.execute();
