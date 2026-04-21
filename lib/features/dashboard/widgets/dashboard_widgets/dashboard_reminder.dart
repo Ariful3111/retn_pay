@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/dashboard/controllers/mark_reminder_as_read_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/reminder_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_reminder.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
@@ -76,9 +77,15 @@ class DashboardReminder extends GetWidget<ReminderController> {
                           final item =
                               controller.reminders.value?.data?.data?[index];
                           return Dismissible(
-                            key: ValueKey(item.hashCode),
+                            key: ValueKey(item?.id ?? index),
                             direction: DismissDirection.startToEnd,
-                            onDismissed: (direction) async {},
+                            confirmDismiss: (direction) async {
+                              return await Get.find<
+                                    MarkReminderAsReadController
+                                  >()
+                                  .markAsRead(notificationID: item?.id ?? '');
+                            },
+                            onDismissed: (direction) {},
                             child: CustomReminder(
                               title: item?.data?.title ?? '',
                               date: (item?.createdAt).toMMMddyyyyHmmaa(),
