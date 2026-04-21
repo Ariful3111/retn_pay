@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/dashboard/controllers/reminder_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_reminder.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
@@ -82,6 +83,24 @@ class DashboardReminder extends GetWidget<ReminderController> {
                               title: item?.data?.title ?? '',
                               date: (item?.createdAt).toMMMddyyyyHmmaa(),
                               detail: item?.data?.body ?? '',
+                              onTap: () {
+                                if (item?.type == "property") {
+                                  Get.toNamed(
+                                    AppRoutes.rentDetails,
+                                    arguments: item?.data?.data?.propertyId,
+                                  );
+                                } else if (item?.type == "support") {
+                                  Get.toNamed(AppRoutes.supportView);
+                                } else if (item?.type == "chat") {
+                                  Get.toNamed(
+                                    AppRoutes.messageView,
+                                    arguments: {
+                                      "ID":
+                                          item?.data?.data?.chatConversationId,
+                                    },
+                                  );
+                                }
+                              },
                             ),
                           );
                         },
