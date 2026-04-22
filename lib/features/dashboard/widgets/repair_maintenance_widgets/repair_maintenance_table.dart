@@ -29,6 +29,21 @@ class RepairMaintenanceTable extends GetWidget<RepairMaintenanceController> {
               child: Builder(
                 builder: (context) {
                   final list = controller.requests;
+                  if (list.isEmpty) {
+                    return Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 40.h),
+                        child: CustomTextPrimary(
+                          text: 'No data available',
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
+                          color: isDark
+                              ? AppColors.whiteColor
+                              : AppColors.secondaryTextColor,
+                        ),
+                      ),
+                    );
+                  }
                   final rowWidgets = List<List<Widget>>.generate(list.length, (
                     index,
                   ) {
@@ -52,7 +67,10 @@ class RepairMaintenanceTable extends GetWidget<RepairMaintenanceController> {
                         onPressed: () {
                           final id = item.id;
                           if (id == null) return;
-                          Get.toNamed(AppRoutes.repairRequestView, arguments: id);
+                          Get.toNamed(
+                            AppRoutes.repairRequestView,
+                            arguments: id,
+                          );
                         },
                       ),
                     ];

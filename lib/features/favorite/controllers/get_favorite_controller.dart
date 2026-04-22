@@ -9,6 +9,9 @@ class GetFavoriteController extends GetxController {
   RxInt currentPage = 1.obs;
   RxInt totalPage = 1.obs;
   static const int perPage = 20;
+  RxString initialSort = 'sortBy'.obs;
+  RxString currentSort = ''.obs;
+  List<String> sortList = ['Low To High', 'High to Low'];
 
   final favoriteProperties = Rxn<PropertiesModel>();
   RxBool isLoading = true.obs;
@@ -17,14 +20,23 @@ class GetFavoriteController extends GetxController {
   void onInit() {
     super.onInit();
     getFavorite();
-    ever(currentPage, (_) => getFavorite());
+    // ever() listener for pagination - uses stored sort value
+    ever(currentPage, (_) {
+      if (!isLoading.value) {
+        getFavorite(propertySort: currentSort.value);
+      }
+    });
   }
 
-  Future<void> getFavorite() async {
+  Future<void> getFavorite({String? propertySort}) async {
+    // Store sort value for pagination
+    if (propertySort != null) currentSort.value = propertySort;
+
     isLoading.value = true;
     final response = await getFavoriteRepository.execute(
       page: currentPage.value,
       perPage: perPage,
+      propertySort: propertySort ?? currentSort.value,
     );
     isLoading.value = false;
     response.fold(

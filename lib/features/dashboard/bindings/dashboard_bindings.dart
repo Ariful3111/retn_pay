@@ -40,8 +40,12 @@ import 'package:renter_pay/features/dashboard/controllers/tenant_controller/rent
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/submit_property_review_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/monthly_revenue_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/landlord_controller/upcoming_payment_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/mark_reminder_as_read_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/current_plan_controller.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/monthly_revenue_repo.dart';
 import 'package:renter_pay/features/dashboard/repositories/landlord_repositories/upcoming_payment_repo.dart';
+import 'package:renter_pay/features/dashboard/repositories/mark_reminder_as_read_repo.dart';
+import 'package:renter_pay/features/dashboard/repositories/current_plan_repo.dart';
 
 class DashboardBindings implements Bindings {
   @override
@@ -167,6 +171,20 @@ class DashboardBindings implements Bindings {
       Get.lazyPut(() => ReminderController(reminderRepository: Get.find()));
     }
 
+    if (!Get.isRegistered<MarkReminderAsReadRepository>()) {
+      Get.lazyPut(
+        () => MarkReminderAsReadRepository(patchWithoutResponse: Get.find()),
+      );
+    }
+
+    if (!Get.isRegistered<MarkReminderAsReadController>()) {
+      Get.lazyPut(
+        () => MarkReminderAsReadController(
+          markReminderAsReadRepository: Get.find(),
+        ),
+      );
+    }
+
     if (!Get.isRegistered<RentNoticeController>()) {
       Get.lazyPut(() => RentNoticeController(rentNoticeRepository: Get.find()));
     }
@@ -217,6 +235,18 @@ class DashboardBindings implements Bindings {
     if (!Get.isRegistered<UpcomingPaymentController>()) {
       Get.lazyPut(
         () => UpcomingPaymentController(upcomingPaymentRepository: Get.find()),
+      );
+    }
+
+    // Current Plan Repository
+    if (!Get.isRegistered<CurrentPlanRepository>()) {
+      Get.lazyPut(() => CurrentPlanRepository(getNetwork: Get.find()));
+    }
+
+    // Current Plan Controller
+    if (!Get.isRegistered<CurrentPlanController>()) {
+      Get.lazyPut(
+        () => CurrentPlanController(currentPlanRepository: Get.find()),
       );
     }
   }
