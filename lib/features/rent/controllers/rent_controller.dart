@@ -21,6 +21,9 @@ class RentController extends GetxController {
     // Store sort value for pagination
     if (rentSort != null) currentSort.value = rentSort;
 
+    // Update page state
+    currentPage.value = page;
+
     isLoading.value = true;
     final response = await getRentListRepository.execute(
       page: page,
@@ -50,15 +53,13 @@ class RentController extends GetxController {
 
   void previousPage() {
     if (currentPage.value > 1) {
-      currentPage.value--;
-      getRentList(page: currentPage.value);
+      getRentList(page: currentPage.value - 1);
     }
   }
 
   void nextPage() {
     if (currentPage.value < totalPage) {
-      currentPage.value++;
-      getRentList(page: currentPage.value);
+      getRentList(page: currentPage.value + 1);
     }
   }
 

@@ -93,7 +93,6 @@ class RentView extends GetView<RentController> {
                         onTapPrev: controller.previousPage,
                         onTapNext: controller.nextPage,
                         onTapPage: (item) {
-                          controller.currentPage.value = item;
                           controller.getRentList(page: item);
                         },
                         value: controller.currentPage.value,
