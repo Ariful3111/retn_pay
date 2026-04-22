@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
 import 'package:renter_pay/features/profile/controllers/plan_controller.dart';
 import 'package:renter_pay/features/profile/widgets/subscription_plan_widgets/basic_plan.dart';
@@ -53,17 +54,27 @@ class SubscriptionPlan extends GetView<PlanController> {
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
+                        final planList = userIndex == 1
+                            ? controller.landlordPlans
+                            : userIndex == 2
+                            ? controller.agentPlans
+                            : controller.vendorPlans;
+
                         return Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20.w),
                           child: BasicPlan(
-                            planData: controller.landlordPlans[index],
+                            planData: planList[index],
                             buttonText: "Buy",
                           ),
                         );
                       },
                       separatorBuilder: (context, index) =>
                           SizedBox(height: 32.h),
-                      itemCount: controller.landlordPlans.length,
+                      itemCount: userIndex == 1
+                          ? controller.landlordPlans.length
+                          : userIndex == 2
+                          ? controller.agentPlans.length
+                          : controller.vendorPlans.length,
                     ),
                   ],
                 ),

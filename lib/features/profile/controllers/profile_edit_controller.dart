@@ -44,12 +44,11 @@ class ProfileEditController extends GetxController {
         image: image,
         firstName: nameController.text,
         lastName: lastNameController.text,
-
         // email: emailController.text,
         // phone: phoneController.text,
-        // businessName: businessNameController.text,
-        // businessType: businessTypeController.text,
-        // abn: businessLicenseController.text,
+        businessName: businessNameController.text,
+        businessType: businessTypeController.text,
+        abn: businessLicenseController.text,
       );
       response.fold(
         (error) {

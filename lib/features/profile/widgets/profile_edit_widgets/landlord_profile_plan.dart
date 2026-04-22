@@ -12,9 +12,12 @@ class LandlordProfilePlan extends GetWidget<CurrentPlanController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
+      final hasData = (controller.currentPlan.value?.data?.length ?? 0) > 0;
+
       return controller.isLoading.value
           ? ButtonLoading()
-          : Column(
+          : hasData
+          ? Column(
               children: [
                 CustomTextPrimary(text: 'My Current Plan', fontSize: 28.sp),
                 SizedBox(height: 20.h),
@@ -59,7 +62,8 @@ class LandlordProfilePlan extends GetWidget<CurrentPlanController> {
                 //   ),
                 // ),
               ],
-            );
+            )
+          : SizedBox.shrink();
     });
   }
 }

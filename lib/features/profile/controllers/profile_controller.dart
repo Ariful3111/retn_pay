@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/data/global_models/profile_model.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
 import 'package:renter_pay/features/home/controllers/global_scroll_controller.dart';
@@ -31,28 +32,64 @@ class ProfileController extends GetxController {
 
   bool isPaid() {
     final user = profileData.value?.data;
+
+    // CRITICAL FIX: Ensure DashboardController exists to prevent silent failures
     if (!Get.isRegistered<DashboardController>()) {
-      return false;
+      debugPrint(
+        'Warning: DashboardController not registered, creating instance',
+      );
+      Get.put(DashboardController());
     }
 
     final dashboardController = Get.find<DashboardController>();
     bool isUserPaid = false;
 
-    // Check if user exists and is active
-    if (user != null && user.isActive == true) {
-      // Check if user has landlord profile with subscription
-      final landlordProfile = user.landlordProfile;
-      if (landlordProfile != null) {
-        final subscription = landlordProfile.subscription;
-        if (subscription != null && subscription.plan != null) {
-          // Check if subscription status is active
-          if (subscription.status?.toLowerCase() == 'active') {
-            isUserPaid = true;
+    // Check if user exists
+    if (user != null) {
+      switch (userIndex) {
+        case 1: // Landlord
+          final landlordProfile = user.landlordProfile;
+          if (landlordProfile != null) {
+            final subscription = landlordProfile.subscription;
+            if (subscription != null &&
+                subscription.plan != null &&
+                subscription.status?.toLowerCase() == 'active') {
+              isUserPaid = true;
+            }
           }
-        }
+          break;
+
+        case 2: // Agent
+          final agentProfile = user.agentProfile;
+          if (agentProfile != null) {
+            final subscription = agentProfile.subscription;
+            if (subscription != null &&
+                subscription.plan != null &&
+                subscription.status?.toLowerCase() == 'active') {
+              isUserPaid = true;
+            }
+          }
+          break;
+
+        case 3: // Service Vendor
+          final serviceVendorProfile = user.serviceVendorProfile;
+          if (serviceVendorProfile != null) {
+            final subscription = serviceVendorProfile.subscription;
+            if (subscription != null &&
+                subscription.plan != null &&
+                subscription.status?.toLowerCase() == 'active') {
+              isUserPaid = true;
+            }
+          }
+          break;
+
+        default: // Tenant or unknown
+          isUserPaid = false;
+          break;
       }
     }
-    // Update dashboard controller once
+
+    // Update dashboard controller
     dashboardController.isUpgrade.value = isUserPaid;
     return isUserPaid;
   }
