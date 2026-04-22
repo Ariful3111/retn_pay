@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/features/favorite/repositories/get_favorite_repo.dart';
 import 'package:renter_pay/features/home/models/properties_model.dart';
@@ -8,7 +9,10 @@ class GetFavoriteController extends GetxController {
   GetFavoriteController({required this.getFavoriteRepository});
   RxInt currentPage = 1.obs;
   RxInt totalPage = 1.obs;
-  static const int perPage = 20;
+  static const int perPage = 5;
+  RxString initialSort = 'sortBy'.obs;
+  RxString currentSort = ''.obs; // Store current API sort value
+  List<String> sortList = ['Low To High', 'High to Low'];
 
   final favoriteProperties = Rxn<PropertiesModel>();
   RxBool isLoading = true.obs;
@@ -17,14 +21,19 @@ class GetFavoriteController extends GetxController {
   void onInit() {
     super.onInit();
     getFavorite();
-    ever(currentPage, (_) => getFavorite());
+    ever(currentPage, (_) => getFavorite(propertySort: currentSort.value));
   }
 
-  Future<void> getFavorite() async {
+  Future<void> getFavorite({String? propertySort}) async {
+    // Store sort value for pagination
+    if (propertySort != null) currentSort.value = propertySort;
+    debugPrint("SortBy: $propertySort");
+
     isLoading.value = true;
     final response = await getFavoriteRepository.execute(
       page: currentPage.value,
       perPage: perPage,
+      propertySort: propertySort ?? currentSort.value,
     );
     isLoading.value = false;
     response.fold(

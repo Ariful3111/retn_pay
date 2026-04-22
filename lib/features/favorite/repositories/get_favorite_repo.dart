@@ -13,10 +13,16 @@ class GetFavoriteRepository {
   Future<Either<ErrorModel, PropertiesModel>> execute({
     int page = 1,
     int perPage = 20,
+    String? propertySort,
   }) async {
+    String url =
+        "/api/${NetworkLinks.version}/properties/favourites?page=$page&per_page=$perPage";
+    if (propertySort != null && propertySort.isNotEmpty) {
+      url += "&property_sort=$propertySort";
+    }
+
     final response = await getNetwork.getData<PropertiesModel>(
-      url:
-          "/api/${NetworkLinks.version}/properties/favourites?page=$page&per_page=$perPage",
+      url: url,
       headers: {
         "Accept": "application/json",
         "Authorization":

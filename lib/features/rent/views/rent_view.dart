@@ -41,6 +41,7 @@ class RentView extends GetView<RentController> {
                       onSelect: (value) {
                         controller.initialSort.value = value!;
                         final apiSortValue = SortFormatter.toQueryFormat(value);
+                        controller.currentPage.value = 1;
                         controller.getRentList(page: 1, rentSort: apiSortValue);
                       },
                       isSelect: controller.initialSort,
