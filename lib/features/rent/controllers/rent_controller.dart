@@ -16,8 +16,12 @@ class RentController extends GetxController {
   RxInt currentPage = 1.obs;
   int totalPage = 1;
 
-  Future<void> getRentList({required int page}) async {
-    final response = await getRentListRepository.execute(page: page);
+  Future<void> getRentList({required int page, String? rentSort}) async {
+    isLoading.value = true;
+    final response = await getRentListRepository.execute(
+      page: page,
+      rentSort: rentSort,
+    );
     isLoading.value = false;
     response.fold(
       (error) {

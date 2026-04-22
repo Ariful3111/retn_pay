@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/home/models/properties_model.dart';
 import 'package:renter_pay/features/rent/controllers/rent_controller.dart';
+import 'package:renter_pay/shared/extensions/formatters/sort_formatter.dart';
 import 'package:renter_pay/shared/widgets/custom_pagination.dart';
 import 'package:renter_pay/shared/widgets/custom_item_sort.dart';
 import 'package:renter_pay/features/rent/widgets/rent_app_bar.dart';
@@ -39,6 +40,8 @@ class RentView extends GetView<RentController> {
                       info: "",
                       onSelect: (value) {
                         controller.initialSort.value = value!;
+                        final apiSortValue = SortFormatter.toQueryFormat(value);
+                        controller.getRentList(page: 1, rentSort: apiSortValue);
                       },
                       isSelect: controller.initialSort,
                     ),

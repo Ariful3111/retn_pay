@@ -10,9 +10,17 @@ class GetRentListRepository {
   final GetNetwork getNetwork;
   const GetRentListRepository({required this.getNetwork});
 
-  Future<Either<ErrorModel, RentListModel>> execute({required int page}) async {
+  Future<Either<ErrorModel, RentListModel>> execute({
+    required int page,
+    String? rentSort,
+  }) async {
+    String url = "/api/${NetworkLinks.version}/rent-payments?page=$page";
+    if (rentSort != null && rentSort.isNotEmpty) {
+      url += "&rent_sort=$rentSort";
+    }
+
     final response = await getNetwork.getData<RentListModel>(
-      url: "/api/${NetworkLinks.version}/rent-payments?page=$page",
+      url: url,
       headers: {
         "Accept": "application/json",
         "Authorization":
