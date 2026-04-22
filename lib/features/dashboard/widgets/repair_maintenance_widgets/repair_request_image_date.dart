@@ -55,6 +55,7 @@ class RepairRequestImageDate extends StatelessWidget {
               onTap: () {
                 DatePicker.pickDate(
                   context: context,
+                  firstDate: DateTime.now(),
                   onDateSelected: (date) {
                     addRepairRequestController.selectedDate.value = date;
                     addRepairRequestController.dateController.text =

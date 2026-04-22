@@ -18,8 +18,14 @@ class AddRepairRequestField extends StatelessWidget {
           hint: 'Enter Your Issue Title',
           label: 'Issue Title',
         ),
-        SizedBox(height: 16.h,),
-        myField(controller: addRepairRequestController.issueDetailsController, hint: 'Enter Your Issue In Details', label: 'Issue Details',maxLine: 7,isAlignLabelWithHint: true),
+        SizedBox(height: 16.h),
+        myField(
+          controller: addRepairRequestController.issueDetailsController,
+          hint: 'Enter Your Issue In Details',
+          label: 'Issue Details',
+          maxLine: 7,
+          isAlignLabelWithHint: true,
+        ),
       ],
     );
   }
@@ -28,8 +34,8 @@ class AddRepairRequestField extends StatelessWidget {
     required TextEditingController controller,
     required String hint,
     required String label,
-    int ? maxLine,
-    bool ? isAlignLabelWithHint,
+    int? maxLine,
+    bool? isAlignLabelWithHint,
   }) {
     return CustomTextField(
       hintText: hint,

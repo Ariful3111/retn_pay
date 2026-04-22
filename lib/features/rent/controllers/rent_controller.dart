@@ -12,12 +12,23 @@ class RentController extends GetxController {
   final scrollController = ScrollController();
   RxBool isLoading = true.obs;
   RxString initialSort = 'sortBy'.obs;
+  RxString currentSort = ''.obs; // Store current API sort value
   List<String> sortList = ['Low To High', 'High to Low'];
   RxInt currentPage = 1.obs;
   int totalPage = 1;
 
-  Future<void> getRentList({required int page}) async {
-    final response = await getRentListRepository.execute(page: page);
+  Future<void> getRentList({required int page, String? rentSort}) async {
+    // Store sort value for pagination
+    if (rentSort != null) currentSort.value = rentSort;
+
+    // Update page state
+    currentPage.value = page;
+
+    isLoading.value = true;
+    final response = await getRentListRepository.execute(
+      page: page,
+      rentSort: rentSort ?? currentSort.value,
+    );
     isLoading.value = false;
     response.fold(
       (error) {
@@ -41,16 +52,14 @@ class RentController extends GetxController {
   }
 
   void previousPage() {
-    if (currentPage > 1) {
-      currentPage.value--;
-      getRentList(page: currentPage.value);
+    if (currentPage.value > 1) {
+      getRentList(page: currentPage.value - 1);
     }
   }
 
   void nextPage() {
-    if (currentPage < totalPage) {
-      currentPage++;
-      getRentList(page: currentPage.value);
+    if (currentPage.value < totalPage) {
+      getRentList(page: currentPage.value + 1);
     }
   }
 

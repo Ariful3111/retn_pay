@@ -51,6 +51,7 @@ class ServiceTime extends StatelessWidget {
                 controller: serviceSearchController.dateController,
                 onTap: () {
                   DatePicker.pickDate(
+                    firstDate: DateTime.now(),
                     context: context,
                     onDateSelected: (date) {
                       serviceSearchController.selectedDate.value = date;

@@ -56,7 +56,7 @@ class SubscriptionPlan extends GetView<PlanController> {
                         return Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20.w),
                           child: BasicPlan(
-                            plan: controller.landlordPlans[index],
+                            planData: controller.landlordPlans[index],
                             buttonText: "Buy",
                           ),
                         );

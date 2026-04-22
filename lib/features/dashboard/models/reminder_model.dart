@@ -8,8 +8,8 @@ class ReminderModel {
   ReminderModel({this.error, this.code, this.message, this.data, this.errors});
 
   ReminderModel.fromJson(Map<String, dynamic> json) {
-    error = json['error'];
-    code = json['code'];
+    error = _parseBool(json['error']);
+    code = _parseInt(json['code']);
     message = json['message']?.toString();
 
     final dataJson = json['data'];
@@ -82,7 +82,7 @@ class ReminderItem {
   int? notifiableId;
   ReminderContent? data;
   bool? isRead;
-  String? readAt;
+  dynamic readAt;
   String? createdAt;
   String? updatedAt;
 
@@ -102,15 +102,15 @@ class ReminderItem {
     id = json['id']?.toString();
     type = json['type']?.toString();
     notifiableType = json['notifiable_type']?.toString();
-    notifiableId = json['notifiable_id'];
+    notifiableId = _parseInt(json['notifiable_id']);
 
     final dataJson = json['data'];
     if (dataJson is Map<String, dynamic>) {
       data = ReminderContent.fromJson(dataJson);
     }
 
-    isRead = json['is_read'];
-    readAt = json['read_at']?.toString();
+    isRead = _parseBool(json['is_read']);
+    readAt = json['read_at'];
     createdAt = json['created_at']?.toString();
     updatedAt = json['updated_at']?.toString();
   }
@@ -162,16 +162,58 @@ class ReminderContent {
 
 class ReminderContentData {
   int? supportTicketId;
+  int? propertyId;
+  int? chatConversationId;
+  int? chatMessageId;
+  int? senderId;
+  int? rentPaymentId;
+  String? lateFeeTotal;
+  String? dueDate;
+  int? transactionId;
+  String? amount;
+  String? currency;
 
-  ReminderContentData({this.supportTicketId});
+  ReminderContentData({
+    this.supportTicketId,
+    this.propertyId,
+    this.chatConversationId,
+    this.chatMessageId,
+    this.senderId,
+    this.rentPaymentId,
+    this.lateFeeTotal,
+    this.dueDate,
+    this.transactionId,
+    this.amount,
+    this.currency,
+  });
 
   ReminderContentData.fromJson(Map<String, dynamic> json) {
-    supportTicketId = json['support_ticket_id'];
+    supportTicketId = _parseInt(json['support_ticket_id']);
+    propertyId = _parseInt(json['property_id']);
+    chatConversationId = _parseInt(json['chat_conversation_id']);
+    chatMessageId = _parseInt(json['chat_message_id']);
+    senderId = _parseInt(json['sender_id']);
+    rentPaymentId = _parseInt(json['rent_payment_id']);
+    lateFeeTotal = json['late_fee_total']?.toString();
+    dueDate = json['due_date']?.toString();
+    transactionId = _parseInt(json['transaction_id']);
+    amount = json['amount']?.toString();
+    currency = json['currency']?.toString();
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = <String, dynamic>{};
     json['support_ticket_id'] = supportTicketId;
+    json['property_id'] = propertyId;
+    json['chat_conversation_id'] = chatConversationId;
+    json['chat_message_id'] = chatMessageId;
+    json['sender_id'] = senderId;
+    json['rent_payment_id'] = rentPaymentId;
+    json['late_fee_total'] = lateFeeTotal;
+    json['due_date'] = dueDate;
+    json['transaction_id'] = transactionId;
+    json['amount'] = amount;
+    json['currency'] = currency;
     return json;
   }
 }
@@ -223,13 +265,9 @@ class ReminderMeta {
   });
 
   ReminderMeta.fromJson(Map<String, dynamic> json) {
-    currentPage = json['current_page'];
-    from = json['from'];
-    lastPage = json['last_page'];
-    path = json['path']?.toString();
-    perPage = json['per_page'];
-    to = json['to'];
-    total = json['total'];
+    currentPage = _parseInt(json['current_page']);
+    from = _parseInt(json['from']);
+    lastPage = _parseInt(json['last_page']);
 
     final list = json['links'];
     if (list is List) {
@@ -238,6 +276,11 @@ class ReminderMeta {
           .map((v) => ReminderMetaLink.fromJson(v))
           .toList();
     }
+
+    path = json['path']?.toString();
+    perPage = _parseInt(json['per_page']);
+    to = _parseInt(json['to']);
+    total = _parseInt(json['total']);
   }
 
   Map<String, dynamic> toJson() {
@@ -267,9 +310,8 @@ class ReminderMetaLink {
   ReminderMetaLink.fromJson(Map<String, dynamic> json) {
     url = json['url']?.toString();
     label = json['label']?.toString();
-    final rawPage = json['page'];
-    page = rawPage is int ? rawPage : int.tryParse(rawPage?.toString() ?? '');
-    active = json['active'];
+    page = _parseInt(json['page']);
+    active = _parseBool(json['active']);
   }
 
   Map<String, dynamic> toJson() {
@@ -280,4 +322,26 @@ class ReminderMetaLink {
     json['active'] = active;
     return json;
   }
+}
+
+bool? _parseBool(dynamic value) {
+  if (value == null) return null;
+  if (value is bool) return value;
+  if (value is num) return value != 0;
+  if (value is String) {
+    final lower = value.toLowerCase();
+    if (lower == 'true' || lower == '1') return true;
+    if (lower == 'false' || lower == '0') return false;
+  }
+  return null;
+}
+
+int? _parseInt(dynamic value) {
+  if (value == null) return null;
+  if (value is int) return value;
+  if (value is double) return value.toInt();
+  if (value is String) {
+    return int.tryParse(value);
+  }
+  return null;
 }

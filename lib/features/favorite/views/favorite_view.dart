@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/favorite/controllers/favorite_controller.dart';
 import 'package:renter_pay/features/favorite/controllers/get_favorite_controller.dart';
+import 'package:renter_pay/shared/extensions/formatters/sort_formatter.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
@@ -18,7 +18,6 @@ class FavoriteView extends GetView<GetFavoriteController> {
 
   @override
   Widget build(BuildContext context) {
-    FavoriteController favoriteController = Get.find();
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Obx(() {
       return CustomContainer(
@@ -48,11 +47,14 @@ class FavoriteView extends GetView<GetFavoriteController> {
                     title: 'Favorite',
                     info:
                         ' Showing ${controller.favoriteProperties.value?.data?.data?.length ?? 0} result',
-                    option: favoriteController.sortList,
+                    option: controller.sortList,
                     onSelect: (value) {
-                      favoriteController.initialSort.value = value!;
+                      controller.initialSort.value = value!;
+                      final apiSortValue = SortFormatter.toQueryFormat(value);
+                      controller.currentPage.value = 1;
+                      controller.getFavorite(propertySort: apiSortValue);
                     },
-                    isSelect: favoriteController.initialSort,
+                    isSelect: controller.initialSort,
                   ),
                   SizedBox(height: 20.h),
                   (controller
@@ -91,24 +93,24 @@ class FavoriteView extends GetView<GetFavoriteController> {
                           ),
                         ),
                   SizedBox(height: 20.h),
-                  if (controller
-                          .favoriteProperties
-                          .value
-                          ?.data
-                          ?.data
-                          ?.isNotEmpty ??
-                      false)
-                    Obx(
-                      () => CustomPagination(
-                        list: controller.pageNumber,
-                        onTapPrev: controller.previousPage,
-                        onTapNext: controller.nextPage,
-                        onTapPage: (item) {
-                          controller.currentPage.value = item;
-                        },
-                        value: controller.currentPage.value,
-                      ),
-                    ),
+                  Obx(() {
+                    final lastPage = controller.totalPage.value;
+
+                    // Show pagination only if more than 1 page exists
+                    if (lastPage <= 1) {
+                      return SizedBox.shrink();
+                    }
+
+                    return CustomPagination(
+                      list: controller.pageNumber,
+                      onTapPrev: controller.previousPage,
+                      onTapNext: controller.nextPage,
+                      onTapPage: (item) {
+                        controller.currentPage.value = item;
+                      },
+                      value: controller.currentPage.value,
+                    );
+                  }),
                   SizedBox(height: 60.h),
                 ],
               ),

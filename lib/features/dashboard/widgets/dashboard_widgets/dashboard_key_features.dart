@@ -4,11 +4,14 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/dashboard_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/tenant_controller/inspection_request_controller.dart';
+import 'package:renter_pay/features/dashboard/repositories/get_inspections_repo.dart';
 import 'package:renter_pay/shared/widgets/custom_button/custom_primary_button.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
-class DashboardKeyFeatures extends StatelessWidget {
+class DashboardKeyFeatures extends GetWidget<DashboardController> {
   const DashboardKeyFeatures({super.key});
 
   @override
@@ -83,11 +86,32 @@ class DashboardKeyFeatures extends StatelessWidget {
             text: 'Launch AR View',
             height: 54.h,
             onPressed: () {
-              Get.toNamed(AppRoutes.vrCaptureScreen);
+              // Get.toNamed(AppRoutes.vrCaptureScreen);
+              navigator();
             },
           ),
         ],
       ),
+    );
+  }
+
+  void navigator() {
+    //  Get.toNamed(AppRoutes.vrCaptureScreen);
+    Get.toNamed(AppRoutes.inspectionRequestView);
+    controller.isItemSelect.value = 2;
+
+    if (!Get.isRegistered<GetInspectionsRepository>()) {
+      Get.lazyPut(() => GetInspectionsRepository(getNetwork: Get.find()));
+    }
+    if (!Get.isRegistered<InspectionRequestController>()) {
+      Get.lazyPut(
+        () => InspectionRequestController(getInspectionsRepository: Get.find()),
+      );
+    }
+    InspectionRequestController inspectionRequestController = Get.find();
+    inspectionRequestController.isInspectionType.value = 0;
+    inspectionRequestController.getInspectionStatus(
+      status: inspectionRequestController.isInspectionType.value,
     );
   }
 }

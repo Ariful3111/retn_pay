@@ -18,7 +18,7 @@ class RepairMaintenanceController extends GetxController {
 
   Future<void> getRepairMaintenance() async {
     isLoading.value = true;
-    final status = repairTypeIndex.value == 1 ? 'completed' : null;
+    final status = repairTypeIndex.value == 1 ? 'completed' : "in_progress";
     final response = await repairMaintenanceRepository.execute(status: status);
     isLoading.value = false;
     response.fold(
