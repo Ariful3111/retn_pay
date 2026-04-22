@@ -1,3 +1,17 @@
+import 'package:flutter/material.dart';
+
+/// Helper method for safe boolean parsing
+bool? _parseBool(dynamic value) {
+  if (value is bool) return value;
+  if (value is num) return value != 0;
+  if (value is String) {
+    final lower = value.toLowerCase();
+    if (lower == 'true' || lower == '1') return true;
+    if (lower == 'false' || lower == '0') return false;
+  }
+  return null;
+}
+
 class ProfileModel {
   bool? error;
   int? code;
@@ -41,6 +55,8 @@ class User {
   String? avatar;
   TenantProfile? tenantProfile;
   LandlordProfile? landlordProfile;
+  AgentProfile? agentProfile;
+  ServiceVendorProfile? serviceVendorProfile;
   List<UserDocument>? documents;
   String? createdAt;
   String? updatedAt;
@@ -61,13 +77,15 @@ class User {
     this.avatar,
     this.tenantProfile,
     this.landlordProfile,
+    this.agentProfile,
+    this.serviceVendorProfile,
     this.documents,
     this.createdAt,
     this.updatedAt,
   });
 
   User.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+    id = (json['id'] as num?)?.toInt();
     name = json['name']?.toString();
     firstName = json['first_name']?.toString();
     lastName = json['last_name']?.toString();
@@ -75,7 +93,7 @@ class User {
     gender = json['gender']?.toString();
     email = json['email']?.toString();
     phone = json['phone']?.toString();
-    isActive = json['is_active'];
+    isActive = _parseBool(json['is_active']);
     provider = json['provider']?.toString();
     roles = (json['roles'] as List?)
         ?.map((e) => e.toString())
@@ -88,6 +106,13 @@ class User {
         : null;
     landlordProfile = json['landlord_profile'] is Map<String, dynamic>
         ? LandlordProfile.fromJson(json['landlord_profile'])
+        : null;
+    agentProfile = json['agent_profile'] is Map<String, dynamic>
+        ? AgentProfile.fromJson(json['agent_profile'])
+        : null;
+    serviceVendorProfile =
+        json['service_vendor_profile'] is Map<String, dynamic>
+        ? ServiceVendorProfile.fromJson(json['service_vendor_profile'])
         : null;
 
     documents = (json['documents'] as List?)
@@ -119,6 +144,12 @@ class User {
     }
     if (landlordProfile != null) {
       data['landlord_profile'] = landlordProfile!.toJson();
+    }
+    if (agentProfile != null) {
+      data['agent_profile'] = agentProfile!.toJson();
+    }
+    if (serviceVendorProfile != null) {
+      data['service_vendor_profile'] = serviceVendorProfile!.toJson();
     }
     if (documents != null) {
       data['documents'] = documents!.map((v) => v.toJson()).toList();
@@ -156,7 +187,7 @@ class TenantProfile {
     employerName = json['employer_name']?.toString();
     jobTitle = json['job_title']?.toString();
     monthlyIncome = json['monthly_income']?.toString();
-    isVerified = json['is_verified'];
+    isVerified = _parseBool(json['is_verified']);
     createdAt = json['created_at']?.toString();
     updatedAt = json['updated_at']?.toString();
   }
@@ -195,7 +226,7 @@ class LandlordProfile {
   LandlordProfile.fromJson(Map<String, dynamic> json) {
     id = (json['id'] as num?)?.toInt();
     description = json['description']?.toString();
-    isVerified = json['is_verified'];
+    isVerified = _parseBool(json['is_verified']);
     createdAt = json['created_at']?.toString();
     updatedAt = json['updated_at']?.toString();
     subscription = json['subscription'] is Map<String, dynamic>
@@ -254,7 +285,7 @@ class UserSubscription {
     isTrial = json['is_trial'];
     trialEndsAt = json['trial_ends_at']?.toString();
     status = json['status']?.toString();
-    autoRenew = json['auto_renew'];
+    autoRenew = _parseBool(json['auto_renew']);
     plan = json['plan'] is Map<String, dynamic>
         ? SubscriptionPlanModel.fromJson(json['plan'])
         : null;
@@ -307,7 +338,7 @@ class SubscriptionPlanModel {
     price = json['price'] as num?;
     billingCycle = json['billing_cycle']?.toString();
     trialPeriodDays = (json['trial_period_days'] as num?)?.toInt();
-    isActive = json['is_active'];
+    isActive = _parseBool(json['is_active']);
     features = (json['features'] as List?)
         ?.whereType<Map<String, dynamic>>()
         .map((v) => SubscriptionPlanFeature.fromJson(v))
@@ -348,6 +379,138 @@ class SubscriptionPlanFeature {
     data['title'] = title;
     data['value'] = value;
     data['features'] = features;
+    return data;
+  }
+}
+
+class AgentProfile {
+  int? id;
+  String? agencyName;
+  String? abn;
+  String? reiaNumber;
+  bool? isVerified;
+  String? status;
+  String? rejectionReason;
+  String? approvedAt;
+  String? createdAt;
+  String? updatedAt;
+  UserSubscription? subscription;
+
+  AgentProfile({
+    this.id,
+    this.agencyName,
+    this.abn,
+    this.reiaNumber,
+    this.isVerified,
+    this.status,
+    this.rejectionReason,
+    this.approvedAt,
+    this.createdAt,
+    this.updatedAt,
+    this.subscription,
+  });
+
+  AgentProfile.fromJson(Map<String, dynamic> json) {
+    id = (json['id'] as num?)?.toInt();
+    agencyName = json['agency_name']?.toString();
+    abn = json['abn']?.toString();
+    reiaNumber = json['reia_number']?.toString();
+    isVerified = _parseBool(json['is_verified']);
+    status = json['status']?.toString();
+    rejectionReason = json['rejection_reason']?.toString();
+    approvedAt = json['approved_at']?.toString();
+    createdAt = json['created_at']?.toString();
+    updatedAt = json['updated_at']?.toString();
+    subscription = json['subscription'] is Map<String, dynamic>
+        ? UserSubscription.fromJson(json['subscription'])
+        : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['agency_name'] = agencyName;
+    data['abn'] = abn;
+    data['reia_number'] = reiaNumber;
+    data['is_verified'] = isVerified;
+    data['status'] = status;
+    data['rejection_reason'] = rejectionReason;
+    data['approved_at'] = approvedAt;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (subscription != null) {
+      data['subscription'] = subscription!.toJson();
+    }
+    return data;
+  }
+}
+
+class ServiceVendorProfile {
+  int? id;
+  int? userId;
+  String? businessName;
+  String? businessType;
+  String? abn;
+  String? description;
+  bool? isVerified;
+  String? status;
+  String? rejectionReason;
+  String? approvedAt;
+  String? createdAt;
+  String? updatedAt;
+  UserSubscription? subscription;
+
+  ServiceVendorProfile({
+    this.id,
+    this.userId,
+    this.businessName,
+    this.businessType,
+    this.abn,
+    this.description,
+    this.isVerified,
+    this.status,
+    this.rejectionReason,
+    this.approvedAt,
+    this.createdAt,
+    this.updatedAt,
+    this.subscription,
+  });
+
+  ServiceVendorProfile.fromJson(Map<String, dynamic> json) {
+    id = (json['id'] as num?)?.toInt();
+    userId = (json['user_id'] as num?)?.toInt();
+    businessName = json['business_name']?.toString();
+    businessType = json['business_type']?.toString();
+    abn = json['abn']?.toString();
+    description = json['description']?.toString();
+    isVerified = _parseBool(json['is_verified']);
+    status = json['status']?.toString();
+    rejectionReason = json['rejection_reason']?.toString();
+    approvedAt = json['approved_at']?.toString();
+    createdAt = json['created_at']?.toString();
+    updatedAt = json['updated_at']?.toString();
+    subscription = json['subscription'] is Map<String, dynamic>
+        ? UserSubscription.fromJson(json['subscription'])
+        : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['user_id'] = userId;
+    data['business_name'] = businessName;
+    data['business_type'] = businessType;
+    data['abn'] = abn;
+    data['description'] = description;
+    data['is_verified'] = isVerified;
+    data['status'] = status;
+    data['rejection_reason'] = rejectionReason;
+    data['approved_at'] = approvedAt;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    if (subscription != null) {
+      data['subscription'] = subscription!.toJson();
+    }
     return data;
   }
 }
@@ -399,7 +562,7 @@ class UserDocument {
     expiryDate = json['expiry_date']?.toString();
     status = json['status']?.toString();
     rejectionReason = json['rejection_reason']?.toString();
-    isVerified = json['is_verified'];
+    isVerified = _parseBool(json['is_verified']);
     verifiedAt = json['verified_at']?.toString();
     createdAt = json['created_at']?.toString();
     updatedAt = json['updated_at']?.toString();
