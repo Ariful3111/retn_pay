@@ -28,9 +28,10 @@ class CustomTableExpanded extends StatelessWidget {
                 padding: EdgeInsets.only(top: 12.h, left: 12.w, right: 12.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+
                   children: [
                     Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Expanded(
                           child: CustomTextPrimary(

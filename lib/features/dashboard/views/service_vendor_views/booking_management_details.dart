@@ -128,7 +128,7 @@ class BookingManagementDetails
               children: [
                 CustomPrimaryButton(
                   onPressed: () {
-                    // TODO: Implement accept booking
+                    
                   },
                   height: 40.h,
                   width: 100.w,
@@ -138,7 +138,7 @@ class BookingManagementDetails
                 SizedBox(width: 12.w),
                 CustomSecondaryButton(
                   onPressed: () {
-                    // TODO: Implement reject booking
+                   
                   },
                   height: 40.h,
                   width: 100.w,
