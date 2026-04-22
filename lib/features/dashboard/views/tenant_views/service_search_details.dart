@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/features/dashboard/controllers/service_details_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/service_search_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_details_commit.dart';
@@ -57,7 +58,7 @@ class ServiceSearchDetails extends GetView<ServiceDetailsController> {
                       serviceSearchController.isShowInfo.value =
                           !serviceSearchController.isShowInfo.value;
                     },
-                    bookButton: true,
+                    bookButton: userIndex == 3 ? false : true,
                     controller: controller,
                   ),
                   SizedBox(height: 20.h),
@@ -68,7 +69,7 @@ class ServiceSearchDetails extends GetView<ServiceDetailsController> {
                   ),
                   ServiceDetailsCommit(),
                   SizedBox(height: 20.h),
-                  ServiceRequestForm(),
+                  userIndex == 3 ? SizedBox() : ServiceRequestForm(),
                 ],
               ),
       );
