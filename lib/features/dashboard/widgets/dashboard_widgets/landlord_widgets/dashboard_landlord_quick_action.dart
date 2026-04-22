@@ -22,6 +22,7 @@ class DashboardLandlordQuickAction extends GetWidget<DashboardController> {
           title: 'Calendar Access',
           subTitle: 'Stay on top of rent due dates, inspections, and events.',
           onTap: () {
+            controller.isItemSelect.value = 7;
             Get.find<MainHomeController>().selectIndex.value = 3;
           },
           buttonText: 'Open Calendar',
@@ -60,7 +61,12 @@ class DashboardLandlordQuickAction extends GetWidget<DashboardController> {
             title: 'Service Management',
             subTitle:
                 'Organize, track, and complete your services efficiently in one place.',
-            onTap: () {},
+            onTap: () {
+              
+                controller.isItemSelect.value = 1;
+                Get.toNamed(AppRoutes.serviceManagementView);
+              
+            },
             buttonText: 'View Service',
           ),
         if (userIndex != 3)
@@ -74,7 +80,7 @@ class DashboardLandlordQuickAction extends GetWidget<DashboardController> {
             },
             buttonText: 'View Schedule ',
           ),
-        DashboardLandlordQuickActionModel(
+       if (userIndex != 3) DashboardLandlordQuickActionModel(
           icon: IconsPath.dashboardLandlordVirtual,
           title: 'Virtual Tour Request',
           subTitle: 'Quickly view the request for virtual tour',
