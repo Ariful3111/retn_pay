@@ -15,7 +15,11 @@ class SubmitRatingDialog extends StatelessWidget {
   final Widget? buttonSpace;
   final VoidCallback onTap;
   final bool writeReview;
+  final int? maxLines;
+  final double? height;
+  final double? fieldHeight;
   final TextEditingController? controller;
+  final bool? isAlignLabelWithHint;
   const SubmitRatingDialog({
     super.key,
     required this.rating,
@@ -26,6 +30,10 @@ class SubmitRatingDialog extends StatelessWidget {
     required this.onTap,
     required this.writeReview,
     this.controller,
+    this.maxLines,
+    this.height,
+    this.fieldHeight,
+    this.isAlignLabelWithHint,
   });
 
   @override
@@ -33,7 +41,7 @@ class SubmitRatingDialog extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return SuccessDialog(
       isBG: false,
-      height: 220.h,
+      height: height ?? 220.h,
       width: 380.w,
       widget: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,21 +59,32 @@ class SubmitRatingDialog extends StatelessWidget {
           CustomTextSecondary(
             text: 'Leave a Remark',
             fontSize: 12.sp,
-            fontWeight: FontWeight.w400,        
+            fontWeight: FontWeight.w400,
           ),
           SizedBox(height: 8.h),
           writeReview
               ? SizedBox(
-                  height: 44.h,
+                  height: fieldHeight ?? 44.h,
                   child: CustomTextField(
                     controller: controller!,
                     labelText: 'Write Your Review',
+                    maxLines: maxLines,
                     floatingLabelBehavior: FloatingLabelBehavior.never,
                     padding: EdgeInsets.zero,
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(6.54.r),borderSide: BorderSide.none),
-                    enableBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(6.54.r),borderSide: BorderSide.none),
-                    focusBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(6.54.r),borderSide: BorderSide.none),
-                    fillColor: isDark?AppColors.darkSecondary:null,
+                    isAlignLabelWithHint: isAlignLabelWithHint,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6.54.r),
+                      borderSide: BorderSide.none,
+                    ),
+                    enableBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6.54.r),
+                      borderSide: BorderSide.none,
+                    ),
+                    focusBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(6.54.r),
+                      borderSide: BorderSide.none,
+                    ),
+                    fillColor: isDark ? AppColors.darkSecondary : null,
                   ),
                 )
               : Expanded(
