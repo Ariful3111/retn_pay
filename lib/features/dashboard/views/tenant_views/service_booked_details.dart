@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/service_details_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/services_vendor_controller/update_booking_status_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/service_search_controller.dart';
 import 'package:renter_pay/features/dashboard/models/booking_list_model.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_complete.dart';
@@ -36,6 +37,7 @@ class ServiceBookedDetails extends GetView<ServiceDetailsController> {
     }
 
     return Obx(() {
+      final updateStatusController = Get.find<UpdateServiceStatusController>();
       return CustomContainer(
         padding: EdgeInsets.all(20.r),
         gradient: isDark
@@ -88,7 +90,9 @@ class ServiceBookedDetails extends GetView<ServiceDetailsController> {
                   // Only show ServiceBookedComplete when bookingItem exists and status is NOT completed
                   if (bookingItem != null &&
                       bookingItem.status?.toLowerCase() != 'completed')
-                    ServiceBookedComplete(),
+                    updateStatusController.isLoading.value
+                        ? ButtonLoading()
+                        : ServiceBookedComplete(bookingItem: bookingItem),
                 ],
               ),
       );
