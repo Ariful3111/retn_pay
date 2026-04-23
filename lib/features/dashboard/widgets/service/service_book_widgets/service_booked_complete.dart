@@ -24,7 +24,12 @@ class ServiceBookedComplete extends StatelessWidget {
             context: context,
             builder: (context) {
               return SubmitRatingDialog(
+                height: 300.h,
+                fieldHeight: 125.h,
+                maxLines: 5,
+                isAlignLabelWithHint: true,
                 rating: CustomRatingBuilder(
+                  itemSize: 20.sp,
                   onRating: (value) {
                     serviceBookedDetailsController.rating.value = value;
                   },
