@@ -26,7 +26,8 @@ class LandlordRepairMaintenanceController extends GetxController {
   final scrollController = ScrollController();
   bool _isLoadingMore = false;
 
-  String get _status => repairTypeIndex.value == 1 ? 'completed' : '';
+  String get _status =>
+      repairTypeIndex.value == 1 ? 'completed' : 'in_progress';
 
   @override
   void onInit() {
