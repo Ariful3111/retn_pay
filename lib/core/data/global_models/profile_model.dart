@@ -1,3 +1,4 @@
+
 /// Helper method for safe boolean parsing
 bool? _parseBool(dynamic value) {
   if (value is bool) return value;

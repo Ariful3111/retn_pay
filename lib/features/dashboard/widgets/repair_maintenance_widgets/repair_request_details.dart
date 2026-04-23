@@ -21,51 +21,65 @@ class RepairRequestDetails extends GetWidget<RepairRequestController> {
       final data = controller.details.value?.data;
       final status = data?.status?.capitalizeFirst ?? '';
       return Container(
-        height: MediaQuery.heightOf(context),
         width: MediaQuery.widthOf(context),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12.r),
-          color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
-        ),
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12.r)),
         child: controller.isLoading.value
             ? Center(child: ButtonLoading())
             : Stack(
                 children: [
                   ListView(
-                    padding: EdgeInsets.symmetric(
-                      vertical: 32.h,
-                      horizontal: 20.w,
-                    ),
+                    padding: EdgeInsets.zero,
                     children: [
-                      RepairRequestInfo(data: data),
-                      SizedBox(height: 24.h),
-                      CustomTextPrimary(
-                        text: 'Repair Request Details:',
-                        fontSize: 20.sp,
-                        color: AppColors.primaryColorDark,
-                      ),
-                      SizedBox(height: 12.h),
-                      CustomTextSpan(
-                        title: 'Urgency: ',
-                        spantext: data?.urgency ?? '',
-                        spanColor: AppColors.primaryColorDark,
-                        fontSize: 20.sp,
-                        spanFontSize: 16.sp,
-                      ),
-                      SizedBox(height: 16.h),
-                      repairRequestField(
-                        title: 'Issue Title ',
-                        subTitle: data?.title ?? '',
-                      ),
-                      SizedBox(height: 16.h),
-                      repairRequestField(
-                        title: 'Issue Details',
-                        subTitle: data?.description ?? '',
-                      ),
-                      SizedBox(height: 16.h),
-                      RepairRequestImages(
-                        images: data?.images ?? const [],
-                        status: status,
+                      Container(
+                        decoration: BoxDecoration(
+                          color: isDark
+                              ? AppColors.darkSecondary
+                              : AppColors.whiteColor,
+                          borderRadius: BorderRadius.circular(12.r),
+                        ),
+                        padding: EdgeInsets.only(
+                          top: 60.h,
+                          bottom: 20.h,
+                          left: 20.w,
+                          right: 20.w,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            RepairRequestInfo(data: data),
+                            SizedBox(height: 24.h),
+                            CustomTextPrimary(
+                              text: 'Repair Request Details:',
+                              fontSize: 20.sp,
+                              color: AppColors.primaryColorDark,
+                            ),
+                            SizedBox(height: 12.h),
+                            CustomTextSpan(
+                              title: 'Urgency: ',
+                              spantext: data?.urgency ?? '',
+                              spanColor: AppColors.primaryColorDark,
+                              fontSize: 20.sp,
+                              spanFontSize: 16.sp,
+                            ),
+                            SizedBox(height: 16.h),
+                            repairRequestField(
+                              title: 'Issue Title ',
+                              subTitle: data?.title ?? '',
+                            ),
+                            SizedBox(height: 16.h),
+                            repairRequestField(
+                              title: 'Issue Details',
+                              subTitle: data?.description ?? '',
+                            ),
+                            SizedBox(height: 16.h),
+                            RepairRequestImages(
+                              images: data?.images ?? const [],
+                              status: status,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

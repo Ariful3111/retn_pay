@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:renter_pay/core/constants/static_datas.dart';
 import 'package:renter_pay/core/data/global_models/profile_model.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/features/profile/repositories/profile_edit_repo.dart';
@@ -30,10 +31,38 @@ class ProfileEditController extends GetxController {
   void onInit() {
     super.onInit();
     ProfileModel? userProfile = Get.find<ProfileController>().profileData.value;
-    nameController.text = userProfile?.data?.firstName ?? '';
-    lastNameController.text = userProfile?.data?.lastName ?? '';
-    emailController.text = userProfile?.data?.email ?? '';
-    phoneController.text = userProfile?.data?.phone ?? '';
+    final user = userProfile?.data;
+
+    // Common fields for all users
+    nameController.text = user?.firstName ?? '';
+    lastNameController.text = user?.lastName ?? '';
+    emailController.text = user?.email ?? '';
+    phoneController.text = user?.phone ?? '';
+    passwordController.text =
+        ''; // Password should always be empty for security
+
+    // Role-specific fields
+    switch (userIndex) {
+      case 3: // Service Vendor
+        final vendorProfile = user?.serviceVendorProfile;
+        businessNameController.text = vendorProfile?.businessName ?? '';
+        businessTypeController.text = vendorProfile?.businessType ?? '';
+        businessLicenseController.text = vendorProfile?.abn ?? '';
+        break;
+
+      case 2: // Agent
+        final agentProfile = user?.agentProfile;
+        businessNameController.text = agentProfile?.agencyName ?? '';
+        businessTypeController.text = ''; // Agent doesn't have businessType
+        businessLicenseController.text = agentProfile?.abn ?? '';
+        break;
+
+      default: // Landlord or Tenant
+        businessNameController.text = '';
+        businessTypeController.text = '';
+        businessLicenseController.text = '';
+        break;
+    }
   }
 
   Future<void> updateProfile() async {

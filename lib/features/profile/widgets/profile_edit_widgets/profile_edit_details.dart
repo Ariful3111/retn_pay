@@ -67,17 +67,17 @@ class ProfileEditDetails extends StatelessWidget {
                     readOnly: profileEditController.isEdit.value ? false : true,
                   ),
                   SizedBox(height: 16.h),
-                  ProfileEditField(
-                    controller: profileEditController.emailController,
-                    labelText: 'Email',
-                    readOnly: profileEditController.isEdit.value ? false : true,
-                  ),
-                  SizedBox(height: 16.h),
-                  ProfileEditField(
-                    controller: profileEditController.phoneController,
-                    labelText: 'Phone',
-                    readOnly: profileEditController.isEdit.value ? false : true,
-                  ),
+                  // ProfileEditField(
+                  //   controller: profileEditController.emailController,
+                  //   labelText: 'Email',
+                  //   readOnly: profileEditController.isEdit.value ? false : true,
+                  // ),
+                  // SizedBox(height: 16.h),
+                  // ProfileEditField(
+                  //   controller: profileEditController.phoneController,
+                  //   labelText: 'Phone',
+                  //   readOnly: profileEditController.isEdit.value ? false : true,
+                  // ),
                   if (userIndex == 3)
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,8 +117,8 @@ class ProfileEditDetails extends StatelessWidget {
                           duration: Duration(milliseconds: 300),
                           child: profileEditController.isEdit.value
                               ? Padding(
-                                padding: EdgeInsets.only(top: 20.h),
-                                child: ProfileSaveButton(
+                                  padding: EdgeInsets.only(top: 20.h),
+                                  child: ProfileSaveButton(
                                     onPressed: () async {
                                       if (profileEditController.isEdit.value) {
                                         await profileEditController
@@ -126,7 +126,7 @@ class ProfileEditDetails extends StatelessWidget {
                                       }
                                     },
                                   ),
-                              )
+                                )
                               : SizedBox(),
                         ),
                 ],
