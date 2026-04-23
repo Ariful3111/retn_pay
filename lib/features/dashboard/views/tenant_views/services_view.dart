@@ -6,7 +6,6 @@ import 'package:renter_pay/features/dashboard/controllers/service_list_controlle
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/service_booked_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/services_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
-import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_filter.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_table.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_type.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_dropdown_menu.dart';
@@ -76,8 +75,8 @@ class ServicesView extends StatelessWidget {
                         children: [
                           SizedBox(height: 16.h),
                           ServiceBookedType(),
-                          SizedBox(height: 12.h),
-                          ServiceBookedFilter(),
+                          // SizedBox(height: 12.h),
+                          // ServiceBookedFilter(),
                           SizedBox(height: 20.h),
                           ServiceBookedTable(),
                         ],
