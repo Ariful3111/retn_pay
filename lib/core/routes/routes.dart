@@ -258,6 +258,7 @@ final List<GetPage> appRoutes = [
       ServiceBookedBindings(),
       ServiceBookedDetailsBindings(),
       ServiceSearchBindings(),
+      ServicesBindings(),
     ],
   ),
   GetPage(

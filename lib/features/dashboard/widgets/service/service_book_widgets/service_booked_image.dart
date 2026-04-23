@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/service_booked_details_controller.dart';
-import 'package:renter_pay/features/dashboard/models/service_vendor_models/booking_model.dart';
+import 'package:renter_pay/features/dashboard/models/booking_list_model.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_book_info.dart';
 import 'package:renter_pay/shared/widgets/custom_attach_image/custom_attach_image_view.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';

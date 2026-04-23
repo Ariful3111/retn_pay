@@ -5,6 +5,8 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/features/dashboard/controllers/services_vendor_controller/booking_management_details_controller.dart';
+import 'package:renter_pay/features/dashboard/models/booking_list_model.dart'
+    as booking_list;
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_request.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
@@ -117,7 +119,9 @@ class BookingManagementDetails
                   ),
                   SizedBox(height: 20.h),
                   // Booking Request Details
-                  ServiceBookedRequest(bookingItem: booking),
+                  ServiceBookedRequest(
+                    bookingItem: booking as booking_list.BookingItem?,
+                  ),
                 ],
               ),
             ),
@@ -127,9 +131,7 @@ class BookingManagementDetails
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomPrimaryButton(
-                  onPressed: () {
-                    
-                  },
+                  onPressed: () {},
                   height: 40.h,
                   width: 100.w,
                   text: 'Accept',
@@ -137,9 +139,7 @@ class BookingManagementDetails
                 ),
                 SizedBox(width: 12.w),
                 CustomSecondaryButton(
-                  onPressed: () {
-                   
-                  },
+                  onPressed: () {},
                   height: 40.h,
                   width: 100.w,
                   text: 'Reject',
