@@ -32,7 +32,7 @@ class ServicesView extends StatelessWidget {
           : AppColors.userBackground,
       child: Obx(
         () => CustomScrollView(
-          controller: servicesController.selectedServiceType.value == 'Search'
+          controller: servicesController.selectedServiceType.value == 'Services'
               ? serviceListController.scrollController
               : serviceBookedController.scrollController,
           slivers: [
@@ -46,7 +46,7 @@ class ServicesView extends StatelessWidget {
                     child: DrawerItemsAppbar(
                       title:
                           servicesController.selectedServiceType.value ==
-                              'Search'
+                              'Services'
                           ? 'Services'
                           : 'Booked Services',
                     ),
@@ -60,9 +60,10 @@ class ServicesView extends StatelessWidget {
                 duration: Duration(milliseconds: 300),
                 switchInCurve: Curves.linear,
                 switchOutCurve: Curves.linear,
-                child: servicesController.selectedServiceType.value == 'Search'
+                child:
+                    servicesController.selectedServiceType.value == 'Services'
                     ? Column(
-                        key: ValueKey('Search'),
+                        key: ValueKey('Services'),
                         children: [
                           SizedBox(height: 16.h),
                           ServicesSearch(),
