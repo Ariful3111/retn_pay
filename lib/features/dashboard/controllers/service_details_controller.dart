@@ -11,6 +11,7 @@ class ServiceDetailsController extends GetxController {
   RxBool isLoading = true.obs;
 
   Future<void> getServiceDetails({required int serviceTypeID}) async {
+    isLoading.value = true;
     final response = await serviceDetailsRepository.execute(
       serviceTypeID: serviceTypeID,
     );
@@ -28,7 +29,24 @@ class ServiceDetailsController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    final serviceTypeID = Get.arguments as int;
+    final args = Get.arguments;
+
+    // Handle both int and Map arguments
+    int? serviceTypeID;
+
+    if (args is int) {
+      serviceTypeID = args;
+    } else if (args is Map && args['serviceTypeID'] is int) {
+      serviceTypeID = args['serviceTypeID'] as int;
+    }
+
+    // Validate serviceTypeID
+    if (serviceTypeID == null || serviceTypeID <= 0) {
+      isLoading.value = false;
+      ErrorSnackbar.show(description: 'Invalid service ID');
+      return;
+    }
+
     getServiceDetails(serviceTypeID: serviceTypeID);
   }
 }

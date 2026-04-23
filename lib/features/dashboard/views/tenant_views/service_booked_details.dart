@@ -24,11 +24,15 @@ class ServiceBookedDetails extends GetView<ServiceDetailsController> {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     ServiceSearchController serviceSearchController = Get.find();
 
-    // Get bookingItem from arguments if available
+    // Extract both serviceTypeID and bookingItem from Map arguments
     final args = Get.arguments;
     BookingItem? bookingItem;
-    if (args != null && args is BookingItem) {
-      bookingItem = args;
+
+    if (args is Map) {
+      final bookingArg = args['bookingItem'];
+      if (bookingArg != null && bookingArg is BookingItem) {
+        bookingItem = bookingArg;
+      }
     }
 
     return Obx(() {

@@ -4,18 +4,31 @@ import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
+import 'package:renter_pay/features/dashboard/models/booking_list_model.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class ServiceBookedTableAction extends StatelessWidget {
   final int serviceTypeID;
-  const ServiceBookedTableAction({super.key, required this.serviceTypeID});
+  final BookingItem? bookingItem;
+  const ServiceBookedTableAction({
+    super.key,
+    required this.serviceTypeID,
+    this.bookingItem,
+  });
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: () {
-        Get.toNamed(AppRoutes.serviceBookedDetails, arguments: serviceTypeID);
+        // Pass both serviceTypeID and bookingItem as Map
+        Get.toNamed(
+          AppRoutes.serviceBookedDetails,
+          arguments: {
+            'serviceTypeID': serviceTypeID,
+            'bookingItem': bookingItem,
+          },
+        );
       },
       child: Container(
         height: 34.h,

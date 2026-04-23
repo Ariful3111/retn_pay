@@ -35,7 +35,10 @@ class ServiceBookedTableContent extends StatelessWidget {
         SizedBox(height: 8.h),
         infoText(title: "Action"),
         SizedBox(height: 8.h),
-        ServiceBookedTableAction(serviceTypeID: item?.serviceId ?? 0),
+        ServiceBookedTableAction(
+          serviceTypeID: item?.serviceId ?? 0,
+          bookingItem: item,
+        ),
         SizedBox(height: 12.h),
       ],
     );
