@@ -30,7 +30,8 @@ class CustomTableCalender extends StatelessWidget {
     this.onRangeSelected,
     this.onDaySelected,
     this.onFormatChanged,
-    this.onPageChanged,  required this.selectDay,
+    this.onPageChanged,
+    required this.selectDay,
   });
 
   @override
@@ -40,8 +41,8 @@ class CustomTableCalender extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constrains) {
         double totalHeight = constrains.maxHeight;
-        double headerHeight = 65.h;
-        double weekBarHeight = 26.h;
+        double headerHeight = 70.h;
+        double weekBarHeight = 30.h;
         double remainingHeight = totalHeight - headerHeight - weekBarHeight;
         double rowHeight = remainingHeight / 6;
         return Container(
@@ -72,15 +73,14 @@ class CustomTableCalender extends StatelessWidget {
               onFormatChanged: onFormatChanged,
               rowHeight: rowHeight,
               daysOfWeekHeight: weekBarHeight,
-              selectedDayPredicate: (day) =>
-                  isSameDay(day, selectDay),
+              selectedDayPredicate: (day) => isSameDay(day, selectDay),
               headerStyle: HeaderStyle(
                 titleCentered: true,
                 formatButtonVisible: false,
                 headerMargin: EdgeInsets.zero,
                 headerPadding: EdgeInsets.zero,
                 titleTextStyle: textDecoration(
-                  fontSize: 13.sp,
+                  fontSize: 16.sp,
                   color: isDark ? AppColors.darkAppBar : null,
                 ),
                 leftChevronIcon: icon(
@@ -95,16 +95,20 @@ class CustomTableCalender extends StatelessWidget {
               sixWeekMonthsEnforced: false,
               daysOfWeekVisible: true,
               calendarStyle: CalendarStyle(
-                cellMargin: EdgeInsets.all(3.r),
-                selectedTextStyle: textDecoration(color:isDark?AppColors.darkPrimary :AppColors.whiteColor),
-                selectedDecoration: BoxDecoration(gradient: AppColors.primaryColor,shape: BoxShape.circle),
+                cellMargin: EdgeInsets.all(2.r),
+                selectedTextStyle: textDecoration(
+                  color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+                ),
+                selectedDecoration: BoxDecoration(
+                  gradient: AppColors.primaryColor,
+                  shape: BoxShape.circle,
+                ),
                 defaultTextStyle: textDecoration(
                   color: isDark ? AppColors.darkAppBar : null,
                 ),
-                todayTextStyle: textDecoration(color: AppColors.borderColor,),
+                todayTextStyle: textDecoration(color: AppColors.borderColor),
                 outsideTextStyle: textDecoration(
                   color: isDark ? AppColors.borderColor : Color(0xFF525E6F),
-                  
                 ),
                 weekendTextStyle: textDecoration(
                   color: isDark ? AppColors.darkAppBar : null,
@@ -129,11 +133,11 @@ class CustomTableCalender extends StatelessWidget {
               ),
               daysOfWeekStyle: DaysOfWeekStyle(
                 weekendStyle: textDecoration(
-                  fontSize: 8.35.sp,
+                  fontSize: 12.sp,
                   color: isDark ? AppColors.borderColor : Color(0xFF525E6F),
                 ),
                 weekdayStyle: textDecoration(
-                  fontSize: 8.35.sp,
+                  fontSize: 12.sp,
                   color: isDark ? AppColors.borderColor : Color(0xFF525E6F),
                 ),
                 dowTextFormatter: (date, locale) {
@@ -173,7 +177,7 @@ class CustomTableCalender extends StatelessWidget {
 
   textDecoration({double? fontSize, FontWeight? fontWeight, Color? color}) {
     return GoogleFonts.inter(
-      fontSize: fontSize ?? 11.69.sp,
+      fontSize: fontSize ?? 14.sp,
       fontWeight: fontWeight ?? FontWeight.w500,
       color: color ?? Color(0xFF051B44),
     );

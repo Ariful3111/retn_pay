@@ -6,7 +6,7 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart
 class SelectDay extends StatelessWidget {
   final int isDay;
   final Function(int index) onTap;
-  const SelectDay({super.key, required this.isDay, required this.onTap,});
+  const SelectDay({super.key, required this.isDay, required this.onTap});
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
@@ -19,58 +19,55 @@ class SelectDay extends StatelessWidget {
       'This Year',
       'Custom Range',
     ];
-      return Container(
-        padding: EdgeInsets.symmetric(vertical: 7.08.h, horizontal: 9.44.w),
-        width: 90.w,
-        height: 165.h,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(7.08.r),
-          color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
-          border: Border.all(
-            width: 0.69.r,
-            color: isDark
-                ? AppColors.darkBorderPrimary
-                : AppColors.whiteLightBorder,
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 7.08.h, horizontal: 6.w),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(7.08.r),
+        color: isDark ? AppColors.darkPrimary : AppColors.whiteColor,
+        border: Border.all(
+          width: 0.69.r,
+          color: isDark
+              ? AppColors.darkBorderPrimary
+              : AppColors.whiteLightBorder,
+        ),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, 4.72),
+            blurRadius: 16.52,
+            color: AppColors.dropShadowColor.withValues(alpha: 0.10),
           ),
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(0, 4.72),
-              blurRadius: 16.52,
-              color: AppColors.dropShadowColor.withValues(alpha: 0.10),
-            ),
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: List.generate(dateList.length, (index) {
-            final selected = isDay == index;
-            return GestureDetector(
-              onTap: () => onTap(index),
-              child: Container(
-                margin: EdgeInsets.only(bottom: index == dateList.length-1 ? 0 : 2.36.h,),
-                padding: EdgeInsets.symmetric(
-                  vertical: 2.36.h,
-                  horizontal: 4.72.w,
-                ),
-                decoration: BoxDecoration(
-                  gradient: selected ? AppColors.primaryColor : null,
-                  borderRadius: BorderRadius.circular(selected ? 4.72.r : 0.r),
-                ),
-                child: CustomTextSecondary(
-                  text: dateList[index],
-                  fontSize: 9.44.sp,
-                  color: selected
-                      ? AppColors.whiteColor
-                      : isDark
-                      ? AppColors.darkAppBar
-                      : AppColors.darkContainer,
-                      textOverflow: TextOverflow.ellipsis,
-                ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: List.generate(dateList.length, (index) {
+          final selected = isDay == index;
+          return GestureDetector(
+            onTap: () => onTap(index),
+            child: Container(
+              margin: EdgeInsets.only(
+                bottom: index == dateList.length - 1 ? 0 : 8.h,
               ),
-            );
-          }),
-        ),
-      );
+              padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 12.w),
+              decoration: BoxDecoration(
+                gradient: selected ? AppColors.primaryColor : null,
+                borderRadius: BorderRadius.circular(selected ? 4.72.r : 0.r),
+              ),
+              child: CustomTextSecondary(
+                text: dateList[index],
+                fontSize: 12.sp,
+                color: selected
+                    ? AppColors.whiteColor
+                    : isDark
+                    ? AppColors.darkAppBar
+                    : AppColors.darkContainer,
+                textOverflow: TextOverflow.ellipsis,
+              ),
+            ),
+          );
+        }),
+      ),
+    );
   }
 }
