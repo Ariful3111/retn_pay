@@ -13,30 +13,31 @@ class ServiceBookedTableContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ServiceBookedController serviceBookedController = Get.find();
-    final item = serviceBookedController.bookings.value?.data?.data?[rowIndex];
+    // Use items list (flat list) instead of bookings.value?.data?.data
+    final item = serviceBookedController.items[rowIndex];
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 8.h),
         infoText(
-          title:
-              "Service Provider Contact: ${item?.vendor?.businessName ?? ''}",
+          title: "Service Provider Contact: ${item.vendor?.businessName ?? ''}",
         ),
         SizedBox(height: 8.h),
-        infoText(title: "Scheduled: ${item?.scheduledAt ?? ''}"),
+        infoText(title: "Scheduled: ${item.scheduledAt ?? ''}"),
         SizedBox(height: 8.h),
         Row(
           children: [
             infoText(title: "Status"),
             SizedBox(width: 8.w),
-            TableStatus(status: item?.status ?? ''),
+            TableStatus(status: item.status ?? ''),
           ],
         ),
         SizedBox(height: 8.h),
         infoText(title: "Action"),
         SizedBox(height: 8.h),
         ServiceBookedTableAction(
-          serviceTypeID: item?.serviceId ?? 0,
+          serviceTypeID: item.serviceId ?? 0,
           bookingItem: item,
         ),
         SizedBox(height: 12.h),

@@ -24,13 +24,13 @@ class ServiceBookedDetails extends GetView<ServiceDetailsController> {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     ServiceSearchController serviceSearchController = Get.find();
 
-    // Extract both serviceTypeID and bookingItem from Map arguments
+    // Extract bookingItem from Map arguments (for user/property/schedule data)
     final args = Get.arguments;
     BookingItem? bookingItem;
 
     if (args is Map) {
       final bookingArg = args['bookingItem'];
-      if (bookingArg != null && bookingArg is BookingItem) {
+      if (bookingArg is BookingItem) {
         bookingItem = bookingArg;
       }
     }
@@ -82,9 +82,13 @@ class ServiceBookedDetails extends GetView<ServiceDetailsController> {
                   ),
                   ServiceDetailsCommit(),
                   SizedBox(height: 20.h),
+                  // ServiceBookedRequest uses BookingItem for user/property data
                   ServiceBookedRequest(bookingItem: bookingItem),
                   SizedBox(height: 20.h),
-                  ServiceBookedComplete(),
+                  // Only show ServiceBookedComplete when bookingItem exists and status is NOT completed
+                  if (bookingItem != null &&
+                      bookingItem.status?.toLowerCase() != 'completed')
+                    ServiceBookedComplete(),
                 ],
               ),
       );

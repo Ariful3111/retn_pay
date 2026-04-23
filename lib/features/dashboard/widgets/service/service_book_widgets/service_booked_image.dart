@@ -32,21 +32,32 @@ class ServiceBookedImage extends StatelessWidget with ServiceBookInfo {
           title: 'Problem Details:',
           data: bookingItem?.service?.description ?? 'No details provided',
         ),
-        CustomTextSecondary(text: 'Attached Photos'),
-        SizedBox(height: 4.h),
-        Row(
-          children: [
-            CustomAttachImageView(
-              height: 108.h,
-              width: 108.w,
-              padding: 8.w,
-              radius: 10.r,
-              sizeHeight: 108.h,
-              imageList: serviceBookedDetailsController.imageList,
-            ),
-          ],
-        ),
-        SizedBox(height: 24.h),
+        // Only show Attached Photos section when photos exist
+        Obx(() {
+          final images = serviceBookedDetailsController.imageList;
+          if (images.isEmpty) return const SizedBox.shrink();
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomTextSecondary(text: 'Attached Photos'),
+              SizedBox(height: 4.h),
+              Row(
+                children: [
+                  CustomAttachImageView(
+                    height: 108.h,
+                    width: 108.w,
+                    padding: 8.w,
+                    radius: 10.r,
+                    sizeHeight: 108.h,
+                    imageList: images,
+                  ),
+                ],
+              ),
+              SizedBox(height: 24.h),
+            ],
+          );
+        }),
+
         CustomTextSecondary(
           text: 'Preferred Time of Service',
           color: isDark ? AppColors.whiteColor : AppColors.darkTextColor,

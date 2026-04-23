@@ -45,6 +45,7 @@ class ServiceBookedTable extends GetWidget<ServiceBookedController> {
         TableStatus(status: item.status ?? ''),
         ServiceBookedTableAction(
           serviceTypeID: item.service?.serviceTypeId ?? 0,
+          bookingItem: item,
         ),
       ];
     });

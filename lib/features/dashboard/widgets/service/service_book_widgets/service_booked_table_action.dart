@@ -21,7 +21,6 @@ class ServiceBookedTableAction extends StatelessWidget {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     return GestureDetector(
       onTap: () {
-        // Pass both serviceTypeID and bookingItem as Map
         Get.toNamed(
           AppRoutes.serviceBookedDetails,
           arguments: {
