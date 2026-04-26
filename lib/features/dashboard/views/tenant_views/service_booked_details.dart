@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/service_details_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/services_vendor_controller/update_booking_status_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/service_search_controller.dart';
 import 'package:renter_pay/features/dashboard/models/booking_list_model.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_complete.dart';
@@ -24,14 +25,19 @@ class ServiceBookedDetails extends GetView<ServiceDetailsController> {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
     ServiceSearchController serviceSearchController = Get.find();
 
-    // Get bookingItem from arguments if available
+    // Extract bookingItem from Map arguments (for user/property/schedule data)
     final args = Get.arguments;
     BookingItem? bookingItem;
-    if (args != null && args is BookingItem) {
-      bookingItem = args;
+
+    if (args is Map) {
+      final bookingArg = args['bookingItem'];
+      if (bookingArg is BookingItem) {
+        bookingItem = bookingArg;
+      }
     }
 
     return Obx(() {
+      final updateStatusController = Get.find<UpdateServiceStatusController>();
       return CustomContainer(
         padding: EdgeInsets.all(20.r),
         gradient: isDark
@@ -78,9 +84,15 @@ class ServiceBookedDetails extends GetView<ServiceDetailsController> {
                   ),
                   ServiceDetailsCommit(),
                   SizedBox(height: 20.h),
+                  // ServiceBookedRequest uses BookingItem for user/property data
                   ServiceBookedRequest(bookingItem: bookingItem),
                   SizedBox(height: 20.h),
-                  ServiceBookedComplete(),
+                  // Only show ServiceBookedComplete when bookingItem exists and status is NOT completed
+                  if (bookingItem != null &&
+                      bookingItem.status?.toLowerCase() != 'completed')
+                    updateStatusController.isLoading.value
+                        ? ButtonLoading()
+                        : ServiceBookedComplete(bookingItem: bookingItem),
                 ],
               ),
       );

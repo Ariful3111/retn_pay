@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -17,6 +19,9 @@ class LandlordCalenderController extends GetxController {
   final selectedDay = DateTime.now().obs;
   final _monthLabelFormatter = DateFormat('MMMM, yyyy');
   final _apiDateFormatter = DateFormat('yyyy-MM-dd');
+  Timer? _debounce;
+  VoidCallback? _onSearchChanged;
+  int _requestId = 0;
 
   String get selectedMonthLabel {
     if (rangeStart.value != null && rangeEnd.value != null) {
@@ -51,7 +56,11 @@ class LandlordCalenderController extends GetxController {
   void applyFilter() {
     final start = DateUtils.dateOnly(rangeStart.value ?? selectedDay.value);
     final end = DateUtils.dateOnly(rangeEnd.value ?? start);
-    getCalender(startDate: _formatApiDate(start), endDate: _formatApiDate(end));
+    getCalender(
+      startDate: _formatApiDate(start),
+      endDate: _formatApiDate(end),
+      search: searchController.text.trim(),
+    );
   }
 
   late DateTime firstDay;
@@ -67,6 +76,23 @@ class LandlordCalenderController extends GetxController {
     lastDay = DateTime(today.year + 1, today.month, today.day);
     super.onInit();
     applyFilter();
+    _onSearchChanged = () {
+      if (isClosed) return;
+      _debounce?.cancel();
+      _debounce = Timer(const Duration(milliseconds: 500), applyFilter);
+    };
+    searchController.addListener(_onSearchChanged!);
+  }
+
+  @override
+  void onClose() {
+    _debounce?.cancel();
+    final listener = _onSearchChanged;
+    if (listener != null) {
+      searchController.removeListener(listener);
+    }
+    searchController.dispose();
+    super.onClose();
   }
 
   void onDaySelected(DateTime day, DateTime focused) {
@@ -80,21 +106,30 @@ class LandlordCalenderController extends GetxController {
   Future<void> getCalender({
     required String startDate,
     required String endDate,
+    String search = "",
   }) async {
+    final currentId = ++_requestId;
     isLoading.value = true;
-    final response = await calenderRepository.execute(
-      startDate: startDate,
-      endDate: endDate,
-    );
-    response.fold(
-      (error) {
-        ErrorSnackbar.show(description: error.message);
-      },
-      (data) {
-        calenders.value = data;
-      },
-    );
-    isLoading.value = false;
+    try {
+      final response = await calenderRepository.execute(
+        startDate: startDate,
+        endDate: endDate,
+        search: search,
+      );
+      if (isClosed || currentId != _requestId) return;
+      response.fold(
+        (error) {
+          ErrorSnackbar.show(description: error.message);
+        },
+        (data) {
+          calenders.value = data;
+        },
+      );
+    } finally {
+      if (!isClosed && currentId == _requestId) {
+        isLoading.value = false;
+      }
+    }
   }
 
   String _formatApiDate(DateTime date) {

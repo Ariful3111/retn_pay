@@ -46,7 +46,9 @@ class NotificationView extends GetView<NotificationController> {
                       ...section.items.map(
                         (item) => NotificationItem(
                           notificationIcon: controller.iconList[0],
-                          notificationText: item.data?.body ?? '',
+                          notificationText: (item.data?.title ?? '').isNotEmpty
+                              ? item.data?.title ?? ''
+                              : item.data?.body ?? '',
                           notificationTime: (item.createdAt).toTimeAgo(),
                           onTap: () {
                             if (item.type == "property") {
