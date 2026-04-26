@@ -25,89 +25,89 @@ class LandlordCalenderView extends GetView<LandlordCalenderController> {
       return CustomContainer(
         gradient: isDark ? null : AppColors.userBackground,
         padding: EdgeInsets.all(20.r),
-        child: controller.isLoading.value
-            ? ButtonLoading()
-            : ListView(
-                children: [
-                  DrawerItemsAppbar(title: 'Calender'),
-                  SizedBox(height: 20.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        height: 48.h,
-                        width: 280.w,
-                        child: CustomTextField(
-                          padding: EdgeInsets.zero,
-                          controller: controller.searchController,
-                          fillColor: isDark ? null : AppColors.whiteColor,
-                          labelText: 'Search',
-                          prefixIcon: Padding(
-                            padding: EdgeInsetsGeometry.only(left: 6.w),
-                            child: Image.asset(
-                              IconsPath.homeSearch,
-                              height: 24.h,
-                              width: 24.w,
+        child: ListView(
+          children: [
+            DrawerItemsAppbar(title: 'Calender'),
+            SizedBox(height: 20.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  height: 48.h,
+                  width: 280.w,
+                  child: CustomTextField(
+                    padding: EdgeInsets.zero,
+                    controller: controller.searchController,
+                    fillColor: isDark ? null : AppColors.whiteColor,
+                    labelText: 'Search',
+                    prefixIcon: Padding(
+                      padding: EdgeInsetsGeometry.only(left: 6.w),
+                      child: Image.asset(
+                        IconsPath.homeSearch,
+                        height: 24.h,
+                        width: 24.w,
+                      ),
+                    ),
+                  ),
+                ),
+                CustomFilterAppbar(
+                  height: 48.h,
+                  width: 99.w,
+                  radius: 12.r,
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return Obx(
+                          () => Material(
+                            color: Colors.transparent,
+                            child: CustomCalenderFilter(
+                              widget: LandlordCalenderFilter(),
+                              isDay: controller.isDay.value,
+                              onTap: (index) {
+                                controller.isDay.value = index;
+                                calenderFilter(
+                                  index: index,
+                                  selectedDay: controller.selectedDay,
+                                  rangeStart: controller.rangeStart,
+                                  rangeEnd: controller.rangeEnd,
+                                  rangeSelectionMode:
+                                      controller.rangeSelectionMode,
+                                  focusedDay: controller.focusedDay,
+                                );
+                              },
+                              onApply: () {
+                                if (controller.rangeStart.value != null) {
+                                  controller.focusedDay.value =
+                                      controller.rangeStart.value!;
+                                } else {
+                                  controller.focusedDay.value =
+                                      controller.selectedDay.value;
+                                }
+                                controller.applyFilter();
+                                Navigator.pop(context);
+                              },
                             ),
                           ),
-                        ),
-                      ),
-                      CustomFilterAppbar(
-                        height: 48.h,
-                        width: 99.w,
-                        radius: 12.r,
-                        onTap: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return Obx(
-                                () => Material(
-                                  color: Colors.transparent,
-                                  child: CustomCalenderFilter(
-                                    widget: LandlordCalenderFilter(),
-                                    isDay: controller.isDay.value,
-                                    onTap: (index) {
-                                      controller.isDay.value = index;
-                                      calenderFilter(
-                                        index: index,
-                                        selectedDay: controller.selectedDay,
-                                        rangeStart: controller.rangeStart,
-                                        rangeEnd: controller.rangeEnd,
-                                        rangeSelectionMode:
-                                            controller.rangeSelectionMode,
-                                        focusedDay: controller.focusedDay,
-                                      );
-                                    },
-                                    onApply: () {
-                                      if (controller.rangeStart.value != null) {
-                                        controller.focusedDay.value =
-                                            controller.rangeStart.value!;
-                                      } else {
-                                        controller.focusedDay.value =
-                                            controller.selectedDay.value;
-                                      }
-                                      controller.applyFilter();
-                                      Navigator.pop(context);
-                                    },
-                                  ),
-                                ),
-                              );
-                            },
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 16.h),
-                  CustomTextSecondary(
-                    text: controller.selectedMonthLabel,
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  SizedBox(height: 16.h),
-                  LandlordEventCalender(),
-                ],
-              ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ],
+            ),
+            SizedBox(height: 16.h),
+            CustomTextSecondary(
+              text: controller.selectedMonthLabel,
+              fontSize: 20.sp,
+              fontWeight: FontWeight.w600,
+            ),
+            SizedBox(height: 16.h),
+            controller.isLoading.value
+                ? ButtonLoading()
+                : LandlordEventCalender(),
+          ],
+        ),
       );
     });
   }
