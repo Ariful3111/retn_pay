@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/controllers/tenant_controller/service_booked_details_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/service_details_controller.dart';
+import 'package:renter_pay/features/dashboard/controllers/services_vendor_controller/update_booking_status_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/service_search_controller.dart';
+import 'package:renter_pay/features/dashboard/models/booking_list_model.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_complete.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_request.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_details_commit.dart';
@@ -13,66 +15,87 @@ import 'package:renter_pay/features/dashboard/widgets/service/service_search_wid
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar.dart';
 import 'package:renter_pay/shared/widgets/custom_appbar/custom_appbar_leading.dart';
 import 'package:renter_pay/shared/widgets/custom_container.dart';
+import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
 
-class ServiceBookedDetails extends StatelessWidget {
+class ServiceBookedDetails extends GetView<ServiceDetailsController> {
   const ServiceBookedDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
     bool isDark = Theme.of(context).brightness == Brightness.dark;
-    ServiceBookedDetailsController serviceBookedDetailsController = Get.find();
     ServiceSearchController serviceSearchController = Get.find();
-    return CustomContainer(
-      padding: EdgeInsets.all(20.r),
-      gradient: isDark
-          ? LinearGradient(
-              colors: [AppColors.darkPrimary, AppColors.darkPrimary],
-            )
-          : AppColors.userBackground,
-      child: ListView(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
+
+    // Extract bookingItem from Map arguments (for user/property/schedule data)
+    final args = Get.arguments;
+    BookingItem? bookingItem;
+
+    if (args is Map) {
+      final bookingArg = args['bookingItem'];
+      if (bookingArg is BookingItem) {
+        bookingItem = bookingArg;
+      }
+    }
+
+    return Obx(() {
+      final updateStatusController = Get.find<UpdateServiceStatusController>();
+      return CustomContainer(
+        padding: EdgeInsets.all(20.r),
+        gradient: isDark
+            ? LinearGradient(
+                colors: [AppColors.darkPrimary, AppColors.darkPrimary],
+              )
+            : AppColors.userBackground,
+        child: controller.isLoading.value
+            ? Center(child: ButtonLoading())
+            : ListView(
                 children: [
-                  CustomAppbarLeading(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          CustomAppbarLeading(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                          SizedBox(width: 8.w),
+                          CustomAppbar(title: 'Booked Services'),
+                        ],
+                      ),
+                      ServiceDropdownMenu(),
+                    ],
                   ),
-                  SizedBox(width: 8.w),
-                  CustomAppbar(title: 'Booked Services'),
+                  SizedBox(height: 16.h),
+                  ServiceSearchInfo(
+                    isShow: serviceSearchController.isShowInfo.value,
+                    onTap: () {
+                      serviceSearchController.isShowInfo.value =
+                          !serviceSearchController.isShowInfo.value;
+                    },
+                    bookButton: false,
+                    controller: controller,
+                  ),
+                  SizedBox(height: 20.h),
+                  ServiceDetailsWidgets(
+                    widgetList: serviceSearchController.widgetList,
+                    widgetTitleList: serviceSearchController.widgetTitle,
+                    selectedWidget: serviceSearchController.selectedWidgetList,
+                  ),
+                  ServiceDetailsCommit(),
+                  SizedBox(height: 20.h),
+                  // ServiceBookedRequest uses BookingItem for user/property data
+                  ServiceBookedRequest(bookingItem: bookingItem),
+                  SizedBox(height: 20.h),
+                  // Only show ServiceBookedComplete when bookingItem exists and status is NOT completed
+                  if (bookingItem != null &&
+                      bookingItem.status?.toLowerCase() != 'completed')
+                    updateStatusController.isLoading.value
+                        ? ButtonLoading()
+                        : ServiceBookedComplete(bookingItem: bookingItem),
                 ],
               ),
-              ServiceDropdownMenu(),
-            ],
-          ),
-          SizedBox(height: 16.h),
-          Obx(
-            () => ServiceSearchInfo(
-              isShow: serviceBookedDetailsController.isShowInfo.value,
-              onTap: () {
-                serviceBookedDetailsController.isShowInfo.value =
-                    !serviceBookedDetailsController.isShowInfo.value;
-              },
-              bookButton: false,
-              controller: Get.find(),
-            ),
-          ),
-          SizedBox(height: 20.h),
-          ServiceDetailsWidgets(
-            widgetList: serviceSearchController.widgetList,
-            widgetTitleList: serviceSearchController.widgetTitle,
-            selectedWidget: serviceBookedDetailsController.selectedWidgetList,
-          ),
-          ServiceDetailsCommit(),
-          SizedBox(height: 20.h),
-          ServiceBookedRequest(),
-          SizedBox(height: 20.h),
-          ServiceBookedComplete(),
-        ],
-      ),
-    );
+      );
+    });
   }
 }

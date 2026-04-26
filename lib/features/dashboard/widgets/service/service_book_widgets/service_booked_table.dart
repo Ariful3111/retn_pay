@@ -43,7 +43,10 @@ class ServiceBookedTable extends GetWidget<ServiceBookedController> {
           textOverflow: TextOverflow.ellipsis,
         ),
         TableStatus(status: item.status ?? ''),
-        ServiceBookedTableAction(),
+        ServiceBookedTableAction(
+          serviceTypeID: item.service?.serviceTypeId ?? 0,
+          bookingItem: item,
+        ),
       ];
     });
     return CustomTable(

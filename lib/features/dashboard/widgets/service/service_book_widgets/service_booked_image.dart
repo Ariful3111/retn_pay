@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/service_booked_details_controller.dart';
-import 'package:renter_pay/features/dashboard/models/service_vendor_models/booking_model.dart';
+import 'package:renter_pay/features/dashboard/models/booking_list_model.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_book_info.dart';
 import 'package:renter_pay/shared/widgets/custom_attach_image/custom_attach_image_view.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
@@ -32,21 +32,32 @@ class ServiceBookedImage extends StatelessWidget with ServiceBookInfo {
           title: 'Problem Details:',
           data: bookingItem?.service?.description ?? 'No details provided',
         ),
-        CustomTextSecondary(text: 'Attached Photos'),
-        SizedBox(height: 4.h),
-        Row(
-          children: [
-            CustomAttachImageView(
-              height: 108.h,
-              width: 108.w,
-              padding: 8.w,
-              radius: 10.r,
-              sizeHeight: 108.h,
-              imageList: serviceBookedDetailsController.imageList,
-            ),
-          ],
-        ),
-        SizedBox(height: 24.h),
+        // Only show Attached Photos section when photos exist
+        Obx(() {
+          final images = serviceBookedDetailsController.imageList;
+          if (images.isEmpty) return const SizedBox.shrink();
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomTextSecondary(text: 'Attached Photos'),
+              SizedBox(height: 4.h),
+              Row(
+                children: [
+                  CustomAttachImageView(
+                    height: 108.h,
+                    width: 108.w,
+                    padding: 8.w,
+                    radius: 10.r,
+                    sizeHeight: 108.h,
+                    imageList: images,
+                  ),
+                ],
+              ),
+              SizedBox(height: 24.h),
+            ],
+          );
+        }),
+
         CustomTextSecondary(
           text: 'Preferred Time of Service',
           color: isDark ? AppColors.whiteColor : AppColors.darkTextColor,

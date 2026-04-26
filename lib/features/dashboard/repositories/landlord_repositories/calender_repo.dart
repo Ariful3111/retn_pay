@@ -13,10 +13,16 @@ class CalenderRepository {
   Future<Either<ErrorModel, CalenderModel>> execute({
     required String startDate,
     required String endDate,
+    String search = "",
   }) async {
+    final query = startDate == endDate
+        ? "start_date=$startDate"
+        : "start_date=$startDate&end_date=$endDate";
+    final url = search.isNotEmpty
+        ? "/api/${NetworkLinks.version}/calendar/entries?$query&search=$search"
+        : "/api/${NetworkLinks.version}/calendar/entries?$query";
     final response = await getNetwork.getData<CalenderModel>(
-      url:
-          "/api/${NetworkLinks.version}/calendar/entries?start_date=$startDate&end_date=$endDate",
+      url: url,
       headers: {
         "Accept": "application/json",
         "Authorization":

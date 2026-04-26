@@ -127,9 +127,7 @@ class BookingManagementDetails
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomPrimaryButton(
-                  onPressed: () {
-                    // TODO: Implement accept booking
-                  },
+                  onPressed: () {},
                   height: 40.h,
                   width: 100.w,
                   text: 'Accept',
@@ -137,9 +135,7 @@ class BookingManagementDetails
                 ),
                 SizedBox(width: 12.w),
                 CustomSecondaryButton(
-                  onPressed: () {
-                    // TODO: Implement reject booking
-                  },
+                  onPressed: () {},
                   height: 40.h,
                   width: 100.w,
                   text: 'Reject',

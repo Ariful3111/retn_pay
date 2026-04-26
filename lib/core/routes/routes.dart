@@ -254,10 +254,12 @@ final List<GetPage> appRoutes = [
   GetPage(
     name: AppRoutes.serviceBookedDetails,
     page: () => ServiceBookedDetails(),
+    preventDuplicates: false,
     bindings: [
       ServiceBookedBindings(),
       ServiceBookedDetailsBindings(),
       ServiceSearchBindings(),
+      ServicesBindings(),
     ],
   ),
   GetPage(

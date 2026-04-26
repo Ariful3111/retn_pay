@@ -6,7 +6,6 @@ import 'package:renter_pay/features/dashboard/controllers/service_list_controlle
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/service_booked_controller.dart';
 import 'package:renter_pay/features/dashboard/controllers/tenant_controller/services_controller.dart';
 import 'package:renter_pay/features/dashboard/widgets/dashboard_widgets/drawer_items_appbar.dart';
-import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_filter.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_table.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_type.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_dropdown_menu.dart';
@@ -32,7 +31,7 @@ class ServicesView extends StatelessWidget {
           : AppColors.userBackground,
       child: Obx(
         () => CustomScrollView(
-          controller: servicesController.selectedServiceType.value == 'Search'
+          controller: servicesController.selectedServiceType.value == 'Services'
               ? serviceListController.scrollController
               : serviceBookedController.scrollController,
           slivers: [
@@ -46,7 +45,7 @@ class ServicesView extends StatelessWidget {
                     child: DrawerItemsAppbar(
                       title:
                           servicesController.selectedServiceType.value ==
-                              'Search'
+                              'Services'
                           ? 'Services'
                           : 'Booked Services',
                     ),
@@ -60,9 +59,10 @@ class ServicesView extends StatelessWidget {
                 duration: Duration(milliseconds: 300),
                 switchInCurve: Curves.linear,
                 switchOutCurve: Curves.linear,
-                child: servicesController.selectedServiceType.value == 'Search'
+                child:
+                    servicesController.selectedServiceType.value == 'Services'
                     ? Column(
-                        key: ValueKey('Search'),
+                        key: ValueKey('Services'),
                         children: [
                           SizedBox(height: 16.h),
                           ServicesSearch(),
@@ -75,8 +75,8 @@ class ServicesView extends StatelessWidget {
                         children: [
                           SizedBox(height: 16.h),
                           ServiceBookedType(),
-                          SizedBox(height: 12.h),
-                          ServiceBookedFilter(),
+                          // SizedBox(height: 12.h),
+                          // ServiceBookedFilter(),
                           SizedBox(height: 20.h),
                           ServiceBookedTable(),
                         ],

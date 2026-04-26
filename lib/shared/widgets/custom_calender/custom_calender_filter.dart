@@ -26,9 +26,9 @@ class CustomCalenderFilter extends StatelessWidget {
     return Align(
       alignment: alignmentGeometry ?? Alignment(0.5, -0.8),
       child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 20.w),
         padding: EdgeInsets.all(9.44.r),
-        height: 350.h,
-        width: 360.w,
+        height: 380.h,
         decoration: BoxDecoration(
           color: isDark ? AppColors.darkSecondary : AppColors.whiteColor,
           boxShadow: [
@@ -50,7 +50,7 @@ class CustomCalenderFilter extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  SizedBox(height: 270.h, width: 244.w, child: widget),
+                  SizedBox(height: 320.h, width: 244.w, child: widget),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [

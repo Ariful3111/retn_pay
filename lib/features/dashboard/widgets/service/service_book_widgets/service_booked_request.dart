@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:renter_pay/core/constants/colors.dart';
-import 'package:renter_pay/features/dashboard/models/service_vendor_models/booking_model.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_book_info.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_book_widgets/service_booked_image.dart';
 import 'package:renter_pay/features/dashboard/widgets/service/service_details_container.dart';
@@ -9,7 +8,8 @@ import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_secondary.dart';
 
 class ServiceBookedRequest extends StatelessWidget with ServiceBookInfo {
-  final BookingItem? bookingItem;
+  // Use dynamic to accept both booking_list_model.BookingItem and service_vendor_models.BookingItem
+  final dynamic bookingItem;
   const ServiceBookedRequest({super.key, this.bookingItem});
 
   @override

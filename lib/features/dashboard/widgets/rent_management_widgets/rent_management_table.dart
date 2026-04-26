@@ -94,7 +94,7 @@ class RentManagementTable extends StatelessWidget {
                   onExpandedClose: () {
                     rentManagementController.toggleExpanded(rowIndex);
                   },
-                  expandedContent:userIndex==3? SizedBox():RentManagementTableContent(index: rowIndex),
+                  expandedContent:userIndex==3? SizedBox(height: 20.h,):RentManagementTableContent(index: rowIndex),
                 );
               },
               onRowTap: (index) {
