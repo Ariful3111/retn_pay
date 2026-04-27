@@ -23,7 +23,6 @@ class StartDepositController extends GetxController {
       currency: 'AUD',
       gateway: 'eway',
     );
-    isLoading.value = false;
     response.fold(
       (error) {
         ErrorSnackbar.show(description: error.message);
@@ -47,10 +46,13 @@ class StartDepositController extends GetxController {
       onSuccess: () async {
         await Future.delayed(const Duration(milliseconds: 300));
         await Get.find<BalanceController>().getBalance();
+        depositController.clear();
+        isLoading.value = false;
         SuccessSnackbar.show(description: 'Deposit completed successfully');
       },
       onCancel: () async {
         await Future.delayed(const Duration(milliseconds: 300));
+        isLoading.value = false;
         ErrorSnackbar.show(description: 'Payment was cancelled');
       },
     );

@@ -36,16 +36,15 @@ class DepositCheckout extends GetView<StartDepositController> {
                 return controller.isLoading.value
                     ? ButtonLoading(verticalPadding: 15.h)
                     : Center(
-                      child: CustomPrimaryButton(
+                        child: CustomPrimaryButton(
                           onPressed: () async {
-                            await controller
-                                .startDeposit();
+                            await controller.startDeposit();
                           },
                           text: 'Deposit',
                           padding: EdgeInsets.all(12.r),
                           width: 150.w,
                         ),
-                    );
+                      );
               }),
             ],
           ),

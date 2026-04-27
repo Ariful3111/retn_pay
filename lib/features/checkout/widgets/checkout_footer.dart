@@ -27,7 +27,11 @@ class CheckoutFooter extends StatelessWidget {
           ),
         ),
         SizedBox(height: 24.h),
-        CustomTextField(controller: controller, labelText: label),
+        CustomTextField(
+          controller: controller,
+          labelText: label,
+          keyboardType: TextInputType.number,
+        ),
       ],
     );
   }
