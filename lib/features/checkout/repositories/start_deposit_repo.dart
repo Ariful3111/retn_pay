@@ -4,7 +4,7 @@ import 'package:renter_pay/core/constants/networks_path.dart';
 import 'package:renter_pay/core/data/global_models/error_model.dart';
 import 'package:renter_pay/core/data/local/storage_service.dart';
 import 'package:renter_pay/core/data/networks/post_with_response.dart';
-import 'package:renter_pay/features/profile/models/start_deposit_model.dart';
+import 'package:renter_pay/features/checkout/models/start_deposit_model.dart';
 
 class StartDepositRepository {
   final PostWithResponse postWithoutResponse;

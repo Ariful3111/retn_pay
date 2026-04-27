@@ -5,6 +5,7 @@ import 'package:renter_pay/core/utils/vr_view.dart';
 import 'package:renter_pay/features/auth/bindings/document_verification_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/first_onboarding_bindings.dart';
 import 'package:renter_pay/features/auth/bindings/forgot_password_bindings.dart';
+import 'package:renter_pay/features/checkout/bindings/checkout_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/landlord_bindings/application_management_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/landlord_bindings/landlord_key_release_bindings.dart';
 import 'package:renter_pay/features/dashboard/bindings/service_vendor_bindings/service_vendor_bindings.dart';
@@ -72,6 +73,8 @@ import 'package:renter_pay/features/home/views/home_view.dart';
 import 'package:renter_pay/features/home/views/main_home_view.dart';
 import 'package:renter_pay/features/notification/bindings/notification_bindings.dart';
 import 'package:renter_pay/features/notification/views/notification_view.dart';
+import 'package:renter_pay/features/checkout/views/deposit_checkout.dart';
+import 'package:renter_pay/features/checkout/views/withdraw_checkout.dart';
 import 'package:renter_pay/features/profile/bindings/blog_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/blog_details_bindings.dart';
 import 'package:renter_pay/features/profile/bindings/contact_us_bindings.dart';
@@ -342,5 +345,15 @@ final List<GetPage> appRoutes = [
     name: AppRoutes.agreementView,
     page: () => AgreementView(),
     binding: AgreementBindings(),
+  ),
+  GetPage(
+    name: AppRoutes.depositView,
+    page: () => DepositCheckout(),
+    binding: CheckoutBindings(),
+  ),
+  GetPage(
+    name: AppRoutes.withdrawView,
+    page: () => WithdrawCheckout(),
+    binding: CheckoutBindings(),
   ),
 ];
