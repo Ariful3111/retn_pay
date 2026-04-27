@@ -50,4 +50,6 @@ class AppRoutes {
   static const String vrViewScreen = '/vrViewScreen';
   static const String applicationManagementDetails = '/applicationManagementDetails';
   static const String agreementView = '/agreementView';
+  static const String withdrawView = '/withdrawView';
+  static const String depositView = '/depositView';
 }

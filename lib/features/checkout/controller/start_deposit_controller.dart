@@ -1,8 +1,9 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:renter_pay/core/services/eway_payment_service.dart';
-import 'package:renter_pay/features/profile/controllers/balance_controller.dart';
-import 'package:renter_pay/features/profile/models/start_deposit_model.dart';
-import 'package:renter_pay/features/profile/repositories/start_deposit_repo.dart';
+import 'package:renter_pay/features/checkout/controller/balance_controller.dart';
+import 'package:renter_pay/features/checkout/models/start_deposit_model.dart';
+import 'package:renter_pay/features/checkout/repositories/start_deposit_repo.dart';
 import 'package:renter_pay/shared/widgets/snackbars/error_snackbar.dart';
 import 'package:renter_pay/shared/widgets/snackbars/success_snackbar.dart';
 
@@ -12,11 +13,13 @@ class StartDepositController extends GetxController {
 
   final depositDetails = Rxn<StartDepositModel>();
   RxBool isLoading = false.obs;
+  TextEditingController depositController = TextEditingController();
 
   Future<void> startDeposit() async {
+    double depositAmount = double.tryParse(depositController.text) ?? 0.0;
     isLoading.value = true;
     final response = await startDepositRepository.execute(
-      amount: 100,
+      amount: depositAmount,
       currency: 'AUD',
       gateway: 'eway',
     );
@@ -51,5 +54,11 @@ class StartDepositController extends GetxController {
         ErrorSnackbar.show(description: 'Payment was cancelled');
       },
     );
+  }
+
+  @override
+  void dispose() {
+    depositController.dispose();
+    super.dispose();
   }
 }
