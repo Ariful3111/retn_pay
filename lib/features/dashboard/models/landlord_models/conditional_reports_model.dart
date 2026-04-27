@@ -25,7 +25,7 @@ class ConditionalReportsModel {
     error = json['error'] != null ? _parseBool(json['error']) : null;
     code = json['code'] != null ? int.tryParse(json['code'].toString()) : null;
     message = json['message'];
-    data = json['data'] != null
+    data = json['data'] is Map<String, dynamic>
         ? ConditionalReportsData.fromJson(json['data'])
         : null;
     errors = json['errors'];
@@ -52,16 +52,16 @@ class ConditionalReportsData {
   ConditionalReportsData({this.data, this.links, this.meta});
 
   ConditionalReportsData.fromJson(Map<String, dynamic> json) {
-    if (json['data'] != null) {
+    if (json['data'] is List) {
       data = <ConditionReportItem>[];
-      json['data'].forEach((v) {
+      for (var v in (json['data'] as List)) {
         data!.add(ConditionReportItem.fromJson(v));
-      });
+      }
     }
-    links = json['links'] != null
+    links = json['links'] is Map<String, dynamic>
         ? ConditionalReportsLinks.fromJson(json['links'])
         : null;
-    meta = json['meta'] != null
+    meta = json['meta'] is Map<String, dynamic>
         ? ConditionalReportsMeta.fromJson(json['meta'])
         : null;
   }
@@ -122,11 +122,11 @@ class ConditionReportItem {
     fileName = json['file_name'];
     fileUrl = json['file_url'];
     summary = json['summary'];
-    property = json['property'] != null
+    property = json['property'] is Map<String, dynamic>
         ? ConditionReportProperty.fromJson(json['property'])
         : null;
     inspection = json['inspection'];
-    createdByUser = json['created_by_user'] != null
+    createdByUser = json['created_by_user'] is Map<String, dynamic>
         ? CreatedByUser.fromJson(json['created_by_user'])
         : null;
     createdAt = json['created_at'];
@@ -271,23 +271,24 @@ class ConditionReportProperty {
     isFavourite = json['is_favourite'] != null
         ? _parseBool(json['is_favourite'])
         : null;
-    if (json['features'] != null) {
+    if (json['features'] is List) {
       features = List<String>.from(json['features']);
     }
-    leaseAgreementDefaults = json['lease_agreement_defaults'] != null
+    leaseAgreementDefaults =
+        json['lease_agreement_defaults'] is Map<String, dynamic>
         ? LeaseAgreementDefaults.fromJson(json['lease_agreement_defaults'])
         : null;
     rating = json['rating'];
     ratingCount = json['rating_count'] != null
         ? int.tryParse(json['rating_count'].toString())
         : null;
-    if (json['units'] != null) {
+    if (json['units'] is List) {
       units = <PropertyUnit>[];
-      json['units'].forEach((v) {
+      for (var v in (json['units'] as List)) {
         units!.add(PropertyUnit.fromJson(v));
-      });
+      }
     }
-    reviewSummary = json['review_summary'] != null
+    reviewSummary = json['review_summary'] is Map<String, dynamic>
         ? ReviewSummary.fromJson(json['review_summary'])
         : null;
     createdAt = json['created_at'];
@@ -370,10 +371,11 @@ class LeaseAgreementDefaults {
         : null;
     currency = json['currency'];
     paymentFrequency = json['payment_frequency'];
-    disclosures = json['disclosures'] != null
+    disclosures = json['disclosures'] is Map<String, dynamic>
         ? LeaseDisclosures.fromJson(json['disclosures'])
         : null;
-    propertyManagerDetails = json['property_manager_details'] != null
+    propertyManagerDetails =
+        json['property_manager_details'] is Map<String, dynamic>
         ? PropertyManagerDetails.fromJson(json['property_manager_details'])
         : null;
   }
@@ -422,33 +424,35 @@ class LeaseDisclosures {
   });
 
   LeaseDisclosures.fromJson(Map<String, dynamic> json) {
-    intentToSellPremises = json['intent_to_sell_premises'] != null
+    intentToSellPremises =
+        json['intent_to_sell_premises'] is Map<String, dynamic>
         ? IntentToSellPremises.fromJson(json['intent_to_sell_premises'])
         : null;
-    mortgageeAction = json['mortgagee_action'] != null
+    mortgageeAction = json['mortgagee_action'] is Map<String, dynamic>
         ? MortgageeAction.fromJson(json['mortgagee_action'])
         : null;
-    ownership = json['ownership'] != null
+    ownership = json['ownership'] is Map<String, dynamic>
         ? OwnershipDisclosure.fromJson(json['ownership'])
         : null;
-    embeddedElectricityNetwork = json['embedded_electricity_network'] != null
+    embeddedElectricityNetwork =
+        json['embedded_electricity_network'] is Map<String, dynamic>
         ? EmbeddedElectricityNetwork.fromJson(
             json['embedded_electricity_network'],
           )
         : null;
-    propertyHistory = json['property_history'] != null
+    propertyHistory = json['property_history'] is Map<String, dynamic>
         ? PropertyHistory.fromJson(json['property_history'])
         : null;
-    rentalCompliance = json['rental_compliance'] != null
+    rentalCompliance = json['rental_compliance'] is Map<String, dynamic>
         ? RentalCompliance.fromJson(json['rental_compliance'])
         : null;
-    safetyChecks = json['safety_checks'] != null
+    safetyChecks = json['safety_checks'] is Map<String, dynamic>
         ? SafetyChecks.fromJson(json['safety_checks'])
         : null;
-    heritage = json['heritage'] != null
+    heritage = json['heritage'] is Map<String, dynamic>
         ? Heritage.fromJson(json['heritage'])
         : null;
-    planningAndLegal = json['planning_and_legal'] != null
+    planningAndLegal = json['planning_and_legal'] is Map<String, dynamic>
         ? PlanningAndLegal.fromJson(json['planning_and_legal'])
         : null;
     additionalNotes = json['additional_notes'];
@@ -816,16 +820,16 @@ class PropertyUnit {
     unitNumber = json['unit_number'];
     unitName = json['unit_name'];
     rentAmount = json['rent_amount'];
-    rentType = json['rent_type'] != null
+    rentType = json['rent_type'] is Map<String, dynamic>
         ? RentType.fromJson(json['rent_type'])
         : null;
-    currency = json['currency'] != null
+    currency = json['currency'] is Map<String, dynamic>
         ? Currency.fromJson(json['currency'])
         : null;
     displayRentAmount = json['display_rent_amount'] != null
         ? int.tryParse(json['display_rent_amount'].toString())
         : null;
-    displayCurrency = json['display_currency'] != null
+    displayCurrency = json['display_currency'] is Map<String, dynamic>
         ? Currency.fromJson(json['display_currency'])
         : null;
     status = json['status'];
@@ -1020,14 +1024,16 @@ class ConditionalReportsMeta {
     lastPage = json['last_page'] != null
         ? int.tryParse(json['last_page'].toString())
         : null;
-    if (json['links'] != null) {
+    if (json['links'] is List) {
       links = <ConditionalReportsMetaLink>[];
-      json['links'].forEach((v) {
+      for (var v in (json['links'] as List)) {
         links!.add(ConditionalReportsMetaLink.fromJson(v));
-      });
+      }
     }
     path = json['path'];
-    perPage = int.tryParse(json['per_page'].toString());
+    perPage = json['per_page'] != null
+        ? int.tryParse(json['per_page'].toString())
+        : null;
     to = json['to'] != null ? int.tryParse(json['to'].toString()) : null;
     total = json['total'] != null
         ? int.tryParse(json['total'].toString())
