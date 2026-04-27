@@ -27,7 +27,8 @@ class ProfileInfo extends StatelessWidget {
       String profilePic =
           controller.profileData.value?.data?.image.toString() ?? '';
       String balance =
-          balanceController.balance.value?.data?.fiatBalanceAud ?? '0.00';
+          balanceController.balance.value?.data?.displayBalance.toString() ??
+          '0.00';
       String symbol =
           balanceController.balance.value?.data?.displayCurrency?.symbol ?? '';
       if (contact.isEmpty || contact == 'null') {
