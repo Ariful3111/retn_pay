@@ -8,10 +8,12 @@ class BalanceModel {
   BalanceModel({this.error, this.code, this.message, this.data, this.errors});
 
   BalanceModel.fromJson(Map<String, dynamic> json) {
-    error = json['error'];
-    code = json['code'];
-    message = json['message'];
-    data = json['data'] != null ? Data.fromJson(json['data']) : null;
+    error = json['error'] is bool ? json['error'] : null;
+    code = json['code'] is int ? json['code'] : null;
+    message = json['message']?.toString();
+    data = json['data'] is Map<String, dynamic>
+        ? Data.fromJson(json['data'])
+        : null;
     errors = json['errors'];
   }
 
@@ -31,27 +33,43 @@ class BalanceModel {
 class Data {
   String? balance;
   String? balanceFormatted;
-  String? fiatBalance;
-  String? fiatBalanceAud;
+  String? availableBalance;
+  String? availableBalanceFormatted;
   double? displayBalance;
+  String? onChainBalance;
+  String? onChainBalanceFormatted;
+  int? onChainDisplayBalance;
+  String? onChainSyncedAt;
   DisplayCurrency? displayCurrency;
 
   Data({
     this.balance,
     this.balanceFormatted,
-    this.fiatBalance,
-    this.fiatBalanceAud,
+    this.availableBalance,
+    this.availableBalanceFormatted,
     this.displayBalance,
+    this.onChainBalance,
+    this.onChainBalanceFormatted,
+    this.onChainDisplayBalance,
+    this.onChainSyncedAt,
     this.displayCurrency,
   });
 
   Data.fromJson(Map<String, dynamic> json) {
-    balance = json['balance'];
-    balanceFormatted = json['balance_formatted'];
-    fiatBalance = json['fiat_balance'];
-    fiatBalanceAud = json['fiat_balance_aud'];
-    displayBalance = json['display_balance']?.toDouble();
-    displayCurrency = json['display_currency'] != null
+    balance = json['balance']?.toString();
+    balanceFormatted = json['balance_formatted']?.toString();
+    availableBalance = json['available_balance']?.toString();
+    availableBalanceFormatted = json['available_balance_formatted']?.toString();
+    displayBalance = json['display_balance'] is num
+        ? (json['display_balance'] as num).toDouble()
+        : null;
+    onChainBalance = json['on_chain_balance']?.toString();
+    onChainBalanceFormatted = json['on_chain_balance_formatted']?.toString();
+    onChainDisplayBalance = json['on_chain_display_balance'] is num
+        ? (json['on_chain_display_balance'] as num).toInt()
+        : null;
+    onChainSyncedAt = json['on_chain_synced_at']?.toString();
+    displayCurrency = json['display_currency'] is Map<String, dynamic>
         ? DisplayCurrency.fromJson(json['display_currency'])
         : null;
   }
@@ -60,9 +78,13 @@ class Data {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['balance'] = balance;
     data['balance_formatted'] = balanceFormatted;
-    data['fiat_balance'] = fiatBalance;
-    data['fiat_balance_aud'] = fiatBalanceAud;
+    data['available_balance'] = availableBalance;
+    data['available_balance_formatted'] = availableBalanceFormatted;
     data['display_balance'] = displayBalance;
+    data['on_chain_balance'] = onChainBalance;
+    data['on_chain_balance_formatted'] = onChainBalanceFormatted;
+    data['on_chain_display_balance'] = onChainDisplayBalance;
+    data['on_chain_synced_at'] = onChainSyncedAt;
     if (displayCurrency != null) {
       data['display_currency'] = displayCurrency!.toJson();
     }

@@ -6,7 +6,7 @@ import 'package:renter_pay/core/constants/colors.dart';
 import 'package:renter_pay/core/constants/icons_path.dart';
 import 'package:renter_pay/core/constants/images_path.dart';
 import 'package:renter_pay/core/routes/app_routes.dart';
-import 'package:renter_pay/features/profile/controllers/balance_controller.dart';
+import 'package:renter_pay/features/checkout/controller/balance_controller.dart';
 import 'package:renter_pay/features/profile/controllers/profile_controller.dart';
 import 'package:renter_pay/shared/widgets/custom_text/custom_text_primary.dart';
 import 'package:renter_pay/shared/widgets/loadings/button_loading.dart';
@@ -27,7 +27,8 @@ class ProfileInfo extends StatelessWidget {
       String profilePic =
           controller.profileData.value?.data?.image.toString() ?? '';
       String balance =
-          balanceController.balance.value?.data?.fiatBalanceAud ?? '0.00';
+          balanceController.balance.value?.data?.displayBalance.toString() ??
+          '0.00';
       String symbol =
           balanceController.balance.value?.data?.displayCurrency?.symbol ?? '';
       if (contact.isEmpty || contact == 'null') {
