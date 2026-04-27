@@ -1,104 +1,267 @@
 {
-    "error": false,
-    "code": 200,
-    "message": "User Details",
-    "data": {
-        "id": 87,
-        "name": "Afifa Apu",
-        "first_name": "Afifa",
-        "last_name": "Apu",
-        "gender": "female",
-        "image": "https://renter-pay.mahfuz.click/images/person.png",
-        "email": "vendor@gmail.com",
-        "phone": null,
-        "is_active": true,
-        "provider": null,
-        "provider_id": null,
-        "roles": [
-            "service_vendor"
-        ],
-        "service_vendor_profile": {
-            "id": 17,
-            "user_id": 87,
-            "business_name": "test",
-            "business_type": "test",
-            "abn": null,
-            "description": "test",
-            "is_verified": false,
-            "status": "pending",
-            "rejection_reason": null,
-            "approved_at": null,
-            "created_at": "2026-04-22T16:20:40+06:00",
-            "updated_at": "2026-04-22T16:20:40+06:00",
-            "subscription": {
-                "id": 70,
-                "user_id": 87,
-                "role": "service_vendor",
-                "plan_id": 7,
-                "start_date": "2026-04-21T18:00:00.000000Z",
-                "end_date": "2026-05-21T18:00:00.000000Z",
-                "is_trial": false,
-                "trial_ends_at": null,
-                "status": "active",
-                "auto_renew": true,
-                "plan": {
-                    "id": 7,
-                    "for_role": "service_vendor",
-                    "name": "Starter",
-                    "price": 49,
-                    "billing_cycle": "monthly",
-                    "trial_period_days": 14,
-                    "is_active": true,
-                    "features": [
-                        {
-                            "title": "Job Requests",
-                            "value": "10",
-                            "features": null
-                        },
-                        {
-                            "title": "Category",
-                            "value": null,
-                            "features": [
-                                "Single Category"
-                            ]
-                        }
-                    ]
-                },
-                "suggested_upgrade_plan": {
-                    "id": 8,
-                    "for_role": "service_vendor",
-                    "name": "Growth",
-                    "price": 149,
-                    "billing_cycle": "monthly",
-                    "trial_period_days": 30,
-                    "is_active": true,
-                    "features": [
-                        {
-                            "title": "Job Requests",
-                            "value": "50",
-                            "features": null
-                        },
-                        {
-                            "title": "Category",
-                            "value": null,
-                            "features": [
-                                "Up to 3 Categories"
-                            ]
-                        },
-                        {
-                            "title": "Verified Badge",
-                            "value": null,
-                            "features": [
-                                "Included"
-                            ]
-                        }
-                    ]
-                }
+  "error": false,
+  "code": 200,
+  "message": "Condition reports retrieved successfully",
+  "data": {
+    "data": [
+      {
+        "id": 1,
+        "property_id": 5,
+        "report_type": "maintenance",
+        "file_name": "property-condition-move-out.pdf",
+        "file_url": "https:\/\/renter-pay.mahfuz.click\/storage\/condition-reports\/report_69ee85c0c64350.13839774.pdf",
+        "summary": "Property condition assessed for maintenance planning. Items prioritized.",
+        "property": {
+          "id": 5,
+          "landlord_id": 52,
+          "property_type_id": 1,
+          "title": "Apartment in Adelaide - Lonsdale Street",
+          "name": "Apartment in Adelaide - Lonsdale Street",
+          "description": "Modern Apartment located in Adelaide. Features 2 bedroom(s), 1 bathroom(s). Perfect for families or professionals. Close to public transport, shops, and schools.",
+          "address": "468\/38 Elizabeth Street",
+          "city": "Adelaide",
+          "state": "SA",
+          "postal_code": "5322",
+          "country": "Australia",
+          "latitude": "-35.41850000",
+          "longitude": "139.00070000",
+          "bedrooms": 2,
+          "bathrooms": 1,
+          "parking_spaces": 3,
+          "land_size": null,
+          "building_size": "164.00",
+          "year_built": 1998,
+          "status": "inactive",
+          "available_from": "2026-04-27",
+          "is_verified": false,
+          "is_in_person_inspection_available": false,
+          "is_virtual_inspection_available": false,
+          "is_favourite": false,
+          "features": [
+            "Spacious open-plan living area with natural light throughout.",
+            "Secure underground parking with direct lift access to the building.",
+            "Ducted air conditioning and heating for year-round comfort.",
+            "Built-in wardrobes and ample storage in all bedrooms.",
+            "Close to public transport, schools, and local shops.",
+            "Double garage with internal access and additional storage."
+          ],
+          "lease_agreement_defaults": [],
+          "rating": "4.90",
+          "rating_count": 68,
+          "units": [
+            {
+              "id": 8,
+              "property_id": 5,
+              "unit_number": "Unit 3",
+              "unit_name": "Apartment 3",
+              "rent_amount": "12520.00",
+              "rent_type": {
+                "id": 1,
+                "name": "Daily",
+                "slug": "daily",
+                "rent_days": 1,
+                "description": "Rent charged per day",
+                "status": true,
+                "created_at": "2026-04-26T21:38:01.000000Z",
+                "updated_at": "2026-04-26T21:38:01.000000Z"
+              },
+              "currency": {
+                "id": 1,
+                "code": "AUD",
+                "name": "Australian Dollar",
+                "symbol": "A$",
+                "logo": "https:\/\/renter-pay.mahfuz.click\/images\/currency.png",
+                "type": "fiat",
+                "decimal_places": 2,
+                "exchange_rate": 1,
+                "is_active": true,
+                "sort_order": 1
+              },
+              "display_rent_amount": 12520,
+              "display_currency": {
+                "id": 1,
+                "code": "AUD",
+                "name": "Australian Dollar",
+                "symbol": "A$",
+                "logo": "https:\/\/renter-pay.mahfuz.click\/images\/currency.png",
+                "type": "fiat",
+                "decimal_places": 2,
+                "exchange_rate": 1,
+                "is_active": true,
+                "sort_order": 1
+              },
+              "status": "available",
+              "bedrooms": 2,
+              "bathrooms": 1,
+              "size": "54.67",
+              "description": "Spacious Apartment with modern fixtures"
+            },
+            {
+              "id": 7,
+              "property_id": 5,
+              "unit_number": "Unit 2",
+              "unit_name": "Apartment 2",
+              "rent_amount": "17520.00",
+              "rent_type": {
+                "id": 4,
+                "name": "Yearly",
+                "slug": "yearly",
+                "rent_days": 365,
+                "description": "Rent charged per year",
+                "status": true,
+                "created_at": "2026-04-26T21:38:01.000000Z",
+                "updated_at": "2026-04-26T21:38:01.000000Z"
+              },
+              "currency": {
+                "id": 1,
+                "code": "AUD",
+                "name": "Australian Dollar",
+                "symbol": "A$",
+                "logo": "https:\/\/renter-pay.mahfuz.click\/images\/currency.png",
+                "type": "fiat",
+                "decimal_places": 2,
+                "exchange_rate": 1,
+                "is_active": true,
+                "sort_order": 1
+              },
+              "display_rent_amount": 17520,
+              "display_currency": {
+                "id": 1,
+                "code": "AUD",
+                "name": "Australian Dollar",
+                "symbol": "A$",
+                "logo": "https:\/\/renter-pay.mahfuz.click\/images\/currency.png",
+                "type": "fiat",
+                "decimal_places": 2,
+                "exchange_rate": 1,
+                "is_active": true,
+                "sort_order": 1
+              },
+              "status": "occupied",
+              "bedrooms": 2,
+              "bathrooms": 1,
+              "size": "54.67",
+              "description": "Spacious Apartment with modern fixtures"
+            },
+            {
+              "id": 6,
+              "property_id": 5,
+              "unit_number": "Unit 1",
+              "unit_name": "Apartment 1",
+              "rent_amount": "24060.00",
+              "rent_type": {
+                "id": 3,
+                "name": "Monthly",
+                "slug": "monthly",
+                "rent_days": 30,
+                "description": "Rent charged per month",
+                "status": true,
+                "created_at": "2026-04-26T21:38:01.000000Z",
+                "updated_at": "2026-04-26T21:38:01.000000Z"
+              },
+              "currency": {
+                "id": 1,
+                "code": "AUD",
+                "name": "Australian Dollar",
+                "symbol": "A$",
+                "logo": "https:\/\/renter-pay.mahfuz.click\/images\/currency.png",
+                "type": "fiat",
+                "decimal_places": 2,
+                "exchange_rate": 1,
+                "is_active": true,
+                "sort_order": 1
+              },
+              "display_rent_amount": 24060,
+              "display_currency": {
+                "id": 1,
+                "code": "AUD",
+                "name": "Australian Dollar",
+                "symbol": "A$",
+                "logo": "https:\/\/renter-pay.mahfuz.click\/images\/currency.png",
+                "type": "fiat",
+                "decimal_places": 2,
+                "exchange_rate": 1,
+                "is_active": true,
+                "sort_order": 1
+              },
+              "status": "maintenance",
+              "bedrooms": 2,
+              "bathrooms": 1,
+              "size": "54.67",
+              "description": "Spacious Apartment with modern fixtures"
             }
+          ],
+          "review_summary": {
+            "total_reviews": 68,
+            "average_rating": "4.90"
+          },
+          "created_at": "2026-04-26T21:38:01.000000Z",
+          "updated_at": "2026-04-26T21:38:06.000000Z"
         },
-        "documents": [],
-        "created_at": "2026-03-07 09:33:40",
-        "updated_at": "2026-04-22 16:16:36"
+        "created_by_user": {
+          "id": 61,
+          "name": "Landlord User 10",
+          "first_name": "Landlord",
+          "last_name": "User 10",
+          "gender": "",
+          "image": "https:\/\/renter-pay.mahfuz.click\/images\/person.png",
+          "email": "landlord10@example.com",
+          "phone": "8801740000010",
+          "is_active": true,
+          "provider": null,
+          "provider_id": null,
+          "roles": ["landlord"],
+          "landlord_profile": {
+            "id": 10,
+            "description": "Property owner with 10 years of experience in real estate management.",
+            "is_verified": true,
+            "created_at": "2026-04-26T21:37:59.000000Z",
+            "updated_at": "2026-04-26T21:37:59.000000Z",
+            "subscription": null
+          },
+          "documents": [],
+          "created_at": "2026-04-27 03:37:59",
+          "updated_at": "2026-04-27 03:37:59"
+        },
+        "created_at": "2025-12-04 03:38:08",
+        "updated_at": "2026-04-27 03:38:08"
+      }
+    ],
+    "links": {
+      "first": "https:\/\/renter-pay.mahfuz.click\/api\/v1\/condition-reports?page=1",
+      "last": "https:\/\/renter-pay.mahfuz.click\/api\/v1\/condition-reports?page=1",
+      "prev": null,
+      "next": null
     },
-    "errors": null
+    "meta": {
+      "current_page": 1,
+      "from": 1,
+      "last_page": 1,
+      "links": [
+        {
+          "url": null,
+          "label": "&laquo; Previous",
+          "page": null,
+          "active": false
+        },
+        {
+          "url": "https:\/\/renter-pay.mahfuz.click\/api\/v1\/condition-reports?page=1",
+          "label": "1",
+          "page": 1,
+          "active": true
+        },
+        {
+          "url": null,
+          "label": "Next &raquo;",
+          "page": null,
+          "active": false
+        }
+      ],
+      "path": "https:\/\/renter-pay.mahfuz.click\/api\/v1\/condition-reports",
+      "per_page": 20,
+      "to": 1,
+      "total": 1
+    }
+  },
+  "errors": null
 }
