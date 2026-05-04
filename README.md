@@ -1,5 +1,8 @@
-# 🏠 Rent Pay ![Flutter](https://img.shields.io/badge/Flutter-3.24.0-blue?logo=flutter&logoColor=white) ![Dart](https://img.shields.io/badge/Dart-3.5.0-blue?logo=dart&logoColor=white)
-
+# 🏠 Rent Pay
+![Flutter](https://img.shields.io/badge/Flutter-3.24.0-blue?logo=flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-3.5.0-blue?logo=dart&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-Auth-orange?logo=firebase&logoColor=white)
+![GetX](https://img.shields.io/badge/GetX-State_Management-purple)
 
 A cross-platform Flutter application for buying, renting, and managing 
 residential and commercial spaces — including apartments, villas, and offices.
@@ -36,6 +39,23 @@ each with its own dedicated UI and functionality.
 <img src="assets/screenshots/dark.png" width="200"/>
 ---
 
+## 🏗️ Architecture
+
+This project follows **MVVM (Model-View-ViewModel)** architecture
+with **GetX** for state management, dependency injection, and navigation.
+
+```
+lib/
+├── core/              # Constants, theme, utilities, app colors, GetX navigation & route management
+├── modules/           # Feature screens (View + ViewModel)
+│   ├── binding/       # manage and bind controller data
+│   ├── controller/    # logical and functional part
+│   ├── view/          # implement Ui, logical, function code
+│   └── widgets/       # shared element for this mod
+└── main.dart          # main page of the app
+```
+
+---
 ## 👥 User Roles
 
 | Role | Description |
