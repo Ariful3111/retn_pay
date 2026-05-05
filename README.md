@@ -30,13 +30,30 @@ each with its own dedicated UI and functionality.
 
 ---
 ## 📸 Screenshots
-### Oboarding
-### User Selection
-### Login & Sign Up
-### HomePage
-### Dashboard
-<img src="assets/screenshots/home.png" width="200"/>
-<img src="assets/screenshots/dark.png" width="200"/>
+### Oboarding Page
+
+<img src="assets/screenshots/onboarding.png"/>
+
+### Authentication Page
+
+<img src="assets/screenshots/auth.png"/>
+
+### Home Page
+
+<img src="assets/screenshots/home.png"/>
+
+### Category Page
+
+<img src="assets/screenshots/category.png"/>
+
+### Dashboard Page
+
+<img src="assets/screenshots/dashboard.png"/>
+
+### Profile Page
+
+<img src="assets/screenshots/profile.png"/>
+
 ---
 
 ## 🏗️ Architecture
